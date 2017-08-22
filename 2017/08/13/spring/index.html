@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>KangShan</title>
+  <title>spring | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="KangShan">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="spring spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；  Core模块 bean标签： id属性指定这个实例的唯一标识； class属性，用来指定这个实例的类定义； property子元素，指定这个对象的属性，比如：user对象中有属性n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring">
+<meta property="og:url" content="http://yoursite.com/2017/08/13/spring/index.html">
 <meta property="og:site_name" content="KangShan">
+<meta property="og:description" content="spring spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；  Core模块 bean标签： id属性指定这个实例的唯一标识； class属性，用来指定这个实例的类定义； property子元素，指定这个对象的属性，比如：user对象中有属性n">
+<meta property="og:updated_time" content="2017-08-22T18:29:07.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KangShan">
+<meta name="twitter:title" content="spring">
+<meta name="twitter:description" content="spring spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；  Core模块 bean标签： id属性指定这个实例的唯一标识； class属性，用来指定这个实例的类定义； property子元素，指定这个对象的属性，比如：user对象中有属性n">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
   
@@ -59,45 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/test/" class="article-date">
-  <time datetime="2017-08-22T17:59:24.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/23/test/" data-id="cj6nytbno000360qn2m1ll0zw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/13/spring/" class="article-date">
   <time datetime="2017-08-13T04:14:38.000Z" itemprop="datePublished">2017-08-13</time>
@@ -110,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/13/spring/">spring</a>
+    <h1 class="article-title" itemprop="name">
+      spring
     </h1>
   
 
@@ -188,103 +154,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-markdown使用笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/23/markdown使用笔记/" class="article-date">
-  <time datetime="2015-04-23T04:54:38.000Z" itemprop="datePublished">2015-04-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2017/08/23/test/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/23/markdown使用笔记/">spring mvc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="markdown笔记使用攻略"><a href="#markdown笔记使用攻略" class="headerlink" title="markdown笔记使用攻略"></a>markdown笔记使用攻略</h1><blockquote>
-<p>说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；</p>
-</blockquote>
-<ol>
-<li>段落：如上所见，一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；</li>
-<li>插入链接：<a href="http://www.baidu.com" title="百度下" target="_blank" rel="external">百度</a>，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态；</li>
-<li>想要插入代码:<ol>
-<li><pre>在此标签中插入代码</pre></li>
-<li>或者是在每一行代码前插入两个table符，这一点还没闹懂，初步理解是如果已经有了缩进，这儿就容易出岔，没有缩进才会正常的显示代码；</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/23/markdown使用笔记/" data-id="cj6nytbno000260qn3g75zr61" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/01/23/hello-world/" class="article-date">
-  <time datetime="2014-01-22T18:04:38.000Z" itemprop="datePublished">2014-01-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          test
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/01/23/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2015/04/23/markdown使用笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">spring mvc</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/01/23/hello-world/" data-id="cj6nytbli000060qnuocooyzf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
