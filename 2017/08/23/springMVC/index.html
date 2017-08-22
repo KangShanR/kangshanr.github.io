@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>KangShan</title>
+  <title>springMVC | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="KangShan">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="核心对象：中央处理器是：在web.xml中配置springmvc的servlet百度 12345678910111213&amp;lt;servlet&amp;gt;    	&amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;    	&amp;lt;servlet-class&amp;gt;org.springframework.web.servlet.DispatcherSe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springMVC">
+<meta property="og:url" content="http://yoursite.com/2017/08/23/springMVC/index.html">
 <meta property="og:site_name" content="KangShan">
+<meta property="og:description" content="核心对象：中央处理器是：在web.xml中配置springmvc的servlet百度 12345678910111213&amp;lt;servlet&amp;gt;    	&amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;    	&amp;lt;servlet-class&amp;gt;org.springframework.web.servlet.DispatcherSe">
+<meta property="og:updated_time" content="2017-08-22T19:29:51.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KangShan">
+<meta name="twitter:title" content="springMVC">
+<meta name="twitter:description" content="核心对象：中央处理器是：在web.xml中配置springmvc的servlet百度 12345678910111213&amp;lt;servlet&amp;gt;    	&amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;    	&amp;lt;servlet-class&amp;gt;org.springframework.web.servlet.DispatcherSe">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/23/springMVC/" class="article-date">
   <time datetime="2017-08-22T19:29:17.000Z" itemprop="datePublished">2017-08-23</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/springMVC/">springMVC</a>
+    <h1 class="article-title" itemprop="name">
+      springMVC
     </h1>
   
 
@@ -179,198 +181,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/13/spring/" class="article-date">
-  <time datetime="2017-08-13T04:14:38.000Z" itemprop="datePublished">2017-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/13/spring/">spring</a>
-    </h1>
+    <a href="/2017/08/13/spring/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">spring</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="spring"><a href="#spring" class="headerlink" title="spring"></a>spring</h1><blockquote>
-<p>spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；</p>
-</blockquote>
-<h2 id="Core模块"><a href="#Core模块" class="headerlink" title="Core模块"></a>Core模块</h2><ul>
-<li>bean标签：<ul>
-<li>id属性指定这个实例的唯一标识；</li>
-<li>class属性，用来指定这个实例的类定义；</li>
-<li>property子元素，指定这个对象的属性，比如：user对象中有属性name,那么这个这个user的bean对象就应该有一个子元素标签property，同时如果这个属性是另外一个本地的bean，name属性指向这个属性：<code>&lt;property name=&quot;advice&quot; id=&quot;beanId&quot;&gt;</code>直接使用id属性来引用到其他的bean的id就行；</li>
-</ul>
-</li>
-</ul>
-<h2 id="AOP模块"><a href="#AOP模块" class="headerlink" title="AOP模块"></a>AOP模块</h2><blockquote>
-<p>Aspect Oriented Programming,面向切面编程</p>
-</blockquote>
-<ul>
-<li>切面Aspect:可以理解为模块，比如，读写数据库、权限检查、异常情况记录；</li>
-<li>Advice,增强：拦截器实现增强接口Advisor，不同的拦截器实现不同的增强接口，比如：方法前拦截器<pre><code>MethodBeforeInterceptor implements MethodBeforeAdvice｛
-    //方法前拦截器
-    //调用对象的方法前将执行该方法。参数分别为被调用的方法、参数、对象
-    public void before(Method method, Object[] args, Object instance) throws Throwable{
-        System.out.println(&quot;即将要执行的方法：“+method.getName());
-        //如果是Service
-        if(instance instanceof WaiterServiceImpl)
-            String name = ((AopServiceImpl) instance).geName();
-                if （name == null)//检查是否为空
-                    throw new NullPointerException(&quot;name属性不能为null&quot;);
-        }
-        method.invoke(instance,args);
-    ｝
-｝
-</code></pre></li>
-<li>拦截器，interceptor，也是pointcut的核心:<pre><code>- spring拦截器的配置实现，通过增加配置：
-        &lt;bean id=&quot;aopMethodBeforeInterceptor&quot; class=&quot;org.springframework.aop.supoort.NameMatchMethodPointcutAdvisor&quot;&gt;
-            &lt;property name=&quot;advice&quot;&gt;
-                &lt;bean class=&quot;com.snail.aopdemo.advice.MethodBeforeInterceptor&quot;/&gt;
-            &lt;/property&gt;
-            &lt;property name=&quot;mappedName&quot; value=&quot;withAop&quot;&gt;&lt;/property&gt;
-        &lt;/bean&gt;
-- 从上面的代码可以看出：
-    - spring实现拦截器都是通过增强器Advisor，而这个增强器是一个代理，将参数（自定义的Advice）作为参数传入其中；
-    - 同进mappedName属性用来指定拦截的方法，这个方法并不是增加类中的方法，而是到时要执行到的所有的匹配方法名字段的方法；
-    - 同时：spring支持由正则表达式配置切入点：
-            &lt;property name=&quot;patterns&quot;&gt;      &lt;!-- 正则表达式配置切入点--&gt;
-                &lt;list&gt;
-                    &lt;value&gt;.*get.*&lt;/value&gt; &lt;!--包含get字段的方法就被拦截&gt;
-                    &lt;value&gt;.*absquatulate&lt;/value&gt;  &lt;!--包含absquatutulat字段的方法被拦截&gt;
-                &lt;/list&gt;
-            &lt;/property&gt;
-</code></pre><h2 id="ORM模块"><a href="#ORM模块" class="headerlink" title="ORM模块"></a>ORM模块</h2><blockquote>
-<p>Object RelativeDatabase Mapping,对象关系型数据库映射</p>
-</blockquote>
-</li>
-<li>简介：<ul>
-<li>此模块对Hibernate/JDO/TopLink、iBatis等ORM框架提供支持；</li>
-<li>Spring提供在DAO层提供HibernateDaoSupport类与JDBCTemplate类；</li>
-<li>在Spring里，Hibernate与SessionFactory等只是Spring一个特殊的Bean，由Spring负责实例化与销毁；所以也就不需要与Hibernate的API打交道，不需要开启关闭Hibernate的Session、Transaction，Spring自动维护这些对象；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/13/spring/" data-id="cj6nzkhgr0002fgqnyy4wiibv" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-markdown使用笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/23/markdown使用笔记/" class="article-date">
-  <time datetime="2015-04-23T04:54:38.000Z" itemprop="datePublished">2015-04-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/23/markdown使用笔记/">markdownPa使用笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="markdown笔记使用攻略"><a href="#markdown笔记使用攻略" class="headerlink" title="markdown笔记使用攻略"></a>markdown笔记使用攻略</h1><blockquote>
-<p>说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；</p>
-</blockquote>
-<ol>
-<li>段落：如上所见，一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；</li>
-<li>插入链接：<a href="http://www.baidu.com" title="百度下" target="_blank" rel="external">百度</a>，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态；</li>
-<li>想要插入代码:<ol>
-<li><pre>在此标签中插入代码</pre></li>
-<li>或者是在每一行代码前插入两个table符，这一点还没闹懂，初步理解是如果已经有了缩进，这儿就容易出岔，没有缩进才会正常的显示代码；</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/23/markdown使用笔记/" data-id="cj6nzkhgo0001fgqnyoxwxm2l" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/01/23/hello-world/" class="article-date">
-  <time datetime="2014-01-22T18:04:38.000Z" itemprop="datePublished">2014-01-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/01/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/01/23/hello-world/" data-id="cj6nzkhgd0000fgqnzdtq5pgo" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
