@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>markdownPad使用笔记 | KangShan</title>
+  <title>java底层之引用 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="markdown笔记使用攻略 说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；   段落：如上所见，一级段落使用一个“&amp;gt;”符号，以此类推，二级就用”&amp;gt;&amp;gt;”，三级就用“&amp;gt;&amp;gt;&amp;gt;”，可以有n多级； 插入链接：百度，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态； 想要插入代码: 在此标签中插入代码 或者是在每一行代码前插入两">
+  <meta name="description" content="直接引用与符号引用JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。 符号引用：Symbolic References 以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可。 存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdownPad使用笔记">
-<meta property="og:url" content="http://yoursite.com/2015/04/23/markdown使用笔记/index.html">
+<meta property="og:title" content="java底层之引用">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/符号引用与直接引用/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="markdown笔记使用攻略 说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；   段落：如上所见，一级段落使用一个“&amp;gt;”符号，以此类推，二级就用”&amp;gt;&amp;gt;”，三级就用“&amp;gt;&amp;gt;&amp;gt;”，可以有n多级； 插入链接：百度，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态； 想要插入代码: 在此标签中插入代码 或者是在每一行代码前插入两">
-<meta property="og:updated_time" content="2017-08-22T19:35:21.503Z">
+<meta property="og:description" content="直接引用与符号引用JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。 符号引用：Symbolic References 以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可。 存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过">
+<meta property="og:updated_time" content="2017-08-22T19:35:27.038Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="markdownPad使用笔记">
-<meta name="twitter:description" content="markdown笔记使用攻略 说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；   段落：如上所见，一级段落使用一个“&amp;gt;”符号，以此类推，二级就用”&amp;gt;&amp;gt;”，三级就用“&amp;gt;&amp;gt;&amp;gt;”，可以有n多级； 插入链接：百度，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态； 想要插入代码: 在此标签中插入代码 或者是在每一行代码前插入两">
+<meta name="twitter:title" content="java底层之引用">
+<meta name="twitter:description" content="直接引用与符号引用JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。 符号引用：Symbolic References 以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可。 存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-markdown使用笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-符号引用与直接引用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/23/markdown使用笔记/" class="article-date">
-  <time datetime="2015-04-23T04:54:38.000Z" itemprop="datePublished">2015-04-23</time>
+    <a href="/2017/07/13/符号引用与直接引用/" class="article-date">
+  <time datetime="2017-07-13T04:04:38.000Z" itemprop="datePublished">2017-07-13</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      markdownPad使用笔记
+      java底层之引用
     </h1>
   
 
@@ -85,23 +85,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="markdown笔记使用攻略"><a href="#markdown笔记使用攻略" class="headerlink" title="markdown笔记使用攻略"></a>markdown笔记使用攻略</h1><blockquote>
-<p>说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；</p>
-</blockquote>
-<ol>
-<li>段落：如上所见，一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；</li>
-<li>插入链接：<a href="http://www.baidu.com" title="百度下" target="_blank" rel="external">百度</a>，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态；</li>
-<li>想要插入代码:<ol>
-<li><pre>在此标签中插入代码</pre></li>
-<li>或者是在每一行代码前插入两个table符，这一点还没闹懂，初步理解是如果已经有了缩进，这儿就容易出岔，没有缩进才会正常的显示代码；</li>
-</ol>
+        <h1 id="直接引用与符号引用"><a href="#直接引用与符号引用" class="headerlink" title="直接引用与符号引用"></a>直接引用与符号引用</h1><p><strong>JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。</strong></p>
+<h4 id="符号引用：Symbolic-References"><a href="#符号引用：Symbolic-References" class="headerlink" title="符号引用：Symbolic References"></a>符号引用：Symbolic References</h4><ul>
+<li>以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可。</li>
+<li>存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过符号引用这一道工序，同一个类，其符号引用必然一致。</li>
+<li>类在解析过程中，就根据JVM实时产生的内存分配状况，将符号引用转为直接引用；</li>
+</ul>
+<h4 id="直接引用：Direct-References"><a href="#直接引用：Direct-References" class="headerlink" title="直接引用：Direct References"></a>直接引用：Direct References</h4><p><strong>- 直接引用是和虚拟机的布局直接相关的，同一个符号引用在不同的JVM上翻译出来的直接引用也不尽相同。某个目标有了直接引用，那说明这个目标已经被加载到内存中了</strong></p>
+<ul>
+<li>直接引用可以是：<ul>
+<li>直接指向目标的指针（如，指向类型class对象、类变量、类方法的直接引用就是指向方法区的指针）；</li>
+<li>相对偏移量：如指向实例变量、实例方法的直接引用都是偏移量；</li>
+<li>一个能直接定位到目标的句柄；</li>
+</ul>
 </li>
-</ol>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/23/markdown使用笔记/" data-id="cj6nzqujr0003vgqnh8ne08ou" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/13/符号引用与直接引用/" data-id="cj6nzquk60009vgqnqusrb8pw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -110,19 +113,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/06/13/设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/14/java多线程/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          面向对象设计模式
+          Java多线程
         
       </div>
     </a>
   
   
-    <a href="/2014/01/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/03/spring_MVC/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">spring mvc</div>
     </a>
   
 </nav>
