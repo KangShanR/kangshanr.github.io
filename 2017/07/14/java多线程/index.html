@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java多线程 | KangShan</title>
+  <title>Java多线程 | KangShan&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线程安全 在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；   实现线程安全的方法： 将方法修辞为线程安全的方法（加上修辞符synchronized)：public synchronized void doPay(int money">
+  <meta name="description" content="线程安全 在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；   实现线程安全的方法：  将方法修辞为线程安全的方法（加上修辞符synchronized)：public synchronized void doPay(int mone">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多线程">
 <meta property="og:url" content="http://yoursite.com/2017/07/14/java多线程/index.html">
-<meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="线程安全 在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；   实现线程安全的方法： 将方法修辞为线程安全的方法（加上修辞符synchronized)：public synchronized void doPay(int money">
-<meta property="og:updated_time" content="2017-08-22T19:34:36.235Z">
+<meta property="og:site_name" content="KangShan&#39;s blogs">
+<meta property="og:description" content="线程安全 在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；   实现线程安全的方法：  将方法修辞为线程安全的方法（加上修辞符synchronized)：public synchronized void doPay(int mone">
+<meta property="og:updated_time" content="2017-08-23T14:30:45.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程">
-<meta name="twitter:description" content="线程安全 在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；   实现线程安全的方法： 将方法修辞为线程安全的方法（加上修辞符synchronized)：public synchronized void doPay(int money">
+<meta name="twitter:description" content="线程安全 在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；   实现线程安全的方法：  将方法修辞为线程安全的方法（加上修辞符synchronized)：public synchronized void doPay(int mone">
   
-    <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="KangShan&#39;s blogs" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.icon">
+    <link rel="icon" href="/favicon.png">
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
@@ -37,7 +37,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">KangShan</a>
+        <a href="/" id="logo">KangShan&#39;s blogs</a>
       </h1>
       
     </div>
@@ -89,7 +89,8 @@
 <p>在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；</p>
 </blockquote>
 <ul>
-<li>实现线程安全的方法：<ul>
+<li><p>实现线程安全的方法：</p>
+<ul>
 <li>将方法修辞为线程安全的方法（加上修辞符synchronized)：<pre><code>public synchronized void doPay(int money){
     if(balance &gt;= money){
         balance -= money;
@@ -102,18 +103,17 @@
 <li>使用同步块：<pre><code>synchronized(Object object){
     //要同步的代码块
 ｝
-</code></pre><blockquote>
-<p>实现同步机制是基于”监视器“这一概念，java中所有对象都拥有自己的监视器，加上同步锁，就是让这个对象进入监视中；</p>
-</blockquote>
-</li>
+</code></pre></li>
 </ul>
+</li>
+<li><p>实现同步机制是基于”监视器“这一概念，java中所有对象都拥有自己的监视器，加上同步锁，就是让这个对象进入监视中；</p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/java多线程/" data-id="cj6nzqujr0002vgqnalf1c2kf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/07/14/java多线程/" data-id="cj6p58uaw00010gqnnzyim3kc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -158,7 +158,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
     </div>
   </div>
 
@@ -171,11 +171,7 @@
       <ul>
         
           <li>
-            <a href="/2017/08/23/springMVC/">springMVC</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/23/Hibernate/">Hibernate</a>
+            <a href="/2017/08/23/科学思维看世间百态/">科学思维看世间百态</a>
           </li>
         
           <li>
@@ -188,6 +184,10 @@
         
           <li>
             <a href="/2017/07/13/符号引用与直接引用/">java底层之引用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/23/项目开发流程/">项目开发模型</a>
           </li>
         
       </ul>

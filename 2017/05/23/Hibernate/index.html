@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>项目开发模型 | KangShan&#39;s blogs</title>
+  <title>Hibernate | KangShan&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="瀑布模型：(政府银行类项目） 工程开发流程： 需求分析（提出一个idea）； 可行性分析（看目前条件下是否能实现这个idea）； 总体分析：通过可行性分析后，用哪些工具包进行开发； 详细设计：当前要用哪些工具，详细的模板功能，甚至每个功能实现变量方法的名称都定下来； 垒代码：完成模板； 测试:（分系统测试，单元测试，看划分力度），带着测试去编程，bug更，性能更佳； 上线：     迭代螺旋模型">
+  <meta name="description" content="Hibernate是一种ORM（Object Relative-Database Mapping)框架，用于与各种数据库、SQL语句打交道，是数据持久化的一咱解决方案； ORM，是在Java对象与关系数据库之间建立某种映射，以实现直接存取Java对象，一般这个对象就叫做POJO（Plain Ordinary Java Object）； OEM框架与MVC框架不同，使用范围也截然不同，类似功能的框">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目开发模型">
-<meta property="og:url" content="http://yoursite.com/2017/06/23/项目开发流程/index.html">
+<meta property="og:title" content="Hibernate">
+<meta property="og:url" content="http://yoursite.com/2017/05/23/Hibernate/index.html">
 <meta property="og:site_name" content="KangShan&#39;s blogs">
-<meta property="og:description" content="瀑布模型：(政府银行类项目） 工程开发流程： 需求分析（提出一个idea）； 可行性分析（看目前条件下是否能实现这个idea）； 总体分析：通过可行性分析后，用哪些工具包进行开发； 详细设计：当前要用哪些工具，详细的模板功能，甚至每个功能实现变量方法的名称都定下来； 垒代码：完成模板； 测试:（分系统测试，单元测试，看划分力度），带着测试去编程，bug更，性能更佳； 上线：     迭代螺旋模型">
-<meta property="og:updated_time" content="2017-08-23T14:32:02.200Z">
+<meta property="og:description" content="Hibernate是一种ORM（Object Relative-Database Mapping)框架，用于与各种数据库、SQL语句打交道，是数据持久化的一咱解决方案； ORM，是在Java对象与关系数据库之间建立某种映射，以实现直接存取Java对象，一般这个对象就叫做POJO（Plain Ordinary Java Object）； OEM框架与MVC框架不同，使用范围也截然不同，类似功能的框">
+<meta property="og:updated_time" content="2017-08-23T14:28:25.222Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项目开发模型">
-<meta name="twitter:description" content="瀑布模型：(政府银行类项目） 工程开发流程： 需求分析（提出一个idea）； 可行性分析（看目前条件下是否能实现这个idea）； 总体分析：通过可行性分析后，用哪些工具包进行开发； 详细设计：当前要用哪些工具，详细的模板功能，甚至每个功能实现变量方法的名称都定下来； 垒代码：完成模板； 测试:（分系统测试，单元测试，看划分力度），带着测试去编程，bug更，性能更佳； 上线：     迭代螺旋模型">
+<meta name="twitter:title" content="Hibernate">
+<meta name="twitter:description" content="Hibernate是一种ORM（Object Relative-Database Mapping)框架，用于与各种数据库、SQL语句打交道，是数据持久化的一咱解决方案； ORM，是在Java对象与关系数据库之间建立某种映射，以实现直接存取Java对象，一般这个对象就叫做POJO（Plain Ordinary Java Object）； OEM框架与MVC框架不同，使用范围也截然不同，类似功能的框">
   
     <link rel="alternate" href="/atom.xml" title="KangShan&#39;s blogs" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-项目开发流程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Hibernate" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/06/23/项目开发流程/" class="article-date">
-  <time datetime="2017-06-22T18:14:38.000Z" itemprop="datePublished">2017-06-23</time>
+    <a href="/2017/05/23/Hibernate/" class="article-date">
+  <time datetime="2017-05-22T18:04:38.000Z" itemprop="datePublished">2017-05-23</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      项目开发模型
+      Hibernate
     </h1>
   
 
@@ -85,34 +85,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>瀑布模型：(政府银行类项目）<ol>
-<li>工程开发流程：<ol>
-<li>需求分析（提出一个idea）；</li>
-<li>可行性分析（看目前条件下是否能实现这个idea）；</li>
-<li>总体分析：通过可行性分析后，用哪些工具包进行开发；</li>
-<li>详细设计：当前要用哪些工具，详细的模板功能，甚至每个功能实现变量方法的名称都定下来；</li>
-<li>垒代码：完成模板；</li>
-<li>测试:（分系统测试，单元测试，看划分力度），带着测试去编程，bug更，性能更佳；</li>
-<li>上线：</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>迭代螺旋模型：（阴阳师）<ol>
-<li>开发流程：<ol>
-<li>先出来一个粗糙模型原型，马上上线，抢占市场；</li>
-<li>马上一次迭代，小步快跑，每一周就可以迭代一次，不停地壮大；</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
+        <ul>
+<li>Hibernate是一种ORM（Object Relative-Database Mapping)框架，用于与各种数据库、SQL语句打交道，是数据持久化的一咱解决方案；</li>
+<li>ORM，是在Java对象与关系数据库之间建立某种映射，以实现直接存取Java对象，一般这个对象就叫做POJO（Plain Ordinary Java Object）；</li>
+<li>OEM框架与MVC框架不同，使用范围也截然不同，类似功能的框架还有SUN的JDO、Apache的Mybatis与OpenJPA等；</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/23/项目开发流程/" data-id="cj6p58ubu000d0gqn32k6n8u6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/23/Hibernate/" data-id="cj6p58uay00020gqnf2tsn526" class="article-share-link">Share</a>
       
       
     </footer>
@@ -121,19 +103,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/13/符号引用与直接引用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/23/项目开发流程/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          java底层之引用
+          项目开发模型
         
       </div>
     </a>
   
   
-    <a href="/2017/05/23/Hibernate/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/03/递归算法的一点/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hibernate</div>
+      <div class="article-nav-title">快速排序算法</div>
     </a>
   
 </nav>
