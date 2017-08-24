@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>spring | KangShan&#39;s blogs</title>
+  <title>spring框架的学习 | KangShan&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；  Core模块 bean标签： id属性指定这个实例的唯一标识； class属性，用来指定这个实例的类定义； property子元素，指定这个对象的属性，比如：user对象中有属性name,那么">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring">
-<meta property="og:url" content="http://yoursite.com/2017/08/13/spring/index.html">
+<meta property="og:title" content="spring框架的学习">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/spring/index.html">
 <meta property="og:site_name" content="KangShan&#39;s blogs">
 <meta property="og:description" content="spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；  Core模块 bean标签： id属性指定这个实例的唯一标识； class属性，用来指定这个实例的类定义； property子元素，指定这个对象的属性，比如：user对象中有属性name,那么">
-<meta property="og:updated_time" content="2017-08-23T14:35:15.951Z">
+<meta property="og:updated_time" content="2017-08-24T00:00:53.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring">
+<meta name="twitter:title" content="spring框架的学习">
 <meta name="twitter:description" content="spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；  Core模块 bean标签： id属性指定这个实例的唯一标识； class属性，用来指定这个实例的类定义； property子元素，指定这个对象的属性，比如：user对象中有属性name,那么">
+<link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan&#39;s blogs" type="application/atom+xml">
   
@@ -65,8 +66,8 @@
       <div class="outer">
         <section id="main"><article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/13/spring/" class="article-date">
-  <time datetime="2017-08-13T04:14:38.000Z" itemprop="datePublished">2017-08-13</time>
+    <a href="/2017/08/15/spring/" class="article-date">
+  <time datetime="2017-08-15T04:14:38.000Z" itemprop="datePublished">2017-08-15</time>
 </a>
     
   </div>
@@ -77,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      spring
+      spring框架的学习
     </h1>
   
 
@@ -116,26 +117,30 @@
     ｝
 ｝
 </code></pre></li>
-<li>拦截器，interceptor，也是pointcut的核心:<pre><code>- spring拦截器的配置实现，通过增加配置：
-        &lt;bean id=&quot;aopMethodBeforeInterceptor&quot; class=&quot;org.springframework.aop.supoort.NameMatchMethodPointcutAdvisor&quot;&gt;
-            &lt;property name=&quot;advice&quot;&gt;
-                &lt;bean class=&quot;com.snail.aopdemo.advice.MethodBeforeInterceptor&quot;/&gt;
-            &lt;/property&gt;
-            &lt;property name=&quot;mappedName&quot; value=&quot;withAop&quot;&gt;&lt;/property&gt;
-        &lt;/bean&gt;
-- 从上面的代码可以看出：
-    - spring实现拦截器都是通过增强器Advisor，而这个增强器是一个代理，将参数（自定义的Advice）作为参数传入其中；
-    - 同进mappedName属性用来指定拦截的方法，这个方法并不是增加类中的方法，而是到时要执行到的所有的匹配方法名字段的方法；
-    - 同时：spring支持由正则表达式配置切入点：
-            &lt;property name=&quot;patterns&quot;&gt;      &lt;!-- 正则表达式配置切入点--&gt;
-                &lt;list&gt;
-                    &lt;value&gt;.*get.*&lt;/value&gt; &lt;!--包含get字段的方法就被拦截&gt;
-                    &lt;value&gt;.*absquatulate&lt;/value&gt;  &lt;!--包含absquatutulat字段的方法被拦截&gt;
-                &lt;/list&gt;
-            &lt;/property&gt;
+<li>拦截器，interceptor，也是pointcut的核心:<ul>
+<li>spring拦截器的配置实现，通过增加配置：<pre><code>&lt;bean id=&quot;aopMethodBeforeInterceptor&quot; class=&quot;org.springframework.aop.supoort.NameMatchMethodPointcutAdvisor&quot;&gt;
+    &lt;property name=&quot;advice&quot;&gt;
+        &lt;bean class=&quot;com.snail.aopdemo.advice.MethodBeforeInterceptor&quot;/&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;mappedName&quot; value=&quot;withAop&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre></li>
+<li>从上面的代码可以看出：<ul>
+<li>spring实现拦截器都是通过增强器Advisor，而这个增强器是一个代理，将参数（自定义的Advice）作为参数传入其中；</li>
+<li>同时mappedName属性用来指定拦截的方法，这个方法并不是增加类中的方法，而是到时要执行到的所有的匹配方法名字段的方法；</li>
+<li>同时：spring支持由正则表达式配置切入点：<pre><code>&lt;property name=&quot;patterns&quot;&gt;      &lt;!-- 正则表达式配置切入点--&gt;
+    &lt;list&gt;
+        &lt;value&gt;.*get.*&lt;/value&gt; &lt;!--包含get字段的方法就被拦截&gt;
+        &lt;value&gt;.*absquatulate&lt;/value&gt;  &lt;!--包含absquatutulat字段的方法被拦截&gt;
+    &lt;/list&gt;
+&lt;/property&gt;
 </code></pre><h2 id="ORM模块"><a href="#ORM模块" class="headerlink" title="ORM模块"></a>ORM模块</h2><blockquote>
 <p>Object RelativeDatabase Mapping,对象关系型数据库映射</p>
 </blockquote>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>简介：<ul>
 <li>此模块对Hibernate/JDO/TopLink、iBatis等ORM框架提供支持；</li>
@@ -144,11 +149,66 @@
 </ul>
 </li>
 </ul>
+<h4 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h4><p>这儿用User类举例：</p>
+<ul>
+<li>使用注解来让User中属性与数据库中表的列相关联；</li>
+<li>Entity类的注解：<ul>
+<li>@Entity，表明这个类为实体类；</li>
+<li>@Table（name=”users”),指明此实体类与数据库users表相关联；</li>
+<li>属性的注解：<ul>
+<li>@Id，主键注解，表明这属性为数据库表中的主键</li>
+<li>@GeneratedValue（strategy=GenerationType.IDENTITY),指明该主键生成策略为自增</li>
+<li>@Temporal（value = TemporalType.Date),表明列属性为Date</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DAO层接口，不同的Entity对应不同的DAO接口：<ul>
+<li>UserDao接口，就定义对User表的操作：<pre><code>public interface UserDao{
+    public void saveUser(User user);
+    public List&lt;User&gt; findUsers();
+    public int getCount ();
+    public User findUserByName(String name);
+}
+</code></pre></li>
+<li>UserDao接口的实现类，UserDaoImpl：<ul>
+<li>这个实现类要继承HibernateDaoSupport类，这就意味着从父类继承了Hibernate与HibernateTimplate对象，该对象就对实体对象进行各类操作；<pre><code>public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
+    //实现接口中的方法
+    public void saveUser(User user){
+        this.getHibernateTemplate().persist(user);//使用父类方法get到Template,并调用其persist方法将user存入
+    }
+}
+    public int getCount(){    //查询记录条数
+        Number num = (Number)this.getSession(true).createQuery(&quot;select count (*) from User).uniqueResult();
+        return n.intValue();
+    }
+    public List&lt;User&gt; findUsers(){  //查询所有的user
+        return this.getHibernateTemplate().find(&quot;select * from User&quot;);
+    }
+    public User findUserByName(String name){  //根据用户名查询用户
+        List&lt;User&gt; users = this.getHibernateTemplate().find{&quot;select * from User u where u.name=?&quot;, name);  //使用Template
+        if(users.size() &gt; 0)
+            return users.get(0);返回第一条
+        return null;
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+<li>从上述代码例子中可以看出：<ul>
+<li>查询R、创建C都由父类HibernateDaoSupport提供的getHibernateTemplate方法获取到实例并执行实例的方法来实现，其中查询使用实例方法find(String sql, Stirng 拼接String），而save则用持久化方法persist(Object user);</li>
+<li>当要涉及到数据库计算时，则用getSession获取到与数据库的会话对象，让会话对象执行sql统计语句；</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/13/spring/" data-id="cj6p58ub100040gqneb331rjw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/15/spring/" data-id="cj6p58ub100040gqneb331rjw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +253,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
     </div>
   </div>
 
@@ -210,7 +270,7 @@
           </li>
         
           <li>
-            <a href="/2017/08/13/spring/">spring</a>
+            <a href="/2017/08/15/spring/">spring框架的学习</a>
           </li>
         
           <li>

@@ -11,6 +11,7 @@
 <meta property="og:site_name" content="KangShan&#39;s blogs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KangShan&#39;s blogs">
+<link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan&#39;s blogs" type="application/atom+xml">
   
@@ -60,6 +61,173 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/设计模式/" class="article-date">
+  <time datetime="2016-06-13T04:14:38.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/设计模式/">设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；<br>菜鸟教程相关网页：<a href="http://www.runoob.com/design-pattern/design-pattern-intro.html" title="菜鸟教程-设计模式" target="_blank" rel="external">http://www.runoob.com/design-pattern/design-pattern-intro.html</a></p>
+</blockquote>
+<p>Gang of Four，四人帮提出设计模式的设计原则：</p>
+<ul>
+<li>对接口编程而不是对实现编程；</li>
+<li><p>优先使用对象组合而不是继承；</p>
+</li>
+<li><p>简介：</p>
+<ul>
+<li>共23种设计模式，分为三类：<ul>
+<li>创建型Creational Patterns：</li>
+<li>结构型Structural Patterns:</li>
+<li>行为型Behavioral Patterns:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
+<li><p>对于管理类，通常只需要一个实例对象即可达到管理的目的，这种时候如果实例多个对象只会千万资源上的浪费，所以通常我们使用单例模式来解决这种问题；</p>
+</li>
+<li><p>实现单例的思路：</p>
+<ul>
+<li>将构造函数私有化，并在类中实现静态单例的共享；<pre><code>public class UserManager{
+    //静态单例
+    private static UserManager ins;
+    //私有化构造函数
+    private UserManager(){}
+    //获取静态单例的方法
+    public static UserManager getIns(){
+        if(ins == null){
+            ins = new UserManager();
+        }
+        return ins;
+    }
+    //其他的执行方法
+    public void updateUserInfo(){}
+｝
+</code></pre></li>
+<li>上面例子里有个线程上的缺陷，当多线程访问这个管理类时，会造成线程不安全，为解决这个问题，就得使用双重检查锁单例：<pre><code>public class UserManager{
+    //静态单例
+    private static UserManager ins;
+    private Object lock = new Object();
+    //私有化构造函数
+    private UserManager(){}
+    //获取静态单例的方法
+    public static UserManager getIns(){
+        if(ins == null){  //第一次检查
+            synchronized(lock){  //保证不产生多余的实例
+                if(ins == null){  //第二次检查
+                    ins = new UserManager();
+                }
+            }
+        }
+        return ins;
+    }
+    //其他的执行方法
+    public void updateUserInfo(){}
+｝
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
+<li>代理模式：与工厂模式不同在于，可能产生多个实例，同时会帮Action做事；</li>
+<li>代理模式就是将要实例的对象通过代理类来实现，不通过原本的类来实例，具体实现可以让让代理类同时实现真正想的对象的类实现的接口，而在代理类中有一个真正类的属性，当想要这个真正类时，对穿上属性判空，再实例化，这样通过代理类执行接口中的方法时就是执行的真正想要的类的方法了；</li>
+</ul>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul>
+<li>生成一个类交由相关的工厂类实现，而不由直接的类来实现；</li>
+<li>相关的类继承同一个接口，实现这个接口的类都可以由工厂类中同一个方法来实现实例化；</li>
+<li><p>例如：</p>
+<pre><code>//定义同一个类的抽象接口
+public interface Shape{
+    void draw();
+}
+//实现shape接口的类有：
+//Circle类
+public class Circle implements Shape{
+    @Override
+    public void  draw(){
+        system.out.println(&quot;circle.draw&quot;);
+    }
+}
+//Square类
+public class Square implements Shape{
+    @Override
+    public void draw(){
+        system.out.println(&quot;square.draw&quot;);
+    }
+}
+//创建实例的工厂类
+public class ShapeFactory{
+    //创建图形实例的方法
+    public Shape createShape(String shape){
+        if(shape.equalsIgnoreCase(&quot;CIRCLE”){
+            return new Circle();
+        }
+        if(shape.equalsIgnoreCase(&quot;SQUARE”){
+            return new Square();
+        }
+        reutnr null;
+    }
+}
+</code></pre></li>
+<li>模式理解：<ul>
+<li>通过工厂来实现对各个类的实例化，都在工厂实现；</li>
+<li>通过反射机制实现，增加一个同一接口的类不需要改变工厂的代码,只需要增加一个实现这个实现对应接口的类：<ul>
+<li>其工厂的代码：<pre><code>public class ShapeFactory{
+    //创建工厂的方法
+    public Shape createShape(Class&lt;? extends Shape&gt; clazz){
+        try{
+            return Class.forName(clazz.getName()).newInstance();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
+<li>相比较于工厂模式，抽象工厂模式在工厂模式的基础上增加生成工厂的工厂类，那么生产出来的工厂都要继承一个接口或父类，没理解到的点就在于，这个类一定要是一个抽象类吗？可以是个接口或者非抽象类吗?</li>
+<li>该模式的优点：把同一个产品类集成到同一个工厂内，这样使用时就直接调用工厂中的方法，而生成同一个工厂里预备好的类对象，也更方便管理；</li>
+</ul>
+<ul>
+<li><em>未完待续</em></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/设计模式/" data-id="cj6p58ubh000b0gqns7u15p6c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-数据结构" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -123,8 +291,8 @@
   
     <article id="post-markdown使用攻略" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/23/markdown使用攻略/" class="article-date">
-  <time datetime="2015-04-23T04:54:38.000Z" itemprop="datePublished">2015-04-23</time>
+    <a href="/2015/04/29/markdown使用攻略/" class="article-date">
+  <time datetime="2015-04-29T04:54:38.000Z" itemprop="datePublished">2015-04-29</time>
 </a>
     
   </div>
@@ -135,7 +303,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/23/markdown使用攻略/">markdownPad使用笔记</a>
+      <a class="article-title" href="/2015/04/29/markdown使用攻略/">markdownPad使用攻略</a>
     </h1>
   
 
@@ -158,21 +326,185 @@
 <p>For more details see <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">GitHub Flavored Markdown</a>.</p>
 <h3 id="Jekyll-Themes"><a href="#Jekyll-Themes" class="headerlink" title="Jekyll Themes"></a>Jekyll Themes</h3><p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/KangShanR/Study-Notes/settings" target="_blank" rel="external">repository settings</a>. The name of this theme is saved in the Jekyll <code>_config.yml</code> configuration file.</p>
 <h3 id="Support-or-Contact"><a href="#Support-or-Contact" class="headerlink" title="Support or Contact"></a>Support or Contact</h3><p>Having trouble with Pages? Check out our <a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="external">documentation</a> or <a href="https://github.com/contact" target="_blank" rel="external">contact support</a> and we’ll help you sort it out.</p>
-<h3 id="新得到的小点子"><a href="#新得到的小点子" class="headerlink" title="新得到的小点子"></a>新得到的小点子</h3><p>诸多功能：<a href="http://www.wiz.cn/feature-markdown.html" title="诸多功能在后面" target="_blank" rel="external">http://www.wiz.cn/feature-markdown.html</a></p>
-<ol>
-<li>段落：如上所见，一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；</li>
-<li>插入链接：<a href="http://www.baidu.com" title="百度下" target="_blank" rel="external">百度</a>，示范一下，可以看到每一个标识的作用；注意，各个标识符都是小写状态；快捷键ctrl+l；</li>
+<h3 id="新得到的小点子"><a href="#新得到的小点子" class="headerlink" title="新得到的小点子"></a>新得到的小点子</h3><p>诸多功能：<a href="http://www.wiz.cn/feature-markdown.html" title="诸多功能在后面" target="_blank" rel="external">为知笔记中提供的一些功能</a>，其中包括了表格的实现等没怎么用到但很实现的功能；</p>
+<ul>
+<li>其他在使用过程中摸索出来的小点有：<ol>
+<li>段落：一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；得注意的是，这种格式经过hexo生成后在网站上显示为水平居中，字体放大一号，同时左边并没有段落的竖线；</li>
+<li>插入链接：<code>[百度](http://www.baidu.com &quot;百度一下&quot;)</code>示范一下：<a href="http://www.baidu.com" title="百度一下" target="_blank" rel="external">百度</a>，可以看到<code>[]</code>中放的是显示的字符串，<code>()</code>里放的是url与提示；注意，各个标识符都是小写状态，快捷键ctrl+l；</li>
 <li>想要插入代码:<ol>
 <li>在&lt; pre &gt;标签中插入代码:<pre>这儿就是插入pre标签后的效果</pre></li>
-<li>或者是在每一行代码前插入两个table符，这一点还没闹懂，初步理解是如果已经有了缩进，这儿就容易出岔，没有缩进才会正常的显示代码；</li>
+<li>在每一行代码前插入三个table符，记住是每一行代码都要在前面加上三个table符；</li>
+<li>快捷键<code>ctrl+k</code>,这种方式适合短小的单行代码，因为一旦换行，就打破了代码块；</li>
 </ol>
 </li>
 </ol>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/23/markdown使用攻略/" data-id="cj6p58ub300050gqnrsyrqze6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/04/29/markdown使用攻略/" data-id="cj6p58ub300050gqnrsyrqze6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html-base标签" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/25/html-base标签/" class="article-date">
+  <time datetime="2015-03-25T07:39:42.000Z" itemprop="datePublished">2015-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/25/html-base标签/">html_base标签</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简介：用于规定页面上所有的链接的默认URL和默认目标：<br><code>&lt;base href=&quot;http://……“ target=&quot;_blank&quot;&gt;</code></p>
+<ul>
+<li>base标签放在<head>标签之中;</head></li>
+<li>最好把base标签排在head标签中第一个元素，这样其它的元素就可以使用base元素的信息；</li>
+<li>一个文档中最多能使用一个base元素；</li>
+<li>如果使用了base标签，至少要具备href属性或者target属性其中一个；</li>
+<li>其中的元素：<ul>
+<li>href：规定页面中相对链接的基准URL，其值就是一个URL;</li>
+<li>target:规定页面中所有的超链接和表单在何处打开，但该属性会被每个单独的链接中的target属性所覆盖，其值包括：<ul>
+<li>_blank，打开新的页面</li>
+<li>_ parent，在父页面打开</li>
+<li>_self，在当前页面打开</li>
+<li>_top，在浏览器头页面打开</li>
+<li>framename</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="base标签支持的属性"><a href="#base标签支持的属性" class="headerlink" title="base标签支持的属性"></a>base标签支持的属性</h4><ul>
+<li>支持HTML的全局属性，如：class,id,style等</li>
+<li>不支持事件属性，如:onClick之类；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/25/html-base标签/" data-id="cj6pp5fjr000g2sqnvbga13k5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-meta标签" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/23/meta标签/" class="article-date">
+  <time datetime="2015-03-23T06:41:48.000Z" itemprop="datePublished">2015-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/23/meta标签/">meta标签.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="标签简介："><a href="#标签简介：" class="headerlink" title="标签简介："></a>标签简介：</h3><ul>
+<li>位于文档的头部<head>标签之中，不包含任何内容；</head></li>
+<li>所有的信息都由属性来存储，包含了文档的名称/值对；</li>
+<li>其作用：搜索引擎优化（SEO)，定义的页面使用语言，自动刷新并指向新的页面，实现页面转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口；</li>
+<li>meta属性（就两个）：<ul>
+<li>name属性：<ul>
+<li>用于描述网页与之对应的属性值为content,其中的内容便于搜索机器人查找和分类信息用；</li>
+<li>其语法格式：<pre><code>&lt;meta name=&quot;参数“ content=&quot;具体的参数值&quot;&gt;
+</code></pre></li>
+<li>name属性有以下几种参数：<ul>
+<li>Keywords，用来指定关键字<pre><code>&lt;meta name=&quot;keywords&quot; content=&quot;meta总结、html/meta、meta属性、meta跳转”&gt;
+</code></pre></li>
+<li>desription，网站内容描述</li>
+<li>robots,机器人向导</li>
+<li>author，标网页的作者</li>
+<li>generator，代表说明网站采用的什么软件制作</li>
+<li>COPYRIGHT,版权信息</li>
+<li>revisit-after,代表网站征文，7days代表7天</li>
+</ul>
+</li>
+<li>http-equiv,相当于文件头作用，可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content,其中的内容就是各个参数的变量值；<pre><code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;参数变量值”&gt;
+</code></pre><ul>
+<li>Expires，期限，设定的到期时间，一旦网页过期，呢额胆固醇服务器上重新传输。（必须使用GMT的时间格式化）</li>
+<li>Pragma（cache模式）<ul>
+<li>禁止浏览器从本地计算机的缓存中访问页面内容<pre><code>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;no-cache&quot;&gt;
+</code></pre><ul>
+<li>这样设计，说教将无法脱机浏览</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Refresh(刷新），自动刷新并指向新页面<pre><code>&lt;meta http-equiv=&quot;Refresh&quot;content=&quot;2;URL=http://www.haorooms.com&quot;&gt; //(注意后面的引号，分别在秒数的前面和网址的后面)
+</code></pre></li>
+<li>Sett-Cookie(cookie设定），如果网页过期，存盘的cookie将被删除<pre><code>&lt;meta http-equiv=&quot;Set-Cookie&quot;content=&quot;cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/&quot;&gt;
+</code></pre><ul>
+<li>必须使用GMT的时间格式</li>
+</ul>
+</li>
+<li>Window-target(显示窗口的设定），强制页面在当前窗口以独立页面显示<pre><code>&lt;meta http-equiv=&quot;Window-target&quot;content=&quot;_top&quot;&gt; 
+</code></pre><ul>
+<li>用来毕业后公开了我在框架里调用自己的页面</li>
+</ul>
+</li>
+<li>content-Type，设定显示字符集<pre><code>&lt;meta http-equiv=&quot;content-Type&quot;content=&quot;text/html;charset=gb2312&quot;&gt;
+</code></pre><ul>
+<li>meta标签的charset的信息参数如GB2312时，代表说明网站是采用的编码是简体中文；</li>
+<li>BIG5:繁体中文；</li>
+<li>iso-2022:日文；</li>
+<li>ks_c_5601:韩文；</li>
+<li>ISO-8859-1:英文；</li>
+<li>UTF-8:世界通用的语言编码；</li>
+</ul>
+</li>
+<li>content-Language,设定显示语言<pre><code>&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;/&gt;
+</code></pre></li>
+<li>Cache-Control，指定评语和响应遵循的缓存机制</li>
+<li>imagetollbar,指定是否显示图片工具栏，当为false娃给显示，当为true代表显示；</li>
+<li>Content-Script-Type,W3C网页规范，指明页面中脚本中的类型；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/23/meta标签/" data-id="cj6pp5fjs000h2sqnc88y1827" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +580,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
     </div>
   </div>
 
@@ -265,7 +597,7 @@
           </li>
         
           <li>
-            <a href="/2017/08/13/spring/">spring</a>
+            <a href="/2017/08/15/spring/">spring框架的学习</a>
           </li>
         
           <li>
