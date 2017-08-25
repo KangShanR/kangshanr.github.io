@@ -62,6 +62,159 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/23/hexo常用命令/" class="article-date">
+  <time datetime="2017-01-22T18:04:38.000Z" itemprop="datePublished">2017-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/23/hexo常用命令/">hexo常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；</p>
+<ul>
+<li>hexo generate<ul>
+<li>根据已提供的md文件资料生成静态网页，放在public文件夹中；</li>
+<li>hexo generate –watch<ul>
+<li>对比查看文件的改动，只有当文件改动被审查过才会执行generate命令生成静态网页；</li>
+</ul>
+</li>
+<li>hexo generate –deploy与hexo deploy –generate<ul>
+<li>两者效果一样都在generate后执行布置命令deploy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em>使用过程中的小问题：</em><ul>
+<li><em>每次部署前generate一次就把public中的所有文件先覆盖了，而这样再deploy时就把github远程上资料全部覆盖，这样在github上添加readme都会被覆盖，也就导致了远程机上没有自定义的东西全是生成好的，而且每次一部署都会将先前的重新生成一次再覆盖，感觉造成了许多资源的浪费也很自定义自己想要的网页效果，问题就在于可不可以每次只生成新的资源，再只将新的资源push到master branch上，或者push到其它的branch上，再merge到一起，只要生成新的资源时不会与老资源冲突，也就能达到效果。</em><ul>
+<li>在landscape主题中，据观察也只变化了首页index.html与相应的日期的folder,其它的folder与file都没有改变，所以上述的方法是可行的；</li>
+<li>但是，这样操作还有一个问题需要注意，新生成的网页的目录结构都还在，这就需要把新生成的目录结构给拷到之前已存在的目录中，并在这个添加了新网页的目录中push；</li>
+<li>实验失败：8/25/2017 7:52:15 AM <ul>
+<li>将新的几个md文件放在source文件夹下面的_post中生成新的页面并添加在github的仓库中push上去，网站上并没部署这几个新的页面（仓库中已经有这几个新的页面的html了）；</li>
+<li>所以，还是用最暴力的方法更新，每次重新生成整个仓库的资源，将整个仓库资源deploy到github上；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/23/hexo常用命令/" data-id="cj6r4s3a20000igqnp4ra4khl" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
+  <time datetime="2016-12-03T04:54:38.000Z" itemprop="datePublished">2016-12-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/03/快速排序算法的理解/">快速排序算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="今日所得"><a href="#今日所得" class="headerlink" title="今日所得"></a>今日所得</h4><ul>
+<li>今天复习了下快速排序（使用递归），据说是效率最高的一种排序算法（相比于冒泡排序、选择排序）；</li>
+<li>之前学习C#时领教过，当想把这个算法迁移到java中来写一个时发现久了不练都手生了；</li>
+</ul>
+<ol>
+<li>前面多次使用递归的算法写一些方法（诸如二分法查找已经排好序数组元素的索引、递归生成满足条件（非纯数字或字母）的字符串；使用多次但没有想到过使用递归时可以无返回值；</li>
+<li>二分排序时，必须使用无返回值的递归方法。因为二分之后返回的是数组的一部分，最后把这一部分返回给递归前方法，这时要接收这一部分的元素需要对这一部分进行遍历；</li>
+<li><p>二分法排序(升序，若要降序则相反）流程：</p>
+<ol>
+<li>把数组第一个元素作为中间值，从最大索引(这个还必须从后往前找，因为我们用的第一个元素作为中间值，如果从前往后找，第一个较大值会直接覆盖最大索引的值；所以，如果想实现从前往后找就得把最大索引元素值作为中间值)开始往前找，找到比这个间值小的元素就把这个值赋予给最小索引的元素；</li>
+<li>再从最小索引元素开始往后找，找到这中间值大的元素，把这个元素值赋予给最大索引处的元素（找的过程不满足条件就把索引依次自增或自减）；</li>
+<li>依次这样后面往前找一趟，前面往后找一趟，直到最大与最小索引相等。这时把中间值赋予给这个索引，这样就完成了一次把数组分成两个部分，前面部分值比中间值小，后面部分比中间值大；</li>
+<li>这用上面一套流程对中间值两边的元素进行递归操作，递归缺口就是数组操作部分只有一个元素；</li>
+<li>代码：<pre><code>public int getPivotIndex(int[] arr, int minIndex, int maxIndex){
+    int pivot = arr[minIndex];
+    while (minIndex &lt; maxIndex) {
+        while (arr[maxIndex] &gt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
+            maxIndex--;
+        }
+        if(minIndex != maxIndex){
+            arr[minIndex] = arr[maxIndex];
+        }
+        if(minIndex != maxIndex){
+            arr[minIndex] = arr[maxIndex];
+        }
+        while (arr[minIndex] &lt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
+            minIndex++;
+        }
+        arr[maxIndex] = arr[minIndex];
+    }
+    arr[minIndex] = pivot;
+    return minIndex;
+}
+ *二分法排序的流程 
+ * @param arr
+ * @param minIndex
+ * @param maxIndex
+ */
+public void dichotomySort(int[] arr, int minIndex, int maxIndex){
+    if(minIndex &lt; maxIndex){
+        int index = this.getPivotIndex(arr, minIndex, maxIndex);
+        dichotomySort(arr, minIndex, index - 1);
+        dichotomySort(arr, index + 1, maxIndex);
+    }else{
+        return;
+    }
+}
+</code></pre></li>
+</ol>
+</li>
+<li><p>二分法排序算法核心在于每一次查找把中间那一个值给定下来，并对中间值两边的数组分别再次排序,再对两边的数组分别进行同样的操作，直到不能再分割;</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/03/快速排序算法的理解/" data-id="cj6r4s3ax000cigqncyitvy53" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-关于Java你可能不知道的两点" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/11/23/关于Java你可能不知道的两点/" class="article-date">
@@ -96,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/23/关于Java你可能不知道的两点/" data-id="cj6qld892000azkqnpm8q6960" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/11/23/关于Java你可能不知道的两点/" data-id="cj6r4s3ax000bigqnagw6zd9g" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -220,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/20/springMVC/" data-id="cj6qld88v0007zkqnxrl9wc69" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/08/20/springMVC/" data-id="cj6r4s3ah0006igqnuosovqgv" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -387,7 +540,7 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/13/设计模式/" data-id="cj6qld899000fzkqnfg8dy3i4" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/06/13/设计模式/" data-id="cj6r4s3bc000gigqn5ezz4mz2" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -447,7 +600,7 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/03/数据结构/" data-id="cj6qld89t000hzkqn7ajmf03b" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/05/03/数据结构/" data-id="cj6r4s3ax000digqnrk3zll2w" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -491,6 +644,16 @@ public class ShapeFactory{
 <p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
 <h3 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h3><p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Syntax highlighted code block</div><div class="line"></div><div class="line"><span class="section"># Header 1</span></div><div class="line"><span class="section">## Header 2</span></div><div class="line"><span class="section">### Header 3</span></div><div class="line"></div><div class="line"><span class="bullet">- </span>Bulleted</div><div class="line"><span class="bullet">- </span>List</div><div class="line"></div><div class="line"><span class="bullet">1. </span>Numbered</div><div class="line"><span class="bullet">2. </span>List</div><div class="line"></div><div class="line"><span class="strong">**Bold**</span> and <span class="emphasis">_Italic_</span> and <span class="code">`Code`</span> text</div><div class="line"></div><div class="line">[<span class="string">Link</span>](<span class="link">url</span>) and ![<span class="string">Image</span>](<span class="link">src</span>)</div></pre></td></tr></table></figure>
+<p><strong>Shortcut:</strong></p>
+<ul>
+<li><strong>Bold</strong> (<code>Ctrl+B</code>) and <em>Italic</em> (<code>Ctrl+I</code>)</li>
+<li>Quotes (<code>Ctrl+Q</code>)</li>
+<li>Code blocks (<code>Ctrl+K</code>)</li>
+<li>Headings 1, 2, 3 (<code>Ctrl+1</code>, <code>Ctrl+2</code>, <code>Ctrl+3</code>)</li>
+<li>Lists (<code>Ctrl+U</code> and <code>Ctrl+Shift+O</code>)</li>
+<li>Timestamp(<code>Ctrl+T</code>)</li>
+<li>Horizontal Rule(<code>Ctrl+R</code>)</li>
+</ul>
 <p>For more details see <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">GitHub Flavored Markdown</a>.</p>
 <h3 id="Jekyll-Themes"><a href="#Jekyll-Themes" class="headerlink" title="Jekyll Themes"></a>Jekyll Themes</h3><p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/KangShanR/Study-Notes/settings" target="_blank" rel="external">repository settings</a>. The name of this theme is saved in the Jekyll <code>_config.yml</code> configuration file.</p>
 <h3 id="Support-or-Contact"><a href="#Support-or-Contact" class="headerlink" title="Support or Contact"></a>Support or Contact</h3><p>Having trouble with Pages? Check out our <a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="external">documentation</a> or <a href="https://github.com/contact" target="_blank" rel="external">contact support</a> and we’ll help you sort it out.</p>
@@ -512,7 +675,7 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/29/markdown使用攻略/" data-id="cj6qld88s0005zkqnrk44smip" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2015/04/29/markdown使用攻略/" data-id="cj6r4s3ah0003igqn4756gj8x" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -571,7 +734,7 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/25/html-base标签/" data-id="cj6qld88k0001zkqntijb2mkp" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2015/03/25/html-base标签/" data-id="cj6r4s3ah0004igqncr8k1cne" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -672,7 +835,7 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/23/meta标签/" data-id="cj6qld88u0006zkqnz2xrvuj8" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2015/03/23/meta标签/" data-id="cj6r4s3bc000iigqndxbgw56p" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -717,7 +880,7 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/01/23/hello-world/" data-id="cj6qld88f0000zkqnzk1dbkn4" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2014/01/23/hello-world/" data-id="cj6r4s3ah0002igqnftx9viba" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -748,7 +911,7 @@ public class ShapeFactory{
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
     </div>
   </div>
 
@@ -761,11 +924,11 @@ public class ShapeFactory{
       <ul>
         
           <li>
-            <a href="/2017/08/24/hexo常用命令/">hexo常用命令</a>
+            <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
           </li>
         
           <li>
-            <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
+            <a href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
           </li>
         
           <li>
@@ -777,7 +940,7 @@ public class ShapeFactory{
           </li>
         
           <li>
-            <a href="/2017/07/14/java多线程/">Java多线程</a>
+            <a href="/2017/07/26/原创小段子—人物没原型/">原创小段子之人物没原型</a>
           </li>
         
       </ul>
