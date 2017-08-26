@@ -112,6 +112,99 @@
 
 
   
+    <article id="post-hexo+github=website" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/23/hexo+github=website/" class="article-date">
+  <time datetime="2017-01-22T18:04:38.000Z" itemprop="datePublished">2017-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/个人网站搭建/">个人网站搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/23/hexo+github=website/">hexo+github=your website</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a></p>
+<ul>
+<li>hexo generate<ul>
+<li>根据已提供的md文件资料生成静态网页，放在public文件夹中；</li>
+<li>hexo generate –watch<ul>
+<li>对比查看文件的改动，只有当文件改动被审查过才会执行generate命令生成静态网页；</li>
+</ul>
+</li>
+<li>hexo generate –deploy与hexo deploy –generate<ul>
+<li>两者效果一样都在generate后执行布置命令deploy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>新建md文档：<code>hexo new [dir] filename</code><ul>
+<li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，hexo会自动将文档的头加上：<ul>
+<li><pre>---
+  title: hexo+github=your website
+  date: 2017-01-23 02:04:38
+---</pre></li>
+</ul>
+</li>
+<li>而当指定目录为<code>_post</code>时，其效果会加上标签：<ul>
+<li><pre>---
+  title: hexo+github=your website
+  date: 2017-01-23 02:04:38
+  tags: 
+  ---
+</pre></li>
+</ul>
+</li>
+<li>但是全部的信息包括：<ul>
+<li><pre>---
+  title: hexo+github=your website
+  date: 2017-01-23 02:04:38
+  categories: 默认分类 #分类
+  tags: [tag1,tag2,tag3]#文章标签，可空，也可以使用多标签
+  description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面
+  ---
+</pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/23/hexo+github=website/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj6tjlr7k00003oqnc3wn2036" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github/">hexo,github</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
@@ -845,68 +938,30 @@ public class ShapeFactory{
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/01/23/hello-world/" class="article-date">
-  <time datetime="2014-01-22T18:04:38.000Z" itemprop="datePublished">2014-01-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/01/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2014/01/23/hello-world/" data-id="cj6tixa8i001bwoqnuh4wmwsg" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/">hexo,github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li></ul>
     </div>
   </div>
 
@@ -916,7 +971,7 @@ public class ShapeFactory{
   <div class="widget-wrap">
     <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
-      <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 16.67px;">framework</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a>
+      <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 16.67px;">framework</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo,github</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a>
     </div>
   </div>
 
@@ -925,7 +980,7 @@ public class ShapeFactory{
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li></ul>
     </div>
   </div>
 
