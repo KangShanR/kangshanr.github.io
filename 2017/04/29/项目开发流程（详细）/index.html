@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>项目开发流程 | KangShan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="项目开发流程与项目开发中常用到的开发模型">
+<meta name="keywords" content="programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目开发流程">
+<meta property="og:url" content="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/index.html">
+<meta property="og:site_name" content="KangShan">
+<meta property="og:description" content="项目开发流程与项目开发中常用到的开发模型">
+<meta property="og:updated_time" content="2017-08-28T20:45:24.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目开发流程">
+<meta name="twitter:description" content="项目开发流程与项目开发中常用到的开发模型">
+<link rel="publisher" href="kangshan9988@gmail.com">
+  
+    <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KangShan</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to my website.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-项目开发流程（详细）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/29/项目开发流程（详细）/" class="article-date">
+  <time datetime="2017-04-28T20:33:30.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/项目开发/">项目开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      项目开发流程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>整个流程包括：</p>
+<ol>
+<li><strong>需求挖掘</strong>（核心就是用户痛点）：<ol>
+<li>作为一个商业项目的程序员，一定要搞明白项目的赢利点在哪里；</li>
+<li>要解决用户痛点；</li>
+<li>用户分为：直接用户、最终用户<ol>
+<li>直接用户就是项目开发中，直接对接的用户，通俗的可以理解为给钱的；</li>
+<li>最终用户是产品开发出来后使用产品的用户；<ol>
+<li><em>比如给一个公司开发的无纸化办公软件，这个产品的直接用户是这个公司的管理层，他们把项目交到我们手上来开发。但最终用户就是这个公司的各类普通职员，是他们在使用这个成型的产品；</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>在外包项目中，在需求挖掘的过程中往往涉及到：<ol>
+<li>用户访谈</li>
+<li>需求探索</li>
+<li>卖家会议</li>
+<li>领导意见<ol>
+<li><em>而在这整个过程中，作为开发人员不能刻意引导对方，使用引导性对话往往会带出客户的伪需求，这就会需求分析带来干扰</em></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>需求分析：在作需求分析的对象只有两个：测试人员，普通使用者；这就决定了：写需求分析说明书时，措词要易懂清晰，少用专业词汇；<ol>
+<li>整个过程是开发人员、测试人员、客户各方不断讨论的过程</li>
+<li>一旦有新的决定性需求确定下来，比如定稿时，一定要客户签字确认，各方责任要清晰；</li>
+<li>当定稿之后客户要求修改需求，或修改需求成本太高，一定要出需求变更说明书，同样要求客户签字；</li>
+</ol>
+</li>
+<li>概要设计（数据库设计E-R图可同步进行）<ol>
+<li>比如一个简单的邮箱功能，其中的数据应该包括：<ol>
+<li>发件人名师</li>
+<li>收件人列表</li>
+<li>主题</li>
+<li>内容</li>
+<li>是否有附件</li>
+<li>抄送人列表</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>详细设计<ol>
+<li>数据库设计（模型图）</li>
+<li>用例图（PowerDesigner、Visio)：描述参与者与用例之间的关系，不能用crud之类的语言，比如：开发票与销毁发票，而不是用新建发票、删除发票；注意参与者可以是人但也可以是其他角色；</li>
+<li>时序图（PowerDesigner)：操作到哪个对象，操作后返回什么对象</li>
+<li>流程图（Visio)：<ol>
+<li>跨职能流程图中：每一个泳道代表一个职能；</li>
+<li>菱形：判定，出来两根线，一个是，一个否；</li>
+<li>矩形：流程</li>
+<li>圆角矩形：开始或结束</li>
+<li>平行四边形：输入数据</li>
+</ol>
+</li>
+<li>包图（Powerdesigner)</li>
+<li>类图（Powerdesigner)</li>
+</ol>
+</li>
+<li>编码</li>
+<li>测试</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj6wlvi6t00003kqn7srhxaau" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/23/控制台数据库操作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          控制台操作数据库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/23/hexo+github=website/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo+github=your website</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-单例模式/">java 单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-数据库/">java 数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 13.33px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/java-单例模式/" style="font-size: 10px;">java 单例模式</a> <a href="/tags/java-数据库/" style="font-size: 10px;">java 数据库</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/29/20170829得到例会/">得到例会：关于找工作</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/26/今日无题/">无题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 KangShan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
