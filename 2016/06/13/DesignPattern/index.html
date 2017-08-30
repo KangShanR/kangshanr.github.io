@@ -5,17 +5,17 @@
   
   <title>设计模式 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；菜鸟教程相关网页：http://www.runoob.com/design-pattern/design-pattern-intro.html  Gang of Four，四人帮提出设计模式的设计原则：  对接口编程而不是对实现编程； 优先使用对象组合而不是继承；  简介：">
-<meta name="keywords" content="programming">
+  <meta name="description" content="对于面向对象设计模式的理解与简单分析">
+<meta name="keywords" content="programming,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式">
-<meta property="og:url" content="https://kangshanr.github.io/2016/06/13/设计模式/index.html">
+<meta property="og:url" content="https://kangshanr.github.io/2016/06/13/DesignPattern/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；菜鸟教程相关网页：http://www.runoob.com/design-pattern/design-pattern-intro.html  Gang of Four，四人帮提出设计模式的设计原则：  对接口编程而不是对实现编程； 优先使用对象组合而不是继承；  简介：">
-<meta property="og:updated_time" content="2017-08-27T10:02:29.456Z">
+<meta property="og:description" content="对于面向对象设计模式的理解与简单分析">
+<meta property="og:updated_time" content="2017-08-30T11:48:01.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
-<meta name="twitter:description" content="Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；菜鸟教程相关网页：http://www.runoob.com/design-pattern/design-pattern-intro.html  Gang of Four，四人帮提出设计模式的设计原则：  对接口编程而不是对实现编程； 优先使用对象组合而不是继承；  简介：">
+<meta name="twitter:description" content="对于面向对象设计模式的理解与简单分析">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -58,9 +58,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -69,12 +69,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-DesignPattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/13/设计模式/" class="article-date">
+    <a href="/2016/06/13/DesignPattern/" class="article-date">
   <time datetime="2016-06-13T04:14:38.000Z" itemprop="datePublished">2016-06-13</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -92,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；<br>菜鸟教程相关网页：<a href="http://www.runoob.com/design-pattern/design-pattern-intro.html" title="菜鸟教程-设计模式" target="_blank" rel="external">http://www.runoob.com/design-pattern/design-pattern-intro.html</a></p>
+<p>Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；<br><a href="http://www.runoob.com/design-pattern/design-pattern-intro.html" title="菜鸟教程——设计模式" target="_blank" rel="external">菜鸟教程之设计模式</a></p>
 </blockquote>
 <p>Gang of Four，四人帮提出设计模式的设计原则：</p>
 <ul>
@@ -218,6 +222,7 @@ public class ShapeFactory{
 <h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
 <li>相比较于工厂模式，抽象工厂模式在工厂模式的基础上增加生成工厂的工厂类，那么生产出来的工厂都要继承一个接口或父类，没理解到的点就在于，这个类一定要是一个抽象类吗？可以是个接口或者非抽象类吗?</li>
 <li>该模式的优点：把同一个产品类集成到同一个工厂内，这样使用时就直接调用工厂中的方法，而生成同一个工厂里预备好的类对象，也更方便管理；</li>
+<li>它是为了解决子工厂的扩展性问题</li>
 </ul>
 <ul>
 <li><em>未完待续</em></li>
@@ -226,10 +231,10 @@ public class ShapeFactory{
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/13/设计模式/" data-id="cj6ufh7e40017e8qnkbj64dvo" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/06/13/DesignPattern/" data-id="cj6z8rz2w000118qn76hbz8gm" class="article-share-link">Partager</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -238,7 +243,7 @@ public class ShapeFactory{
 <nav id="article-nav">
   
     <a href="/2016/07/24/JDBC的理解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           JDBC的理解
@@ -248,7 +253,7 @@ public class ShapeFactory{
   
   
     <a href="/2016/05/03/数据结构/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">数据结构与算法</div>
     </a>
   
@@ -263,9 +268,9 @@ public class ShapeFactory{
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -273,9 +278,9 @@ public class ShapeFactory{
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-单例模式/">java 单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-数据库/">java 数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
   </div>
 
@@ -283,9 +288,9 @@ public class ShapeFactory{
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 13.33px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/java-单例模式/" style="font-size: 10px;">java 单例模式</a> <a href="/tags/java-数据库/" style="font-size: 10px;">java 数据库</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 13.33px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -302,12 +307,12 @@ public class ShapeFactory{
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/08/29/20170829得到例会/">得到例会：关于找工作</a>
+            <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
           </li>
         
           <li>
@@ -339,7 +344,7 @@ public class ShapeFactory{
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
