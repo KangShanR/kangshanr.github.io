@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://kangshanr.github.io/2017/01/23/hexo+github=website/index.html">
 <meta property="og:site_name" content="KangShan">
 <meta property="og:description" content="使用hexo与github搭建个人网站中的小点子">
-<meta property="og:updated_time" content="2017-08-29T12:01:32.020Z">
+<meta property="og:updated_time" content="2017-08-31T17:25:53.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github=your website">
 <meta name="twitter:description" content="使用hexo与github搭建个人网站中的小点子">
@@ -58,9 +58,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -76,7 +76,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/个人网站搭建/">个人网站搭建</a>
+    <a class="article-category-link" href="/categories/个人网站搭建/">个人网站搭建</a>►<a class="article-category-link" href="/categories/个人网站搭建/hexo/">hexo</a>
   </div>
 
   </div>
@@ -109,8 +109,7 @@
 </li>
 </ul>
 </li>
-<li><p>新建md文档：<code>hexo new [dir] filename</code></p>
-<ul>
+<li>新建md文档：<code>hexo new [dir] filename</code><ul>
 <li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，<a id="more"></a>hexo会自动将文档的头加上：<ul>
 <li><pre>---
   title: hexo+github=your website
@@ -135,14 +134,23 @@
   tags: [tag1,tag2,tag3]#文章标签，可空；使用多标签时，将`[]`符号带上，并且标签之间用`,`分开
   description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面
   ---
-</pre>
+</pre></li>
+</ul>
 </li>
+<li><h2 id="Hexo默认的文件头只有title、date、tags属性，生成的html会缺少Meta信息，不利于搜索引擎收录。建议自行在文件头中添加keywords和description属性。categories属性可自行选择是否添加。标准包含全部meta信息的头应该是："><a href="#Hexo默认的文件头只有title、date、tags属性，生成的html会缺少Meta信息，不利于搜索引擎收录。建议自行在文件头中添加keywords和description属性。categories属性可自行选择是否添加。标准包含全部meta信息的头应该是：" class="headerlink" title="Hexo默认的文件头只有title、date、tags属性，生成的html会缺少Meta信息，不利于搜索引擎收录。建议自行在文件头中添加keywords和description属性。categories属性可自行选择是否添加。标准包含全部meta信息的头应该是："></a>Hexo默认的文件头只有title、date、tags属性，生成的html会缺少Meta信息，不利于搜索引擎收录。建议自行在文件头中添加keywords和description属性。categories属性可自行选择是否添加。标准包含全部meta信息的头应该是：</h2><pre><code>title: ##文章标题
+date: ##时间，格式为 YYYY-MM-DD HH:mm:ss
+categories: ##分类
+tags: ##标签，多标签格式为 [tag1,tag2,...]
+keywords: ##文章关键词，多关键词格式为 keyword1,keywords2,...
+description: ##文章描述
+---
+正文
+</code></pre></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>生成md文档还有另外一个命令：<code>hexo new page newpage</code></p>
 <ul>
+<li>生成md文档还有另外一个命令：<code>hexo new page newpage</code><ul>
 <li>与上一个命令不同之处在于：生成的md文件放在了根目录而不会放在source/_post中，而会在source文件夹中生在一个newpage的folder，并在其中生一个index.md，且这个md文档的title会被设置成newpage，也就是生成了这样一个页面，而这个页面并未在网页目录中，但我们就可以好好地设置这个页面用于在其他的文档引用；</li>
 </ul>
 </li>
@@ -170,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj6ufh7d60007e8qn2i9x9jzk" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj70fi0gx0003o8qn69ivdo27" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -181,18 +189,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/04/29/项目开发流程（详细）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+    <a href="/2017/01/31/java_modifier/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          项目开发流程
+          java访问修辞符
         
       </div>
     </a>
   
   
     <a href="/2016/12/03/快速排序算法的理解/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">快速排序算法</div>
     </a>
   
@@ -207,9 +215,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/hexo/">hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每日精进/">每日精进</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/经济学/">经济学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -217,9 +225,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类，访问修辞符，迭代器/">java内部类，访问修辞符，迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
     </div>
   </div>
 
@@ -227,9 +235,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 13.33px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 15px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类，访问修辞符，迭代器/" style="font-size: 10px;">java内部类，访问修辞符，迭代器</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 17.5px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 12.5px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 10px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a>
     </div>
   </div>
 
@@ -246,9 +254,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
+          </li>
         
           <li>
             <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
@@ -260,14 +276,6 @@
         
           <li>
             <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
           </li>
         
       </ul>
@@ -283,7 +291,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

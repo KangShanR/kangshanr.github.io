@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,453 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-mybatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/31/mybatis/" class="article-date">
+  <time datetime="2017-08-31T05:12:34.000Z" itemprop="datePublished">2017-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="mybatis框架的使用与理解"><a href="#mybatis框架的使用与理解" class="headerlink" title="mybatis框架的使用与理解"></a>mybatis框架的使用与理解</h2><h4 id="Mybatis与JDBC"><a href="#Mybatis与JDBC" class="headerlink" title="Mybatis与JDBC"></a>Mybatis与JDBC</h4><p><strong>概述：</strong></p>
+<ol>
+<li>MyBatis是一个半自动的面向sql的orm框架；</li>
+<li>JDBC全称：java database connectivity，是java封装在在java.sql包里的API，其设计目的在于连接数据库，通过java语言实现sql查询语言在数据库中的操作；</li>
+<li>Mybatis就是对JDBC的封装，使其操作数据库更为灵活，更多的数据与实体之间的映射交给配置文件来实现；</li>
+<li><strong>JDBC</strong>作为java连接数据库的底层框架，<ol>
+<li><strong>实现数据库连接功能的步骤：</strong><ol>
+<li>加载驱动</li>
+<li>获取数据库连接</li>
+<li>准备语句（获取状态对象）</li>
+<li>执行语句</li>
+<li>处理结果集</li>
+<li>关闭数据库（释放资源）</li>
+<li>异常处理</li>
+</ol>
+</li>
+<li>可以看到在整个流程中的<strong>JDBC功能实现的缺陷</strong>：<ol>
+<li>jdbc的硬编码不方便维护，需要不停地连接、释放数据库资源；</li>
+<li>参数绑定在硬编码中，查询条件不定，修改语句也不方便；</li>
+</ol>
+</li>
+<li>所以，就有了MyBatis存在的必要；</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="MyBatis的实现"><a href="#MyBatis的实现" class="headerlink" title="MyBatis的实现"></a>MyBatis的实现</h3><p><strong>在一个工程中要使用MyBatis框架：</strong></p>
+<ol>
+<li>将MyBatis的核心包、依赖包引入。如果是Maven项目，直接在pom.xml中引入依赖：<pre><code>&lt;dependencies&gt;
+&lt;!-- 实现连接数据库的包 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;mysql&lt;/groupId&gt;
+      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+      &lt;version&gt;5.1.37&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;!-- 日志记录的包 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;log4j&lt;/groupId&gt;
+      &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+      &lt;version&gt;1.2.17&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+      &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+      &lt;version&gt;1.7.21&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;!-- 实现测试包 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.12&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+  &lt;!-- mybatis核心包 --&gt;
+&lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+        &lt;version&gt;3.4.2&lt;/version&gt;
+&lt;/dependency&gt;
+  &lt;/dependencies&gt;
+</code></pre></li>
+<li><p>引入相关的jar包后，就可以对mybatis进行配置：</p>
+<ol>
+<li><p>mybatis.xml文件中，配置mybatis的标签是：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+    &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+
+&lt;configuration&gt;
+
+    &lt;!-- 引入配置文件 --&gt;
+    &lt;properties resource=&quot;jdbc.properties&quot; /&gt;
+
+    &lt;!--自定义别名 --&gt;
+    &lt;typeAliases&gt;
+        &lt;!--定义单个别名 ,不区别大小写 --&gt;
+        &lt;!-- &lt;typeAlias type=&quot;com.woniuxy.mybatis.entity.User&quot; alias=&quot;user&quot;/&gt; --&gt;
+        &lt;!-- 批量定义别名，该包内所有的类的类名直接作为别名，不区分大小写 --&gt;
+        &lt;package name=&quot;com.woniuxy.mybatis.entity&quot; /&gt;
+    &lt;/typeAliases&gt;
+
+    &lt;!-- jdbc的配置信息 --&gt;
+    &lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;!-- 配置事务管理器 --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot; /&gt;
+            &lt;!-- 数据库连接池 --&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;${jdbc.driver}&quot; /&gt;
+                &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot; /&gt;
+                &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot; /&gt;
+                &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot; /&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!-- 映射资源 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;mappings/Users.xml&quot; /&gt;
+        &lt;mapper resource=&quot;mappings/UserMapper.xml&quot; /&gt;
+    &lt;/mappers&gt;
+
+&lt;/configuration&gt;
+</code></pre><ul>
+<li>其根标签是：<code>&lt;configuration&gt;</code></li>
+<li>解析上述各标签：<ul>
+<li>properties:属性文件的引入，将java属性文件引入到该配置文件中，如上所述：引入了jdbc.properties文件，就可以在配置数据源属性时，通过点位符&amp;｛｝来获取到装配进来的属性文件中的属性值；</li>
+<li>typeAliases:别名的设定，可以指定单个类的别名，也可以使用子标签<code>package</code> 指定整个包的别名为类的simpleName;</li>
+<li>environments配置中，除了配置了JDBC数据库连接信息(数据源类型：POOLED)外,还得设定事务管理器类型：JDBC；</li>
+<li>mappers:映射各个实体类或映射类配置文件到此配置文件中去；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>mappers中的配置文件：</p>
+<ul>
+<li><p>Users.xml文件是指定了这个user类与数据库中操作的方法，包括这些方法的参数与返回值类型；</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+    PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+    &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;test2&quot;&gt;
+
+    &lt;!-- 根据id获取用户信息 --&gt;
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;int&quot; resultType=&quot;User&quot;&gt;
+        SELECT * FROM t_user WHERE ID = #{id}
+    &lt;/select&gt;
+
+    &lt;!-- 根据用户名获取用户列表 --&gt;
+    &lt;select id=&quot;findUserByUsername&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
+        SELECT * FROM t_user WHERE user_name like &apos;%${value}%&apos;
+    &lt;/select&gt;
+
+    &lt;!-- 添加用户数据 --&gt;
+    &lt;insert id=&quot;saveUserInfo&quot; parameterType=&quot;User&quot;&gt;
+        &lt;!-- 使用selectkey返回插入数据的id --&gt;
+        &lt;selectKey keyColumn=&quot;id&quot; keyProperty=&quot;id&quot; resultType=&quot;int&quot; order=&quot;AFTER&quot;&gt;
+            SELECT LAST_INSERT_ID()
+        &lt;/selectKey&gt;
+        &lt;!-- 如果主键使用uuid，则可以通过下面方法把id转出 --&gt;
+        &lt;!-- &lt;selectKey keyProperty=&quot;id&quot; resultType=&quot;string&quot; order=&quot;BEFORE&quot;&gt;
+            SELECT UUID()
+        &lt;/selectKey&gt; --&gt;
+        INSERT INTO t_user(user_name,cnname,sex,mobile,email,note) VALUES 
+        (#{user_name},#{cnname},#{sex},#{mobile},#{email},#{note})
+    &lt;/insert&gt;
+
+    &lt;!-- 删除数据 --&gt;
+    &lt;delete id=&quot;deleteUserById&quot; parameterType=&quot;int&quot;&gt;
+        DELETE from t_user where id=#{value}
+    &lt;/delete&gt;
+
+    &lt;!-- 更新数据 --&gt;
+    &lt;update id=&quot;updateUserInfo&quot; parameterType=&quot;User&quot;&gt;
+        UPDATE t_user SET
+        user_name=#{user_name},cnname=#{cnname},sex=#{sex},mobile=#{mobile},email=#{email},note=#{note} 
+        WHERE id=#{id}
+    &lt;/update&gt;
+
+&lt;/mapper&gt;
+</code></pre><ul>
+<li><code>#{}</code>与<code>${}</code>的区别：<ul>
+<li><code>#{}</code><ul>
+<li>表示占位符号，相当于实现了JDBC中的paparedStatement占位符的作用，也就实现了防止sql注入；</li>
+<li>同时实现了java类型与jdbc类型转换，可以接收简单类型值与pojo属性值；</li>
+<li>如果传输单个简单类型值，｛｝中可以是value或其它名称；</li>
+</ul>
+</li>
+<li><code>${}</code><ul>
+<li>表示sql字符串拼接，也就是将｛｝中的内容拼接在sql中且不进行jdbc类型转换；</li>
+<li>可以接收简单类型值或pojo值，如果是简单类型值｛｝中只能是’value’;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文档头可以看出这是mabatis3映射的定义文档类型，所以其根标签为<code>mapper</code>，其中各子标签或属性：</p>
+<ul>
+<li>namespace属性，指定其命名空间，这样在其它地方要调用此配置文件中的各语句时，就需要通过这个命名空间来访问到此文档中定义id的各个语句，通过session对象的方法来调用时，这些语句就作为参数执行方法：`session.selectOne(“findUserById()”,user)；</li>
+<li><p>session的来源：</p>
+<pre><code>/**
+ * 测试前的预备工作
+ */
+@Before
+public void before(){
+    System.out.println(Before.class);
+
+    try {
+        // 读入mybatis配置文件到输入流中
+        is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+        factoryBuilder = new SqlSessionFactoryBuilder();
+        //使用输入流创建sqlSessionFactory
+        factory = factoryBuilder.build(is);
+        //打开sqlSession
+        session = factory.openSession();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><ul>
+<li>上述代码是利用junit包实现了测试功能，@Before注解标这个方法在@Test方法之前运行，从该方法就可以看出myBaitis的运行流程：<ul>
+<li>将mybatis.xml配置文件读放流中，再使用sessionFactoryBuilder对该流进行创建工厂（抽象工厂模式）；</li>
+<li>调用工厂的openSession()方法打开会话，获得sesison实例；</li>
+<li>操作数据库最后一步就是调用session对象的方法：<code>List&lt;User&gt; users = session.selectList(&quot;test.findUserByUsername&quot;, &quot;k&quot;);</code><ul>
+<li>这儿的test就是之前指定的namespace，这儿指定的id的语句执行，并将另外的参数传入，形成完整的sql语句；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>这个流程是最初级的，而我们现实中常常不使用这样的形式，而使用接口来将所有方法的调用都交由接口来实现：<ul>
+<li>在获取到session时，就通过session.getMapper(Class<t> mapper)方法来获取到相关的mapper接口的对象，而在使用过程中，就直接调用这个接口对象的方法（方法执行时就调用相应的语句执行），这个方法与语句之间映射就由指定了nameSpace的xml配置文件来实现，这种方法实现原理叫Mapper动态代理；</t></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>从上面的例子就可以看出Mybatis解决了的jdbc的问题：</strong><ul>
+<li>数据库的链接的创建与释放者造成系统资源的浪费，而使用数据库连接池就可以此问题，在Mybatis的配置中设置；</li>
+<li>sql语句写在java代码中造成的不易维护，而Mybatis就将这些sql语句配置在相应的配置文件中，这样就与java代码实现了分离；</li>
+<li>使用映射好的java对象来作为sql语句的statemente的参数，而不用像在jdbc的执行方法中定义输入参数的类型；</li>
+<li>对于结果集的解析在JDBC中需要一层层遍历，并将各个属性封装到entity中再装入集合中。Mybatis将这些封装好，直接将结果映射到java对象中；</li>
+</ul>
+</li>
+<li>同时，上面例子并没有在持久层操作，也就是DAO层并没有进行开发，直接使用在TEST中进行调用抽象工厂的构造方法来构造工厂与sqlSession，再用sqlSession对象的方法，sqlSession的方法中调用配置好的sql语句与参数；</li>
+<li>如果要实现持久层的开发不过是把上面构造SqlSessionFactory/SqlSession的方法封装进Dao类中实现；</li>
+</ul>
+<hr>
+<h3 id="使用Mapper代理开发"><a href="#使用Mapper代理开发" class="headerlink" title="使用Mapper代理开发"></a>使用Mapper代理开发</h3><h4 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h4><ul>
+<li><strong>动态代理开发</strong>，就是让生成Mapper对象的这个过程交给SqlSession对象的getMapper（Class<t> mapper)方法，这时的SqlSession就是代理，也就是通过了代理来构造获取Mapper接口的对象；</t></li>
+<li>Mapper对象就是Mapper接口的实例，这个接口与写好相关的mapper.xml配置文件相关联，Mybatis就用这个接口来构造对象，这个对象的方法执行时就与相关联的Mapper.xml配置文件里的sql语句来执行sql方法；</li>
+<li>Mapper接口与Mapper.xml配置文件相关联的规则（此规则由Mybatis规定，符合此规则便形成关联）：<ul>
+<li>Mapper.xml文件中的namespce与mapper接口的类路径相同；</li>
+<li>Mapper接口方法名和Mapper.xml中定义的每个statement的id相同；</li>
+<li>接口方法的输入参数类型和配置文件中的sql的parameterType的类型相同；</li>
+<li>接口方法的返回数据类型与配置文件中的resultType类型相同的；</li>
+</ul>
+</li>
+<li>实现代理开发就意味着之前的session方法执行都交给这个Mapper对象，所有的操作方法都由这个接口定义，调用这个方法就只用传入定义的参数类型，这也就<strong>实现了由Mapper对象的方法来代理SqlSession对象中的操作数据库的方法</strong>(<em>这儿涉及到代理<a href="http://kangshan.oschina.io/2016/06/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式" target="_blank" rel="external">设计模式</a>的理解</em>)，相对于直接使用SqlSession的各种执行方法更为简便；</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/31/mybatis/" data-id="cj70r8fx0000t6cqn0x0eq5vx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-singleton_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/singleton_pattern/" class="article-date">
+  <time datetime="2017-08-29T04:54:30.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="设计模式之单例模式"><a href="#设计模式之单例模式" class="headerlink" title="设计模式之单例模式"></a>设计模式之单例模式</h3><blockquote>
+<p>单例模式是设计模式最常用到的模式之一，从字面上理解就是，该对象类只产生一个实例。这样做的理由在于开发过程中很多类（比如：管理类）都只用一个实例就够了，这样做也更节省资源。但是项目开发做会有一个多线程的问题，也就是当多个线程访问同一个类的单例时，这时会产生线程安全问题，为解决这个问题，单例模式分成了6种不同类型。</p>
+</blockquote>
+<ul>
+<li>单例模式的<strong>设计目的</strong>就在于：不想让一个全局使用的类频繁地被创建再销毁其实例，要达到这样的效果就让其构造函数不能被不停地调用，也就是<strong>私有化其构造函数</strong>；</li>
+<li>单例模式的6种类型：<ul>
+<li>非线程安全的懒汉式<pre><code>public class UserManager{
+    //静态单例
+    private static UserManager ins;
+    //私有化构造函数
+    private UserManager(){}
+    //获取静态单例的方法
+    public static UserManager getIns(){
+        if(ins == null){
+            ins = new UserManager();
+        }
+        return ins;
+    }
+    //其他的执行方法
+｝
+</code></pre><ul>
+<li>这种类型的单例就是没有考虑线程安全的单例，之所以叫“懒汉式”在于其实现了这个单例的懒加载，也就是第一次使用时才会实例化这个单例；</li>
+<li>其缺陷在于当多线程同时第一次访问这个单例时，会构造出多个单例来，也就是说严格上讲它并不单例模式；</li>
+</ul>
+</li>
+<li>线程安全的懒汉式<pre><code>public class UserManager{
+    //静态单例
+    private static UserManager ins;
+    //私有化构造函数
+    private UserManager(){}
+    //获取静态单例的方法
+    public static synchronized UserManager getIns(){
+        if(ins == null){
+            ins = new UserManager();
+        }
+        return ins;
+    }
+    //其他的执行方法
+｝
+</code></pre><ul>
+<li>这处线程安全的懒汉式只是简单地在获取单例的方法上加上synchronized同步锁，同时也实现了懒加载；</li>
+<li>这样做缺陷在于效率上的低下，想要获取这个类的单例所有线程都得等待上一个线程释放资源；<br>-饿汉式<br>  public class UserManager{<pre><code>//静态单例定义为类成员
+private static UserManager ins = new UseManager();
+//私有化构造函数
+private UserManager(){}
+//获取静态单例的方法
+public static UserManager getIns(){
+    return ins;
+}
+//其他的执行方法
+</code></pre>  ｝</li>
+<li>这种单例定义为类成员，也就是类加载时就将这个单例初始化完成，未实现懒加载，会造成资源的浪费；</li>
+<li>并没有使用同步锁而实现了多线程只访问同一个实例，效率上更高；</li>
+</ul>
+</li>
+<li>双检锁（双重校验锁），DCL（double-checked locking)<pre><code>public class UserManager{
+    //静态单例
+    private static UserManager ins;
+    private Object lock = new Object();
+    //私有化构造函数
+    private UserManager(){}
+    //获取静态单例的方法
+    public static UserManager getIns(){
+        if(ins == null){  //第一次检查
+            synchronized(lock){  //保证不产生多余的实例
+                if(ins == null){  //第二次检查
+                    ins = new UserManager();
+                }
+            }
+        }
+        return ins;
+    }
+    //其他的执行方法
+}
+</code></pre><ul>
+<li>这种类型就实现了高性能与懒加载，逻辑上也相对复杂一点；</li>
+<li>两次检验都放在getIns方法内，第一次校验确保只有ins实例第一次被创建时进入到同步锁块中，也就是多线程下会有多个线程进入到这一步，这时最先拿到控制权的线程构造实例后，其他的线程不能再构造实例了，所以就得在同步锁中再次进入第二次检验了；</li>
+</ul>
+</li>
+<li>静态内部类（登记式）<pre><code>public class UserManager{
+    //定义私有的静态内部类
+    private static class ManagerHolder{
+        //定义私有的静态属性，其值为我们想要的实例
+        private static final UserManager INSTANCE = new UserManager();
+    }
+    //私有化构造函数
+    private UserManger(){}
+    //获取单例的方法
+    public static UserManager getIns(){
+        return ManagerHolder.INSTANCE; 
+    }
+}
+</code></pre><ul>
+<li>这种类型的单例模式效果和双检锁效果差不多，同样实现了懒加载，且没有使用同步锁；</li>
+</ul>
+</li>
+<li>枚举<pre><code>public enum UserManager{
+    //单例
+    INSTANCE;
+    //其他的方法
+}
+</code></pre><ul>
+<li>这种方式是目前实现单例的最佳方法，但目前还没推广（jdk1.5之后才加入enum)，更简洁，自动支持序列化机制，绝对防止多次实例化；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>6种单例模式中，前两种懒汉模式不推荐使用，第一种并非纯正的单例模式，第二种懒汉模式在多线程中效率低下，更不推荐，只要进入getIns方法就得等待上一个线程释放控制权；<br>当对反序列化机制有严格要求时，就使用枚举方式；<br>当要明确使用lazy loading时，就使用静态内部类方式或者双检锁方式；</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/singleton_pattern/" data-id="cj70r8fx3000v6cqnmfqob4id" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线程安全/">线程安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-20170829IgotMeeting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -202,7 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/20170829IgotMeeting/" data-id="cj6z8rz2q000018qnaiv19hl9" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/20170829IgotMeeting/" data-id="cj70fi0h30006o8qniw3501bl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job/">job</a></li></ul>
@@ -250,10 +697,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/26/今日无题/" data-id="cj6ufh7df000ge8qnybmrgck1" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/26/今日无题/" data-id="cj70fi0hr000so8qnlxw89wui" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/essay/">essay</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/essay/">essay</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/观影无感/">观影无感</a></li></ul>
 
     </footer>
   </div>
@@ -268,6 +715,10 @@
   <time datetime="2017-08-25T14:04:38.000Z" itemprop="datePublished">2017-08-25</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/观影无感/">观影无感</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -306,7 +757,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/25/神片试撸《巴霍巴利王II》/" data-id="cj6ufh7dy0013e8qnl2d0nmp6" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/25/神片试撸《巴霍巴利王II》/" data-id="cj70fi0if001ho8qnqk7uvkvd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/movie/">movie</a></li></ul>
@@ -324,6 +775,10 @@
   <time datetime="2017-08-24T00:04:38.000Z" itemprop="datePublished">2017-08-24</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/经济学/">经济学</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -394,85 +849,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/24/薛兆丰：经济学思维与个人投资/" data-id="cj6ufh7e50019e8qn6akn52qs" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/24/薛兆丰：经济学思维与个人投资/" data-id="cj70fi0ic001co8qnkudj9yj9" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-得到直播：打造工作方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/得到直播：打造工作方法/" class="article-date">
-  <time datetime="2017-08-23T00:02:42.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天得到直播:打造工作方法有些启发，直播的一些记要与心得：</p>
-<h4 id="罗胖-打造工作方法"><a href="#罗胖-打造工作方法" class="headerlink" title="罗胖:打造工作方法"></a>罗胖:打造工作方法</h4><ul>
-<li>复制，任何行业，拿走的最多的红利的人不是最顶尖高手的人，而是专业力不错，但同时会复制传播的人，最直接简单的方式：写作，演讲；</li>
-<li>怎么把成本覆盖掉，怎么把利复制？王石，任何一个麻烦找上我，我想法就是怎么让这个麻烦下次不再找上我；</li>
-<li>正收益能不能复制？怎么提高自己的可复制性？<ul>
-<li>三个字：确定性。</li>
-<li>工作方法的高下就一点，能不能给确定性？<ul>
-<li>能力的确定性；<ul>
-<li>靠谱与闭环，大家要知道你能力的边界，能力再小，网络中价值中都极大；老干妈，这个产品水平极高吗？不，但海外留学生都知道，想吃到中国味，老干妈一定没错；凡事有交待，件件有回应，不能成为反馈黑洞；</li>
-</ul>
-</li>
-<li>态度的确定性<ul>
-<li>态度不好拿，想得太多；</li>
-<li>找到最基本简单的态度，坚持下去；</li>
-</ul>
-</li>
-<li>范围的确定性<ul>
-<li>每个人不管在什么层级，都是在创业；</li>
-<li>时时刻刻要在所有人面前要表现，你在掌握全局；</li>
-<li>思维：<ul>
-<li>上推，上推具体的操作到正式制度性抽象概念，高级餐厅的牛排旁边一定要放几朵西兰花，这样才显得高级；</li>
-<li>下沉，你不是不写嘛，我来，你要觉得这个可以接受，那么我自己做点事，像水一样，把其他的地方勾勒出来，当对方接收到这个动作时，对方被水包裹后自然而然会被牵动；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="最后有一段充满力量的话："><a href="#最后有一段充满力量的话：" class="headerlink" title="最后有一段充满力量的话："></a>最后有一段充满力量的话：</h4><p>王朔给女儿:（核心：把握自己，确定性；）</p>
-<blockquote>
-<p>煲汤比写诗重要；<br>自己的手艺比男人的重要；<br>头发、胸、腰、屁股比脸重要；<br>内心强大到混蛋比什么都重要；</p>
-</blockquote>
-<p>在网上查了下，冯唐写这段话应该更早的，王朔应该是借用的冯唐的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/得到直播：打造工作方法/" data-id="cj6ufh7dv000ye8qnebqk9kqu" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经济学/">经济学</a></li></ul>
 
     </footer>
   </div>
@@ -487,6 +867,10 @@
   <time datetime="2017-08-23T00:02:42.000Z" itemprop="datePublished">2017-08-23</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -546,7 +930,86 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/卓老板：科学思维看世间百态/" data-id="cj6ufh7dq000qe8qnufu731t8" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/23/卓老板：科学思维看世间百态/" data-id="cj70fi0i00011o8qnxoxkuueq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/科技/">科技</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-得到直播：打造工作方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/23/得到直播：打造工作方法/" class="article-date">
+  <time datetime="2017-08-23T00:02:42.000Z" itemprop="datePublished">2017-08-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/每日精进/">每日精进</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天得到直播:打造工作方法有些启发，直播的一些记要与心得：</p>
+<h4 id="罗胖-打造工作方法"><a href="#罗胖-打造工作方法" class="headerlink" title="罗胖:打造工作方法"></a>罗胖:打造工作方法</h4><ul>
+<li>复制，任何行业，拿走的最多的红利的人不是最顶尖高手的人，而是专业力不错，但同时会复制传播的人，最直接简单的方式：写作，演讲；</li>
+<li>怎么把成本覆盖掉，怎么把利复制？王石，任何一个麻烦找上我，我想法就是怎么让这个麻烦下次不再找上我；</li>
+<li>正收益能不能复制？怎么提高自己的可复制性？<ul>
+<li>三个字：确定性。</li>
+<li>工作方法的高下就一点，能不能给确定性？<ul>
+<li>能力的确定性；<ul>
+<li>靠谱与闭环，大家要知道你能力的边界，能力再小，网络中价值中都极大；老干妈，这个产品水平极高吗？不，但海外留学生都知道，想吃到中国味，老干妈一定没错；凡事有交待，件件有回应，不能成为反馈黑洞；</li>
+</ul>
+</li>
+<li>态度的确定性<ul>
+<li>态度不好拿，想得太多；</li>
+<li>找到最基本简单的态度，坚持下去；</li>
+</ul>
+</li>
+<li>范围的确定性<ul>
+<li>每个人不管在什么层级，都是在创业；</li>
+<li>时时刻刻要在所有人面前要表现，你在掌握全局；</li>
+<li>思维：<ul>
+<li>上推，上推具体的操作到正式制度性抽象概念，高级餐厅的牛排旁边一定要放几朵西兰花，这样才显得高级；</li>
+<li>下沉，你不是不写嘛，我来，你要觉得这个可以接受，那么我自己做点事，像水一样，把其他的地方勾勒出来，当对方接收到这个动作时，对方被水包裹后自然而然会被牵动；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="最后有一段充满力量的话："><a href="#最后有一段充满力量的话：" class="headerlink" title="最后有一段充满力量的话："></a>最后有一段充满力量的话：</h4><p>王朔给女儿:（核心：把握自己，确定性；）</p>
+<blockquote>
+<p>煲汤比写诗重要；<br>自己的手艺比男人的重要；<br>头发、胸、腰、屁股比脸重要；<br>内心强大到混蛋比什么都重要；</p>
+</blockquote>
+<p>在网上查了下，冯唐写这段话应该更早的，王朔应该是借用的冯唐的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/23/得到直播：打造工作方法/" data-id="cj70fi0i30013o8qn981v85w7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
@@ -864,7 +1327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/15/spring/" data-id="cj6ufh7dc000ce8qn5hu03n65" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/15/spring/" data-id="cj70fi0hp000oo8qnh1qy0r0o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
@@ -876,9 +1339,9 @@
 
 
   
-    <article id="post-java底层之引用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java_reference" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/13/java底层之引用/" class="article-date">
+    <a href="/2017/08/13/java_reference/" class="article-date">
   <time datetime="2017-08-13T04:04:38.000Z" itemprop="datePublished">2017-08-13</time>
 </a>
     
@@ -894,7 +1357,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/13/java底层之引用/">java底层之引用</a>
+      <a class="article-title" href="/2017/08/13/java_reference/">java底层之引用</a>
     </h1>
   
 
@@ -926,154 +1389,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/13/java底层之引用/" data-id="cj6xyibba000518qn46g84i0e" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/13/java_reference/" data-id="cj70r8fwx000q6cqnxat1hw6d" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-原创小段子—人物没原型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/26/原创小段子—人物没原型/" class="article-date">
-  <time datetime="2017-07-25T17:04:38.000Z" itemprop="datePublished">2017-07-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/26/原创小段子—人物没原型/">原创小段子之人物没原型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个来自张姑娘的小故事：</p>
-<p>暑假了，女儿欢欢喜喜大学归家。到了家门，嗲声嗲气叫：爹。。。娘。。。</p>
-<p>爹娘笑嘻嘻看了女儿两眼后，转过头去：关于生活费，你能不能把买吃的和买穿的比例对调一下。。。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/26/原创小段子—人物没原型/" data-id="cj6ufh7dr000se8qn2iz7rku9" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tale/">tale</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java多线程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/14/java多线程/" class="article-date">
-  <time datetime="2017-07-14T04:04:38.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/java多线程/">Java多线程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><blockquote>
-<p>在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；</p>
-</blockquote>
-<ul>
-<li><p>实现线程安全的方法：</p>
-<ul>
-<li>将方法修辞为线程安全的方法（加上修辞符synchronized)：<pre><code>public synchronized void doPay(int money){
-    if(balance &gt;= money){
-        balance -= money;
-    }else{
-        system.out.println(&quot;你的余额不足！”）
-    ｝
-    system.out.println(&quot;你的余额为：“+balance);
-}
-</code></pre></li>
-<li>使用同步块：<pre><code>synchronized(Object object){
-    //要同步的代码块
-｝
-</code></pre></li>
-</ul>
-</li>
-<li><p>实现同步机制是基于”监视器“这一概念，java中所有对象都拥有自己的监视器，加上同步锁，就是让这个对象进入监视中；</p>
-</li>
-<li>在各个project中，对于各管理类使用单例模式时，常常容易忽略多线程做成伪单例。也就是做成单例只单单在单线程中可以实现，在多线程环境中实现不了单例。<pre><code>public class Manager{
-    private static Manager ins;
-    //私有化构造函数
-    private Manager(){}
-    //获取单例
-    public static Manager getIns(){
-        if(this.ins == null){
-            this.ins = new Manager();
-        }
-        return this.ins;
-    }
-}
-</code></pre><ul>
-<li>这种单例的实现就必须在依赖单线程的运行环境；</li>
-<li>但现实中往往是多线程环境，这时要实现单例就得双重校验锁：<pre><code>public class Manager{
-    private static Manager ins;
-    private Object lock;
-    //私有化构造函数
-    private Manager(){}
-    //获取单例
-    public static Manager getIns(){
-        if(ins == null){    //第一次校验，当多个线程执行获取单例的方法时，先对单例是否为空进行判定，为空才进入同步状态
-            synchronized(lock){
-                if(this.ins == null){  //第二次校验，进入同步锁状态，对单例进行校验，为空的话才进行构造单例
-                    this.ins = new Manager();
-                }
-            }
-        }    
-        return this.ins;
-    }
-}
-</code></pre><ul>
-<li><strong>一定要理解到这儿使用的双重校验缺一不可</strong>：两次校验才能实现同步线程对多线程操作的效率：<ul>
-<li><em>如果单单全用一次校验在方法上，也就是所有访问到这个方法的线程就直接进入到同步锁状态，那么就会造成大多访问线程的滞留，后部都等到第一个线程执行方法完毕再依次进入到方法中执行，这样明显是不合理的；</em></li>
-<li><em>如果在方法内部同步块之前只使用一次判定，就会造成多个线程同时执行这个获取单例方法时ins被判定为null，多个线程同同时等待同步块执行完，这样在第一个执行的线程构造单例后，虽然这时执行getIns()方法的线程不会进入到同步块等待了，但之前进入到同步块等待的线程还是会依次等待前面线程释放控制权后继续构造单例；所以才会在这同步块内再次校验ins是否为空，形成双重校验</em></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/14/java多线程/" data-id="cj6ufh7cz0005e8qngo854bi2" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
 
     </footer>
   </div>
@@ -1093,9 +1412,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/hexo/">hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每日精进/">每日精进</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/经济学/">经济学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -1103,9 +1422,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类，访问修辞符，迭代器/">java内部类，访问修辞符，迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
     </div>
   </div>
 
@@ -1113,9 +1432,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 13.33px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 15px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类，访问修辞符，迭代器/" style="font-size: 10px;">java内部类，访问修辞符，迭代器</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 17.5px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 12.5px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 10px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a>
     </div>
   </div>
 
@@ -1132,9 +1451,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
+          </li>
         
           <li>
             <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
@@ -1146,14 +1473,6 @@
         
           <li>
             <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
           </li>
         
       </ul>
@@ -1169,7 +1488,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

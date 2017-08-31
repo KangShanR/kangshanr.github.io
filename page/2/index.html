@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -69,10 +69,77 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-符号引用与直接引用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java_enum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/13/符号引用与直接引用/" class="article-date">
-  <time datetime="2017-07-13T04:04:38.000Z" itemprop="datePublished">2017-07-13</time>
+    <a href="/2017/07/29/java_enum/" class="article-date">
+  <time datetime="2017-07-29T04:04:38.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/29/java_enum/">java枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="java枚举"><a href="#java枚举" class="headerlink" title="java枚举"></a>java枚举</h3><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><ul>
+<li>枚举enum是在jdk1.5后引入的，是java高级特性之一；</li>
+<li>枚举的定义关键字：enum<ul>
+<li><code>public enum season{}</code>，其与普通类一样拥有属性、方法、构造函数</li>
+<li>枚举是特殊的类，其成员全都是固定下来的；<h4 id="枚举特性："><a href="#枚举特性：" class="headerlink" title="枚举特性："></a>枚举特性：</h4></li>
+</ul>
+</li>
+<li>枚举的构造函数默认是私有的，可以自定义枚举私有的构造函数</li>
+<li>所有枚举的公共基类为abstract Enum<e extends="" enum<e="">&gt;，我们自定义的enum则都继承自它；</e></li>
+<li>枚举中的实例就是我们常用到的定义为公共静态常量，它们之间用<code>；</code>分开；</li>
+<li>枚举每个实例都有索引，从0开始；</li>
+<li>枚举的常用方法:<ul>
+<li>Enum<e> valueOf(String name):通过name得到枚举的实例；</e></li>
+<li>Enum<e>[] static valueOf(Class<e extends="" enum=""> enumType, String name);根据指定枚举名返回这个枚举类里所有的实例</e></e></li>
+<li>int ordinal();返回该枚举常量在声明中的位置；</li>
+<li>int compareTo(E o);与指定对象比较，如果相同就返回0；</li>
+<li>String name();返回该枚举实例的声明名；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li>在枚举单例模式中，利用的就是枚举的构造函数是私有的，其实例就是本身的一个公开静态常量实例来实现，而其他的方法定义在这个枚举中；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/07/29/java_enum/" data-id="cj70r8fwf000a6cqn035ur4yu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/enum/">enum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-原创小段子—人物没原型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/26/原创小段子—人物没原型/" class="article-date">
+  <time datetime="2017-07-25T17:04:38.000Z" itemprop="datePublished">2017-07-26</time>
 </a>
     
   </div>
@@ -83,7 +150,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/13/符号引用与直接引用/">java底层之引用</a>
+      <a class="article-title" href="/2017/07/26/原创小段子—人物没原型/">原创小段子之人物没原型</a>
     </h1>
   
 
@@ -91,18 +158,108 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="直接引用与符号引用"><a href="#直接引用与符号引用" class="headerlink" title="直接引用与符号引用"></a>直接引用与符号引用</h1><p><strong>JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。</strong></p>
-<h4 id="符号引用：Symbolic-References"><a href="#符号引用：Symbolic-References" class="headerlink" title="符号引用：Symbolic References"></a>符号引用：Symbolic References</h4><ul>
-<li>以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可。</li>
-<li>存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过符号引用这一道工序，同一个类，其符号引用必然一致。</li>
-<li>类在解析过程中，就根据JVM实时产生的内存分配状况，将符号引用转为直接引用；</li>
-</ul>
-<h4 id="直接引用：Direct-References"><a href="#直接引用：Direct-References" class="headerlink" title="直接引用：Direct References"></a>直接引用：Direct References</h4><p><strong>- 直接引用是和虚拟机的布局直接相关的，同一个符号引用在不同的JVM上翻译出来的直接引用也不尽相同。某个目标有了直接引用，那说明这个目标已经被加载到内存中了</strong></p>
+        <p>暑假了，女儿欢欢喜喜大学归家。到了家门，嗲声嗲气叫：爹。。。娘。。。</p>
+<p>爹娘笑嘻嘻看了女儿两眼后，转过头去：关于生活费，你能不能把买吃的和买穿的比例对调一下。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/07/26/原创小段子—人物没原型/" data-id="cj70fi0i50016o8qnzrzrgjzx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tale/">tale</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_multithread" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/java_multithread/" class="article-date">
+  <time datetime="2017-07-14T04:04:38.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/java_multithread/">Java多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><blockquote>
+<p>在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；</p>
+</blockquote>
 <ul>
-<li>直接引用可以是：<ul>
-<li>直接指向目标的指针（如，指向类型class对象、类变量、类方法的直接引用就是指向方法区的指针）；</li>
-<li>相对偏移量：如指向实例变量、实例方法的直接引用都是偏移量；</li>
-<li>一个能直接定位到目标的句柄；</li>
+<li><p>实现线程安全的方法：</p>
+<ul>
+<li>将方法修辞为线程安全的方法（加上修辞符synchronized)：<pre><code>public synchronized void doPay(int money){
+    if(balance &gt;= money){
+        balance -= money;
+    }else{
+        system.out.println(&quot;你的余额不足！”）
+    ｝
+    system.out.println(&quot;你的余额为：“+balance);
+}
+</code></pre></li>
+<li>使用同步块：<pre><code>synchronized(Object object){
+    //要同步的代码块
+｝
+</code></pre></li>
+</ul>
+</li>
+<li><p>实现同步机制是基于”监视器“这一概念，java中所有对象都拥有自己的监视器，加上同步锁，就是让这个对象进入监视中；</p>
+</li>
+<li>在各个project中，对于各管理类使用单例模式时，常常容易忽略多线程做成伪单例。也就是做成单例只单单在单线程中可以实现，在多线程环境中实现不了单例。<pre><code>public class Manager{
+    private static Manager ins;
+    //私有化构造函数
+    private Manager(){}
+    //获取单例
+    public static Manager getIns(){
+        if(this.ins == null){
+            this.ins = new Manager();
+        }
+        return this.ins;
+    }
+}
+</code></pre><ul>
+<li>这种单例的实现就必须在依赖单线程的运行环境；</li>
+<li>但现实中往往是多线程环境，这时要实现单例就得双重校验锁：<pre><code>public class Manager{
+    private static Manager ins;
+    private Object lock;
+    //私有化构造函数
+    private Manager(){}
+    //获取单例
+    public static Manager getIns(){
+        if(ins == null){    //第一次校验，当多个线程执行获取单例的方法时，先对单例是否为空进行判定，为空才进入同步状态
+            synchronized(lock){
+                if(this.ins == null){  //第二次校验，进入同步锁状态，对单例进行校验，为空的话才进行构造单例
+                    this.ins = new Manager();
+                }
+            }
+        }    
+        return this.ins;
+    }
+}
+</code></pre><ul>
+<li><strong>一定要理解到这儿使用的双重校验缺一不可</strong>：两次校验才能实现同步线程对多线程操作的效率：<ul>
+<li><em>如果单单全用一次校验在方法上，也就是所有访问到这个方法的线程就直接进入到同步锁状态，那么就会造成大多访问线程的滞留，后部都等到第一个线程执行方法完毕再依次进入到方法中执行，这样明显是不合理的；</em></li>
+<li><em>如果在方法内部同步块之前只使用一次判定，就会造成多个线程同时执行这个获取单例方法时ins被判定为null，多个线程同同时等待同步块执行完，这样在第一个执行的线程构造单例后，虽然这时执行getIns()方法的线程不会进入到同步块等待了，但之前进入到同步块等待的线程还是会依次等待前面线程释放控制权后继续构造单例；所以才会在这同步块内再次校验ins是否为空，形成双重校验</em></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -110,10 +267,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/13/符号引用与直接引用/" data-id="cj6ufh7e10015e8qnyl5np283" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/07/14/java_multithread/" data-id="cj70r8fwn000g6cqnboq4dntv" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li></ul>
 
     </footer>
   </div>
@@ -180,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/06/23/项目开发模型/" data-id="cj6xyibbb000618qnh6keieks" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/06/23/项目开发模型/" data-id="cj70fi0im001ro8qni9qu8ckj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -230,10 +387,183 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj6xyibb8000418qnp3q9abec" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj70fi0i9001ao8qnry624ark" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/控制台/">控制台</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-design_principle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/13/design_principle/" class="article-date">
+  <time datetime="2017-05-13T04:32:48.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/13/design_principle/">设计原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="设计模式的六大原则"><a href="#设计模式的六大原则" class="headerlink" title="设计模式的六大原则"></a>设计模式的六大原则</h3><p>简称“六大设计原则”，用于整个面向对象编程过程中设计各种模式甚至到各个接口与类的设计都需要参考的原则。这些原则的宗旨是尽量减少程序的耦合性，让程序的可扩展性更高，在接触越多的编程后，越会感受到这些原则的重要性；</p>
+<hr>
+<ol>
+<li><strong>开闭原则(Open Close Principle)</strong>：<ol>
+<li>开闭原则的意思是：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。简言之，是为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。</li>
+<li>这也是我们在设计程序过程中，尽量使用功能功能明确单一的接口，尽量把类抽象成基类，让派生类继承其公共的属性与方法的目的。</li>
+<li>与依赖倒置原则相呼应。</li>
+</ol>
+</li>
+<li><strong>里氏代换原则（Liskov Substitution Principle）</strong><ol>
+<li>里氏代换原则是面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。LSP 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。</li>
+<li>里氏代换原则是<strong>对开闭原则的补充</strong>。实现开闭原则的关键步骤就是抽象化，而基类与子类的继承关系就是抽象化的具体实现，所以<strong>里氏代换原则是对实现抽象化的具体步骤的规范</strong>。也就是在设计各类程序块时，用父类、接口来接收实现的对象，这也是java多态实现基础；</li>
+</ol>
+</li>
+<li><strong>依赖倒置原则（Dependence Inversion Principle）</strong><ol>
+<li>这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体，一个具体的优势就是减少代码的重写，甚至可以减少方法的重载。</li>
+</ol>
+</li>
+<li><strong>接口隔离原则（Interface Segregation Principle）</strong><ol>
+<li>这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。由此可见，其实设计模式就是从大型软件架构出发、便于升级和维护的软件设计思想，它强调降低依赖，降低耦合。</li>
+</ol>
+</li>
+<li><strong>迪米特法则，又称最少知道原则（Demeter Principle）</strong><ol>
+<li>最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。</li>
+</ol>
+</li>
+<li><strong>合成复用原则（Composite Reuse Principle）</strong><ol>
+<li>合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj70r8fvq00016cqnu4xt9gna" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计原则/">设计原则</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_inner_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/29/java_inner_class/" class="article-date">
+  <time datetime="2017-04-29T05:04:38.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/29/java_inner_class/">java内部类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="java内部类"><a href="#java内部类" class="headerlink" title="java内部类"></a>java内部类</h3><ul>
+<li>java的内部类指定义在类之中的类，这个类中的范围可以是是类成员也可以在局部方法中，还可以是作用域中；</li>
+<li>内部类只是在编译时的概念，在本质上，当经过编译后，外部类会生成outer.class文件，而其中的内部类会生成outer$inner.class类文件，也就是就算定义成内部类，其本质依然是个类；</li>
+<li>那么内部类有什么存在的必要呢？<ul>
+<li>内部类是外部类的内容，在内部类之外加上一层外部类，就意味着：<ul>
+<li>内部类可为public、default之外的访问修辞符所修辞，这一点能很大程度上区别开外部类；</li>
+<li>有了以上一点，那在类中定义内部类就会在很多时候有用了，比如：静态内部类的单例模式中，将单例通过静态内部私有类的方法来获取，这样利用外部其它的类不能访问这个私有的内部类而达到控制内部类的初始化类加载，这样只有在这个相关外部类中调用时才会调用到内部类，在这样一个单例模式中就实现了单例的懒加载；</li>
+</ul>
+</li>
+<li>在迭代器模式中，在迭代器容器中创建了个内部类：<pre><code>- 容器实现类：
+    public class Repository implements Container {
+        String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
+        /**
+         * 返回内部类的对象，注意这儿的依赖倒置
+         */
+        @Override
+        public Iterator getIterator() {
+            return new DoIterator();
+        }
+        /**
+         * 内部类，实现迭代器接口
+         * @author Administrator
+         *
+         */
+        public class DoIterator implements Iterator{
+            int index;
+            /**
+             * 判定索引是否指向在集合之中，如果还在就返加true
+             */
+            @Override
+            public boolean hasNext() {
+                if(index &lt; elements.length)
+                    return true;
+                return false;
+            }
+            /**
+             * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
+             */
+            @Override
+            public Object next() {
+                if(this.hasNext()){
+                    Object obj = elements[index++];
+                    return obj;
+                }
+                return null;
+            }
+        }
+- 最后在外部其他的类中来构造一个此内部类：
+    - 先引入此内部类的包：`import designpatrern.iteratorpattern.Repository.DoIterator;`
+    - 先构造一个外部类的对象：`    Repository rep = new Repository();`
+    - 再来构造内部类对象：`DoIterator ite2 = rep.new DoIterator();`
+</code></pre><ul>
+<li>当这个内部类的修辞符为private时，这时在其他非相关的外部类中就不能导入此类，更名别说构造对象了；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj70r8fwc00076cqnt91ibjqy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java内部类，访问修辞符，迭代器/">java内部类，访问修辞符，迭代器</a></li></ul>
 
     </footer>
   </div>
@@ -334,10 +664,76 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj6wlvi6t00003kqn7srhxaau" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj70fi0ii001lo8qn3l77bttb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_modifier" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/31/java_modifier/" class="article-date">
+  <time datetime="2017-01-31T05:12:34.000Z" itemprop="datePublished">2017-01-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/31/java_modifier/">java访问修辞符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="访问修辞符"><a href="#访问修辞符" class="headerlink" title="访问修辞符"></a>访问修辞符</h3><ul>
+<li>java的访问修辞符包括了四个等级：Public,protected,(default/friendly),private;</li>
+<li>它们决定了所修辞的成员的被访问权限从高到低：<ul>
+<li>public:最高权限，项目中都可以访问；</li>
+<li>protected:受保护权限，只有在同包中或者在不同包的子类可以访问；</li>
+<li>default/friendly:默认的权限，不写出来。只有在同包中可以访问；</li>
+<li>private:私有权限，只有在同类中可以被访问，也就是在哪儿被声明就只有在哪儿可以被访问；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
+<li>外部类只能被public和default两种修辞符，内部类可以有所有的访问修辞符；</li>
+<li>这儿涉及到内部类的知识点：<ul>
+<li>与外部类的区别：<ul>
+<li>内部类可以被各种访问修辞符修辞，这一点区别于外部类；</li>
+<li>当内部类的成员被声明为静态时，该内部类必须被声明为静态，这是另一点区别于外部类；</li>
+</ul>
+</li>
+<li>当内部类被声明为private私有时，只能在外部类中构造该内部类的对象。在迭代器模式中，让内部类实现迭代器接口，利用依赖倒置，获取到内部类（迭代器）对象用接口接收，从而实现在外部得到这个内部类。这也充分地体现了依赖于抽象而不依赖于具体，关闭了具体实现，只开放了接口；</li>
+<li>当内部类声明为其它可以在外部访问的类型时，在外部引入这个类后，要直接构造一个内部类的实例必须先构造一个相关的外部类的对象，利用这个外部类的对象来构造才能实现。迭代器模式中例子：</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj70r8fwi000c6cqnxf59j87q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li></ul>
 
     </footer>
   </div>
@@ -353,7 +749,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/个人网站搭建/">个人网站搭建</a>
+    <a class="article-category-link" href="/categories/个人网站搭建/">个人网站搭建</a>►<a class="article-category-link" href="/categories/个人网站搭建/hexo/">hexo</a>
   </div>
 
   </div>
@@ -386,8 +782,7 @@
 </li>
 </ul>
 </li>
-<li><p>新建md文档：<code>hexo new [dir] filename</code></p>
-<ul>
+<li>新建md文档：<code>hexo new [dir] filename</code><ul>
 <li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，
         
           <p class="article-more-link">
@@ -397,456 +792,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj6ufh7d60007e8qn2i9x9jzk" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj70fi0gx0003o8qn69ivdo27" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
-  <time datetime="2016-12-03T04:54:38.000Z" itemprop="datePublished">2016-12-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/03/快速排序算法的理解/">快速排序算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="今日所得"><a href="#今日所得" class="headerlink" title="今日所得"></a>今日所得</h4><ul>
-<li>今天复习了下快速排序（使用递归），据说是效率最高的一种排序算法（相比于冒泡排序、选择排序）；</li>
-<li>之前学习C#时领教过，当想把这个算法迁移到java中来写一个时发现久了不练都手生了；</li>
-</ul>
-<ol>
-<li>前面多次使用递归的算法写一些方法（诸如二分法查找已经排好序数组元素的索引、递归生成满足条件（非纯数字或字母）的字符串；使用多次但没有想到过使用递归时可以无返回值；</li>
-<li>二分排序时，必须使用无返回值的递归方法。因为二分之后返回的是数组的一部分，最后把这一部分返回给递归前方法，这时要接收这一部分的元素需要对这一部分进行遍历；</li>
-<li><p>二分法排序(升序，若要降序则相反）流程：</p>
-<ol>
-<li>把数组第一个元素作为中间值，从最大索引(这个还必须从后往前找，因为我们用的第一个元素作为中间值，如果从前往后找，第一个较大值会直接覆盖最大索引的值；所以，如果想实现从前往后找就得把最大索引元素值作为中间值)开始往前找，找到比这个间值小的元素就把这个值赋予给最小索引的元素；</li>
-<li>再从最小索引元素开始往后找，找到这中间值大的元素，把这个元素值赋予给最大索引处的元素（找的过程不满足条件就把索引依次自增或自减）；</li>
-<li>依次这样后面往前找一趟，前面往后找一趟，直到最大与最小索引相等。这时把中间值赋予给这个索引，这样就完成了一次把数组分成两个部分，前面部分值比中间值小，后面部分比中间值大；</li>
-<li>这用上面一套流程对中间值两边的元素进行递归操作，递归缺口就是数组操作部分只有一个元素；</li>
-<li>代码：<pre><code>public int getPivotIndex(int[] arr, int minIndex, int maxIndex){
-    int pivot = arr[minIndex];
-    while (minIndex &lt; maxIndex) {
-        while (arr[maxIndex] &gt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            maxIndex--;
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        while (arr[minIndex] &lt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            minIndex++;
-        }
-        arr[maxIndex] = arr[minIndex];
-    }
-    arr[minIndex] = pivot;
-    return minIndex;
-}
- *二分法排序的流程 
- * @param arr
- * @param minIndex
- * @param maxIndex
- */
-public void dichotomySort(int[] arr, int minIndex, int maxIndex){
-    if(minIndex &lt; maxIndex){
-        int index = this.getPivotIndex(arr, minIndex, maxIndex);
-        dichotomySort(arr, minIndex, index - 1);
-        dichotomySort(arr, index + 1, maxIndex);
-    }else{
-        return;
-    }
-}
-</code></pre></li>
-</ol>
-</li>
-<li><p>二分法排序算法核心在于每一次查找把中间那一个值给定下来，并对中间值两边的数组分别再次排序,再对两边的数组分别进行同样的操作，直到不能再分割;</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/" data-id="cj6ufh7dt000ue8qnp748h91a" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于“上火”的事" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/关于“上火”的事/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/关于“上火”的事/">关于“上火”的科学点子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>所谓上火：<br>现代医学中并没有“上火”的概念。</p>
-</blockquote>
-<p>而现实生活中，我们的“火”是从哪儿上来的呢？</p>
-<ol>
-<li>吃辣上火：    <ol>
-<li>我们对吃辣上瘾的原因在于，辣椒刺激口腔内部产生类似灼烧的感觉，而这种感觉会促使大脑分泌多巴胺（多巴胺是人产生快感的来源，人类大部分上瘾行为都和它相关），从而上瘾；</li>
-<li>因为辣椒素残留口中，持续对口腔刺激。吃辣后，刷牙漱口就行了；</li>
-</ol>
-</li>
-<li>吃爪子上火：<ol>
-<li>瓜子本身并不会让你上火，让你不舒服的原因在于瓜子外壳上的脏东西。不信的话，下次吃瓜子只买瓜子仁吃，看会不会上火。</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj6uk916e0000mcqngkeomvba" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/">tips</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于Java你可能不知道的两点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/关于Java你可能不知道的两点/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/关于Java你可能不知道的两点/">java编程中你不知道的一两点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Java中，你不知道的一两点</strong></p>
-<ol>
-<li>关键字new是运算符: 我们都知道new是用来开辟并新的内存空间创建对象的，但大多不知道这个功能是由运算符来实现；</li>
-<li>运算符（type）： 强制类型转换，括号中加类型，强制类型转换，它也只是个运算符</li>
-<li>运算符instanceof： 二元布尔运算符，前跟实例名后跟类名，判定实例是否可以用此类接收；</li>
-<li>成员访问符“.”，访问类或实例的成员；</li>
-<li>方法调用()，除了用于强制运算顺序，括号还用于调用方法；</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/关于Java你可能不知道的两点/" data-id="cj6ufh7dl000ne8qn0zb0p6pc" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/20/springMVC/" class="article-date">
-  <time datetime="2016-08-20T05:29:17.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/20/springMVC/">springMVC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="核心对象："><a href="#核心对象：" class="headerlink" title="核心对象："></a>核心对象：</h2><h3 id="中央处理器：在web-xml中配置springmvc的servlet"><a href="#中央处理器：在web-xml中配置springmvc的servlet" class="headerlink" title="中央处理器：在web.xml中配置springmvc的servlet"></a>中央处理器：在web.xml中配置springmvc的servlet</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span>  </div><div class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>  </div><div class="line">  	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li>其中load-on-startup这个属性来指定这个中央处理器被初始化的时机：<ol>
-<li>当为负数时，只有第一次使用时才会初始化，这也就带来一个问题，第一次访问时就会慢一些；</li>
-<li>当为非负数时，中央处理器会在servlet容器启动时初始化，而这个数值就是初始化的顺序；</li>
-</ol>
-</li>
-</ol>
-<h3 id="核心对象：-1"><a href="#核心对象：-1" class="headerlink" title="核心对象："></a>核心对象：</h3><ol>
-<li>页面控制器，处理请求并给出响应；</li>
-<li>处理器映射器HandlerMapping：设置handler处理器与url资源的映射<ol>
-<li>使用BeanNameUrlHandlerMapping这个类时，就会将handler的name属性值作为url映射，访问这个处理器就填写其name属性值:<pre><code>&lt;bean id=&quot;login&quot; name=&quot;loginController.do&quot; class=&quot;com.woniuxy.springdemo.controller.LoginController&quot;/&gt;
-</code></pre>如上，就可能过name属性值，设置    <code>&lt;a href=&quot;loginController.do&gt;登录&lt;/a&gt;</code></li>
-<li>SimpleUrlHandlerMapping，这个类型的映射要求映射url与controller的配置id相对应，并在这个节点内将controller的id与生意人key对应起来；<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.handler.SimpleUrlHandlerMapping&quot;&gt;
-    &lt;property name=&quot;mappings&quot;&gt;
-        &lt;props&gt;
-        &lt;!--配置指定的url与bean的id映射,可添加多个--&gt;
-            &lt;prop key=&quot;/login.do&quot;&gt;login&lt;/prop&gt;
-            &lt;prop key=&quot;/login2.do&quot;&gt;login2&lt;/prop&gt;
-        &lt;/props&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-&lt;bean id=&quot;login&quot; name=&quot;loginController.do&quot; class=&quot;com.woniuxy.springdemo.controller.LoginController&quot;/&gt;
-&lt;bean id=&quot;login2&quot; name=&quot;loginController2.do&quot; class=&quot;com.woniuxy.springdemo.controller.LoginController2&quot;/&gt;
-</code></pre></li>
-<li>使用注解实现处理器与url的映射<pre><code>&lt;!-- 注解映射器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;/&gt;
-</code></pre><ol>
-<li>这个配置节点就决定了处理器与其中的方法可以被注解@RequestMapping（”url_name”）映射并指定url</li>
-<li>处理器适配器：HandlerAdapter，用于规定处理器的编写规则</li>
-<li>使用接口来配置适配器：<ol>
-<li>当指定为SimpleControllerHandlerAdapter时，它就规定了要想成为处理器，就要实现Controller这个接口；</li>
-<li>HttpRequestHandlerAdapter:这个适配器要求所有的Handler都必须实现HttpRequestAdapter接口；</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>使用注解实现配置适配器：<pre><code>&lt;!-- 注解适配器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;/&gt;
-</code></pre><ol>
-<li>这个配置节点就决定了，有@controller注解的类就是处理器</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<ul>
-<li>在spring-webmvc包中web_servlet包中最后有一个配置文件DispatcherServlet.properties，这个文件就规定了springmvc的默认核心对象；</li>
-</ul>
-<h3 id="springMVC中的处理器"><a href="#springMVC中的处理器" class="headerlink" title="springMVC中的处理器"></a>springMVC中的处理器</h3><ul>
-<li>controller:<ul>
-<li>中央处理器DispatcherServlet在web.xml中被配置成一个servlet,并通过初始化上下文配置参数springmvc.xml的路径与设置其启动时机与该servlet初始化时机；</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li>通过上一步实现来自前端请求必须都通过web.xml文件中指定的servlet处理，也就是大部分请求都是交给了springmvc，所有的springmvc的配置都在springmvc.xml文件中，在这个文件中，我们常常通过注解来实现请求与处理器（处理器中的方法）的映射。</li>
-<li>springmvc.xml配置中就指定了适配器映射，使用@Controller注解就让该类成为处理器</li>
-<li>@RequestMapping(“url_name”)则用来指定url路径，可以用来注解类与类的方法，想要请求进入处理方法中就要通过类的url与方法的url;</li>
-<li><p>注解使用时映射的方法中，可以与前端数据相通的参数有：</p>
-<ol>
-<li>简单数据类型</li>
-<li>pojo，这种情况下，pojo对象的属性名要与请求的参数名保持一致；比如，user.username User.password</li>
-<li>session/request/response：用法与之前一致，可以用分发请求也可以重定向；</li>
-<li>Model/ModelAndView：</li>
-<li>也可以为String类型的参数，只要参数名与来自前端的请求名一致，容器会自动将其注入到方法参数中；</li>
-<li>注解@RequestParam的使用：<ol>
-<li>其中有参数：<ol>
-<li>name:用于配置参数的别名，使用这个属性就可让请求url使用别名来访问到这个方法；</li>
-<li>required：boolean类型，当其值为true时，请求必须带有这个参数；</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>使用controller处理器时，各类方法返回数据类型：</p>
-<ol>
-<li>ModelAndView，此对象中可以添加model数据（addObject（String name,Object object)方法），也可以指定view（通过setViewName(String name)方法，而这个name也就决定了去到哪个jsp视图）</li>
-<li>String 字符串：当要在使用映射方法处理之后想到转到另外一个方法中去(不进入视图）则直接返回字符串”response:+方法映射”；</li>
-<li>“forward:+方法映射”，转发到相应方法中去，与response不同在于地址栏还是原来的地址，转发并没有执行新的request与response，而是和转发前的请求共用一个request与response，所以转发前的属性在转发后一样可以读取到；</li>
-</ol>
-</li>
-</ol>
-<h3 id="Restful架构"><a href="#Restful架构" class="headerlink" title="Restful架构"></a>Restful架构</h3><ul>
-<li>只是一种规范，终极的目标是资源URI</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj6ufh7dh000je8qnepse95mq" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JDBC的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/24/JDBC的理解/" class="article-date">
-  <time datetime="2016-07-24T04:14:32.000Z" itemprop="datePublished">2016-07-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/24/JDBC的理解/">JDBC的理解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p>全称：fava database connectivity,专用于java数据库连接，其中封装了基本的连接数据库的API,数据库连接的高级框架（诸如：Mybatis/Hibernate)的使用都基于JDBC的原理，也就是理解了JDBC对于我们更理解各种持久层数据连接层的框架很有帮助；</p>
-<h4 id="一个简单的JDBC实现"><a href="#一个简单的JDBC实现" class="headerlink" title="一个简单的JDBC实现"></a>一个简单的JDBC实现</h4><pre><code>/**
- * 获取数据库连接的方法
- * @return
- */
-public static Connection getConnection(){
-    Connection con = null;
-
-    try{
-//            获取连接mysql数据库的驱动
-        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
-//            设置连接数据库的url
-        String url = &quot;jdbc:mysql://localhost:3306/agileone1?useUnicode=true&amp;characterEncoding=UTF-8&quot;;
-//            连接数据库的用户名
-        String userName = &quot;root&quot;;
-//            连接数据库的密码
-        String userPass=&quot;&quot;;
-//            从而获取到数据库连接connection
-        con = DriverManager.getConnection(url, userName, userPass);
-    }catch (Exception e){
-        e.printStackTrace();
-    }
-    return con;
-}
-</code></pre><ul>
-<li>上述代码块就通过java.sql包里封装好的各个类与类反射获取到了连接指定数据库的链接；<ul>
-<li>接下来就可以利用这个连接来进行crud类操作<pre><code>- /**
- * 插入数据进入数据库的方法
- * @param username
- * @param password
- */
-static void insertData(String username, String password){
-    Connection con = getConnection();
-    String sql = &quot;INSERT INTO Userdata (username, userPass) VALUES(&apos;&quot;+username+&quot;&apos;, &apos;&quot;+password+&quot;&apos;)&quot;;
-    try {
-//            从连接创建状态
-        Statement state = con.createStatement();
-//            执行更新语句，返回影响行数
-        int re = state.executeUpdate(sql);
-        System.out.println(re);
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-/**
- * 模糊查询的方法
- * @param name
- */
-static void query(String name){
-    Connection con = getConnection();
-//        sql语句
-    String sql = &quot;SELECT * FROM userdata WHERE username = &apos;&quot; +name+&quot;&apos;&quot;;
-    try{
-        Statement state = con.createStatement();
-//            执行查询语句，返回批量结果集
-        ResultSet re = state.executeQuery(sql);
-//            对结果集进行迭代输出
-        while(re.next()){
-            System.out.println(&quot;id:&quot; + re.getInt(&quot;id&quot;));
-            System.out.println(&quot;username:&quot; + re.getString(&quot;username&quot;));
-            System.out.println(&quot;id:&quot; + re.getString(&quot;userPass&quot;));
-        }
-    }catch(SQLException e){
-        e.printStackTrace();
-    }
-}
-</code></pre></li>
-<li>当sql语句执行完成，需要对上面建立的各个连接与状态进行关闭：<pre><code>/**
- * 关闭连接与状态的方法
- */
-static void close(Connection con){
-    if(con !=null){
-        try {
-            con.close();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre><ul>
-<li>其中针对不同的方法与连接状态，关闭的对象也不一样，除了Connection还有Statement,Prestatement,resultSet，各个对象都是调用其Close方法；</li>
-<li>通常情况下，调用对象的Close()方法放在finally语句块中，这样就可以执行完查询语句方法后，交接将各个对象关闭；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
-<li><em>以上的代码基本实现了JDBC的整个流程，从创建连接到执行查询语句，再到关闭连接、状态、结果集</em></li>
-<li><em>JDBC中封装的连接数据库的API包：java.sql是连接sql的基础包，使用JDBC就得引入这个jar包：<code>mysql-connector-java-5.1.38-bin.jar</code></em></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC的理解/" data-id="cj6xyibat000118qnn9zfq97n" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -866,9 +815,9 @@ static void close(Connection con){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/hexo/">hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每日精进/">每日精进</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/经济学/">经济学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -876,9 +825,9 @@ static void close(Connection con){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类，访问修辞符，迭代器/">java内部类，访问修辞符，迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
     </div>
   </div>
 
@@ -886,9 +835,9 @@ static void close(Connection con){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 13.33px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/igot/" style="font-size: 16.67px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 15px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类，访问修辞符，迭代器/" style="font-size: 10px;">java内部类，访问修辞符，迭代器</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 17.5px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/单例模式/" style="font-size: 12.5px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 10px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a>
     </div>
   </div>
 
@@ -905,9 +854,17 @@ static void close(Connection con){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
+          </li>
         
           <li>
             <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
@@ -919,14 +876,6 @@ static void close(Connection con){
         
           <li>
             <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
           </li>
         
       </ul>
@@ -942,7 +891,7 @@ static void close(Connection con){
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
