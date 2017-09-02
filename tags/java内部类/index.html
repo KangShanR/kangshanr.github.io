@@ -3,19 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>java枚举 | KangShan</title>
+  <title>Tag: java内部类 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java枚举的使用">
-<meta name="keywords" content="java,enum">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java枚举">
-<meta property="og:url" content="https://kangshanr.github.io/2017/07/29/java_enum/index.html">
+  <meta name="description" content="This is kang&apos;s website.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KangShan">
+<meta property="og:url" content="https://kangshanr.github.io/tags/java内部类/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="java枚举的使用">
-<meta property="og:updated_time" content="2017-08-31T16:23:49.170Z">
+<meta property="og:description" content="This is kang&apos;s website.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java枚举">
-<meta name="twitter:description" content="java枚举的使用">
+<meta name="twitter:title" content="KangShan">
+<meta name="twitter:description" content="This is kang&apos;s website.">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -69,91 +67,39 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java_enum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/29/java_enum/" class="article-date">
-  <time datetime="2017-07-29T04:04:38.000Z" itemprop="datePublished">2017-07-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      java枚举
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/04/29/java_inner_class/" class="archive-article-date">
+  <time datetime="2017-04-29T05:04:38.000Z" itemprop="datePublished">Apr 29</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/29/java_inner_class/">java内部类</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="java枚举"><a href="#java枚举" class="headerlink" title="java枚举"></a>java枚举</h3><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><ul>
-<li>枚举enum是在jdk1.5后引入的，是java高级特性之一；</li>
-<li>枚举的定义关键字：enum<ul>
-<li><code>public enum season{}</code>，其与普通类一样拥有属性、方法、构造函数</li>
-<li>枚举是特殊的类，其成员全都是固定下来的；<h4 id="枚举特性："><a href="#枚举特性：" class="headerlink" title="枚举特性："></a>枚举特性：</h4></li>
-</ul>
-</li>
-<li>枚举的构造函数默认是私有的，可以自定义枚举私有的构造函数</li>
-<li>所有枚举的公共基类为abstract Enum<e extends="" enum<e="">&gt;，我们自定义的enum则都继承自它；</e></li>
-<li>枚举中的实例就是我们常用到的定义为公共静态常量，它们之间用<code>；</code>分开；</li>
-<li>枚举每个实例都有索引，从0开始；</li>
-<li>枚举的常用方法:<ul>
-<li>Enum<e> valueOf(String name):通过name得到枚举的实例；</e></li>
-<li>Enum<e>[] static valueOf(Class<e extends="" enum=""> enumType, String name);根据指定枚举名返回这个枚举类里所有的实例</e></e></li>
-<li>int ordinal();返回该枚举常量在声明中的位置；</li>
-<li>int compareTo(E o);与指定对象比较，如果相同就返回0；</li>
-<li>String name();返回该枚举实例的声明名；</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li>在枚举单例模式中，利用的就是枚举的构造函数是私有的，其实例就是本身的一个公开静态常量实例来实现，而其他的方法定义在这个枚举中；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/29/java_enum/" data-id="cj70r8fwf000a6cqn035ur4yu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/enum/">enum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/08/13/java_reference/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java底层之引用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/07/26/原创小段子—人物没原型/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">原创小段子之人物没原型</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         
