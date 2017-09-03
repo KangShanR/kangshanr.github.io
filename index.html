@@ -69,6 +69,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-today&#39;s questions" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/today's questions/" class="article-date">
+  <time datetime="2017-09-01T05:04:38.000Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="今日问题"><a href="#今日问题" class="headerlink" title="今日问题"></a>今日问题</h3><ul>
+<li>9/1/2017 6:00:51 PM <ul>
+<li>在实现同步代码块时，<code>synchronized()</code>这个<code>()</code>中的对象应该放入什么对象？<ul>
+<li>通常放入了这个类的class对象，形如：<code>synchronized(this,getClass()){}</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>9/3/2017 6:01:28 PM <ul>
+<li>对于一个子类，其继承的父类与实现的接口之间无关系，但这两者都有相同签名的方法，是什么样的情况？<ul>
+<li>亲测有效，在子类实现父类与接口的同名方法一次就行，最终执行结果与所写代码块一致；</li>
+<li>这个父类的方法不管是抽象方法，对结果并无影响；</li>
+</ul>
+</li>
+<li>对于面向对象多态的实现中，使用父类或接口来接收一个子类或实现类的对象时，这个对象并不会拥有自己扩展的变量或成员，只能拥有父类或接口的成员；</li>
+<li>main方法对于一个java程序的意义及它是如何被调用的，它的参数意义在哪？</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/09/01/today's questions/" data-id="cj7512zu1000348qn6rtc0uoq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/迭代器/">迭代器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mybatis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/31/mybatis/" class="article-date">
@@ -360,6 +421,123 @@ public void before(){
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-adapter_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/adapter_pattern/" class="article-date">
+  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
+<li>适配器是行为型模式，将原有的行为经过组合进行扩展；</li>
+<li>顾名思义，适配器就是将原本不适的接口或功能适配到目标对象上。</li>
+<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；</li>
+<li>而比起缺省型适配器，还有类的适配器和对象适配器：<ul>
+<li>类适配器：将目标功能的接口执行并继承被适配者<ul>
+<li>被适配者：想在此类上扩展目标接口的功能（适配器的设计初衷在于，被适配者并不能直接实现目标接口）<pre><code>public class Adaptee {
+    void run(){
+        System.out.println(&quot;Adaptee.run..........&quot;);
+    }
+}
+</code></pre></li>
+<li>目标接口：<pre><code>public interface Target {
+    void fly();
+}
+</code></pre></li>
+<li>适配器：<pre><code>public class Adapter extends Adaptee implements Target {
+    @Override//继承父类被适配者，并能方便地扩展其方法
+    public void run() {
+        super.run();
+        System.out.println(&quot;Adapter.run.......&quot;);
+    }
+    //实现目标接口的方法
+    @Override
+    public void fly() {
+        System.out.println(&quot;Adapter.fly...........&quot;);
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    Adapter adaptee = new Adapter();
+    adaptee.fly();
+    adaptee.run();
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Adapter.fly...........
+Adaptee.run..........
+Adapter.run.......
+</code></pre></li>
+<li><strong>note:</strong>这样的一个适配器在某种程度上来说与缺省的适配器并没有什么本质上的区别，都是将各种功能行为通过继承或实现聚合到同一个适配器上；</li>
+</ul>
+</li>
+<li>对象适配器模式：<ul>
+<li>与类适配器不同在于，对象适配器将被适配的类注入到适配器，再让适配器实现想要实现的接口，而让适配器聚合了这两者的成员；<ul>
+<li>被适配者与目标接口与上面例子一样，但适配器变成：<pre><code>public class Adapter implements Target {
+    private Adaptee adaptee;
+    public Adapter (Adaptee adaptee){
+        this.adaptee = adaptee;
+    }
+    //扩展被适配者方法相对来说要被动一点
+    public void run() {
+        this.adaptee.run();
+        System.out.println(&quot;Adapter.run.......&quot;);
+    }
+    //实现目标接口的方法
+    @Override
+    public void fly() {
+        System.out.println(&quot;Adapter.fly...........&quot;);
+    }
+}
+</code></pre></li>
+<li>可以看出来，对象适配器是将被适配者作为一个对象注入到适配者中，实现聚合其方法；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li>适配器的好处在于：将各个部门不同的功能聚合到同一个对象上，而实现各个不同的功能都可以通过一个对象实现，达到了高聚合的效果；</li>
+<li>适配器的缺点：各个不同的接口聚合到同一个类中，而让这个对象的接口变得混乱，当这个对象实现某一个功能时，会不清楚实现这个功能到底来自于哪个接口；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/adapter_pattern/" data-id="cj7512ztp000048qn4fw69bu0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -667,6 +845,250 @@ public static UserManager getIns(){
 
 
   
+    <article id="post-factory_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/28/factory_pattern/" class="article-date">
+  <time datetime="2017-08-28T02:04:03.000Z" itemprop="datePublished">2017-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/factory_pattern/">设计模式之工厂模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul>
+<li>生成一个类交由相关的工厂类实现，而不由直接的类来实现；</li>
+<li>相关的类继承同一个接口，实现这个接口的类都可以由工厂类中同一个方法来实现实例化；</li>
+<li><p>例如<strong>简单工厂模式</strong>：</p>
+<pre><code>//定义同一个类的抽象接口
+public interface Shape{
+    void draw();
+}
+//实现shape接口的类有：
+//Circle类
+public class Circle implements Shape{
+    @Override
+    public void  draw(){
+        system.out.println(&quot;circle.draw&quot;);
+    }
+}
+//Square类
+public class Square implements Shape{
+    @Override
+    public void draw(){
+        system.out.println(&quot;square.draw&quot;);
+    }
+}
+//创建实例的工厂类
+public class ShapeFactory{
+    //创建图形实例的方法
+    public Shape createShape(String shape){
+        if(shape.equalsIgnoreCase(&quot;CIRCLE”){
+            return new Circle();
+        }
+        if(shape.equalsIgnoreCase(&quot;SQUARE”){
+            return new Square();
+        }
+        reutnr null;
+    }
+}
+</code></pre><ul>
+<li>模式理解：<ul>
+<li>通过工厂来实现对各个类的实例化，都在工厂实现；</li>
+<li><strong>通过反射机制实现，增加一个同一接口的类不需要改变工厂的代码,只需要增加一个实现这个实现对应接口的类</strong>：<ul>
+<li>其工厂的代码：<pre><code>public class ShapeFactory{
+    //创建工厂的方法
+    public Shape createShape(Class&lt;? extends Shape&gt; clazz){
+        try{
+            return Class.forName(clazz.getName()).newInstance();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>工厂方法模式</strong></p>
+<ul>
+<li>相较于简单工厂模式，工厂方法模式实现了<strong>“用扩展取代修改”</strong>，简单工厂中要增加减少实现产品的构造需要对工厂的代码进行修改，而工厂方法模式将这些都放在子类的实现中；</li>
+<li>示例：生产iphone与miphone两种手机，将手机与工厂的接口抽取出来，分别用不同的工厂生产不同的手机；<ul>
+<li>手机接口：<pre><code>public abstract class Phone {
+}
+</code></pre></li>
+<li>手机类：<pre><code>public class Iphone extends Phone {
+    public Iphone(){
+        System.out.println(&quot;Iphone.constracting.....&quot;);
+    }
+}
+public class Miphone extends Phone {
+    public Miphone(){
+        System.out.println(&quot;Miphone.constracting......&quot;);
+    }
+}
+</code></pre></li>
+<li>工厂接口：<pre><code>public interface Factory {
+    Phone createPhone();
+}
+</code></pre></li>
+<li>工厂类：<pre><code>public class IphoneFactory implements Factory {
+    @Override
+    public Iphone createPhone() {
+        return new Iphone();
+    }
+}
+public class MiphoneFactory implements Factory {
+    @Override
+    public Miphone createPhone() {
+        return new Miphone();
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //创建iphone过程，先建工厂，再在工厂中创建iphone
+    IphoneFactory facIphone = new IphoneFactory();
+    Iphone iphone = facIphone.createPhone();
+    //创建miphone过程：
+    MiphoneFactory facMiphone = new MiphoneFactory();
+    Miphone miphone = facMiphone.createPhone();
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Iphone.constracting.....
+Miphone.constracting......
+</code></pre></li>
+</ul>
+</li>
+<li><em>工厂方法模式将对象的创建进行了很好的包装，但也正因此而每增加一个产品的类就不得不增加一个工厂来实现其构造，这在某种程度上来说是不科学的；</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
+<li>相比较于工厂模式，抽象工厂模式在工厂模式的基础上增加生成工厂的工厂类，那么生产出来的工厂都要继承一个接口或父类；</li>
+<li>该模式的优点：把同一个产品类集成到同一个工厂内，这样使用时就直接调用工厂中的方法，而生成同一个工厂里预备好的类对象，也更方便管理；</li>
+<li>它是为了解决子工厂的扩展性问题，而将系列产品装配在同一个工厂中，也就实现了不同产品之间相互组合不同最终产品，而子工厂中不同产品抽取接口或父类方法出来成为抽象工厂；<ul>
+<li>示例：生产手机需要手机引擎、手机音乐盒这两种产品，这两种产品分别有两种类型，那么，一个引擎加一个播放器组成一个手机产品集<ul>
+<li>引擎接口：<pre><code>public interface Engine {
+}
+</code></pre></li>
+<li>引擎产品的两个类：<pre><code>public class EngineAmd implements Engine {
+    public EngineAmd(){
+        System.out.println(&quot;EngineAmd.constracting....&quot;);
+    }
+}
+public class EngineIntel implements Engine {
+    public EngineIntel (){
+        System.out.println(&quot;EngineIntel.constracting.......&quot;);
+    }
+}
+</code></pre></li>
+<li>音乐盒接口：<pre><code>public interface MusicBox {
+}
+</code></pre></li>
+<li>音乐盒的两个不同产品类：<pre><code>public class NokiaMusic implements MusicBox {
+    public NokiaMusic(){
+        System.out.println(&quot;NokiaMusic.constracting...&quot;);
+    }
+}
+public class SonyMusic implements MusicBox {
+    public SonyMusic(){
+        System.out.println(&quot;SonyMusic.constracting...&quot;);
+    }
+}
+</code></pre></li>
+<li>抽象工厂类，规定手机工厂要生产的两个产品：一个引擎一个音乐盒，这儿可以用接口也可以用抽象类<pre><code>public abstract class AbstractFactory {
+    abstract Engine createEngine();
+    abstract MusicBox createMusicBox();
+}
+</code></pre></li>
+<li>两个工厂类，实现抽象工厂，实现装配两个产品到一个工厂中<pre><code>//苹果手机厂，使用intel引擎与sony的音乐盒
+public class AppleFactory extends AbstractFactory {
+    @Override
+    public EngineIntel createEngine() {
+        return new EngineIntel();
+    }
+    @Override
+    public SonyMusic createMusicBox() {
+        return new SonyMusic();
+    }
+}
+//联想手机，使用amd的内核与Nokia的音乐盒
+public class LenovoFactory extends AbstractFactory {
+    @Override
+    public EngineAmd createEngine() {
+        return new EngineAmd();
+    }
+    @Override
+    public NokiaMusic createMusicBox() {
+        return new NokiaMusic();
+    }
+}
+</code></pre></li>
+<li>测试，将工厂创建出来由它们来创建手机的子产品<pre><code>public static void main(String[] args) {
+    Apple apple4s = new Apple();
+    Lenovo lenovo3 = new Lenovo();
+    //apple生产过程
+    AbstractFactory appleFactory = new AppleFactory();
+    apple4s.engine=appleFactory.createEngine();
+    apple4s.musicBox=appleFactory.createMusicBox();
+    //Lenovo生产过程
+    LenovoFactory lenovoFactory = new LenovoFactory();
+    lenovo3.engine=lenovoFactory.createEngine();
+    lenovo3.musicBox=lenovoFactory.createMusicBox();
+}
+</code></pre></li>
+<li>测试结果：<pre><code>EngineIntel.constracting.......
+SonyMusic.constracting...
+EngineAmd.constracting....
+NokiaMusic.constracting...
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li>从上面例子可以看出：<ul>
+<li>抽象工厂可以实现组合产品集，一个工厂组合一个产品集，同时想要实现产品集的扩展也很方便。想要订制同一个产品集不同型号，直接实现一个工厂类。如果要不同产品集，则需要对抽象工厂进行扩展修改；</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/28/factory_pattern/" data-id="cj7512ztx000148qnfor9uwky" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-今日无题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/26/今日无题/" class="article-date">
@@ -674,7 +1096,7 @@ public static UserManager getIns(){
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
   </div>
 
   </div>
@@ -782,7 +1204,7 @@ public static UserManager getIns(){
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/经济学/">经济学</a>
+    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
   </div>
 
   </div>
@@ -948,469 +1370,10 @@ public static UserManager getIns(){
 
 
   
-    <article id="post-得到直播：打造工作方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/得到直播：打造工作方法/" class="article-date">
-  <time datetime="2017-08-23T00:02:42.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/每日精进/">每日精进</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天得到直播:打造工作方法有些启发，直播的一些记要与心得：</p>
-<h4 id="罗胖-打造工作方法"><a href="#罗胖-打造工作方法" class="headerlink" title="罗胖:打造工作方法"></a>罗胖:打造工作方法</h4><ul>
-<li>复制，任何行业，拿走的最多的红利的人不是最顶尖高手的人，而是专业力不错，但同时会复制传播的人，最直接简单的方式：写作，演讲；</li>
-<li>怎么把成本覆盖掉，怎么把利复制？王石，任何一个麻烦找上我，我想法就是怎么让这个麻烦下次不再找上我；</li>
-<li>正收益能不能复制？怎么提高自己的可复制性？<ul>
-<li>三个字：确定性。</li>
-<li>工作方法的高下就一点，能不能给确定性？<ul>
-<li>能力的确定性；<ul>
-<li>靠谱与闭环，大家要知道你能力的边界，能力再小，网络中价值中都极大；老干妈，这个产品水平极高吗？不，但海外留学生都知道，想吃到中国味，老干妈一定没错；凡事有交待，件件有回应，不能成为反馈黑洞；</li>
-</ul>
-</li>
-<li>态度的确定性<ul>
-<li>态度不好拿，想得太多；</li>
-<li>找到最基本简单的态度，坚持下去；</li>
-</ul>
-</li>
-<li>范围的确定性<ul>
-<li>每个人不管在什么层级，都是在创业；</li>
-<li>时时刻刻要在所有人面前要表现，你在掌握全局；</li>
-<li>思维：<ul>
-<li>上推，上推具体的操作到正式制度性抽象概念，高级餐厅的牛排旁边一定要放几朵西兰花，这样才显得高级；</li>
-<li>下沉，你不是不写嘛，我来，你要觉得这个可以接受，那么我自己做点事，像水一样，把其他的地方勾勒出来，当对方接收到这个动作时，对方被水包裹后自然而然会被牵动；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="最后有一段充满力量的话："><a href="#最后有一段充满力量的话：" class="headerlink" title="最后有一段充满力量的话："></a>最后有一段充满力量的话：</h4><p>王朔给女儿:（核心：把握自己，确定性；）</p>
-<blockquote>
-<p>煲汤比写诗重要；<br>自己的手艺比男人的重要；<br>头发、胸、腰、屁股比脸重要；<br>内心强大到混蛋比什么都重要；</p>
-</blockquote>
-<p>在网上查了下，冯唐写这段话应该更早的，王朔应该是借用的冯唐的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/得到直播：打造工作方法/" data-id="cj70fi0i30013o8qn981v85w7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/15/spring/" class="article-date">
-  <time datetime="2017-08-15T04:14:38.000Z" itemprop="datePublished">2017-08-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/spring/">spring框架的学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；</p>
-</blockquote>
-<h2 id="Core模块"><a href="#Core模块" class="headerlink" title="Core模块"></a>Core模块</h2><ul>
-<li>bean标签：<ul>
-<li>id属性指定这个实例的唯一标识；</li>
-<li>class属性，用来指定这个实例的类定义；</li>
-<li>property子元素，指定这个对象的属性，比如：user对象中有属性name,那么这个这个user的bean对象就应该有一个子元素标签property，同时如果这个属性是另外一个本地的bean，name属性指向这个属性：<code>&lt;property name=&quot;advice&quot; id=&quot;beanId&quot;&gt;</code>直接使用id属性来引用到其他的bean的id就行；</li>
-</ul>
-</li>
-</ul>
-<h2 id="AOP模块"><a href="#AOP模块" class="headerlink" title="AOP模块"></a>AOP模块</h2><blockquote>
-<p>Aspect Oriented Programming,面向切面编程</p>
-</blockquote>
-<ul>
-<li>切面Aspect:可以理解为模块，比如，读写数据库、权限检查、异常情况记录；</li>
-<li>Advice,增强：拦截器实现增强接口Advisor，不同的拦截器实现不同的增强接口，比如：方法前拦截器<pre><code>MethodBeforeInterceptor implements MethodBeforeAdvice{
-    //方法前拦截器
-    //调用对象的方法前将执行该方法。参数分别为被调用的方法、参数、对象
-    public void before(Method method, Object[] args, Object instance) throws Throwable{
-        System.out.println(&quot;即将要执行的方法：“+method.getName());
-        //如果是Service
-        if(instance instanceof WaiterServiceImpl)
-            String name = ((AopServiceImpl) instance).geName();
-                if(name == null)//检查是否为空
-                    throw new NullPointerException(&quot;name属性不能为null&quot;);
-        }
-        method.invoke(instance,args);
-    }
-}
-</code></pre></li>
-<li>拦截器，interceptor，也是pointcut的核心:<ul>
-<li>spring拦截器的配置实现，通过增加配置：<pre><code>&lt;bean id=&quot;aopMethodBeforeInterceptor&quot; class=&quot;org.springframework.aop.supoort.NameMatchMethodPointcutAdvisor&quot;&gt;
-    &lt;property name=&quot;advice&quot;&gt;
-        &lt;bean class=&quot;com.snail.aopdemo.advice.MethodBeforeInterceptor&quot;/&gt;
-    &lt;/property&gt;
-    &lt;property name=&quot;mappedName&quot; value=&quot;withAop&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-</code></pre></li>
-<li>从上面的代码可以看出：<ul>
-<li>spring实现拦截器都是通过增强器Advisor，而这个增强器是一个代理，将参数（自定义的Advice）作为参数传入其中；</li>
-<li>同时mappedName属性用来指定拦截的方法，这个方法并不是增加类中的方法，而是到时要执行到的所有的匹配方法名字段的方法；</li>
-<li>同时：spring支持由正则表达式配置切入点：<pre><code>&lt;property name=&quot;patterns&quot;&gt;      &lt;!-- 正则表达式配置切入点--&gt;
-    &lt;list&gt;
-        &lt;value&gt;.*get.*&lt;/value&gt; &lt;!--包含get字段的方法就被拦截&gt;
-        &lt;value&gt;.*absquatulate&lt;/value&gt;  &lt;!--包含absquatutulat字段的方法被拦截&gt;
-    &lt;/list&gt;
-&lt;/property&gt;
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="ORM模块"><a href="#ORM模块" class="headerlink" title="ORM模块"></a>ORM模块</h2><blockquote>
-<p>Object RelativeDatabase Mapping,对象关系型数据库映射</p>
-<ul>
-<li>简介：<ul>
-<li>此模块对Hibernate/JDO/TopLink、iBatis等ORM框架提供支持；</li>
-<li>Spring提供在DAO层提供HibernateDaoSupport类与JDBCTemplate类；</li>
-<li>在Spring里，Hibernate与SessionFactory等只是Spring一个特殊的Bean，由Spring负责实例化与销毁；所以也就不需要与Hibernate的API打交道，不需要开启关闭Hibernate的Session、Transaction，Spring自动维护这些对象；</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h4 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h4><p>这儿用User类举例：</p>
-<ul>
-<li>使用注解来让User中属性与数据库中表的列相关联；</li>
-<li>Entity类的注解：<ul>
-<li>@Entity，表明这个类为实体类；</li>
-<li>@Table（name=”users”),指明此实体类与数据库users表相关联；</li>
-<li>属性的注解：<ul>
-<li>@Id，主键注解，表明这属性为数据库表中的主键</li>
-<li>@GeneratedValue（strategy=GenerationType.IDENTITY),指明该主键生成策略为自增</li>
-<li>@Temporal（value = TemporalType.Date),表明列属性为Date</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>DAO层接口，不同的Entity对应不同的DAO接口：<ul>
-<li>UserDao接口，就定义对User表的操作：<pre><code>public interface UserDao{
-    public void saveUser(User user);
-    public List&lt;User&gt; findUsers();
-    public int getCount ();
-    public User findUserByName(String name);
-}
-</code></pre></li>
-<li>UserDao接口的实现类，UserDaoImpl：<ul>
-<li>这个实现类要继承HibernateDaoSupport类，这就意味着从父类继承了Hibernate与HibernateTimplate对象，该对象就对实体对象进行各类操作；<pre><code>public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
-    //实现接口中的方法
-    public void saveUser(User user){
-        this.getHibernateTemplate().persist(user);//使用父类方法get到Template,并调用其persist方法将user存入
-    }
-}
-    public int getCount(){    //查询记录条数
-        Number num = (Number)this.getSession(true).createQuery(&quot;select count (*) from User).uniqueResult();
-        return n.intValue();
-    }
-    public List&lt;User&gt; findUsers(){  //查询所有的user
-        return this.getHibernateTemplate().find(&quot;select * from User&quot;);
-    }
-    public User findUserByName(String name){  //根据用户名查询用户
-        List&lt;User&gt; users = this.getHibernateTemplate().find{&quot;select * from User u where u.name=?&quot;, name);  //使用Template
-        if(users.size() &gt; 0)
-            return users.get(0);返回第一条
-        return null;
-    }
-}
-</code></pre></li>
-</ul>
-</li>
-<li><strong><em>从上述代码例子中可以看出：</em></strong><ul>
-<li>查询(Read)、创建(Create)都由父类HibernateDaoSupport提供的getHibernateTemplate方法获取到实例并执行实例的方法来实现，其中查询使用实例方法find(String sql, Stirng 拼接String），而save则用持久化方法persist(Object user);</li>
-<li>当要涉及到数据库计算时，则用getSession获取到与数据库的会话对象，让会话对象执行sql统计语句；</li>
-<li>同时，所有sql语言的操作对象都指向实体类，而没有对数据库中的表进行组织sql语句；</li>
-</ul>
-</li>
-<li><strong>个人理解：</strong>spring通过封装Hibernate在框架中，让DAO接口的实现类继承HibernateDaoSupport尖，就将Hibernate对象创建出来，而直接操作这个对象的方法来获取session/Hibernate对象直接与数据库交互，而就节省了操作JDBC的代码；</li>
-</ul>
-</li>
-</ul>
-<h4 id="配置集成Hibernate"><a href="#配置集成Hibernate" class="headerlink" title="配置集成Hibernate"></a>配置集成Hibernate</h4><ul>
-<li>在spring的bean.xml文件中配置集成hibernate到目前这一步只需要<strong><em>配置三个bean</em></strong>：<ul>
-<li>数据源datasource，这是一切的基础，所有的操作最终都会落到对数据库的操作上；<pre><code>&lt;bean id=&quot;datasource&quot; class=&quot;org.apache.commonsdbcp.BasicDataSource&quot;&gt;
-    &lt;property name=&quot;driverClassName&quot; class=&quot;org.gjt.mm.mysql.Driver&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;url&quot; value=&quot;jdbc\:mysql\://localhost\:3306/ssh&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;username&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
-    &lt;propery name=&quot;password&quot; value=&quot;&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-</code></pre>  <em>- 数据源的配置就是用依赖包中的一个封装好的类（这儿就是BasicDataSource）的对象，并将这个对象的属性值配置好，这些属性就包括了数据库的驱动、连接的url、连接数据库的用户名、密码。可以想象的是，这个处理数据库的对象封装了所有的连接数据库的方法，使用密码与用户名，交给驱动对象，这个驱动对象就按照提供的url连接到主机上的数据库，并登录到数据库；</em></li>
-<li>有了数据源，就可以将关联连接库的数据源配置到sessionFactory中去：<pre><code>&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.annotation.AnnotationSessionFactoryBean&quot; destroy-method=&quot;destroy&quot;&gt;
-    &lt;property name=&quot;dataSource&quot;&gt;
-        &lt;ref bean=&quot;dataSource&quot;/&gt;
-    &lt;property/&gt;
-    &lt;property name=&quot;annotatedClasses&quot;&gt;
-        &lt;list&gt;
-            &lt;value&gt;com.woniuxy.orm.class_qulified_name&lt;/value&gt;
-        &lt;/list&gt;
-    &lt;property/&gt;
-    &lt;property name=&quot;hibernateProperties&quot;&gt;
-        &lt;pros&gt;
-            &lt;pro key=&quot;hibernate.dialect&quot;&gt;
-                org.hibernate.dialect.MySQLDialect
-            &lt;/pro&gt;
-            &lt;pro key=&quot;hibernate.show_sql&quot;&gt;true&lt;/pro&gt;
-            &lt;pro key=&quot;hibernate.format_sql&quot;&gt;true&lt;/pro&gt;
-            &lt;pro key=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/pro&gt;
-        &lt;/pros&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><ul>
-<li><em>配置会话工厂（因为我们的实体类使用的注解映射，所以就使用注解会话工厂AnnotationSessionFatoryBean)其中包括了：数据源、实体类还有hibernate,而hibernate的配置就包括了方言、输出sql语句、格式化sql语句、创建表结构</em></li>
-</ul>
-</li>
-<li>有了会话工厂，距离操作数据库就只有让Dao配置为bean，而操作代码就getBean来获取到这个Dao的实例，让这个实例来操作数据库：<pre><code>&lt;bean id=&quot;userDao&quot; class=&quot;daoImpl_qualified_name&quot;&gt;
-    &lt;property name=&quot;sessionfactory&quot; ref=&quot;sessionFactory&quot; /&gt;
-&lt;/bean&gt;
-</code></pre><ul>
-<li><em>在Dao的bean中，将前面配置好的sessionFactory装配到其中</em></li>
-</ul>
-</li>
-<li>以上情况是实体类User是使用注解来配置的，这种情况下，使用的sessionFactory是AnnotationSessionFactoryBean,但当实体类是使用xml文件来配置时，使用的配置bean应该是LocalSessionFactoryBean。同时，sessionFactory中配置实体的方式也变成：<pre><code>&lt;property name=&quot;mappingDirectoryLocations&quot;&gt;
-    &lt;list&gt;
-        &lt;value&gt;classpath:entiteis_配置文件的路径&lt;/value&gt;
-    &lt;/list&gt;
-&lt;/property&gt;
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<h3 id="Hibernate的事务管理"><a href="#Hibernate的事务管理" class="headerlink" title="Hibernate的事务管理"></a>Hibernate的事务管理</h3><ul>
-<li><strong>分层的做法：应用层调用Service层，Service层对数据进行检查（是否重复之类），然后Service层（注入一个Dao属性）调用Dao层，Dao层调用Hibernate实现数据的操作。原则上不允许跨层访问，业务层次分明。</strong></li>
-<li>事务管理transaction，对应的层为Service层；</li>
-</ul>
-<h3 id="spring的bean-xml配置文件的理解"><a href="#spring的bean-xml配置文件的理解" class="headerlink" title="spring的bean.xml配置文件的理解"></a>spring的bean.xml配置文件的理解</h3><ul>
-<li>所有的操作都基于对数据库的crud，所以所有的配置都围绕着操作数据库；</li>
-<li>所以，第一个bean的是数据源：dataSource<ul>
-<li>其中的属性就包括：<ul>
-<li>连接数据库的驱动：driverClassName</li>
-<li>数据库连接url:url</li>
-<li>数据库连接用户名：username</li>
-<li>数据库连接密码：password</li>
-</ul>
-</li>
-<li>通常情况下，我们把数据源信息都单独分离在jdbc.properties文件中，并在要用到的配置文件中将其配置为上下文<code>&lt;context:property-placeholder&gt; location=&quot;classpath:jdbc.properties/&gt;</code>，之后就可以在数据源dataSource中配置其中的属性：<code>&lt;property name=&quot;driverClass&quot; value=&quot;${driver}&quot;&gt;&lt;/property&gt;</code></li>
-</ul>
-</li>
-<li>第二个配置的bean：sessionFactory<ul>
-<li>这儿就把上一次配置好的dataSource数据源装配到sessionFactory的属性中：<pre><code>&lt;!-- 配置本地会话工厂bean --&gt;
-&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;&gt;
-    &lt;!-- 配置数据源 --&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-    &lt;!-- 指定hibernate配置文件--&gt;
-    &lt;property name=&quot;configLocations&quot; value=&quot;classpath:hibernate.cfg.xml&quot;/&gt;
-    &lt;!-- 指定hibernate映射文件--&gt;
-    &lt;property name=&quot;mappingDirectoryLocations&quot;&gt;
-        &lt;list&gt;
-            &lt;value&gt;classpath:mappings/*.xml&lt;/value&gt;
-        &lt;/list&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><ul>
-<li>Note:<em>这儿配置spring的sessionFactory属性就会把Hibernatek r sessionFactory属性覆盖；</em></li>
-<li>configLocations属性：<em>将指定路径的配置文件都加载进去，相应的LocalSessionFactoryBean中的的此属性的setter方法的参数为可变参数:</em><pre><code>public void setConfigLocations(Resource... configLocations) {
-    this.configLocations = configLocations;
-}
-</code></pre></li>
-</ul>
-</li>
-<li>而在上述代码中，hibernate的配置文件也直接引入到sessionFatory中来，而在外部的hibernate配置文件：<br>  <hibernate-configuration><pre><code>&lt;session-factory&gt;
-    &lt;!-- 配置方言 --&gt;
-    &lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQL5InnoDBDialect&lt;/property&gt;
-    &lt;!-- session上下文控制权:交给session来控制 --&gt;
-    &lt;property name=&quot;hibernate.current_session_context_class&quot;&gt;org.springframework.orm.hibernate5.SpringSessionContext&lt;/property&gt;
-    &lt;!-- 格式化sql语句 --&gt;
-    &lt;property name=&quot;format_sql&quot;&gt;true&lt;/property&gt;
-    &lt;!-- 显示sql语句 --&gt;
-    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
-    &lt;!-- 表的生成策略 --&gt;
-    &lt;property name=&quot;hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
-&lt;/session-factory&gt;
-</code></pre>  </hibernate-configuration><ul>
-<li>其中配置了部分的Hibernate属性，同时也可以配置c3p0的属性在其中；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第三个配置：事务管理器transactionManager<ul>
-<li>将前面配置好的sessionFactory装配到这个bean中，作为sessionFactory属性值；</li>
-</ul>
-</li>
-<li><p>第四个配置：tx:advice，配置事务的传播特性，指定具备事务的方法名；</p>
-<pre><code>&lt;!-- 事务配置增强 --&gt;
-&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txMng&quot;&gt;
-     &lt;tx:attributes&gt;
-         &lt;tx:method name=&quot;save*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
-         &lt;tx:method name=&quot;update*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
-         &lt;tx:method name=&quot;delete*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
-         &lt;tx:method name=&quot;batch*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
-
-         &lt;tx:method name=&quot;get*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
-         &lt;tx:method name=&quot;load*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
-         &lt;tx:method name=&quot;find*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
-
-         &lt;!-- 统配 --&gt;
-         &lt;tx:method name=&quot;*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
-     &lt;/tx:attributes&gt;
- &lt;/tx:advice&gt;
-</code></pre><ul>
-<li>最后一行统配就指定了所有的方法都配置上事务，同时isolation指此事务的隔离级别，propagation指事务的传播属性，read-only指是否为只读；</li>
-</ul>
-</li>
-<li>第五个配置aop:config，配置事务的切入点，以及被管理的对象<pre><code>&lt;aop:config&gt;
-    &lt;aop:pointcut id=&quot;interceptorPointCuts&quot; expression=&quot;execution(* com.woniuxy.sshdemo.service.impl.*(..))&quot;/&gt;
-    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;interceptorPointCuts&quot;/&gt;
-&lt;/aop:config&gt;
-</code></pre><ul>
-<li>先将切面的切点配置进来，也就是各个service的执行对象。再将这此切点配置到advisor中</li>
-</ul>
-</li>
-<li>其它的配置：<ul>
-<li>dao的执行类，配置一个id加上sessionFactory;</li>
-<li>service的执行类,配置上dao这个属性的对象；</li>
-</ul>
-</li>
-<li><strong>使用注解来实现事务的配置</strong><ul>
-<li>这时bean.xml：<ul>
-<li>数据源不变</li>
-<li>sessionFactory不变；</li>
-<li>事务管理器trasactionManager依然不变；</li>
-<li>变的是：添加一个事务注解驱动<code>tx:annotation-driven trasaction-manager=&quot;transactionManager&quot;/&gt;</code>，添加这个驱动配置后，对产生事务的类添加注解<code>@Transactional</code>，标记这个类为事务类，对其中的事务方法添加注解<code>@Transactional(isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)</code>注解（标明了这个方法的隔离水平与传播水平）。这样的注解就取代了上面例子中tx:advice与aop:config两个配置节点的功能；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/15/spring/" data-id="cj70fi0hp000oo8qnh1qy0r0o" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java_reference" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/13/java_reference/" class="article-date">
-  <time datetime="2017-08-13T04:04:38.000Z" itemprop="datePublished">2017-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/13/java_reference/">java底层之引用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="直接引用与符号引用"><a href="#直接引用与符号引用" class="headerlink" title="直接引用与符号引用"></a>直接引用与符号引用</h4><p><strong>JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。</strong></p>
-<h4 id="符号引用：Symbolic-References"><a href="#符号引用：Symbolic-References" class="headerlink" title="符号引用：Symbolic References"></a>符号引用：Symbolic References</h4><ul>
-<li>以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可;</li>
-<li>存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过符号引用这一道工序，同一个类，其符号引用必然一致；</li>
-<li>类在解析过程中，就根据JVM实时产生的内存分配状况，将符号引用转为直接引用；</li>
-</ul>
-<h4 id="直接引用：Direct-References"><a href="#直接引用：Direct-References" class="headerlink" title="直接引用：Direct References"></a>直接引用：Direct References</h4><p><strong>- 直接引用是和虚拟机的布局直接相关的，同一个符号引用在不同的JVM上翻译出来的直接引用也不尽相同。某个目标有了直接引用，那说明这个目标已经被加载到内存中了</strong></p>
-<ul>
-<li>直接引用可以是：<ul>
-<li>直接指向目标的指针（如，指向类型class对象、类变量、类方法的直接引用就是指向方法区的指针）；</li>
-<li>相对偏移量：如指向实例变量、实例方法的直接引用都是偏移量；</li>
-<li>一个能直接定位到目标的句柄；</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li><em>也就是说通过符号引用转换为直接引用来实现了引用的跨平台（对于同一个数据对象的引用都用同一个符号引用来实现，而在不同的平台上不同的JVM运行时转换成不同的直接引用）</em></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/13/java_reference/" data-id="cj70r8fwx000q6cqnxat1hw6d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1420,7 +1383,7 @@ public static UserManager getIns(){
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每日精进/">每日精进</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/经济学/">经济学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -1430,7 +1393,7 @@ public static UserManager getIns(){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -1440,7 +1403,7 @@ public static UserManager getIns(){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 15px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 10px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 17.5px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 10px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12.5px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 12.5px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 10px;">迭代器</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 12px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 18px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 12px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 14px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 12px;">迭代器</a> <a href="/tags/项目开发/" style="font-size: 12px;">项目开发</a>
     </div>
   </div>
 
@@ -1449,7 +1412,7 @@ public static UserManager getIns(){
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -1462,7 +1425,15 @@ public static UserManager getIns(){
       <ul>
         
           <li>
+            <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+          </li>
+        
+          <li>
             <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
           </li>
         
           <li>
@@ -1471,14 +1442,6 @@ public static UserManager getIns(){
         
           <li>
             <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/26/今日无题/">无题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
           </li>
         
       </ul>

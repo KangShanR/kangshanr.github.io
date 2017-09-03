@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://kangshanr.github.io/2017/04/29/java_inner_class/index.html">
 <meta property="og:site_name" content="KangShan">
 <meta property="og:description" content="java内部类的使用与迭代器的实现">
-<meta property="og:updated_time" content="2017-09-01T13:08:00.161Z">
+<meta property="og:updated_time" content="2017-09-03T00:29:39.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java内部类">
 <meta name="twitter:description" content="java内部类的使用与迭代器的实现">
@@ -186,6 +186,92 @@ proxy.draw(&quot;&quot;);
 </li>
 </ul>
 </li>
+<li>在动态代理模式中，匿名内部类会有很好的体现，共具体实现：<ul>
+<li>接口：<pre><code>public interface Draw {
+    void draw(String name);
+}
+</code></pre></li>
+<li>被代理的类：<pre><code>public class RealDraw implements Draw {
+    @Override
+    public void draw(String name) {
+        System.out.println(&quot;RealDraw.draw&quot;+name);
+    }
+}
+</code></pre></li>
+<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
+    Object target;
+    public ProxyDraw(Object target){
+        this.target = target;
+    }
+    /* 
+     * 获取代理实例
+     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
+     */
+    public Object getProxyIns() {
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args)
+                            throws Throwable {
+                        System.out.println(&quot;Porxy_start&quot;);
+                        Object returnValue = method.invoke(target, args);
+                        System.out.println(&quot;Porxy_end&quot;);
+                        return returnValue;
+                    }
+                });
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Porxy_start
+RealDraw.draw....testend
+Porxy_end
+</code></pre></li>
+<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，如果不使用匿名内部类，其实现过程：<ul>
+<li>将代理中匿名内部类的实现提取出来：<pre><code>public class InvokeHandler implements InvocationHandler {
+    //在构造函数中就注入要调用方法的对象
+    Object obj;
+    public InvokeHandler(Object obj){
+        this.obj = obj;
+    }
+    /* 
+     * 实现InvocationHandler接口（其中只有一个invoke方法）
+     */
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(&quot;invoke.start....&quot;);
+        Object resultValue = method.invoke(obj, args);
+        System.out.println(&quot;invoke.end....&quot;);
+        return resultValue;
+    }
+}
+</code></pre></li>
+<li>而代理类中获取代理的方法就应该是：<pre><code>public Object getProxyIns2() {
+    return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+            new InvokeHandler(this.target)); 
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns2();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>invoke.start....
+RealDraw.draw....test.end
+invoke.end....
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -232,7 +318,7 @@ proxy.draw(&quot;&quot;);
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每日精进/">每日精进</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/经济学/">经济学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -242,7 +328,7 @@ proxy.draw(&quot;&quot;);
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -252,7 +338,7 @@ proxy.draw(&quot;&quot;);
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 15px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 10px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 17.5px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 10px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12.5px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 12.5px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 10px;">迭代器</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 12px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 18px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 12px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 14px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 12px;">迭代器</a> <a href="/tags/项目开发/" style="font-size: 12px;">项目开发</a>
     </div>
   </div>
 
@@ -261,7 +347,7 @@ proxy.draw(&quot;&quot;);
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -274,7 +360,15 @@ proxy.draw(&quot;&quot;);
       <ul>
         
           <li>
+            <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+          </li>
+        
+          <li>
             <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
           </li>
         
           <li>
@@ -283,14 +377,6 @@ proxy.draw(&quot;&quot;);
         
           <li>
             <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/26/今日无题/">无题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
           </li>
         
       </ul>

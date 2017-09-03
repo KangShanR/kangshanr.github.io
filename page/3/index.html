@@ -69,6 +69,461 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_inner_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/29/java_inner_class/" class="article-date">
+  <time datetime="2017-04-29T05:04:38.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/29/java_inner_class/">java内部类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="java内部类"><a href="#java内部类" class="headerlink" title="java内部类"></a>java内部类</h3><ul>
+<li>java的内部类指定义在类之中的类，这个类中的范围可以是是类成员也可以在局部方法中，还可以是作用域中；</li>
+<li>内部类只是在编译时的概念，在本质上，当经过编译后，外部类会生成outer.class文件，而其中的内部类会生成outer$inner.class类文件，也就是就算定义成内部类，其本质依然是个类；</li>
+<li>那么内部类有什么存在的必要呢？<ul>
+<li>内部类是外部类的内容，在内部类之外加上一层外部类，就意味着：<ul>
+<li>内部类可为public、default之外的访问修辞符所修辞，这一点能很大程度上区别开外部类；</li>
+<li>有了以上一点，那在类中定义内部类就会在很多时候有用了，比如：静态内部类的单例模式中，将单例通过静态内部私有类的方法来获取，这样利用外部其它的类不能访问这个私有的内部类而达到控制内部类的初始化类加载，这样只有在这个相关外部类中调用时才会调用到内部类，在这样一个单例模式中就实现了单例的懒加载；</li>
+</ul>
+</li>
+<li>在迭代器模式中，在迭代器容器中创建了个内部类：<pre><code>- 容器实现类：
+    public class Repository implements Container {
+        String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
+        /**
+         * 返回内部类的对象，注意这儿的依赖倒置
+         */
+        @Override
+        public Iterator getIterator() {
+            return new DoIterator();
+        }
+        /**
+         * 内部类，实现迭代器接口
+         * @author Administrator
+         *
+         */
+        public class DoIterator implements Iterator{
+            int index;
+            /**
+             * 判定索引是否指向在集合之中，如果还在就返加true
+             */
+            @Override
+            public boolean hasNext() {
+                if(index &lt; elements.length)
+                    return true;
+                return false;
+            }
+            /**
+             * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
+             */
+            @Override
+            public Object next() {
+                if(this.hasNext()){
+                    Object obj = elements[index++];
+                    return obj;
+                }
+                return null;
+            }
+        }
+- 最后在外部其他的类中来构造一个此内部类：
+    - 先引入此内部类的包：`import designpatrern.iteratorpattern.Repository.DoIterator;`
+    - 先构造一个外部类的对象：`    Repository rep = new Repository();`
+    - 再来构造内部类对象：`DoIterator ite2 = rep.new DoIterator();`
+</code></pre><ul>
+<li>当这个内部类的修辞符为private时，这时在其他非相关的外部类中就不能导入此类，更名别说构造对象了；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="匿名内部类："><a href="#匿名内部类：" class="headerlink" title="匿名内部类："></a>匿名内部类：</h3><ul>
+<li>这种情况多数用于一个抽象的类或者接口想要生成一个对象，这时不得不用一个子类来实现其抽象方法或新产品才能实现，但如果这个子类只用一次的话，专门创建一个子类来装载时会造成系统资源的浪费，那么这时使用匿名内部类会更合理：<ul>
+<li>接口定义<br>  public interface Draw {<pre><code>void draw(String name);
+</code></pre>  }</li>
+<li>这时我们只想实现一次特殊的draw()方法，而且只用得到一次，如果创建一个类实现这个接口（或者抽象父类），就会造成系统资源的浪费，所以就使用匿名内部类实现：</li>
+<li>main方法中测试：<pre><code>public static void main(String[] args) {
+    Draw draw = new Draw(){
+        @Override
+        public void draw(String name) {
+            System.out.println(&quot;Draw.Draw....&quot;+name);
+        }
+    };
+    draw.draw(&quot;test&quot;);
+}
+</code></pre><ul>
+<li>测试结果：<pre><code>Draw.Draw....test
+</code></pre></li>
+<li>其中先用接口new一个对象出来，再在这个对象中创建一个匿名的内部类并实现其draw()方法，因为是匿名的类，所以只能看到其方法在对象体<code>{}</code>中。</li>
+<li>同时要实现这个匿名内部类的效果，不一定要在接口中或抽象类的抽象方法中，普通类的普通方法也一样可以实现这样的重写方法，再一次调用：<pre><code>//实现类的匿名内部类，这个类不一定抽象类方法也不一定是抽象方法，一样都可以实现
+ProxyDraw proxy = new ProxyDraw(draw){
+    @Override
+    public void draw(String name){
+        System.out.println(&quot;anonymity&quot;+name);
+    }
+};
+proxy.draw(&quot;&quot;);
+</code></pre><ul>
+<li>测试结果：<pre><code>anonymity
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在动态代理模式中，匿名内部类会有很好的体现，共具体实现：<ul>
+<li>接口：<pre><code>public interface Draw {
+    void draw(String name);
+}
+</code></pre></li>
+<li>被代理的类：<pre><code>public class RealDraw implements Draw {
+    @Override
+    public void draw(String name) {
+        System.out.println(&quot;RealDraw.draw&quot;+name);
+    }
+}
+</code></pre></li>
+<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
+    Object target;
+    public ProxyDraw(Object target){
+        this.target = target;
+    }
+    /* 
+     * 获取代理实例
+     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
+     */
+    public Object getProxyIns() {
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args)
+                            throws Throwable {
+                        System.out.println(&quot;Porxy_start&quot;);
+                        Object returnValue = method.invoke(target, args);
+                        System.out.println(&quot;Porxy_end&quot;);
+                        return returnValue;
+                    }
+                });
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Porxy_start
+RealDraw.draw....testend
+Porxy_end
+</code></pre></li>
+<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，如果不使用匿名内部类，其实现过程：<ul>
+<li>将代理中匿名内部类的实现提取出来：<pre><code>public class InvokeHandler implements InvocationHandler {
+    //在构造函数中就注入要调用方法的对象
+    Object obj;
+    public InvokeHandler(Object obj){
+        this.obj = obj;
+    }
+    /* 
+     * 实现InvocationHandler接口（其中只有一个invoke方法）
+     */
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(&quot;invoke.start....&quot;);
+        Object resultValue = method.invoke(obj, args);
+        System.out.println(&quot;invoke.end....&quot;);
+        return resultValue;
+    }
+}
+</code></pre></li>
+<li>而代理类中获取代理的方法就应该是：<pre><code>public Object getProxyIns2() {
+    return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+            new InvokeHandler(this.target)); 
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns2();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>invoke.start....
+RealDraw.draw....test.end
+invoke.end....
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj70r8fwc00076cqnt91ibjqy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/迭代器/">迭代器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-项目开发流程（详细）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/29/项目开发流程（详细）/" class="article-date">
+  <time datetime="2017-04-28T20:33:30.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/job/">job</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/29/项目开发流程（详细）/">项目开发流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>整个流程包括：</p>
+<ol>
+<li><strong>需求挖掘</strong>（核心就是用户痛点）：<ol>
+<li>作为一个商业项目的程序员，一定要搞明白项目的赢利点在哪里；</li>
+<li>要解决用户痛点；</li>
+<li>用户分为：直接用户、最终用户<ol>
+<li>直接用户就是项目开发中，直接对接的用户，通俗的可以理解为给钱的；</li>
+<li>最终用户是产品开发出来后使用产品的用户；<ol>
+<li><em>比如给一个公司开发的无纸化办公软件，这个产品的直接用户是这个公司的管理层，他们把项目交到我们手上来开发。但最终用户就是这个公司的各类普通职员，是他们在使用这个成型的产品；</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>在外包项目中，在需求挖掘的过程中往往涉及到：<ol>
+<li>用户访谈</li>
+<li>需求探索</li>
+<li>卖家会议</li>
+<li>领导意见<ol>
+<li><em>而在这整个过程中，作为开发人员不能刻意引导对方，使用引导性对话往往会带出客户的伪需求，这就会需求分析带来干扰</em></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>需求分析：在作需求分析的对象只有两个：测试人员，普通使用者；这就决定了：写需求分析说明书时，措词要易懂清晰，少用专业词汇；<ol>
+<li>整个过程是开发人员、测试人员、客户各方不断讨论的过程</li>
+<li>一旦有新的决定性需求确定下来，比如定稿时，一定要客户签字确认，各方责任要清晰；</li>
+<li>当定稿之后客户要求修改需求，或修改需求成本太高，一定要出需求变更说明书，同样要求客户签字；</li>
+</ol>
+</li>
+<li>概要设计（数据库设计E-R图可同步进行）<ol>
+<li>比如一个简单的邮箱功能，其中的数据应该包括：<ol>
+<li>发件人名师</li>
+<li>收件人列表</li>
+<li>主题</li>
+<li>内容</li>
+<li>是否有附件</li>
+<li>抄送人列表</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>详细设计<ol>
+<li>数据库设计（模型图）</li>
+<li>用例图（PowerDesigner、Visio)：描述参与者与用例之间的关系，不能用crud之类的语言，比如：开发票与销毁发票，而不是用新建发票、删除发票；注意参与者可以是人但也可以是其他角色；</li>
+<li>时序图（PowerDesigner)：操作到哪个对象，操作后返回什么对象</li>
+<li>流程图（Visio)：<ol>
+<li>跨职能流程图中：每一个泳道代表一个职能；</li>
+<li>菱形：判定，出来两根线，一个是，一个否；</li>
+<li>矩形：流程</li>
+<li>圆角矩形：开始或结束</li>
+<li>平行四边形：输入数据</li>
+</ol>
+</li>
+<li>包图（Powerdesigner)</li>
+<li>类图（Powerdesigner)</li>
+</ol>
+</li>
+<li>编码</li>
+<li>测试</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj70fi0ii001lo8qn3l77bttb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_modifier" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/31/java_modifier/" class="article-date">
+  <time datetime="2017-01-31T05:12:34.000Z" itemprop="datePublished">2017-01-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/31/java_modifier/">java访问修辞符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="访问修辞符"><a href="#访问修辞符" class="headerlink" title="访问修辞符"></a>访问修辞符</h3><ul>
+<li>java的访问修辞符包括了四个等级：Public,protected,(default/friendly),private;</li>
+<li>它们决定了所修辞的成员的被访问权限从高到低：<ul>
+<li>public:最高权限，项目中都可以访问；</li>
+<li>protected:受保护权限，只有在同包中或者在不同包的子类可以访问；</li>
+<li>default/friendly:默认的权限，不写出来。只有在同包中可以访问；</li>
+<li>private:私有权限，只有在同类中可以被访问，也就是在哪儿被声明就只有在哪儿可以被访问；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
+<li>外部类只能被public和default两种修辞符，内部类可以有所有的访问修辞符；</li>
+<li>这儿涉及到内部类的知识点：<ul>
+<li>与外部类的区别：<ul>
+<li>内部类可以被各种访问修辞符修辞，这一点区别于外部类；</li>
+<li>当内部类的成员被声明为静态时，该内部类必须被声明为静态，这是另一点区别于外部类；</li>
+</ul>
+</li>
+<li>当内部类被声明为private私有时，只能在外部类中构造该内部类的对象。在迭代器模式中，让内部类实现迭代器接口，利用依赖倒置，获取到内部类（迭代器）对象用接口接收，从而实现在外部得到这个内部类。这也充分地体现了依赖于抽象而不依赖于具体，关闭了具体实现，只开放了接口；</li>
+<li>当内部类声明为其它可以在外部访问的类型时，在外部引入这个类后，要直接构造一个内部类的实例必须先构造一个相关的外部类的对象，利用这个外部类的对象来构造才能实现。迭代器模式中例子：</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj70r8fwi000c6cqnxf59j87q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo+github=website" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/23/hexo+github=website/" class="article-date">
+  <time datetime="2017-01-22T18:04:38.000Z" itemprop="datePublished">2017-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/23/hexo+github=website/">hexo+github=your website</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a><br><a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" title="BlueLake使用教程" target="_blank" rel="external">使用blueLake的教程</a><br><a href="http://app.weibo.com/tool/weiboshow" title="新浪微博秀" target="_blank" rel="external">生成新浪微博秀；</a></p>
+<ul>
+<li>hexo generate<ul>
+<li>根据已提供的md文件资料生成静态网页，放在public文件夹中；</li>
+<li>hexo generate –watch<ul>
+<li>对比查看文件的改动，只有当文件改动被审查过才会执行generate命令生成静态网页；</li>
+</ul>
+</li>
+<li>hexo generate –deploy与hexo deploy –generate<ul>
+<li>两者效果一样都在generate后执行布置命令deploy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>新建md文档：<code>hexo new [dir] filename</code></p>
+<ul>
+<li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，
+        
+          <p class="article-more-link">
+            <a href="/2017/01/23/hexo+github=website/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj70fi0gx0003o8qn69ivdo27" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
@@ -155,7 +610,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       <a data-url="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/" data-id="cj70fi0ij001no8qnwgrk9vwm" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -626,10 +1081,40 @@ static void close(Connection con){
 <li>静态代理：<ul>
 <li>可以让代理类同时实现真正想的对象的类实现的接口，而在代理类中有一个真正类的属性，当想要这个真正类时，对上述属性判空，再实例化，这样通过代理类执行接口中的方法时就是执行的真正想要的类的方法了；</li>
 <li>简单地讲，代理就是将其他的类的各种实现方法，交由代理来实现。而要达到这种效果，就可以让代理与其他的类实现同一个接口，再在代理中实现接口方法中去实现这个类的方法。这也是代理的核心，一般代理中要注入一个代理对象，调用代理方法时，就对此对象初始化并调用其相关的方法；</li>
-<li>静态代理的局限性：</li>
 </ul>
 </li>
-<li>动态代理：</li>
+<li>动态代理：<ul>
+<li>代理不用继承接口，代理由java内置的java.lang.reflect包中的Proxy类生成：</li>
+<li>其中生成代理静态的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler handler)</code>；<ul>
+<li>此方法的三个参数：<ul>
+<li>loader：代理目标的类加载器；</li>
+<li>interfaces：代理目标实现的接口；</li>
+<li>handler：执行处理器，指调用此代理实现接口的处理器，此处理器必须实现InvocationHandler接口，并实现其<code>public Object invoke(Object proxy, Method method, Object[] args)</code>方法;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cglib代理（子类代理）：<ul>
+<li><ul>
+<li>此类型代理需要用到spring核心包推荐使用spring-core 3.2.5版本及以上；</li>
+</ul>
+</li>
+<li>动态代理与静态代理都是向上抽取依赖，要求实现接口，而cglib代理则是通过目标对象子类来实现对目标对象功能的扩展；</li>
+<li>其实现方法：<ul>
+<li>引入的功能包能够动态地在内在中构造子类；</li>
+<li>cglib的强大在于高效生成代码，在运行期扩展java类与接口，spring赖以生存的AOP拦截的就是大量地使用了cglib的强大功能；</li>
+<li>cglib的底层：使用字节码处理框架ASM转换字节码并生成新的类（并没有弄的懂的地方，涉及JVM中内部结构，诸如：class文件的格式秘指令集）</li>
+</ul>
+</li>
+<li>注意：cglib的实现是依赖于代理的扩展子类，需要对代理目标进行扩展<ul>
+<li>也就是说代理类不能为final修辞；</li>
+<li>同时，目标对象的方法不能为final/static所修辞；</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -754,7 +1239,56 @@ mcd
 </ul>
 </li>
 </ul>
-<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><hr>
+<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
+<li>适配器是行为型模式，将原有的行为经过组合进行扩展；</li>
+<li>顾名思义，适配器就是将原本不适的接口或功能适配到目标对象上。</li>
+<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；</li>
+<li>而比起缺省型适配器，还有类的适配器和对象适配器：<ul>
+<li>类适配器：将目标功能的接口执行并继承被适配者<ul>
+<li>被适配者：想在此类上扩展目标接口的功能（适配器的设计初衷在于，被适配者并不能直接实现目标接口）<pre><code>public class Adaptee {
+    void run(){
+        System.out.println(&quot;Adaptee.run..........&quot;);
+    }
+}
+</code></pre></li>
+<li>目标接口：<pre><code>public interface Target {
+    void fly();
+}
+</code></pre></li>
+<li>适配器：<pre><code>public class Adapter extends Adaptee implements Target {
+    @Override//继承父类被适配者，并能方便地扩展其方法
+    public void run() {
+        super.run();
+        System.out.println(&quot;Adapter.run.......&quot;);
+    }
+    //实现目标接口的方法
+    @Override
+    public void fly() {
+        System.out.println(&quot;Adapter.fly...........&quot;);
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    Adapter adaptee = new Adapter();
+    adaptee.fly();
+    adaptee.run();
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Adapter.fly...........
+Adaptee.run..........
+Adapter.run.......
+</code></pre></li>
+<li><strong>note:</strong>这样的一个适配器在某种程度上来说与缺省的适配器并没有什么本质上的区别，都是将各种功能行为通过继承或实现聚合到同一个适配器上；</li>
+</ul>
+</li>
+<li>对象适配器模式：<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><hr>
 <ul>
 <li><em>未完待续</em></li>
 </ul>
@@ -774,323 +1308,10 @@ mcd
 
 
   
-    <article id="post-数据结构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/03/数据结构/" class="article-date">
-  <time datetime="2016-05-03T11:04:34.000Z" itemprop="datePublished">2016-05-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/03/数据结构/">数据结构与算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>通俗地理解，数据结构就是数据在内存中存入的结构。语言中的各类集合就是对数据结构的实现。</strong></p>
-<ul>
-<li>这其中包括了物理结构与逻辑结构；</li>
-<li>物理结构又叫存储结构：<ul>
-<li>包括了顺序物理结构，数据元素存放在地址连续的存储单元里，数据元素之间的物理关系与逻辑关系是一致的（逻辑结构上是一对一？）（数组）；</li>
-<li>链式物理结构，数据元素分散在任意存储单位，可以不连续，前后用指针关联；</li>
-</ul>
-</li>
-<li>逻辑结构：反应数据之间逻辑关系的数据结构，表示数据之间前后关系，与数据在内存中的存储位置无关；<ul>
-<li>集合结构：数据元素同属一个集合，他们之间并列，没有其他关系；</li>
-<li>线性结构：数据元素之间一对一的相互关系；</li>
-<li>树形结构：数据元素之间存在一对多的相互关系；</li>
-<li>图形结构（网状结构）：数据元素存在多对多的关系；</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://www.cnblogs.com/wsnb/p/5172431.html" title="博客园——数据结构与算法" target="_blank" rel="external">参考博客</a></p>
-<p><strong>个人理解：</strong></p>
-<ol>
-<li>目前在编程语言学习中接触到的集合各类中的元素之间逻辑关系都是的集合结构，包括字典、列表，它们其中的元素之间只有并列关系，没有其他任何关系；</li>
-<li>而在集合元素内部的属性关系（键值对）是一对一的线性结构（一个键对就一个值）；</li>
-<li>数组是一个典型的顺序物理学结构，且其逻辑结构是一对一；</li>
-<li>实例与实例的成员关系在逻辑上是一对多，一个实例对应了多个成员；方法与方法执行块，参数，都是一对多的树状逻辑关系；</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/03/数据结构/" data-id="cj70fi0i60018o8qnzy234qnk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-markdown" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/29/markdown/" class="article-date">
-  <time datetime="2015-04-29T04:54:38.000Z" itemprop="datePublished">2015-04-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/29/markdown/">markdownPad使用攻略</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；</p>
-</blockquote>
-<p>首先来一个：</p>
-<h4 id="官方的使用说明"><a href="#官方的使用说明" class="headerlink" title="官方的使用说明"></a>官方的使用说明</h4><ul>
-<li>包括了常用的快捷键使用：</li>
-<li>Welcome to GitHub Pages</li>
-</ul>
-<p>You can use the <a href="https://github.com/KangShanR/Study-Notes/edit/master/index.md" target="_blank" rel="external">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
-<p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
-<h3 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h3><p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Syntax highlighted code block</div><div class="line"></div><div class="line"><span class="section"># Header 1</span></div><div class="line"><span class="section">## Header 2</span></div><div class="line"><span class="section">### Header 3</span></div><div class="line"></div><div class="line"><span class="bullet">- </span>Bulleted</div><div class="line"><span class="bullet">- </span>List</div><div class="line"></div><div class="line"><span class="bullet">1. </span>Numbered</div><div class="line"><span class="bullet">2. </span>List</div><div class="line"></div><div class="line"><span class="strong">**Bold**</span> and <span class="emphasis">_Italic_</span> and <span class="code">`Code`</span> text</div><div class="line"></div><div class="line">[<span class="string">Link</span>](<span class="link">url</span>) and ![<span class="string">Image</span>](<span class="link">src</span>)</div></pre></td></tr></table></figure>
-<p><strong>Shortcut:</strong></p>
-<ul>
-<li><strong>Bold</strong> (<code>Ctrl+B</code>) and <em>Italic</em> (<code>Ctrl+I</code>)</li>
-<li>Quotes (<code>Ctrl+Q</code>)</li>
-<li>Code blocks (<code>Ctrl+K</code>)</li>
-<li>Headings 1, 2, 3 (<code>Ctrl+1</code>, <code>Ctrl+2</code>, <code>Ctrl+3</code>)</li>
-<li>Lists (<code>Ctrl+U</code> and <code>Ctrl+Shift+O</code>)</li>
-<li>Timestamp(<code>Ctrl+T</code>)</li>
-<li>Horizontal Rule(<code>Ctrl+R</code>)</li>
-</ul>
-<p>For more details see <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">GitHub Flavored Markdown</a>.</p>
-<h3 id="Jekyll-Themes"><a href="#Jekyll-Themes" class="headerlink" title="Jekyll Themes"></a>Jekyll Themes</h3><p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/KangShanR/Study-Notes/settings" target="_blank" rel="external">repository settings</a>. The name of this theme is saved in the Jekyll <code>_config.yml</code> configuration file.</p>
-<h3 id="Support-or-Contact"><a href="#Support-or-Contact" class="headerlink" title="Support or Contact"></a>Support or Contact</h3><p>Having trouble with Pages? Check out our <a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="external">documentation</a> or <a href="https://github.com/contact" target="_blank" rel="external">contact support</a> and we’ll help you sort it out.</p>
-<h3 id="新得到的小点子"><a href="#新得到的小点子" class="headerlink" title="新得到的小点子"></a>新得到的小点子</h3><p>诸多功能：<a href="http://www.wiz.cn/feature-markdown.html" title="诸多功能在后面" target="_blank" rel="external">为知笔记中提供的一些功能</a>，其中包括了表格的实现等没怎么用到但很实现的功能；</p>
-<ul>
-<li>其他在使用过程中摸索出来的小点有：<ol>
-<li>段落：一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；得注意的是，这种格式经过hexo生成后在网站上显示为水平居中，字体放大一号，同时左边并没有段落的竖线；</li>
-<li>插入链接：<code>[百度](http://www.baidu.com &quot;百度一下&quot;)</code>示范一下：<a href="http://www.baidu.com" title="百度一下" target="_blank" rel="external">百度</a>，可以看到<code>[]</code>中放的是显示的字符串，<code>()</code>里放的是url与提示；注意，各个标识符都是小写状态，快捷键ctrl+l；</li>
-<li>想要插入代码:<ol>
-<li>在&lt; pre &gt;标签中插入代码:<pre>这儿就是插入pre标签后的效果</pre></li>
-<li>在每一行代码前插入三个table符，记住是每一行代码都要在前面加上三个table符；</li>
-<li>快捷键<code>ctrl+k</code>,这种方式适合短小的单行代码，因为一旦换行，就打破了代码块；</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/04/29/markdown/" data-id="cj70r8fwv000n6cqnehu21ac4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-html_&#39;base&#39;_label" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/25/html_'base'_label/" class="article-date">
-  <time datetime="2015-03-25T07:39:42.000Z" itemprop="datePublished">2015-03-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeadingEnd/">LeadingEnd</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/25/html_'base'_label/">html_base标签</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>简介：用于规定页面上所有的链接的默认URL和默认目标：<br><code>&lt;base href=&quot;http://……“ target=&quot;_blank&quot;&gt;</code></p>
-<ul>
-<li>base标签放在<head>标签之中;</head></li>
-<li>最好把base标签排在head标签中第一个元素，这样其它的元素就可以使用base元素的信息；</li>
-<li>一个文档中最多能使用一个base元素；</li>
-<li>如果使用了base标签，至少要具备href属性或者target属性其中一个；</li>
-<li>其中的元素：<ul>
-<li>href：规定页面中相对链接的基准URL，其值就是一个URL;</li>
-<li>target:规定页面中所有的超链接和表单在何处打开，但该属性会被每个单独的链接中的target属性所覆盖，其值包括：<ul>
-<li>_blank，打开新的页面</li>
-<li>_ parent，在父页面打开</li>
-<li>_self，在当前页面打开</li>
-<li>_top，在浏览器头页面打开</li>
-<li>framename</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="base标签支持的属性"><a href="#base标签支持的属性" class="headerlink" title="base标签支持的属性"></a>base标签支持的属性</h4><ul>
-<li>支持HTML的全局属性，如：class,id,style等</li>
-<li>不支持事件属性，如:onClick之类；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/03/25/html_'base'_label/" data-id="cj70r8fvv00036cqn2u39pfm5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-meta_label" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/23/meta_label/" class="article-date">
-  <time datetime="2015-03-23T06:41:48.000Z" itemprop="datePublished">2015-03-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/23/meta_label/">meta标签.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="标签简介："><a href="#标签简介：" class="headerlink" title="标签简介："></a>标签简介：</h3><ul>
-<li>位于文档的头部<head>标签之中，不包含任何内容；</head></li>
-<li>所有的信息都由属性来存储，包含了文档的名称/值对；</li>
-<li>其作用：搜索引擎优化（SEO)，定义的页面使用语言，自动刷新并指向新的页面，实现页面转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口；</li>
-<li>meta属性（就两个）：<ul>
-<li>name属性：<ul>
-<li>用于描述网页与之对应的属性值为content,其中的内容便于搜索机器人查找和分类信息用；</li>
-<li>其语法格式：<pre><code>&lt;meta name=&quot;参数“ content=&quot;具体的参数值&quot;&gt;
-</code></pre></li>
-<li>name属性有以下几种参数：<ul>
-<li>Keywords，用来指定关键字<pre><code>&lt;meta name=&quot;keywords&quot; content=&quot;meta总结、html/meta、meta属性、meta跳转”&gt;
-</code></pre></li>
-<li>desription，网站内容描述</li>
-<li>robots,机器人向导</li>
-<li>author，标网页的作者</li>
-<li>generator，代表说明网站采用的什么软件制作</li>
-<li>COPYRIGHT,版权信息</li>
-<li>revisit-after,代表网站征文，7days代表7天</li>
-</ul>
-</li>
-<li>http-equiv,相当于文件头作用，可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content,其中的内容就是各个参数的变量值；<pre><code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;参数变量值”&gt;
-</code></pre><ul>
-<li>Expires，期限，设定的到期时间，一旦网页过期，呢额胆固醇服务器上重新传输。（必须使用GMT的时间格式化）</li>
-<li>Pragma（cache模式）<ul>
-<li>禁止浏览器从本地计算机的缓存中访问页面内容<pre><code>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;no-cache&quot;&gt;
-</code></pre><ul>
-<li>这样设计，说教将无法脱机浏览</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Refresh(刷新），自动刷新并指向新页面<pre><code>&lt;meta http-equiv=&quot;Refresh&quot;content=&quot;2;URL=http://www.haorooms.com&quot;&gt; //(注意后面的引号，分别在秒数的前面和网址的后面)
-</code></pre></li>
-<li>Sett-Cookie(cookie设定），如果网页过期，存盘的cookie将被删除<pre><code>&lt;meta http-equiv=&quot;Set-Cookie&quot;content=&quot;cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/&quot;&gt;
-</code></pre><ul>
-<li>必须使用GMT的时间格式</li>
-</ul>
-</li>
-<li>Window-target(显示窗口的设定），强制页面在当前窗口以独立页面显示<pre><code>&lt;meta http-equiv=&quot;Window-target&quot;content=&quot;_top&quot;&gt; 
-</code></pre><ul>
-<li>用来毕业后公开了我在框架里调用自己的页面</li>
-</ul>
-</li>
-<li>content-Type，设定显示字符集<pre><code>&lt;meta http-equiv=&quot;content-Type&quot;content=&quot;text/html;charset=gb2312&quot;&gt;
-</code></pre><ul>
-<li>meta标签的charset的信息参数如GB2312时，代表说明网站是采用的编码是简体中文；</li>
-<li>BIG5:繁体中文；</li>
-<li>iso-2022:日文；</li>
-<li>ks_c_5601:韩文；</li>
-<li>ISO-8859-1:英文；</li>
-<li>UTF-8:世界通用的语言编码；</li>
-</ul>
-</li>
-<li>content-Language,设定显示语言<pre><code>&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;/&gt;
-</code></pre></li>
-<li>Cache-Control，指定评语和响应遵循的缓存机制</li>
-<li>imagetollbar,指定是否显示图片工具栏，当为false娃给显示，当为true代表显示；</li>
-<li>Content-Script-Type,W3C网页规范，指明页面中脚本中的类型；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/03/23/meta_label/" data-id="cj70r8fwq000j6cqn4sjssidw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1100,7 +1321,7 @@ mcd
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeadingEnd/">LeadingEnd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人网站搭建/">个人网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/每日精进/">每日精进</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/经济学/">经济学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目开发/">项目开发</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -1110,7 +1331,7 @@ mcd
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -1120,7 +1341,7 @@ mcd
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 15px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 10px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 17.5px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 10px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12.5px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 12.5px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 10px;">迭代器</a>
+      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 12px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 18px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 12px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 14px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 12px;">迭代器</a> <a href="/tags/项目开发/" style="font-size: 12px;">项目开发</a>
     </div>
   </div>
 
@@ -1129,7 +1350,7 @@ mcd
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -1142,7 +1363,15 @@ mcd
       <ul>
         
           <li>
+            <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+          </li>
+        
+          <li>
             <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
           </li>
         
           <li>
@@ -1151,14 +1380,6 @@ mcd
         
           <li>
             <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/26/今日无题/">无题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/25/神片试撸《巴霍巴利王II》/">神片试撸《巴霍巴利王II》</a>
           </li>
         
       </ul>
