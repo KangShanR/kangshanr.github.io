@@ -395,6 +395,222 @@ invoke.end....
 
 
   
+    <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/ASCII_code/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/ASCII_code/">ASCII编码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><blockquote>
+<p>（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
+</blockquote>
+<ul>
+<li>关键字符ASCII值：<ul>
+<li>0:46 0~9的ASCII码值就是48~57，习惯于在代码函数中用左闭右开的区间来表示：[48,58)</li>
+<li>eg:（Java language）<pre><code>//用于判断字符属于哪个类型的方法
+static String typeChar(char _char){
+        int valueChar = Integer.valueOf(_char);
+        if(valueChar &gt;= 48 &amp;&amp; valueChar &lt; 58)
+            return &quot;number&quot;;
+        else if(valueChar &gt;= 65 &amp;&amp; valueChar &lt; 91)
+            return &quot;uppercase&quot;;
+        else if(valueChar &gt;= 97 &amp;&amp; valueChar &lt;123)
+            return &quot;lowercase&quot;;
+        else
+            return &quot;symbol&quot;;
+    }
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    System.out.println(typeChar(&apos;,&apos;));
+}
+</code></pre></li>
+<li>测试结果：<pre><code>symbol
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>常用到的字符ASCII值：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">ASCII值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:left">65</td>
+</tr>
+<tr>
+<td style="text-align:center">A-Z</td>
+<td style="text-align:left">65-90</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">97</td>
+</tr>
+<tr>
+<td style="text-align:center">a-z</td>
+<td style="text-align:left">97-122</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj76cyozx0003fcqn5ef11q2b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/data_verify/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><ul>
+<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
+<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
+<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj76cyp0k000mfcqn63m3x63g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/hex/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
+<li>在数字前直接加0x就可以使用，所用字符：<ul>
+<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
+</ul>
+</li>
+<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
+<li>eg:0xfa14</li>
+</ul>
+</li>
+<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
+<li>测试代码（java)：<pre><code>public static void main(String[] args) {
+    System.out.println(0xeeda);
+    System.out.println(0x0003);
+    System.out.println(0xa);
+    System.out.println(0xea);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>978346
+3
+10
+234
+</code></pre></li>
+</ul>
+</li>
+<li>中文的unicode码的范围4e00-9fa5</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj76cyp110010fcqnd1x44wno" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_modifier" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/31/java_modifier/" class="article-date">
@@ -524,10 +740,10 @@ invoke.end....
 
 
   
-    <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-regular_expression" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
-  <time datetime="2016-12-03T04:54:38.000Z" itemprop="datePublished">2016-12-03</time>
+    <a href="/2017/01/13/regular_expression/" class="article-date">
+  <time datetime="2017-01-13T04:22:23.000Z" itemprop="datePublished">2017-01-13</time>
 </a>
     
   <div class="article-category">
@@ -542,7 +758,7 @@ invoke.end....
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/03/快速排序算法的理解/">快速排序算法</a>
+      <a class="article-title" href="/2017/01/13/regular_expression/">正则表达式</a>
     </h1>
   
 
@@ -550,67 +766,211 @@ invoke.end....
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="今日所得"><a href="#今日所得" class="headerlink" title="今日所得"></a>今日所得</h4><ul>
-<li>今天复习了下快速排序（使用递归），据说是效率最高的一种排序算法（相比于冒泡排序、选择排序）；</li>
-<li>之前学习C#时领教过，当想把这个算法迁移到java中来写一个时发现久了不练都手生了；</li>
+        <h3 id="正则表达式的使用"><a href="#正则表达式的使用" class="headerlink" title="正则表达式的使用"></a>正则表达式的使用</h3><ul>
+<li>对字符串进行验证<ul>
+<li>各个语言中提供专门的方法与接口来执行正则表达式（比如:Java中的boolean String.matches(String regex)将其作为一个参数,返回这个字符串是否匹配得上这个正则表达式）；</li>
+<li>正则表达式是对字符串进行逐个字符验证，从第一个字符开始，依次往后匹配，有一个不匹配就可以Over了跳出循环;</li>
+<li>必须从头判定到尾，如果没有对尾作出判定，表达式会将字符串当作另一个更短的字符串来判定则肯定不匹配；</li>
 </ul>
-<ol>
-<li>前面多次使用递归的算法写一些方法（诸如二分法查找已经排好序数组元素的索引、递归生成满足条件（非纯数字或字母）的字符串；使用多次但没有想到过使用递归时可以无返回值；</li>
-<li>二分排序时，必须使用无返回值的递归方法。因为二分之后返回的是数组的一部分，最后把这一部分返回给递归前方法，这时要接收这一部分的元素需要对这一部分进行遍历；</li>
-<li><p>二分法排序(升序，若要降序则相反）流程：</p>
-<ol>
-<li>把数组第一个元素作为中间值，从最大索引(这个还必须从后往前找，因为我们用的第一个元素作为中间值，如果从前往后找，第一个较大值会直接覆盖最大索引的值；所以，如果想实现从前往后找就得把最大索引元素值作为中间值)开始往前找，找到比这个间值小的元素就把这个值赋予给最小索引的元素；</li>
-<li>再从最小索引元素开始往后找，找到这中间值大的元素，把这个元素值赋予给最大索引处的元素（找的过程不满足条件就把索引依次自增或自减）；</li>
-<li>依次这样后面往前找一趟，前面往后找一趟，直到最大与最小索引相等。这时把中间值赋予给这个索引，这样就完成了一次把数组分成两个部分，前面部分值比中间值小，后面部分比中间值大；</li>
-<li>这用上面一套流程对中间值两边的元素进行递归操作，递归缺口就是数组操作部分只有一个元素；</li>
-<li>代码：<pre><code>public int getPivotIndex(int[] arr, int minIndex, int maxIndex){
-    int pivot = arr[minIndex];
-    while (minIndex &lt; maxIndex) {
-        while (arr[maxIndex] &gt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            maxIndex--;
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        while (arr[minIndex] &lt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            minIndex++;
-        }
-        arr[maxIndex] = arr[minIndex];
-    }
-    arr[minIndex] = pivot;
-    return minIndex;
-}
- *二分法排序的流程 
- * @param arr
- * @param minIndex
- * @param maxIndex
- */
-public void dichotomySort(int[] arr, int minIndex, int maxIndex){
-    if(minIndex &lt; maxIndex){
-        int index = this.getPivotIndex(arr, minIndex, maxIndex);
-        dichotomySort(arr, minIndex, index - 1);
-        dichotomySort(arr, index + 1, maxIndex);
-    }else{
-        return;
-    }
-}
-</code></pre></li>
-</ol>
 </li>
-<li><p>二分法排序算法核心在于每一次查找把中间那一个值给定下来，并对中间值两边的数组分别再次排序,再对两边的数组分别进行同样的操作，直到不能再分割;</p>
-</li>
-</ol>
+</ul>
+<p><strong>#### 正则表达式中各个字符表达的意义： ####</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:left">将下一个字符标记符、或一个向后引用、或一个八进制转义符。例如，“\n”匹配\n。“\n”匹配换行符。序列“\”匹配“\”而“(”则匹配“(”。即相当于多种编程语言中都有的“转义字符”的概念。</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:left">匹配输入字符串的开始位置。如果设置了RegExp对象的Multiline属性，^也匹配“\n”或“\r”之后的位置。</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:left">匹配输入字符串的结束位置。如果设置了RegExp对象的Multiline属性，$也匹配“\n”或“\r”之前的位置。</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:left">匹配前面的子表达式任意次。例如，zo<em>能匹配“z”，也能匹配“zo”以及“zoo”。</em>等价于o{0,}</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}。</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:left">匹配前面的子表达式零次或一次。例如，“do(es)?”可以匹配“do”或“does”中的“do”。?等价于{0,1}。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n}</td>
+<td style="text-align:left">n是一个非负整数。匹配确定的n次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:left">n是一个非负整数。至少匹配n次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:left">m和n均为非负整数，其中n&lt;=m。最少匹配n次且最多匹配m次。例如，“o{1,3}”将匹配“fooooood”中的前三个o为一组，后三个o为一组。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:left">当该字符紧跟在任何一个其他限制符（*,+,?，{n}，{n,}，{n,m}）后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串“oooo”，“o+”将尽可能多的匹配“o”，得到结果[“oooo”]，而“o+?”将尽可能少的匹配“o”，得到结果[‘o’, ‘o’, ‘o’, ‘o’]</td>
+</tr>
+<tr>
+<td style="text-align:center">.点</td>
+<td style="text-align:left">匹配除“\r\n”之外的任何单个字符。要匹配包括“\r\n”在内的任何字符，请使用像“[\s\S]”的模式。</td>
+</tr>
+<tr>
+<td style="text-align:center">(pattern)</td>
+<td style="text-align:left">匹配pattern并获取这一匹配。所获取的匹配可以从产生的Matches集合得到，在VBScript中使用SubMatches集合，在JScript中则使用$0…$9属性。要匹配圆括号字符，请使用“(”或“)”。</td>
+</tr>
+<tr>
+<td style="text-align:center">[xyz]</td>
+<td style="text-align:left">字符集合。匹配所包含的任意一个字符。例如，“[abc]”可以匹配“plain”中的“a”。</td>
+</tr>
+<tr>
+<td style="text-align:center">[^xyz]</td>
+<td style="text-align:left">负值字符集合。匹配未包含的任意字符。例如，“[^abc]”可以匹配“plain”中的“plin”。</td>
+</tr>
+<tr>
+<td style="text-align:center">[a-z]</td>
+<td style="text-align:left">字符范围。匹配指定范围内的任意字符。例如，“[a-z]”可以匹配“a”到“z”范围内的任意小写字母字符。注意:只有连字符在字符组内部时,并且出现在两个字符之间时,才能表示字符的范围; 如果出字符组的开头,则只能表示连字符本身.</td>
+</tr>
+<tr>
+<td style="text-align:center">[^a-z]</td>
+<td style="text-align:left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，“[^a-z]”可以匹配任何不在“a”到“z”范围内的任意字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:left">匹配一个单词边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”。</td>
+</tr>
+<tr>
+<td style="text-align:center">\B</td>
+<td style="text-align:left">匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。</td>
+</tr>
+<tr>
+<td style="text-align:center">\cx</td>
+<td style="text-align:left">匹配由x指明的控制字符。例如，\cM匹配一个Control-M或回车符。x的值必须为A-Z或a-z之一。否则，将c视为一个原义的“c”字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:left">匹配一个数字字符。等价于[0-9]。grep 要加上-P，perl正则支持</td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td style="text-align:left">匹配一个非数字字符。等价于[^0-9]。grep要加上-P，perl正则支持</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:left">匹配一个换页符。等价于\x0c和\cL。</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:left">匹配一个换行符。等价于\x0a和\cJ。</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:left">匹配一个回车符。等价于\x0d和\cM。</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:left">匹配任何不可见字符，包括空格、制表符、换页符等等。等价于[ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td style="text-align:left">匹配任何可见字符。等价于[^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td style="text-align:left">匹配一个制表符。等价于\x09和\cI。</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td style="text-align:left">匹配一个垂直制表符。等价于\x0b和\cK。</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:left">匹配包括下划线的任何单词字符。类似但不等价于“[A-Za-z0-9_]”，这里的”单词”字符使用Unicode字符集。</td>
+</tr>
+<tr>
+<td style="text-align:center">\W</td>
+<td style="text-align:left">匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。</td>
+</tr>
+<tr>
+<td style="text-align:center">\xn</td>
+<td style="text-align:left">匹配n，其中n为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“\x41”匹配“A”。“\x041”则等价于“\x04&amp;1”。正则表达式中可以使用ASCII编码。</td>
+</tr>
+<tr>
+<td style="text-align:center">\num</td>
+<td style="text-align:left">匹配num，其中num是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果\n之前至少n个获取的子表达式，则n为向后引用。否则，如果n为八进制数字（0-7），则n为一个八进制转义值。</td>
+</tr>
+<tr>
+<td style="text-align:center">\nm</td>
+<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果\nm之前至少有nm个获得子表达式，则nm为向后引用。如果\nm之前至少有n个获取，则n为一个后跟文字m的向后引用。如果前面的条件都不满足，若n和m均为八进制数字（0-7），则\nm将匹配八进制转义值nm。</td>
+</tr>
+<tr>
+<td style="text-align:center">\nml</td>
+<td style="text-align:left">如果n为八进制数字（0-7），且m和l均为八进制数字（0-7），则匹配八进制转义值nml。</td>
+</tr>
+<tr>
+<td style="text-align:center">\un</td>
+<td style="text-align:left">匹配n，其中n是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（&copy;）。</td>
+</tr>
+<tr>
+<td style="text-align:center">\p{P}</td>
+<td style="text-align:left">小写 p 是 property 的意思，表示 Unicode 属性，用于 Unicode 正表达式的前缀。中括号内的“P”表示Unicode 字符集七个字符属性之一：标点字符。其他六个属性：L：字母；M：标记符号（一般不会单独出现）；Z：分隔符（比如空格、换行等）；S：符号（比如数学符号、货币符号等）；N：数字（比如阿拉伯数字、罗马数字等）；C：其他字符。*注：此语法部分语言不支持，例：javascript。</td>
+</tr>
+<tr>
+<td style="text-align:center">\&lt;></td>
+<td style="text-align:left">匹配词（word）的开始（\&lt;）和结束（>）。例如正则表达式\<the\>能够匹配字符串”for the wise”中的”the”，但是不能匹配字符串”otherwise”中的”the”。注意：这个元字符不是所有的软件都支持的。</the\></td>
+</tr>
+<tr>
+<td style="text-align:center">( )</td>
+<td style="text-align:left">将( 和 ) 之间的表达式定义为“组”（group），并且将匹配这个表达式的字符保存到一个临时区域（一个正则表达式中最多可以保存9个），它们可以用 \1 到\9 的符号来引用。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>/</code></td>
+<td style="text-align:left">将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him<code>/</code>her) 匹配”it belongs to him”和”it belongs to her”，但是不能匹配”it belongs to them.”。注意：这个元字符不是所有的软件都支持的。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
+</tr>
+<tr>
+<td style="text-align:center">(?:pattern)</td>
+<td style="text-align:left">非获取匹配，匹配pattern但不获取匹配结果，不进行存储供以后使用。这在使用或字符<code>(/)</code>来组合一个模式的各个部分时很有用。例如<code>industr(?:y/ies)</code>就是一个比<code>industry/industries</code>更简略的表达式。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
+</tr>
+<tr>
+<td style="text-align:center">(?=pattern)</td>
+<td style="text-align:left">非获取匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如，<code>Windows(?=95/98/NT/2000)</code>能匹配<code>Windows2000</code>中的“Windows”，但不能匹配“Windows3.1”中的<code>Windows</code>。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>下面为了避免<code>｜</code>被markdown识别成制表符号换种格式：</em></p>
+<ul>
+<li><code>(?!pattern)</code>：    非获取匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如“Windows(?!95|98|NT|2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。</li>
+<li>(?&lt;=pattern)：    非获取匹配，反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?&lt;=95|98|NT|2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。</li>
+<li>(?&lt;!pattern)        非获取匹配，反向否定预查，与正向否定预查类似，只是方向相反。例如“(?&lt;!95|98|NT|2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。这个地方不正确，有问题此处用或任意一项都不能超过2位，如“(?&lt;!95|98|NT|20)Windows正确，“(?&lt;!95|980|NT|20)Windows 报错，若是单独使用则无限制，如(?&lt;!2000)Windows 正确匹配</li>
+<li>x|y        匹配x或y。例如，“z|food”能匹配“z”或“food”(此处请谨慎)。“[z|f]ood”则匹配“zood”或“food”或”zood”。</li>
+</ul>
+<hr>
+<p><strong>Note:</strong><a href="http://baike.baidu.com/link?url=AQRTFncrkkeq2AETf8iwcrZNAmWQ2BYslX1pArdFsX6L_Pdq8Z1d62qxJcFm93xDiPHBo2TQOz1orepDMZIiX2veYoC4dNlObqyQCZteR8FrZmqkD2x2ldWsPhe6HqZq_56FS3G3nVD6bef8LDdBHK" target="_blank" rel="external">参考文档</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/" data-id="cj70fi0ij001no8qnwgrk9vwm" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj76cyp1s001mfcqnd9thrhue" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -619,14 +979,14 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
 
 
   
-    <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-C#_datastruture" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/11/23/some_tips_about_java/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
+    <a href="/2016/12/31/C#_datastruture/" class="article-date">
+  <time datetime="2016-12-31T14:02:43.000Z" itemprop="datePublished">2016-12-31</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
+    <a class="article-category-link" href="/categories/programming/">programming</a>
   </div>
 
   </div>
@@ -637,7 +997,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/some_tips_about_java/">java编程中你不知道的一两点</a>
+      <a class="article-title" href="/2016/12/31/C#_datastruture/">学习C#时关于数据结构的认识</a>
     </h1>
   
 
@@ -645,201 +1005,65 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Java中，你不知道的一两点</strong></p>
-<ol>
-<li>关键字new是运算符: 我们都知道new是用来开辟并新的内存空间创建对象的，但大多不知道这个功能是由运算符来实现；</li>
-<li>运算符（type）： 强制类型转换，括号中加类型，强制类型转换，它也只是个运算符</li>
-<li>运算符instanceof： 二元布尔运算符，前跟实例名后跟类名，判定实例是否可以用此类接收；</li>
-<li>成员访问符“.”，访问类或实例的成员；</li>
-<li>方法调用()，除了用于强制运算顺序，括号还用于调用方法；</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj70r8fxr001j6cqnh2gkc08e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于“上火”的事" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/关于“上火”的事/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/关于“上火”的事/">关于“上火”的科学点子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>所谓上火：<br>现代医学中并没有“上火”的概念。</p>
-</blockquote>
-<p>而现实生活中，我们的“火”是从哪儿上来的呢？</p>
-<ol>
-<li>吃辣上火：    <ol>
-<li>我们对吃辣上瘾的原因在于，辣椒刺激口腔内部产生类似灼烧的感觉，而这种感觉会促使大脑分泌多巴胺（多巴胺是人产生快感的来源，人类大部分上瘾行为都和它相关），从而上瘾；</li>
-<li>因为辣椒素残留口中，持续对口腔刺激。吃辣后，刷牙漱口就行了；</li>
-</ol>
-</li>
-<li>吃爪子上火：<ol>
-<li>瓜子本身并不会让你上火，让你不舒服的原因在于瓜子外壳上的脏东西。不信的话，下次吃瓜子只买瓜子仁吃，看会不会上火。</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj70fi0hu000uo8qnzalgezhz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/">tips</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/20/springMVC/" class="article-date">
-  <time datetime="2016-08-20T05:29:17.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/20/springMVC/">springMVC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="核心对象："><a href="#核心对象：" class="headerlink" title="核心对象："></a>核心对象：</h2><h3 id="中央处理器：在web-xml中配置springmvc的servlet"><a href="#中央处理器：在web-xml中配置springmvc的servlet" class="headerlink" title="中央处理器：在web.xml中配置springmvc的servlet"></a>中央处理器：在web.xml中配置springmvc的servlet</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span>  </div><div class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>  </div><div class="line">  	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li>其中load-on-startup这个属性来指定这个中央处理器被初始化的时机：<ol>
-<li>当为负数时，只有第一次使用时才会初始化，这也就带来一个问题，第一次访问时就会慢一些；</li>
-<li>当为非负数时，中央处理器会在servlet容器启动时初始化，而这个数值就是初始化的顺序；</li>
-</ol>
-</li>
-</ol>
-<h3 id="核心对象：-1"><a href="#核心对象：-1" class="headerlink" title="核心对象："></a>核心对象：</h3><ol>
-<li>页面控制器，处理请求并给出响应；</li>
-<li>处理器映射器HandlerMapping：设置handler处理器与url资源的映射<ol>
-<li>使用BeanNameUrlHandlerMapping这个类时，就会将handler的name属性值作为url映射，访问这个处理器就填写其name属性值:<pre><code>&lt;bean id=&quot;login&quot; name=&quot;loginController.do&quot; class=&quot;com.woniuxy.springdemo.controller.LoginController&quot;/&gt;
-</code></pre>如上，就可能过name属性值，设置    <code>&lt;a href=&quot;loginController.do&gt;登录&lt;/a&gt;</code></li>
-<li>SimpleUrlHandlerMapping，这个类型的映射要求映射url与controller的配置id相对应，并在这个节点内将controller的id与生意人key对应起来；<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.handler.SimpleUrlHandlerMapping&quot;&gt;
-    &lt;property name=&quot;mappings&quot;&gt;
-        &lt;props&gt;
-        &lt;!--配置指定的url与bean的id映射,可添加多个--&gt;
-            &lt;prop key=&quot;/login.do&quot;&gt;login&lt;/prop&gt;
-            &lt;prop key=&quot;/login2.do&quot;&gt;login2&lt;/prop&gt;
-        &lt;/props&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-&lt;bean id=&quot;login&quot; name=&quot;loginController.do&quot; class=&quot;com.woniuxy.springdemo.controller.LoginController&quot;/&gt;
-&lt;bean id=&quot;login2&quot; name=&quot;loginController2.do&quot; class=&quot;com.woniuxy.springdemo.controller.LoginController2&quot;/&gt;
-</code></pre></li>
-<li>使用注解实现处理器与url的映射<pre><code>&lt;!-- 注解映射器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;/&gt;
-</code></pre><ol>
-<li>这个配置节点就决定了处理器与其中的方法可以被注解@RequestMapping（”url_name”）映射并指定url</li>
-<li>处理器适配器：HandlerAdapter，用于规定处理器的编写规则</li>
-<li>使用接口来配置适配器：<ol>
-<li>当指定为SimpleControllerHandlerAdapter时，它就规定了要想成为处理器，就要实现Controller这个接口；</li>
-<li>HttpRequestHandlerAdapter:这个适配器要求所有的Handler都必须实现HttpRequestAdapter接口；</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>使用注解实现配置适配器：<pre><code>&lt;!-- 注解适配器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;/&gt;
-</code></pre><ol>
-<li>这个配置节点就决定了，有@controller注解的类就是处理器</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
+        <h3 id="C-数据结构"><a href="#C-数据结构" class="headerlink" title="C# 数据结构"></a>C# 数据结构</h3><h4 id="高等数学相关基础知识："><a href="#高等数学相关基础知识：" class="headerlink" title="高等数学相关基础知识："></a>高等数学相关基础知识：</h4><ul>
+<li>计量单位（Uint）：位缩写为b,字节缩写为B，千字节为KB，兆字节MB。1B = 8b，1KB = 1024B，1MB = 1024KB</li>
+<li>阶乘函数（Factorial Function): 0! = 0 , n! = (n-1)! *n</li>
+<li>取上整和取下整（Floor and Ceiling）：⌊3.4⌋=3（下整） ，⌈3.4⌉=4（上整）</li>
+<li>取模择操作符（Modulus)：% ， 5%2  返回1，这两个参数也可以为浮点类型数值，eg：5.6 %0.5 ，返回0.1</li>
+<li>对数（Logarithm)：若ab=N，则数b叫做以a为底N的对数，记作：logaN=b,其中a叫作对数的底数，N叫真数；</li>
+<li>递归（Recursive):算法调用自己或间接调用自己；</li>
+<li>使用递归函数一定要留好缺口，不然就会无限调用导致内存溢出；比如，用递归函数来算阶乘，其缺口就是0！ = 1；</li>
+</ul>
+<p><strong>算法（Algorithm)</strong></p>
 <ul>
-<li>在spring-webmvc包中web_servlet包中最后有一个配置文件DispatcherServlet.properties，这个文件就规定了springmvc的默认核心对象；</li>
+<li>对某一选定类型的问题的求解步骤的一种描述，是指令的有限序列。其特性有：</li>
+<li>有穷性（Finity)、确定性（Unambiguousness)、输入（Input)、输出（Output)、有效性（Realizability)</li>
+<li>针对算法的优劣，其评价标准有：正确性（Correctness)、可读性（Readability)、健壮性（Robustness）、运行时间（Running Time)、占用空间（Storage Space)</li>
 </ul>
-<h3 id="springMVC中的处理器"><a href="#springMVC中的处理器" class="headerlink" title="springMVC中的处理器"></a>springMVC中的处理器</h3><ul>
-<li>controller:<ul>
-<li>中央处理器DispatcherServlet在web.xml中被配置成一个servlet,并通过初始化上下文配置参数springmvc.xml的路径与设置其启动时机与该servlet初始化时机；</li>
+<p><strong>数据结构（Data Stauct):</strong></p>
+<ul>
+<li>简记为DS,是一个二元组，DS=（D,S)，其中D为数据元素的有限集合，R是数据元素之间关系的有限集合。</li>
+<li>相互之间存在一种或多种关系的数据元素的集合。常用的4 种数据结构类型：</li>
+<li>集合（Set)<ul>
+<li>线性结构（Linear Structure)</li>
+<li>树形结构（Ture Structure)</li>
+<li>图状结构（Graphic Structure)</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-<ol>
-<li>通过上一步实现来自前端请求必须都通过web.xml文件中指定的servlet处理，也就是大部分请求都是交给了springmvc，所有的springmvc的配置都在springmvc.xml文件中，在这个文件中，我们常常通过注解来实现请求与处理器（处理器中的方法）的映射。</li>
-<li>springmvc.xml配置中就指定了适配器映射，使用@Controller注解就让该类成为处理器</li>
-<li>@RequestMapping(“url_name”)则用来指定url路径，可以用来注解类与类的方法，想要请求进入处理方法中就要通过类的url与方法的url;</li>
-<li><p>注解使用时映射的方法中，可以与前端数据相通的参数有：</p>
-<ol>
-<li>简单数据类型</li>
-<li>pojo，这种情况下，pojo对象的属性名要与请求的参数名保持一致；比如，user.username User.password</li>
-<li>session/request/response：用法与之前一致，可以用分发请求也可以重定向；</li>
-<li>Model/ModelAndView：</li>
-<li>也可以为String类型的参数，只要参数名与来自前端的请求名一致，容器会自动将其注入到方法参数中；</li>
-<li>注解@RequestParam的使用：<ol>
-<li>其中有参数：<ol>
-<li>name:用于配置参数的别名，使用这个属性就可让请求url使用别名来访问到这个方法；</li>
-<li>required：boolean类型，当其值为true时，请求必须带有这个参数；</li>
-</ol>
+<p><strong>数据（Data)</strong></p>
+<ul>
+<li>外部世界信息的载体，能被计算机识别、存储和加工处理，是计算机程序加工的原料。</li>
+<li>数据元素（Data Element)和数据项</li>
+<li>数据的基本单位，有时也被称为元素、结点、顶点、记录等等。</li>
+<li>一个数据元素可由若干个数据项组成；</li>
+<li>数据项是不可分割、含有独立意义的最小数据单位，数据项有时也被称为字段（Field)或域（Domain)；</li>
+<li>数据项组成数据元素，数据元素组成数据，数据组成文件。</li>
+<li>使用数据库模型来法人代表说明这两者之间的关系：</li>
+</ul>
+<p><strong>数据对象（Data Object):</strong></p>
+<ul>
+<li>性质相同的数据元素的数据元素的集合，是数据的一个子集，例如：字母表对象｛a,b,c,d,……x,y,z}</li>
+</ul>
+<p><strong>数据类型（Data Type)</strong></p>
+<ul>
+<li>数据的聚会范围和对数据进行操作的总和。</li>
+<li>规定了程序中对象的特性；</li>
+<li>程序中每个变量、常量、表达式的结果都应该属于某种确定的数据类型</li>
+<li>可分为两类：<ul>
+<li>非结构的原子类型，如，C#中的基本类型；</li>
+<li>结构类型，其成分由多个结构类型组成，可以分解；如C#的数组类型。</li>
+</ul>
 </li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>使用controller处理器时，各类方法返回数据类型：</p>
-<ol>
-<li>ModelAndView，此对象中可以添加model数据（addObject（String name,Object object)方法），也可以指定view（通过setViewName(String name)方法，而这个name也就决定了去到哪个jsp视图）</li>
-<li>String 字符串：当要在使用映射方法处理之后想到转到另外一个方法中去(不进入视图）则直接返回字符串”response:+方法映射”；</li>
-<li>“forward:+方法映射”，转发到相应方法中去，与response不同在于地址栏还是原来的地址，转发并没有执行新的request与response，而是和转发前的请求共用一个request与response，所以转发前的属性在转发后一样可以读取到；</li>
-</ol>
-</li>
-</ol>
-<h3 id="Restful架构"><a href="#Restful架构" class="headerlink" title="Restful架构"></a>Restful架构</h3><ul>
-<li>只是一种规范，终极的目标是资源URI</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj70fi0hm000no8qn3z0qoxep" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/12/31/C#_datastruture/" data-id="cj76cyp030008fcqngzpai6dw" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
 
     </footer>
   </div>
@@ -848,14 +1072,14 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
 
 
   
-    <article id="post-JDBC" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-C#_datatype" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/07/24/JDBC/" class="article-date">
-  <time datetime="2016-07-24T04:14:32.000Z" itemprop="datePublished">2016-07-24</time>
+    <a href="/2016/12/25/C#_datatype/" class="article-date">
+  <time datetime="2016-12-25T07:02:43.000Z" itemprop="datePublished">2016-12-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
+    <a class="article-category-link" href="/categories/programming/">programming</a>
   </div>
 
   </div>
@@ -866,7 +1090,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/24/JDBC/">JDBC的理解</a>
+      <a class="article-title" href="/2016/12/25/C#_datatype/">C#语言中数据类型</a>
     </h1>
   
 
@@ -874,432 +1098,25 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p>全称：fava database connectivity,专用于java数据库连接，其中封装了基本的连接数据库的API,数据库连接的高级框架（诸如：Mybatis/Hibernate)的使用都基于JDBC的原理，也就是理解了JDBC对于我们更理解各种持久层数据连接层的框架很有帮助；</p>
-<h4 id="一个简单的JDBC实现"><a href="#一个简单的JDBC实现" class="headerlink" title="一个简单的JDBC实现"></a>一个简单的JDBC实现</h4><pre><code>/**
- * 获取数据库连接的方法
- * @return
- */
-public static Connection getConnection(){
-    Connection con = null;
-
-    try{
-//            获取连接mysql数据库的驱动
-        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
-//            设置连接数据库的url
-        String url = &quot;jdbc:mysql://localhost:3306/agileone1?useUnicode=true&amp;characterEncoding=UTF-8&quot;;
-//            连接数据库的用户名
-        String userName = &quot;root&quot;;
-//            连接数据库的密码
-        String userPass=&quot;&quot;;
-//            从而获取到数据库连接connection
-        con = DriverManager.getConnection(url, userName, userPass);
-    }catch (Exception e){
-        e.printStackTrace();
-    }
-    return con;
-}
-</code></pre><ul>
-<li>上述代码块就通过java.sql包里封装好的各个类与类反射获取到了连接指定数据库的链接；<ul>
-<li>接下来就可以利用这个连接来进行crud类操作<pre><code>- /**
- * 插入数据进入数据库的方法
- * @param username
- * @param password
- */
-static void insertData(String username, String password){
-    Connection con = getConnection();
-    String sql = &quot;INSERT INTO Userdata (username, userPass) VALUES(&apos;&quot;+username+&quot;&apos;, &apos;&quot;+password+&quot;&apos;)&quot;;
-    try {
-//            从连接创建状态
-        Statement state = con.createStatement();
-//            执行更新语句，返回影响行数
-        int re = state.executeUpdate(sql);
-        System.out.println(re);
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-/**
- * 模糊查询的方法
- * @param name
- */
-static void query(String name){
-    Connection con = getConnection();
-//        sql语句
-    String sql = &quot;SELECT * FROM userdata WHERE username = &apos;&quot; +name+&quot;&apos;&quot;;
-    try{
-        Statement state = con.createStatement();
-//            执行查询语句，返回批量结果集
-        ResultSet re = state.executeQuery(sql);
-//            对结果集进行迭代输出
-        while(re.next()){
-            System.out.println(&quot;id:&quot; + re.getInt(&quot;id&quot;));
-            System.out.println(&quot;username:&quot; + re.getString(&quot;username&quot;));
-            System.out.println(&quot;id:&quot; + re.getString(&quot;userPass&quot;));
-        }
-    }catch(SQLException e){
-        e.printStackTrace();
-    }
-}
-</code></pre></li>
-<li>当sql语句执行完成，需要对上面建立的各个连接与状态进行关闭：<pre><code>/**
- * 关闭连接与状态的方法
- */
-static void close(Connection con){
-    if(con !=null){
-        try {
-            con.close();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre><ul>
-<li>其中针对不同的方法与连接状态，关闭的对象也不一样，除了Connection还有Statement,Prestatement,resultSet，各个对象都是调用其Close方法；</li>
-<li>通常情况下，调用对象的Close()方法放在finally语句块中，这样就可以执行完查询语句方法后，交接将各个对象关闭；</li>
+        <h3 id="C-数据类型"><a href="#C-数据类型" class="headerlink" title="C#数据类型"></a>C#数据类型</h3><ul>
+<li>C#中，数据共有三种类型<ul>
+<li>value types 值类型</li>
+<li>reference types 引用类型</li>
+<li>pointer types  指针类型</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
-<li><em>以上的代码基本实现了JDBC的整个流程，从创建连接到执行查询语句，再到关闭连接、状态、结果集</em></li>
-<li><em>JDBC中封装的连接数据库的API包：java.sql是连接sql的基础包，使用JDBC就得引入这个jar包：<code>mysql-connector-java-5.1.38-bin.jar</code></em></li>
-</ul>
+<p>关于命名空间 <code>namespace</code>，msdn官网上有一句：<code>Namespaces implicitly have public access and this is not modifiable.</code>翻译：命名空间隐式默认为public公共访问权限，并且不能修改这个公共访问特性。也就是说命名空间访问不受限；</p>
+<hr>
+<p>参考：<a href="https://msdn.microsoft.com/zh-cn/library/z2kcy19k.aspx" target="_blank" rel="external">visual studio网站</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj70r8fvh00006cqn6n5fkyuw" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/12/25/C#_datatype/" data-id="cj76cyp0d000ffcqn4ny1ws5n" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DesignPattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/13/DesignPattern/" class="article-date">
-  <time datetime="2016-06-13T04:14:38.000Z" itemprop="datePublished">2016-06-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/13/DesignPattern/">设计模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Design Pattern，对于编程过程中遇到各种问题的总结与归纳，是编程（通常为面向对象）过程诸多问题的优秀解决方案；<br><a href="http://www.runoob.com/design-pattern/design-pattern-intro.html" title="菜鸟教程——设计模式" target="_blank" rel="external">菜鸟教程之设计模式</a></p>
-</blockquote>
-<p>Gang of Four，四人帮提出设计模式的设计原则：</p>
-<ul>
-<li>对接口编程而不是对实现编程；</li>
-<li><p>优先使用对象组合而不是继承；</p>
-</li>
-<li><p>简介：</p>
-<ul>
-<li>共23种设计模式，分为三类：<ul>
-<li>创建型Creational Patterns：提供创建对象的同时隐藏创建的逻辑，而不是用new运算符直接创建对象；<br>  - </li>
-<li>结构型Structural Patterns:关注类和对象的组合，继承的概念被用来组合接口和定义组合对象的新功能；</li>
-<li>行为型Behavioral Patterns:关注对象之间的通信</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
-<li><p>对于管理类，通常只需要一个实例对象即可达到管理的目的，这种时候如果实例多个对象只会造成系统资源上的浪费，所以通常我们使用单例模式来解决这种问题；</p>
-</li>
-<li><p>实现单例的思路：</p>
-<ul>
-<li>将构造函数私有化，并在类中实现静态单例的共享；<pre><code>public class UserManager{
-    //静态单例
-    private static UserManager ins;
-    //私有化构造函数
-    private UserManager(){}
-    //获取静态单例的方法
-    public static UserManager getIns(){
-        if(ins == null){
-            ins = new UserManager();
-        }
-        return ins;
-    }
-    //其他的执行方法
-    public void updateUserInfo(){}
-｝
-</code></pre></li>
-<li>上面例子里有个线程上的缺陷，当多线程访问这个管理类时，会造成线程不安全，为解决这个问题，就得使用双重检查锁单例：<pre><code>public class UserManager{
-    //静态单例
-    private static UserManager ins;
-    private Object lock = new Object();
-    //私有化构造函数
-    private UserManager(){}
-    //获取静态单例的方法
-    public static UserManager getIns(){
-        if(ins == null){  //第一次检查
-            synchronized(lock){  //保证不产生多余的实例
-                if(ins == null){  //第二次检查
-                    ins = new UserManager();
-                }
-            }
-        }
-        return ins;
-    }
-    //其他的执行方法
-    public void updateUserInfo(){}
-｝
-</code></pre></li>
-<li>关于多线程安全的实现在单例模式中有6种不同的方式，具体参照单例模式页面；</li>
-</ul>
-</li>
-</ul>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
-<li>代理模式：与工厂模式不同在于，可能产生多个实例，同时会帮Action做事（工厂模式属于创建型模式，而代理模式属于结构型模式）；</li>
-<li>代理(Proxy)<strong>提供了对目标对象另外的访问方式</strong>;即<strong>通过代理对象访问目标对象</strong>。<strong>这样做的好处是:可以在目标对象实现的基础上,增强额外的功能操作,即扩展目标对象的功能.</strong></li>
-<li><em>这里使用到编程中的一个思想:不要随意去修改别人已经写好的代码或者方法,如果需改修改,可以通过代理的方式来扩展该方法</em></li>
-<li>代理模式就是将要实例的对象通过代理类来实现，不通过原本的类来实例，具体实现有三种方式：<ul>
-<li>静态代理：<ul>
-<li>可以让代理类同时实现真正想的对象的类实现的接口，而在代理类中有一个真正类的属性，当想要这个真正类时，对上述属性判空，再实例化，这样通过代理类执行接口中的方法时就是执行的真正想要的类的方法了；</li>
-<li>简单地讲，代理就是将其他的类的各种实现方法，交由代理来实现。而要达到这种效果，就可以让代理与其他的类实现同一个接口，再在代理中实现接口方法中去实现这个类的方法。这也是代理的核心，一般代理中要注入一个代理对象，调用代理方法时，就对此对象初始化并调用其相关的方法；</li>
-</ul>
-</li>
-<li>动态代理：<ul>
-<li>代理不用继承接口，代理由java内置的java.lang.reflect包中的Proxy类生成：</li>
-<li>其中生成代理静态的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler handler)</code>；<ul>
-<li>此方法的三个参数：<ul>
-<li>loader：代理目标的类加载器；</li>
-<li>interfaces：代理目标实现的接口；</li>
-<li>handler：执行处理器，指调用此代理实现接口的处理器，此处理器必须实现InvocationHandler接口，并实现其<code>public Object invoke(Object proxy, Method method, Object[] args)</code>方法;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>cglib代理（子类代理）：<ul>
-<li><ul>
-<li>此类型代理需要用到spring核心包推荐使用spring-core 3.2.5版本及以上；</li>
-</ul>
-</li>
-<li>动态代理与静态代理都是向上抽取依赖，要求实现接口，而cglib代理则是通过目标对象子类来实现对目标对象功能的扩展；</li>
-<li>其实现方法：<ul>
-<li>引入的功能包能够动态地在内在中构造子类；</li>
-<li>cglib的强大在于高效生成代码，在运行期扩展java类与接口，spring赖以生存的AOP拦截的就是大量地使用了cglib的强大功能；</li>
-<li>cglib的底层：使用字节码处理框架ASM转换字节码并生成新的类（并没有弄的懂的地方，涉及JVM中内部结构，诸如：class文件的格式秘指令集）</li>
-</ul>
-</li>
-<li>注意：cglib的实现是依赖于代理的扩展子类，需要对代理目标进行扩展<ul>
-<li>也就是说代理类不能为final修辞；</li>
-<li>同时，目标对象的方法不能为final/static所修辞；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul>
-<li>生成一个类交由相关的工厂类实现，而不由直接的类来实现；</li>
-<li>相关的类继承同一个接口，实现这个接口的类都可以由工厂类中同一个方法来实现实例化；</li>
-<li><p>例如：</p>
-<pre><code>//定义同一个类的抽象接口
-public interface Shape{
-    void draw();
-}
-//实现shape接口的类有：
-//Circle类
-public class Circle implements Shape{
-    @Override
-    public void  draw(){
-        system.out.println(&quot;circle.draw&quot;);
-    }
-}
-//Square类
-public class Square implements Shape{
-    @Override
-    public void draw(){
-        system.out.println(&quot;square.draw&quot;);
-    }
-}
-//创建实例的工厂类
-public class ShapeFactory{
-    //创建图形实例的方法
-    public Shape createShape(String shape){
-        if(shape.equalsIgnoreCase(&quot;CIRCLE”){
-            return new Circle();
-        }
-        if(shape.equalsIgnoreCase(&quot;SQUARE”){
-            return new Square();
-        }
-        reutnr null;
-    }
-}
-</code></pre></li>
-<li>模式理解：<ul>
-<li>通过工厂来实现对各个类的实例化，都在工厂实现；</li>
-<li>通过反射机制实现，增加一个同一接口的类不需要改变工厂的代码,只需要增加一个实现这个实现对应接口的类：<ul>
-<li>其工厂的代码：<pre><code>public class ShapeFactory{
-    //创建工厂的方法
-    public Shape createShape(Class&lt;? extends Shape&gt; clazz){
-        try{
-            return Class.forName(clazz.getName()).newInstance();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
-<li>相比较于工厂模式，抽象工厂模式在工厂模式的基础上增加生成工厂的工厂类，那么生产出来的工厂都要继承一个接口或父类，没理解到的点就在于，这个类一定要是一个抽象类吗？可以是个接口或者非抽象类吗?</li>
-<li>该模式的优点：把同一个产品类集成到同一个工厂内，这样使用时就直接调用工厂中的方法，而生成同一个工厂里预备好的类对象，也更方便管理；</li>
-<li>它是为了解决子工厂的扩展性问题</li>
-</ul>
-<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><ul>
-<li>迭代器模式的设计目的只是，用自己写迭代器来实现迭代聚合数据，而将集体或聚合的数据的遍历分离出来来达到既能访问到集合的内部数据又不暴露集合的内部结构；    <pre><code>- 迭代器接口：
-        public interface Iterator {
-            public boolean hasNext();
-            public Object next();
-        }
-- 容器接口：
-        public interface Container {
-            public Iterator getIterator();
-        }
-- 容器实现类：
-        public class Repository implements Container {
-            String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
-            /**
-             * 返回内部类的对象，注意这儿的依赖倒置
-             */
-            @Override
-            private Iterator getIterator() {
-                return new DoIterator();
-            }
-            /**
-             * 内部类，实现迭代器接口
-             * @author Administrator
-             */
-            private class DoIterator implements Iterator{
-                int index;
-                /**
-                 * 判定索引是否指向在集合之中，如果还在就返加true
-                 */
-                @Override
-                public boolean hasNext() {
-                    if(index &lt; elements.length)
-                        return true;
-                    return false;
-                }
-                /**
-                 * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
-                 */
-                @Override
-                public Object next() {
-                    if(this.hasNext()){
-                        Object obj = elements[index++];
-                        return obj;
-                    }
-                    return null;
-                }
-            }
-</code></pre><ul>
-<li>最后在main方法测试中写for循环实现迭代：<pre><code>for(Iterator iter = new Repository().getIterator();iter.hasNext();){
-    String ele = (String)iter.next();
-    System.out.println(ele);
-}
-</code></pre></li>
-<li>输出：<pre><code>kfc
-jfk
-mcd
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
-<li>适配器是行为型模式，将原有的行为经过组合进行扩展；</li>
-<li>顾名思义，适配器就是将原本不适的接口或功能适配到目标对象上。</li>
-<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；</li>
-<li>而比起缺省型适配器，还有类的适配器和对象适配器：<ul>
-<li>类适配器：将目标功能的接口执行并继承被适配者<ul>
-<li>被适配者：想在此类上扩展目标接口的功能（适配器的设计初衷在于，被适配者并不能直接实现目标接口）<pre><code>public class Adaptee {
-    void run(){
-        System.out.println(&quot;Adaptee.run..........&quot;);
-    }
-}
-</code></pre></li>
-<li>目标接口：<pre><code>public interface Target {
-    void fly();
-}
-</code></pre></li>
-<li>适配器：<pre><code>public class Adapter extends Adaptee implements Target {
-    @Override//继承父类被适配者，并能方便地扩展其方法
-    public void run() {
-        super.run();
-        System.out.println(&quot;Adapter.run.......&quot;);
-    }
-    //实现目标接口的方法
-    @Override
-    public void fly() {
-        System.out.println(&quot;Adapter.fly...........&quot;);
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    Adapter adaptee = new Adapter();
-    adaptee.fly();
-    adaptee.run();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Adapter.fly...........
-Adaptee.run..........
-Adapter.run.......
-</code></pre></li>
-<li><strong>note:</strong>这样的一个适配器在某种程度上来说与缺省的适配器并没有什么本质上的区别，都是将各种功能行为通过继承或实现聚合到同一个适配器上；</li>
-</ul>
-</li>
-<li>对象适配器模式：<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><hr>
-<ul>
-<li><em>未完待续</em></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/13/DesignPattern/" data-id="cj70fi0go0001o8qnr175k5fh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -1311,7 +1128,7 @@ Adapter.run.......
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1331,7 +1148,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作技巧/">操作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
     </div>
   </div>
 
@@ -1341,7 +1158,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14px;">igot</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java内部类/" style="font-size: 12px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 18px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 12px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 12px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 16px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 14px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 12px;">迭代器</a> <a href="/tags/项目开发/" style="font-size: 12px;">项目开发</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.67px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.33px;">java</a> <a href="/tags/java内部类/" style="font-size: 11.67px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 11.67px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 11.67px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/操作技巧/" style="font-size: 10px;">操作技巧</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 13.33px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 11.67px;">迭代器</a> <a href="/tags/面向对象/" style="font-size: 11.67px;">面向对象</a> <a href="/tags/项目开发/" style="font-size: 11.67px;">项目开发</a>
     </div>
   </div>
 
@@ -1350,7 +1167,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 

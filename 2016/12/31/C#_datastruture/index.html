@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>学习C#时关于数据结构的认识 | KangShan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在学习C#中的对于数据结构的认识">
+<meta name="keywords" content="programming,C#,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习C#时关于数据结构的认识">
+<meta property="og:url" content="https://kangshanr.github.io/2016/12/31/C#_datastruture/index.html">
+<meta property="og:site_name" content="KangShan">
+<meta property="og:description" content="在学习C#中的对于数据结构的认识">
+<meta property="og:updated_time" content="2017-09-04T15:50:33.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习C#时关于数据结构的认识">
+<meta name="twitter:description" content="在学习C#中的对于数据结构的认识">
+<link rel="publisher" href="kangshan9988@gmail.com">
+  
+    <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KangShan</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to my website.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C#_datastruture" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/31/C#_datastruture/" class="article-date">
+  <time datetime="2016-12-31T14:02:43.000Z" itemprop="datePublished">2016-12-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习C#时关于数据结构的认识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="C-数据结构"><a href="#C-数据结构" class="headerlink" title="C# 数据结构"></a>C# 数据结构</h3><h4 id="高等数学相关基础知识："><a href="#高等数学相关基础知识：" class="headerlink" title="高等数学相关基础知识："></a>高等数学相关基础知识：</h4><ul>
+<li>计量单位（Uint）：位缩写为b,字节缩写为B，千字节为KB，兆字节MB。1B = 8b，1KB = 1024B，1MB = 1024KB</li>
+<li>阶乘函数（Factorial Function): 0! = 0 , n! = (n-1)! *n</li>
+<li>取上整和取下整（Floor and Ceiling）：⌊3.4⌋=3（下整） ，⌈3.4⌉=4（上整）</li>
+<li>取模择操作符（Modulus)：% ， 5%2  返回1，这两个参数也可以为浮点类型数值，eg：5.6 %0.5 ，返回0.1</li>
+<li>对数（Logarithm)：若ab=N，则数b叫做以a为底N的对数，记作：logaN=b,其中a叫作对数的底数，N叫真数；</li>
+<li>递归（Recursive):算法调用自己或间接调用自己；</li>
+<li>使用递归函数一定要留好缺口，不然就会无限调用导致内存溢出；比如，用递归函数来算阶乘，其缺口就是0！ = 1；</li>
+</ul>
+<p><strong>算法（Algorithm)</strong></p>
+<ul>
+<li>对某一选定类型的问题的求解步骤的一种描述，是指令的有限序列。其特性有：</li>
+<li>有穷性（Finity)、确定性（Unambiguousness)、输入（Input)、输出（Output)、有效性（Realizability)</li>
+<li>针对算法的优劣，其评价标准有：正确性（Correctness)、可读性（Readability)、健壮性（Robustness）、运行时间（Running Time)、占用空间（Storage Space)</li>
+</ul>
+<p><strong>数据结构（Data Stauct):</strong></p>
+<ul>
+<li>简记为DS,是一个二元组，DS=（D,S)，其中D为数据元素的有限集合，R是数据元素之间关系的有限集合。</li>
+<li>相互之间存在一种或多种关系的数据元素的集合。常用的4 种数据结构类型：</li>
+<li>集合（Set)<ul>
+<li>线性结构（Linear Structure)</li>
+<li>树形结构（Ture Structure)</li>
+<li>图状结构（Graphic Structure)</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据（Data)</strong></p>
+<ul>
+<li>外部世界信息的载体，能被计算机识别、存储和加工处理，是计算机程序加工的原料。</li>
+<li>数据元素（Data Element)和数据项</li>
+<li>数据的基本单位，有时也被称为元素、结点、顶点、记录等等。</li>
+<li>一个数据元素可由若干个数据项组成；</li>
+<li>数据项是不可分割、含有独立意义的最小数据单位，数据项有时也被称为字段（Field)或域（Domain)；</li>
+<li>数据项组成数据元素，数据元素组成数据，数据组成文件。</li>
+<li>使用数据库模型来法人代表说明这两者之间的关系：</li>
+</ul>
+<p><strong>数据对象（Data Object):</strong></p>
+<ul>
+<li>性质相同的数据元素的数据元素的集合，是数据的一个子集，例如：字母表对象｛a,b,c,d,……x,y,z}</li>
+</ul>
+<p><strong>数据类型（Data Type)</strong></p>
+<ul>
+<li>数据的聚会范围和对数据进行操作的总和。</li>
+<li>规定了程序中对象的特性；</li>
+<li>程序中每个变量、常量、表达式的结果都应该属于某种确定的数据类型</li>
+<li>可分为两类：<ul>
+<li>非结构的原子类型，如，C#中的基本类型；</li>
+<li>结构类型，其成分由多个结构类型组成，可以分解；如C#的数组类型。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/31/C#_datastruture/" data-id="cj76cyp030008fcqngzpai6dw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/13/regular_expression/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          正则表达式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/25/C#_datatype/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C#语言中数据类型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enum/">enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java内部类/">java内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匿名内部类/">匿名内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制台/">控制台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作技巧/">操作技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科技/">科技</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程安全/">线程安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/观影无感/">观影无感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访问修辞符/">访问修辞符</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/迭代器/">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目开发/">项目开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/enum/" style="font-size: 10px;">enum</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.67px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.33px;">java</a> <a href="/tags/java内部类/" style="font-size: 11.67px;">java内部类</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/匿名内部类/" style="font-size: 11.67px;">匿名内部类</a> <a href="/tags/单例模式/" style="font-size: 11.67px;">单例模式</a> <a href="/tags/控制台/" style="font-size: 10px;">控制台</a> <a href="/tags/操作技巧/" style="font-size: 10px;">操作技巧</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/科技/" style="font-size: 10px;">科技</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线程安全/" style="font-size: 10px;">线程安全</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/观影无感/" style="font-size: 10px;">观影无感</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/访问修辞符/" style="font-size: 13.33px;">访问修辞符</a> <a href="/tags/跨平台/" style="font-size: 10px;">跨平台</a> <a href="/tags/迭代器/" style="font-size: 11.67px;">迭代器</a> <a href="/tags/面向对象/" style="font-size: 11.67px;">面向对象</a> <a href="/tags/项目开发/" style="font-size: 11.67px;">项目开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 KangShan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
