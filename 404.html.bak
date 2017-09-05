@@ -1,0 +1,14 @@
+ <!-&#45;&#45;&#45;&#45;-->
+<!--layout: default-->
+ <!-&#45;&#45;&#45;&#45;-->
+<html>
+    <head>
+         <meta charset="UTF-8" />
+         <title>404</title>                                                                                                                                        
+    </head>
+    <body>
+         <!--<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>-->
+         <br>
+	    This is 404 page,you can <a href="https://kangshanr.github.io/" title="kangshan's homepage">go to homepage</a>.
+    </body>
+</html>
