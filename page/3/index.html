@@ -69,228 +69,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-java_inner_class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/29/java_inner_class/" class="article-date">
-  <time datetime="2017-04-29T05:04:38.000Z" itemprop="datePublished">2017-04-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/29/java_inner_class/">java内部类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="java内部类"><a href="#java内部类" class="headerlink" title="java内部类"></a>java内部类</h3><ul>
-<li>java的内部类指定义在类之中的类，这个类中的范围可以是是类成员也可以在局部方法中，还可以是作用域中；</li>
-<li>内部类只是在编译时的概念，在本质上，当经过编译后，外部类会生成outer.class文件，而其中的内部类会生成outer$inner.class类文件，也就是就算定义成内部类，其本质依然是个类；</li>
-<li>那么内部类有什么存在的必要呢？<ul>
-<li>内部类是外部类的内容，在内部类之外加上一层外部类，就意味着：<ul>
-<li>内部类可为public、default之外的访问修辞符所修辞，这一点能很大程度上区别开外部类；</li>
-<li>有了以上一点，那在类中定义内部类就会在很多时候有用了，比如：静态内部类的单例模式中，将单例通过静态内部私有类的方法来获取，这样利用外部其它的类不能访问这个私有的内部类而达到控制内部类的初始化类加载，这样只有在这个相关外部类中调用时才会调用到内部类，在这样一个单例模式中就实现了单例的懒加载；</li>
-</ul>
-</li>
-<li>在迭代器模式中，在迭代器容器中创建了个内部类：<pre><code>- 容器实现类：
-    public class Repository implements Container {
-        String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
-        /**
-         * 返回内部类的对象，注意这儿的依赖倒置
-         */
-        @Override
-        public Iterator getIterator() {
-            return new DoIterator();
-        }
-        /**
-         * 内部类，实现迭代器接口
-         * @author Administrator
-         *
-         */
-        public class DoIterator implements Iterator{
-            int index;
-            /**
-             * 判定索引是否指向在集合之中，如果还在就返加true
-             */
-            @Override
-            public boolean hasNext() {
-                if(index &lt; elements.length)
-                    return true;
-                return false;
-            }
-            /**
-             * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
-             */
-            @Override
-            public Object next() {
-                if(this.hasNext()){
-                    Object obj = elements[index++];
-                    return obj;
-                }
-                return null;
-            }
-        }
-- 最后在外部其他的类中来构造一个此内部类：
-    - 先引入此内部类的包：`import designpatrern.iteratorpattern.Repository.DoIterator;`
-    - 先构造一个外部类的对象：`    Repository rep = new Repository();`
-    - 再来构造内部类对象：`DoIterator ite2 = rep.new DoIterator();`
-</code></pre><ul>
-<li>当这个内部类的修辞符为private时，这时在其他非相关的外部类中就不能导入此类，更名别说构造对象了；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="匿名内部类："><a href="#匿名内部类：" class="headerlink" title="匿名内部类："></a>匿名内部类：</h3><ul>
-<li>这种情况多数用于一个抽象的类或者接口想要生成一个对象，这时不得不用一个子类来实现其抽象方法或新产品才能实现，但如果这个子类只用一次的话，专门创建一个子类来装载时会造成系统资源的浪费，那么这时使用匿名内部类会更合理：<ul>
-<li>接口定义<br>  public interface Draw {<pre><code>void draw(String name);
-</code></pre>  }</li>
-<li>这时我们只想实现一次特殊的draw()方法，而且只用得到一次，如果创建一个类实现这个接口（或者抽象父类），就会造成系统资源的浪费，所以就使用匿名内部类实现：</li>
-<li>main方法中测试：<pre><code>public static void main(String[] args) {
-    Draw draw = new Draw(){
-        @Override
-        public void draw(String name) {
-            System.out.println(&quot;Draw.Draw....&quot;+name);
-        }
-    };
-    draw.draw(&quot;test&quot;);
-}
-</code></pre><ul>
-<li>测试结果：<pre><code>Draw.Draw....test
-</code></pre></li>
-<li>其中先用接口new一个对象出来，再在这个对象中创建一个匿名的内部类并实现其draw()方法，因为是匿名的类，所以只能看到其方法在对象体<code>{}</code>中。</li>
-<li>同时要实现这个匿名内部类的效果，不一定要在接口中或抽象类的抽象方法中，普通类的普通方法也一样可以实现这样的重写方法，再一次调用：<pre><code>//实现类的匿名内部类，这个类不一定抽象类方法也不一定是抽象方法，一样都可以实现
-ProxyDraw proxy = new ProxyDraw(draw){
-    @Override
-    public void draw(String name){
-        System.out.println(&quot;anonymity&quot;+name);
-    }
-};
-proxy.draw(&quot;&quot;);
-</code></pre><ul>
-<li>测试结果：<pre><code>anonymity
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在动态代理模式中，匿名内部类会有很好的体现，共具体实现：<ul>
-<li>接口：<pre><code>public interface Draw {
-    void draw(String name);
-}
-</code></pre></li>
-<li>被代理的类：<pre><code>public class RealDraw implements Draw {
-    @Override
-    public void draw(String name) {
-        System.out.println(&quot;RealDraw.draw&quot;+name);
-    }
-}
-</code></pre></li>
-<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
-    Object target;
-    public ProxyDraw(Object target){
-        this.target = target;
-    }
-    /* 
-     * 获取代理实例
-     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
-     */
-    public Object getProxyIns() {
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args)
-                            throws Throwable {
-                        System.out.println(&quot;Porxy_start&quot;);
-                        Object returnValue = method.invoke(target, args);
-                        System.out.println(&quot;Porxy_end&quot;);
-                        return returnValue;
-                    }
-                });
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    //动态代理的实现
-    Draw realDraw = new RealDraw();
-    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
-    proxyDraw.draw(&quot;....test.end&quot;);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Porxy_start
-RealDraw.draw....testend
-Porxy_end
-</code></pre></li>
-<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，如果不使用匿名内部类，其实现过程：<ul>
-<li>将代理中匿名内部类的实现提取出来：<pre><code>public class InvokeHandler implements InvocationHandler {
-    //在构造函数中就注入要调用方法的对象
-    Object obj;
-    public InvokeHandler(Object obj){
-        this.obj = obj;
-    }
-    /* 
-     * 实现InvocationHandler接口（其中只有一个invoke方法）
-     */
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println(&quot;invoke.start....&quot;);
-        Object resultValue = method.invoke(obj, args);
-        System.out.println(&quot;invoke.end....&quot;);
-        return resultValue;
-    }
-}
-</code></pre></li>
-<li>而代理类中获取代理的方法就应该是：<pre><code>public Object getProxyIns2() {
-    return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
-            new InvokeHandler(this.target)); 
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    //动态代理的实现
-    Draw realDraw = new RealDraw();
-    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns2();
-    proxyDraw.draw(&quot;....test.end&quot;);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>invoke.start....
-RealDraw.draw....test.end
-invoke.end....
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj77mdthm001y2gqnrhzv5jmt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-项目开发流程（详细）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/29/项目开发流程（详细）/" class="article-date">
@@ -1125,6 +903,63 @@ static String typeChar(char _char){
 
 
   
+    <article id="post-Csharp_abstract_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/23/Csharp_abstract_class/" class="article-date">
+  <time datetime="2016-12-23T07:02:43.000Z" itemprop="datePublished">2016-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/23/Csharp_abstract_class/">C#中的抽象类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="abstract-interface"><a href="#abstract-interface" class="headerlink" title="abstract_interface"></a>abstract_interface</h3><ul>
+<li>abstract 修饰符用于表示所修饰的类是不完整的，并且它只能用作基类。抽象类与非抽象类在以下方面是不同的： <ul>
+<li>抽象类不能直接实例化，并且对抽象类使用 new 运算符会在编译时错误；（虽然一些变量和值在编译时的类型可以是抽象的，但是这样的变量和值必须或者为null，或者含有对非抽象类的实例的引用（此非抽象类是从抽象类派生的））；</li>
+<li>允许（但不要求）抽象类包含抽象成员;</li>
+<li>抽象类不能被密封(因为密封类不能被继承）;</li>
+<li>当从抽象类派生非抽象类时，这些非抽象类必须具体实现所继承的所有抽象成员，从而重写那些抽象成员;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li>与java相比，抽象类的特性都差不多；</li>
+<li>java中不存在密封类的说法，相对应的说法应该是final常量修辞符；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj77mdtfu00072gqn7etqiocg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -1138,7 +973,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
     </div>
   </div>
 
@@ -1148,7 +983,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式programming/">设计模式programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -1158,7 +993,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.67px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.33px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 10px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.67px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.67px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/设计模式programming/" style="font-size: 10px;">设计模式programming</a> <a href="/tags/面向对象/" style="font-size: 15px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.67px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.33px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 10px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.67px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 15px;">面向对象</a>
     </div>
   </div>
 
