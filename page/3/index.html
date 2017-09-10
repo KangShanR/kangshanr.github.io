@@ -69,6 +69,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-design_principle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/13/design_principle/" class="article-date">
+  <time datetime="2017-05-13T04:32:48.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/13/design_principle/">设计原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="设计模式的六大原则"><a href="#设计模式的六大原则" class="headerlink" title="设计模式的六大原则"></a>设计模式的六大原则</h3><p>简称“六大设计原则”，用于整个面向对象编程过程中设计各种模式甚至到各个接口与类的设计都需要参考的原则。这些原则的宗旨是尽量减少程序的耦合性，让程序的可扩展性更高，在接触越多的编程后，越会感受到这些原则的重要性；</p>
+<hr>
+<ol>
+<li><strong>开闭原则(Open Close Principle)</strong>：<ol>
+<li>开闭原则的意思是：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。简言之，是为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。</li>
+<li>这也是我们在设计程序过程中，尽量使用功能功能明确单一的接口，尽量把类抽象成基类，让派生类继承其公共的属性与方法的目的。</li>
+<li>与依赖倒置原则相呼应。</li>
+</ol>
+</li>
+<li><strong>里氏代换原则（Liskov Substitution Principle）</strong><ol>
+<li>里氏代换原则是面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。LSP 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。</li>
+<li>里氏代换原则是<strong>对开闭原则的补充</strong>。实现开闭原则的关键步骤就是抽象化，而基类与子类的继承关系就是抽象化的具体实现，所以<strong>里氏代换原则是对实现抽象化的具体步骤的规范</strong>。也就是在设计各类程序块时，用父类、接口来接收实现的对象，这也是java多态实现基础；</li>
+</ol>
+</li>
+<li><strong>依赖倒置原则（Dependence Inversion Principle）</strong><ol>
+<li>这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体，一个具体的优势就是减少代码的重写，甚至可以减少方法的重载。</li>
+</ol>
+</li>
+<li><strong>接口隔离原则（Interface Segregation Principle）</strong><ol>
+<li>这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。由此可见，其实设计模式就是从大型软件架构出发、便于升级和维护的软件设计思想，它强调降低依赖，降低耦合。</li>
+</ol>
+</li>
+<li><strong>迪米特法则，又称最少知道原则（Demeter Principle）</strong><ol>
+<li>最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。</li>
+</ol>
+</li>
+<li><strong>合成复用原则（Composite Reuse Principle）</strong><ol>
+<li>合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj7f1lqms001hi8qnwqr9o7ib" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS_Chooser" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/13/CSS_Chooser/" class="article-date">
@@ -109,10 +182,62 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj7efm8ou0002vwqn50emv1oa" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj7f1lql60003i8qnrt8qg6up" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unfinished_HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/06/unfinished_HTTP/" class="article-date">
+  <time datetime="2017-05-06T01:54:30.000Z" itemprop="datePublished">2017-05-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/unfinished_HTTP/">HTTP协议的理解与认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#HTTP协议#</p>
+<ul>
+<li>概念：<ul>
+<li>http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法；</li>
+<li>用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。</li>
+<li>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。<em>所谓无状态协议，是指这一次客户端的请求与上一次的请求无关。</em>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/06/unfinished_HTTP/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/05/06/unfinished_HTTP/" data-id="cj7f1lqoc003ji8qn0dv4gqj8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -331,7 +456,7 @@ invoke.end....
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj7efm8qz0023vwqnnzcbrq19" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj7f1lqnb0024i8qnd88eter1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -435,7 +560,7 @@ invoke.end....
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj7efm8sp004fvwqnaxbhps0u" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj7f1lqp7004li8qnidy3sffm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -534,7 +659,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7efm8op0001vwqn74ixzhwz" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7f1lqle0006i8qnhd5xvb07" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -602,7 +727,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7efm8qk001nvwqnpp7c2b7y" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7f1lqmv001ki8qnrvnpdw0p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -651,7 +776,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7efm8q90019vwqnt20q0gt0" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7f1lqmj0018i8qnh7v228kj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -733,7 +858,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7efm8pq000ovwqnuxcm8b7z" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7f1lqm3000qi8qntbm3wl1u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -799,7 +924,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj7efm8r50029vwqnz6ezh79m" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj7f1lqn80021i8qnol8s55ue" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -811,312 +936,10 @@ static String typeChar(char _char){
 
 
   
-    <article id="post-hexo+github=website" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/23/hexo+github=website/" class="article-date">
-  <time datetime="2017-01-22T18:04:38.000Z" itemprop="datePublished">2017-01-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/23/hexo+github=website/">hexo+github=your website</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a><br><a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" title="BlueLake使用教程" target="_blank" rel="external">使用blueLake的教程</a><br><a href="http://app.weibo.com/tool/weiboshow" title="新浪微博秀" target="_blank" rel="external">生成新浪微博秀；</a></p>
-<ul>
-<li>hexo generate<ul>
-<li>根据已提供的md文件资料生成静态网页，放在public文件夹中；</li>
-<li>hexo generate –watch<ul>
-<li>对比查看文件的改动，只有当文件改动被审查过才会执行generate命令生成静态网页；</li>
-</ul>
-</li>
-<li>hexo generate –deploy与hexo deploy –generate<ul>
-<li>两者效果一样都在generate后执行布置命令deploy</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>新建md文档：<code>hexo new [dir] filename</code></p>
-<ul>
-<li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，
-        
-          <p class="article-more-link">
-            <a href="/2017/01/23/hexo+github=website/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj7efm8qo001pvwqn58nq8vic" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-regular_expression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/13/regular_expression/" class="article-date">
-  <time datetime="2017-01-13T04:22:23.000Z" itemprop="datePublished">2017-01-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/13/regular_expression/">正则表达式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="正则表达式的使用"><a href="#正则表达式的使用" class="headerlink" title="正则表达式的使用"></a>正则表达式的使用</h3><ul>
-<li>对字符串进行验证<ul>
-<li>各个语言中提供专门的方法与接口来执行正则表达式（比如:Java中的boolean String.matches(String regex)将其作为一个参数,返回这个字符串是否匹配得上这个正则表达式）；</li>
-<li>正则表达式是对字符串进行逐个字符验证，从第一个字符开始，依次往后匹配，有一个不匹配就可以Over了跳出循环;</li>
-<li>必须从头判定到尾，如果没有对尾作出判定，表达式会将字符串当作另一个更短的字符串来判定则肯定不匹配；</li>
-</ul>
-</li>
-</ul>
-<p><strong>#### 正则表达式中各个字符表达的意义： ####</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">元字符</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\</td>
-<td style="text-align:left">将下一个字符标记符、或一个向后引用、或一个八进制转义符。例如，“\n”匹配\n。“\n”匹配换行符。序列“\”匹配“\”而“(”则匹配“(”。即相当于多种编程语言中都有的“转义字符”的概念。</td>
-</tr>
-<tr>
-<td style="text-align:center">^</td>
-<td style="text-align:left">匹配输入字符串的开始位置。如果设置了RegExp对象的Multiline属性，^也匹配“\n”或“\r”之后的位置。</td>
-</tr>
-<tr>
-<td style="text-align:center">$</td>
-<td style="text-align:left">匹配输入字符串的结束位置。如果设置了RegExp对象的Multiline属性，$也匹配“\n”或“\r”之前的位置。</td>
-</tr>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:left">匹配前面的子表达式任意次。例如，zo<em>能匹配“z”，也能匹配“zo”以及“zoo”。</em>等价于o{0,}</td>
-</tr>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:left">匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}。</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:left">匹配前面的子表达式零次或一次。例如，“do(es)?”可以匹配“do”或“does”中的“do”。?等价于{0,1}。</td>
-</tr>
-<tr>
-<td style="text-align:center">{n}</td>
-<td style="text-align:left">n是一个非负整数。匹配确定的n次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o。</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,}</td>
-<td style="text-align:left">n是一个非负整数。至少匹配n次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”。</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,m}</td>
-<td style="text-align:left">m和n均为非负整数，其中n&lt;=m。最少匹配n次且最多匹配m次。例如，“o{1,3}”将匹配“fooooood”中的前三个o为一组，后三个o为一组。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:left">当该字符紧跟在任何一个其他限制符（*,+,?，{n}，{n,}，{n,m}）后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串“oooo”，“o+”将尽可能多的匹配“o”，得到结果[“oooo”]，而“o+?”将尽可能少的匹配“o”，得到结果[‘o’, ‘o’, ‘o’, ‘o’]</td>
-</tr>
-<tr>
-<td style="text-align:center">.点</td>
-<td style="text-align:left">匹配除“\r\n”之外的任何单个字符。要匹配包括“\r\n”在内的任何字符，请使用像“[\s\S]”的模式。</td>
-</tr>
-<tr>
-<td style="text-align:center">(pattern)</td>
-<td style="text-align:left">匹配pattern并获取这一匹配。所获取的匹配可以从产生的Matches集合得到，在VBScript中使用SubMatches集合，在JScript中则使用$0…$9属性。要匹配圆括号字符，请使用“(”或“)”。</td>
-</tr>
-<tr>
-<td style="text-align:center">[xyz]</td>
-<td style="text-align:left">字符集合。匹配所包含的任意一个字符。例如，“[abc]”可以匹配“plain”中的“a”。</td>
-</tr>
-<tr>
-<td style="text-align:center">[^xyz]</td>
-<td style="text-align:left">负值字符集合。匹配未包含的任意字符。例如，“[^abc]”可以匹配“plain”中的“plin”。</td>
-</tr>
-<tr>
-<td style="text-align:center">[a-z]</td>
-<td style="text-align:left">字符范围。匹配指定范围内的任意字符。例如，“[a-z]”可以匹配“a”到“z”范围内的任意小写字母字符。注意:只有连字符在字符组内部时,并且出现在两个字符之间时,才能表示字符的范围; 如果出字符组的开头,则只能表示连字符本身.</td>
-</tr>
-<tr>
-<td style="text-align:center">[^a-z]</td>
-<td style="text-align:left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，“[^a-z]”可以匹配任何不在“a”到“z”范围内的任意字符。</td>
-</tr>
-<tr>
-<td style="text-align:center">\b</td>
-<td style="text-align:left">匹配一个单词边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”。</td>
-</tr>
-<tr>
-<td style="text-align:center">\B</td>
-<td style="text-align:left">匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。</td>
-</tr>
-<tr>
-<td style="text-align:center">\cx</td>
-<td style="text-align:left">匹配由x指明的控制字符。例如，\cM匹配一个Control-M或回车符。x的值必须为A-Z或a-z之一。否则，将c视为一个原义的“c”字符。</td>
-</tr>
-<tr>
-<td style="text-align:center">\d</td>
-<td style="text-align:left">匹配一个数字字符。等价于[0-9]。grep 要加上-P，perl正则支持</td>
-</tr>
-<tr>
-<td style="text-align:center">\D</td>
-<td style="text-align:left">匹配一个非数字字符。等价于[^0-9]。grep要加上-P，perl正则支持</td>
-</tr>
-<tr>
-<td style="text-align:center">\f</td>
-<td style="text-align:left">匹配一个换页符。等价于\x0c和\cL。</td>
-</tr>
-<tr>
-<td style="text-align:center">\n</td>
-<td style="text-align:left">匹配一个换行符。等价于\x0a和\cJ。</td>
-</tr>
-<tr>
-<td style="text-align:center">\r</td>
-<td style="text-align:left">匹配一个回车符。等价于\x0d和\cM。</td>
-</tr>
-<tr>
-<td style="text-align:center">\s</td>
-<td style="text-align:left">匹配任何不可见字符，包括空格、制表符、换页符等等。等价于[ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td style="text-align:center">\S</td>
-<td style="text-align:left">匹配任何可见字符。等价于[^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td style="text-align:center">\t</td>
-<td style="text-align:left">匹配一个制表符。等价于\x09和\cI。</td>
-</tr>
-<tr>
-<td style="text-align:center">\v</td>
-<td style="text-align:left">匹配一个垂直制表符。等价于\x0b和\cK。</td>
-</tr>
-<tr>
-<td style="text-align:center">\w</td>
-<td style="text-align:left">匹配包括下划线的任何单词字符。类似但不等价于“[A-Za-z0-9_]”，这里的”单词”字符使用Unicode字符集。</td>
-</tr>
-<tr>
-<td style="text-align:center">\W</td>
-<td style="text-align:left">匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。</td>
-</tr>
-<tr>
-<td style="text-align:center">\xn</td>
-<td style="text-align:left">匹配n，其中n为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“\x41”匹配“A”。“\x041”则等价于“\x04&amp;1”。正则表达式中可以使用ASCII编码。</td>
-</tr>
-<tr>
-<td style="text-align:center">\num</td>
-<td style="text-align:left">匹配num，其中num是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。</td>
-</tr>
-<tr>
-<td style="text-align:center">\n</td>
-<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果\n之前至少n个获取的子表达式，则n为向后引用。否则，如果n为八进制数字（0-7），则n为一个八进制转义值。</td>
-</tr>
-<tr>
-<td style="text-align:center">\nm</td>
-<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果\nm之前至少有nm个获得子表达式，则nm为向后引用。如果\nm之前至少有n个获取，则n为一个后跟文字m的向后引用。如果前面的条件都不满足，若n和m均为八进制数字（0-7），则\nm将匹配八进制转义值nm。</td>
-</tr>
-<tr>
-<td style="text-align:center">\nml</td>
-<td style="text-align:left">如果n为八进制数字（0-7），且m和l均为八进制数字（0-7），则匹配八进制转义值nml。</td>
-</tr>
-<tr>
-<td style="text-align:center">\un</td>
-<td style="text-align:left">匹配n，其中n是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（&copy;）。</td>
-</tr>
-<tr>
-<td style="text-align:center">\p{P}</td>
-<td style="text-align:left">小写 p 是 property 的意思，表示 Unicode 属性，用于 Unicode 正表达式的前缀。中括号内的“P”表示Unicode 字符集七个字符属性之一：标点字符。其他六个属性：L：字母；M：标记符号（一般不会单独出现）；Z：分隔符（比如空格、换行等）；S：符号（比如数学符号、货币符号等）；N：数字（比如阿拉伯数字、罗马数字等）；C：其他字符。*注：此语法部分语言不支持，例：javascript。</td>
-</tr>
-<tr>
-<td style="text-align:center">\&lt;></td>
-<td style="text-align:left">匹配词（word）的开始（\&lt;）和结束（>）。例如正则表达式\<the\>能够匹配字符串”for the wise”中的”the”，但是不能匹配字符串”otherwise”中的”the”。注意：这个元字符不是所有的软件都支持的。</the\></td>
-</tr>
-<tr>
-<td style="text-align:center">( )</td>
-<td style="text-align:left">将( 和 ) 之间的表达式定义为“组”（group），并且将匹配这个表达式的字符保存到一个临时区域（一个正则表达式中最多可以保存9个），它们可以用 \1 到\9 的符号来引用。</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>/</code></td>
-<td style="text-align:left">将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him<code>/</code>her) 匹配”it belongs to him”和”it belongs to her”，但是不能匹配”it belongs to them.”。注意：这个元字符不是所有的软件都支持的。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
-</tr>
-<tr>
-<td style="text-align:center">(?:pattern)</td>
-<td style="text-align:left">非获取匹配，匹配pattern但不获取匹配结果，不进行存储供以后使用。这在使用或字符<code>(/)</code>来组合一个模式的各个部分时很有用。例如<code>industr(?:y/ies)</code>就是一个比<code>industry/industries</code>更简略的表达式。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
-</tr>
-<tr>
-<td style="text-align:center">(?=pattern)</td>
-<td style="text-align:left">非获取匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如，<code>Windows(?=95/98/NT/2000)</code>能匹配<code>Windows2000</code>中的“Windows”，但不能匹配“Windows3.1”中的<code>Windows</code>。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><em>下面为了避免<code>｜</code>被markdown识别成制表符号换种格式：</em></p>
-<ul>
-<li><code>(?!pattern)</code>：    非获取匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如“Windows(?!95|98|NT|2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。</li>
-<li>(?&lt;=pattern)：    非获取匹配，反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?&lt;=95|98|NT|2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。</li>
-<li>(?&lt;!pattern)        非获取匹配，反向否定预查，与正向否定预查类似，只是方向相反。例如“(?&lt;!95|98|NT|2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。这个地方不正确，有问题此处用或任意一项都不能超过2位，如“(?&lt;!95|98|NT|20)Windows正确，“(?&lt;!95|980|NT|20)Windows 报错，若是单独使用则无限制，如(?&lt;!2000)Windows 正确匹配</li>
-<li>x|y        匹配x或y。例如，“z|food”能匹配“z”或“food”(此处请谨慎)。“[z|f]ood”则匹配“zood”或“food”或”zood”。</li>
-</ul>
-<hr>
-<p><strong>Note:</strong><a href="http://baike.baidu.com/link?url=AQRTFncrkkeq2AETf8iwcrZNAmWQ2BYslX1pArdFsX6L_Pdq8Z1d62qxJcFm93xDiPHBo2TQOz1orepDMZIiX2veYoC4dNlObqyQCZteR8FrZmqkD2x2ldWsPhe6HqZq_56FS3G3nVD6bef8LDdBHK" target="_blank" rel="external">参考文档</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj7efm8rk002rvwqnkzh4bkv5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1136,7 +959,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -1146,7 +969,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.43px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.43px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
     </div>
   </div>
 
@@ -1168,6 +991,10 @@ static String typeChar(char _char){
       <ul>
         
           <li>
+            <a href="/2017/09/06/interview170906/">面试心得</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
           </li>
         
@@ -1181,10 +1008,6 @@ static String typeChar(char _char){
         
           <li>
             <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
           </li>
         
       </ul>
