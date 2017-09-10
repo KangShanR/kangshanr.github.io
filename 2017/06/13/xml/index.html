@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>XML的认识 | KangShan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="xml的使用与理解">
+<meta name="keywords" content="programming,leadingEnd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML的认识">
+<meta property="og:url" content="https://kangshanr.github.io/2017/06/13/xml/index.html">
+<meta property="og:site_name" content="KangShan">
+<meta property="og:description" content="xml的使用与理解">
+<meta property="og:updated_time" content="2017-09-08T20:09:05.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XML的认识">
+<meta name="twitter:description" content="xml的使用与理解">
+<link rel="publisher" href="kangshan9988@gmail.com">
+  
+    <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KangShan</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to my website.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-xml" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/xml/" class="article-date">
+  <time datetime="2017-06-13T07:02:43.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      XML的认识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="XML概述"><a href="#XML概述" class="headerlink" title="XML概述"></a>XML概述</h1><blockquote>
+<p>XML：eXtensible Markup Language,可扩展标记语言：被设计用来传输和储存数据。<br>HTML： Hyper Text Markup Language超文本标记语言。</p>
+</blockquote>
+<ul>
+<li><h4 id="XML与HTML两种语言的区别："><a href="#XML与HTML两种语言的区别：" class="headerlink" title="XML与HTML两种语言的区别："></a>XML与HTML两种语言的区别：</h4><ul>
+<li>HTML是被设计用来显示数据，XML被设计用来存储传输数据；</li>
+<li>HTML的焦点是数据的外观，而XML的焦点在于数据的内容；</li>
+<li><p>XML不是对HTML的替代，它们之间形式类似，但功能在本质上有区别；</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;note&gt;
+    &lt;to&gt;Ross&lt;/to&gt;
+    &lt;from&gt;Jack&lt;/from&gt;
+    &lt;heading&gt;Reminder&lt;/heading&gt;
+    &lt;body&gt;Don&apos;t forget me.&lt;/body&gt;
+&lt;/note&gt;
+</code></pre><ul>
+<li>这就是一个简单的XML文件，它不会做任何事情，只是把数据定义好；</li>
+<li><em>ps:在编程语言中，看到缩写为ML的首先想到是Markup Language标记语言</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="XML是W3C推荐标准："><a href="#XML是W3C推荐标准：" class="headerlink" title="XML是W3C推荐标准："></a>XML是W3C推荐标准：</h4><ul>
+<li>WWW:World Wide Web万维网</li>
+<li>W3C： world wide web consortium万维网联盟</li>
+</ul>
+</li>
+</ul>
+<h4 id="XML的特点："><a href="#XML的特点：" class="headerlink" title="XML的特点："></a>XML的特点：</h4><ul>
+<li>标签可自定义，比如上面的<to><from>这些标签都是创建者自己写的</from></to></li>
+<li>对XML最好的描述是：独立于软件与硬件的独立传输工具；</li>
+<li>XML无处不在，不亚于HTML对于web的意义；</li>
+<li>XML以纯文本格式存储</li>
+<li>XML有很强的自我描述性</li>
+<li>XML的树形结构：<ul>
+<li>像HTML标记语言一样，其结构明确，子元素包含于父元素中</li>
+<li>XML必须有根元素</li>
+<li>XML的声明如果有必须放在第一行</li>
+<li>上面例子 就声明了XML的版本与编码字符集为UTF-8，SQL,JS,HTML5，PHP的默认编码都是UTF-8</li>
+<li>所有的XML标签必须有一个关闭标签(声明不算是内容），这一点与HTML不同，HTML中有部分标签不用关闭标签eg：<br><p></p></li>
+<li>XML对大小写敏感</li>
+<li>嵌套要正确，当一个标签在另一个标签中打开，那么它的关闭也必须在这一个标签中</li>
+<li>XML的属性值必须加引号<pre><code>&lt;note date=&quot;2011.10.5&quot;&gt;
+    &lt;to&gt;Jack&lt;/to&gt;
+    &lt;from&gt;Ross&lt;/form&gt;
+    &lt;content&gt;Thanks&lt;/content&gt;
+&lt;/note&gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><ul>
+<li>所有xml元素必须有一个关闭标签</li>
+<li>xml标签对大小写敏感；</li>
+<li><p>XML标签必须嵌套：成对出现</p>
+<pre><code>&lt;user&gt;
+    &lt;id value=&quot;1&quot;/&gt;
+    &lt;username&gt;kfc&lt;/username&gt;
+&lt;/user&gt;
+</code></pre></li>
+<li><p>xml文档必须有根元素</p>
+</li>
+<li>xml属性值必须加引号</li>
+<li>从上面的xml中，我们可以看到根元素是user，其中又有两个子元素：id/username；而id这个元素有一个属性value这个属性值为“1”，而另外一个子元素username有内容“kfc”；</li>
+</ul>
+<p>##xml文档的生成与解析方式:##</p>
+<ul>
+<li><p>共4种方式：</p>
+<ul>
+<li>DOM生成和解析xml文档；<ul>
+<li>解析器将读入整个文档，然后构建一个<strong>驻留内存的树结构</strong>，然后代码就可以使用<strong>DOM接口</strong>来操作这个树结构；</li>
+<li>因为DOM是基于信息层次的，所以DOM被认为是基于树或基于对象的，而树在内存中是持久的，因此可以通过修改树来实现应用程序对数据和结构作出更改；也因为持久性的原因，DOM使用起来也要简单地得多；</li>
+<li>因此，其优点就在于整个文档在内存（包括无用的节点）便于操作；支持删除、修改、重新排列等多种功能；其缺点就在于是整个文档在内存中浪费时间与空间；</li>
+<li>使用场合：一里弄解析了文档还需多次访问这些数据；硬件资源充足（内存、cpu）；</li>
+</ul>
+</li>
+<li>SAX生成和解析xml文档；<ul>
+<li>基于<strong>事件驱动</strong>解析，当解析器发现元素开始、元素结束、文本、文档的开始或结束等时，发送事件，响应事件的代码由程序员来编写，保存数据之类的；</li>
+<li>采用基于事件的模型，对于大型文档的解析比起DOM要更快且对内存的要求也更低；</li>
+<li>优点，不用事先地调入整个文档，占用资源少，加载负荷更小，加载的速度也更快。解析代码比DOM解析器代码少，适于Applet、下载；</li>
+<li>缺点，不是持久的，事件过后，若没有保存数据，那么数据就丢失，无状态性。从事件中只能得到文本，但不知道文本属于哪个元素；</li>
+<li>使用场合：Applet；只需xml文档的少量内容，很少回头访问，机器内存少；</li>
+</ul>
+</li>
+<li>JDOM生成和解析xml文档；<ul>
+<li>设计目的是java特定文档模型，20-80原则（使用20%的精力解决80%的java、xml问题），解决DOM、SAX的编码量；</li>
+<li>本身不包含解析器，使用SAX2解析器来解析和验证输入XML文档；</li>
+<li>使用场合：实现功能简单，如解析、创建等；</li>
+</ul>
+</li>
+<li>DOM4J生成和解析xml文档；<ul>
+<li>性能优异，功能强大，易用；</li>
+<li>也是一个开源的软件，Sun的JaxM也在用DOM4J，Hiberbate也使用Dom4j读取xml文件;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>总结：</p>
+<ul>
+<li>xml文件解析之后，成为一个document对象；</li>
+<li>DOM4J性能最好，应用也更广泛；</li>
+<li>JDOM和DOM在性能测试时表现不佳，在测试10M文档时内存溢出，在小文档情况下使用他们更好。但同时，DOM的跨语言解析要强一些，也正因为如此获得W3C的推荐；</li>
+<li>SAX基于其事件驱动的解析方式，其在检测即将到来的xml流但并不载入内存中，让它在小文档解析中有一定的优势。</li>
+</ul>
+</li>
+</ul>
+<h2 id="xml声明部分"><a href="#xml声明部分" class="headerlink" title="xml声明部分"></a>xml声明部分</h2><ul>
+<li><p>声明部分是xml文件的可选部分，如果存在就一定放在文档的第一行；</p>
+<ul>
+<li><p>其内容：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+</code></pre></li>
+<li><p>声明了xml的版本，与encoding格式，同时UTF-8 也是 HTML5, CSS, JavaScript, PHP, 和 SQL 的默认编码。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h2><ul>
+<li><p>在 XML 中，一些字符拥有特殊的意义。</p>
+<ul>
+<li>如果您把字符 “&lt;” 放在 XML 元素中，会发生错误，这是因为解析器会把它当作新元素的开始。</li>
+<li><p>这样会产生 XML 错误：</p>
+<pre><code>&lt;message&gt;if salary &lt; 1000 then&lt;/message&gt;
+</code></pre></li>
+<li><p>为了避免这个错误，请用实体引用来代替 “&lt;” 字符：</p>
+<pre><code>&lt;message&gt;if salary &amp;lt; 1000 then&lt;/message&gt;
+</code></pre></li>
+<li><p>在 XML 中，有 5 个预定义的实体引用：</p>
+<pre><code>&amp;lt;    &lt;    less than
+&amp;gt;    &gt;    greater than
+&amp;amp;    &amp;    ampersand
+&amp;apos;    &apos;    apostrophe
+&amp;quot;    &quot;    quotation mark
+</code></pre></li>
+<li><p>注释：在 XML 中，只有字符 “&lt;” 和 “&amp;” 确实是非法的。大于号是合法的，但是用实体引用来代替它是一个好习惯。<a href="http://www.runoob.com/xml/xml-syntax.html" title="参考的菜鸟教程" target="_blank" rel="external">参考博客</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="xml的可扩展性"><a href="#xml的可扩展性" class="headerlink" title="xml的可扩展性"></a>xml的可扩展性</h3><ul>
+<li><p>任何一个xml的标签都可以无限扩展开，比如在<bean></bean>中，有一个元素为<date>,我们可以将年月日按一定格式存储进去</date></p>
+<pre><code>&lt;bean&gt;
+    &lt;date&gt;2017_7_30&lt;/date&gt;
+&lt;/bean&gt;
+</code></pre><ul>
+<li><p>利用元素的可扩展性就可以让我们这们来写：</p>
+  <bean><br>      <date><br>          <year>2017</year><br>          <month>7</month><br>          <date>30</date><br>      </date><br>  </bean>
+</li>
+<li><p>这样我们的数据的扩展性变得极性；</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/06/13/xml/" data-id="cj7efm8s1003jvwqnjy44y1br" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/23/项目开发模型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          项目开发模型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/13/proxy_pattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式之代理模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.43px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/29/20170829IgotMeeting/">得到例会：关于找工作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 KangShan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

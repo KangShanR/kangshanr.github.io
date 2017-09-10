@@ -69,6 +69,280 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS_Chooser" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/13/CSS_Chooser/" class="article-date">
+  <time datetime="2017-05-13T04:14:12.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/13/CSS_Chooser/">CSS常用选择器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CSS-chooser"><a href="#CSS-chooser" class="headerlink" title="CSS_chooser"></a>CSS_chooser</h3><ul>
+<li>CSS中常用的选择器有点：<ul>
+<li>id选择器,选择指定唯一标识id属性的元素</li>
+<li>类选择器，选择同一类属性的元素</li>
+<li>属性选择器，选择同一属性值的元素</li>
+<li>元素选择器，直接选择指定文档元素</li>
+<li>派生选择器，依赖上下文来应用或避免某种规则</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj7efm8ou0002vwqn50emv1oa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_inner_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/29/java_inner_class/" class="article-date">
+  <time datetime="2017-04-29T05:04:38.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/29/java_inner_class/">java内部类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="java内部类"><a href="#java内部类" class="headerlink" title="java内部类"></a>java内部类</h3><ul>
+<li>java的内部类指定义在类之中的类，这个类中的范围可以是是类成员也可以在局部方法中，还可以是作用域中；</li>
+<li>内部类只是在编译时的概念，在本质上，当经过编译后，外部类会生成outer.class文件，而其中的内部类会生成outer$inner.class类文件，也就是就算定义成内部类，其本质依然是个类；</li>
+<li>那么内部类有什么存在的必要呢？<ul>
+<li>内部类是外部类的内容，在内部类之外加上一层外部类，就意味着：<ul>
+<li>内部类可为public、default之外的访问修辞符所修辞，这一点能很大程度上区别开外部类；</li>
+<li>有了以上一点，那在类中定义内部类就会在很多时候有用了，比如：静态内部类的单例模式中，将单例通过静态内部私有类的方法来获取，这样利用外部其它的类不能访问这个私有的内部类而达到控制内部类的初始化类加载，这样只有在这个相关外部类中调用时才会调用到内部类，在这样一个单例模式中就实现了单例的懒加载；</li>
+</ul>
+</li>
+<li>在迭代器模式中，在迭代器容器中创建了个内部类：<pre><code>- 容器实现类：
+    public class Repository implements Container {
+        String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
+        /**
+         * 返回内部类的对象，注意这儿的依赖倒置
+         */
+        @Override
+        public Iterator getIterator() {
+            return new DoIterator();
+        }
+        /**
+         * 内部类，实现迭代器接口
+         * @author Administrator
+         *
+         */
+        public class DoIterator implements Iterator{
+            int index;
+            /**
+             * 判定索引是否指向在集合之中，如果还在就返加true
+             */
+            @Override
+            public boolean hasNext() {
+                if(index &lt; elements.length)
+                    return true;
+                return false;
+            }
+            /**
+             * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
+             */
+            @Override
+            public Object next() {
+                if(this.hasNext()){
+                    Object obj = elements[index++];
+                    return obj;
+                }
+                return null;
+            }
+        }
+- 最后在外部其他的类中来构造一个此内部类：
+    - 先引入此内部类的包：`import designpatrern.iteratorpattern.Repository.DoIterator;`
+    - 先构造一个外部类的对象：`    Repository rep = new Repository();`
+    - 再来构造内部类对象：`DoIterator ite2 = rep.new DoIterator();`
+</code></pre><ul>
+<li>当这个内部类的修辞符为private时，这时在其他非相关的外部类中就不能导入此类，更名别说构造对象了；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="匿名内部类："><a href="#匿名内部类：" class="headerlink" title="匿名内部类："></a>匿名内部类：</h3><ul>
+<li>这种情况多数用于一个抽象的类或者接口想要生成一个对象，这时不得不用一个子类来实现其抽象方法或新产品才能实现，但如果这个子类只用一次的话，专门创建一个子类来装载时会造成系统资源的浪费，那么这时使用匿名内部类会更合理：<ul>
+<li>接口定义<br>  public interface Draw {<pre><code>void draw(String name);
+</code></pre>  }</li>
+<li>这时我们只想实现一次特殊的draw()方法，而且只用得到一次，如果创建一个类实现这个接口（或者抽象父类），就会造成系统资源的浪费，所以就使用匿名内部类实现：</li>
+<li>main方法中测试：<pre><code>public static void main(String[] args) {
+    Draw draw = new Draw(){
+        @Override
+        public void draw(String name) {
+            System.out.println(&quot;Draw.Draw....&quot;+name);
+        }
+    };
+    draw.draw(&quot;test&quot;);
+}
+</code></pre><ul>
+<li>测试结果：<pre><code>Draw.Draw....test
+</code></pre></li>
+<li>其中先用接口new一个对象出来，再在这个对象中创建一个匿名的内部类并实现其draw()方法，因为是匿名的类，所以只能看到其方法在对象体<code>{}</code>中。</li>
+<li>同时要实现这个匿名内部类的效果，不一定要在接口中或抽象类的抽象方法中，普通类的普通方法也一样可以实现这样的重写方法，再一次调用：<pre><code>//实现类的匿名内部类，这个类不一定抽象类方法也不一定是抽象方法，一样都可以实现
+ProxyDraw proxy = new ProxyDraw(draw){
+    @Override
+    public void draw(String name){
+        System.out.println(&quot;anonymity&quot;+name);
+    }
+};
+proxy.draw(&quot;&quot;);
+</code></pre><ul>
+<li>测试结果：<pre><code>anonymity
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在动态代理模式中，匿名内部类会有很好的体现，共具体实现：<ul>
+<li>接口：<pre><code>public interface Draw {
+    void draw(String name);
+}
+</code></pre></li>
+<li>被代理的类：<pre><code>public class RealDraw implements Draw {
+    @Override
+    public void draw(String name) {
+        System.out.println(&quot;RealDraw.draw&quot;+name);
+    }
+}
+</code></pre></li>
+<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
+    Object target;
+    public ProxyDraw(Object target){
+        this.target = target;
+    }
+    /* 
+     * 获取代理实例
+     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
+     */
+    public Object getProxyIns() {
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args)
+                            throws Throwable {
+                        System.out.println(&quot;Porxy_start&quot;);
+                        Object returnValue = method.invoke(target, args);
+                        System.out.println(&quot;Porxy_end&quot;);
+                        return returnValue;
+                    }
+                });
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Porxy_start
+RealDraw.draw....testend
+Porxy_end
+</code></pre></li>
+<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，如果不使用匿名内部类，其实现过程：<ul>
+<li>将代理中匿名内部类的实现提取出来：<pre><code>public class InvokeHandler implements InvocationHandler {
+    //在构造函数中就注入要调用方法的对象
+    Object obj;
+    public InvokeHandler(Object obj){
+        this.obj = obj;
+    }
+    /* 
+     * 实现InvocationHandler接口（其中只有一个invoke方法）
+     */
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(&quot;invoke.start....&quot;);
+        Object resultValue = method.invoke(obj, args);
+        System.out.println(&quot;invoke.end....&quot;);
+        return resultValue;
+    }
+}
+</code></pre></li>
+<li>而代理类中获取代理的方法就应该是：<pre><code>public Object getProxyIns2() {
+    return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+            new InvokeHandler(this.target)); 
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns2();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>invoke.start....
+RealDraw.draw....test.end
+invoke.end....
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj7efm8qz0023vwqnnzcbrq19" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-项目开发流程（详细）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/29/项目开发流程（详细）/" class="article-date">
@@ -161,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj77mdtjd004a2gqnolm8lt2m" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj7efm8sp004fvwqnaxbhps0u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -260,56 +534,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj77mdtfe00012gqn0l21kagh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/data_verify/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><ul>
-<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
-<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
-<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj77mdth700112gqna0kugx9p" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7efm8op0001vwqn74ixzhwz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -377,10 +602,141 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj77mdth7001e2gqniy33dzhl" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7efm8qk001nvwqnpp7c2b7y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/data_verify/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><ul>
+<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
+<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
+<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7efm8q90019vwqnt20q0gt0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP_status_code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/13/HTTP_status_code/" class="article-date">
+  <time datetime="2017-04-13T04:14:12.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/13/HTTP_status_code/">HTTP状态码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HTTP状态码（HTTP-status-code"><a href="#HTTP状态码（HTTP-status-code" class="headerlink" title="HTTP状态码（HTTP status code)"></a>HTTP状态码（HTTP status code)</h3><p><strong>常见的4个HTTP的状态码：</strong></p>
+<ul>
+<li>200：请求成功</li>
+<li>301：资源被永久地转移到其他URL</li>
+<li>404：请求的资源不存在</li>
+<li>500：内部服务器错误</li>
+</ul>
+<p><strong>HTTP状态码分类</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">分类</th>
+<th style="text-align:left">分类描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1**</td>
+<td style="text-align:left">信息，服务器收到请求需要请求者继续操作</td>
+</tr>
+<tr>
+<td style="text-align:center">2**</td>
+<td style="text-align:left">成功，操作被成功并处理</td>
+</tr>
+<tr>
+<td style="text-align:center">3**</td>
+<td style="text-align:left">重定向,需要进一步操作以完成请求</td>
+</tr>
+<tr>
+<td style="text-align:center">4**</td>
+<td style="text-align:left">客户端错误,请求包含语法错误或完成请求</td>
+</tr>
+<tr>
+<td style="text-align:center">5**</td>
+<td style="text-align:left">服务器错误，服务器在请求过程中发生了错误</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Note:</strong>常见的分类如上，在编码过程中Tomcat返回状态码时，就可以根据状态码大致判定下bug在哪里了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7efm8pq000ovwqnuxcm8b7z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -443,7 +799,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj77mdthm001v2gqna3m7uf93" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj7efm8r50029vwqnz6ezh79m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -506,7 +862,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj77mdthm001o2gqn8293uokb" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj7efm8qo001pvwqn58nq8vic" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -745,213 +1101,10 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj77mdtii002n2gqngjhzy21j" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj7efm8rk002rvwqnkzh4bkv5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_datastruture" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/31/Csharp_datastruture/" class="article-date">
-  <time datetime="2016-12-31T14:02:43.000Z" itemprop="datePublished">2016-12-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/31/Csharp_datastruture/">学习C#时关于数据结构的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-数据结构"><a href="#C-数据结构" class="headerlink" title="C# 数据结构"></a>C# 数据结构</h3><h4 id="高等数学相关基础知识："><a href="#高等数学相关基础知识：" class="headerlink" title="高等数学相关基础知识："></a>高等数学相关基础知识：</h4><ul>
-<li>计量单位（Uint）：位缩写为b,字节缩写为B，千字节为KB，兆字节MB。1B = 8b，1KB = 1024B，1MB = 1024KB</li>
-<li>阶乘函数（Factorial Function): 0! = 0 , n! = (n-1)! *n</li>
-<li>取上整和取下整（Floor and Ceiling）：⌊3.4⌋=3（下整） ，⌈3.4⌉=4（上整）</li>
-<li>取模择操作符（Modulus)：% ， 5%2  返回1，这两个参数也可以为浮点类型数值，eg：5.6 %0.5 ，返回0.1</li>
-<li>对数（Logarithm)：若ab=N，则数b叫做以a为底N的对数，记作：logaN=b,其中a叫作对数的底数，N叫真数；</li>
-<li>递归（Recursive):算法调用自己或间接调用自己；</li>
-<li>使用递归函数一定要留好缺口，不然就会无限调用导致内存溢出；比如，用递归函数来算阶乘，其缺口就是0！ = 1；</li>
-</ul>
-<p><strong>算法（Algorithm)</strong></p>
-<ul>
-<li>对某一选定类型的问题的求解步骤的一种描述，是指令的有限序列。其特性有：</li>
-<li>有穷性（Finity)、确定性（Unambiguousness)、输入（Input)、输出（Output)、有效性（Realizability)</li>
-<li>针对算法的优劣，其评价标准有：正确性（Correctness)、可读性（Readability)、健壮性（Robustness）、运行时间（Running Time)、占用空间（Storage Space)</li>
-</ul>
-<p><strong>数据结构（Data Stauct):</strong></p>
-<ul>
-<li>简记为DS,是一个二元组，DS=（D,S)，其中D为数据元素的有限集合，R是数据元素之间关系的有限集合。</li>
-<li>相互之间存在一种或多种关系的数据元素的集合。常用的4 种数据结构类型：</li>
-<li>集合（Set)<ul>
-<li>线性结构（Linear Structure)</li>
-<li>树形结构（Ture Structure)</li>
-<li>图状结构（Graphic Structure)</li>
-</ul>
-</li>
-</ul>
-<p><strong>数据（Data)</strong></p>
-<ul>
-<li>外部世界信息的载体，能被计算机识别、存储和加工处理，是计算机程序加工的原料。</li>
-<li>数据元素（Data Element)和数据项</li>
-<li>数据的基本单位，有时也被称为元素、结点、顶点、记录等等。</li>
-<li>一个数据元素可由若干个数据项组成；</li>
-<li>数据项是不可分割、含有独立意义的最小数据单位，数据项有时也被称为字段（Field)或域（Domain)；</li>
-<li>数据项组成数据元素，数据元素组成数据，数据组成文件。</li>
-<li>使用数据库模型来法人代表说明这两者之间的关系：</li>
-</ul>
-<p><strong>数据对象（Data Object):</strong></p>
-<ul>
-<li>性质相同的数据元素的数据元素的集合，是数据的一个子集，例如：字母表对象｛a,b,c,d,……x,y,z}</li>
-</ul>
-<p><strong>数据类型（Data Type)</strong></p>
-<ul>
-<li>数据的聚会范围和对数据进行操作的总和。</li>
-<li>规定了程序中对象的特性；</li>
-<li>程序中每个变量、常量、表达式的结果都应该属于某种确定的数据类型</li>
-<li>可分为两类：<ul>
-<li>非结构的原子类型，如，C#中的基本类型；</li>
-<li>结构类型，其成分由多个结构类型组成，可以分解；如C#的数组类型。</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj77mdtgc00082gqngx7xhc87" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_datatype" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/25/Csharp_datatype/" class="article-date">
-  <time datetime="2016-12-25T07:02:43.000Z" itemprop="datePublished">2016-12-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/25/Csharp_datatype/">C#语言中数据类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-数据类型"><a href="#C-数据类型" class="headerlink" title="C#数据类型"></a>C#数据类型</h3><ul>
-<li>C#中，数据共有三种类型<ul>
-<li>value types 值类型</li>
-<li>reference types 引用类型</li>
-<li>pointer types  指针类型</li>
-</ul>
-</li>
-</ul>
-<p>关于命名空间 <code>namespace</code>，msdn官网上有一句：<code>Namespaces implicitly have public access and this is not modifiable.</code>翻译：命名空间隐式默认为public公共访问权限，并且不能修改这个公共访问特性。也就是说命名空间访问不受限；</p>
-<hr>
-<p>参考：<a href="https://msdn.microsoft.com/zh-cn/library/z2kcy19k.aspx" target="_blank" rel="external">visual studio网站</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj77mdtgc000e2gqnky56mfdx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_abstract_class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/23/Csharp_abstract_class/" class="article-date">
-  <time datetime="2016-12-23T07:02:43.000Z" itemprop="datePublished">2016-12-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/23/Csharp_abstract_class/">C#中的抽象类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="abstract-interface"><a href="#abstract-interface" class="headerlink" title="abstract_interface"></a>abstract_interface</h3><ul>
-<li>abstract 修饰符用于表示所修饰的类是不完整的，并且它只能用作基类。抽象类与非抽象类在以下方面是不同的： <ul>
-<li>抽象类不能直接实例化，并且对抽象类使用 new 运算符会在编译时错误；（虽然一些变量和值在编译时的类型可以是抽象的，但是这样的变量和值必须或者为null，或者含有对非抽象类的实例的引用（此非抽象类是从抽象类派生的））；</li>
-<li>允许（但不要求）抽象类包含抽象成员;</li>
-<li>抽象类不能被密封(因为密封类不能被继承）;</li>
-<li>当从抽象类派生非抽象类时，这些非抽象类必须具体实现所继承的所有抽象成员，从而重写那些抽象成员;</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li>与java相比，抽象类的特性都差不多；</li>
-<li>java中不存在密封类的说法，相对应的说法应该是final常量修辞符；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj77mdtfu00072gqn7etqiocg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -983,7 +1136,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -993,7 +1146,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.67px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.33px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 10px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.67px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 15px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.43px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 10px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
     </div>
   </div>
 
