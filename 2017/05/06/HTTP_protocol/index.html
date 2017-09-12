@@ -5,17 +5,17 @@
   
   <title>HTTP协议的理解与认识 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#HTTP协议#  概念： http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法； 用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。 HTTP是一个应用层协">
+  <meta name="description" content="#HTTP协议#  概念：  http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法； 用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。 HTTP是一个应用层">
 <meta name="keywords" content="programming,HTTP,协议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP协议的理解与认识">
 <meta property="og:url" content="https://kangshanr.github.io/2017/05/06/HTTP_protocol/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="#HTTP协议#  概念： http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法； 用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。 HTTP是一个应用层协">
-<meta property="og:updated_time" content="2017-09-11T13:18:39.684Z">
+<meta property="og:description" content="#HTTP协议#  概念：  http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法； 用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。 HTTP是一个应用层">
+<meta property="og:updated_time" content="2017-09-12T15:55:01.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP协议的理解与认识">
-<meta name="twitter:description" content="#HTTP协议#  概念： http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法； 用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。 HTTP是一个应用层协">
+<meta name="twitter:description" content="#HTTP协议#  概念：  http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法； 用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。 HTTP是一个应用层">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -60,7 +60,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -97,11 +97,25 @@
       
         <p>#HTTP协议#</p>
 <ul>
-<li>概念：<ul>
+<li><p>概念：</p>
+<ul>
 <li>http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法；</li>
 <li>用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。</li>
 <li>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。<em>所谓无状态协议，是指这一次客户端的请求与上一次的请求无关。</em><a id="more"></a></li>
-<li><strong>http的post和get方法性能上的区别：</strong><ul>
+<li><strong>Http协议的主要特点：</strong><ul>
+<li>支持客户端/服务器模式（cs模式）；</li>
+<li><strong>简单快速：</strong>客户端向服务器发送请求服务时，只需传送请求方法与路径。<strong>常用的请求方法：GET、POST、HEAD、PUT、DELETE等；</strong></li>
+<li><strong>HTTP协议简单</strong>，这也便利HTTP服务器的程序规模小，通信速度快；</li>
+<li><strong>灵活</strong>，HTTP允许传输任意类型的数据对象，正在传输的类型由Content-Type加以标记；</li>
+<li><strong>无连接</strong>，限制每次连接只处理一个服务器处理完客户的请求，并收到客户的应答后，即断开连接。这样也更节省时间；</li>
+<li><strong>无状态：</strong>对于事务的处理没有记忆能力，这也意味着如果后续处理需要前面的信息，它必须重传</li>
+<li><strong>明文传输</strong>，不支持加密处理，所以在安全性方面是硬伤。目前解决这一安全问题的方法是使用HTTPS协议；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>http的post和get方法性能上的区别：</strong></p>
+<ul>
 <li>get是从服务器上获取数据，post是向服务器传送数据。</li>
 <li>get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。</li>
 <li>对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。</li>
@@ -110,8 +124,6 @@
 <li>因此建议：<ul>
 <li>get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；</li>
 <li>在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -230,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/06/HTTP_protocol/" data-id="cj7g7boel0000tcqnzmjo1prs" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/06/HTTP_protocol/" data-id="cj7hs6l9y000w2sqnug81mnha" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
@@ -242,7 +254,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/13/CSS_Chooser/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           CSS常用选择器
@@ -252,7 +264,7 @@
   
   
     <a href="/2017/04/29/java_inner_class/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">java内部类</div>
     </a>
   
@@ -267,7 +279,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorieën</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
     </div>
@@ -277,7 +289,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -296,7 +308,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
@@ -306,7 +318,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
