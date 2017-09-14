@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Struts2框架的总结 | KangShan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Struts2 谈到Struts2不得不谈到MVC模式：模型-视图-控制器;MVC架构将程序分割成若干逻辑部件，使程序设计变得坚韧更加容易。提供了一种按功能对各种对象（用来维护和表现数据的对象）进行分割的方法，而将各对象间的耦合程度降到最低。Struts2就实现了MVC架构下的各个功能；">
+<meta name="keywords" content="programming,java,framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Struts2框架的总结">
+<meta property="og:url" content="https://kangshanr.github.io/2017/09/03/struts2/index.html">
+<meta property="og:site_name" content="KangShan">
+<meta property="og:description" content="Struts2 谈到Struts2不得不谈到MVC模式：模型-视图-控制器;MVC架构将程序分割成若干逻辑部件，使程序设计变得坚韧更加容易。提供了一种按功能对各种对象（用来维护和表现数据的对象）进行分割的方法，而将各对象间的耦合程度降到最低。Struts2就实现了MVC架构下的各个功能；">
+<meta property="og:updated_time" content="2017-09-14T16:55:53.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Struts2框架的总结">
+<meta name="twitter:description" content="Struts2 谈到Struts2不得不谈到MVC模式：模型-视图-控制器;MVC架构将程序分割成若干逻辑部件，使程序设计变得坚韧更加容易。提供了一种按功能对各种对象（用来维护和表现数据的对象）进行分割的方法，而将各对象间的耦合程度降到最低。Struts2就实现了MVC架构下的各个功能；">
+<link rel="publisher" href="kangshan9988@gmail.com">
+  
+    <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">KangShan</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Welcome to my website.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-struts2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/03/struts2/" class="article-date">
+  <time datetime="2017-09-03T04:23:30.000Z" itemprop="datePublished">2017-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Struts2框架的总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Struts2"><a href="#Struts2" class="headerlink" title="Struts2"></a>Struts2</h2><blockquote>
+<p>谈到Struts2不得不谈到MVC模式：模型-视图-控制器;<br>MVC架构将程序分割成若干逻辑部件，使程序设计变得坚韧更加容易。提供了一种按功能对各种对象（用来维护和表现数据的对象）进行分割的方法，而将各对象间的耦合程度降到最低。<br>Struts2就实现了MVC架构下的各个功能；<a id="more"></a></p>
+</blockquote>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><blockquote>
+<p>概念：<strong>Asynchronous javascript and xml，异步js和xml，所谓异步就是指异步调用web浏览器组件</strong>。<br>Google地图就对这个一技术完美应用，在地图中，网页是活动的，但你可以用鼠标实现各个组件功能，当用户界面与Ajax结合后，只有在必要时才会向服务器发起请求，获得少量必要的信息。提高了信息的<strong>可重用性</strong>。</p>
+</blockquote>
+<h3 id="Struts2的优点"><a href="#Struts2的优点" class="headerlink" title="Struts2的优点"></a>Struts2的优点</h3><ol>
+<li>无侵入性设计；</li>
+<li>提供了拦截器，可以实现AOP编程，比如权限的拦截；</li>
+<li>提供了类型转换器，可以把特殊的请求参数转换成需要的类型；</li>
+<li>支持多种表现层技术；</li>
+<li>输入校验可以对指定方法进行校验；</li>
+<li>提供了全局范围、包范围和Action范围的国际化资源文件管理实现；</li>
+</ol>
+<h3 id="Struts2的配置文件"><a href="#Struts2的配置文件" class="headerlink" title="Struts2的配置文件"></a>Struts2的配置文件</h3><blockquote>
+<p>Struts2r的配置文件有以下5个，但除web.xml外，其他都是可选的；<br>其中，常用到的配置struts.xml；</p>
+</blockquote>
+<ol>
+<li>web.xml，web部署描述符，包括所有必需的框架组件；</li>
+<li>struts.xml，主要的配置文件，包含result映射、action映射、拦截器配置等；</li>
+<li>struts.properties，Struts2框架的属性配置</li>
+<li>struts-default.xml，默认配置，由框架提供</li>
+<li>strtus-plugin.xml，Struts2插件所用的配置文件，由插件提供；</li>
+</ol>
+<h4 id="Struts-xml配置"><a href="#Struts-xml配置" class="headerlink" title="Struts.xml配置"></a>Struts.xml配置</h4><ol>
+<li>常量配置：Constant，<ol>
+<li>常量的配置改变Struts2的框架属性与插件行为；</li>
+<li>常量可以在多个配置文件中声明，但Struts2框架按照以下文件顺序来搜索常量，<strong>越先后的文件优先级越高</strong>：<ol>
+<li>struts-default.xml</li>
+<li>struts-plugin.xml</li>
+<li>struts.xml</li>
+<li>struts.properties</li>
+<li>web.xml</li>
+</ol>
+</li>
+<li>常量的属性有：<ol>
+<li>name，常量的名字（必需）</li>
+<li>value，常量的值（必需）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>包的配置：Package<ol>
+<li>包提供了<strong>action/result/result类型、拦截器、拦截器栈组织为一个逻辑单元</strong>，提高重用性，简化维护工作；</li>
+<li>包可以实现继承，将重用的写成父包，但由于<strong>配置文件内容有先后顺序，所以父包一定在子包之前定义</strong>；</li>
+<li>同时可以定义抽象包（abstract属性为true），作为一个<strong>抽象包不能有action定义</strong>，因为action就是实现了这个具体的动作嘛。抽象包用于被子包继承。</li>
+<li>包的完整属性有点：<ol>
+<li>name，必需，被其他包引用时的key键</li>
+<li>extends，非必需，指定要扩展的包</li>
+<li>namespace，非必需，指定命名空间<ol>
+<li>包的命名空间有三种：<ol>
+<li>默认命名空间：default，eg：<code>&lt;package name=&quot;my&quot; namespace=&quot;default&quot; extends=&quot;struts-default&quot;&gt;</code></li>
+<li>根命名空间：<code>/</code>，eg：<code>&lt;package name=&quot;my&quot; namespace=&quot;/&quot; extends=&quot;struts-default&quot;&gt;</code></li>
+<li>自定义的命名空间：eg：<code>&lt;package name=&quot;my&quot; namespace=&quot;/myNamespace&quot; extends=&quot;struts-default&quot;&gt;</code></li>
+</ol>
+</li>
+<li>这三种命名空间的被<strong>查找顺序</strong>是：<strong>先在指定的命名空间（可以是自定义的，也可以是指定的根命名空间）去找，没找到再到默认命名空间去找</strong>；</li>
+</ol>
+</li>
+<li>abstract，非必须，声明包为抽象的；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/09/03/struts2/" data-id="cj7kp84ve000lbcqnqt3tgve0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/06/interview170906/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面试心得
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/01/servlet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">servlet</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 14.29px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14.29px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/14/jsp/">jsp的认识</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/06/interview170906/">面试心得</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/03/struts2/">Struts2框架的总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/01/servlet/">servlet</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 KangShan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

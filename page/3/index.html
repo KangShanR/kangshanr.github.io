@@ -69,6 +69,637 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_multithread" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/java_multithread/" class="article-date">
+  <time datetime="2017-07-14T04:04:38.000Z" itemprop="datePublished">2017-07-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/java_multithread/">Java多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><blockquote>
+<p>在一个运行程序中，当另外一个线程对这个程序发起请求时，相当于重新执行其中方法，但一个类中某些属性在程序执行过程中需要保持状态的统一性，这时就需要在一个线程执行完毕后再让另一个线程执行相关的方法。这就需要实现线程安全；</p>
+</blockquote>
+<ul>
+<li><p>实现线程安全的方法：</p>
+<ul>
+<li>将方法修辞为线程安全的方法（加上修辞符synchronized)：<pre><code>public synchronized void doPay(int money){
+    if(balance &gt;= money){
+        balance -= money;
+    }else{
+        system.out.println(&quot;你的余额不足！”）
+    ｝
+    system.out.println(&quot;你的余额为：“+balance);
+}
+</code></pre></li>
+<li>使用同步块：<pre><code>synchronized(Object object){
+    //要同步的代码块
+｝
+</code></pre></li>
+</ul>
+</li>
+<li><p>实现同步机制是基于”监视器“这一概念，java中所有对象都拥有自己的监视器，加上同步锁，就是让这个对象进入监视中；</p>
+</li>
+<li>在各个project中，对于各管理类使用单例模式时，常常容易忽略多线程做成伪单例。也就是做成单例只单单在单线程中可以实现，在多线程环境中实现不了单例。<pre><code>public class Manager{
+    private static Manager ins;
+    //私有化构造函数
+    private Manager(){}
+    //获取单例
+    public static Manager getIns(){
+        if(this.ins == null){
+            this.ins = new Manager();
+        }
+        return this.ins;
+    }
+}
+</code></pre><ul>
+<li>这种单例的实现就必须在依赖单线程的运行环境；</li>
+<li>但现实中往往是多线程环境，这时要实现单例就得双重校验锁：<pre><code>public class Manager{
+    private static Manager ins;
+    private Object lock;
+    //私有化构造函数
+    private Manager(){}
+    //获取单例
+    public static Manager getIns(){
+        if(ins == null){    //第一次校验，当多个线程执行获取单例的方法时，先对单例是否为空进行判定，为空才进入同步状态
+            synchronized(lock){
+                if(this.ins == null){  //第二次校验，进入同步锁状态，对单例进行校验，为空的话才进行构造单例
+                    this.ins = new Manager();
+                }
+            }
+        }    
+        return this.ins;
+    }
+}
+</code></pre><ul>
+<li><strong>一定要理解到这儿使用的双重校验缺一不可</strong>：两次校验才能实现同步线程对多线程操作的效率：<ul>
+<li><em>如果单单全用一次校验在方法上，也就是所有访问到这个方法的线程就直接进入到同步锁状态，那么就会造成大多访问线程的滞留，后部都等到第一个线程执行方法完毕再依次进入到方法中执行，这样明显是不合理的；</em></li>
+<li><em>如果在方法内部同步块之前只使用一次判定，就会造成多个线程同时执行这个获取单例方法时ins被判定为null，多个线程同同时等待同步块执行完，这样在第一个执行的线程构造单例后，虽然这时执行getIns()方法的线程不会进入到同步块等待了，但之前进入到同步块等待的线程还是会依次等待前面线程释放控制权后继续构造单例；所以才会在这同步块内再次校验ins是否为空，形成双重校验</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/07/14/java_multithread/" data-id="cj7hs6lb9002e2sqn9bphphjt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-项目开发模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/23/项目开发模型/" class="article-date">
+  <time datetime="2017-06-22T18:14:38.000Z" itemprop="datePublished">2017-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/23/项目开发模型/">项目开发模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>瀑布模型：(政府银行类项目）<ol>
+<li>工程开发流程：<ol>
+<li>需求分析（提出一个idea）；</li>
+<li>可行性分析（看目前条件下是否能实现这个idea）；</li>
+<li>总体分析：通过可行性分析后，用哪些工具包进行开发；</li>
+<li>详细设计：当前要用哪些工具，详细的模板功能，甚至每个功能实现变量方法的名称都定下来；</li>
+<li>垒代码：完成模板；</li>
+<li>测试:（分系统测试，单元测试，看划分力度），带着测试去编程，bug更，性能更佳；</li>
+<li>上线：</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>迭代螺旋模型：（阴阳师）<ol>
+<li>开发流程：<ol>
+<li>先出来一个粗糙模型原型，马上上线，抢占市场；</li>
+<li>马上一次迭代，小步快跑，每一周就可以迭代一次，不停地壮大；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>不同开发模型中就是使用以上的流程不同方式（周期，频次）,除了瀑布模型与螺旋模型，常用的项目开发模型还有：<ol>
+<li>迭代模型</li>
+<li>增量模型（钱产够的情况下，先将能上线赚钱的模块开发出来上线，后续根据需求来增加不同的项目模块）</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/06/23/项目开发模型/" data-id="cj7hs6ldu00702sqnqked4al5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-xml" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/xml/" class="article-date">
+  <time datetime="2017-06-13T07:02:43.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/xml/">XML的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="XML概述"><a href="#XML概述" class="headerlink" title="XML概述"></a>XML概述</h1><blockquote>
+<p>XML：eXtensible Markup Language,可扩展标记语言：被设计用来传输和储存数据。<br>HTML： Hyper Text Markup Language超文本标记语言。</p>
+</blockquote>
+<ul>
+<li><h4 id="XML与HTML两种语言的区别："><a href="#XML与HTML两种语言的区别：" class="headerlink" title="XML与HTML两种语言的区别："></a>XML与HTML两种语言的区别：</h4><ul>
+<li>HTML是被设计用来显示数据，XML被设计用来存储传输数据；</li>
+<li>HTML的焦点是数据的外观，而XML的焦点在于数据的内容；</li>
+<li><p>XML不是对HTML的替代，它们之间形式类似，但功能在本质上有区别；</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;note&gt;
+    &lt;to&gt;Ross&lt;/to&gt;
+    &lt;from&gt;Jack&lt;/from&gt;
+    &lt;heading&gt;Reminder&lt;/heading&gt;
+    &lt;body&gt;Don&apos;t forget me.&lt;/body&gt;
+&lt;/note&gt;
+</code></pre><ul>
+<li>这就是一个简单的XML文件，它不会做任何事情，只是把数据定义好；</li>
+<li><em>ps:在编程语言中，看到缩写为ML的首先想到是Markup Language标记语言</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="XML是W3C推荐标准："><a href="#XML是W3C推荐标准：" class="headerlink" title="XML是W3C推荐标准："></a>XML是W3C推荐标准：</h4><ul>
+<li>WWW:World Wide Web万维网</li>
+<li>W3C： world wide web consortium万维网联盟</li>
+</ul>
+</li>
+</ul>
+<h4 id="XML的特点："><a href="#XML的特点：" class="headerlink" title="XML的特点："></a>XML的特点：</h4><ul>
+<li>标签可自定义，比如上面的<to><from>这些标签都是创建者自己写的</from></to></li>
+<li>对XML最好的描述是：独立于软件与硬件的独立传输工具；</li>
+<li>XML无处不在，不亚于HTML对于web的意义；</li>
+<li>XML以纯文本格式存储</li>
+<li>XML有很强的自我描述性</li>
+<li>XML的树形结构：<ul>
+<li>像HTML标记语言一样，其结构明确，子元素包含于父元素中</li>
+<li>XML必须有根元素</li>
+<li>XML的声明如果有必须放在第一行</li>
+<li>上面例子 就声明了XML的版本与编码字符集为UTF-8，SQL,JS,HTML5，PHP的默认编码都是UTF-8</li>
+<li>所有的XML标签必须有一个关闭标签(声明不算是内容），这一点与HTML不同，HTML中有部分标签不用关闭标签eg：<br><p></p></li>
+<li>XML对大小写敏感</li>
+<li>嵌套要正确，当一个标签在另一个标签中打开，那么它的关闭也必须在这一个标签中</li>
+<li>XML的属性值必须加引号<pre><code>&lt;note date=&quot;2011.10.5&quot;&gt;
+    &lt;to&gt;Jack&lt;/to&gt;
+    &lt;from&gt;Ross&lt;/form&gt;
+    &lt;content&gt;Thanks&lt;/content&gt;
+&lt;/note&gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><ul>
+<li>所有xml元素必须有一个关闭标签</li>
+<li>xml标签对大小写敏感；</li>
+<li><p>XML标签必须嵌套：成对出现</p>
+<pre><code>&lt;user&gt;
+    &lt;id value=&quot;1&quot;/&gt;
+    &lt;username&gt;kfc&lt;/username&gt;
+&lt;/user&gt;
+</code></pre></li>
+<li><p>xml文档必须有根元素</p>
+</li>
+<li>xml属性值必须加引号</li>
+<li>从上面的xml中，我们可以看到根元素是user，其中又有两个子元素：id/username；而id这个元素有一个属性value这个属性值为“1”，而另外一个子元素username有内容“kfc”；</li>
+</ul>
+<p>##xml文档的生成与解析方式:##</p>
+<ul>
+<li><p>共4种方式：</p>
+<ul>
+<li>DOM生成和解析xml文档；<ul>
+<li>解析器将读入整个文档，然后构建一个<strong>驻留内存的树结构</strong>，然后代码就可以使用<strong>DOM接口</strong>来操作这个树结构；</li>
+<li>因为DOM是基于信息层次的，所以DOM被认为是基于树或基于对象的，而树在内存中是持久的，因此可以通过修改树来实现应用程序对数据和结构作出更改；也因为持久性的原因，DOM使用起来也要简单地得多；</li>
+<li>因此，其优点就在于整个文档在内存（包括无用的节点）便于操作；支持删除、修改、重新排列等多种功能；其缺点就在于是整个文档在内存中浪费时间与空间；</li>
+<li>使用场合：一里弄解析了文档还需多次访问这些数据；硬件资源充足（内存、cpu）；</li>
+</ul>
+</li>
+<li>SAX生成和解析xml文档；<ul>
+<li>基于<strong>事件驱动</strong>解析，当解析器发现元素开始、元素结束、文本、文档的开始或结束等时，发送事件，响应事件的代码由程序员来编写，保存数据之类的；</li>
+<li>采用基于事件的模型，对于大型文档的解析比起DOM要更快且对内存的要求也更低；</li>
+<li>优点，不用事先地调入整个文档，占用资源少，加载负荷更小，加载的速度也更快。解析代码比DOM解析器代码少，适于Applet、下载；</li>
+<li>缺点，不是持久的，事件过后，若没有保存数据，那么数据就丢失，无状态性。从事件中只能得到文本，但不知道文本属于哪个元素；</li>
+<li>使用场合：Applet；只需xml文档的少量内容，很少回头访问，机器内存少；</li>
+</ul>
+</li>
+<li>JDOM生成和解析xml文档；<ul>
+<li>设计目的是java特定文档模型，20-80原则（使用20%的精力解决80%的java、xml问题），解决DOM、SAX的编码量；</li>
+<li>本身不包含解析器，使用SAX2解析器来解析和验证输入XML文档；</li>
+<li>使用场合：实现功能简单，如解析、创建等；</li>
+</ul>
+</li>
+<li>DOM4J生成和解析xml文档；<ul>
+<li>性能优异，功能强大，易用；</li>
+<li>也是一个开源的软件，Sun的JaxM也在用DOM4J，Hiberbate也使用Dom4j读取xml文件;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>总结：</p>
+<ul>
+<li>xml文件解析之后，成为一个document对象；</li>
+<li>DOM4J性能最好，应用也更广泛；</li>
+<li>JDOM和DOM在性能测试时表现不佳，在测试10M文档时内存溢出，在小文档情况下使用他们更好。但同时，DOM的跨语言解析要强一些，也正因为如此获得W3C的推荐；</li>
+<li>SAX基于其事件驱动的解析方式，其在检测即将到来的xml流但并不载入内存中，让它在小文档解析中有一定的优势。</li>
+</ul>
+</li>
+</ul>
+<h2 id="xml声明部分"><a href="#xml声明部分" class="headerlink" title="xml声明部分"></a>xml声明部分</h2><ul>
+<li><p>声明部分是xml文件的可选部分，如果存在就一定放在文档的第一行；</p>
+<ul>
+<li><p>其内容：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+</code></pre></li>
+<li><p>声明了xml的版本，与encoding格式，同时UTF-8 也是 HTML5, CSS, JavaScript, PHP, 和 SQL 的默认编码。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h2><ul>
+<li><p>在 XML 中，一些字符拥有特殊的意义。</p>
+<ul>
+<li>如果您把字符 “&lt;” 放在 XML 元素中，会发生错误，这是因为解析器会把它当作新元素的开始。</li>
+<li><p>这样会产生 XML 错误：</p>
+<pre><code>&lt;message&gt;if salary &lt; 1000 then&lt;/message&gt;
+</code></pre></li>
+<li><p>为了避免这个错误，请用实体引用来代替 “&lt;” 字符：</p>
+<pre><code>&lt;message&gt;if salary &amp;lt; 1000 then&lt;/message&gt;
+</code></pre></li>
+<li><p>在 XML 中，有 5 个预定义的实体引用：</p>
+<pre><code>&amp;lt;    &lt;    less than
+&amp;gt;    &gt;    greater than
+&amp;amp;    &amp;    ampersand
+&amp;apos;    &apos;    apostrophe
+&amp;quot;    &quot;    quotation mark
+</code></pre></li>
+<li><p>注释：在 XML 中，只有字符 “&lt;” 和 “&amp;” 确实是非法的。大于号是合法的，但是用实体引用来代替它是一个好习惯。<a href="http://www.runoob.com/xml/xml-syntax.html" title="参考的菜鸟教程" target="_blank" rel="external">参考博客</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="xml的可扩展性"><a href="#xml的可扩展性" class="headerlink" title="xml的可扩展性"></a>xml的可扩展性</h3><ul>
+<li><p>任何一个xml的标签都可以无限扩展开，比如在<bean></bean>中，有一个元素为<date>,我们可以将年月日按一定格式存储进去</date></p>
+<pre><code>&lt;bean&gt;
+    &lt;date&gt;2017_7_30&lt;/date&gt;
+&lt;/bean&gt;
+</code></pre><ul>
+<li><p>利用元素的可扩展性就可以让我们这们来写：</p>
+<pre><code>&lt;bean&gt;
+    &lt;date&gt;
+        &lt;year&gt;2017&lt;/year&gt;
+        &lt;month&gt;7&lt;/month&gt;
+        &lt;date&gt;30&lt;/date&gt;
+    &lt;/date&gt;
+&lt;/bean&gt;
+</code></pre></li>
+<li><p>这样我们的数据的扩展性变得更大哥；</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/06/13/xml/" data-id="cj7hs6ldf006c2sqnbh3kfxha" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-proxy_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/proxy_pattern/" class="article-date">
+  <time datetime="2017-06-13T04:14:12.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/proxy_pattern/">设计模式之代理模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="设计模式之代理模式"><a href="#设计模式之代理模式" class="headerlink" title="设计模式之代理模式"></a>设计模式之代理模式</h3><p><strong>简介：</strong></p>
+<ul>
+<li>代理(Proxy)<strong>提供了对目标对象另外的访问方式</strong>;即<strong>通过代理对象访问目标对象</strong>。<strong>这样做的好处是:可以在目标对象实现的基础上,增强额外的功能操作,即扩展目标对象的功能.</strong></li>
+<li><em>这里使用到编程中的一个思想:不要随意去修改别人已经写好的代码或者方法,如果需改修改,可以通过代理的方式来扩展该方法</em></li>
+</ul>
+<hr>
+<p>下面就来简单介绍下代理模式的三种方式：</p>
+<h4 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h4><ul>
+<li>可以让代理类同时实现真正想的对象的类实现的接口，而在代理类中有一个真正类的属性，当想要这个真正类时，对上述属性判空，再实例化，这样通过代理类执行接口中的方法时就是执行的真正想要的类的方法了；</li>
+<li>简单地讲，代理就是将其他的类的各种实现方法，交由代理来实现。而要达到这种效果，就可以让代理与其他的类实现同一个接口，再在代理中实现接口方法中去实现这个类的方法。这也是代理的核心，一般代理中要注入一个代理对象，调用代理方法时，就对此对象初始化并调用其相关的方法；<ul>
+<li>定义接口：<pre><code>public interface Draw {
+    void draw(String name);
+}
+</code></pre></li>
+<li>实现类：<pre><code>public class RealDraw implements Draw {
+    @Override
+    public void draw(String name) {
+        System.out.println(name+&quot;.RealDraw...........&quot;);
+    }
+}
+</code></pre></li>
+<li>代理：<pre><code>public class ProxyDraw implements Draw {
+    RealDraw realDraw;
+    public ProxyDraw (RealDraw draw){
+        this.realDraw = draw;
+    }
+    @Override
+    public void draw(String name) {
+        realDraw.draw(name);
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    RealDraw realDraw = new RealDraw();
+    ProxyDraw proxyDraw = new ProxyDraw(realDraw);
+    proxyDraw.draw(&quot;test&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>test.RealDraw...........
+</code></pre></li>
+<li>静态代理的总结：<ul>
+<li>做到了代理的基本功能，不对所代理对象的更改实现对象的功能，也可以在代理中对功能进行扩展；</li>
+<li>局限在于：代理与被代理都得继承接口，耦合过高，扩展不便；</li>
+<li>也正因为有了静态代理的局限，所以才有下面的动态代理：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><ul>
+<li>动态代理相对于静态代理的优势：<ul>
+<li>代理不用继承接口，代理由java内置的java.lang.reflect包中的Proxy类生成：<ul>
+<li>其中生成代理静态的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler handler)</code>；</li>
+<li>此方法的三个参数：<ul>
+<li>loader：代理目标的类加载器；</li>
+<li>interfaces：代理目标实现的接口；</li>
+<li>handler：执行处理器，指调用此代理实现接口的处理器，此处理器必须实现InvocationHandler接口，并实现其<code>public Object invoke(Object proxy, Method method, Object[] args)</code>方法;</li>
+</ul>
+</li>
+<li>具体实现：<ul>
+<li>接口：<pre><code>public interface Draw {
+    void draw(String name);
+}
+</code></pre></li>
+<li>被代理的类：<pre><code>public class RealDraw implements Draw {
+    @Override
+    public void draw(String name) {
+        System.out.println(&quot;RealDraw.draw&quot;+name);
+    }
+}
+</code></pre></li>
+<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
+    Object target;
+    public ProxyDraw(Object target){
+        this.target = target;
+    }
+    /* 
+     * 获取代理实例，动态代理实现的核心
+     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
+     */
+    public Object getProxyIns() {
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args)
+                            throws Throwable {
+                        System.out.println(&quot;Porxy_start&quot;);
+                        Object returnValue = method.invoke(target, args);
+                        System.out.println(&quot;Porxy_end&quot;);
+                        return returnValue;
+                    }
+                });
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    //动态代理的实现
+    Draw realDraw = new RealDraw();
+    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
+    proxyDraw.draw(&quot;....test.end&quot;);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>Porxy_start
+RealDraw.draw....testend
+Porxy_end
+</code></pre></li>
+</ul>
+</li>
+<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，具体参照匿名内部类。<ul>
+<li>匿名内部类所做的是创建了一个InvocationHandler接口的实例，这个实例的invoke()方法是用代理目标作为对象（将代理方法分发到这个代理对象上去）；</li>
+<li>Proxy.newProxyInstance()方法中指定了目标类的类加载器，目标执行的接口，方法调用时所用的方法调用处理器；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="cglib代理-子类代理"><a href="#cglib代理-子类代理" class="headerlink" title="cglib代理 /子类代理"></a>cglib代理 /子类代理</h3><ul>
+<li>此类型代理需要用到spring核心包推荐使用spring-core 3.2.5版本及以上；</li>
+<li>动态代理与静态代理都是向上抽取依赖，要求实现接口，而cglib代理则是通过目标对象子类来实现对目标对象功能的扩展；</li>
+<li>其实现方法：<ul>
+<li>引入的功能包能够动态地在内在中构造子类；</li>
+<li>cglib的强大在于高效生成代码，在运行期扩展java类与接口，spring赖以生存的AOP拦截的就是大量地使用了cglib的强大功能；</li>
+<li>cglib的底层：使用字节码处理框架ASM转换字节码并生成新的类（并没有弄的懂的地方，涉及JVM中内部结构，诸如：class文件的格式秘指令集）</li>
+</ul>
+</li>
+<li>注意：cglib的实现是依赖于代理的扩展子类，需要对代理目标进行扩展<ul>
+<li>也就是说代理类不能为final修辞；</li>
+<li>同时，目标对象的方法不能为final/static所修辞；</li>
+</ul>
+</li>
+<li>实现例子：<ul>
+<li>目标类：<pre><code>public class Target {
+    public void targetMethod(){
+        System.out.println(&quot;cglib.RealDraw.draw............&quot;);
+    }
+}
+</code></pre></li>
+<li>代理工厂类：<pre><code>public class ProxyFactory implements MethodInterceptor{
+    private Object target;
+    //构造函数中将目标确定
+    public ProxyFactory(Object obj){
+        this.target = obj;
+    }
+    @Override
+    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+        System.out.println(&quot;开始事务拦截。。。。。。。。&quot;);
+        Object result = method.invoke(target, args);
+        System.out.println(&quot;结束事务拦截。。。。。。。。&quot;);
+        return result ;
+    }
+    /**
+     * 获取代理的方法
+     * @return
+     */
+    Object getProxyIns(){
+        //增强工具对象
+        Enhancer en = new Enhancer();
+        //设置父类
+        en.setSuperclass(target.getClass());
+        //设置回调函数（本实例）
+        en.setCallback(this);
+        //创建子类
+        return en.create();
+    }
+}
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    target.targetMethod();
+    target = (Target)new ProxyFactory(target).getProxyIns();
+    target.targetMethod();
+}
+</code></pre></li>
+<li>测试结果：<pre><code>开始事务拦截。。。。。。。。
+cglib.RealDraw.draw............
+结束事务拦截。。。。。。。。
+</code></pre></li>
+<li>实现动态代理:新建一个Target2类，并测试将Target2实例传入代理工厂对象：<ul>
+<li>目标类Target2：<br>  public class Target2 {<pre><code>void targetMethod(){
+    System.out.println(&quot;Target2.target2Method...........&quot;);
+}
+</code></pre>  }</li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    Target target = new Target();
+    Target2 target2 = new Target2();
+    target2 = (Target2)new ProxyFactory(target2).getProxyIns();
+    target2.targetMethod();
+}
+</code></pre></li>
+<li>测试结果：<pre><code>开始事务拦截。。。。。。。。
+Target2.target2Method...........
+结束事务拦截。。。。。。。。
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>note:</strong></p>
+<ul>
+<li>静态代理所涉及到的知识点相对更容易理解；</li>
+<li>动态代理与子类代理都用到了类反射中的Method方法，其核心是利用类反射来实现将扩展的方法体加在指定目标的方法的前后；</li>
+<li>在Spring的AOP编程中:<ul>
+<li>如果加入容器的目标对象有实现接口,用JDK代理</li>
+<li>如果目标对象没有实现接口,用Cglib代理</li>
+</ul>
+</li>
+<li>参考博客：<a href="http://www.cnblogs.com/cenyu/p/6289209.html" title="三种代理模式" target="_blank" rel="external">岑宇-java的三种代理模式</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/06/13/proxy_pattern/" data-id="cj7hs6lb9002r2sqn82hf0yox" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-控制台数据库操作" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/23/控制台数据库操作/" class="article-date">
@@ -623,304 +1254,6 @@ invoke.end....
 
 
   
-    <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/ASCII_code/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/ASCII_code/">ASCII编码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><blockquote>
-<p>（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
-</blockquote>
-<ul>
-<li>关键字符ASCII值：<ul>
-<li>0:46 0~9的ASCII码值就是48~57，习惯于在代码函数中用左闭右开的区间来表示：[48,58)</li>
-<li>eg:（Java language）<pre><code>//用于判断字符属于哪个类型的方法
-static String typeChar(char _char){
-        int valueChar = Integer.valueOf(_char);
-        if(valueChar &gt;= 48 &amp;&amp; valueChar &lt; 58)
-            return &quot;number&quot;;
-        else if(valueChar &gt;= 65 &amp;&amp; valueChar &lt; 91)
-            return &quot;uppercase&quot;;
-        else if(valueChar &gt;= 97 &amp;&amp; valueChar &lt;123)
-            return &quot;lowercase&quot;;
-        else
-            return &quot;symbol&quot;;
-    }
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    System.out.println(typeChar(&apos;,&apos;));
-}
-</code></pre></li>
-<li>测试结果：<pre><code>symbol
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>常用到的字符ASCII值：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:left">ASCII值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:left">65</td>
-</tr>
-<tr>
-<td style="text-align:center">A-Z</td>
-<td style="text-align:left">65-90</td>
-</tr>
-<tr>
-<td style="text-align:center">a</td>
-<td style="text-align:left">97</td>
-</tr>
-<tr>
-<td style="text-align:center">a-z</td>
-<td style="text-align:left">97-122</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7hs6l9300052sqnkerbdf2b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/hex/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
-<li>在数字前直接加0x就可以使用，所用字符：<ul>
-<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
-</ul>
-</li>
-<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
-<li>eg:0xfa14</li>
-</ul>
-</li>
-<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
-<li>测试代码（java)：<pre><code>public static void main(String[] args) {
-    System.out.println(0xeeda);
-    System.out.println(0x0003);
-    System.out.println(0xa);
-    System.out.println(0xea);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>978346
-3
-10
-234
-</code></pre></li>
-</ul>
-</li>
-<li>中文的unicode码的范围4e00-9fa5</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7hs6lat001s2sqns5zu1dlq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/data_verify/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><ul>
-<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
-<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
-<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7hs6lad00192sqnlra9r8n5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP_status_code" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/13/HTTP_status_code/" class="article-date">
-  <time datetime="2017-04-13T04:14:12.000Z" itemprop="datePublished">2017-04-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/HTTP_status_code/">HTTP状态码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="HTTP状态码（HTTP-status-code"><a href="#HTTP状态码（HTTP-status-code" class="headerlink" title="HTTP状态码（HTTP status code)"></a>HTTP状态码（HTTP status code)</h3><p><strong>常见的4个HTTP的状态码：</strong></p>
-<ul>
-<li>200：请求成功</li>
-<li>301：资源被永久地转移到其他URL</li>
-<li>404：请求的资源不存在</li>
-<li>500：内部服务器错误</li>
-</ul>
-<p><strong>HTTP状态码分类</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">分类</th>
-<th style="text-align:left">分类描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1**</td>
-<td style="text-align:left">信息，服务器收到请求需要请求者继续操作</td>
-</tr>
-<tr>
-<td style="text-align:center">2**</td>
-<td style="text-align:left">成功，操作被成功并处理</td>
-</tr>
-<tr>
-<td style="text-align:center">3**</td>
-<td style="text-align:left">重定向,需要进一步操作以完成请求</td>
-</tr>
-<tr>
-<td style="text-align:center">4**</td>
-<td style="text-align:left">客户端错误,请求包含语法错误或完成请求</td>
-</tr>
-<tr>
-<td style="text-align:center">5**</td>
-<td style="text-align:left">服务器错误，服务器在请求过程中发生了错误</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><strong>Note:</strong>常见的分类如上，在编码过程中Tomcat返回状态码时，就可以根据状态码大致判定下bug在哪里了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7hs6l9y00102sqntq0vjrfy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -944,7 +1277,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -954,7 +1287,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 11.43px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.86px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 14.29px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14.29px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
     </div>
   </div>
 
@@ -963,7 +1296,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -976,6 +1309,10 @@ static String typeChar(char _char){
       <ul>
         
           <li>
+            <a href="/2017/09/14/jsp/">jsp的认识</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
           </li>
         
@@ -984,15 +1321,11 @@ static String typeChar(char _char){
           </li>
         
           <li>
-            <a href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+            <a href="/2017/09/03/struts2/">Struts2框架的总结</a>
           </li>
         
           <li>
-            <a href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
+            <a href="/2017/09/01/servlet/">servlet</a>
           </li>
         
       </ul>
