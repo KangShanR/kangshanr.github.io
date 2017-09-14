@@ -58,7 +58,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,56 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-控制台数据库操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/23/控制台数据库操作/" class="article-date">
+  <time datetime="2017-05-23T04:54:30.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/23/控制台数据库操作/">控制台操作数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql数据库控制台操作"><a href="#mysql数据库控制台操作" class="headerlink" title="mysql数据库控制台操作"></a>mysql数据库控制台操作</h3><p><strong>今天在使用控制台操作mysql数据库过程中，摸索了下之前没怎么搞懂的地方，现拉出一个清单方便以后理解(现使用的mysql数据库，其他的数据库一样使用）：</strong></p>
+<ol>
+<li>当安装了mysql之后，配置了环境变量之后，就可以在控制台输入命令来实现启动相关的程序。不管在Linux系统中还是在Windows系统下，输入<code>mysql</code>命令就意味着启动mysql数据库；</li>
+<li>本机上设置了root用户的密码时，直接启动mysql命令会被拒绝访问，这时需要使用命令<code>mysql -u root -p;</code>，表示登录用户root，接下来会提示输入密码，后再进入到到该root用户中，这时才能访问数据库，输入查询语句进行查询；</li>
+<li>Navicat只是一个数据库的可视化IDE，平常使用它能很方便地操作查看数据库，但在控制台中操作数据库能让操作者深刻地理解数据库；</li>
+<li>数据库查询语言在控制台输入时一定记得在句末加上<code>；</code>，否则执行语句时会被认为没有结束的语句；</li>
+<li>安装完成Navicat后可以看到很多默认的数据库已经在其中了，这些是mysql必须的数据库，其中<code>mysql</code>数据库中存储了本机上数据库的诸多信息，包括user表的host信息，要进行这些信息的修改，同样使用<code>use mysql</code>进入到该数据库，对其中的信息进行修改；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj7hs6ldu006t2sqnv35c4w6a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-design_principle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -130,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj7hs6lad001f2sqn0t0so2sf" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj7hs6lad001f2sqn0t0so2sf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -182,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj7hs6l9300022sqnmtsqdvxr" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj7hs6l9300022sqnmtsqdvxr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -235,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/06/HTTP_protocol/" data-id="cj7hs6l9y000w2sqnug81mnha" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/05/06/HTTP_protocol/" data-id="cj7hs6l9y000w2sqnug81mnha" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
@@ -457,7 +507,7 @@ invoke.end....
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj7hs6lat00272sqnvxjdv20h" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj7hs6lat00272sqnvxjdv20h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -561,75 +611,7 @@ invoke.end....
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj7hs6ldu00772sqnhcvrkeq4" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/hex/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
-<li>在数字前直接加0x就可以使用，所用字符：<ul>
-<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
-</ul>
-</li>
-<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
-<li>eg:0xfa14</li>
-</ul>
-</li>
-<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
-<li>测试代码（java)：<pre><code>public static void main(String[] args) {
-    System.out.println(0xeeda);
-    System.out.println(0x0003);
-    System.out.println(0xa);
-    System.out.println(0xea);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>978346
-3
-10
-234
-</code></pre></li>
-</ul>
-</li>
-<li>中文的unicode码的范围4e00-9fa5</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7hs6lat001s2sqns5zu1dlq" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj7hs6ldu00772sqnhcvrkeq4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -728,7 +710,75 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7hs6l9300052sqnkerbdf2b" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7hs6l9300052sqnkerbdf2b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/hex/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
+<li>在数字前直接加0x就可以使用，所用字符：<ul>
+<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
+</ul>
+</li>
+<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
+<li>eg:0xfa14</li>
+</ul>
+</li>
+<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
+<li>测试代码（java)：<pre><code>public static void main(String[] args) {
+    System.out.println(0xeeda);
+    System.out.println(0x0003);
+    System.out.println(0xa);
+    System.out.println(0xea);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>978346
+3
+10
+234
+</code></pre></li>
+</ul>
+</li>
+<li>中文的unicode码的范围4e00-9fa5</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7hs6lat001s2sqns5zu1dlq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -777,7 +827,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7hs6lad00192sqnlra9r8n5" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7hs6lad00192sqnlra9r8n5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -859,58 +909,10 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7hs6l9y00102sqntq0vjrfy" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7hs6l9y00102sqntq0vjrfy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-database_normal_format" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/01/database_normal_format/" class="article-date">
-  <time datetime="2017-03-01T03:04:38.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/database_normal_format/">数据库三大范式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h1><ul>
-<li><strong>概要：</strong>数据库目前有六大范式，但一般来说只满足前三大范式（3NF）即可。第一范式最基础，依次上推，每一层是下一层的基础；</li>
-<li><strong>第一范式：</strong>列的原子性，每一列都是不可分割的基本数据项，但这也根据实际使用过程中来，如果在使用数据过程中并没有使用到其原子数据，那么定义最原子性的数据就没有必要了；</li>
-<li><strong>第二范式：</strong>列的唯一性，要保证列的唯一性，就得在保证第一范式的基础上保证每一列属性完全依赖于主键。</li>
-<li><strong>第三范式：</strong>各属性不依赖于其它非主键属性，在保证前两范式的前提下，第三范式是为了保证数据的无重复性，将无关的属性单独创建一个表来实现多表而数据分明；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/03/01/database_normal_format/" data-id="cj7hs6lad001b2sqnswahs7fu" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -930,7 +932,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorieën</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
     </div>
@@ -940,7 +942,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Labels</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -952,14 +954,14 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 11.43px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.43px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 11.43px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.86px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
@@ -969,9 +971,13 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
+          </li>
         
           <li>
             <a href="/2017/09/06/interview170906/">面试心得</a>
@@ -987,10 +993,6 @@ static String typeChar(char _char){
         
           <li>
             <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
           </li>
         
       </ul>

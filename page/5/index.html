@@ -58,7 +58,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,109 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Csharp_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/01/Csharp_class/" class="article-date">
+  <time datetime="2016-12-01T14:02:43.000Z" itemprop="datePublished">2016-12-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/01/Csharp_class/">C#中类（面向对象）的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类中有成员：</p>
+<pre><code>- 方法
+- 变量（字段）
+- 属性（对变量的限定）
+- 类中不能直接对变量赋值，只能在方法中对变量赋值。我们看到的直接赋值的情况实际上是利用构造函数直接赋值，eg：string str = &quot;str&quot;;
+</code></pre><h4 id="类的构成："><a href="#类的构成：" class="headerlink" title="类的构成："></a>类的构成：</h4><ul>
+<li>变量</li>
+<li>构造函数</li>
+<li>方法（构成：访问修饰符+返回类型+方法名（参数））<ul>
+<li>重要类成员，当函数名返回类型都一样时，参数不一样，这两个函数可以共存；<ul>
+<li>方法的参数可分为：<ul>
+<li>值参数（不含任何修饰符，形参是实参的一份拷贝，方法中对形参的改变不会影响到实参的值）</li>
+<li>引用参数<ul>
+<li>用ref关键字来申明，传递的参数实质上是实参的地址，方法中对形参的操作就是对实参的操作，在调用时一样要用到ref关键字；</li>
+<li>其后面变量一定要初始化，因为没初始化内存中是不存在其地址的，比如，int a;这儿的变量a就是没有初始化的； </li>
+<li>先把实参地址传入方法，再在方法中执行；</li>
+</ul>
+</li>
+<li>输出参数<ul>
+<li>输出参数，用关键字out来声明；</li>
+<li>与引用参数类似，直接对实参进行操作，在声明和调用时都需要用到out关键字；</li>
+<li>out的对象不要求在传递给方法之前初始化 </li>
+<li>但在方法返回前必须对参数进行赋值；</li>
+<li>运行原理是与引用参数相反，先申明一变量（没内存空间），再在方法里申请变量内存空间，赋值后再把值的地址out给之前申请的内存使之指向方法中这个值，所以方法返回前必须对参数赋值；</li>
+</ul>
+</li>
+<li>数组型参数（传入数组形参）<ul>
+<li>关键字：params</li>
+<li>该关键字用来声明用于可变长度的形参列表，方法声明中最多只能包含一params参数；</li>
+<li>并且该参数（数组）必须是参数列表中最后一个参数；</li>
+<li>数组参数必须是一维数组（对应多维数组）；</li>
+<li>不允许与ref、out修辞符组合起来用；</li>
+<li>若实参是数组，则按引用传递；若实参是变量或表达式，则按值传递；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
+<li>给功能相似的方法提供同一名称，实现编译时的多态性，引入方法重载概念，是面向对象程序设计的重要概念。特点：<ul>
+<li>1.方法名相同（必要条件）</li>
+<li>2.参数列表不完全相同，参数个数、参数的类型；</li>
+<li>3.返回类型不同，参数相同，这个不是方法重载，必须重命名一个方法名；</li>
+</ul>
+</li>
+</ul>
+<h4 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h4><ul>
+<li>非静态类成员实例化后，有几个对象就有几个类中成员；</li>
+<li>而，静态成员（两者区别如下）：<ul>
+<li>内存分配：静态变量定义在类中后，内存中只存在这一个成员；</li>
+<li>调用方式：访问必须在前加上类名:Class.member;</li>
+<li>生命周期：在程序运行初始就初始化分配内存了，只要不关程序就一直存在；</li>
+<li>与之对应的非静态成员，必须初始化才存在（new），才分配内存；</li>
+<li>非静态变量会与其实例对象同存同毁；</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/01/Csharp_class/" data-id="cj7hs6l93000b2sqnzcw6kyk7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -107,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj7hs6lbo00322sqnbbqxorz1" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj7hs6lbo00322sqnbbqxorz1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -160,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj7hs6ldf006h2sqneqi3qten" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj7hs6ldf006h2sqneqi3qten" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj7hs6lbo00392sqn9signboe" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj7hs6lbo00392sqn9signboe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -422,7 +525,7 @@ static void close(Connection con){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj7hs6l9y000t2sqnxgk0a4bz" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj7hs6l9y000t2sqnxgk0a4bz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
@@ -468,7 +571,7 @@ static void close(Connection con){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/30/DLL_file/" data-id="cj7hs6l9i000m2sqnab778u0v" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/06/30/DLL_file/" data-id="cj7hs6l9i000m2sqnab778u0v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -794,7 +897,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/13/DesignPattern/" data-id="cj7hs6l9y000o2sqnegtfe9ft" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/06/13/DesignPattern/" data-id="cj7hs6l9y000o2sqnegtfe9ft" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -940,7 +1043,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/30/escape_character/" data-id="cj7hs6lad001m2sqn96uz8uqs" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/05/30/escape_character/" data-id="cj7hs6lad001m2sqn96uz8uqs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -991,7 +1094,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/13/environment_configuration/" data-id="cj7hs6lad001i2sqn6i8odw00" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/05/13/environment_configuration/" data-id="cj7hs6lad001i2sqn6i8odw00" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/">tips</a></li></ul>
@@ -1057,62 +1160,10 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/03/数据结构/" data-id="cj7hs6ldu006w2sqn07lwby7a" class="article-share-link">Delen</a>
+      <a data-url="https://kangshanr.github.io/2016/05/03/数据结构/" data-id="cj7hs6ldu006w2sqn07lwby7a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-NaN_add" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/13/NaN_add/" class="article-date">
-  <time datetime="2016-04-13T14:02:53.000Z" itemprop="datePublished">2016-04-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/13/NaN_add/">今天总结小tips</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><ul>
-<li>NaN:Not a Number<ul>
-<li>非数值的数值，当计算中出现诸如：除数为0的除法、求负数的平方根之类的运算时，这时返回的结果就只能是一个<code>NaN</code>；</li>
-</ul>
-</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2016/04/13/NaN_add/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/04/13/NaN_add/" data-id="cj7hs6l9y00132sqn8ga66tvu" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -1132,7 +1183,7 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorieën</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
     </div>
@@ -1142,7 +1193,7 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Labels</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -1154,14 +1205,14 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 11.43px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 11.43px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/database/" style="font-size: 11.43px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 12.86px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
@@ -1171,9 +1222,13 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
+          </li>
         
           <li>
             <a href="/2017/09/06/interview170906/">面试心得</a>
@@ -1189,10 +1244,6 @@ Adapter.run.......
         
           <li>
             <a href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/29/singleton_pattern/">设计模式之单例模式</a>
           </li>
         
       </ul>
