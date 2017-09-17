@@ -69,6 +69,324 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/15/spring/" class="article-date">
+  <time datetime="2017-08-15T04:14:38.000Z" itemprop="datePublished">2017-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/15/spring/">spring框架的学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>spring配置beans的底层原理就在于通过封装好的解析xml类，将xml文件中配置好的bean实例出一个对象来，再通过配置实现bean之间的相互引用，而实现将要用到的bean（实用类）实例化并使用；</p>
+</blockquote>
+<h2 id="Core模块"><a href="#Core模块" class="headerlink" title="Core模块"></a>Core模块</h2><ul>
+<li>bean标签：<ul>
+<li>id属性指定这个实例的唯一标识；</li>
+<li>class属性，用来指定这个实例的类定义；</li>
+<li>property子元素，指定这个对象的属性，比如：user对象中有属性name,那么这个这个user的bean对象就应该有一个子元素标签property，同时如果这个属性是另外一个本地的bean，name属性指向这个属性：<code>&lt;property name=&quot;advice&quot; id=&quot;beanId&quot;&gt;</code>直接使用id属性来引用到其他的bean的id就行；</li>
+</ul>
+</li>
+</ul>
+<h2 id="AOP模块"><a href="#AOP模块" class="headerlink" title="AOP模块"></a>AOP模块</h2><blockquote>
+<p>Aspect Oriented Programming,面向切面编程</p>
+</blockquote>
+<ul>
+<li>切面Aspect:可以理解为模块，比如，读写数据库、权限检查、异常情况记录；</li>
+<li>Advice,增强：拦截器实现增强接口Advisor，不同的拦截器实现不同的增强接口，比如：方法前拦截器<pre><code>MethodBeforeInterceptor implements MethodBeforeAdvice{
+    //方法前拦截器
+    //调用对象的方法前将执行该方法。参数分别为被调用的方法、参数、对象
+    public void before(Method method, Object[] args, Object instance) throws Throwable{
+        System.out.println(&quot;即将要执行的方法：“+method.getName());
+        //如果是Service
+        if(instance instanceof WaiterServiceImpl)
+            String name = ((AopServiceImpl) instance).geName();
+                if(name == null)//检查是否为空
+                    throw new NullPointerException(&quot;name属性不能为null&quot;);
+        }
+        method.invoke(instance,args);
+    }
+}
+</code></pre></li>
+<li>拦截器，interceptor，也是pointcut的核心:<ul>
+<li>spring拦截器的配置实现，通过增加配置：<pre><code>&lt;bean id=&quot;aopMethodBeforeInterceptor&quot; class=&quot;org.springframework.aop.supoort.NameMatchMethodPointcutAdvisor&quot;&gt;
+    &lt;property name=&quot;advice&quot;&gt;
+        &lt;bean class=&quot;com.snail.aopdemo.advice.MethodBeforeInterceptor&quot;/&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;mappedName&quot; value=&quot;withAop&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre></li>
+<li>从上面的代码可以看出：<ul>
+<li>spring实现拦截器都是通过增强器Advisor，而这个增强器是一个代理，将参数（自定义的Advice）作为参数传入其中；</li>
+<li>同时mappedName属性用来指定拦截的方法，这个方法并不是增加类中的方法，而是到时要执行到的所有的匹配方法名字段的方法；</li>
+<li>同时：spring支持由正则表达式配置切入点：<pre><code>&lt;property name=&quot;patterns&quot;&gt;      &lt;!-- 正则表达式配置切入点--&gt;
+    &lt;list&gt;
+        &lt;value&gt;.*get.*&lt;/value&gt; &lt;!--包含get字段的方法就被拦截&gt;
+        &lt;value&gt;.*absquatulate&lt;/value&gt;  &lt;!--包含absquatutulat字段的方法被拦截&gt;
+    &lt;/list&gt;
+&lt;/property&gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ORM模块"><a href="#ORM模块" class="headerlink" title="ORM模块"></a>ORM模块</h2><blockquote>
+<p>Object RelativeDatabase Mapping,对象关系型数据库映射</p>
+<ul>
+<li>简介：<ul>
+<li>此模块对Hibernate/JDO/TopLink、iBatis等ORM框架提供支持；</li>
+<li>Spring提供在DAO层提供HibernateDaoSupport类与JDBCTemplate类；</li>
+<li>在Spring里，Hibernate与SessionFactory等只是Spring一个特殊的Bean，由Spring负责实例化与销毁；所以也就不需要与Hibernate的API打交道，不需要开启关闭Hibernate的Session、Transaction，Spring自动维护这些对象；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h4><p>这儿用User类举例：</p>
+<ul>
+<li>使用注解来让User中属性与数据库中表的列相关联；</li>
+<li>Entity类的注解：<ul>
+<li>@Entity，表明这个类为实体类；</li>
+<li>@Table（name=”users”),指明此实体类与数据库users表相关联；</li>
+<li>属性的注解：<ul>
+<li>@Id，主键注解，表明这属性为数据库表中的主键</li>
+<li>@GeneratedValue（strategy=GenerationType.IDENTITY),指明该主键生成策略为自增</li>
+<li>@Temporal（value = TemporalType.Date),表明列属性为Date</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DAO层接口，不同的Entity对应不同的DAO接口：<ul>
+<li>UserDao接口，就定义对User表的操作：<pre><code>public interface UserDao{
+    public void saveUser(User user);
+    public List&lt;User&gt; findUsers();
+    public int getCount ();
+    public User findUserByName(String name);
+}
+</code></pre></li>
+<li>UserDao接口的实现类，UserDaoImpl：<ul>
+<li>这个实现类要继承HibernateDaoSupport类，这就意味着从父类继承了Hibernate与HibernateTimplate对象，该对象就对实体对象进行各类操作；<pre><code>public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
+    //实现接口中的方法
+    public void saveUser(User user){
+        this.getHibernateTemplate().persist(user);//使用父类方法get到Template,并调用其persist方法将user存入
+    }
+}
+    public int getCount(){    //查询记录条数
+        Number num = (Number)this.getSession(true).createQuery(&quot;select count (*) from User).uniqueResult();
+        return n.intValue();
+    }
+    public List&lt;User&gt; findUsers(){  //查询所有的user
+        return this.getHibernateTemplate().find(&quot;select * from User&quot;);
+    }
+    public User findUserByName(String name){  //根据用户名查询用户
+        List&lt;User&gt; users = this.getHibernateTemplate().find{&quot;select * from User u where u.name=?&quot;, name);  //使用Template
+        if(users.size() &gt; 0)
+            return users.get(0);返回第一条
+        return null;
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+<li><strong><em>从上述代码例子中可以看出：</em></strong><ul>
+<li>查询(Read)、创建(Create)都由父类HibernateDaoSupport提供的getHibernateTemplate方法获取到实例并执行实例的方法来实现，其中查询使用实例方法find(String sql, Stirng 拼接String），而save则用持久化方法persist(Object user);</li>
+<li>当要涉及到数据库计算时，则用getSession获取到与数据库的会话对象，让会话对象执行sql统计语句；</li>
+<li>同时，所有sql语言的操作对象都指向实体类，而没有对数据库中的表进行组织sql语句；</li>
+</ul>
+</li>
+<li><strong>个人理解：</strong>spring通过封装Hibernate在框架中，让DAO接口的实现类继承HibernateDaoSupport尖，就将Hibernate对象创建出来，而直接操作这个对象的方法来获取session/Hibernate对象直接与数据库交互，而就节省了操作JDBC的代码；</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置集成Hibernate"><a href="#配置集成Hibernate" class="headerlink" title="配置集成Hibernate"></a>配置集成Hibernate</h4><ul>
+<li>在spring的bean.xml文件中配置集成hibernate到目前这一步只需要<strong><em>配置三个bean</em></strong>：<ul>
+<li>数据源datasource，这是一切的基础，所有的操作最终都会落到对数据库的操作上；<pre><code>&lt;bean id=&quot;datasource&quot; class=&quot;org.apache.commonsdbcp.BasicDataSource&quot;&gt;
+    &lt;property name=&quot;driverClassName&quot; class=&quot;org.gjt.mm.mysql.Driver&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;url&quot; value=&quot;jdbc\:mysql\://localhost\:3306/ssh&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;username&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
+    &lt;propery name=&quot;password&quot; value=&quot;&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>  <em>- 数据源的配置就是用依赖包中的一个封装好的类（这儿就是BasicDataSource）的对象，并将这个对象的属性值配置好，这些属性就包括了数据库的驱动、连接的url、连接数据库的用户名、密码。可以想象的是，这个处理数据库的对象封装了所有的连接数据库的方法，使用密码与用户名，交给驱动对象，这个驱动对象就按照提供的url连接到主机上的数据库，并登录到数据库；</em></li>
+<li>有了数据源，就可以将关联连接库的数据源配置到sessionFactory中去：<pre><code>&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.annotation.AnnotationSessionFactoryBean&quot; destroy-method=&quot;destroy&quot;&gt;
+    &lt;property name=&quot;dataSource&quot;&gt;
+        &lt;ref bean=&quot;dataSource&quot;/&gt;
+    &lt;property/&gt;
+    &lt;property name=&quot;annotatedClasses&quot;&gt;
+        &lt;list&gt;
+            &lt;value&gt;com.woniuxy.orm.class_qulified_name&lt;/value&gt;
+        &lt;/list&gt;
+    &lt;property/&gt;
+    &lt;property name=&quot;hibernateProperties&quot;&gt;
+        &lt;pros&gt;
+            &lt;pro key=&quot;hibernate.dialect&quot;&gt;
+                org.hibernate.dialect.MySQLDialect
+            &lt;/pro&gt;
+            &lt;pro key=&quot;hibernate.show_sql&quot;&gt;true&lt;/pro&gt;
+            &lt;pro key=&quot;hibernate.format_sql&quot;&gt;true&lt;/pro&gt;
+            &lt;pro key=&quot;hibernate.hbm2ddl.auto&quot;&gt;create&lt;/pro&gt;
+        &lt;/pros&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><ul>
+<li><em>配置会话工厂（因为我们的实体类使用的注解映射，所以就使用注解会话工厂AnnotationSessionFatoryBean)其中包括了：数据源、实体类还有hibernate,而hibernate的配置就包括了方言、输出sql语句、格式化sql语句、创建表结构</em></li>
+</ul>
+</li>
+<li>有了会话工厂，距离操作数据库就只有让Dao配置为bean，而操作代码就getBean来获取到这个Dao的实例，让这个实例来操作数据库：<pre><code>&lt;bean id=&quot;userDao&quot; class=&quot;daoImpl_qualified_name&quot;&gt;
+    &lt;property name=&quot;sessionfactory&quot; ref=&quot;sessionFactory&quot; /&gt;
+&lt;/bean&gt;
+</code></pre><ul>
+<li><em>在Dao的bean中，将前面配置好的sessionFactory装配到其中</em></li>
+</ul>
+</li>
+<li>以上情况是实体类User是使用注解来配置的，这种情况下，使用的sessionFactory是AnnotationSessionFactoryBean,但当实体类是使用xml文件来配置时，使用的配置bean应该是LocalSessionFactoryBean。同时，sessionFactory中配置实体的方式也变成：<pre><code>&lt;property name=&quot;mappingDirectoryLocations&quot;&gt;
+    &lt;list&gt;
+        &lt;value&gt;classpath:entiteis_配置文件的路径&lt;/value&gt;
+    &lt;/list&gt;
+&lt;/property&gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="Hibernate的事务管理"><a href="#Hibernate的事务管理" class="headerlink" title="Hibernate的事务管理"></a>Hibernate的事务管理</h3><ul>
+<li><strong>分层的做法：应用层调用Service层，Service层对数据进行检查（是否重复之类），然后Service层（注入一个Dao属性）调用Dao层，Dao层调用Hibernate实现数据的操作。原则上不允许跨层访问，业务层次分明。</strong></li>
+<li>事务管理transaction，对应的层为Service层；</li>
+</ul>
+<h3 id="spring的bean-xml配置文件的理解"><a href="#spring的bean-xml配置文件的理解" class="headerlink" title="spring的bean.xml配置文件的理解"></a>spring的bean.xml配置文件的理解</h3><ul>
+<li>所有的操作都基于对数据库的crud，所以所有的配置都围绕着操作数据库；</li>
+<li>所以，第一个bean的是数据源：dataSource<ul>
+<li>其中的属性就包括：<ul>
+<li>连接数据库的驱动：driverClassName</li>
+<li>数据库连接url:url</li>
+<li>数据库连接用户名：username</li>
+<li>数据库连接密码：password</li>
+</ul>
+</li>
+<li>通常情况下，我们把数据源信息都单独分离在jdbc.properties文件中，并在要用到的配置文件中将其配置为上下文<code>&lt;context:property-placeholder&gt; location=&quot;classpath:jdbc.properties/&gt;</code>，之后就可以在数据源dataSource中配置其中的属性：<code>&lt;property name=&quot;driverClass&quot; value=&quot;${driver}&quot;&gt;&lt;/property&gt;</code></li>
+</ul>
+</li>
+<li>第二个配置的bean：sessionFactory<ul>
+<li>这儿就把上一次配置好的dataSource数据源装配到sessionFactory的属性中：<pre><code>&lt;!-- 配置本地会话工厂bean --&gt;
+&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;&gt;
+    &lt;!-- 配置数据源 --&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;!-- 指定hibernate配置文件--&gt;
+    &lt;property name=&quot;configLocations&quot; value=&quot;classpath:hibernate.cfg.xml&quot;/&gt;
+    &lt;!-- 指定hibernate映射文件--&gt;
+    &lt;property name=&quot;mappingDirectoryLocations&quot;&gt;
+        &lt;list&gt;
+            &lt;value&gt;classpath:mappings/*.xml&lt;/value&gt;
+        &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><ul>
+<li>Note:<em>这儿配置spring的sessionFactory属性就会把Hibernatek r sessionFactory属性覆盖；</em></li>
+<li>configLocations属性：<em>将指定路径的配置文件都加载进去，相应的LocalSessionFactoryBean中的的此属性的setter方法的参数为可变参数:</em><pre><code>public void setConfigLocations(Resource... configLocations) {
+    this.configLocations = configLocations;
+}
+</code></pre></li>
+</ul>
+</li>
+<li>而在上述代码中，hibernate的配置文件也直接引入到sessionFatory中来，而在外部的hibernate配置文件：<br>  <hibernate-configuration><pre><code>&lt;session-factory&gt;
+    &lt;!-- 配置方言 --&gt;
+    &lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQL5InnoDBDialect&lt;/property&gt;
+    &lt;!-- session上下文控制权:交给session来控制 --&gt;
+    &lt;property name=&quot;hibernate.current_session_context_class&quot;&gt;org.springframework.orm.hibernate5.SpringSessionContext&lt;/property&gt;
+    &lt;!-- 格式化sql语句 --&gt;
+    &lt;property name=&quot;format_sql&quot;&gt;true&lt;/property&gt;
+    &lt;!-- 显示sql语句 --&gt;
+    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+    &lt;!-- 表的生成策略 --&gt;
+    &lt;property name=&quot;hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
+&lt;/session-factory&gt;
+</code></pre>  </hibernate-configuration><ul>
+<li>其中配置了部分的Hibernate属性，同时也可以配置c3p0的属性在其中；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三个配置：事务管理器transactionManager<ul>
+<li>将前面配置好的sessionFactory装配到这个bean中，作为sessionFactory属性值；</li>
+</ul>
+</li>
+<li><p>第四个配置：tx:advice，配置事务的传播特性，指定具备事务的方法名；</p>
+<pre><code>&lt;!-- 事务配置增强 --&gt;
+&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txMng&quot;&gt;
+     &lt;tx:attributes&gt;
+         &lt;tx:method name=&quot;save*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
+         &lt;tx:method name=&quot;update*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
+         &lt;tx:method name=&quot;delete*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
+         &lt;tx:method name=&quot;batch*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot;/&gt;
+
+         &lt;tx:method name=&quot;get*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+         &lt;tx:method name=&quot;load*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+         &lt;tx:method name=&quot;find*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+
+         &lt;!-- 统配 --&gt;
+         &lt;tx:method name=&quot;*&quot; isolation=&quot;DEFAULT&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+     &lt;/tx:attributes&gt;
+ &lt;/tx:advice&gt;
+</code></pre><ul>
+<li>最后一行统配就指定了所有的方法都配置上事务，同时isolation指此事务的隔离级别，propagation指事务的传播属性，read-only指是否为只读；</li>
+</ul>
+</li>
+<li>第五个配置aop:config，配置事务的切入点，以及被管理的对象<pre><code>&lt;aop:config&gt;
+    &lt;aop:pointcut id=&quot;interceptorPointCuts&quot; expression=&quot;execution(* com.woniuxy.sshdemo.service.impl.*(..))&quot;/&gt;
+    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;interceptorPointCuts&quot;/&gt;
+&lt;/aop:config&gt;
+</code></pre><ul>
+<li>先将切面的切点配置进来，也就是各个service的执行对象。再将这此切点配置到advisor中</li>
+</ul>
+</li>
+<li>其它的配置：<ul>
+<li>dao的执行类，配置一个id加上sessionFactory;</li>
+<li>service的执行类,配置上dao这个属性的对象；</li>
+</ul>
+</li>
+<li><strong>使用注解来实现事务的配置</strong><ul>
+<li>这时bean.xml：<ul>
+<li>数据源不变</li>
+<li>sessionFactory不变；</li>
+<li>事务管理器trasactionManager依然不变；</li>
+<li>变的是：添加一个事务注解驱动<code>tx:annotation-driven trasaction-manager=&quot;transactionManager&quot;/&gt;</code>，添加这个驱动配置后，对产生事务的类添加注解<code>@Transactional</code>，标记这个类为事务类，对其中的事务方法添加注解<code>@Transactional(isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)</code>注解（标明了这个方法的隔离水平与传播水平）。这样的注解就取代了上面例子中tx:advice与aop:config两个配置节点的功能；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/15/spring/" data-id="cj7hs6lbo003c2sqnu0gxwwfo" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java_reference" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/13/java_reference/" class="article-date">
@@ -967,79 +1285,6 @@ Target2.target2Method...........
 
 
   
-    <article id="post-design_principle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/13/design_principle/" class="article-date">
-  <time datetime="2017-05-13T04:32:48.000Z" itemprop="datePublished">2017-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/13/design_principle/">设计原则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="设计模式的六大原则"><a href="#设计模式的六大原则" class="headerlink" title="设计模式的六大原则"></a>设计模式的六大原则</h3><p>简称“六大设计原则”，用于整个面向对象编程过程中设计各种模式甚至到各个接口与类的设计都需要参考的原则。这些原则的宗旨是尽量减少程序的耦合性，让程序的可扩展性更高，在接触越多的编程后，越会感受到这些原则的重要性；</p>
-<hr>
-<ol>
-<li><strong>开闭原则(Open Close Principle)</strong>：<ol>
-<li>开闭原则的意思是：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。简言之，是为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。</li>
-<li>这也是我们在设计程序过程中，尽量使用功能功能明确单一的接口，尽量把类抽象成基类，让派生类继承其公共的属性与方法的目的。</li>
-<li>与依赖倒置原则相呼应。</li>
-</ol>
-</li>
-<li><strong>里氏代换原则（Liskov Substitution Principle）</strong><ol>
-<li>里氏代换原则是面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。LSP 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。</li>
-<li>里氏代换原则是<strong>对开闭原则的补充</strong>。实现开闭原则的关键步骤就是抽象化，而基类与子类的继承关系就是抽象化的具体实现，所以<strong>里氏代换原则是对实现抽象化的具体步骤的规范</strong>。也就是在设计各类程序块时，用父类、接口来接收实现的对象，这也是java多态实现基础；</li>
-</ol>
-</li>
-<li><strong>依赖倒置原则（Dependence Inversion Principle）</strong><ol>
-<li>这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体，一个具体的优势就是减少代码的重写，甚至可以减少方法的重载。</li>
-</ol>
-</li>
-<li><strong>接口隔离原则（Interface Segregation Principle）</strong><ol>
-<li>这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。由此可见，其实设计模式就是从大型软件架构出发、便于升级和维护的软件设计思想，它强调降低依赖，降低耦合。</li>
-</ol>
-</li>
-<li><strong>迪米特法则，又称最少知道原则（Demeter Principle）</strong><ol>
-<li>最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。</li>
-</ol>
-</li>
-<li><strong>合成复用原则（Composite Reuse Principle）</strong><ol>
-<li>合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj7hs6lad001f2sqn0t0so2sf" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1073,7 +1318,7 @@ Target2.target2Method...........
   <div class="widget-wrap">
     <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14.29px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.5px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -1103,15 +1348,15 @@ Target2.target2Method...........
           </li>
         
           <li>
+            <a href="/2017/09/14/javabean_property_placeholderConfigurer/">spring bean中属性覆盖器</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
           </li>
         
           <li>
             <a href="/2017/09/06/interview170906/">面试心得</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/03/struts2/">Struts2框架的总结</a>
           </li>
         
       </ul>

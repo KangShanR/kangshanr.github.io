@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mot-clé: mysql | KangShan</title>
+  <title>spring bean中属性覆盖器 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is kang&apos;s website.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KangShan">
-<meta property="og:url" content="https://kangshanr.github.io/tags/mysql/index.html">
+  <meta name="description" content="javabean配置中的属性覆盖器 我们常常使用property属性文件来配置某些固定的属性值（比如，jdbc数据源、c3p0连接池），这样当多个配置文件使用到这些属性时也更方便我们统一修改；">
+<meta name="keywords" content="programming,java,framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring bean中属性覆盖器">
+<meta property="og:url" content="https://kangshanr.github.io/2017/09/14/javabean_property_placeholderConfigurer/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="This is kang&apos;s website.">
+<meta property="og:description" content="javabean配置中的属性覆盖器 我们常常使用property属性文件来配置某些固定的属性值（比如，jdbc数据源、c3p0连接池），这样当多个配置文件使用到这些属性时也更方便我们统一修改；">
+<meta property="og:updated_time" content="2017-09-17T15:39:40.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KangShan">
-<meta name="twitter:description" content="This is kang&apos;s website.">
+<meta name="twitter:title" content="spring bean中属性覆盖器">
+<meta name="twitter:description" content="javabean配置中的属性覆盖器 我们常常使用property属性文件来配置某些固定的属性值（比如，jdbc数据源、c3p0连接池），这样当多个配置文件使用到这些属性时也更方便我们统一修改；">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -67,58 +69,100 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/01/Mysql_Database/" class="archive-article-date">
-  <time datetime="2017-09-01T04:23:30.000Z" itemprop="datePublished">Sep 1</time>
+        <section id="main"><article id="post-javabean_property_placeholderConfigurer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/14/javabean_property_placeholderConfigurer/" class="article-date">
+  <time datetime="2017-09-13T18:04:38.000Z" itemprop="datePublished">2017-09-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/Mysql_Database/">关于数据库引擎的认识</a>
+    <h1 class="article-title" itemprop="name">
+      spring bean中属性覆盖器
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/23/控制台数据库操作/" class="archive-article-date">
-  <time datetime="2017-05-23T04:54:30.000Z" itemprop="datePublished">May 23</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/23/控制台数据库操作/">控制台操作数据库</a>
-    </h1>
-  
+        <h1 id="javabean配置中的属性覆盖器"><a href="#javabean配置中的属性覆盖器" class="headerlink" title="javabean配置中的属性覆盖器"></a>javabean配置中的属性覆盖器</h1><blockquote>
+<p>我们常常使用property属性文件来配置某些固定的属性值（比如，jdbc数据源、c3p0连接池），这样当多个配置文件使用到这些属性时也更方便我们统一修改；<br><a id="more"></a><br>在配置文件中使用属性文件的流程是：</p>
+<ol>
+<li>先用一个属性配置器将这个属性文件(eg:jdbc.properties)读入；</li>
+<li>后面在配置数据源这些属性时直接使用${jdbc.url}字符串来代替；</li>
+</ol>
+</blockquote>
+<h2 id="举jdbc属性配置例说明"><a href="#举jdbc属性配置例说明" class="headerlink" title="举jdbc属性配置例说明"></a>举jdbc属性配置例说明</h2><ul>
+<li>假定我们jdbc属性文件如下：<pre><code>#driver
+driver=org.gjt.mm.mysql.Driver
+#username
+username=root
+#password
+password=
+#database URL
+url=jdbc\:mysql\://localhost\:3306/library
+</code></pre></li>
+<li>先将属性文件读入到我们属性配置器中：<pre><code>&lt;bean id=&quot;PropertyConfigurer&quot; class=&quot;org.springframework.beans.factory.config.Property-PlaceholderConfigurer&quot;&gt;
+    &lt;property name=&quot;location&quot; value=&quot;classpath:jcbc.properties&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><ul>
+<li>也可以直接使用上下文标签：<pre><code>&lt;context:property-placeholder location=&quot;classpath:jdbc.properties&quot;/&gt;
+</code></pre></li>
+</ul>
+</li>
+<li>读入之后就可以使用占位符直接使用了：<pre><code>&lt;!-- 配置数据源 --&gt;
+&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot; destroy-method=&quot;close&quot;&gt;
+    &lt;property name=&quot;driverClass&quot; value=&quot;${driver}&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;jdbcUrl&quot; value=&quot;${url}&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;user&quot; value=&quot;${user}&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;password&quot; value=&quot;${password}&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre></li>
+</ul>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/09/14/javabean_property_placeholderConfigurer/" data-id="cj7owudl50000r4qnd1ytaedh" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/14/jsp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          jsp的认识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/13/facebook_osframe/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">facebook的开源框架</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

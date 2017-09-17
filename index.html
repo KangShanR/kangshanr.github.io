@@ -168,6 +168,54 @@
 
 
   
+    <article id="post-javabean_property_placeholderConfigurer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/14/javabean_property_placeholderConfigurer/" class="article-date">
+  <time datetime="2017-09-13T18:04:38.000Z" itemprop="datePublished">2017-09-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/14/javabean_property_placeholderConfigurer/">spring bean中属性覆盖器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="javabean配置中的属性覆盖器"><a href="#javabean配置中的属性覆盖器" class="headerlink" title="javabean配置中的属性覆盖器"></a>javabean配置中的属性覆盖器</h1><blockquote>
+<p>我们常常使用property属性文件来配置某些固定的属性值（比如，jdbc数据源、c3p0连接池），这样当多个配置文件使用到这些属性时也更方便我们统一修改；<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/14/javabean_property_placeholderConfigurer/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/09/14/javabean_property_placeholderConfigurer/" data-id="cj7owudl50000r4qnd1ytaedh" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-facebook_osframe" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/13/facebook_osframe/" class="article-date">
@@ -786,123 +834,6 @@ public void before(){
 
 
   
-    <article id="post-adapter_pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/29/adapter_pattern/" class="article-date">
-  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/29/adapter_pattern/">设计模式之适配器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
-<li>适配器是行为型模式，将原有的行为经过组合进行扩展；</li>
-<li>顾名思义，适配器就是将原本不适的接口或功能适配到目标对象上。</li>
-<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；</li>
-<li>而比起缺省型适配器，还有类的适配器和对象适配器：<ul>
-<li>类适配器：将目标功能的接口执行并继承被适配者<ul>
-<li>被适配者：想在此类上扩展目标接口的功能（适配器的设计初衷在于，被适配者并不能直接实现目标接口）<pre><code>public class Adaptee {
-    void run(){
-        System.out.println(&quot;Adaptee.run..........&quot;);
-    }
-}
-</code></pre></li>
-<li>目标接口：<pre><code>public interface Target {
-    void fly();
-}
-</code></pre></li>
-<li>适配器：<pre><code>public class Adapter extends Adaptee implements Target {
-    @Override//继承父类被适配者，并能方便地扩展其方法
-    public void run() {
-        super.run();
-        System.out.println(&quot;Adapter.run.......&quot;);
-    }
-    //实现目标接口的方法
-    @Override
-    public void fly() {
-        System.out.println(&quot;Adapter.fly...........&quot;);
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    Adapter adaptee = new Adapter();
-    adaptee.fly();
-    adaptee.run();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Adapter.fly...........
-Adaptee.run..........
-Adapter.run.......
-</code></pre></li>
-<li><strong>note:</strong>这样的一个适配器在某种程度上来说与缺省的适配器并没有什么本质上的区别，都是将各种功能行为通过继承或实现聚合到同一个适配器上；</li>
-</ul>
-</li>
-<li>对象适配器模式：<ul>
-<li>与类适配器不同在于，对象适配器将被适配的类注入到适配器，再让适配器实现想要实现的接口，而让适配器聚合了这两者的成员；<ul>
-<li>被适配者与目标接口与上面例子一样，但适配器变成：<pre><code>public class Adapter implements Target {
-    private Adaptee adaptee;
-    public Adapter (Adaptee adaptee){
-        this.adaptee = adaptee;
-    }
-    //扩展被适配者方法相对来说要被动一点
-    public void run() {
-        this.adaptee.run();
-        System.out.println(&quot;Adapter.run.......&quot;);
-    }
-    //实现目标接口的方法
-    @Override
-    public void fly() {
-        System.out.println(&quot;Adapter.fly...........&quot;);
-    }
-}
-</code></pre></li>
-<li>可以看出来，对象适配器是将被适配者作为一个对象注入到适配者中，实现聚合其方法；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li>适配器的好处在于：将各个部门不同的功能聚合到同一个对象上，而实现各个不同的功能都可以通过一个对象实现，达到了高聚合的效果；</li>
-<li>适配器的缺点：各个不同的接口聚合到同一个类中，而让这个对象的接口变得混乱，当这个对象实现某一个功能时，会不清楚实现这个功能到底来自于哪个接口；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/adapter_pattern/" data-id="cj7hs6l9y00172sqnw8fqvt0w" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -936,7 +867,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 17.14px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 14.29px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.86px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.71px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.29px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.5px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -966,15 +897,15 @@ Adapter.run.......
           </li>
         
           <li>
+            <a href="/2017/09/14/javabean_property_placeholderConfigurer/">spring bean中属性覆盖器</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
           </li>
         
           <li>
             <a href="/2017/09/06/interview170906/">面试心得</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/03/struts2/">Struts2框架的总结</a>
           </li>
         
       </ul>
