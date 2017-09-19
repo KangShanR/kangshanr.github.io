@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,401 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-mybatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/31/mybatis/" class="article-date">
+  <time datetime="2017-08-31T05:12:34.000Z" itemprop="datePublished">2017-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/31/mybatis/">Mybatis框架的应用与理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="mybatis框架的使用与理解"><a href="#mybatis框架的使用与理解" class="headerlink" title="mybatis框架的使用与理解"></a>mybatis框架的使用与理解</h2><h4 id="Mybatis与JDBC"><a href="#Mybatis与JDBC" class="headerlink" title="Mybatis与JDBC"></a>Mybatis与JDBC</h4><p><strong>概述：</strong></p>
+<ol>
+<li>MyBatis是一个半自动的面向sql的orm框架；</li>
+<li>JDBC全称：java database connectivity，是java封装在在java.sql包里的API，其设计目的在于连接数据库，通过java语言实现sql查询语言在数据库中的操作；</li>
+<li>Mybatis就是对JDBC的封装，使其操作数据库更为灵活，更多的数据与实体之间的映射交给配置文件来实现；</li>
+<li><strong>JDBC</strong>作为java连接数据库的底层框架，<ol>
+<li><strong>实现数据库连接功能的步骤：</strong><ol>
+<li>加载驱动</li>
+<li>获取数据库连接</li>
+<li>准备语句（获取状态对象）</li>
+<li>执行语句</li>
+<li>处理结果集</li>
+<li>关闭数据库（释放资源）</li>
+<li>异常处理</li>
+</ol>
+</li>
+<li>可以看到在整个流程中的<strong>JDBC功能实现的缺陷</strong>：<ol>
+<li>jdbc的硬编码不方便维护，需要不停地连接、释放数据库资源；</li>
+<li>参数绑定在硬编码中，查询条件不定，修改语句也不方便；</li>
+</ol>
+</li>
+<li>所以，就有了MyBatis存在的必要；</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="MyBatis的实现"><a href="#MyBatis的实现" class="headerlink" title="MyBatis的实现"></a>MyBatis的实现</h3><p><strong>在一个工程中要使用MyBatis框架：</strong></p>
+<ol>
+<li>将MyBatis的核心包、依赖包引入。如果是Maven项目，直接在pom.xml中引入依赖：<pre><code>&lt;dependencies&gt;
+&lt;!-- 实现连接数据库的包 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;mysql&lt;/groupId&gt;
+      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+      &lt;version&gt;5.1.37&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;!-- 日志记录的包 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;log4j&lt;/groupId&gt;
+      &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+      &lt;version&gt;1.2.17&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+      &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+      &lt;version&gt;1.7.21&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;!-- 实现测试包 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.12&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+  &lt;!-- mybatis核心包 --&gt;
+&lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+        &lt;version&gt;3.4.2&lt;/version&gt;
+&lt;/dependency&gt;
+  &lt;/dependencies&gt;
+</code></pre></li>
+<li><p>引入相关的jar包后，就可以对mybatis进行配置：</p>
+<ol>
+<li><p>mybatis.xml文件中，配置mybatis的标签是：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+    &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+
+&lt;configuration&gt;
+
+    &lt;!-- 引入配置文件 --&gt;
+    &lt;properties resource=&quot;jdbc.properties&quot; /&gt;
+
+    &lt;!--自定义别名 --&gt;
+    &lt;typeAliases&gt;
+        &lt;!--定义单个别名 ,不区别大小写 --&gt;
+        &lt;!-- &lt;typeAlias type=&quot;com.woniuxy.mybatis.entity.User&quot; alias=&quot;user&quot;/&gt; --&gt;
+        &lt;!-- 批量定义别名，该包内所有的类的类名直接作为别名，不区分大小写 --&gt;
+        &lt;package name=&quot;com.woniuxy.mybatis.entity&quot; /&gt;
+    &lt;/typeAliases&gt;
+
+    &lt;!-- jdbc的配置信息 --&gt;
+    &lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+            &lt;!-- 配置事务管理器 --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot; /&gt;
+            &lt;!-- 数据库连接池 --&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;${jdbc.driver}&quot; /&gt;
+                &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot; /&gt;
+                &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot; /&gt;
+                &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot; /&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!-- 映射资源 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;mappings/Users.xml&quot; /&gt;
+        &lt;mapper resource=&quot;mappings/UserMapper.xml&quot; /&gt;
+    &lt;/mappers&gt;
+
+&lt;/configuration&gt;
+</code></pre><ul>
+<li>其根标签是：<code>&lt;configuration&gt;</code></li>
+<li>解析上述各标签：<ul>
+<li>properties:属性文件的引入，将java属性文件引入到该配置文件中，如上所述：引入了jdbc.properties文件，就可以在配置数据源属性时，通过点位符&amp;｛｝来获取到装配进来的属性文件中的属性值；</li>
+<li>typeAliases:别名的设定，可以指定单个类的别名，也可以使用子标签<code>package</code> 指定整个包的别名为类的simpleName;</li>
+<li>environments配置中，除了配置了JDBC数据库连接信息(数据源类型：POOLED)外,还得设定事务管理器类型：JDBC；</li>
+<li>mappers:映射各个实体类或映射类配置文件到此配置文件中去；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>mappers中的配置文件：</p>
+<ul>
+<li><p>Users.xml文件是指定了这个user类与数据库中操作的方法，包括这些方法的参数与返回值类型；</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+    PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+    &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;test2&quot;&gt;
+
+    &lt;!-- 根据id获取用户信息 --&gt;
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;int&quot; resultType=&quot;User&quot;&gt;
+        SELECT * FROM t_user WHERE ID = #{id}
+    &lt;/select&gt;
+
+    &lt;!-- 根据用户名获取用户列表 --&gt;
+    &lt;select id=&quot;findUserByUsername&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
+        SELECT * FROM t_user WHERE user_name like &apos;%${value}%&apos;
+    &lt;/select&gt;
+
+    &lt;!-- 添加用户数据 --&gt;
+    &lt;insert id=&quot;saveUserInfo&quot; parameterType=&quot;User&quot;&gt;
+        &lt;!-- 使用selectkey返回插入数据的id --&gt;
+        &lt;selectKey keyColumn=&quot;id&quot; keyProperty=&quot;id&quot; resultType=&quot;int&quot; order=&quot;AFTER&quot;&gt;
+            SELECT LAST_INSERT_ID()
+        &lt;/selectKey&gt;
+        &lt;!-- 如果主键使用uuid，则可以通过下面方法把id转出 --&gt;
+        &lt;!-- &lt;selectKey keyProperty=&quot;id&quot; resultType=&quot;string&quot; order=&quot;BEFORE&quot;&gt;
+            SELECT UUID()
+        &lt;/selectKey&gt; --&gt;
+        INSERT INTO t_user(user_name,cnname,sex,mobile,email,note) VALUES 
+        (#{user_name},#{cnname},#{sex},#{mobile},#{email},#{note})
+    &lt;/insert&gt;
+
+    &lt;!-- 删除数据 --&gt;
+    &lt;delete id=&quot;deleteUserById&quot; parameterType=&quot;int&quot;&gt;
+        DELETE from t_user where id=#{value}
+    &lt;/delete&gt;
+
+    &lt;!-- 更新数据 --&gt;
+    &lt;update id=&quot;updateUserInfo&quot; parameterType=&quot;User&quot;&gt;
+        UPDATE t_user SET
+        user_name=#{user_name},cnname=#{cnname},sex=#{sex},mobile=#{mobile},email=#{email},note=#{note} 
+        WHERE id=#{id}
+    &lt;/update&gt;
+
+&lt;/mapper&gt;
+</code></pre><ul>
+<li><code>#{}</code>与<code>${}</code>的区别：<ul>
+<li><code>#{}</code><ul>
+<li>表示占位符号，相当于实现了JDBC中的paparedStatement占位符的作用，也就实现了防止sql注入；</li>
+<li>同时实现了java类型与jdbc类型转换，可以接收简单类型值与pojo属性值；</li>
+<li>如果传输单个简单类型值，｛｝中可以是value或其它名称；</li>
+</ul>
+</li>
+<li><code>${}</code><ul>
+<li>表示sql字符串拼接，也就是将｛｝中的内容拼接在sql中且不进行jdbc类型转换；</li>
+<li>可以接收简单类型值或pojo值，如果是简单类型值｛｝中只能是’value’;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文档头可以看出这是mabatis3映射的定义文档类型，所以其根标签为<code>mapper</code>，其中各子标签或属性：</p>
+<ul>
+<li>namespace属性，指定其命名空间，这样在其它地方要调用此配置文件中的各语句时，就需要通过这个命名空间来访问到此文档中定义id的各个语句，通过session对象的方法来调用时，这些语句就作为参数执行方法：`session.selectOne(“findUserById()”,user)；</li>
+<li><p>session的来源：</p>
+<pre><code>/**
+ * 测试前的预备工作
+ */
+@Before
+public void before(){
+    System.out.println(Before.class);
+
+    try {
+        // 读入mybatis配置文件到输入流中
+        is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+        factoryBuilder = new SqlSessionFactoryBuilder();
+        //使用输入流创建sqlSessionFactory
+        factory = factoryBuilder.build(is);
+        //打开sqlSession
+        session = factory.openSession();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><ul>
+<li>上述代码是利用junit包实现了测试功能，@Before注解标这个方法在@Test方法之前运行，从该方法就可以看出myBaitis的运行流程：<ul>
+<li>将mybatis.xml配置文件读放流中，再使用sessionFactoryBuilder对该流进行创建工厂（抽象工厂模式）；</li>
+<li>调用工厂的openSession()方法打开会话，获得sesison实例；</li>
+<li>操作数据库最后一步就是调用session对象的方法：<code>List&lt;User&gt; users = session.selectList(&quot;test.findUserByUsername&quot;, &quot;k&quot;);</code><ul>
+<li>这儿的test就是之前指定的namespace，这儿指定的id的语句执行，并将另外的参数传入，形成完整的sql语句；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>这个流程是最初级的，而我们现实中常常不使用这样的形式，而使用接口来将所有<strong>方法的调用都交由接口来实现：</strong><ul>
+<li>在获取到session时，就通过<strong>session.getMapper(Class<t> mapper)方法来获取到相关的mapper接口的对象</t></strong>，而在使用过程中，就直接调用这个接口对象的方法（方法执行时就调用相应的语句执行），这个方法与语句之间映射就由指定了nameSpace的xml配置文件来实现，这种方法实现原理叫Mapper动态代理；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>从上面的例子就可以看出Mybatis解决了的jdbc的问题：</strong><ul>
+<li>数据库的链接的创建与释放者造成系统资源的浪费，而使用数据库连接池就可以此问题，在Mybatis的配置中设置；</li>
+<li>sql语句写在java代码中造成的不易维护，而Mybatis就将这些sql语句配置在相应的配置文件中，这样就与java代码实现了分离；</li>
+<li>使用映射好的java对象来作为sql语句的statemente的参数，而不用像在jdbc的执行方法中定义输入参数的类型；</li>
+<li>对于结果集的解析在JDBC中需要一层层遍历，并将各个属性封装到entity中再装入集合中。Mybatis将这些封装好，直接将结果映射到java对象中；</li>
+</ul>
+</li>
+<li>同时，上面例子并没有在持久层操作，也就是DAO层并没有进行开发，直接使用在TEST中进行调用抽象工厂的构造方法来构造工厂与sqlSession，再用sqlSession对象的方法，sqlSession的方法中调用配置好的sql语句与参数；</li>
+<li>如果要实现持久层的开发不过是把上面构造SqlSessionFactory/SqlSession的方法封装进Dao类中实现；</li>
+</ul>
+<hr>
+<h3 id="使用Mapper代理开发"><a href="#使用Mapper代理开发" class="headerlink" title="使用Mapper代理开发"></a>使用Mapper代理开发</h3><h4 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h4><ul>
+<li><strong>动态代理开发</strong>，就是让生成Mapper对象的这个过程交给SqlSession对象的getMapper（Class<t> mapper)方法，这时的SqlSession可以理解为工厂，也就是通过了工厂来构造获取Mapper接口的对象；</t></li>
+<li>Mapper对象就是Mapper接口的实例，这个接口与写好相关的mapper.xml配置文件相关联，Mybatis就用这个接口作为代理与被代理的mapper的公共接口，这个对象的方法执行时就与相关联的Mapper.xml配置文件里的sql语句来执行sql方法；</li>
+<li>Mapper接口与Mapper.xml配置文件相关联的规则（此规则由Mybatis规定，符合此规则便形成关联）：<ul>
+<li>Mapper.xml文件中的namespce与mapper接口的类路径相同；</li>
+<li>Mapper接口方法名和Mapper.xml中定义的每个statement的id相同；</li>
+<li>接口方法的输入参数类型和配置文件中的sql的parameterType的类型相同；</li>
+<li>接口方法的返回数据类型与配置文件中的resultType类型相同的；</li>
+</ul>
+</li>
+<li>实现代理开发就意味着之前的session方法执行都交给这个Mapper对象，所有的操作方法都由这个接口定义，调用这个方法就只用传入定义的参数类型，这也就<strong>实现了由Mapper对象的方法来代理SqlSession对象中的操作数据库的方法</strong>(<em>这儿涉及到代理<a href="http://kangshan.oschina.io/2016/06/13/DesignPattern/" title="设计模式" target="_blank" rel="external">设计模式</a>的理解</em>)，相对于直接使用SqlSession的各种执行方法更为简便；<ul>
+<li><strong>动态代理开发中的小点：</strong><ul>
+<li>动态代理在使用时，Mybatis会生成一个动态代理对象，至于这个动态代理对象会调用SqlSession的的selectOne()方法还是selectList()方法根据定义的mapper接口方法的返回值决定，如果返回List则调用selectList()方法，如果返回单个对象就调用selectOne()方法；</li>
+<li>使用mapper代理开发就不用写mapper接口实现类，输入参数也可以直接使用map对象或pojo对象，保证了dao的通用性；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/31/mybatis/" data-id="cj7hs6lbo002v2sqn9s9xfypo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mybatis_cache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/Mybatis_cache/" class="article-date">
+  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/Mybatis_cache/">Mybatis中的缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis中的缓存"><a href="#Mybatis中的缓存" class="headerlink" title="Mybatis中的缓存"></a>Mybatis中的缓存</h1><blockquote>
+<p>在Mybatis查询中通过配置文件Mapper.xml中的建立的Session执行sql语句查询出的结果，一般会存放在Mybatis缓存中，在被清除之前再次执行相同的查询时，Mybatis不只用直接调用缓存中的结果，而不用再次执行一次查询语句以提高效率。
+        
+          <p class="article-more-link">
+            <a href="/2017/08/29/Mybatis_cache/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_cache/" data-id="cj7rovhbb00067cqnxbrw4wtb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mybatis_dynamic_proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/Mybatis_dynamic_proxy/" class="article-date">
+  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/Mybatis_dynamic_proxy/">Mybatis中的动态代理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis中动态代理的运用"><a href="#Mybatis中动态代理的运用" class="headerlink" title="Mybatis中动态代理的运用"></a>Mybatis中动态代理的运用</h1><blockquote>
+<p>在Mybatis框架中，实现sql语句的与接口的映射用到的就是动态代理。下面简要地分析下动态代理模式的实现在这其中的运用。
+        
+          <p class="article-more-link">
+            <a href="/2017/08/29/Mybatis_dynamic_proxy/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_dynamic_proxy/" data-id="cj7rovhav00037cqnp9lkbe4g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-adapter_pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -95,86 +490,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
+        <h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><blockquote>
+<ul>
 <li>适配器是行为型模式，将原有的行为经过组合进行扩展；</li>
 <li>顾名思义，适配器就是将原本不适的接口或功能适配到目标对象上。</li>
-<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；</li>
-<li>而比起缺省型适配器，还有类的适配器和对象适配器：<ul>
-<li>类适配器：将目标功能的接口执行并继承被适配者<ul>
-<li>被适配者：想在此类上扩展目标接口的功能（适配器的设计初衷在于，被适配者并不能直接实现目标接口）<pre><code>public class Adaptee {
-    void run(){
-        System.out.println(&quot;Adaptee.run..........&quot;);
-    }
-}
-</code></pre></li>
-<li>目标接口：<pre><code>public interface Target {
-    void fly();
-}
-</code></pre></li>
-<li>适配器：<pre><code>public class Adapter extends Adaptee implements Target {
-    @Override//继承父类被适配者，并能方便地扩展其方法
-    public void run() {
-        super.run();
-        System.out.println(&quot;Adapter.run.......&quot;);
-    }
-    //实现目标接口的方法
-    @Override
-    public void fly() {
-        System.out.println(&quot;Adapter.fly...........&quot;);
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    Adapter adaptee = new Adapter();
-    adaptee.fly();
-    adaptee.run();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Adapter.fly...........
-Adaptee.run..........
-Adapter.run.......
-</code></pre></li>
-<li><strong>note:</strong>这样的一个适配器在某种程度上来说与缺省的适配器并没有什么本质上的区别，都是将各种功能行为通过继承或实现聚合到同一个适配器上；</li>
-</ul>
-</li>
-<li>对象适配器模式：<ul>
-<li>与类适配器不同在于，对象适配器将被适配的类注入到适配器，再让适配器实现想要实现的接口，而让适配器聚合了这两者的成员；<ul>
-<li>被适配者与目标接口与上面例子一样，但适配器变成：<pre><code>public class Adapter implements Target {
-    private Adaptee adaptee;
-    public Adapter (Adaptee adaptee){
-        this.adaptee = adaptee;
-    }
-    //扩展被适配者方法相对来说要被动一点
-    public void run() {
-        this.adaptee.run();
-        System.out.println(&quot;Adapter.run.......&quot;);
-    }
-    //实现目标接口的方法
-    @Override
-    public void fly() {
-        System.out.println(&quot;Adapter.fly...........&quot;);
-    }
-}
-</code></pre></li>
-<li>可以看出来，对象适配器是将被适配者作为一个对象注入到适配者中，实现聚合其方法；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li>适配器的好处在于：将各个部门不同的功能聚合到同一个对象上，而实现各个不同的功能都可以通过一个对象实现，达到了高聚合的效果；</li>
-<li>适配器的缺点：各个不同的接口聚合到同一个类中，而让这个对象的接口变得混乱，当这个对象实现某一个功能时，会不清楚实现这个功能到底来自于哪个接口；</li>
-</ul>
-
+<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；
+        
+          <p class="article-more-link">
+            <a href="/2017/08/29/adapter_pattern/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/adapter_pattern/" data-id="cj7hs6l9y00172sqnw8fqvt0w" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/adapter_pattern/" data-id="cj7hs6l9y00172sqnw8fqvt0w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -222,7 +551,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/singleton_pattern/" data-id="cj7hs6lbo002y2sqnlc5gafa7" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/singleton_pattern/" data-id="cj7hs6lbo002y2sqnlc5gafa7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -367,7 +696,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/20170829IgotMeeting/" data-id="cj7hs6l8n00012sqnrqe2d084" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/20170829IgotMeeting/" data-id="cj7hs6l8n00012sqnrqe2d084" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job/">job</a></li></ul>
@@ -611,7 +940,7 @@ NokiaMusic.constracting...
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/28/factory_pattern/" data-id="cj7hs6lad001o2sqnqcu5s2uj" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/28/factory_pattern/" data-id="cj7hs6lad001o2sqnqcu5s2uj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -659,10 +988,58 @@ NokiaMusic.constracting...
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/26/titleless/" data-id="cj7hs6ldf006a2sqn9frvk9r9" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/26/titleless/" data-id="cj7hs6ldf006a2sqn9frvk9r9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/essay/">essay</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/movie/">movie</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/25/AJAX/" class="article-date">
+  <time datetime="2017-08-25T05:04:38.000Z" itemprop="datePublished">2017-08-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/25/AJAX/">AJAX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AJAX的认识"><a href="#AJAX的认识" class="headerlink" title="AJAX的认识"></a>AJAX的认识</h1><blockquote>
+<p>AJAX，Asynchronous Javascript And Xml，异步的Javascript和xml；<br>其最大优点是不用重新加载整个网页实现与服务器数据交换并更新部分网页内容；<br>不是新的编程语言也不需要浏览器插件，只是基于Javascript和xml的新的方法；
+        
+          <p class="article-more-link">
+            <a href="/2017/08/25/AJAX/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/25/AJAX/" data-id="cj7rovhav00007cqn7op6bfvh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -751,269 +1128,10 @@ NokiaMusic.constracting...
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/24/薛兆丰：经济学思维与个人投资/" data-id="cj7hs6ldu00732sqneza6oapb" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/08/24/薛兆丰：经济学思维与个人投资/" data-id="cj7hs6ldu00732sqneza6oapb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经济学/">经济学</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-卓老板：科学思维看世间百态" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/卓老板：科学思维看世间百态/" class="article-date">
-  <time datetime="2017-08-23T00:02:42.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/卓老板：科学思维看世间百态/">科学思维看世间百态</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天得到直播卓老板聊科技：用科学思维看世界运行的脉络，怎么看？直播的一些记要与心得：</p>
-<ul>
-<li>科学思维三板斧：<ul>
-<li>等比缩放：WHO建议少吃糖，男性一天不超过28.5g，怎么算你的食物中有多少的糖？等比缩放。<ul>
-<li>把原来没有关系的两个事物放在自己能触及的地方；</li>
-<li>比如：纳米和亿之间的关联怎么与你相关？<ul>
-<li>我的身高是米，cpu的粒子是14纳米，我跟cpu就是亿倍关系。</li>
-<li>滴答声一下是1秒，10亿意味着什么？就是32年。对于我们来说32年意味着什么大家肯定就有自己的概念了。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>近似计算：通过简单地计算把一个问题定位到一个大概的范围，计算出一个大概的结果；<ul>
-<li>思维游戏问题：举国之电力，都由太阳能实现行不行？<ul>
-<li>假如国家的财力无穷无尽，帝国时代游戏一般来设计我们太阳能？在沙漠中来铺开太阳能板</li>
-<li>在高速公路两边的绿带铺开？下雨、阴天、维修，全国13万公里的高速公路，</li>
-</ul>
-</li>
-<li>近似计算鼻祖：费米，第一颗原子弹在内华达州的试爆，用纸片受远距离冲击波影响的飘距来近似计算爆炸当量（算得1万吨TNT当量，事后科学计算得2万吨），误差只有一倍（在质能方程中，估算当量误差往往很大）</li>
-<li>对于陌生世界与陌生事物临到面前时，近似计算能力对于掌握新事物的到来很有帮助；平常生活中，这一项能力十分有用；</li>
-<li>财务或其他对接事务时：不能有太多约束；比如，坟墓的占地在多久后会把人类居住地占完？但两代人后，人们不会对祖先的领地维护的。</li>
-</ul>
-</li>
-<li>建立模型：如果把人类的知识分类，<ul>
-<li>自下而上的知识，比如，考古，它的建立是一点一点地累积下来的，只能一块一块地拼图，最开始在边缘上找，再一点点往前推，在这个过程中，我们只能一点点积累证据，一点点接近真理；</li>
-<li>自上而下的知识：流行病学，怎么传播，设定一些参数。建立一个模型，再用这个模型来推算其发展形态；如果生活中有问题能用一个模型来解释，那么就用这个模型来计算；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="后记："><a href="#后记：" class="headerlink" title="后记："></a>后记：</h4><ul>
-<li>科学思维不能让你计算出未来事情准确发展动向，但能让你对事态的发展有一个大概地了解，不会一脸懞逼，而失去行事重心。</li>
-<li>开始一场话之前，要对这场进行预判，在这场谈话中要达到什么目的；<ul>
-<li>如果这场话的目的在于让对方有一个很好的感受，那么在谈话过程中就尽量赞许对方，让对方流畅地表达出内心地骄傲；</li>
-<li>如果要把自己突显出来，一定要话少，但一定要言必有物，每次场话有两三次谈话让别人印象深刻就很成功了。如果你的科学思维让你比别人看事物问题的角度更新颖开放，那么，一场谈话下来，很容易抓住这两个点让别人刮目相看。</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/卓老板：科学思维看世间百态/" data-id="cj7hs6ldf006m2sqnahprovoq" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-得到直播：打造工作方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/得到直播：打造工作方法/" class="article-date">
-  <time datetime="2017-08-23T00:02:42.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/得到直播：打造工作方法/">得到直播：打造工作方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天得到直播:打造工作方法有些启发，直播的一些记要与心得：</p>
-<h4 id="罗胖-打造工作方法"><a href="#罗胖-打造工作方法" class="headerlink" title="罗胖:打造工作方法"></a>罗胖:打造工作方法</h4><ul>
-<li>复制，任何行业，拿走的最多的红利的人不是最顶尖高手的人，而是专业力不错，但同时会复制传播的人，最直接简单的方式：写作，演讲；</li>
-<li>怎么把成本覆盖掉，怎么把利复制？王石，任何一个麻烦找上我，我想法就是怎么让这个麻烦下次不再找上我；</li>
-<li>正收益能不能复制？怎么提高自己的可复制性？<ul>
-<li>三个字：确定性。</li>
-<li>工作方法的高下就一点，能不能给确定性？<ul>
-<li>能力的确定性；<ul>
-<li>靠谱与闭环，大家要知道你能力的边界，能力再小，网络中价值中都极大；老干妈，这个产品水平极高吗？不，但海外留学生都知道，想吃到中国味，老干妈一定没错；凡事有交待，件件有回应，不能成为反馈黑洞；</li>
-</ul>
-</li>
-<li>态度的确定性<ul>
-<li>态度不好拿，想得太多；</li>
-<li>找到最基本简单的态度，坚持下去；</li>
-</ul>
-</li>
-<li>范围的确定性<ul>
-<li>每个人不管在什么层级，都是在创业；</li>
-<li>时时刻刻要在所有人面前要表现，你在掌握全局；</li>
-<li>思维：<ul>
-<li>上推，上推具体的操作到正式制度性抽象概念，高级餐厅的牛排旁边一定要放几朵西兰花，这样才显得高级；</li>
-<li>下沉，你不是不写嘛，我来，你要觉得这个可以接受，那么我自己做点事，像水一样，把其他的地方勾勒出来，当对方接收到这个动作时，对方被水包裹后自然而然会被牵动；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="最后有一段充满力量的话："><a href="#最后有一段充满力量的话：" class="headerlink" title="最后有一段充满力量的话："></a>最后有一段充满力量的话：</h4><p>王朔给女儿:（核心：把握自己，确定性；）</p>
-<blockquote>
-<p>煲汤比写诗重要；<br>自己的手艺比男人的重要；<br>头发、胸、腰、屁股比脸重要；<br>内心强大到混蛋比什么都重要；</p>
-</blockquote>
-<p>在网上查了下，冯唐写这段话应该更早的，王朔应该是借用的冯唐的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/得到直播：打造工作方法/" data-id="cj7hs6ldf006q2sqngeti7ima" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring_bean" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/spring_bean/" class="article-date">
-  <time datetime="2017-08-22T18:04:38.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/spring_bean/">spring bean的理解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Spring中的bean配置"><a href="#Spring中的bean配置" class="headerlink" title="Spring中的bean配置"></a>Spring中的bean配置</h1><blockquote>
-<p><strong>前言：</strong><br>Spring中的bean配置就是将各个类配置在bean.xml文件中，成为一个个的组件，方便实现各个组件之间的重新装配，这也是实现spring的依赖注入的方便法门；</p>
-<p>因此就可以理解，一个个的bean就是一个个的类的实例，但在spring运行时，spring容器装配各个组件时初始化这些类实例时，也就会涉及到类的构造函数，装配各个组件时会涉及到各种类型参数；</p>
-<p>Spring中的配置各个bean时有许多不曾注意到的小知识点，这儿一并给总结出来。<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/23/spring_bean/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/spring_bean/" data-id="cj7lwg6cx0003hsqnkm2dz866" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hibernate" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/23/Hibernate/" class="article-date">
-  <time datetime="2017-08-22T18:04:38.000Z" itemprop="datePublished">2017-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/Hibernate/">Hibernate</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hibernate"><a href="#Hibernate" class="headerlink" title="Hibernate"></a>Hibernate</h1><blockquote>
-<p>简介：Hibernate是一种ORM（Object Relative-Database Mapping)框架，用于与各种数据库、SQL语句打交道，是数据持久化的一种解决方案；在java对象（在这儿就为POJO）与关系数据库之间建立某种映射，实现直接存取Java对象。</p>
-<p>关于ORM：<br>数据持久化核心技术之一，在JDBC开发中，大量重复性高的sql语句在DAO层中，而ORM就实现了根据POJO属性来拼装SQL语句，读取时，用SQL语句将各种属性从数据库中读取出来，再拼装为POJO对象返回给业务层，这样来实现数据表与POJO、数据表中列与POJO属性之间的映射关系；ORM框架就实现通过映射关系自动生成sql语句的强大强大功能；<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/23/Hibernate/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/23/Hibernate/" data-id="cj7lwg6cx0000hsqneemlgysa" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -1033,7 +1151,7 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
     </div>
@@ -1043,7 +1161,7 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -1053,9 +1171,9 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.5px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -1072,7 +1190,7 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -1093,7 +1211,7 @@ NokiaMusic.constracting...
           </li>
         
           <li>
-            <a href="/2017/09/06/interview170906/">面试心得</a>
+            <a href="/2017/09/09/Responsive_Web_Design/">前端页面之响应式布局</a>
           </li>
         
       </ul>
@@ -1109,7 +1227,7 @@ NokiaMusic.constracting...
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

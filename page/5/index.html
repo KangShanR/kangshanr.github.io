@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,303 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/ASCII_code/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/ASCII_code/">ASCII编码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><blockquote>
+<p>（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
+</blockquote>
+<ul>
+<li>关键字符ASCII值：<ul>
+<li>0:46 0~9的ASCII码值就是48~57，习惯于在代码函数中用左闭右开的区间来表示：[48,58)</li>
+<li>eg:（Java language）<pre><code>//用于判断字符属于哪个类型的方法
+static String typeChar(char _char){
+        int valueChar = Integer.valueOf(_char);
+        if(valueChar &gt;= 48 &amp;&amp; valueChar &lt; 58)
+            return &quot;number&quot;;
+        else if(valueChar &gt;= 65 &amp;&amp; valueChar &lt; 91)
+            return &quot;uppercase&quot;;
+        else if(valueChar &gt;= 97 &amp;&amp; valueChar &lt;123)
+            return &quot;lowercase&quot;;
+        else
+            return &quot;symbol&quot;;
+    }
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    System.out.println(typeChar(&apos;,&apos;));
+}
+</code></pre></li>
+<li>测试结果：<pre><code>symbol
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>常用到的字符ASCII值：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">ASCII值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:left">65</td>
+</tr>
+<tr>
+<td style="text-align:center">A-Z</td>
+<td style="text-align:left">65-90</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">97</td>
+</tr>
+<tr>
+<td style="text-align:center">a-z</td>
+<td style="text-align:left">97-122</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7hs6l9300052sqnkerbdf2b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/hex/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
+<li>在数字前直接加0x就可以使用，所用字符：<ul>
+<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
+</ul>
+</li>
+<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
+<li>eg:0xfa14</li>
+</ul>
+</li>
+<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
+<li>测试代码（java)：<pre><code>public static void main(String[] args) {
+    System.out.println(0xeeda);
+    System.out.println(0x0003);
+    System.out.println(0xa);
+    System.out.println(0xea);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>978346
+3
+10
+234
+</code></pre></li>
+</ul>
+</li>
+<li>中文的unicode码的范围4e00-9fa5</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj7hs6lat001s2sqns5zu1dlq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP_status_code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/13/HTTP_status_code/" class="article-date">
+  <time datetime="2017-04-13T04:14:12.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/13/HTTP_status_code/">HTTP状态码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HTTP状态码（HTTP-status-code"><a href="#HTTP状态码（HTTP-status-code" class="headerlink" title="HTTP状态码（HTTP status code)"></a>HTTP状态码（HTTP status code)</h3><p><strong>常见的4个HTTP的状态码：</strong></p>
+<ul>
+<li>200：请求成功</li>
+<li>301：资源被永久地转移到其他URL</li>
+<li>404：请求的资源不存在</li>
+<li>500：内部服务器错误</li>
+</ul>
+<p><strong>HTTP状态码分类</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">分类</th>
+<th style="text-align:left">分类描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1**</td>
+<td style="text-align:left">信息，服务器收到请求需要请求者继续操作</td>
+</tr>
+<tr>
+<td style="text-align:center">2**</td>
+<td style="text-align:left">成功，操作被成功并处理</td>
+</tr>
+<tr>
+<td style="text-align:center">3**</td>
+<td style="text-align:left">重定向,需要进一步操作以完成请求</td>
+</tr>
+<tr>
+<td style="text-align:center">4**</td>
+<td style="text-align:left">客户端错误,请求包含语法错误或完成请求</td>
+</tr>
+<tr>
+<td style="text-align:center">5**</td>
+<td style="text-align:left">服务器错误，服务器在请求过程中发生了错误</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Note:</strong>常见的分类如上，在编码过程中Tomcat返回状态码时，就可以根据状态码大致判定下bug在哪里了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj7hs6l9y00102sqntq0vjrfy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-database_normal_format" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/database_normal_format/" class="article-date">
+  <time datetime="2017-03-01T03:04:38.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/database_normal_format/">数据库三大范式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h1><ul>
+<li><strong>概要：</strong>数据库目前有六大范式，但一般来说只满足前三大范式（3NF）即可。第一范式最基础，依次上推，每一层是下一层的基础；</li>
+<li><strong>第一范式：</strong>列的原子性，每一列都是不可分割的基本数据项，但这也根据实际使用过程中来，如果在使用数据过程中并没有使用到其原子数据，那么定义最原子性的数据就没有必要了；</li>
+<li><strong>第二范式：</strong>列的唯一性，要保证列的唯一性，就得在保证第一范式的基础上保证每一列属性完全依赖于主键。</li>
+<li><strong>第三范式：</strong>各属性不依赖于其它非主键属性，在保证前两范式的前提下，第三范式是为了保证数据的无重复性，将无关的属性单独创建一个表来实现多表而数据分明；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/03/01/database_normal_format/" data-id="cj7hs6lad001b2sqnswahs7fu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-java_modifier" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -123,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj7hs6lb9002b2sqnm8a4k1zd" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj7hs6lb9002b2sqnm8a4k1zd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -186,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj7hs6lat001v2sqnver8nkyg" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj7hs6lat001v2sqnver8nkyg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -425,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj7hs6lbo00352sqnyf5rb1qb" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj7hs6lbo00352sqnyf5rb1qb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -518,7 +815,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj7hs6l9i000g2sqn4ho34vx9" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj7hs6l9i000g2sqn4ho34vx9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -571,7 +868,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj7hs6l9i000d2sqn5u0zw650" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj7hs6l9i000d2sqn5u0zw650" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -628,310 +925,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj7hs6l9300062sqn4ijm7y18" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj7hs6l9300062sqn4ijm7y18" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_object_lifecycle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/18/Csharp_object_lifecycle/" class="article-date">
-  <time datetime="2016-12-18T07:02:43.000Z" itemprop="datePublished">2016-12-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/18/Csharp_object_lifecycle/">C#中对象生命周期</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-对象生命周期"><a href="#C-对象生命周期" class="headerlink" title="C#对象生命周期"></a>C#对象生命周期</h3><ul>
-<li>C#中，一切都可以称作为对象Object，是对象就有生命周期（准确地讲，在面向对象的高级语言中，一切皆对象，是对象就有生命周期）；</li>
-<li>除了在“正在使用”中的正常状态外，对象还有两个状态：<ul>
-<li>构造阶段：对象构造阶段，在对象被构造出来前，此对象是不存在的。只有构造出来的对象才能被引用才能被程序所调用；</li>
-<li>析构阶段：对象回收前的阶段，不同的语言对就不同的回收机制；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/18/Csharp_object_lifecycle/" data-id="cj7hs6l9i000i2sqn5940r6ta" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_access_modifiers" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/11/Csharp_access_modifiers/" class="article-date">
-  <time datetime="2016-12-11T07:02:43.000Z" itemprop="datePublished">2016-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/Csharp_access_modifiers/">C#编程中的访问修辞符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-访问修饰符"><a href="#C-访问修饰符" class="headerlink" title="C#访问修饰符"></a>C#访问修饰符</h3><p>C#中为了数据的安全性以及代码的拓展，定了几种访问级别，根据对应的访问修饰符，可以获取Class里面对应的字段、属性、方法等。</p>
-<p>常见的访问修饰符有：<br>（1）public    公有访问。不受任何限制。<br>（2）private    私有访问。只限于本类成员访问，子类都不能访问。<br>（3）protected    保护访问。只限于本类和子类访问。<br>（4）internal    内部访问。只限于本项目内访问，其他不能访问。<br>（5）protected internal    内部保护访问。只限于本项目或是子类访问，其他不能访问。</p>
-<p>根据MSDN上面的解释，我们也可以理解对应<a href="https://msdn.microsoft.com/zh-cn/library/wxh6fsc7.aspx" target="_blank" rel="external">访问修饰符</a>的作用。</p>
-<p><a href="http://www.cnblogs.com/liupeng61624/p/5122192.html" title="C#访问修辞符" target="_blank" rel="external">参考博客</a></p>
-<h4 id="常见成员类型的访问修饰符"><a href="#常见成员类型的访问修饰符" class="headerlink" title="常见成员类型的访问修饰符"></a>常见成员类型的访问修饰符</h4><p><strong>（1）接口(interface)</strong></p>
-<p>接口成员访问修饰符默认为public,且不能显示使用访问修饰符。</p>
-<p><strong>（2）类(class)</strong><br>构造函数默认为public访问修饰符。<br>析构函数不能显示使用访问修饰符且默认为private访问修饰符。<br>类的成员默认访问修饰符为private（<em>java中默认为同包权限，在同包中可以被访问的，默认不写</em>）; </p>
-<p><strong>（3）枚举(enum)</strong><br>枚举类型成员默认为public访问修饰符，且不能显示使用修饰符。</p>
-<p><strong>（4）结构(struct) </strong><br>结构成员默认为private修饰符。<br>结构成员无法声明为protected成员，因为结构不支持继承。 </p>
-<p><strong>（5）嵌套类型</strong><br>嵌套类型的默认访问修饰符为private。 和类，结构的成员默认访问类型一致。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/11/Csharp_access_modifiers/" data-id="cj7hs6l9300072sqnbwoppxy6" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
-  <time datetime="2016-12-03T04:54:38.000Z" itemprop="datePublished">2016-12-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/03/快速排序算法的理解/">快速排序算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="今日所得"><a href="#今日所得" class="headerlink" title="今日所得"></a>今日所得</h4><ul>
-<li>今天复习了下快速排序（使用递归），据说是效率最高的一种排序算法（相比于冒泡排序、选择排序）；</li>
-<li>之前学习C#时领教过，当想把这个算法迁移到java中来写一个时发现久了不练都手生了；</li>
-</ul>
-<ol>
-<li>前面多次使用递归的算法写一些方法（诸如二分法查找已经排好序数组元素的索引、递归生成满足条件（非纯数字或字母）的字符串；使用多次但没有想到过使用递归时可以无返回值；</li>
-<li>二分排序时，必须使用无返回值的递归方法。因为二分之后返回的是数组的一部分，最后把这一部分返回给递归前方法，这时要接收这一部分的元素需要对这一部分进行遍历；</li>
-<li><p>二分法排序(升序，若要降序则相反）流程：</p>
-<ol>
-<li>把数组第一个元素作为中间值，从最大索引(这个还必须从后往前找，因为我们用的第一个元素作为中间值，如果从前往后找，第一个较大值会直接覆盖最大索引的值；所以，如果想实现从前往后找就得把最大索引元素值作为中间值)开始往前找，找到比这个间值小的元素就把这个值赋予给最小索引的元素；</li>
-<li>再从最小索引元素开始往后找，找到这中间值大的元素，把这个元素值赋予给最大索引处的元素（找的过程不满足条件就把索引依次自增或自减）；</li>
-<li>依次这样后面往前找一趟，前面往后找一趟，直到最大与最小索引相等。这时把中间值赋予给这个索引，这样就完成了一次把数组分成两个部分，前面部分值比中间值小，后面部分比中间值大；</li>
-<li>这用上面一套流程对中间值两边的元素进行递归操作，递归缺口就是数组操作部分只有一个元素；</li>
-<li>代码：<pre><code>public int getPivotIndex(int[] arr, int minIndex, int maxIndex){
-    int pivot = arr[minIndex];
-    while (minIndex &lt; maxIndex) {
-        while (arr[maxIndex] &gt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            maxIndex--;
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        while (arr[minIndex] &lt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            minIndex++;
-        }
-        arr[maxIndex] = arr[minIndex];
-    }
-    arr[minIndex] = pivot;
-    return minIndex;
-}
- *二分法排序的流程 
- * @param arr
- * @param minIndex
- * @param maxIndex
- */
-public void dichotomySort(int[] arr, int minIndex, int maxIndex){
-    if(minIndex &lt; maxIndex){
-        int index = this.getPivotIndex(arr, minIndex, maxIndex);
-        dichotomySort(arr, minIndex, index - 1);
-        dichotomySort(arr, index + 1, maxIndex);
-    }else{
-        return;
-    }
-}
-</code></pre></li>
-</ol>
-</li>
-<li><p>二分法排序算法核心在于每一次查找把中间那一个值给定下来，并对中间值两边的数组分别再次排序,再对两边的数组分别进行同样的操作，直到不能再分割;</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/" data-id="cj7hs6ldf006o2sqnivutis01" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/01/Csharp_class/" class="article-date">
-  <time datetime="2016-12-01T14:02:43.000Z" itemprop="datePublished">2016-12-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/Csharp_class/">C#中类（面向对象）的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类中有成员：</p>
-<pre><code>- 方法
-- 变量（字段）
-- 属性（对变量的限定）
-- 类中不能直接对变量赋值，只能在方法中对变量赋值。我们看到的直接赋值的情况实际上是利用构造函数直接赋值，eg：string str = &quot;str&quot;;
-</code></pre><h4 id="类的构成："><a href="#类的构成：" class="headerlink" title="类的构成："></a>类的构成：</h4><ul>
-<li>变量</li>
-<li>构造函数</li>
-<li>方法（构成：访问修饰符+返回类型+方法名（参数））<ul>
-<li>重要类成员，当函数名返回类型都一样时，参数不一样，这两个函数可以共存；<ul>
-<li>方法的参数可分为：<ul>
-<li>值参数（不含任何修饰符，形参是实参的一份拷贝，方法中对形参的改变不会影响到实参的值）</li>
-<li>引用参数<ul>
-<li>用ref关键字来申明，传递的参数实质上是实参的地址，方法中对形参的操作就是对实参的操作，在调用时一样要用到ref关键字；</li>
-<li>其后面变量一定要初始化，因为没初始化内存中是不存在其地址的，比如，int a;这儿的变量a就是没有初始化的； </li>
-<li>先把实参地址传入方法，再在方法中执行；</li>
-</ul>
-</li>
-<li>输出参数<ul>
-<li>输出参数，用关键字out来声明；</li>
-<li>与引用参数类似，直接对实参进行操作，在声明和调用时都需要用到out关键字；</li>
-<li>out的对象不要求在传递给方法之前初始化 </li>
-<li>但在方法返回前必须对参数进行赋值；</li>
-<li>运行原理是与引用参数相反，先申明一变量（没内存空间），再在方法里申请变量内存空间，赋值后再把值的地址out给之前申请的内存使之指向方法中这个值，所以方法返回前必须对参数赋值；</li>
-</ul>
-</li>
-<li>数组型参数（传入数组形参）<ul>
-<li>关键字：params</li>
-<li>该关键字用来声明用于可变长度的形参列表，方法声明中最多只能包含一params参数；</li>
-<li>并且该参数（数组）必须是参数列表中最后一个参数；</li>
-<li>数组参数必须是一维数组（对应多维数组）；</li>
-<li>不允许与ref、out修辞符组合起来用；</li>
-<li>若实参是数组，则按引用传递；若实参是变量或表达式，则按值传递；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
-<li>给功能相似的方法提供同一名称，实现编译时的多态性，引入方法重载概念，是面向对象程序设计的重要概念。特点：<ul>
-<li>1.方法名相同（必要条件）</li>
-<li>2.参数列表不完全相同，参数个数、参数的类型；</li>
-<li>3.返回类型不同，参数相同，这个不是方法重载，必须重命名一个方法名；</li>
-</ul>
-</li>
-</ul>
-<h4 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h4><ul>
-<li>非静态类成员实例化后，有几个对象就有几个类中成员；</li>
-<li>而，静态成员（两者区别如下）：<ul>
-<li>内存分配：静态变量定义在类中后，内存中只存在这一个成员；</li>
-<li>调用方式：访问必须在前加上类名:Class.member;</li>
-<li>生命周期：在程序运行初始就初始化分配内存了，只要不关程序就一直存在；</li>
-<li>与之对应的非静态成员，必须初始化才存在（new），才分配内存；</li>
-<li>非静态变量会与其实例对象同存同毁；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/01/Csharp_class/" data-id="cj7hs6l93000b2sqnzcw6kyk7" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
 
     </footer>
   </div>
@@ -951,7 +948,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li></ul>
     </div>
@@ -961,7 +958,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -971,9 +968,9 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 12.5px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -990,7 +987,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -1011,7 +1008,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
           </li>
         
           <li>
-            <a href="/2017/09/06/interview170906/">面试心得</a>
+            <a href="/2017/09/09/Responsive_Web_Design/">前端页面之响应式布局</a>
           </li>
         
       </ul>
@@ -1027,7 +1024,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
