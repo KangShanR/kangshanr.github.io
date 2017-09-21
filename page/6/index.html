@@ -69,6 +69,209 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Csharp_datastruture" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/31/Csharp_datastruture/" class="article-date">
+  <time datetime="2016-12-31T14:02:43.000Z" itemprop="datePublished">2016-12-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/31/Csharp_datastruture/">学习C#时关于数据结构的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="C-数据结构"><a href="#C-数据结构" class="headerlink" title="C# 数据结构"></a>C# 数据结构</h3><h4 id="高等数学相关基础知识："><a href="#高等数学相关基础知识：" class="headerlink" title="高等数学相关基础知识："></a>高等数学相关基础知识：</h4><ul>
+<li>计量单位（Uint）：位缩写为b,字节缩写为B，千字节为KB，兆字节MB。1B = 8b，1KB = 1024B，1MB = 1024KB</li>
+<li>阶乘函数（Factorial Function): 0! = 0 , n! = (n-1)! *n</li>
+<li>取上整和取下整（Floor and Ceiling）：⌊3.4⌋=3（下整） ，⌈3.4⌉=4（上整）</li>
+<li>取模择操作符（Modulus)：% ， 5%2  返回1，这两个参数也可以为浮点类型数值，eg：5.6 %0.5 ，返回0.1</li>
+<li>对数（Logarithm)：若ab=N，则数b叫做以a为底N的对数，记作：logaN=b,其中a叫作对数的底数，N叫真数；</li>
+<li>递归（Recursive):算法调用自己或间接调用自己；</li>
+<li>使用递归函数一定要留好缺口，不然就会无限调用导致内存溢出；比如，用递归函数来算阶乘，其缺口就是0！ = 1；</li>
+</ul>
+<p><strong>算法（Algorithm)</strong></p>
+<ul>
+<li>对某一选定类型的问题的求解步骤的一种描述，是指令的有限序列。其特性有：</li>
+<li>有穷性（Finity)、确定性（Unambiguousness)、输入（Input)、输出（Output)、有效性（Realizability)</li>
+<li>针对算法的优劣，其评价标准有：正确性（Correctness)、可读性（Readability)、健壮性（Robustness）、运行时间（Running Time)、占用空间（Storage Space)</li>
+</ul>
+<p><strong>数据结构（Data Stauct):</strong></p>
+<ul>
+<li>简记为DS,是一个二元组，DS=（D,S)，其中D为数据元素的有限集合，R是数据元素之间关系的有限集合。</li>
+<li>相互之间存在一种或多种关系的数据元素的集合。常用的4 种数据结构类型：</li>
+<li>集合（Set)<ul>
+<li>线性结构（Linear Structure)</li>
+<li>树形结构（Ture Structure)</li>
+<li>图状结构（Graphic Structure)</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据（Data)</strong></p>
+<ul>
+<li>外部世界信息的载体，能被计算机识别、存储和加工处理，是计算机程序加工的原料。</li>
+<li>数据元素（Data Element)和数据项</li>
+<li>数据的基本单位，有时也被称为元素、结点、顶点、记录等等。</li>
+<li>一个数据元素可由若干个数据项组成；</li>
+<li>数据项是不可分割、含有独立意义的最小数据单位，数据项有时也被称为字段（Field)或域（Domain)；</li>
+<li>数据项组成数据元素，数据元素组成数据，数据组成文件。</li>
+<li>使用数据库模型来法人代表说明这两者之间的关系：</li>
+</ul>
+<p><strong>数据对象（Data Object):</strong></p>
+<ul>
+<li>性质相同的数据元素的数据元素的集合，是数据的一个子集，例如：字母表对象｛a,b,c,d,……x,y,z}</li>
+</ul>
+<p><strong>数据类型（Data Type)</strong></p>
+<ul>
+<li>数据的聚会范围和对数据进行操作的总和。</li>
+<li>规定了程序中对象的特性；</li>
+<li>程序中每个变量、常量、表达式的结果都应该属于某种确定的数据类型</li>
+<li>可分为两类：<ul>
+<li>非结构的原子类型，如，C#中的基本类型；</li>
+<li>结构类型，其成分由多个结构类型组成，可以分解；如C#的数组类型。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj7hs6l9i000g2sqn4ho34vx9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Csharp_datatype" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/25/Csharp_datatype/" class="article-date">
+  <time datetime="2016-12-25T07:02:43.000Z" itemprop="datePublished">2016-12-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/25/Csharp_datatype/">C#语言中数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="C-数据类型"><a href="#C-数据类型" class="headerlink" title="C#数据类型"></a>C#数据类型</h3><ul>
+<li>C#中，数据共有三种类型<ul>
+<li>value types 值类型</li>
+<li>reference types 引用类型</li>
+<li>pointer types  指针类型</li>
+</ul>
+</li>
+</ul>
+<p>关于命名空间 <code>namespace</code>，msdn官网上有一句：<code>Namespaces implicitly have public access and this is not modifiable.</code>翻译：命名空间隐式默认为public公共访问权限，并且不能修改这个公共访问特性。也就是说命名空间访问不受限；</p>
+<hr>
+<p>参考：<a href="https://msdn.microsoft.com/zh-cn/library/z2kcy19k.aspx" target="_blank" rel="external">visual studio网站</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj7hs6l9i000d2sqn5u0zw650" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Csharp_abstract_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/23/Csharp_abstract_class/" class="article-date">
+  <time datetime="2016-12-23T07:02:43.000Z" itemprop="datePublished">2016-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/23/Csharp_abstract_class/">C#中的抽象类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="abstract-interface"><a href="#abstract-interface" class="headerlink" title="abstract_interface"></a>abstract_interface</h3><ul>
+<li>abstract 修饰符用于表示所修饰的类是不完整的，并且它只能用作基类。抽象类与非抽象类在以下方面是不同的： <ul>
+<li>抽象类不能直接实例化，并且对抽象类使用 new 运算符会在编译时错误；（虽然一些变量和值在编译时的类型可以是抽象的，但是这样的变量和值必须或者为null，或者含有对非抽象类的实例的引用（此非抽象类是从抽象类派生的））；</li>
+<li>允许（但不要求）抽象类包含抽象成员;</li>
+<li>抽象类不能被密封(因为密封类不能被继承）;</li>
+<li>当从抽象类派生非抽象类时，这些非抽象类必须具体实现所继承的所有抽象成员，从而重写那些抽象成员;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li>与java相比，抽象类的特性都差不多；</li>
+<li>java中不存在密封类的说法，相对应的说法应该是final常量修辞符；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj7hs6l9300062sqn4ijm7y18" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Csharp_object_lifecycle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/18/Csharp_object_lifecycle/" class="article-date">
@@ -535,238 +738,10 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
 
 
   
-    <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/20/springMVC/" class="article-date">
-  <time datetime="2016-08-20T05:29:17.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/20/springMVC/">springMVC的理解与认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><blockquote>
-<p>SpringMVC同样是一种MVC架构，它与传统MVC框架的不同之处在于使用了中央调度器，用中央调度器DispatcherServlet来分发所有的请求与响应，中央调度器的存在就大大降低了其他组件之间的耦合度。这种分发请求与响应的实现得益于spring的装配。
-        
-          <p class="article-more-link">
-            <a href="/2016/08/20/springMVC/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj7hs6lbo00392sqn9signboe" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JDBC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/24/JDBC/" class="article-date">
-  <time datetime="2016-07-24T04:14:32.000Z" itemprop="datePublished">2016-07-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/24/JDBC/">JDBC的理解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p>全称：fava database connectivity,专用于java数据库连接，其中封装了基本的连接数据库的API,数据库连接的高级框架（诸如：Mybatis/Hibernate)的使用都基于JDBC的原理，也就是理解了JDBC对于我们更理解各种持久层数据连接层的框架很有帮助；</p>
-<h4 id="一个简单的JDBC实现"><a href="#一个简单的JDBC实现" class="headerlink" title="一个简单的JDBC实现"></a>一个简单的JDBC实现</h4><pre><code>/**
- * 获取数据库连接的方法
- * @return
- */
-public static Connection getConnection(){
-    Connection con = null;
-
-    try{
-//            获取连接mysql数据库的驱动
-        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
-//            设置连接数据库的url
-        String url = &quot;jdbc:mysql://localhost:3306/agileone1?useUnicode=true&amp;characterEncoding=UTF-8&quot;;
-//            连接数据库的用户名
-        String userName = &quot;root&quot;;
-//            连接数据库的密码
-        String userPass=&quot;&quot;;
-//            从而获取到数据库连接connection
-        con = DriverManager.getConnection(url, userName, userPass);
-    }catch (Exception e){
-        e.printStackTrace();
-    }
-    return con;
-}
-</code></pre><ul>
-<li>上述代码块就通过java.sql包里封装好的各个类与类反射获取到了连接指定数据库的链接；<ul>
-<li>接下来就可以利用这个连接来进行crud类操作<pre><code>- /**
- * 插入数据进入数据库的方法
- * @param username
- * @param password
- */
-static void insertData(String username, String password){
-    Connection con = getConnection();
-    String sql = &quot;INSERT INTO Userdata (username, userPass) VALUES(&apos;&quot;+username+&quot;&apos;, &apos;&quot;+password+&quot;&apos;)&quot;;
-    try {
-//            从连接创建状态
-        Statement state = con.createStatement();
-//            执行更新语句，返回影响行数
-        int re = state.executeUpdate(sql);
-        System.out.println(re);
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}
-/**
- * 模糊查询的方法
- * @param name
- */
-static void query(String name){
-    Connection con = getConnection();
-//        sql语句
-    String sql = &quot;SELECT * FROM userdata WHERE username = &apos;&quot; +name+&quot;&apos;&quot;;
-    try{
-        Statement state = con.createStatement();
-//            执行查询语句，返回批量结果集
-        ResultSet re = state.executeQuery(sql);
-//            对结果集进行迭代输出
-        while(re.next()){
-            System.out.println(&quot;id:&quot; + re.getInt(&quot;id&quot;));
-            System.out.println(&quot;username:&quot; + re.getString(&quot;username&quot;));
-            System.out.println(&quot;id:&quot; + re.getString(&quot;userPass&quot;));
-        }
-    }catch(SQLException e){
-        e.printStackTrace();
-    }
-}
-</code></pre></li>
-<li>当sql语句执行完成，需要对上面建立的各个连接与状态进行关闭：<pre><code>/**
- * 关闭连接与状态的方法
- */
-static void close(Connection con){
-    if(con !=null){
-        try {
-            con.close();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre><ul>
-<li>其中针对不同的方法与连接状态，关闭的对象也不一样，除了Connection还有Statement,Prestatement,resultSet，各个对象都是调用其Close方法；</li>
-<li>通常情况下，调用对象的Close()方法放在finally语句块中，这样就可以执行完查询语句方法后，交接将各个对象关闭；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
-<li><em>以上的代码基本实现了JDBC的整个流程，从创建连接到执行查询语句，再到关闭连接、状态、结果集</em></li>
-<li><em>JDBC中封装的连接数据库的API包：java.sql是连接sql的基础包，使用JDBC就得引入这个jar包：<code>mysql-connector-java-5.1.38-bin.jar</code></em></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj7hs6l9y000t2sqnxgk0a4bz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DLL_file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/30/DLL_file/" class="article-date">
-  <time datetime="2016-06-30T07:02:43.000Z" itemprop="datePublished">2016-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/30/DLL_file/">dll文件的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="DLL动态链接库：Dymanic-Link-Library"><a href="#DLL动态链接库：Dymanic-Link-Library" class="headerlink" title="DLL动态链接库：Dymanic Link Library"></a>DLL动态链接库：Dymanic Link Library</h4><ul>
-<li>DLL是将程序相关的功能实现封装在一起放在指定目录（后缀名为.dll），程序运行时，再来动态链接起执行。这样就能达到多个程序共享同一个库文件，而减少程序安装大小；</li>
-<li>DLL文件与exe文件都是编译语言生成，但dll没有程序入口，所以dll不能独自执行；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/30/DLL_file/" data-id="cj7hs6l9i000m2sqnab778u0v" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -786,7 +761,7 @@ static void close(Connection con){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -796,7 +771,7 @@ static void close(Connection con){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
     </div>
   </div>
 

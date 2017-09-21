@@ -368,10 +368,10 @@ public void before(){
 
 
   
-    <article id="post-Mybatis_cache" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-sql_optimize" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/29/Mybatis_cache/" class="article-date">
-  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+    <a href="/2017/08/31/sql_optimize/" class="article-date">
+  <time datetime="2017-08-31T04:04:38.000Z" itemprop="datePublished">2017-08-31</time>
 </a>
     
   <div class="article-category">
@@ -386,7 +386,7 @@ public void before(){
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/29/Mybatis_cache/">Mybatis中的缓存</a>
+      <a class="article-title" href="/2017/08/31/sql_optimize/">sql优化</a>
     </h1>
   
 
@@ -394,20 +394,95 @@ public void before(){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Mybatis中的缓存"><a href="#Mybatis中的缓存" class="headerlink" title="Mybatis中的缓存"></a>Mybatis中的缓存</h1><blockquote>
-<p>在Mybatis查询中通过配置文件Mapper.xml中的建立的Session执行sql语句查询出的结果，一般会存放在Mybatis缓存中，在被清除之前再次执行相同的查询时，Mybatis不只用直接调用缓存中的结果，而不用再次执行一次查询语句以提高效率。
+        <h1 id="sql优化"><a href="#sql优化" class="headerlink" title="sql优化"></a>sql优化</h1><blockquote>
+<p>当数据库的数据量达到一定级别时，sql优化对于一个项目的数据访问尤其重要。<br>本文就对于一个项目的数据库的sql优化作出一些归纳。</p>
+</blockquote>
         
           <p class="article-more-link">
-            <a href="/2017/08/29/Mybatis_cache/#more">Read More</a>
+            <a href="/2017/08/31/sql_optimize/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_cache/" data-id="cj7rovhbb00067cqnxbrw4wtb" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/08/31/sql_optimize/" data-id="cj7urop7l00030sqn2z9b54ae" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Struts2_vs_SpringMVC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/31/Struts2_vs_SpringMVC/" class="article-date">
+  <time datetime="2017-08-30T18:04:38.000Z" itemprop="datePublished">2017-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/31/Struts2_vs_SpringMVC/">Struts2与SpringMVC的对比</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Struts2和SpringMVC的对比"><a href="#Struts2和SpringMVC的对比" class="headerlink" title="Struts2和SpringMVC的对比"></a>Struts2和SpringMVC的对比</h1><blockquote>
+<p>同样是MVC架构的主流框架，两者在实现MVC的很多地方都有所不同。<br>SpringMVC作为后起之秀，在某些方面更易用。比如，其通过中央分发器实现对控制器适配器、映射器以及视图解析器的解耦合更粒度更细。</p>
+</blockquote>
+<h2 id="Struts2与SpringMVC的区别"><a href="#Struts2与SpringMVC的区别" class="headerlink" title="Struts2与SpringMVC的区别"></a>Struts2与SpringMVC的区别</h2><blockquote>
+<p>两者之间的具体区别在这儿列出：</p>
+</blockquote>
+<ol>
+<li>在实现拦截上：<ol>
+<li>Struts2的拦截属于<strong>类级别的拦截</strong>，拦截器中的属性也为所有方法共享，也就是一个类对应一个request；</li>
+<li>SpringMVC的拦截属于<strong>方法级别的拦截</strong>，一个方法对应一个request；</li>
+<li>Struts2的拦截机制是自己的，而SpringMVC的拦截是通过AOP实现的，这也就让Struts2的配置要繁杂得多；</li>
+</ol>
+</li>
+<li>上面的原因也就导致了：<ol>
+<li>SpringMVC的拦截作为方法级别的拦截独享了request，response中封装的数据，而在Struts2中，请求响应的Action中的属性进行了共享，同时每次请求都会产生一个Action实例，一个Action就对应一个Request上下文；</li>
+</ol>
+</li>
+<li>从入口上来讲：SpringMVC的入口是Servlet，而Struts2的入口是Filter；</li>
+<li>AJAX的配套使用上来讲：<ol>
+<li>SpringMVC集成了AJAX，使用起来只需<code>@ResponseBody</code>注解即可实现，而Struts2要实现AJAX需要额外安装插件或写代码集成进去；</li>
+</ol>
+</li>
+<li>和Spring的衔接上讲：<ol>
+<li>SpringMVC可以实现无缝地衔接Spring，Struts2与Spring的衔接需要配置得更繁杂，这让SpringMVC在项目的管理和安全上更好；</li>
+</ol>
+</li>
+<li>从设计思想上讲：<ol>
+<li>Struts2更符合OOP，而SpringMVC是在Servlet上扩展，和Spring都利用了强大的AOP和DI；</li>
+</ol>
+</li>
+<li>SpringMVC可以说是零配置，开发效率性能比Struts2高；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/31/Struts2_vs_SpringMVC/" data-id="cj7urop7l00010sqnq6feufpx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts2/">struts2</a></li></ul>
 
     </footer>
   </div>
@@ -453,6 +528,54 @@ public void before(){
     </div>
     <footer class="article-footer">
       <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_dynamic_proxy/" data-id="cj7rovhav00037cqnp9lkbe4g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mybatis_cache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/Mybatis_cache/" class="article-date">
+  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/Mybatis_cache/">Mybatis中的缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis中的缓存"><a href="#Mybatis中的缓存" class="headerlink" title="Mybatis中的缓存"></a>Mybatis中的缓存</h1><blockquote>
+<p>在Mybatis查询中通过配置文件Mapper.xml中的建立的Session执行sql语句查询出的结果，一般会存放在Mybatis缓存中，在被清除之前再次执行相同的查询时，Mybatis不只用直接调用缓存中的结果，而不用再次执行一次查询语句以提高效率。
+        
+          <p class="article-more-link">
+            <a href="/2017/08/29/Mybatis_cache/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_cache/" data-id="cj7rovhbb00067cqnxbrw4wtb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -1000,150 +1123,10 @@ NokiaMusic.constracting...
 
 
   
-    <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/25/AJAX/" class="article-date">
-  <time datetime="2017-08-25T05:04:38.000Z" itemprop="datePublished">2017-08-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/25/AJAX/">AJAX</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AJAX的认识"><a href="#AJAX的认识" class="headerlink" title="AJAX的认识"></a>AJAX的认识</h1><blockquote>
-<p>AJAX，Asynchronous Javascript And Xml，异步的Javascript和xml；<br>其最大优点是不用重新加载整个网页实现与服务器数据交换并更新部分网页内容；<br>不是新的编程语言也不需要浏览器插件，只是基于Javascript和xml的新的方法；
-        
-          <p class="article-more-link">
-            <a href="/2017/08/25/AJAX/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/25/AJAX/" data-id="cj7rovhav00007cqn7op6bfvh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-薛兆丰：经济学思维与个人投资" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/" class="article-date">
-  <time datetime="2017-08-24T00:04:38.000Z" itemprop="datePublished">2017-08-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>得到直播：薛兆丰用经济学思维提升个人投资水平<br>这里有直播的概要记录，也在最后有一些自己的思考。</p>
-<h3 id="中国经济会怎样？"><a href="#中国经济会怎样？" class="headerlink" title="中国经济会怎样？"></a>中国经济会怎样？</h3><blockquote>
-<p><strong>一个国家的经济会不会好？5个标准：</strong></p>
-</blockquote>
-<ul>
-<li>是否有一套完整的价值体系，过去30年中国改革开放的变化，一句话表述：由一个认人的社会变成了一个认钱的社会；一个认人的社会，社会资源的浪费会很大，一个认钱的社会会让社会的损耗降到最低。价格机制基本完善。</li>
-<li>当中的制度让当中的人：一人做事一人当，别人做事别人当；每个人双手都放在自己的口袋里过日子。欧洲目前的难民危机：有一条难以接受，难民在欧洲领到救济，但不能工作。过去中国街头上有一群无所事事的年轻人，要成英雄用弹吉他、打架来定，但外资来了，工厂开过来了，这些一夜之间消失了。现在中国，每一个人，努力多一点，收获就多一点。年轻人上升的空间从来没有这么大，现在工作几年就可以独当一面，过去你想分到一套房要等到退休。</li>
-<li>产权保护基于经济属性不基于物理属性。中国对共享经济、新兴产业的保护程度、接受程度比起欧洲好很多。日本做不通，劳动力贵。</li>
-<li>政府是否有给新兴势力发展留有空间，新旧利益的交替是否顺利。Uber一兴起，社会的犯罪率就下降。人们对生活有了更多的期待。一碗水端平。</li>
-<li>创新创业是不是受到保护。光看这些年国内举世无双的互联网、移动互联网产业，他们的兴起离不开整个社会体制的宽容与开放；</li>
-</ul>
-<h3 id="人机矛盾"><a href="#人机矛盾" class="headerlink" title="人机矛盾"></a>人机矛盾</h3><blockquote>
-<p>人工智能来了，机器人带着大数据一路高歌猛进。人该怎么办？</p>
-</blockquote>
-<ul>
-<li>知识是集中不起来的，知识很重要，但生产一支铅笔的所有知识，没有人能完全弄懂的。这里面的知识是完全分散到各个人脑子里的，机器不能解决这个问题，人工智能不能把这样一个带着权重的任务处理好的。登山这个需求不是实际问题的解决方案，是人想要与人不同的人辛苦地做一件没有实际价值的事，人工智能只能派直升机把你送上去。</li>
-<li>未来不可预测，为什么？社会的发展会受到知识的影响，人们的知识变化、想法变化，知识总在增长，知识的增量对人的影响也不可预测，哪怕人工智能已经来了，它也不可能预测的；</li>
-<li>人的想像力是机器不能替代的。从数据到逻辑理论当中始终有一个迁跃，这里面不是一条连续的逻辑推演。计算机可以作出曲子来，但它永远不知道这首曲子好不好听。</li>
-<li>比较优势原理，机器很多的地方，人很贵的。</li>
-<li>人怎么办？人去学机器做不到的事。学耐用的知识：数学，学习学习的方法，保持对知识的好奇心；有了好奇心，这个世界到处都是平台给你学习，人跟机器互动。人工智能不能替代人，人工智能只会让人更有价值，蒸汽机只会让更多的工作机会产生；</li>
-</ul>
-<h3 id="投资身外物"><a href="#投资身外物" class="headerlink" title="投资身外物"></a>投资身外物</h3><blockquote>
-<p>当你有一笔可投资的钱，投在哪个地方？房产、比特币、股票、出国……</p>
-</blockquote>
-<ul>
-<li>买房目的：是用来自用还是投资。长久租金应该与产权费差不多，租售同权一出，买房的意义又少一些。你的需要是什么？中国的买房费用与租金相差3倍之多。人往哪儿挤？不是嘴上说的开门见南山的山清水秀之地，而是人聚积的大城市；聚积的好处：高楼成本很高，积聚一来，规模来了，细化分工，人的价值开始提升，周围地价就上升了。</li>
-<li>博弈论：你想去的地方，别人也一样想去，你想得到的东西，别人也一样想得到，你能想到的好点子，别人一样也想得到；世界区分：物理的世界按过程一步一步来，每一步都按照固定规律来；经济的世界，人对世界的预期来决定世物的价格，人们事物的预测来决定价值，一切皆不可预测，一旦人们预测到了，这个东西就不再被纳入价格预测之中，价格不可预测，股市也不可预测；有没有内幕消息？会不会比别人早知道消息？没有，那么只买长线吧，看好一个国家一个公司肯定在未来上升的；</li>
-<li>比特币，要成为货币还有很长一段距离。它有一个兴旺发展的过程，但这也是一个庞氏骗局的温床。击鼓传花的游戏中，谁来接这最后一棒？</li>
-</ul>
-<h3 id="投资个人"><a href="#投资个人" class="headerlink" title="投资个人"></a>投资个人</h3><blockquote>
-<p>对于自己的投资，更能掌控最可靠的投资方式</p>
-</blockquote>
-<ul>
-<li>美国种族简历，所有人的收入统计起来，犹太人最富。地产会被外族收走，就投资首饰，首饰也被没收，就不得不选择知识、智力。</li>
-<li>对知识的投资才是财富增长的根本原因。温度、资源都不是原因，人力资本才是改变个人改变世界的引擎；</li>
-<li>学习各种各样的成功学，要记住别人的成功永远不可能复制过来的，永远不要忘记做自己手头能够做的事情。收入不均的问题， 不同的行业不同的人力有不同收入。用远大的目标来校正今天当下的行为。我们要追求的不是一刹那的幸福，不是当下的收入，而是一生幸福的总和，一辈子总收入。我们要看中二三十年后幸福收入总和。李嘉诚现在是赚很多钱，不是说当年他受过多少苦，他最让人佩服的是当年他在黑暗的隧道里眼前一样难以看到希望的时候，依然选择了努力，选择了学习。</li>
-</ul>
-<h4 id="后记："><a href="#后记：" class="headerlink" title="后记："></a><em>后记：</em></h4><p>8/24/2017 10:02:53 PM </p>
-<hr>
-<ul>
-<li>得到直播都是晚8点开始，这次薛老师一直讲到9点半，中途休息过两次都是讲得太久不得不喝口水休息一下，广告只在结束后小娴来拉的。</li>
-<li>讲得很生动，听得我一直没有停下来过。听了之后开始反思这一段时间对自己的放松，这么长一段时间来自己对自己要求的降低，追求内心满足于小事，并不是让自信来源于自律，只来自于想像。</li>
-<li>这个经济学课一开始就订阅了，刚开始的时候还听得挺认真，也有留言过，也有入选过一次精选，但后面开始学代码时，就没有抽时间来专门学习了，每天也只是在路上带着耳机听下，没有进行过深入思考。但具体反思一下，就算在开始认真听这个产品时，我也常常觉得这个还没学等待会有时间了就认真听一下，像故事中的狐狸一样，安慰自己只有在神奇岛上才能跳出最神奇的舞蹈，但别人都知道，我每天都踩在神奇岛的土地上。反观这个故事，其实狐狸也在骗自己，在某种天时地利下，自己可以跳出感动世界的舞，但这个行动一直没有实践过，也就导致了狐狸永远地看不到自己舞姿的拙劣，在各种小事中来获取满足感。这种心理机制的逻辑：<ul>
-<li>没自信面对自己失败的尴尬，导致一直把可能导致这种尴尬的情况给排开，并骗自己后面时机一到就亮绝活；</li>
-<li>再在生活中找所谓的”小确幸“，并满足于这些众多的自嗨的”小确幸“；</li>
-<li>直到无可挽回的地步时，就找到另外一个可以让自己隐藏自己可怜的实力点，再进入到第一步开始下一轮循环；</li>
-</ul>
-</li>
-<li>在这个死循环中，哪里一环可以被打破？每一环。每一环都应该提醒自己自信地面对自己，把手头的事做好就是打破魔咒的法宝。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/24/薛兆丰：经济学思维与个人投资/" data-id="cj7hs6ldu00732sqneza6oapb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经济学/">经济学</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1163,7 +1146,7 @@ NokiaMusic.constracting...
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -1173,7 +1156,7 @@ NokiaMusic.constracting...
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
     </div>
   </div>
 

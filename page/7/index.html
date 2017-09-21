@@ -69,6 +69,234 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-springMVC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/20/springMVC/" class="article-date">
+  <time datetime="2016-08-20T05:29:17.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/20/springMVC/">springMVC的理解与认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><blockquote>
+<p>SpringMVC同样是一种MVC架构，它与传统MVC框架的不同之处在于使用了中央调度器，用中央调度器DispatcherServlet来分发所有的请求与响应，中央调度器的存在就大大降低了其他组件之间的耦合度。这种分发请求与响应的实现得益于spring的装配。
+        
+          <p class="article-more-link">
+            <a href="/2016/08/20/springMVC/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj7hs6lbo00392sqn9signboe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JDBC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/24/JDBC/" class="article-date">
+  <time datetime="2016-07-24T04:14:32.000Z" itemprop="datePublished">2016-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/24/JDBC/">JDBC的理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p>全称：fava database connectivity,专用于java数据库连接，其中封装了基本的连接数据库的API,数据库连接的高级框架（诸如：Mybatis/Hibernate)的使用都基于JDBC的原理，也就是理解了JDBC对于我们更理解各种持久层数据连接层的框架很有帮助；</p>
+<h4 id="一个简单的JDBC实现"><a href="#一个简单的JDBC实现" class="headerlink" title="一个简单的JDBC实现"></a>一个简单的JDBC实现</h4><pre><code>/**
+ * 获取数据库连接的方法
+ * @return
+ */
+public static Connection getConnection(){
+    Connection con = null;
+
+    try{
+//            获取连接mysql数据库的驱动
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+//            设置连接数据库的url
+        String url = &quot;jdbc:mysql://localhost:3306/agileone1?useUnicode=true&amp;characterEncoding=UTF-8&quot;;
+//            连接数据库的用户名
+        String userName = &quot;root&quot;;
+//            连接数据库的密码
+        String userPass=&quot;&quot;;
+//            从而获取到数据库连接connection
+        con = DriverManager.getConnection(url, userName, userPass);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    return con;
+}
+</code></pre><ul>
+<li>上述代码块就通过java.sql包里封装好的各个类与类反射获取到了连接指定数据库的链接；<ul>
+<li>接下来就可以利用这个连接来进行crud类操作<pre><code>- /**
+ * 插入数据进入数据库的方法
+ * @param username
+ * @param password
+ */
+static void insertData(String username, String password){
+    Connection con = getConnection();
+    String sql = &quot;INSERT INTO Userdata (username, userPass) VALUES(&apos;&quot;+username+&quot;&apos;, &apos;&quot;+password+&quot;&apos;)&quot;;
+    try {
+//            从连接创建状态
+        Statement state = con.createStatement();
+//            执行更新语句，返回影响行数
+        int re = state.executeUpdate(sql);
+        System.out.println(re);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+/**
+ * 模糊查询的方法
+ * @param name
+ */
+static void query(String name){
+    Connection con = getConnection();
+//        sql语句
+    String sql = &quot;SELECT * FROM userdata WHERE username = &apos;&quot; +name+&quot;&apos;&quot;;
+    try{
+        Statement state = con.createStatement();
+//            执行查询语句，返回批量结果集
+        ResultSet re = state.executeQuery(sql);
+//            对结果集进行迭代输出
+        while(re.next()){
+            System.out.println(&quot;id:&quot; + re.getInt(&quot;id&quot;));
+            System.out.println(&quot;username:&quot; + re.getString(&quot;username&quot;));
+            System.out.println(&quot;id:&quot; + re.getString(&quot;userPass&quot;));
+        }
+    }catch(SQLException e){
+        e.printStackTrace();
+    }
+}
+</code></pre></li>
+<li>当sql语句执行完成，需要对上面建立的各个连接与状态进行关闭：<pre><code>/**
+ * 关闭连接与状态的方法
+ */
+static void close(Connection con){
+    if(con !=null){
+        try {
+            con.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><ul>
+<li>其中针对不同的方法与连接状态，关闭的对象也不一样，除了Connection还有Statement,Prestatement,resultSet，各个对象都是调用其Close方法；</li>
+<li>通常情况下，调用对象的Close()方法放在finally语句块中，这样就可以执行完查询语句方法后，交接将各个对象关闭；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
+<li><em>以上的代码基本实现了JDBC的整个流程，从创建连接到执行查询语句，再到关闭连接、状态、结果集</em></li>
+<li><em>JDBC中封装的连接数据库的API包：java.sql是连接sql的基础包，使用JDBC就得引入这个jar包：<code>mysql-connector-java-5.1.38-bin.jar</code></em></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj7hs6l9y000t2sqnxgk0a4bz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DLL_file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/30/DLL_file/" class="article-date">
+  <time datetime="2016-06-30T07:02:43.000Z" itemprop="datePublished">2016-06-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/30/DLL_file/">dll文件的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="DLL动态链接库：Dymanic-Link-Library"><a href="#DLL动态链接库：Dymanic-Link-Library" class="headerlink" title="DLL动态链接库：Dymanic Link Library"></a>DLL动态链接库：Dymanic Link Library</h4><ul>
+<li>DLL是将程序相关的功能实现封装在一起放在指定目录（后缀名为.dll），程序运行时，再来动态链接起执行。这样就能达到多个程序共享同一个库文件，而减少程序安装大小；</li>
+<li>DLL文件与exe文件都是编译语言生成，但dll没有程序入口，所以dll不能独自执行；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/06/30/DLL_file/" data-id="cj7hs6l9i000m2sqnab778u0v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-DesignPattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/13/DesignPattern/" class="article-date">
@@ -852,117 +1080,10 @@ Adapter.run.......
 
 
   
-    <article id="post-meta_label" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/23/meta_label/" class="article-date">
-  <time datetime="2015-03-23T06:41:48.000Z" itemprop="datePublished">2015-03-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/23/meta_label/">meta标签.md</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="标签简介："><a href="#标签简介：" class="headerlink" title="标签简介："></a>标签简介：</h3><ul>
-<li>位于文档的头部<head>标签之中，不包含任何内容；</head></li>
-<li>所有的信息都由属性来存储，包含了文档的名称/值对；</li>
-<li>其作用：搜索引擎优化（SEO)，定义的页面使用语言，自动刷新并指向新的页面，实现页面转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口；</li>
-<li>meta属性（就两个）：<ul>
-<li>name属性：<ul>
-<li>用于描述网页与之对应的属性值为content,其中的内容便于搜索机器人查找和分类信息用；</li>
-<li>其语法格式：<pre><code>&lt;meta name=&quot;参数“ content=&quot;具体的参数值&quot;&gt;
-</code></pre></li>
-<li>name属性有以下几种参数：<ul>
-<li>Keywords，用来指定关键字<pre><code>&lt;meta name=&quot;keywords&quot; content=&quot;meta总结、html/meta、meta属性、meta跳转”&gt;
-</code></pre></li>
-<li>desription，网站内容描述</li>
-<li>robots,机器人向导</li>
-<li>author，标网页的作者</li>
-<li>generator，代表说明网站采用的什么软件制作</li>
-<li>COPYRIGHT,版权信息</li>
-<li>revisit-after,代表网站征文，7days代表7天</li>
-</ul>
-</li>
-<li>http-equiv,相当于文件头作用，可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content,其中的内容就是各个参数的变量值；<pre><code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;参数变量值”&gt;
-</code></pre><ul>
-<li>Expires，期限，设定的到期时间，一旦网页过期，呢额胆固醇服务器上重新传输。（必须使用GMT的时间格式化）</li>
-<li>Pragma（cache模式）<ul>
-<li>禁止浏览器从本地计算机的缓存中访问页面内容<pre><code>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;no-cache&quot;&gt;
-</code></pre><ul>
-<li>这样设计，说教将无法脱机浏览</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Refresh(刷新），自动刷新并指向新页面<pre><code>&lt;meta http-equiv=&quot;Refresh&quot;content=&quot;2;URL=http://www.haorooms.com&quot;&gt; //(注意后面的引号，分别在秒数的前面和网址的后面)
-</code></pre></li>
-<li>Sett-Cookie(cookie设定），如果网页过期，存盘的cookie将被删除<pre><code>&lt;meta http-equiv=&quot;Set-Cookie&quot;content=&quot;cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/&quot;&gt;
-</code></pre><ul>
-<li>必须使用GMT的时间格式</li>
-</ul>
-</li>
-<li>Window-target(显示窗口的设定），强制页面在当前窗口以独立页面显示<pre><code>&lt;meta http-equiv=&quot;Window-target&quot;content=&quot;_top&quot;&gt; 
-</code></pre><ul>
-<li>用来毕业后公开了我在框架里调用自己的页面</li>
-</ul>
-</li>
-<li>content-Type，设定显示字符集<pre><code>&lt;meta http-equiv=&quot;content-Type&quot;content=&quot;text/html;charset=gb2312&quot;&gt;
-</code></pre><ul>
-<li>meta标签的charset的信息参数如GB2312时，代表说明网站是采用的编码是简体中文；</li>
-<li>BIG5:繁体中文；</li>
-<li>iso-2022:日文；</li>
-<li>ks_c_5601:韩文；</li>
-<li>ISO-8859-1:英文；</li>
-<li>UTF-8:世界通用的语言编码；</li>
-</ul>
-</li>
-<li>content-Language,设定显示语言<pre><code>&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;/&gt;
-</code></pre></li>
-<li>Cache-Control，指定评语和响应遵循的缓存机制</li>
-<li>imagetollbar,指定是否显示图片工具栏，当为false娃给显示，当为true代表显示；</li>
-<li>Content-Script-Type,W3C网页规范，指明页面中脚本中的类型；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/03/23/meta_label/" data-id="cj7hs6lb9002o2sqn00u8fnkx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -982,7 +1103,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -992,7 +1113,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 10px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
     </div>
   </div>
 
