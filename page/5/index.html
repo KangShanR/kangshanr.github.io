@@ -69,6 +69,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS_Chooser" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/13/CSS_Chooser/" class="article-date">
+  <time datetime="2017-05-13T04:14:12.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/13/CSS_Chooser/">CSS常用选择器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CSS-chooser"><a href="#CSS-chooser" class="headerlink" title="CSS_chooser"></a>CSS_chooser</h3><ul>
+<li>CSS中常用的选择器有点：<ul>
+<li>id选择器,选择指定唯一标识id属性的元素</li>
+<li>类选择器，选择同一类属性的元素</li>
+<li>属性选择器，选择同一属性值的元素</li>
+<li>元素选择器，直接选择指定文档元素</li>
+<li>派生选择器，依赖上下文来应用或避免某种规则</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj7hs6l9300022sqnmtsqdvxr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-HTTP_protocol" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/06/HTTP_protocol/" class="article-date">
@@ -392,105 +444,6 @@ invoke.end....
 
 
   
-    <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/ASCII_code/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/ASCII_code/">ASCII编码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><blockquote>
-<p>（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
-</blockquote>
-<ul>
-<li>关键字符ASCII值：<ul>
-<li>0:46 0~9的ASCII码值就是48~57，习惯于在代码函数中用左闭右开的区间来表示：[48,58)</li>
-<li>eg:（Java language）<pre><code>//用于判断字符属于哪个类型的方法
-static String typeChar(char _char){
-        int valueChar = Integer.valueOf(_char);
-        if(valueChar &gt;= 48 &amp;&amp; valueChar &lt; 58)
-            return &quot;number&quot;;
-        else if(valueChar &gt;= 65 &amp;&amp; valueChar &lt; 91)
-            return &quot;uppercase&quot;;
-        else if(valueChar &gt;= 97 &amp;&amp; valueChar &lt;123)
-            return &quot;lowercase&quot;;
-        else
-            return &quot;symbol&quot;;
-    }
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    System.out.println(typeChar(&apos;,&apos;));
-}
-</code></pre></li>
-<li>测试结果：<pre><code>symbol
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>常用到的字符ASCII值：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:left">ASCII值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:left">65</td>
-</tr>
-<tr>
-<td style="text-align:center">A-Z</td>
-<td style="text-align:left">65-90</td>
-</tr>
-<tr>
-<td style="text-align:center">a</td>
-<td style="text-align:left">97</td>
-</tr>
-<tr>
-<td style="text-align:center">a-z</td>
-<td style="text-align:left">97-122</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7hs6l9300052sqnkerbdf2b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/23/hex/" class="article-date">
@@ -597,6 +550,105 @@ static String typeChar(char _char){
     </div>
     <footer class="article-footer">
       <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj7hs6lad00192sqnlra9r8n5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/ASCII_code/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/ASCII_code/">ASCII编码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><blockquote>
+<p>（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
+</blockquote>
+<ul>
+<li>关键字符ASCII值：<ul>
+<li>0:46 0~9的ASCII码值就是48~57，习惯于在代码函数中用左闭右开的区间来表示：[48,58)</li>
+<li>eg:（Java language）<pre><code>//用于判断字符属于哪个类型的方法
+static String typeChar(char _char){
+        int valueChar = Integer.valueOf(_char);
+        if(valueChar &gt;= 48 &amp;&amp; valueChar &lt; 58)
+            return &quot;number&quot;;
+        else if(valueChar &gt;= 65 &amp;&amp; valueChar &lt; 91)
+            return &quot;uppercase&quot;;
+        else if(valueChar &gt;= 97 &amp;&amp; valueChar &lt;123)
+            return &quot;lowercase&quot;;
+        else
+            return &quot;symbol&quot;;
+    }
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    System.out.println(typeChar(&apos;,&apos;));
+}
+</code></pre></li>
+<li>测试结果：<pre><code>symbol
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>常用到的字符ASCII值：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">ASCII值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:left">65</td>
+</tr>
+<tr>
+<td style="text-align:center">A-Z</td>
+<td style="text-align:left">65-90</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">97</td>
+</tr>
+<tr>
+<td style="text-align:center">a-z</td>
+<td style="text-align:left">97-122</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj7hs6l9300052sqnkerbdf2b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -804,69 +856,6 @@ static String typeChar(char _char){
 
 
   
-    <article id="post-hexo+github=website" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/23/hexo+github=website/" class="article-date">
-  <time datetime="2017-01-22T18:04:38.000Z" itemprop="datePublished">2017-01-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/23/hexo+github=website/">hexo+github=your website</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a><br><a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" title="BlueLake使用教程" target="_blank" rel="external">使用blueLake的教程</a><br><a href="http://app.weibo.com/tool/weiboshow" title="新浪微博秀" target="_blank" rel="external">生成新浪微博秀；</a></p>
-<ul>
-<li>hexo generate<ul>
-<li>根据已提供的md文件资料生成静态网页，放在public文件夹中；</li>
-<li>hexo generate –watch<ul>
-<li>对比查看文件的改动，只有当文件改动被审查过才会执行generate命令生成静态网页；</li>
-</ul>
-</li>
-<li>hexo generate –deploy与hexo deploy –generate<ul>
-<li>两者效果一样都在generate后执行布置命令deploy</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>新建md文档：<code>hexo new [dir] filename</code></p>
-<ul>
-<li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，
-        
-          <p class="article-more-link">
-            <a href="/2017/01/23/hexo+github=website/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj7hs6lat001v2sqnver8nkyg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -900,7 +889,7 @@ static String typeChar(char _char){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 10px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.43px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 11.43px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.43px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
     </div>
   </div>
 
@@ -922,6 +911,10 @@ static String typeChar(char _char){
       <ul>
         
           <li>
+            <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/15/spring_IOC/">spring反转控制的思想</a>
           </li>
         
@@ -935,10 +928,6 @@ static String typeChar(char _char){
         
           <li>
             <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/09/Responsive_Web_Design/">前端页面之响应式布局</a>
           </li>
         
       </ul>
