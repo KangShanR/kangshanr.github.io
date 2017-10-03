@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,87 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-today&#39;s questions" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/today's questions/" class="article-date">
+  <time datetime="2017-09-01T05:04:38.000Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/01/today's questions/">每天的问题与更新的答案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="今日问题"><a href="#今日问题" class="headerlink" title="今日问题"></a>今日问题</h3><ul>
+<li>9/1/2017 6:00:51 PM <ul>
+<li>在实现同步代码块时，<code>synchronized()</code>这个<code>()</code>中的对象应该放入什么对象？<ul>
+<li>通常放入了这个类的class对象，形如：<code>synchronized(this.getClass()){}</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>9/3/2017 6:01:28 PM <ul>
+<li>对于一个子类，其继承的父类与实现的接口之间无关系，但这两者都有相同签名的方法，是什么样的情况？<ul>
+<li>亲测有效，在子类实现父类与接口的同名方法一次就行，最终执行结果与所写代码块一致；</li>
+<li>这个父类的方法不管是抽象方法，对结果并无影响；</li>
+</ul>
+</li>
+<li>对于面向对象多态的实现中，使用父类或接口来接收一个子类或实现类的对象时，这个对象并不会拥有自己扩展的变量或成员，只能拥有父类或接口的成员；</li>
+<li>main方法对于一个java程序的意义及它是如何被调用的，它的参数意义在哪？</li>
+</ul>
+</li>
+<li>9/20/2017 10:45:04 AM <ul>
+<li>面试前要完成的工作：<ul>
+<li>准备一份自我介绍的清单</li>
+<li>将Hibernate的原理流程整理出来</li>
+<li>将Struts2的原理流程整理出来</li>
+<li>将Spring的原理复习一遍</li>
+<li>将SSH整合整理一遍</li>
+<li>将上面复习的东西结合项目整理一遍</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>9/20/2017 5:49:13 PM <ul>
+<li>对于一个类SonClass，它继承了一个父类BaseClass，同时实现一个接口IBase，BaseClass中有变量<code>int i = 0;</code>，接口IBase中也有个变量<code>i=1</code>，请问现在SonClass中写一个方法<code>method</code>，这个方法实现打印出<code>i</code>。有什么问题？<ul>
+<li>问题在于，这个子类在继承了父类同时实现这个接口时，一旦调用这个变量<code>i</code>，就会出现指代不明；</li>
+<li>如果是一个方法在父类与实现的接口中同名，子类怎么实现这个方法就怎么执行这个方法；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/09/01/today's questions/" data-id="cj8b2964g005mx4qn10yqqc4r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Mysql_Database" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -116,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/09/01/Mysql_Database/" data-id="cj87g3d48001qp4qnezqvzt4t" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/09/01/Mysql_Database/" data-id="cj8b2961k001ox4qntxm2l2pq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -415,7 +496,7 @@ public void before(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/31/mybatis/" data-id="cj87g3d670048p4qny3izqeij" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/08/31/mybatis/" data-id="cj8b296380049x4qnf0sk6b58" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -464,7 +545,7 @@ public void before(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/31/sql_optimize/" data-id="cj87g3d6x005bp4qnr8ogjlep" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/08/31/sql_optimize/" data-id="cj8b2964a005cx4qnqekc6s59" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -538,10 +619,106 @@ public void before(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/31/Struts2_vs_SpringMVC/" data-id="cj87g3d4f001xp4qnc081y3xh" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/08/31/Struts2_vs_SpringMVC/" data-id="cj8b2961u0021x4qnk3zyma4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts2/">struts2</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mybatis_cache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/Mybatis_cache/" class="article-date">
+  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/Mybatis_cache/">Mybatis中的缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis中的缓存"><a href="#Mybatis中的缓存" class="headerlink" title="Mybatis中的缓存"></a>Mybatis中的缓存</h1><blockquote>
+<p>在Mybatis查询中通过配置文件Mapper.xml中的建立的Session执行sql语句查询出的结果，一般会存放在Mybatis缓存中，在被清除之前再次执行相同的查询时，Mybatis不只用直接调用缓存中的结果，而不用再次执行一次查询语句以提高效率。
+        
+          <p class="article-more-link">
+            <a href="/2017/08/29/Mybatis_cache/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_cache/" data-id="cj8b2961i001mx4qn0h4xqecy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mybatis_dynamic_proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/Mybatis_dynamic_proxy/" class="article-date">
+  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/Mybatis_dynamic_proxy/">Mybatis中的动态代理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis中动态代理的运用"><a href="#Mybatis中动态代理的运用" class="headerlink" title="Mybatis中动态代理的运用"></a>Mybatis中动态代理的运用</h1><blockquote>
+<p>在Mybatis框架中，实现sql语句的与接口的映射用到的就是动态代理。下面简要地分析下动态代理模式的实现在这其中的运用。
+        
+          <p class="article-more-link">
+            <a href="/2017/08/29/Mybatis_dynamic_proxy/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_dynamic_proxy/" data-id="cj8b2961n001rx4qncag2zrdz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -589,106 +766,10 @@ public void before(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/adapter_pattern/" data-id="cj87g3d4h0020p4qnaa2bj89t" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/adapter_pattern/" data-id="cj8b2961x0025x4qn2guqtafv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mybatis_dynamic_proxy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/29/Mybatis_dynamic_proxy/" class="article-date">
-  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/29/Mybatis_dynamic_proxy/">Mybatis中的动态代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mybatis中动态代理的运用"><a href="#Mybatis中动态代理的运用" class="headerlink" title="Mybatis中动态代理的运用"></a>Mybatis中动态代理的运用</h1><blockquote>
-<p>在Mybatis框架中，实现sql语句的与接口的映射用到的就是动态代理。下面简要地分析下动态代理模式的实现在这其中的运用。
-        
-          <p class="article-more-link">
-            <a href="/2017/08/29/Mybatis_dynamic_proxy/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_dynamic_proxy/" data-id="cj87g3d44001lp4qn6rd8ilnf" class="article-share-link">Поделиться</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mybatis_cache" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/29/Mybatis_cache/" class="article-date">
-  <time datetime="2017-08-29T05:04:38.000Z" itemprop="datePublished">2017-08-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/29/Mybatis_cache/">Mybatis中的缓存</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mybatis中的缓存"><a href="#Mybatis中的缓存" class="headerlink" title="Mybatis中的缓存"></a>Mybatis中的缓存</h1><blockquote>
-<p>在Mybatis查询中通过配置文件Mapper.xml中的建立的Session执行sql语句查询出的结果，一般会存放在Mybatis缓存中，在被清除之前再次执行相同的查询时，Mybatis不只用直接调用缓存中的结果，而不用再次执行一次查询语句以提高效率。
-        
-          <p class="article-more-link">
-            <a href="/2017/08/29/Mybatis_cache/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/Mybatis_cache/" data-id="cj87g3d40001ip4qnpxjmvs4h" class="article-share-link">Поделиться</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -733,7 +814,7 @@ public void before(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/singleton_pattern/" data-id="cj87g3d6g004mp4qnsl8q5yln" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/singleton_pattern/" data-id="cj8b2963n004rx4qnsmmhv9aq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -878,254 +959,10 @@ public void before(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/29/20170829IgotMeeting/" data-id="cj87g3d260001p4qnc7r9og7r" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/08/29/20170829IgotMeeting/" data-id="cj8b295zo0003x4qn3869jjx4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job/">job</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-factory_pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/28/factory_pattern/" class="article-date">
-  <time datetime="2017-08-28T02:04:03.000Z" itemprop="datePublished">2017-08-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/factory_pattern/">设计模式之工厂模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul>
-<li>生成一个类交由相关的工厂类实现，而不由直接的类来实现；</li>
-<li>相关的类继承同一个接口，实现这个接口的类都可以由工厂类中同一个方法来实现实例化；</li>
-<li><p>例如<strong>简单工厂模式</strong>：</p>
-<pre><code>//定义同一个类的抽象接口
-public interface Shape{
-    void draw();
-}
-//实现shape接口的类有：
-//Circle类
-public class Circle implements Shape{
-    @Override
-    public void  draw(){
-        system.out.println(&quot;circle.draw&quot;);
-    }
-}
-//Square类
-public class Square implements Shape{
-    @Override
-    public void draw(){
-        system.out.println(&quot;square.draw&quot;);
-    }
-}
-//创建实例的工厂类
-public class ShapeFactory{
-    //创建图形实例的方法
-    public Shape createShape(String shape){
-        if(shape.equalsIgnoreCase(&quot;CIRCLE”){
-            return new Circle();
-        }
-        if(shape.equalsIgnoreCase(&quot;SQUARE”){
-            return new Square();
-        }
-        reutnr null;
-    }
-}
-</code></pre><ul>
-<li>模式理解：<ul>
-<li>通过工厂来实现对各个类的实例化，都在工厂实现；</li>
-<li><strong>通过反射机制实现，增加一个同一接口的类不需要改变工厂的代码,只需要增加一个实现这个实现对应接口的类</strong>：<ul>
-<li>其工厂的代码：<pre><code>public class ShapeFactory{
-    //创建工厂的方法
-    public Shape createShape(Class&lt;? extends Shape&gt; clazz){
-        try{
-            return Class.forName(clazz.getName()).newInstance();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>工厂方法模式</strong></p>
-<ul>
-<li>相较于简单工厂模式，工厂方法模式实现了<strong>“用扩展取代修改”</strong>，简单工厂中要增加减少实现产品的构造需要对工厂的代码进行修改，而工厂方法模式将这些都放在子类的实现中；</li>
-<li>示例：生产iphone与miphone两种手机，将手机与工厂的接口抽取出来，分别用不同的工厂生产不同的手机；<ul>
-<li>手机接口：<pre><code>public abstract class Phone {
-}
-</code></pre></li>
-<li>手机类：<pre><code>public class Iphone extends Phone {
-    public Iphone(){
-        System.out.println(&quot;Iphone.constracting.....&quot;);
-    }
-}
-public class Miphone extends Phone {
-    public Miphone(){
-        System.out.println(&quot;Miphone.constracting......&quot;);
-    }
-}
-</code></pre></li>
-<li>工厂接口：<pre><code>public interface Factory {
-    Phone createPhone();
-}
-</code></pre></li>
-<li>工厂类：<pre><code>public class IphoneFactory implements Factory {
-    @Override
-    public Iphone createPhone() {
-        return new Iphone();
-    }
-}
-public class MiphoneFactory implements Factory {
-    @Override
-    public Miphone createPhone() {
-        return new Miphone();
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    //创建iphone过程，先建工厂，再在工厂中创建iphone
-    IphoneFactory facIphone = new IphoneFactory();
-    Iphone iphone = facIphone.createPhone();
-    //创建miphone过程：
-    MiphoneFactory facMiphone = new MiphoneFactory();
-    Miphone miphone = facMiphone.createPhone();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Iphone.constracting.....
-Miphone.constracting......
-</code></pre></li>
-</ul>
-</li>
-<li><em>工厂方法模式将对象的创建进行了很好的包装，但也正因此而每增加一个产品的类就不得不增加一个工厂来实现其构造，这在某种程度上来说是不科学的；</em></li>
-</ul>
-</li>
-</ul>
-<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
-<li>相比较于工厂模式，抽象工厂模式在工厂模式的基础上增加生成工厂的工厂类，那么生产出来的工厂都要继承一个接口或父类；</li>
-<li>该模式的优点：把同一个产品类集成到同一个工厂内，这样使用时就直接调用工厂中的方法，而生成同一个工厂里预备好的类对象，也更方便管理；</li>
-<li>它是为了解决子工厂的扩展性问题，而将系列产品装配在同一个工厂中，也就实现了不同产品之间相互组合不同最终产品，而子工厂中不同产品抽取接口或父类方法出来成为抽象工厂；<ul>
-<li>示例：生产手机需要手机引擎、手机音乐盒这两种产品，这两种产品分别有两种类型，那么，一个引擎加一个播放器组成一个手机产品集<ul>
-<li>引擎接口：<pre><code>public interface Engine {
-}
-</code></pre></li>
-<li>引擎产品的两个类：<pre><code>public class EngineAmd implements Engine {
-    public EngineAmd(){
-        System.out.println(&quot;EngineAmd.constracting....&quot;);
-    }
-}
-public class EngineIntel implements Engine {
-    public EngineIntel (){
-        System.out.println(&quot;EngineIntel.constracting.......&quot;);
-    }
-}
-</code></pre></li>
-<li>音乐盒接口：<pre><code>public interface MusicBox {
-}
-</code></pre></li>
-<li>音乐盒的两个不同产品类：<pre><code>public class NokiaMusic implements MusicBox {
-    public NokiaMusic(){
-        System.out.println(&quot;NokiaMusic.constracting...&quot;);
-    }
-}
-public class SonyMusic implements MusicBox {
-    public SonyMusic(){
-        System.out.println(&quot;SonyMusic.constracting...&quot;);
-    }
-}
-</code></pre></li>
-<li>抽象工厂类，规定手机工厂要生产的两个产品：一个引擎一个音乐盒，这儿可以用接口也可以用抽象类<pre><code>public abstract class AbstractFactory {
-    abstract Engine createEngine();
-    abstract MusicBox createMusicBox();
-}
-</code></pre></li>
-<li>两个工厂类，实现抽象工厂，实现装配两个产品到一个工厂中<pre><code>//苹果手机厂，使用intel引擎与sony的音乐盒
-public class AppleFactory extends AbstractFactory {
-    @Override
-    public EngineIntel createEngine() {
-        return new EngineIntel();
-    }
-    @Override
-    public SonyMusic createMusicBox() {
-        return new SonyMusic();
-    }
-}
-//联想手机，使用amd的内核与Nokia的音乐盒
-public class LenovoFactory extends AbstractFactory {
-    @Override
-    public EngineAmd createEngine() {
-        return new EngineAmd();
-    }
-    @Override
-    public NokiaMusic createMusicBox() {
-        return new NokiaMusic();
-    }
-}
-</code></pre></li>
-<li>测试，将工厂创建出来由它们来创建手机的子产品<pre><code>public static void main(String[] args) {
-    Apple apple4s = new Apple();
-    Lenovo lenovo3 = new Lenovo();
-    //apple生产过程
-    AbstractFactory appleFactory = new AppleFactory();
-    apple4s.engine=appleFactory.createEngine();
-    apple4s.musicBox=appleFactory.createMusicBox();
-    //Lenovo生产过程
-    LenovoFactory lenovoFactory = new LenovoFactory();
-    lenovo3.engine=lenovoFactory.createEngine();
-    lenovo3.musicBox=lenovoFactory.createMusicBox();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>EngineIntel.constracting.......
-SonyMusic.constracting...
-EngineAmd.constracting....
-NokiaMusic.constracting...
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li>从上面例子可以看出：<ul>
-<li>抽象工厂可以实现组合产品集，一个工厂组合一个产品集，同时想要实现产品集的扩展也很方便。想要订制同一个产品集不同型号，直接实现一个工厂类。如果要不同产品集，则需要对抽象工厂进行扩展修改；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/28/factory_pattern/" data-id="cj87g3d52002qp4qnzkce050p" class="article-share-link">Поделиться</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -1145,7 +982,7 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Категории</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -1155,7 +992,7 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Метки</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -1165,18 +1002,18 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Облако меток</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 11.43px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.43px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.75px;">database</a> <a href="/tags/essay/" style="font-size: 12.5px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Архив</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -1184,9 +1021,13 @@ NokiaMusic.constracting...
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Недавние записи</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/10/03/'gone with wind'_after_listened/">《乱世佳人》听后</a>
+          </li>
         
           <li>
             <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
@@ -1204,10 +1045,6 @@ NokiaMusic.constracting...
             <a href="/2017/09/14/javabean_property_placeholderConfigurer/">spring bean中属性覆盖器</a>
           </li>
         
-          <li>
-            <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1221,7 +1058,7 @@ NokiaMusic.constracting...
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

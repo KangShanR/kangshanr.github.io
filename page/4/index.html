@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,68 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-java_reference" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/13/java_reference/" class="article-date">
+  <time datetime="2017-08-13T04:04:38.000Z" itemprop="datePublished">2017-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/13/java_reference/">java底层之引用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="直接引用与符号引用"><a href="#直接引用与符号引用" class="headerlink" title="直接引用与符号引用"></a>直接引用与符号引用</h4><p><strong>JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。</strong></p>
+<h4 id="符号引用：Symbolic-References"><a href="#符号引用：Symbolic-References" class="headerlink" title="符号引用：Symbolic References"></a>符号引用：Symbolic References</h4><ul>
+<li>以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可;</li>
+<li>存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过符号引用这一道工序，同一个类，其符号引用必然一致；</li>
+<li>类在解析过程中，就根据JVM实时产生的内存分配状况，将符号引用转为直接引用；</li>
+</ul>
+<h4 id="直接引用：Direct-References"><a href="#直接引用：Direct-References" class="headerlink" title="直接引用：Direct References"></a>直接引用：Direct References</h4><p><strong>- 直接引用是和虚拟机的布局直接相关的，同一个符号引用在不同的JVM上翻译出来的直接引用也不尽相同。某个目标有了直接引用，那说明这个目标已经被加载到内存中了</strong></p>
+<ul>
+<li>直接引用可以是：<ul>
+<li>直接指向目标的指针（如，指向类型class对象、类变量、类方法的直接引用就是指向方法区的指针）；</li>
+<li>相对偏移量：如指向实例变量、实例方法的直接引用都是偏移量；</li>
+<li>一个能直接定位到目标的句柄；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li><em>也就是说通过符号引用转换为直接引用来实现了引用的跨平台（对于同一个数据对象的引用都用同一个符号引用来实现，而在不同的平台上不同的JVM运行时转换成不同的直接引用）</em></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/08/13/java_reference/" data-id="cj8b29630003vx4qni8okxh2s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-java_enum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -124,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/29/java_enum/" data-id="cj87g3d5i003dp4qnb8sjyvj4" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/07/29/java_enum/" data-id="cj8b2962p003ex4qnlx020nen" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -164,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/26/原创小段子—人物没原型/" data-id="cj87g3d7l005wp4qneko1n4z8" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/07/26/原创小段子—人物没原型/" data-id="cj8b2964x006bx4qnqorq4yye" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tale/">tale</a></li></ul>
@@ -213,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/25/JspInnerObjects/" data-id="cj87g3d3w001gp4qnmxgoitl7" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/07/25/JspInnerObjects/" data-id="cj8b2961f001jx4qn1i9vet0w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -320,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/07/14/java_multithread/" data-id="cj87g3d5p003np4qny23t6ect" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/07/14/java_multithread/" data-id="cj8b2963j004kx4qnv7jj7tn9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -390,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/06/23/项目开发模型/" data-id="cj87g3d7y006gp4qna1qllo9s" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/06/23/项目开发模型/" data-id="cj8b29651006hx4qnh0lmer06" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -591,7 +653,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/06/13/xml/" data-id="cj87g3d75005lp4qnijqx2bmh" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/06/13/xml/" data-id="cj8b2964i005qx4qnpfdshh45" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -844,7 +906,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/06/13/proxy_pattern/" data-id="cj87g3d6a004cp4qn8shl9j8g" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/06/13/proxy_pattern/" data-id="cj8b2963c004dx4qn85ac346o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -892,7 +954,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/29/java_class_lifecycle/" data-id="cj87g3d5f0039p4qnsbcwbz75" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/05/29/java_class_lifecycle/" data-id="cj8b2962n003bx4qnwu3hyegs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -942,59 +1004,10 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj87g3d7s0066p4qnb73b4bdb" class="article-share-link">Поделиться</a>
+      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj8b2964z006ex4qn4d58209s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-design_principle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/13/design_principle/" class="article-date">
-  <time datetime="2017-05-13T04:32:48.000Z" itemprop="datePublished">2017-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/13/design_principle/">设计原则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式的六大原则"><a href="#设计模式的六大原则" class="headerlink" title="设计模式的六大原则"></a>设计模式的六大原则</h1><blockquote>
-<p>简称“六大设计原则”，用于整个面向对象编程过程中设计各种模式甚至到各个接口与类的设计都需要参考的原则。这些原则的宗旨是尽量减少程序的耦合性，让程序的可扩展性更高，在接触越多的编程后，越会感受到这些原则的重要性；</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2017/05/13/design_principle/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj87g3d4q002bp4qnoufoz5si" class="article-share-link">Поделиться</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
 
     </footer>
   </div>
@@ -1014,7 +1027,7 @@ Target2.target2Method...........
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Категории</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -1024,7 +1037,7 @@ Target2.target2Method...........
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Метки</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -1034,18 +1047,18 @@ Target2.target2Method...........
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Облако меток</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 15.71px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.43px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.86px;">database</a> <a href="/tags/essay/" style="font-size: 11.43px;">essay</a> <a href="/tags/framework/" style="font-size: 17.14px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.86px;">igot</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/job/" style="font-size: 11.43px;">job</a> <a href="/tags/jsp/" style="font-size: 11.43px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.29px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.43px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.43px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.75px;">database</a> <a href="/tags/essay/" style="font-size: 12.5px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.75px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 15px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Архив</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -1053,9 +1066,13 @@ Target2.target2Method...........
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Недавние записи</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/10/03/'gone with wind'_after_listened/">《乱世佳人》听后</a>
+          </li>
         
           <li>
             <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
@@ -1073,10 +1090,6 @@ Target2.target2Method...........
             <a href="/2017/09/14/javabean_property_placeholderConfigurer/">spring bean中属性覆盖器</a>
           </li>
         
-          <li>
-            <a href="/2017/09/13/facebook_osframe/">facebook的开源框架</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1090,7 +1103,7 @@ Target2.target2Method...........
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
