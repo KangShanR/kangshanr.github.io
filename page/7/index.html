@@ -69,6 +69,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Csharp_access_modifiers" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/11/Csharp_access_modifiers/" class="article-date">
+  <time datetime="2016-12-11T07:02:43.000Z" itemprop="datePublished">2016-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/11/Csharp_access_modifiers/">C#编程中的访问修辞符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="C-访问修饰符"><a href="#C-访问修饰符" class="headerlink" title="C#访问修饰符"></a>C#访问修饰符</h3><p>C#中为了数据的安全性以及代码的拓展，定了几种访问级别，根据对应的访问修饰符，可以获取Class里面对应的字段、属性、方法等。</p>
+<p>常见的访问修饰符有：<br>（1）public    公有访问。不受任何限制。<br>（2）private    私有访问。只限于本类成员访问，子类都不能访问。<br>（3）protected    保护访问。只限于本类和子类访问。<br>（4）internal    内部访问。只限于本项目内访问，其他不能访问。<br>（5）protected internal    内部保护访问。只限于本项目或是子类访问，其他不能访问。</p>
+<p>根据MSDN上面的解释，我们也可以理解对应<a href="https://msdn.microsoft.com/zh-cn/library/wxh6fsc7.aspx" target="_blank" rel="external">访问修饰符</a>的作用。</p>
+<p><a href="http://www.cnblogs.com/liupeng61624/p/5122192.html" title="C#访问修辞符" target="_blank" rel="external">参考博客</a></p>
+<h4 id="常见成员类型的访问修饰符"><a href="#常见成员类型的访问修饰符" class="headerlink" title="常见成员类型的访问修饰符"></a>常见成员类型的访问修饰符</h4><p><strong>（1）接口(interface)</strong></p>
+<p>接口成员访问修饰符默认为public,且不能显示使用访问修饰符。</p>
+<p><strong>（2）类(class)</strong><br>构造函数默认为public访问修饰符。<br>析构函数不能显示使用访问修饰符且默认为private访问修饰符。<br>类的成员默认访问修饰符为private（<em>java中默认为同包权限，在同包中可以被访问的，默认不写</em>）; </p>
+<p><strong>（3）枚举(enum)</strong><br>枚举类型成员默认为public访问修饰符，且不能显示使用修饰符。</p>
+<p><strong>（4）结构(struct) </strong><br>结构成员默认为private修饰符。<br>结构成员无法声明为protected成员，因为结构不支持继承。 </p>
+<p><strong>（5）嵌套类型</strong><br>嵌套类型的默认访问修饰符为private。 和类，结构的成员默认访问类型一致。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/11/Csharp_access_modifiers/" data-id="cj8b2960b000ex4qnk6eg2icr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-快速排序算法的理解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/03/快速排序算法的理解/" class="article-date">
@@ -267,56 +319,6 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
 
 
   
-    <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/some_tips_about_java/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/some_tips_about_java/">java编程中你不知道的一两点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Java中，你不知道的一两点</strong></p>
-<ol>
-<li>关键字new是运算符: 我们都知道new是用来开辟并新的内存空间创建对象的，但大多不知道这个功能是由运算符来实现；</li>
-<li>运算符（type）： 强制类型转换，括号中加类型，强制类型转换，它也只是个运算符</li>
-<li>运算符instanceof： 二元布尔运算符，前跟实例名后跟类名，判定实例是否可以用此类接收；</li>
-<li>成员访问符“.”，访问类或实例的成员；</li>
-<li>方法调用()，除了用于强制运算顺序，括号还用于调用方法；</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj8b2963p004ux4qn84h164ul" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-关于“上火”的事" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/11/23/关于“上火”的事/" class="article-date">
@@ -361,6 +363,56 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj8b2964m005tx4qniuiyuij5" class="article-share-link">Share</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/23/some_tips_about_java/" class="article-date">
+  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/23/some_tips_about_java/">java编程中你不知道的一两点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Java中，你不知道的一两点</strong></p>
+<ol>
+<li>关键字new是运算符: 我们都知道new是用来开辟并新的内存空间创建对象的，但大多不知道这个功能是由运算符来实现；</li>
+<li>运算符（type）： 强制类型转换，括号中加类型，强制类型转换，它也只是个运算符</li>
+<li>运算符instanceof： 二元布尔运算符，前跟实例名后跟类名，判定实例是否可以用此类接收；</li>
+<li>成员访问符“.”，访问类或实例的成员；</li>
+<li>方法调用()，除了用于强制运算顺序，括号还用于调用方法；</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj8b2963p004ux4qn84h164ul" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
     </footer>
   </div>
   
@@ -987,152 +1039,6 @@ Adapter.run.......
 
 
   
-    <article id="post-escape_character" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/30/escape_character/" class="article-date">
-  <time datetime="2016-05-30T04:02:23.000Z" itemprop="datePublished">2016-05-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/30/escape_character/">转义字符的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="在C语言中："><a href="#在C语言中：" class="headerlink" title="在C语言中："></a>在C语言中：</h3><ul>
-<li>\ 是转义标识符</li>
-<li>\t 横向跳到下一制表位置</li>
-<li>\r 回车</li>
-<li>\n 回车换行<ul>
-<li>\r是return，表示回到本行首</li>
-<li>\n 是new line,表示到下一行，不一定是行首</li>
-<li>三种不同的系统下，换行到下一行首所用的字符也不一样<ul>
-<li>在windows系统下，\n\r</li>
-<li>Unix系统下，要用\n就行</li>
-<li>MAC OS系统下，用\r</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="而在C-中，转义字符的意义"><a href="#而在C-中，转义字符的意义" class="headerlink" title="而在C#中，转义字符的意义:"></a>而在C#中，转义字符的意义:</h3><ul>
-<li>·一种特殊的字符常量；</li>
-<li>·以反斜线”\”开头，后跟一个或几个字符。</li>
-<li>·具有特定的含义，不同于字符原有的意义，故称“转义”字符。</li>
-<li>·主要用来表示那些用一般字符不便于表示的控制代码。 </li>
-<li>·它的作用是消除紧随其后的字符的原有含义</li>
-<li>·用一些普通字符的组合来代替一些特殊字符，由于其组合改变了原来字符表示的含义，因此称为“转义” </li>
-<li>·用可以看见的字符表示那不可以看见的字符, 如’\n’表示换行</li>
-</ul>
-<h4 id="常用的转义字符及其含义："><a href="#常用的转义字符及其含义：" class="headerlink" title="常用的转义字符及其含义："></a>常用的转义字符及其含义：</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">符号</th>
-<th style="text-align:left">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\’</td>
-<td style="text-align:left">单引号</td>
-</tr>
-<tr>
-<td style="text-align:center">\”</td>
-<td style="text-align:left">双引号</td>
-</tr>
-<tr>
-<td style="text-align:center">\</td>
-<td style="text-align:left">反斜杠</td>
-</tr>
-<tr>
-<td style="text-align:center">\0</td>
-<td style="text-align:left">空</td>
-</tr>
-<tr>
-<td style="text-align:center">\a</td>
-<td style="text-align:left">警告（产生峰鸣） 产生“滴”一声，若想产生多次可以写多个,eg:\a\a\a</td>
-</tr>
-<tr>
-<td style="text-align:center">\b</td>
-<td style="text-align:left">退格</td>
-</tr>
-<tr>
-<td style="text-align:center">\f</td>
-<td style="text-align:left">换页</td>
-</tr>
-<tr>
-<td style="text-align:center">\n</td>
-<td style="text-align:left">换行</td>
-</tr>
-<tr>
-<td style="text-align:center">\r</td>
-<td style="text-align:left">回车</td>
-</tr>
-<tr>
-<td style="text-align:center">\t</td>
-<td style="text-align:left">水平制表符</td>
-</tr>
-<tr>
-<td style="text-align:center">\v</td>
-<td style="text-align:left">垂直制表符</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>示例:(C#)</strong><pre><code>//用代码实现500以内整数每12个数一排，直到2、3、4、5、6、7的最小公倍数
-    for (int i = 1; i &lt; 501; i++)
-    {
-        if ((i % 2 == 0) &amp;&amp; (i % 3 == 0) &amp;&amp; (i % 4 == 0) &amp;&amp; (i % 5 == 0) &amp;&amp; (i % 6 == 0) &amp;&amp; (i % 7 == 0))
-        {
-            Console.Write(i + &quot;\r\n&quot;);
-            Console.WriteLine(&quot;500以内2 3 4 5 6 7的最小公倍数是：{0}&quot;, i);
-            break;
-        }
-        Console.Write(i+&quot;\t&quot;);
-        if (i % 12 == 0)
-            Console.WriteLine(&quot;\a&quot;);  //这儿会产生连续多次的“滴滴”声
-    }
-</code></pre></li>
-</ul>
-<hr>
-<p><strong>在 C#里 @ 表示有反转义的作用:</strong></p>
-<ul>
-<li>“c:\temp”表示路径是c:\temp; 而@”c:\temp”就表示c:\temp;<ul>
-<li>所以,@的作用就应该是忽略转义字符的作用.</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://www.cnblogs.com/netlyf/archive/2009/09/19/1569815.html" title="转义字符" target="_blank" rel="external">参考文档</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/30/escape_character/" data-id="cj8b2962b002rx4qn6oaizwt7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1166,7 +1072,7 @@ Adapter.run.......
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 12.5px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
   </div>
 
@@ -1188,6 +1094,10 @@ Adapter.run.......
       <ul>
         
           <li>
+            <a href="/2017/10/08/waiting_alone/">独自等待</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/05/after_wedding/">国庆节参加的婚礼</a>
           </li>
         
@@ -1201,10 +1111,6 @@ Adapter.run.......
         
           <li>
             <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/spring_IOC/">spring反转控制的思想</a>
           </li>
         
       </ul>

@@ -69,6 +69,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/data_verify/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><ul>
+<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
+<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
+<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj8b29621002cx4qnccb4te3w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-HTTP_status_code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/13/HTTP_status_code/" class="article-date">
@@ -820,58 +869,6 @@
 
 
   
-    <article id="post-Csharp_access_modifiers" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/11/Csharp_access_modifiers/" class="article-date">
-  <time datetime="2016-12-11T07:02:43.000Z" itemprop="datePublished">2016-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/Csharp_access_modifiers/">C#编程中的访问修辞符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-访问修饰符"><a href="#C-访问修饰符" class="headerlink" title="C#访问修饰符"></a>C#访问修饰符</h3><p>C#中为了数据的安全性以及代码的拓展，定了几种访问级别，根据对应的访问修饰符，可以获取Class里面对应的字段、属性、方法等。</p>
-<p>常见的访问修饰符有：<br>（1）public    公有访问。不受任何限制。<br>（2）private    私有访问。只限于本类成员访问，子类都不能访问。<br>（3）protected    保护访问。只限于本类和子类访问。<br>（4）internal    内部访问。只限于本项目内访问，其他不能访问。<br>（5）protected internal    内部保护访问。只限于本项目或是子类访问，其他不能访问。</p>
-<p>根据MSDN上面的解释，我们也可以理解对应<a href="https://msdn.microsoft.com/zh-cn/library/wxh6fsc7.aspx" target="_blank" rel="external">访问修饰符</a>的作用。</p>
-<p><a href="http://www.cnblogs.com/liupeng61624/p/5122192.html" title="C#访问修辞符" target="_blank" rel="external">参考博客</a></p>
-<h4 id="常见成员类型的访问修饰符"><a href="#常见成员类型的访问修饰符" class="headerlink" title="常见成员类型的访问修饰符"></a>常见成员类型的访问修饰符</h4><p><strong>（1）接口(interface)</strong></p>
-<p>接口成员访问修饰符默认为public,且不能显示使用访问修饰符。</p>
-<p><strong>（2）类(class)</strong><br>构造函数默认为public访问修饰符。<br>析构函数不能显示使用访问修饰符且默认为private访问修饰符。<br>类的成员默认访问修饰符为private（<em>java中默认为同包权限，在同包中可以被访问的，默认不写</em>）; </p>
-<p><strong>（3）枚举(enum)</strong><br>枚举类型成员默认为public访问修饰符，且不能显示使用修饰符。</p>
-<p><strong>（4）结构(struct) </strong><br>结构成员默认为private修饰符。<br>结构成员无法声明为protected成员，因为结构不支持继承。 </p>
-<p><strong>（5）嵌套类型</strong><br>嵌套类型的默认访问修饰符为private。 和类，结构的成员默认访问类型一致。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/11/Csharp_access_modifiers/" data-id="cj8b2960b000ex4qnk6eg2icr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -905,7 +902,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 12.5px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
   </div>
 
@@ -927,6 +924,10 @@
       <ul>
         
           <li>
+            <a href="/2017/10/08/waiting_alone/">独自等待</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/05/after_wedding/">国庆节参加的婚礼</a>
           </li>
         
@@ -940,10 +941,6 @@
         
           <li>
             <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/spring_IOC/">spring反转控制的思想</a>
           </li>
         
       </ul>

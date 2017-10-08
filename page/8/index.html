@@ -69,6 +69,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-escape_character" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/30/escape_character/" class="article-date">
+  <time datetime="2016-05-30T04:02:23.000Z" itemprop="datePublished">2016-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/30/escape_character/">转义字符的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在C语言中："><a href="#在C语言中：" class="headerlink" title="在C语言中："></a>在C语言中：</h3><ul>
+<li>\ 是转义标识符</li>
+<li>\t 横向跳到下一制表位置</li>
+<li>\r 回车</li>
+<li>\n 回车换行<ul>
+<li>\r是return，表示回到本行首</li>
+<li>\n 是new line,表示到下一行，不一定是行首</li>
+<li>三种不同的系统下，换行到下一行首所用的字符也不一样<ul>
+<li>在windows系统下，\n\r</li>
+<li>Unix系统下，要用\n就行</li>
+<li>MAC OS系统下，用\r</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="而在C-中，转义字符的意义"><a href="#而在C-中，转义字符的意义" class="headerlink" title="而在C#中，转义字符的意义:"></a>而在C#中，转义字符的意义:</h3><ul>
+<li>·一种特殊的字符常量；</li>
+<li>·以反斜线”\”开头，后跟一个或几个字符。</li>
+<li>·具有特定的含义，不同于字符原有的意义，故称“转义”字符。</li>
+<li>·主要用来表示那些用一般字符不便于表示的控制代码。 </li>
+<li>·它的作用是消除紧随其后的字符的原有含义</li>
+<li>·用一些普通字符的组合来代替一些特殊字符，由于其组合改变了原来字符表示的含义，因此称为“转义” </li>
+<li>·用可以看见的字符表示那不可以看见的字符, 如’\n’表示换行</li>
+</ul>
+<h4 id="常用的转义字符及其含义："><a href="#常用的转义字符及其含义：" class="headerlink" title="常用的转义字符及其含义："></a>常用的转义字符及其含义：</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\’</td>
+<td style="text-align:left">单引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\”</td>
+<td style="text-align:left">双引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:left">反斜杠</td>
+</tr>
+<tr>
+<td style="text-align:center">\0</td>
+<td style="text-align:left">空</td>
+</tr>
+<tr>
+<td style="text-align:center">\a</td>
+<td style="text-align:left">警告（产生峰鸣） 产生“滴”一声，若想产生多次可以写多个,eg:\a\a\a</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:left">退格</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:left">换页</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:left">换行</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:left">回车</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td style="text-align:left">水平制表符</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td style="text-align:left">垂直制表符</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>示例:(C#)</strong><pre><code>//用代码实现500以内整数每12个数一排，直到2、3、4、5、6、7的最小公倍数
+    for (int i = 1; i &lt; 501; i++)
+    {
+        if ((i % 2 == 0) &amp;&amp; (i % 3 == 0) &amp;&amp; (i % 4 == 0) &amp;&amp; (i % 5 == 0) &amp;&amp; (i % 6 == 0) &amp;&amp; (i % 7 == 0))
+        {
+            Console.Write(i + &quot;\r\n&quot;);
+            Console.WriteLine(&quot;500以内2 3 4 5 6 7的最小公倍数是：{0}&quot;, i);
+            break;
+        }
+        Console.Write(i+&quot;\t&quot;);
+        if (i % 12 == 0)
+            Console.WriteLine(&quot;\a&quot;);  //这儿会产生连续多次的“滴滴”声
+    }
+</code></pre></li>
+</ul>
+<hr>
+<p><strong>在 C#里 @ 表示有反转义的作用:</strong></p>
+<ul>
+<li>“c:\temp”表示路径是c:\temp; 而@”c:\temp”就表示c:\temp;<ul>
+<li>所以,@的作用就应该是忽略转义字符的作用.</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://www.cnblogs.com/netlyf/archive/2009/09/19/1569815.html" title="转义字符" target="_blank" rel="external">参考文档</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/05/30/escape_character/" data-id="cj8b2962b002rx4qn6oaizwt7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-environment_configuration" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/13/environment_configuration/" class="article-date">
@@ -520,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 12.5px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 11.25px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
   </div>
 
@@ -542,6 +688,10 @@
       <ul>
         
           <li>
+            <a href="/2017/10/08/waiting_alone/">独自等待</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/05/after_wedding/">国庆节参加的婚礼</a>
           </li>
         
@@ -555,10 +705,6 @@
         
           <li>
             <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/spring_IOC/">spring反转控制的思想</a>
           </li>
         
       </ul>
