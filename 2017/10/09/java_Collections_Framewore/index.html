@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 经济学 | KangShan</title>
+  <title>java集合框架 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is kang&apos;s website.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KangShan">
-<meta property="og:url" content="https://kangshanr.github.io/tags/经济学/index.html">
+  <meta name="description" content="java中的数据结构 java集合框架是java编程中最常用到的底层框架，对于平常的编程中，可能使用到的集合并不会考虑太多，但随着一个程序的扩张，数据量的增加，所选择的集合类型决定了这个程序的健壮性。">
+<meta name="keywords" content="java,programming,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java集合框架">
+<meta property="og:url" content="https://kangshanr.github.io/2017/10/09/java_Collections_Framewore/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="This is kang&apos;s website.">
+<meta property="og:description" content="java中的数据结构 java集合框架是java编程中最常用到的底层框架，对于平常的编程中，可能使用到的集合并不会考虑太多，但随着一个程序的扩张，数据量的增加，所选择的集合类型决定了这个程序的健壮性。">
+<meta property="og:updated_time" content="2017-10-09T04:49:22.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KangShan">
-<meta name="twitter:description" content="This is kang&apos;s website.">
+<meta name="twitter:title" content="java集合框架">
+<meta name="twitter:description" content="java中的数据结构 java集合框架是java编程中最常用到的底层框架，对于平常的编程中，可能使用到的集合并不会考虑太多，但随着一个程序的扩张，数据量的增加，所选择的集合类型决定了这个程序的健壮性。">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -67,39 +69,108 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/08/24/薛兆丰：经济学思维与个人投资/" class="archive-article-date">
-  <time datetime="2017-08-24T00:04:38.000Z" itemprop="datePublished">Aug 24</time>
+        <section id="main"><article id="post-java_Collections_Framewore" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/09/java_Collections_Framewore/" class="article-date">
+  <time datetime="2017-10-08T16:23:30.000Z" itemprop="datePublished">2017-10-09</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/24/薛兆丰：经济学思维与个人投资/">得到直播：薛兆丰用经济学思维提升个人投资水平</a>
+    <h1 class="article-title" itemprop="name">
+      java集合框架
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java中的数据结构"><a href="#java中的数据结构" class="headerlink" title="java中的数据结构"></a>java中的数据结构</h1><blockquote>
+<p>java集合框架是java编程中最常用到的底层框架，对于平常的编程中，可能使用到的集合并不会考虑太多，但随着一个程序的扩张，数据量的增加，所选择的集合类型决定了这个程序的健壮性。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="java集合框架各个接口"><a href="#java集合框架各个接口" class="headerlink" title="java集合框架各个接口"></a>java集合框架各个接口</h2><blockquote>
+<p>JCF：java collections frameword，三个核心接口：Set List Map，其中，Set与List都继承基接口Collection，而Map是映射关系的接口。在C#中，还有一个常用到的集合字典：Dictionary<k,v>，在java中，这个集合被Map接口下的各个类所取代。</k,v></p>
+</blockquote>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><blockquote>
+<p>最常用到的集合类型，其中实现这个接口的集合类有：ArrayList<t>、LinkedList<t>、Vector<t>。</t></t></t></p>
+</blockquote>
+<h4 id="List中各集合的异同点"><a href="#List中各集合的异同点" class="headerlink" title="List中各集合的异同点"></a>List中各集合的异同点</h4><ol>
+<li>ArrayList<t>的底层实现就是将数组实现<strong>动态变化</strong>，当数据增加到数组的边界时重新声明一个数组（其大小为原数组的<code>3/2+1</code>，数组初始大小为<code>0</code>）。同时将原数组中元素遍历存入到新数组中。</t></li>
+<li>Vector<t>基本与ArrayList<t>一致，但其实现了<strong>多线程环境的安全性</strong>。<em>自我猜想：实现线程安全就是在这个类中使用一个访问下标属性（简单的int类型即可），当一个线程访问到该对象的数组中的某个下标的元素进行修改或删除时，这个属性标记下来，这时另外一个线程再来访问这个Vector对象中的数组元素时会检查其访问的下标是否与之前标记的下标一致，一致则进入到<code>synchronized</code>同步代码块中等待上一个线程释放资源。
+</em></t></t></li>
+<li>LinkedList，链表。其与前两者的不同之处在于，其存入数据通过一个个<strong>节点</strong>来实现。每个节点（节点使用内部类）拥有数据本身与指向下一个节点的属性（如果是双向链表，则还拥有指向上一个节点的属性），这样一个个节点通过节点本身的属性来访问到相邻的节点信息。这样相对于前两种集合实现数据的删除与增加就方便快捷得多（直接修改相邻节点的相邻节点属性，而不用像前两者删除一个下标的元素需要将其后所有的元素遍历存入到对应下标中），而在修改指定下标元素值时，就劣势了，道理相通。</li>
+</ol>
+<h3 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a>Set集合</h3><blockquote>
+<p>java集合框架中最简单的集合类型，也是最符合数学领域中的集合概念：<strong>无序不重复</strong>。<br><strong> Set与List两者的根本区别</strong>：List是在Array数组的基础上实现，而Set是在HashMap的基础上实现。</p>
+</blockquote>
+<h4 id="Set集合中各个集合类型的异同"><a href="#Set集合中各个集合类型的异同" class="headerlink" title="Set集合中各个集合类型的异同"></a>Set集合中各个集合类型的异同</h4><blockquote>
+<p>主要包括了HashSet&lt;&gt;、TreeSet&lt;&gt;、LinkedHashSet&lt;&gt;三种集合；</p>
+</blockquote>
+<ul>
+<li>HashSet按照Hash算法来存取集合中的对象，存取速度比较快。Hash算法的设计目的就是减少对集合内元素的遍历比较。HashSet的存储方式是将HashMap的key作为Set的对应存储项。</li>
+<li>TreeSet实现了SortedSet接口，也就可以对集合中对象进行排序。同时这也要求存入TreeSet的对象必须实现<code>Comparable</code>接口。通过TreeMap实现，使用的是Map的key。其支持自然排序与定制排序两种排序方式：<ul>
+<li><strong>自然排序</strong>要求元素实现<code>Comparable</code>接口，根据其<code>ComparaTo()</code>方法的结果（返回int值大于0则对象大于被比较的参数，等于0则相等，小于0则小于被比较的参数）来进行<strong>升序排列</strong>；</li>
+<li><strong>定制排序：</strong>实现<code>Comparetor</code>接口，实现其<code>int compare(T o1,To2)</code>方法来保证元素的唯一性。其底层数据结构是：二叉树</li>
+</ul>
+</li>
+<li>SortedSet，此接口继承自Set接口，其作用主要是唯元素的有序性。这就要求加入到SortedSet中的元素必须实现<code>Comparable</code>接口；</li>
+<li>LinkedHashSet，是HashSet的子类，同时实现了使用Hash算法来存放与链表算法来存放插入的元素，所以遍历LinkedHashSet时，结果会按插入的顺序显示。通过使用链表的算法来保证插入元素的插入顺序。</li>
+</ul>
+<h3 id="Map集合类"><a href="#Map集合类" class="headerlink" title="Map集合类"></a>Map集合类</h3><blockquote>
+<p>作为键值映射类集合，其中包括了：HashMap<k,v>、TreeMap<k,v>，HashTable（非泛型），Propertyes（继承自HashTable)<br>作为键值映射集合，其中的key的的唯一性必须要得到保证。不然通过key来查询value的终极意义就失去了。</k,v></k,v></p>
+</blockquote>
+<ul>
+<li><strong>HashMap:</strong>顾名思义，此类同样使用了Hash算法来保证查找键的快速性。允许使用空键与空值，但键的唯一性不可更改。</li>
+<li><strong>TreeMap：</strong>对键按序存入，所以TreeMap就有一些与排序键相关的方法：<code>firstKey(),lastKey()</code>。</li>
+<li><strong>HashTable:</strong>非泛型集合，继承自<code>Dictionary&lt;K,V&gt;</code>（已废弃，推荐使用Map），key与value都不允许使用null。</li>
+<li><strong>Properties：</strong>继承自HashTable，主要用于读取java的配置文件，在Spring中常常用来写数据源的信息。<ul>
+<li>Properties中不如果有了相同的key，新的信息会将旧的信息覆盖。</li>
+</ul>
+</li>
+<li><strong>HashMap与HashTable的区别：</strong><ul>
+<li>HashMap初始大小为：16，允许存入一个空键与多个null值，线程不同步；Hash算法使用求模，Hash数组增加方式:2的指数</li>
+<li>HashTable初始大小为：11，不允许存入空键与空值，线程安全，Hash算法使用按位与；Hash数组增加方式：<code>old*2+1</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>感觉上：tree的算法是通过二叉树实现了排序，而Hash算法对集合中元素进行了分桶装而实现更快速的查找；</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/10/09/java_Collections_Framewore/" data-id="cj8jqu00x0000ysqnv05zq4oy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/08/waiting_alone/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">独自等待</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

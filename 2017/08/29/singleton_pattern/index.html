@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://kangshanr.github.io/2017/08/29/singleton_pattern/index.html">
 <meta property="og:site_name" content="KangShan">
 <meta property="og:description" content="设计模式之单例模式 单例模式是设计模式最常用到的模式之一，从字面上理解就是，该对象类只产生一个实例。这样做的理由在于开发过程中很多类（比如：管理类）都只用一个实例就够了，这样做也更节省资源。但是项目开发做会有一个多线程的问题，也就是当多个线程访问同一个类的单例时，这时会产生线程安全问题，为解决这个问题，单例模式分成了6种不同类型。">
-<meta property="og:updated_time" content="2017-09-13T12:12:19.212Z">
+<meta property="og:updated_time" content="2017-10-08T10:24:44.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之单例模式">
 <meta name="twitter:description" content="设计模式之单例模式 单例模式是设计模式最常用到的模式之一，从字面上理解就是，该对象类只产生一个实例。这样做的理由在于开发过程中很多类（比如：管理类）都只用一个实例就够了，这样做也更节省资源。但是项目开发做会有一个多线程的问题，也就是当多个线程访问同一个类的单例时，这时会产生线程安全问题，为解决这个问题，单例模式分成了6种不同类型。">
@@ -96,8 +96,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="设计模式之单例模式"><a href="#设计模式之单例模式" class="headerlink" title="设计模式之单例模式"></a>设计模式之单例模式</h1><blockquote>
-<p>单例模式是设计模式最常用到的模式之一，从字面上理解就是，该对象类只产生一个实例。这样做的理由在于开发过程中很多类（比如：管理类）都只用一个实例就够了，这样做也更节省资源。但是项目开发做会有一个多线程的问题，也就是当多个线程访问同一个类的单例时，这时会产生线程安全问题，为解决这个问题，单例模式分成了6种不同类型。<a id="more"></a></p>
+<p>单例模式是设计模式最常用到的模式之一，从字面上理解就是，该对象类只产生一个实例。这样做的理由在于开发过程中很多类（比如：管理类）都只用一个实例就够了，这样做也更节省资源。但是项目开发做会有一个多线程的问题，也就是当多个线程访问同一个类的单例时，这时会产生线程安全问题，为解决这个问题，单例模式分成了6种不同类型。</p>
 </blockquote>
+<a id="more"></a>
 <ul>
 <li>单例模式的<strong>设计目的</strong>就在于：不想让一个全局使用的类频繁地被创建再销毁其实例，要达到这样的效果就让其构造函数不能被不停地调用，也就是<strong>私有化其构造函数</strong>；</li>
 <li>单例模式的6种类型：<ul>
@@ -136,16 +137,21 @@
 ｝
 </code></pre><ul>
 <li>这处线程安全的懒汉式只是简单地在获取单例的方法上加上synchronized同步锁，同时也实现了懒加载；</li>
-<li>这样做缺陷在于效率上的低下，想要获取这个类的单例所有线程都得等待上一个线程释放资源；<br>-### 饿汉式 ###<br>  public class UserManager{<pre><code>//静态单例定义为类成员
-private static UserManager ins = new UseManager();
-//私有化构造函数
-private UserManager(){}
-//获取静态单例的方法
-public static UserManager getIns(){
-    return ins;
-}
-//其他的执行方法
-</code></pre>  ｝</li>
+<li>这样做缺陷在于效率上的低下，想要获取这个类的单例所有线程都得等待上一个线程释放资源；</li>
+</ul>
+</li>
+<li><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><pre><code>public class UserManager{
+    //静态单例定义为类成员
+    private static UserManager ins = new UserManager();
+    //私有化构造函数
+    private UserManager(){}
+    //获取静态单例的方法
+    public static UserManager getIns(){
+        return ins;
+    }
+    //其他的执行方法
+｝
+</code></pre><ul>
 <li>这种单例定义为类成员，也就是类加载时就将这个单例初始化完成，未实现懒加载，会造成资源的浪费；</li>
 <li>并没有使用同步锁而实现了多线程只访问同一个实例，效率上更高；</li>
 </ul>
@@ -205,7 +211,7 @@ public static UserManager getIns(){
 </ul>
 <hr>
 <blockquote>
-<p>6种单例模式中，前两种懒汉模式不推荐使用，第一种并非纯正的单例模式，第二种懒汉模式在多线程中效率低下，更不推荐，只要进入getIns方法就得等待上一个线程释放控制权；<br>当对反序列化机制有严格要求时，就使用枚举方式；<br>当要明确使用lazy loading时，就使用静态内部类方式或者双检锁方式；</p>
+<p>6种单例模式中，前两种懒汉模式不推荐使用，第一种并非纯正的单例模式，第二种懒汉模式在多线程中效率低下，更不推荐，只要进入getIns方法就得等待上一个线程释放控制权，多线程环境下很容易造成线程的拥堵；<br>当对反序列化机制有严格要求时，就使用枚举方式；<br>当要明确使用lazy loading时，就使用静态内部类方式或者双检锁方式；</p>
 </blockquote>
 
       
@@ -270,7 +276,7 @@ public static UserManager getIns(){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
   </div>
 
@@ -292,6 +298,10 @@ public static UserManager getIns(){
       <ul>
         
           <li>
+            <a href="/2017/10/09/java_Collections_Framewore/">java集合框架</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/08/waiting_alone/">独自等待</a>
           </li>
         
@@ -305,10 +315,6 @@ public static UserManager getIns(){
         
           <li>
             <a href="/2017/10/03/'gone with wind'_after_listened/">《乱世佳人》听后</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
           </li>
         
       </ul>

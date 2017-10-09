@@ -69,9 +69,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/23/data_verify/" class="article-date">
+    <a href="/2017/04/23/ASCII_code/" class="article-date">
   <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
 </a>
     
@@ -87,7 +87,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
+      <a class="article-title" href="/2017/04/23/ASCII_code/">ASCII编码</a>
     </h1>
   
 
@@ -95,18 +95,136 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h3><ul>
-<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
-<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
-<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
+        <h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><blockquote>
+<p>（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
+</blockquote>
+<ul>
+<li>关键字符ASCII值：<ul>
+<li>0:46 0~9的ASCII码值就是48~57，习惯于在代码函数中用左闭右开的区间来表示：[48,58)</li>
+<li>eg:（Java language）<pre><code>//用于判断字符属于哪个类型的方法
+static String typeChar(char _char){
+        int valueChar = Integer.valueOf(_char);
+        if(valueChar &gt;= 48 &amp;&amp; valueChar &lt; 58)
+            return &quot;number&quot;;
+        else if(valueChar &gt;= 65 &amp;&amp; valueChar &lt; 91)
+            return &quot;uppercase&quot;;
+        else if(valueChar &gt;= 97 &amp;&amp; valueChar &lt;123)
+            return &quot;lowercase&quot;;
+        else
+            return &quot;symbol&quot;;
+    }
+</code></pre></li>
+<li>测试：<pre><code>public static void main(String[] args) {
+    System.out.println(typeChar(&apos;,&apos;));
+}
+</code></pre></li>
+<li>测试结果：<pre><code>symbol
+</code></pre></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li>常用到的字符ASCII值：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">ASCII值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:left">65</td>
+</tr>
+<tr>
+<td style="text-align:center">A-Z</td>
+<td style="text-align:left">65-90</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:left">97</td>
+</tr>
+<tr>
+<td style="text-align:center">a-z</td>
+<td style="text-align:left">97-122</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj8b2960h000jx4qnvrxpkzyn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/hex/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
+<li>在数字前直接加0x就可以使用，所用字符：<ul>
+<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
+</ul>
+</li>
+<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
+<li>eg:0xfa14</li>
+</ul>
+</li>
+<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
+<li>测试代码（java)：<pre><code>public static void main(String[] args) {
+    System.out.println(0xeeda);
+    System.out.println(0x0003);
+    System.out.println(0xa);
+    System.out.println(0xea);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>978346
+3
+10
+234
+</code></pre></li>
+</ul>
+</li>
+<li>中文的unicode码的范围4e00-9fa5</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj8b29621002cx4qnccb4te3w" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj8b2962t003lx4qnrqm0ueqd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -819,56 +937,6 @@
 
 
   
-    <article id="post-Csharp_object_lifecycle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/18/Csharp_object_lifecycle/" class="article-date">
-  <time datetime="2016-12-18T07:02:43.000Z" itemprop="datePublished">2016-12-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/18/Csharp_object_lifecycle/">C#中对象生命周期</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="C-对象生命周期"><a href="#C-对象生命周期" class="headerlink" title="C#对象生命周期"></a>C#对象生命周期</h3><ul>
-<li>C#中，一切都可以称作为对象Object，是对象就有生命周期（准确地讲，在面向对象的高级语言中，一切皆对象，是对象就有生命周期）；</li>
-<li>除了在“正在使用”中的正常状态外，对象还有两个状态：<ul>
-<li>构造阶段：对象构造阶段，在对象被构造出来前，此对象是不存在的。只有构造出来的对象才能被引用才能被程序所调用；</li>
-<li>析构阶段：对象回收前的阶段，不同的语言对就不同的回收机制；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/18/Csharp_object_lifecycle/" data-id="cj8b2960s000tx4qnx5nsk4ei" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -902,7 +970,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
   </div>
 
@@ -924,6 +992,10 @@
       <ul>
         
           <li>
+            <a href="/2017/10/09/java_Collections_Framewore/">java集合框架</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/08/waiting_alone/">独自等待</a>
           </li>
         
@@ -937,10 +1009,6 @@
         
           <li>
             <a href="/2017/10/03/'gone with wind'_after_listened/">《乱世佳人》听后</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/30/20170930essay/">这次找工作的烦恼</a>
           </li>
         
       </ul>
