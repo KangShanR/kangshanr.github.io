@@ -5,17 +5,17 @@
   
   <title>jsp的认识 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JSP 概念：Java Server Pages；jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；  Jsp的工作原理 当请求方请求一个jsp页面时，jsp先被服务器中的Servlet引擎转换成一个java源文件">
+  <meta name="description" content="JSP 概念：Java Server Pages；jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；">
 <meta name="keywords" content="java,programming,jsp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsp的认识">
 <meta property="og:url" content="https://kangshanr.github.io/2017/09/14/jsp/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="JSP 概念：Java Server Pages；jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；  Jsp的工作原理 当请求方请求一个jsp页面时，jsp先被服务器中的Servlet引擎转换成一个java源文件">
-<meta property="og:updated_time" content="2017-09-14T14:33:18.825Z">
+<meta property="og:description" content="JSP 概念：Java Server Pages；jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；">
+<meta property="og:updated_time" content="2017-10-09T16:43:32.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jsp的认识">
-<meta name="twitter:description" content="JSP 概念：Java Server Pages；jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；  Jsp的工作原理 当请求方请求一个jsp页面时，jsp先被服务器中的Servlet引擎转换成一个java源文件">
+<meta name="twitter:description" content="JSP 概念：Java Server Pages；jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -58,9 +58,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -98,8 +98,9 @@
         <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><blockquote>
 <p>概念：Java Server Pages；<br>jsp技术使用java语言作为脚本语言，用于提供一个接口用于服务器响应HTTP请求的程序；<br>jsp是一个特殊的servlet,它最终被执行成一个java的class文件并置入内存，当响应开始后会利用输出流生成一个Html页面传送给请求方；</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="Jsp的工作原理"><a href="#Jsp的工作原理" class="headerlink" title="Jsp的工作原理"></a>Jsp的工作原理</h2><ol>
-<li>当请求方请求一个jsp页面时，jsp先被服务器中的<strong>Servlet引擎转换成一个java源文件</strong>，这个过程会对jsp页面中的<strong>语法进行检查</strong>，如果页面语法没有错则转换成功，这时Jsp引擎再利用<strong>javac</strong>将java源文件<strong>编译成class文件加载到内存中</strong>；<a id="more"></a></li>
+<li>当请求方请求一个jsp页面时，jsp先被服务器中的<strong>Servlet引擎转换成一个java源文件</strong>，这个过程会对jsp页面中的<strong>语法进行检查</strong>，如果页面语法没有错则转换成功，这时Jsp引擎再利用<strong>javac</strong>将java源文件<strong>编译成class文件加载到内存中</strong>；</li>
 <li>其次再创建一个<strong>Servlet的对象</strong>，并执行该对你的<code>jspInit()</code>方法，与Servlet生命周期中一致这个<code>jspInit()</code>方法在其生成周期中只被执行一次；</li>
 <li><strong>创建并启动一个线程</strong>，线程来调用对象的<code>jspService()</code>方法（如果有多个请求同时请求一个jsp，则jsp引擎<strong>会创建多个线程来请求</strong>）；</li>
 <li>Servlet容器将<strong>请求方的参数封装到HttpServletRequest对象</strong>中并再生成一个HttpServletResponse对象，将这两个对象作为参数传给<code>jspService()</code>方法；</li>
@@ -111,7 +112,7 @@
 <li><code>&lt;%@ page%&gt;</code>作用于整个jsp页面，包括静态的包含文件；</li>
 <li>一般放在jsp页面顶部，但不管放在哪个地方其作用范围都是整个jsp；</li>
 <li>该指令不能作用于动态包含文件</li>
-<li>可以在一个页面中用上多个，但是其中的属性只能用一镒，不过<code>import</code>属性像java中的<code>import</code>一样，可以多次使用；</li>
+<li>可以在一个页面中用上多个，但是其中的属性只能用一次，不过<code>import</code>属性像java中的<code>import</code>一样，可以多次使用；</li>
 </ol>
 </li>
 <li><strong>taglib:</strong><ol>
@@ -128,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/09/14/jsp/" data-id="cj8b29633003zx4qnncelq63v" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/09/14/jsp/" data-id="cj8b29633003zx4qnncelq63v" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -140,7 +141,7 @@
 <nav id="article-nav">
   
     <a href="/2017/09/15/spring_IOC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           spring反转控制的思想
@@ -150,7 +151,7 @@
   
   
     <a href="/2017/09/14/javabean_property_placeholderConfigurer/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">spring bean中属性覆盖器</div>
     </a>
   
@@ -165,7 +166,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -175,7 +176,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -185,7 +186,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
@@ -204,7 +205,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -241,7 +242,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

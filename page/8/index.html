@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -114,276 +114,15 @@
 </ul>
 </li>
 </ul>
-<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
-<li><p>对于管理类，通常只需要一个实例对象即可达到管理的目的，这种时候如果实例多个对象只会造成系统资源上的浪费，所以通常我们使用单例模式来解决这种问题；</p>
-</li>
-<li><p>实现单例的思路：</p>
-<ul>
-<li>将构造函数私有化，并在类中实现静态单例的共享；<pre><code>public class UserManager{
-    //静态单例
-    private static UserManager ins;
-    //私有化构造函数
-    private UserManager(){}
-    //获取静态单例的方法
-    public static UserManager getIns(){
-        if(ins == null){
-            ins = new UserManager();
-        }
-        return ins;
-    }
-    //其他的执行方法
-    public void updateUserInfo(){}
-｝
-</code></pre></li>
-<li>上面例子里有个线程上的缺陷，当多线程访问这个管理类时，会造成线程不安全，为解决这个问题，就得使用双重检查锁单例：<pre><code>public class UserManager{
-    //静态单例
-    private static UserManager ins;
-    private Object lock = new Object();
-    //私有化构造函数
-    private UserManager(){}
-    //获取静态单例的方法
-    public static UserManager getIns(){
-        if(ins == null){  //第一次检查
-            synchronized(lock){  //保证不产生多余的实例
-                if(ins == null){  //第二次检查
-                    ins = new UserManager();
-                }
-            }
-        }
-        return ins;
-    }
-    //其他的执行方法
-    public void updateUserInfo(){}
-｝
-</code></pre></li>
-<li>关于多线程安全的实现在单例模式中有6种不同的方式，具体参照单例模式页面；</li>
-</ul>
-</li>
-</ul>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
-<li>代理模式：与工厂模式不同在于，可能产生多个实例，同时会帮Action做事（工厂模式属于创建型模式，而代理模式属于结构型模式）；</li>
-<li>代理(Proxy)<strong>提供了对目标对象另外的访问方式</strong>;即<strong>通过代理对象访问目标对象</strong>。<strong>这样做的好处是:可以在目标对象实现的基础上,增强额外的功能操作,即扩展目标对象的功能.</strong></li>
-<li><em>这里使用到编程中的一个思想:不要随意去修改别人已经写好的代码或者方法,如果需改修改,可以通过代理的方式来扩展该方法</em></li>
-<li>代理模式就是将要实例的对象通过代理类来实现，不通过原本的类来实例，具体实现有三种方式：<ul>
-<li>静态代理：<ul>
-<li>可以让代理类同时实现真正想的对象的类实现的接口，而在代理类中有一个真正类的属性，当想要这个真正类时，对上述属性判空，再实例化，这样通过代理类执行接口中的方法时就是执行的真正想要的类的方法了；</li>
-<li>简单地讲，代理就是将其他的类的各种实现方法，交由代理来实现。而要达到这种效果，就可以让代理与其他的类实现同一个接口，再在代理中实现接口方法中去实现这个类的方法。这也是代理的核心，一般代理中要注入一个代理对象，调用代理方法时，就对此对象初始化并调用其相关的方法；</li>
-</ul>
-</li>
-<li>动态代理：<ul>
-<li>代理不用继承接口，代理由java内置的java.lang.reflect包中的Proxy类生成：</li>
-<li>其中生成代理静态的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler handler)</code>；<ul>
-<li>此方法的三个参数：<ul>
-<li>loader：代理目标的类加载器；</li>
-<li>interfaces：代理目标实现的接口；</li>
-<li>handler：执行处理器，指调用此代理实现接口的处理器，此处理器必须实现InvocationHandler接口，并实现其<code>public Object invoke(Object proxy, Method method, Object[] args)</code>方法;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>cglib代理（子类代理）：<ul>
-<li><ul>
-<li>此类型代理需要用到spring核心包推荐使用spring-core 3.2.5版本及以上；</li>
-</ul>
-</li>
-<li>动态代理与静态代理都是向上抽取依赖，要求实现接口，而cglib代理则是通过目标对象子类来实现对目标对象功能的扩展；</li>
-<li>其实现方法：<ul>
-<li>引入的功能包能够动态地在内在中构造子类；</li>
-<li>cglib的强大在于高效生成代码，在运行期扩展java类与接口，spring赖以生存的AOP拦截的就是大量地使用了cglib的强大功能；</li>
-<li>cglib的底层：使用字节码处理框架ASM转换字节码并生成新的类（并没有弄的懂的地方，涉及JVM中内部结构，诸如：class文件的格式秘指令集）</li>
-</ul>
-</li>
-<li>注意：cglib的实现是依赖于代理的扩展子类，需要对代理目标进行扩展<ul>
-<li>也就是说代理类不能为final修辞；</li>
-<li>同时，目标对象的方法不能为final/static所修辞；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul>
-<li>生成一个类交由相关的工厂类实现，而不由直接的类来实现；</li>
-<li>相关的类继承同一个接口，实现这个接口的类都可以由工厂类中同一个方法来实现实例化；</li>
-<li><p>例如：</p>
-<pre><code>//定义同一个类的抽象接口
-public interface Shape{
-    void draw();
-}
-//实现shape接口的类有：
-//Circle类
-public class Circle implements Shape{
-    @Override
-    public void  draw(){
-        system.out.println(&quot;circle.draw&quot;);
-    }
-}
-//Square类
-public class Square implements Shape{
-    @Override
-    public void draw(){
-        system.out.println(&quot;square.draw&quot;);
-    }
-}
-//创建实例的工厂类
-public class ShapeFactory{
-    //创建图形实例的方法
-    public Shape createShape(String shape){
-        if(shape.equalsIgnoreCase(&quot;CIRCLE”){
-            return new Circle();
-        }
-        if(shape.equalsIgnoreCase(&quot;SQUARE”){
-            return new Square();
-        }
-        reutnr null;
-    }
-}
-</code></pre></li>
-<li>模式理解：<ul>
-<li>通过工厂来实现对各个类的实例化，都在工厂实现；</li>
-<li>通过反射机制实现，增加一个同一接口的类不需要改变工厂的代码,只需要增加一个实现这个实现对应接口的类：<ul>
-<li>其工厂的代码：<pre><code>public class ShapeFactory{
-    //创建工厂的方法
-    public Shape createShape(Class&lt;? extends Shape&gt; clazz){
-        try{
-            return Class.forName(clazz.getName()).newInstance();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><ul>
-<li>相比较于工厂模式，抽象工厂模式在工厂模式的基础上增加生成工厂的工厂类，那么生产出来的工厂都要继承一个接口或父类，没理解到的点就在于，这个类一定要是一个抽象类吗？可以是个接口或者非抽象类吗?</li>
-<li>该模式的优点：把同一个产品类集成到同一个工厂内，这样使用时就直接调用工厂中的方法，而生成同一个工厂里预备好的类对象，也更方便管理；</li>
-<li>它是为了解决子工厂的扩展性问题</li>
-</ul>
-<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><ul>
-<li>迭代器模式的设计目的只是，用自己写迭代器来实现迭代聚合数据，而将集体或聚合的数据的遍历分离出来来达到既能访问到集合的内部数据又不暴露集合的内部结构；    <pre><code>- 迭代器接口：
-        public interface Iterator {
-            public boolean hasNext();
-            public Object next();
-        }
-- 容器接口：
-        public interface Container {
-            public Iterator getIterator();
-        }
-- 容器实现类：
-        public class Repository implements Container {
-            String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
-            /**
-             * 返回内部类的对象，注意这儿的依赖倒置
-             */
-            @Override
-            private Iterator getIterator() {
-                return new DoIterator();
-            }
-            /**
-             * 内部类，实现迭代器接口
-             * @author Administrator
-             */
-            private class DoIterator implements Iterator{
-                int index;
-                /**
-                 * 判定索引是否指向在集合之中，如果还在就返加true
-                 */
-                @Override
-                public boolean hasNext() {
-                    if(index &lt; elements.length)
-                        return true;
-                    return false;
-                }
-                /**
-                 * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
-                 */
-                @Override
-                public Object next() {
-                    if(this.hasNext()){
-                        Object obj = elements[index++];
-                        return obj;
-                    }
-                    return null;
-                }
-            }
-</code></pre><ul>
-<li>最后在main方法测试中写for循环实现迭代：<pre><code>for(Iterator iter = new Repository().getIterator();iter.hasNext();){
-    String ele = (String)iter.next();
-    System.out.println(ele);
-}
-</code></pre></li>
-<li>输出：<pre><code>kfc
-jfk
-mcd
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><ul>
-<li>适配器是行为型模式，将原有的行为经过组合进行扩展；</li>
-<li>顾名思义，适配器就是将原本不适的接口或功能适配到目标对象上。</li>
-<li>最简单的理解类型是缺省型适配器：将各个接口实现在一个适配器上，再让目标继承这个适配器（可省，直接用这个适配器new出对象来也一样可以实现），想扩展什么接口功能就重写相应的方法，就实现了适配器的扩展功能；</li>
-<li>而比起缺省型适配器，还有类的适配器和对象适配器：<ul>
-<li>类适配器：将目标功能的接口执行并继承被适配者<ul>
-<li>被适配者：想在此类上扩展目标接口的功能（适配器的设计初衷在于，被适配者并不能直接实现目标接口）<pre><code>public class Adaptee {
-    void run(){
-        System.out.println(&quot;Adaptee.run..........&quot;);
-    }
-}
-</code></pre></li>
-<li>目标接口：<pre><code>public interface Target {
-    void fly();
-}
-</code></pre></li>
-<li>适配器：<pre><code>public class Adapter extends Adaptee implements Target {
-    @Override//继承父类被适配者，并能方便地扩展其方法
-    public void run() {
-        super.run();
-        System.out.println(&quot;Adapter.run.......&quot;);
-    }
-    //实现目标接口的方法
-    @Override
-    public void fly() {
-        System.out.println(&quot;Adapter.fly...........&quot;);
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    Adapter adaptee = new Adapter();
-    adaptee.fly();
-    adaptee.run();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Adapter.fly...........
-Adaptee.run..........
-Adapter.run.......
-</code></pre></li>
-<li><strong>note:</strong>这样的一个适配器在某种程度上来说与缺省的适配器并没有什么本质上的区别，都是将各种功能行为通过继承或实现聚合到同一个适配器上；</li>
-</ul>
-</li>
-<li>对象适配器模式：<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><hr>
-<ul>
-<li><em>未完待续</em></li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/06/13/DesignPattern/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/13/DesignPattern/" data-id="cj8b2960y000zx4qnl38e83ri" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/06/13/DesignPattern/" data-id="cj8b2960y000zx4qnl38e83ri" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -421,7 +160,7 @@ Adapter.run.......
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在C语言中："><a href="#在C语言中：" class="headerlink" title="在C语言中："></a>在C语言中：</h3><ul>
+        <h3 id="在C语言中"><a href="#在C语言中" class="headerlink" title="在C语言中:"></a>在C语言中:</h3><ul>
 <li>\ 是转义标识符</li>
 <li>\t 横向跳到下一制表位置</li>
 <li>\r 回车</li>
@@ -529,7 +268,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/30/escape_character/" data-id="cj8b2962b002rx4qn6oaizwt7" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/05/30/escape_character/" data-id="cj8b2962b002rx4qn6oaizwt7" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -580,7 +319,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/13/environment_configuration/" data-id="cj8b29629002nx4qn7i6eauhe" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/05/13/environment_configuration/" data-id="cj8b29629002nx4qn7i6eauhe" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/">tips</a></li></ul>
@@ -646,7 +385,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/05/03/数据结构/" data-id="cj8b2964v0067x4qna4pih4yc" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/05/03/数据结构/" data-id="cj8b2964v0067x4qna4pih4yc" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -684,12 +423,14 @@ Adapter.run.......
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><ul>
+        <h1 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h1><blockquote>
+<ul>
 <li>NaN:Not a Number<ul>
 <li>非数值的数值，当计算中出现诸如：除数为0的除法、求负数的平方根之类的运算时，这时返回的结果就只能是一个<code>NaN</code>；</li>
 </ul>
 </li>
 </ul>
+</blockquote>
         
           <p class="article-more-link">
             <a href="/2016/04/13/NaN_add/#more">Read More</a>
@@ -698,7 +439,7 @@ Adapter.run.......
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/04/13/NaN_add/" data-id="cj8b2961q001ux4qnfaolny2x" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/04/13/NaN_add/" data-id="cj8b2961q001ux4qnfaolny2x" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -735,47 +476,15 @@ Adapter.run.......
         <blockquote>
 <p>说明：这是一篇在使用markdown记录笔记过程中自己总结一些使用小技巧；</p>
 </blockquote>
-<p>首先来一个：</p>
-<h4 id="官方的使用说明"><a href="#官方的使用说明" class="headerlink" title="官方的使用说明"></a>官方的使用说明</h4><ul>
-<li>包括了常用的快捷键使用：</li>
-<li>Welcome to GitHub Pages</li>
-</ul>
-<p>You can use the <a href="https://github.com/KangShanR/Study-Notes/edit/master/index.md" target="_blank" rel="external">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
-<p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
-<h3 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h3><p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Syntax highlighted code block</div><div class="line"></div><div class="line"><span class="section"># Header 1</span></div><div class="line"><span class="section">## Header 2</span></div><div class="line"><span class="section">### Header 3</span></div><div class="line"></div><div class="line"><span class="bullet">- </span>Bulleted</div><div class="line"><span class="bullet">- </span>List</div><div class="line"></div><div class="line"><span class="bullet">1. </span>Numbered</div><div class="line"><span class="bullet">2. </span>List</div><div class="line"></div><div class="line"><span class="strong">**Bold**</span> and <span class="emphasis">_Italic_</span> and <span class="code">`Code`</span> text</div><div class="line"></div><div class="line">[<span class="string">Link</span>](<span class="link">url</span>) and ![<span class="string">Image</span>](<span class="link">src</span>)</div></pre></td></tr></table></figure>
-<p><strong>Shortcut:</strong></p>
-<ul>
-<li><strong>Bold</strong> (<code>Ctrl+B</code>) and <em>Italic</em> (<code>Ctrl+I</code>)</li>
-<li>Quotes (<code>Ctrl+Q</code>)</li>
-<li>Code blocks (<code>Ctrl+K</code>)</li>
-<li>Headings 1, 2, 3 (<code>Ctrl+1</code>, <code>Ctrl+2</code>, <code>Ctrl+3</code>)</li>
-<li>Lists (<code>Ctrl+U</code> and <code>Ctrl+Shift+O</code>)</li>
-<li>Timestamp(<code>Ctrl+T</code>)</li>
-<li>Horizontal Rule(<code>Ctrl+R</code>)</li>
-</ul>
-<p>For more details see <a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">GitHub Flavored Markdown</a>.</p>
-<h3 id="Jekyll-Themes"><a href="#Jekyll-Themes" class="headerlink" title="Jekyll Themes"></a>Jekyll Themes</h3><p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/KangShanR/Study-Notes/settings" target="_blank" rel="external">repository settings</a>. The name of this theme is saved in the Jekyll <code>_config.yml</code> configuration file.</p>
-<h3 id="Support-or-Contact"><a href="#Support-or-Contact" class="headerlink" title="Support or Contact"></a>Support or Contact</h3><p>Having trouble with Pages? Check out our <a href="https://help.github.com/categories/github-pages-basics/" target="_blank" rel="external">documentation</a> or <a href="https://github.com/contact" target="_blank" rel="external">contact support</a> and we’ll help you sort it out.</p>
-<h3 id="新得到的小点子"><a href="#新得到的小点子" class="headerlink" title="新得到的小点子"></a>新得到的小点子</h3><p>诸多功能：<a href="http://www.wiz.cn/feature-markdown.html" title="诸多功能在后面" target="_blank" rel="external">为知笔记中提供的一些功能</a>，其中包括了表格的实现等没怎么用到但很实现的功能；</p>
-<ul>
-<li>其他在使用过程中摸索出来的小点有：<ol>
-<li>段落：一级段落使用一个“&gt;”符号，以此类推，二级就用”&gt;&gt;”，三级就用“&gt;&gt;&gt;”，可以有n多级；得注意的是，这种格式经过hexo生成后在网站上显示为水平居中，字体放大一号，同时左边并没有段落的竖线；</li>
-<li>插入链接：<code>[百度](http://www.baidu.com &quot;百度一下&quot;)</code>示范一下：<a href="http://www.baidu.com" title="百度一下" target="_blank" rel="external">百度</a>，可以看到<code>[]</code>中放的是显示的字符串，<code>()</code>里放的是url与提示；注意，各个标识符都是小写状态，快捷键ctrl+l；</li>
-<li>想要插入代码:<ol>
-<li>在&lt; pre &gt;标签中插入代码:<pre>这儿就是插入pre标签后的效果</pre></li>
-<li>在每一行代码前插入三个table符，记住是每一行代码都要在前面加上三个table符；</li>
-<li>快捷键<code>ctrl+k</code>,这种方式适合短小的单行代码，因为一旦换行，就打破了代码块；</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2015/04/29/markdown/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/04/29/markdown/" data-id="cj8b296350042x4qniizu32uw" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2015/04/29/markdown/" data-id="cj8b296350042x4qniizu32uw" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/">tips</a></li></ul>
@@ -813,34 +522,18 @@ Adapter.run.......
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简介：用于规定页面上所有的链接的默认URL和默认目标：<br><code>&lt;base href=&quot;http://……“ target=&quot;_blank&quot;&gt;</code></p>
-<ul>
-<li>base标签放在<head>标签之中;</head></li>
-<li>最好把base标签排在head标签中第一个元素，这样其它的元素就可以使用base元素的信息；</li>
-<li>一个文档中最多能使用一个base元素；</li>
-<li>如果使用了base标签，至少要具备href属性或者target属性其中一个；</li>
-<li>其中的元素：<ul>
-<li>href：规定页面中相对链接的基准URL，其值就是一个URL;</li>
-<li>target:规定页面中所有的超链接和表单在何处打开，但该属性会被每个单独的链接中的target属性所覆盖，其值包括：<ul>
-<li>_blank，打开新的页面</li>
-<li>_ parent，在父页面打开</li>
-<li>_self，在当前页面打开</li>
-<li>_top，在浏览器头页面打开</li>
-<li>framename</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="base标签支持的属性"><a href="#base标签支持的属性" class="headerlink" title="base标签支持的属性"></a>base标签支持的属性</h4><ul>
-<li>支持HTML的全局属性，如：class,id,style等</li>
-<li>不支持事件属性，如:onClick之类；</li>
-</ul>
-
+        <h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a><base>标签</h1><blockquote>
+<p>html中base标签的使用与理解 </p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2015/03/25/html_'base'_label/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/03/25/html_'base'_label/" data-id="cj8b2962i0034x4qnf0bsv4qm" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2015/03/25/html_'base'_label/" data-id="cj8b2962i0034x4qnf0bsv4qm" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
@@ -878,76 +571,18 @@ Adapter.run.......
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="标签简介："><a href="#标签简介：" class="headerlink" title="标签简介："></a>标签简介：</h3><ul>
-<li>位于文档的头部<head>标签之中，不包含任何内容；</head></li>
-<li>所有的信息都由属性来存储，包含了文档的名称/值对；</li>
-<li>其作用：搜索引擎优化（SEO)，定义的页面使用语言，自动刷新并指向新的页面，实现页面转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口；</li>
-<li>meta属性（就两个）：<ul>
-<li>name属性：<ul>
-<li>用于描述网页与之对应的属性值为content,其中的内容便于搜索机器人查找和分类信息用；</li>
-<li>其语法格式：<pre><code>&lt;meta name=&quot;参数“ content=&quot;具体的参数值&quot;&gt;
-</code></pre></li>
-<li>name属性有以下几种参数：<ul>
-<li>Keywords，用来指定关键字<pre><code>&lt;meta name=&quot;keywords&quot; content=&quot;meta总结、html/meta、meta属性、meta跳转”&gt;
-</code></pre></li>
-<li>desription，网站内容描述</li>
-<li>robots,机器人向导</li>
-<li>author，标网页的作者</li>
-<li>generator，代表说明网站采用的什么软件制作</li>
-<li>COPYRIGHT,版权信息</li>
-<li>revisit-after,代表网站征文，7days代表7天</li>
-</ul>
-</li>
-<li>http-equiv,相当于文件头作用，可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content,其中的内容就是各个参数的变量值；<pre><code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;参数变量值”&gt;
-</code></pre><ul>
-<li>Expires，期限，设定的到期时间，一旦网页过期，呢额胆固醇服务器上重新传输。（必须使用GMT的时间格式化）</li>
-<li>Pragma（cache模式）<ul>
-<li>禁止浏览器从本地计算机的缓存中访问页面内容<pre><code>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;no-cache&quot;&gt;
-</code></pre><ul>
-<li>这样设计，说教将无法脱机浏览</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Refresh(刷新），自动刷新并指向新页面<pre><code>&lt;meta http-equiv=&quot;Refresh&quot;content=&quot;2;URL=http://www.haorooms.com&quot;&gt; //(注意后面的引号，分别在秒数的前面和网址的后面)
-</code></pre></li>
-<li>Sett-Cookie(cookie设定），如果网页过期，存盘的cookie将被删除<pre><code>&lt;meta http-equiv=&quot;Set-Cookie&quot;content=&quot;cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/&quot;&gt;
-</code></pre><ul>
-<li>必须使用GMT的时间格式</li>
-</ul>
-</li>
-<li>Window-target(显示窗口的设定），强制页面在当前窗口以独立页面显示<pre><code>&lt;meta http-equiv=&quot;Window-target&quot;content=&quot;_top&quot;&gt; 
-</code></pre><ul>
-<li>用来毕业后公开了我在框架里调用自己的页面</li>
-</ul>
-</li>
-<li>content-Type，设定显示字符集<pre><code>&lt;meta http-equiv=&quot;content-Type&quot;content=&quot;text/html;charset=gb2312&quot;&gt;
-</code></pre><ul>
-<li>meta标签的charset的信息参数如GB2312时，代表说明网站是采用的编码是简体中文；</li>
-<li>BIG5:繁体中文；</li>
-<li>iso-2022:日文；</li>
-<li>ks_c_5601:韩文；</li>
-<li>ISO-8859-1:英文；</li>
-<li>UTF-8:世界通用的语言编码；</li>
-</ul>
-</li>
-<li>content-Language,设定显示语言<pre><code>&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;/&gt;
-</code></pre></li>
-<li>Cache-Control，指定评语和响应遵循的缓存机制</li>
-<li>imagetollbar,指定是否显示图片工具栏，当为false娃给显示，当为true代表显示；</li>
-<li>Content-Script-Type,W3C网页规范，指明页面中脚本中的类型；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+        <h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a><meta>标签</h1><blockquote>
+<p>关于常在各类文档文件头部标签中出现的meta标签的知识点</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2015/03/23/meta_label/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2015/03/23/meta_label/" data-id="cj8b296370046x4qnexoq0gfb" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2015/03/23/meta_label/" data-id="cj8b296370046x4qnexoq0gfb" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -970,7 +605,7 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -980,7 +615,7 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -990,7 +625,7 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
@@ -1009,7 +644,7 @@ Adapter.run.......
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -1046,7 +681,7 @@ Adapter.run.......
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

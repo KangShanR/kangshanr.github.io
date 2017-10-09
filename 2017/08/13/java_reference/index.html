@@ -5,17 +5,17 @@
   
   <title>java底层之引用 | KangShan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现">
+  <meta name="description" content="直接引用与符号引用 JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现">
 <meta name="keywords" content="java,programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java底层之引用">
 <meta property="og:url" content="https://kangshanr.github.io/2017/08/13/java_reference/index.html">
 <meta property="og:site_name" content="KangShan">
-<meta property="og:description" content="java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现">
-<meta property="og:updated_time" content="2017-09-05T13:11:19.155Z">
+<meta property="og:description" content="直接引用与符号引用 JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现">
+<meta property="og:updated_time" content="2017-10-09T16:53:10.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java底层之引用">
-<meta name="twitter:description" content="java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现">
+<meta name="twitter:description" content="直接引用与符号引用 JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现">
 <link rel="publisher" href="kangshan9988@gmail.com">
   
     <link rel="alternate" href="/atom.xml" title="KangShan" type="application/atom+xml">
@@ -58,9 +58,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -95,7 +95,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="直接引用与符号引用"><a href="#直接引用与符号引用" class="headerlink" title="直接引用与符号引用"></a>直接引用与符号引用</h4><p><strong>JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。</strong></p>
+        <h1 id="直接引用与符号引用"><a href="#直接引用与符号引用" class="headerlink" title="直接引用与符号引用"></a>直接引用与符号引用</h1><blockquote>
+<p><strong>JVM运行类加载后， 在类的解析阶段，JVM会把类的二进制数据中的符号引用替换为直接引用。</strong><br>java的底层代码运行时，在栈内存里实现对堆内存中数据的引用，以及引用在跨平台中的实现</p>
+</blockquote>
+<a id="more"></a>
 <h4 id="符号引用：Symbolic-References"><a href="#符号引用：Symbolic-References" class="headerlink" title="符号引用：Symbolic References"></a>符号引用：Symbolic References</h4><ul>
 <li>以一组符号来描述 所引用的目标，而这个符号可以是任何形式的字面量，只要使用时可以无歧义定位到目标即可;</li>
 <li>存在的原因：在编译阶段，java类并不知道所引用类的实际地址，只能使用符号来表示类的地址。而且在不同JVM实现的内存地址也不尽相同，经过符号引用这一道工序，同一个类，其符号引用必然一致；</li>
@@ -119,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/08/13/java_reference/" data-id="cj8b29630003vx4qni8okxh2s" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/08/13/java_reference/" data-id="cj8b29630003vx4qni8okxh2s" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -131,7 +134,7 @@
 <nav id="article-nav">
   
     <a href="/2017/08/15/spring/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           spring框架的学习
@@ -141,7 +144,7 @@
   
   
     <a href="/2017/07/29/java_enum/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">java枚举</div>
     </a>
   
@@ -156,7 +159,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -166,7 +169,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -176,7 +179,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
@@ -195,7 +198,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -232,7 +235,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -258,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/06/13/xml/" data-id="cj8b2964i005qx4qnpfdshh45" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/06/13/xml/" data-id="cj8b2964i005qx4qnpfdshh45" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -296,222 +296,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="设计模式之代理模式"><a href="#设计模式之代理模式" class="headerlink" title="设计模式之代理模式"></a>设计模式之代理模式</h3><p><strong>简介：</strong></p>
+        <h2 id="设计模式之代理模式"><a href="#设计模式之代理模式" class="headerlink" title="设计模式之代理模式"></a>设计模式之代理模式</h2><p><strong>简介：</strong></p>
 <ul>
 <li>代理(Proxy)<strong>提供了对目标对象另外的访问方式</strong>;即<strong>通过代理对象访问目标对象</strong>。<strong>这样做的好处是:可以在目标对象实现的基础上,增强额外的功能操作,即扩展目标对象的功能.</strong></li>
 <li><em>这里使用到编程中的一个思想:不要随意去修改别人已经写好的代码或者方法,如果需改修改,可以通过代理的方式来扩展该方法</em></li>
 </ul>
-<hr>
-<p>下面就来简单介绍下代理模式的三种方式：</p>
-<h4 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h4><ul>
-<li>可以让代理类同时实现真正想的对象的类实现的接口，而在代理类中有一个真正类的属性，当想要这个真正类时，对上述属性判空，再实例化，这样通过代理类执行接口中的方法时就是执行的真正想要的类的方法了；</li>
-<li>简单地讲，代理就是将其他的类的各种实现方法，交由代理来实现。而要达到这种效果，就可以让代理与其他的类实现同一个接口，再在代理中实现接口方法中去实现这个类的方法。这也是代理的核心，一般代理中要注入一个代理对象，调用代理方法时，就对此对象初始化并调用其相关的方法；<ul>
-<li>定义接口：<pre><code>public interface Draw {
-    void draw(String name);
-}
-</code></pre></li>
-<li>实现类：<pre><code>public class RealDraw implements Draw {
-    @Override
-    public void draw(String name) {
-        System.out.println(name+&quot;.RealDraw...........&quot;);
-    }
-}
-</code></pre></li>
-<li>代理：<pre><code>public class ProxyDraw implements Draw {
-    RealDraw realDraw;
-    public ProxyDraw (RealDraw draw){
-        this.realDraw = draw;
-    }
-    @Override
-    public void draw(String name) {
-        realDraw.draw(name);
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    RealDraw realDraw = new RealDraw();
-    ProxyDraw proxyDraw = new ProxyDraw(realDraw);
-    proxyDraw.draw(&quot;test&quot;);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>test.RealDraw...........
-</code></pre></li>
-<li>静态代理的总结：<ul>
-<li>做到了代理的基本功能，不对所代理对象的更改实现对象的功能，也可以在代理中对功能进行扩展；</li>
-<li>局限在于：代理与被代理都得继承接口，耦合过高，扩展不便；</li>
-<li>也正因为有了静态代理的局限，所以才有下面的动态代理：</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><ul>
-<li>动态代理相对于静态代理的优势：<ul>
-<li>代理不用继承接口，代理由java内置的java.lang.reflect包中的Proxy类生成：<ul>
-<li>其中生成代理静态的方法：<code>static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler handler)</code>；</li>
-<li>此方法的三个参数：<ul>
-<li>loader：代理目标的类加载器；</li>
-<li>interfaces：代理目标实现的接口；</li>
-<li>handler：执行处理器，指调用此代理实现接口的处理器，此处理器必须实现InvocationHandler接口，并实现其<code>public Object invoke(Object proxy, Method method, Object[] args)</code>方法;</li>
-</ul>
-</li>
-<li>具体实现：<ul>
-<li>接口：<pre><code>public interface Draw {
-    void draw(String name);
-}
-</code></pre></li>
-<li>被代理的类：<pre><code>public class RealDraw implements Draw {
-    @Override
-    public void draw(String name) {
-        System.out.println(&quot;RealDraw.draw&quot;+name);
-    }
-}
-</code></pre></li>
-<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
-    Object target;
-    public ProxyDraw(Object target){
-        this.target = target;
-    }
-    /* 
-     * 获取代理实例，动态代理实现的核心
-     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
-     */
-    public Object getProxyIns() {
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args)
-                            throws Throwable {
-                        System.out.println(&quot;Porxy_start&quot;);
-                        Object returnValue = method.invoke(target, args);
-                        System.out.println(&quot;Porxy_end&quot;);
-                        return returnValue;
-                    }
-                });
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    //动态代理的实现
-    Draw realDraw = new RealDraw();
-    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
-    proxyDraw.draw(&quot;....test.end&quot;);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Porxy_start
-RealDraw.draw....testend
-Porxy_end
-</code></pre></li>
-</ul>
-</li>
-<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，具体参照匿名内部类。<ul>
-<li>匿名内部类所做的是创建了一个InvocationHandler接口的实例，这个实例的invoke()方法是用代理目标作为对象（将代理方法分发到这个代理对象上去）；</li>
-<li>Proxy.newProxyInstance()方法中指定了目标类的类加载器，目标执行的接口，方法调用时所用的方法调用处理器；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="cglib代理-子类代理"><a href="#cglib代理-子类代理" class="headerlink" title="cglib代理 /子类代理"></a>cglib代理 /子类代理</h3><ul>
-<li>此类型代理需要用到spring核心包推荐使用spring-core 3.2.5版本及以上；</li>
-<li>动态代理与静态代理都是向上抽取依赖，要求实现接口，而cglib代理则是通过目标对象子类来实现对目标对象功能的扩展；</li>
-<li>其实现方法：<ul>
-<li>引入的功能包能够动态地在内在中构造子类；</li>
-<li>cglib的强大在于高效生成代码，在运行期扩展java类与接口，spring赖以生存的AOP拦截的就是大量地使用了cglib的强大功能；</li>
-<li>cglib的底层：使用字节码处理框架ASM转换字节码并生成新的类（并没有弄的懂的地方，涉及JVM中内部结构，诸如：class文件的格式秘指令集）</li>
-</ul>
-</li>
-<li>注意：cglib的实现是依赖于代理的扩展子类，需要对代理目标进行扩展<ul>
-<li>也就是说代理类不能为final修辞；</li>
-<li>同时，目标对象的方法不能为final/static所修辞；</li>
-</ul>
-</li>
-<li>实现例子：<ul>
-<li>目标类：<pre><code>public class Target {
-    public void targetMethod(){
-        System.out.println(&quot;cglib.RealDraw.draw............&quot;);
-    }
-}
-</code></pre></li>
-<li>代理工厂类：<pre><code>public class ProxyFactory implements MethodInterceptor{
-    private Object target;
-    //构造函数中将目标确定
-    public ProxyFactory(Object obj){
-        this.target = obj;
-    }
-    @Override
-    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-        System.out.println(&quot;开始事务拦截。。。。。。。。&quot;);
-        Object result = method.invoke(target, args);
-        System.out.println(&quot;结束事务拦截。。。。。。。。&quot;);
-        return result ;
-    }
-    /**
-     * 获取代理的方法
-     * @return
-     */
-    Object getProxyIns(){
-        //增强工具对象
-        Enhancer en = new Enhancer();
-        //设置父类
-        en.setSuperclass(target.getClass());
-        //设置回调函数（本实例）
-        en.setCallback(this);
-        //创建子类
-        return en.create();
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    target.targetMethod();
-    target = (Target)new ProxyFactory(target).getProxyIns();
-    target.targetMethod();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>开始事务拦截。。。。。。。。
-cglib.RealDraw.draw............
-结束事务拦截。。。。。。。。
-</code></pre></li>
-<li>实现动态代理:新建一个Target2类，并测试将Target2实例传入代理工厂对象：<ul>
-<li>目标类Target2：<br>  public class Target2 {<pre><code>void targetMethod(){
-    System.out.println(&quot;Target2.target2Method...........&quot;);
-}
-</code></pre>  }</li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    Target target = new Target();
-    Target2 target2 = new Target2();
-    target2 = (Target2)new ProxyFactory(target2).getProxyIns();
-    target2.targetMethod();
-}
-</code></pre></li>
-<li>测试结果：<pre><code>开始事务拦截。。。。。。。。
-Target2.target2Method...........
-结束事务拦截。。。。。。。。
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>note:</strong></p>
-<ul>
-<li>静态代理所涉及到的知识点相对更容易理解；</li>
-<li>动态代理与子类代理都用到了类反射中的Method方法，其核心是利用类反射来实现将扩展的方法体加在指定目标的方法的前后；</li>
-<li>在Spring的AOP编程中:<ul>
-<li>如果加入容器的目标对象有实现接口,用JDK代理</li>
-<li>如果目标对象没有实现接口,用Cglib代理</li>
-</ul>
-</li>
-<li>参考博客：<a href="http://www.cnblogs.com/cenyu/p/6289209.html" title="三种代理模式" target="_blank" rel="external">岑宇-java的三种代理模式</a></li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/06/13/proxy_pattern/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/06/13/proxy_pattern/" data-id="cj8b2963c004dx4qn85ac346o" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/06/13/proxy_pattern/" data-id="cj8b2963c004dx4qn85ac346o" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
@@ -550,7 +348,8 @@ Target2.target2Method...........
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Java类的生命周期"><a href="#Java类的生命周期" class="headerlink" title="Java类的生命周期"></a>Java类的生命周期</h1><blockquote>
-<p>java作为一门面向对象的高级语言，类是其面向对象思想的重要一环，也是JVM在为Java程序提供运行环境时的重要因素。只有在类的生命周期中，类才能被使用，被实例化；<br>
+<p>java作为一门面向对象的高级语言，类是其面向对象思想的重要一环，也是JVM在为Java程序提供运行环境时的重要因素。只有在类的生命周期中，类才能被使用，被实例化；</p>
+</blockquote>
         
           <p class="article-more-link">
             <a href="/2017/05/29/java_class_lifecycle/#more">Read More</a>
@@ -559,7 +358,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/29/java_class_lifecycle/" data-id="cj8b2962n003bx4qnwu3hyegs" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/29/java_class_lifecycle/" data-id="cj8b2962n003bx4qnwu3hyegs" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -609,7 +408,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj8b2964z006ex4qn4d58209s" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/23/控制台数据库操作/" data-id="cj8b2964z006ex4qn4d58209s" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
@@ -658,7 +457,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj8b29627002kx4qn2673cl45" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/13/design_principle/" data-id="cj8b29627002kx4qn2673cl45" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -710,7 +509,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj8b296000008x4qnfkw8qd64" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/13/CSS_Chooser/" data-id="cj8b296000008x4qnfkw8qd64" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -749,12 +548,26 @@ Target2.target2Method...........
     <div class="article-entry" itemprop="articleBody">
       
         <p>#HTTP协议#</p>
+<blockquote>
 <ul>
-<li><p>概念：</p>
-<ul>
+<li>概念：<ul>
 <li>http：hyper text transfer protocol，超文本传协议，其设计之初的目的只是提供一种接收和发布html页面的方法；</li>
 <li>用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。</li>
-<li>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。<em>所谓无状态协议，是指这一次客户端的请求与上一次的请求无关。</em>
+<li>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。<em>所谓无状态协议，是指这一次客户端的请求与上一次的请求无关。</em></li>
+<li><strong>Http协议的主要特点：</strong><ul>
+<li>支持客户端/服务器模式（cs模式）；</li>
+<li><strong>简单快速：</strong>客户端向服务器发送请求服务时，只需传送请求方法与路径。<strong>常用的请求方法：GET、POST、HEAD、PUT、DELETE等；</strong></li>
+<li><strong>HTTP协议简单</strong>，这也便利HTTP服务器的程序规模小，通信速度快；</li>
+<li><strong>灵活</strong>，HTTP允许传输任意类型的数据对象，正在传输的类型由Content-Type加以标记；</li>
+<li><strong>无连接</strong>，限制每次连接只处理一个服务器处理完客户的请求，并收到客户的应答后，即断开连接。这样也更节省时间；</li>
+<li><strong>无状态：</strong>对于事务的处理没有记忆能力，这也意味着如果后续处理需要前面的信息，它必须重传</li>
+<li><strong>明文传输</strong>，不支持加密处理，所以在安全性方面是硬伤。目前解决这一安全问题的方法是使用HTTPS协议；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
         
           <p class="article-more-link">
             <a href="/2017/05/06/HTTP_protocol/#more">Read More</a>
@@ -763,7 +576,7 @@ Target2.target2Method...........
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/05/06/HTTP_protocol/" data-id="cj8b296130014x4qnvmmyp9o2" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/05/06/HTTP_protocol/" data-id="cj8b296130014x4qnvmmyp9o2" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/协议/">协议</a></li></ul>
@@ -801,191 +614,19 @@ Target2.target2Method...........
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="java内部类"><a href="#java内部类" class="headerlink" title="java内部类"></a>java内部类</h3><ul>
+        <h1 id="java内部类"><a href="#java内部类" class="headerlink" title="java内部类"></a>java内部类</h1><ul>
 <li>java的内部类指定义在类之中的类，这个类中的范围可以是是类成员也可以在局部方法中，还可以是作用域中；</li>
 <li>内部类只是在编译时的概念，在本质上，当经过编译后，外部类会生成outer.class文件，而其中的内部类会生成outer$inner.class类文件，也就是就算定义成内部类，其本质依然是个类；</li>
-<li>那么内部类有什么存在的必要呢？<ul>
-<li>内部类是外部类的内容，在内部类之外加上一层外部类，就意味着：<ul>
-<li>内部类可为public、default之外的访问修辞符所修辞，这一点能很大程度上区别开外部类；</li>
-<li>有了以上一点，那在类中定义内部类就会在很多时候有用了，比如：静态内部类的单例模式中，将单例通过静态内部私有类的方法来获取，这样利用外部其它的类不能访问这个私有的内部类而达到控制内部类的初始化类加载，这样只有在这个相关外部类中调用时才会调用到内部类，在这样一个单例模式中就实现了单例的懒加载；</li>
 </ul>
-</li>
-<li>在迭代器模式中，在迭代器容器中创建了个内部类：<pre><code>- 容器实现类：
-    public class Repository implements Container {
-        String elements[] = {&quot;kfc&quot;,&quot;jfk&quot;,&quot;mcd&quot;};
-        /**
-         * 返回内部类的对象，注意这儿的依赖倒置
-         */
-        @Override
-        public Iterator getIterator() {
-            return new DoIterator();
-        }
-        /**
-         * 内部类，实现迭代器接口
-         * @author Administrator
-         *
-         */
-        public class DoIterator implements Iterator{
-            int index;
-            /**
-             * 判定索引是否指向在集合之中，如果还在就返加true
-             */
-            @Override
-            public boolean hasNext() {
-                if(index &lt; elements.length)
-                    return true;
-                return false;
-            }
-            /**
-             * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
-             */
-            @Override
-            public Object next() {
-                if(this.hasNext()){
-                    Object obj = elements[index++];
-                    return obj;
-                }
-                return null;
-            }
-        }
-- 最后在外部其他的类中来构造一个此内部类：
-    - 先引入此内部类的包：`import designpatrern.iteratorpattern.Repository.DoIterator;`
-    - 先构造一个外部类的对象：`    Repository rep = new Repository();`
-    - 再来构造内部类对象：`DoIterator ite2 = rep.new DoIterator();`
-</code></pre><ul>
-<li>当这个内部类的修辞符为private时，这时在其他非相关的外部类中就不能导入此类，更名别说构造对象了；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="匿名内部类："><a href="#匿名内部类：" class="headerlink" title="匿名内部类："></a>匿名内部类：</h3><ul>
-<li>这种情况多数用于一个抽象的类或者接口想要生成一个对象，这时不得不用一个子类来实现其抽象方法或新产品才能实现，但如果这个子类只用一次的话，专门创建一个子类来装载时会造成系统资源的浪费，那么这时使用匿名内部类会更合理：<ul>
-<li>接口定义<br>  public interface Draw {<pre><code>void draw(String name);
-</code></pre>  }</li>
-<li>这时我们只想实现一次特殊的draw()方法，而且只用得到一次，如果创建一个类实现这个接口（或者抽象父类），就会造成系统资源的浪费，所以就使用匿名内部类实现：</li>
-<li>main方法中测试：<pre><code>public static void main(String[] args) {
-    Draw draw = new Draw(){
-        @Override
-        public void draw(String name) {
-            System.out.println(&quot;Draw.Draw....&quot;+name);
-        }
-    };
-    draw.draw(&quot;test&quot;);
-}
-</code></pre><ul>
-<li>测试结果：<pre><code>Draw.Draw....test
-</code></pre></li>
-<li>其中先用接口new一个对象出来，再在这个对象中创建一个匿名的内部类并实现其draw()方法，因为是匿名的类，所以只能看到其方法在对象体<code>{}</code>中。</li>
-<li>同时要实现这个匿名内部类的效果，不一定要在接口中或抽象类的抽象方法中，普通类的普通方法也一样可以实现这样的重写方法，再一次调用：<pre><code>//实现类的匿名内部类，这个类不一定抽象类方法也不一定是抽象方法，一样都可以实现
-ProxyDraw proxy = new ProxyDraw(draw){
-    @Override
-    public void draw(String name){
-        System.out.println(&quot;anonymity&quot;+name);
-    }
-};
-proxy.draw(&quot;&quot;);
-</code></pre><ul>
-<li>测试结果：<pre><code>anonymity
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在动态代理模式中，匿名内部类会有很好的体现，共具体实现：<ul>
-<li>接口：<pre><code>public interface Draw {
-    void draw(String name);
-}
-</code></pre></li>
-<li>被代理的类：<pre><code>public class RealDraw implements Draw {
-    @Override
-    public void draw(String name) {
-        System.out.println(&quot;RealDraw.draw&quot;+name);
-    }
-}
-</code></pre></li>
-<li>代理（使用了匿名内部类）：<pre><code>public class ProxyDraw {
-    Object target;
-    public ProxyDraw(Object target){
-        this.target = target;
-    }
-    /* 
-     * 获取代理实例
-     * @see designpatrern.dynamicproxy.Draw#draw(java.lang.String)
-     */
-    public Object getProxyIns() {
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args)
-                            throws Throwable {
-                        System.out.println(&quot;Porxy_start&quot;);
-                        Object returnValue = method.invoke(target, args);
-                        System.out.println(&quot;Porxy_end&quot;);
-                        return returnValue;
-                    }
-                });
-    }
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    //动态代理的实现
-    Draw realDraw = new RealDraw();
-    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
-    proxyDraw.draw(&quot;....test.end&quot;);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>Porxy_start
-RealDraw.draw....testend
-Porxy_end
-</code></pre></li>
-<li>上面代理的实现中，new一个代理实例的handler参数使用了匿名内部类，如果不使用匿名内部类，其实现过程：<ul>
-<li>将代理中匿名内部类的实现提取出来：<pre><code>public class InvokeHandler implements InvocationHandler {
-    //在构造函数中就注入要调用方法的对象
-    Object obj;
-    public InvokeHandler(Object obj){
-        this.obj = obj;
-    }
-    /* 
-     * 实现InvocationHandler接口（其中只有一个invoke方法）
-     */
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println(&quot;invoke.start....&quot;);
-        Object resultValue = method.invoke(obj, args);
-        System.out.println(&quot;invoke.end....&quot;);
-        return resultValue;
-    }
-}
-</code></pre></li>
-<li>而代理类中获取代理的方法就应该是：<pre><code>public Object getProxyIns2() {
-    return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
-            new InvokeHandler(this.target)); 
-}
-</code></pre></li>
-<li>测试：<pre><code>public static void main(String[] args) {
-    //动态代理的实现
-    Draw realDraw = new RealDraw();
-    Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns2();
-    proxyDraw.draw(&quot;....test.end&quot;);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>invoke.start....
-RealDraw.draw....test.end
-invoke.end....
-</code></pre></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/04/29/java_inner_class/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj8b2962v003px4qni5jcfsxo" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/java_inner_class/" data-id="cj8b2962v003px4qni5jcfsxo" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -1033,7 +674,7 @@ invoke.end....
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj8b29655006ox4qnzhhg6x78" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/29/项目开发流程（详细）/" data-id="cj8b29655006ox4qnzhhg6x78" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -1082,7 +723,7 @@ invoke.end....
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj8b29621002cx4qnccb4te3w" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj8b29621002cx4qnccb4te3w" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -1105,7 +746,7 @@ invoke.end....
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -1115,7 +756,7 @@ invoke.end....
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -1125,7 +766,7 @@ invoke.end....
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
@@ -1144,7 +785,7 @@ invoke.end....
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -1181,7 +822,7 @@ invoke.end....
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

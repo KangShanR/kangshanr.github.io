@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -156,7 +156,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj8b2960h000jx4qnvrxpkzyn" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj8b2960h000jx4qnvrxpkzyn" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -194,7 +194,7 @@ static String typeChar(char _char){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><ul>
+        <h1 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h1><ul>
 <li>在数字前直接加0x就可以使用，所用字符：<ul>
 <li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
 </ul>
@@ -224,7 +224,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj8b2962t003lx4qnrqm0ueqd" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj8b2962t003lx4qnrqm0ueqd" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -262,7 +262,10 @@ static String typeChar(char _char){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="HTTP状态码（HTTP-status-code"><a href="#HTTP状态码（HTTP-status-code" class="headerlink" title="HTTP状态码（HTTP status code)"></a>HTTP状态码（HTTP status code)</h3><p><strong>常见的4个HTTP的状态码：</strong></p>
+        <h1 id="HTTP状态码（HTTP-status-code"><a href="#HTTP状态码（HTTP-status-code" class="headerlink" title="HTTP状态码（HTTP status code)"></a>HTTP状态码（HTTP status code)</h1><blockquote>
+<p>关于HTTP协议使用过程中常遇到的状态码与其代表的意义</p>
+</blockquote>
+<p><strong>常见的4个HTTP的状态码：</strong></p>
 <ul>
 <li>200：请求成功</li>
 <li>301：资源被永久地转移到其他URL</li>
@@ -306,7 +309,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj8b296110011x4qn2jotxjjb" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj8b296110011x4qn2jotxjjb" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -344,17 +347,18 @@ static String typeChar(char _char){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h1><ul>
-<li><strong>概要：</strong>数据库目前有六大范式，但一般来说只满足前三大范式（3NF）即可。第一范式最基础，依次上推，每一层是下一层的基础；</li>
-<li><strong>第一范式：</strong>列的原子性，每一列都是不可分割的基本数据项，但这也根据实际使用过程中来，如果在使用数据过程中并没有使用到其原子数据，那么定义最原子性的数据就没有必要了；</li>
-<li><strong>第二范式：</strong>列的唯一性，要保证列的唯一性，就得在保证第一范式的基础上保证每一列属性完全依赖于主键。</li>
-<li><strong>第三范式：</strong>各属性不依赖于其它非主键属性，在保证前两范式的前提下，第三范式是为了保证数据的无重复性，将无关的属性单独创建一个表来实现多表而数据分明；</li>
-</ul>
-
+        <h1 id="数据库范式"><a href="#数据库范式" class="headerlink" title="数据库范式"></a>数据库范式</h1><blockquote>
+<p>数据库在设计过程中最基本的三个范式</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/01/database_normal_format/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/03/01/database_normal_format/" data-id="cj8b29623002gx4qn8ixcwefq" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/03/01/database_normal_format/" data-id="cj8b29623002gx4qn8ixcwefq" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -392,7 +396,7 @@ static String typeChar(char _char){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="访问修辞符"><a href="#访问修辞符" class="headerlink" title="访问修辞符"></a>访问修辞符</h3><ul>
+        <h1 id="访问修辞符"><a href="#访问修辞符" class="headerlink" title="访问修辞符"></a>访问修辞符</h1><ul>
 <li>java的访问修辞符包括了四个等级：Public,protected,(default/friendly),private;</li>
 <li>它们决定了所修辞的成员的被访问权限从高到低：<ul>
 <li>public:最高权限，项目中都可以访问；</li>
@@ -402,25 +406,15 @@ static String typeChar(char _char){
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
-<li>外部类只能被public和default两种修辞符，内部类可以有所有的访问修辞符；</li>
-<li>这儿涉及到内部类的知识点：<ul>
-<li>与外部类的区别：<ul>
-<li>内部类可以被各种访问修辞符修辞，这一点区别于外部类；</li>
-<li>当内部类的成员被声明为静态时，该内部类必须被声明为静态，这是另一点区别于外部类；</li>
-</ul>
-</li>
-<li>当内部类被声明为private私有时，只能在外部类中构造该内部类的对象。在迭代器模式中，让内部类实现迭代器接口，利用依赖倒置，获取到内部类（迭代器）对象用接口接收，从而实现在外部得到这个内部类。这也充分地体现了依赖于抽象而不依赖于具体，关闭了具体实现，只开放了接口；</li>
-<li>当内部类声明为其它可以在外部访问的类型时，在外部引入这个类后，要直接构造一个内部类的实例必须先构造一个相关的外部类的对象，利用这个外部类的对象来构造才能实现。迭代器模式中例子：</li>
-</ul>
-</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/01/31/java_modifier/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj8b2962r003ix4qnt0n25tfp" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj8b2962r003ix4qnt0n25tfp" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -458,23 +452,9 @@ static String typeChar(char _char){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a><br><a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" title="BlueLake使用教程" target="_blank" rel="external">使用blueLake的教程</a><br><a href="http://app.weibo.com/tool/weiboshow" title="新浪微博秀" target="_blank" rel="external">生成新浪微博秀；</a></p>
-<ul>
-<li>hexo generate<ul>
-<li>根据已提供的md文件资料生成静态网页，放在public文件夹中；</li>
-<li>hexo generate –watch<ul>
-<li>对比查看文件的改动，只有当文件改动被审查过才会执行generate命令生成静态网页；</li>
-</ul>
-</li>
-<li>hexo generate –deploy与hexo deploy –generate<ul>
-<li>两者效果一样都在generate后执行布置命令deploy</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>新建md文档：<code>hexo new [dir] filename</code></p>
-<ul>
-<li>使用这个命令生成md文档时，当指定其生成的目录为<code>_draft</code>时，
+        <h1 id="使用hexo在github上部署你的静态网页"><a href="#使用hexo在github上部署你的静态网页" class="headerlink" title="使用hexo在github上部署你的静态网页"></a>使用hexo在github上部署你的静态网页</h1><blockquote>
+<p>使用hexo与github搭建个人网站中的小点子<br>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a><br><a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" title="BlueLake使用教程" target="_blank" rel="external">使用blueLake的教程</a><br><a href="http://app.weibo.com/tool/weiboshow" title="新浪微博秀" target="_blank" rel="external">生成新浪微博秀；</a></p>
+</blockquote>
         
           <p class="article-more-link">
             <a href="/2017/01/23/hexo+github=website/#more">Read More</a>
@@ -483,7 +463,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj8b2962g0031x4qnla8ehiqh" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj8b2962g0031x4qnla8ehiqh" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -521,7 +501,8 @@ static String typeChar(char _char){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="正则表达式的使用"><a href="#正则表达式的使用" class="headerlink" title="正则表达式的使用"></a>正则表达式的使用</h3><ul>
+        <h3 id="正则表达式的使用"><a href="#正则表达式的使用" class="headerlink" title="正则表达式的使用"></a>正则表达式的使用</h3><blockquote>
+<ul>
 <li>对字符串进行验证<ul>
 <li>各个语言中提供专门的方法与接口来执行正则表达式（比如:Java中的boolean String.matches(String regex)将其作为一个参数,返回这个字符串是否匹配得上这个正则表达式）；</li>
 <li>正则表达式是对字符串进行逐个字符验证，从第一个字符开始，依次往后匹配，有一个不匹配就可以Over了跳出循环;</li>
@@ -529,200 +510,16 @@ static String typeChar(char _char){
 </ul>
 </li>
 </ul>
-<p><strong>#### 正则表达式中各个字符表达的意义： ####</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">元字符</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\</td>
-<td style="text-align:left">将下一个字符标记符、或一个向后引用、或一个八进制转义符。例如，“\n”匹配\n。“\n”匹配换行符。序列“\”匹配“\”而“(”则匹配“(”。即相当于多种编程语言中都有的“转义字符”的概念。</td>
-</tr>
-<tr>
-<td style="text-align:center">^</td>
-<td style="text-align:left">匹配输入字符串的开始位置。如果设置了RegExp对象的Multiline属性，^也匹配“\n”或“\r”之后的位置。</td>
-</tr>
-<tr>
-<td style="text-align:center">$</td>
-<td style="text-align:left">匹配输入字符串的结束位置。如果设置了RegExp对象的Multiline属性，$也匹配“\n”或“\r”之前的位置。</td>
-</tr>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:left">匹配前面的子表达式任意次。例如，zo<em>能匹配“z”，也能匹配“zo”以及“zoo”。</em>等价于o{0,}</td>
-</tr>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:left">匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}。</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:left">匹配前面的子表达式零次或一次。例如，“do(es)?”可以匹配“do”或“does”中的“do”。?等价于{0,1}。</td>
-</tr>
-<tr>
-<td style="text-align:center">{n}</td>
-<td style="text-align:left">n是一个非负整数。匹配确定的n次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o。</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,}</td>
-<td style="text-align:left">n是一个非负整数。至少匹配n次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”。</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,m}</td>
-<td style="text-align:left">m和n均为非负整数，其中n&lt;=m。最少匹配n次且最多匹配m次。例如，“o{1,3}”将匹配“fooooood”中的前三个o为一组，后三个o为一组。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:left">当该字符紧跟在任何一个其他限制符（*,+,?，{n}，{n,}，{n,m}）后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串“oooo”，“o+”将尽可能多的匹配“o”，得到结果[“oooo”]，而“o+?”将尽可能少的匹配“o”，得到结果[‘o’, ‘o’, ‘o’, ‘o’]</td>
-</tr>
-<tr>
-<td style="text-align:center">.点</td>
-<td style="text-align:left">匹配除“\r\n”之外的任何单个字符。要匹配包括“\r\n”在内的任何字符，请使用像“[\s\S]”的模式。</td>
-</tr>
-<tr>
-<td style="text-align:center">(pattern)</td>
-<td style="text-align:left">匹配pattern并获取这一匹配。所获取的匹配可以从产生的Matches集合得到，在VBScript中使用SubMatches集合，在JScript中则使用$0…$9属性。要匹配圆括号字符，请使用“(”或“)”。</td>
-</tr>
-<tr>
-<td style="text-align:center">[xyz]</td>
-<td style="text-align:left">字符集合。匹配所包含的任意一个字符。例如，“[abc]”可以匹配“plain”中的“a”。</td>
-</tr>
-<tr>
-<td style="text-align:center">[^xyz]</td>
-<td style="text-align:left">负值字符集合。匹配未包含的任意字符。例如，“[^abc]”可以匹配“plain”中的“plin”。</td>
-</tr>
-<tr>
-<td style="text-align:center">[a-z]</td>
-<td style="text-align:left">字符范围。匹配指定范围内的任意字符。例如，“[a-z]”可以匹配“a”到“z”范围内的任意小写字母字符。注意:只有连字符在字符组内部时,并且出现在两个字符之间时,才能表示字符的范围; 如果出字符组的开头,则只能表示连字符本身.</td>
-</tr>
-<tr>
-<td style="text-align:center">[^a-z]</td>
-<td style="text-align:left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，“[^a-z]”可以匹配任何不在“a”到“z”范围内的任意字符。</td>
-</tr>
-<tr>
-<td style="text-align:center">\b</td>
-<td style="text-align:left">匹配一个单词边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”。</td>
-</tr>
-<tr>
-<td style="text-align:center">\B</td>
-<td style="text-align:left">匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。</td>
-</tr>
-<tr>
-<td style="text-align:center">\cx</td>
-<td style="text-align:left">匹配由x指明的控制字符。例如，\cM匹配一个Control-M或回车符。x的值必须为A-Z或a-z之一。否则，将c视为一个原义的“c”字符。</td>
-</tr>
-<tr>
-<td style="text-align:center">\d</td>
-<td style="text-align:left">匹配一个数字字符。等价于[0-9]。grep 要加上-P，perl正则支持</td>
-</tr>
-<tr>
-<td style="text-align:center">\D</td>
-<td style="text-align:left">匹配一个非数字字符。等价于[^0-9]。grep要加上-P，perl正则支持</td>
-</tr>
-<tr>
-<td style="text-align:center">\f</td>
-<td style="text-align:left">匹配一个换页符。等价于\x0c和\cL。</td>
-</tr>
-<tr>
-<td style="text-align:center">\n</td>
-<td style="text-align:left">匹配一个换行符。等价于\x0a和\cJ。</td>
-</tr>
-<tr>
-<td style="text-align:center">\r</td>
-<td style="text-align:left">匹配一个回车符。等价于\x0d和\cM。</td>
-</tr>
-<tr>
-<td style="text-align:center">\s</td>
-<td style="text-align:left">匹配任何不可见字符，包括空格、制表符、换页符等等。等价于[ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td style="text-align:center">\S</td>
-<td style="text-align:left">匹配任何可见字符。等价于[^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td style="text-align:center">\t</td>
-<td style="text-align:left">匹配一个制表符。等价于\x09和\cI。</td>
-</tr>
-<tr>
-<td style="text-align:center">\v</td>
-<td style="text-align:left">匹配一个垂直制表符。等价于\x0b和\cK。</td>
-</tr>
-<tr>
-<td style="text-align:center">\w</td>
-<td style="text-align:left">匹配包括下划线的任何单词字符。类似但不等价于“[A-Za-z0-9_]”，这里的”单词”字符使用Unicode字符集。</td>
-</tr>
-<tr>
-<td style="text-align:center">\W</td>
-<td style="text-align:left">匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。</td>
-</tr>
-<tr>
-<td style="text-align:center">\xn</td>
-<td style="text-align:left">匹配n，其中n为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“\x41”匹配“A”。“\x041”则等价于“\x04&amp;1”。正则表达式中可以使用ASCII编码。</td>
-</tr>
-<tr>
-<td style="text-align:center">\num</td>
-<td style="text-align:left">匹配num，其中num是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。</td>
-</tr>
-<tr>
-<td style="text-align:center">\n</td>
-<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果\n之前至少n个获取的子表达式，则n为向后引用。否则，如果n为八进制数字（0-7），则n为一个八进制转义值。</td>
-</tr>
-<tr>
-<td style="text-align:center">\nm</td>
-<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果\nm之前至少有nm个获得子表达式，则nm为向后引用。如果\nm之前至少有n个获取，则n为一个后跟文字m的向后引用。如果前面的条件都不满足，若n和m均为八进制数字（0-7），则\nm将匹配八进制转义值nm。</td>
-</tr>
-<tr>
-<td style="text-align:center">\nml</td>
-<td style="text-align:left">如果n为八进制数字（0-7），且m和l均为八进制数字（0-7），则匹配八进制转义值nml。</td>
-</tr>
-<tr>
-<td style="text-align:center">\un</td>
-<td style="text-align:left">匹配n，其中n是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（&copy;）。</td>
-</tr>
-<tr>
-<td style="text-align:center">\p{P}</td>
-<td style="text-align:left">小写 p 是 property 的意思，表示 Unicode 属性，用于 Unicode 正表达式的前缀。中括号内的“P”表示Unicode 字符集七个字符属性之一：标点字符。其他六个属性：L：字母；M：标记符号（一般不会单独出现）；Z：分隔符（比如空格、换行等）；S：符号（比如数学符号、货币符号等）；N：数字（比如阿拉伯数字、罗马数字等）；C：其他字符。*注：此语法部分语言不支持，例：javascript。</td>
-</tr>
-<tr>
-<td style="text-align:center">\&lt;></td>
-<td style="text-align:left">匹配词（word）的开始（\&lt;）和结束（>）。例如正则表达式\<the\>能够匹配字符串”for the wise”中的”the”，但是不能匹配字符串”otherwise”中的”the”。注意：这个元字符不是所有的软件都支持的。</the\></td>
-</tr>
-<tr>
-<td style="text-align:center">( )</td>
-<td style="text-align:left">将( 和 ) 之间的表达式定义为“组”（group），并且将匹配这个表达式的字符保存到一个临时区域（一个正则表达式中最多可以保存9个），它们可以用 \1 到\9 的符号来引用。</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>/</code></td>
-<td style="text-align:left">将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him<code>/</code>her) 匹配”it belongs to him”和”it belongs to her”，但是不能匹配”it belongs to them.”。注意：这个元字符不是所有的软件都支持的。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
-</tr>
-<tr>
-<td style="text-align:center">(?:pattern)</td>
-<td style="text-align:left">非获取匹配，匹配pattern但不获取匹配结果，不进行存储供以后使用。这在使用或字符<code>(/)</code>来组合一个模式的各个部分时很有用。例如<code>industr(?:y/ies)</code>就是一个比<code>industry/industries</code>更简略的表达式。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
-</tr>
-<tr>
-<td style="text-align:center">(?=pattern)</td>
-<td style="text-align:left">非获取匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如，<code>Windows(?=95/98/NT/2000)</code>能匹配<code>Windows2000</code>中的“Windows”，但不能匹配“Windows3.1”中的<code>Windows</code>。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。(里面或符号<code>｜</code>会被编译成markdown的制表符，所以里面的<code>｜</code>都用了反斜杠<code>/</code>)</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><em>下面为了避免<code>｜</code>被markdown识别成制表符号换种格式：</em></p>
-<ul>
-<li><code>(?!pattern)</code>：    非获取匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如“Windows(?!95|98|NT|2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。</li>
-<li>(?&lt;=pattern)：    非获取匹配，反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?&lt;=95|98|NT|2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。</li>
-<li>(?&lt;!pattern)        非获取匹配，反向否定预查，与正向否定预查类似，只是方向相反。例如“(?&lt;!95|98|NT|2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。这个地方不正确，有问题此处用或任意一项都不能超过2位，如“(?&lt;!95|98|NT|20)Windows正确，“(?&lt;!95|980|NT|20)Windows 报错，若是单独使用则无限制，如(?&lt;!2000)Windows 正确匹配</li>
-<li>x|y        匹配x或y。例如，“z|food”能匹配“z”或“food”(此处请谨慎)。“[z|f]ood”则匹配“zood”或“food”或”zood”。</li>
-</ul>
-<hr>
-<p><strong>Note:</strong><a href="http://baike.baidu.com/link?url=AQRTFncrkkeq2AETf8iwcrZNAmWQ2BYslX1pArdFsX6L_Pdq8Z1d62qxJcFm93xDiPHBo2TQOz1orepDMZIiX2veYoC4dNlObqyQCZteR8FrZmqkD2x2ldWsPhe6HqZq_56FS3G3nVD6bef8LDdBHK" target="_blank" rel="external">参考文档</a></p>
-
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/13/regular_expression/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj8b2963f004gx4qnp1ay10sy" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj8b2963f004gx4qnp1ay10sy" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -815,7 +612,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj8b2960l000nx4qn2digp5zv" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj8b2960l000nx4qn2digp5zv" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -868,7 +665,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj8b2960o000px4qnb19i6a9v" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj8b2960o000px4qnb19i6a9v" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -925,7 +722,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj8b29608000cx4qn19uyrju8" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj8b29608000cx4qn19uyrju8" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -948,7 +745,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -958,7 +755,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -968,7 +765,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
@@ -987,7 +784,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -1024,7 +821,7 @@ static String typeChar(char _char){
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
