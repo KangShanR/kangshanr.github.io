@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,123 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/hex/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h1><ul>
+<li>在数字前直接加0x就可以使用，所用字符：<ul>
+<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
+</ul>
+</li>
+<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
+<li>eg:0xfa14</li>
+</ul>
+</li>
+<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
+<li>测试代码（java)：<pre><code>public static void main(String[] args) {
+    System.out.println(0xeeda);
+    System.out.println(0x0003);
+    System.out.println(0xa);
+    System.out.println(0xea);
+}
+</code></pre></li>
+<li>测试结果：<pre><code>978346
+3
+10
+234
+</code></pre></li>
+</ul>
+</li>
+<li>中文的unicode码的范围4e00-9fa5</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj8b2962t003lx4qnrqm0ueqd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-data_verify" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/data_verify/" class="article-date">
+  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/data_verify/">数据校验的存在与数据类型的关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><ul>
+<li>我们在观察ASCII码等计算机语言中发现：1Byte占8位，按理应该是256个字符才对，但我们使用时，常常发现一个字节来用的只有128个字符，这是为什么？<ul>
+<li>计算机在储存这些字符时会使用一位用来数据检验，当输出方与接收方对同一个字符的检验码一致时才说明数据没有被损坏是完整的，所以我们能用到的只有7位；</li>
+<li>数据校验是为保证数据的完整性，使用指定的算法计算出的检验值；</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/04/23/data_verify/" data-id="cj8b29621002cx4qnccb4te3w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-ASCII_code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -156,75 +273,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj8b2960h000jx4qnvrxpkzyn" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/23/hex/" class="article-date">
-  <time datetime="2017-04-23T07:02:43.000Z" itemprop="datePublished">2017-04-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/hex/">十六进制的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h1><ul>
-<li>在数字前直接加0x就可以使用，所用字符：<ul>
-<li>0，1，2，3，4，5，6，7，8，9，a,b,c,d,e,f</li>
-</ul>
-</li>
-<li>两个byte的字符共占16位，因此我们看到unicode 码时，表示字符常用4位的十六进制数字来表现：<ul>
-<li>eg:0xfa14</li>
-</ul>
-</li>
-<li>可直接用十六进制来表现整形数据，但我们在编程中习惯于用十进制，要使用十六进制时直接使用就是；<ul>
-<li>测试代码（java)：<pre><code>public static void main(String[] args) {
-    System.out.println(0xeeda);
-    System.out.println(0x0003);
-    System.out.println(0xa);
-    System.out.println(0xea);
-}
-</code></pre></li>
-<li>测试结果：<pre><code>978346
-3
-10
-234
-</code></pre></li>
-</ul>
-</li>
-<li>中文的unicode码的范围4e00-9fa5</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/23/hex/" data-id="cj8b2962t003lx4qnrqm0ueqd" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/04/23/ASCII_code/" data-id="cj8b2960h000jx4qnvrxpkzyn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -309,7 +358,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj8b296110011x4qn2jotxjjb" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/04/13/HTTP_status_code/" data-id="cj8b296110011x4qn2jotxjjb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -358,7 +407,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/03/01/database_normal_format/" data-id="cj8b29623002gx4qn8ixcwefq" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/03/01/database_normal_format/" data-id="cj8b29623002gx4qn8ixcwefq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -414,7 +463,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj8b2962r003ix4qnt0n25tfp" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj8b2962r003ix4qnt0n25tfp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -463,7 +512,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj8b2962g0031x4qnla8ehiqh" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj8b2962g0031x4qnla8ehiqh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -519,7 +568,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj8b2963f004gx4qnp1ay10sy" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj8b2963f004gx4qnp1ay10sy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -612,7 +661,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj8b2960l000nx4qn2digp5zv" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/31/Csharp_datastruture/" data-id="cj8b2960l000nx4qn2digp5zv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -665,64 +714,7 @@ static String typeChar(char _char){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj8b2960o000px4qnb19i6a9v" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Csharp_abstract_class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/23/Csharp_abstract_class/" class="article-date">
-  <time datetime="2016-12-23T07:02:43.000Z" itemprop="datePublished">2016-12-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/23/Csharp_abstract_class/">C#中的抽象类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="abstract-interface"><a href="#abstract-interface" class="headerlink" title="abstract_interface"></a>abstract_interface</h3><ul>
-<li>abstract 修饰符用于表示所修饰的类是不完整的，并且它只能用作基类。抽象类与非抽象类在以下方面是不同的： <ul>
-<li>抽象类不能直接实例化，并且对抽象类使用 new 运算符会在编译时错误；（虽然一些变量和值在编译时的类型可以是抽象的，但是这样的变量和值必须或者为null，或者含有对非抽象类的实例的引用（此非抽象类是从抽象类派生的））；</li>
-<li>允许（但不要求）抽象类包含抽象成员;</li>
-<li>抽象类不能被密封(因为密封类不能被继承）;</li>
-<li>当从抽象类派生非抽象类时，这些非抽象类必须具体实现所继承的所有抽象成员，从而重写那些抽象成员;</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li>与java相比，抽象类的特性都差不多；</li>
-<li>java中不存在密封类的说法，相对应的说法应该是final常量修辞符；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj8b29608000cx4qn19uyrju8" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/25/Csharp_datatype/" data-id="cj8b2960o000px4qnb19i6a9v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -745,7 +737,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -755,7 +747,7 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -765,9 +757,9 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 13.75px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 12.5px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.25px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -784,9 +776,13 @@ static String typeChar(char _char){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/10/18/newJobFifthDay/">工作第五天</a>
+          </li>
         
           <li>
             <a href="/2017/10/09/java_Collections_Framewore/">java集合框架</a>
@@ -804,10 +800,6 @@ static String typeChar(char _char){
             <a href="/2017/10/04/CommandPattern/">设计模式之命令模式</a>
           </li>
         
-          <li>
-            <a href="/2017/10/03/'gone with wind'_after_listened/">《乱世佳人》听后</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -821,7 +813,7 @@ static String typeChar(char _char){
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

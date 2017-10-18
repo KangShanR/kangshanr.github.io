@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kangshanr.github.io"></form>
@@ -68,6 +68,63 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Csharp_abstract_class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/23/Csharp_abstract_class/" class="article-date">
+  <time datetime="2016-12-23T07:02:43.000Z" itemprop="datePublished">2016-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/23/Csharp_abstract_class/">C#中的抽象类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="abstract-interface"><a href="#abstract-interface" class="headerlink" title="abstract_interface"></a>abstract_interface</h3><ul>
+<li>abstract 修饰符用于表示所修饰的类是不完整的，并且它只能用作基类。抽象类与非抽象类在以下方面是不同的： <ul>
+<li>抽象类不能直接实例化，并且对抽象类使用 new 运算符会在编译时错误；（虽然一些变量和值在编译时的类型可以是抽象的，但是这样的变量和值必须或者为null，或者含有对非抽象类的实例的引用（此非抽象类是从抽象类派生的））；</li>
+<li>允许（但不要求）抽象类包含抽象成员;</li>
+<li>抽象类不能被密封(因为密封类不能被继承）;</li>
+<li>当从抽象类派生非抽象类时，这些非抽象类必须具体实现所继承的所有抽象成员，从而重写那些抽象成员;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Note:</strong></p>
+<ul>
+<li>与java相比，抽象类的特性都差不多；</li>
+<li>java中不存在密封类的说法，相对应的说法应该是final常量修辞符；</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/12/23/Csharp_abstract_class/" data-id="cj8b29608000cx4qn19uyrju8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Csharp_object_lifecycle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -107,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/18/Csharp_object_lifecycle/" data-id="cj8b2960s000tx4qnx5nsk4ei" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/18/Csharp_object_lifecycle/" data-id="cj8b2960s000tx4qnx5nsk4ei" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
@@ -159,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/11/Csharp_access_modifiers/" data-id="cj8b2960b000ex4qnk6eg2icr" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/11/Csharp_access_modifiers/" data-id="cj8b2960b000ex4qnk6eg2icr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
@@ -254,7 +311,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/" data-id="cj8b2964s0064x4qn8hutsavv" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/" data-id="cj8b2964s0064x4qn8hutsavv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -357,60 +414,10 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/12/01/Csharp_class/" data-id="cj8b2960f000hx4qn5r45qlkx" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/12/01/Csharp_class/" data-id="cj8b2960f000hx4qn5r45qlkx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/some_tips_about_java/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/some_tips_about_java/">java编程中你不知道的一两点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Java中，你不知道的一两点</strong></p>
-<blockquote>
-<p>java初学者常常忘记的一些小知识点，记得这些点可能会在某个时候帮到你。</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2016/11/23/some_tips_about_java/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj8b2963p004ux4qn84h164ul" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -460,9 +467,59 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj8b2964m005tx4qniuiyuij5" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj8b2964m005tx4qniuiyuij5" class="article-share-link">Share</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/23/some_tips_about_java/" class="article-date">
+  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/23/some_tips_about_java/">java编程中你不知道的一两点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Java中，你不知道的一两点</strong></p>
+<blockquote>
+<p>java初学者常常忘记的一些小知识点，记得这些点可能会在某个时候帮到你。</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/23/some_tips_about_java/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj8b2963p004ux4qn84h164ul" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
     </footer>
   </div>
   
@@ -526,7 +583,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/09/12/Igot_meeting170912/" data-id="cj8b29619001cx4qn5d1eujil" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/09/12/Igot_meeting170912/" data-id="cj8b29619001cx4qn5d1eujil" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
@@ -574,7 +631,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj8b296420051x4qnrqp0hd09" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/08/20/springMVC/" data-id="cj8b296420051x4qnrqp0hd09" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -623,56 +680,10 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj8b2961c001gx4qnm2i50eqz" class="article-share-link">Partager</a>
+      <a data-url="https://kangshanr.github.io/2016/07/24/JDBC/" data-id="cj8b2961c001gx4qnm2i50eqz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DLL_file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/30/DLL_file/" class="article-date">
-  <time datetime="2016-06-30T07:02:43.000Z" itemprop="datePublished">2016-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/30/DLL_file/">dll文件的认识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="DLL动态链接库：Dymanic-Link-Library"><a href="#DLL动态链接库：Dymanic-Link-Library" class="headerlink" title="DLL动态链接库：Dymanic Link Library"></a>DLL动态链接库：Dymanic Link Library</h4><ul>
-<li>DLL是将程序相关的功能实现封装在一起放在指定目录（后缀名为.dll），程序运行时，再来动态链接起执行。这样就能达到多个程序共享同一个库文件，而减少程序安装大小；</li>
-<li>DLL文件与exe文件都是编译语言生成，但dll没有程序入口，所以dll不能独自执行；</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/06/30/DLL_file/" data-id="cj8b2960u000vx4qn2vfob0zy" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
 
     </footer>
   </div>
@@ -692,7 +703,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/job/">job</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/心得笔记/">心得笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/观影无感/">观影无感</a></li></ul>
     </div>
@@ -702,7 +713,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
@@ -712,9 +723,9 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 13.33px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 12.22px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.11px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 13.75px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 12.5px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.25px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -731,9 +742,13 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/10/18/newJobFifthDay/">工作第五天</a>
+          </li>
         
           <li>
             <a href="/2017/10/09/java_Collections_Framewore/">java集合框架</a>
@@ -751,10 +766,6 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
             <a href="/2017/10/04/CommandPattern/">设计模式之命令模式</a>
           </li>
         
-          <li>
-            <a href="/2017/10/03/'gone with wind'_after_listened/">《乱世佳人》听后</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -768,7 +779,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 KangShan<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
