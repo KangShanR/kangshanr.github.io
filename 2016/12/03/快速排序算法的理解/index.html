@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://kangshanr.github.io/2016/12/03/快速排序算法的理解/index.html">
 <meta property="og:site_name" content="KangShan">
 <meta property="og:description" content="用递归实现最高效的排序算法">
-<meta property="og:updated_time" content="2017-09-03T17:44:35.842Z">
+<meta property="og:updated_time" content="2017-10-26T12:08:53.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序算法">
 <meta name="twitter:description" content="用递归实现最高效的排序算法">
@@ -95,8 +95,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="今日所得"><a href="#今日所得" class="headerlink" title="今日所得"></a>今日所得</h4><ul>
-<li>今天复习了下快速排序（使用递归），据说是效率最高的一种排序算法（相比于冒泡排序、选择排序）；</li>
+        <h1 id="快速排序算法"><a href="#快速排序算法" class="headerlink" title="快速排序算法"></a>快速排序算法</h1><blockquote>
+<p>复习了之前学习C#时接触到的快速排序算法</p>
+</blockquote>
+<!-- TOC depthFrom:1 depthTo:3 withLinks:1 updateOnSave:1 orderedList:1 -->
+<ol>
+<li><a href="#快速排序算法">快速排序算法</a><ol>
+<li><a href="#今日所得">今日所得</a></li>
+</ol>
+</li>
+</ol>
+<!-- /TOC -->
+<h2 id="今日所得"><a href="#今日所得" class="headerlink" title="今日所得"></a>今日所得</h2><ul>
+<li>今天复习了下<strong>快速排序算法</strong>（使用递归），据说是效率最高的一种排序算法（相比于冒泡排序、选择排序）；</li>
 <li>之前学习C#时领教过，当想把这个算法迁移到java中来写一个时发现久了不练都手生了；</li>
 </ul>
 <ol>
@@ -108,46 +119,15 @@
 <li>再从最小索引元素开始往后找，找到这中间值大的元素，把这个元素值赋予给最大索引处的元素（找的过程不满足条件就把索引依次自增或自减）；</li>
 <li>依次这样后面往前找一趟，前面往后找一趟，直到最大与最小索引相等。这时把中间值赋予给这个索引，这样就完成了一次把数组分成两个部分，前面部分值比中间值小，后面部分比中间值大；</li>
 <li>这用上面一套流程对中间值两边的元素进行递归操作，递归缺口就是数组操作部分只有一个元素；</li>
-<li>代码：<pre><code>public int getPivotIndex(int[] arr, int minIndex, int maxIndex){
-    int pivot = arr[minIndex];
-    while (minIndex &lt; maxIndex) {
-        while (arr[maxIndex] &gt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            maxIndex--;
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        if(minIndex != maxIndex){
-            arr[minIndex] = arr[maxIndex];
-        }
-        while (arr[minIndex] &lt;= pivot &amp;&amp; minIndex &lt; maxIndex) {
-            minIndex++;
-        }
-        arr[maxIndex] = arr[minIndex];
-    }
-    arr[minIndex] = pivot;
-    return minIndex;
-}
- *二分法排序的流程 
- * @param arr
- * @param minIndex
- * @param maxIndex
- */
-public void dichotomySort(int[] arr, int minIndex, int maxIndex){
-    if(minIndex &lt; maxIndex){
-        int index = this.getPivotIndex(arr, minIndex, maxIndex);
-        dichotomySort(arr, minIndex, index - 1);
-        dichotomySort(arr, index + 1, maxIndex);
-    }else{
-        return;
-    }
-}
-</code></pre></li>
-</ol>
-</li>
-<li><p>二分法排序算法核心在于每一次查找把中间那一个值给定下来，并对中间值两边的数组分别再次排序,再对两边的数组分别进行同样的操作，直到不能再分割;</p>
+<li>代码：<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">getPivotIndex</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> minIndex, <span class="keyword">int</span> maxIndex)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> pivot = arr[minIndex];</div><div class="line">	<span class="keyword">while</span> (minIndex &lt; maxIndex) &#123;</div><div class="line">		<span class="keyword">while</span> (arr[maxIndex] &gt;= pivot &amp;&amp; minIndex &lt; maxIndex) &#123;</div><div class="line">			maxIndex--;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(minIndex != maxIndex)&#123;</div><div class="line">			arr[minIndex] = arr[maxIndex];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(minIndex != maxIndex)&#123;</div><div class="line">			arr[minIndex] = arr[maxIndex];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span> (arr[minIndex] &lt;= pivot &amp;&amp; minIndex &lt; maxIndex) &#123;</div><div class="line">			minIndex++;</div><div class="line">		&#125;</div><div class="line">		arr[maxIndex] = arr[minIndex];</div><div class="line">	&#125;</div><div class="line">	arr[minIndex] = pivot;</div><div class="line">	<span class="keyword">return</span> minIndex;</div><div class="line">&#125;</div><div class="line"> *二分法排序的流程</div><div class="line"> * <span class="meta">@param</span> arr</div><div class="line"> * <span class="meta">@param</span> minIndex</div><div class="line"> * <span class="meta">@param</span> maxIndex</div><div class="line"> */</div><div class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">dichotomySort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> minIndex, <span class="keyword">int</span> maxIndex)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(minIndex &lt; maxIndex)&#123;</div><div class="line">		<span class="keyword">int</span> index = <span class="keyword">this</span>.getPivotIndex(arr, minIndex, maxIndex);</div><div class="line">		dichotomySort(arr, minIndex, index - <span class="number">1</span>);</div><div class="line">		dichotomySort(arr, index + <span class="number">1</span>, maxIndex);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
+</li>
+<li><p>二分法排序算法核心在于每一次查找把中间那一个值给定下来，并对中间值两边的数组分别再次排序,再对两边的数组分别进行同样的操作，直到不能再分割；</p>
+</li>
+</ol>
+<hr>
+<p><em>note:</em> <strong>注意算法的流程</strong></p>
 
       
     </div>
@@ -211,7 +191,7 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 13.75px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 12.5px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.25px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 15px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 12.5px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.25px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -233,6 +213,14 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
       <ul>
         
           <li>
+            <a href="/2017/10/28/markdown-editSkill/">markdown 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/25/work-list-21071026/">work-list</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/18/newJobFifthDay/">工作第五天</a>
           </li>
         
@@ -242,14 +230,6 @@ public void dichotomySort(int[] arr, int minIndex, int maxIndex){
         
           <li>
             <a href="/2017/10/08/waiting_alone/">独自等待</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/05/after_wedding/">国庆节参加的婚礼</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/04/CommandPattern/">设计模式之命令模式</a>
           </li>
         
       </ul>
