@@ -69,6 +69,186 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java_modifier" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/31/java_modifier/" class="article-date">
+  <time datetime="2017-01-31T05:12:34.000Z" itemprop="datePublished">2017-01-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/31/java_modifier/">java访问修辞符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="访问修辞符"><a href="#访问修辞符" class="headerlink" title="访问修辞符"></a>访问修辞符</h1><ul>
+<li>java的访问修辞符包括了四个等级：Public,protected,(default/friendly),private;</li>
+<li>它们决定了所修辞的成员的被访问权限从高到低：<ul>
+<li>public:最高权限，项目中都可以访问；</li>
+<li>protected:受保护权限，只有在同包中或者在不同包的子类可以访问；</li>
+<li>default/friendly:默认的权限，不写出来。只有在同包中可以访问；</li>
+<li>private:私有权限，只有在同类中可以被访问，也就是在哪儿被声明就只有在哪儿可以被访问；</li>
+</ul>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/31/java_modifier/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/31/java_modifier/" data-id="cj8b2962r003ix4qnt0n25tfp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo+github=website" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/23/hexo+github=website/" class="article-date">
+  <time datetime="2017-01-22T18:04:38.000Z" itemprop="datePublished">2017-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/23/hexo+github=website/">hexo+github=your website</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:1 -->
+<ol>
+<li><a href="#使用hexo在github上部署你的静态网页-">使用hexo在github上部署你的静态网页 #</a><ol>
+<li><a href="#参考简介">参考简介</a></li>
+<li><a href="#hexo-命令使用">hexo 命令使用</a><ol>
+<li><a href="#hexo-generage-转换命令"><code>hexo generage</code> 转换命令</a></li>
+<li><a href="#hexo-new-dir-filename-新建-md-文档"><code>hexo new &lt;dir&gt; filename</code> 新建 md 文档</a></li>
+</ol>
+</li>
+<li><a href="#hexo-theme-模板设置">hexo-theme 模板设置</a><ol>
+<li><a href="#调整整个背景颜色与图片的信息">调整整个背景颜色与图片的信息</a></li>
+<li><a href="#实现-md-文档中插入图片不用提前将图片部署在网站上-md-编辑时插入本地图片">实现 md 文档中插入图片不用提前将图片部署在网站上（ md 编辑时插入本地图片）</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<!-- /TOC -->
+<h1 id="使用hexo在github上部署你的静态网页"><a href="#使用hexo在github上部署你的静态网页" class="headerlink" title="使用hexo在github上部署你的静态网页"></a>使用hexo在github上部署你的静态网页</h1><blockquote>
+<p>使用 hexo 工具在 github 搭建个人网站中的小点子</p>
+</blockquote>
+<h2 id="参考简介"><a href="#参考简介" class="headerlink" title="参考简介"></a>参考简介</h2><p>在学习使用hexo过程中的笔记，大部分来自于<a href="https://hexo.io/docs/" title="hexo Docs" target="_blank" rel="external">hexo官方网站</a>的文档介绍；<br>还有搭建网站过程中，参考了不少其他站主的文章：<a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" title="小茗" target="_blank" rel="external">小茗的搭建网站博客</a><br><a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" title="BlueLake使用教程" target="_blank" rel="external">使用blueLake的教程</a><br><a href="http://app.weibo.com/tool/weiboshow" title="新浪微博秀" target="_blank" rel="external">生成新浪微博秀；</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/23/hexo+github=website/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/23/hexo+github=website/" data-id="cj8b2962g0031x4qnla8ehiqh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-regular_expression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/13/regular_expression/" class="article-date">
+  <time datetime="2017-01-13T04:22:23.000Z" itemprop="datePublished">2017-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/13/regular_expression/">正则表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="正则表达式的使用"><a href="#正则表达式的使用" class="headerlink" title="正则表达式的使用"></a>正则表达式的使用</h3><blockquote>
+<ul>
+<li>对字符串进行验证<ul>
+<li>各个语言中提供专门的方法与接口来执行正则表达式（比如:Java中的boolean String.matches(String regex)将其作为一个参数,返回这个字符串是否匹配得上这个正则表达式）；</li>
+<li>正则表达式是对字符串进行逐个字符验证，从第一个字符开始，依次往后匹配，有一个不匹配就可以Over了跳出循环;</li>
+<li>必须从头判定到尾，如果没有对尾作出判定，表达式会将字符串当作另一个更短的字符串来判定则肯定不匹配；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/13/regular_expression/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kangshanr.github.io/2017/01/13/regular_expression/" data-id="cj8b2963f004gx4qnp1ay10sy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Csharp_datastruture" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/31/Csharp_datastruture/" class="article-date">
@@ -552,175 +732,6 @@
 
 
   
-    <article id="post-some_tips_about_java" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/some_tips_about_java/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">programming</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/some_tips_about_java/">java编程中你不知道的一两点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Java中，你不知道的一两点</strong></p>
-<blockquote>
-<p>java初学者常常忘记的一些小知识点，记得这些点可能会在某个时候帮到你。</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2016/11/23/some_tips_about_java/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/some_tips_about_java/" data-id="cj8b2963p004ux4qn84h164ul" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于“上火”的事" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/23/关于“上火”的事/" class="article-date">
-  <time datetime="2016-11-23T04:04:38.000Z" itemprop="datePublished">2016-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/关于“上火”的事/">关于“上火”的科学点子</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>所谓上火：<br>现代医学中并没有“上火”的概念。</p>
-</blockquote>
-<p>而现实生活中，我们的“火”是从哪儿上来的呢？</p>
-<ol>
-<li>吃辣上火：    <ol>
-<li>我们对吃辣上瘾的原因在于，辣椒刺激口腔内部产生类似灼烧的感觉，而这种感觉会促使大脑分泌多巴胺（多巴胺是人产生快感的来源，人类大部分上瘾行为都和它相关），从而上瘾；</li>
-<li>因为辣椒素残留口中，持续对口腔刺激。吃辣后，刷牙漱口就行了；</li>
-</ol>
-</li>
-<li>吃爪子上火：<ol>
-<li>瓜子本身并不会让你上火，让你不舒服的原因在于瓜子外壳上的脏东西。不信的话，下次吃瓜子只买瓜子仁吃，看会不会上火。</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/11/23/关于“上火”的事/" data-id="cj8b2964m005tx4qniuiyuij5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Igot_meeting170912" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/12/Igot_meeting170912/" class="article-date">
-  <time datetime="2016-09-12T14:04:38.000Z" itemprop="datePublished">2016-09-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/心得笔记/">心得笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/Igot_meeting170912/">得到例会</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="得到例会"><a href="#得到例会" class="headerlink" title="得到例会"></a>得到例会</h1><blockquote>
-<p>得到例会纪要</p>
-</blockquote>
-<h2 id="快刀："><a href="#快刀：" class="headerlink" title="快刀："></a>快刀：</h2><ul>
-<li>成长速度要快，把自己当一个产品来经营，要不停地迭代；</li>
-<li>善于发现问题并解决，自我驱动型的人；</li>
-</ul>
-<h2 id="脱不花："><a href="#脱不花：" class="headerlink" title="脱不花："></a>脱不花：</h2><ul>
-<li>简历要格式化，个性化简历，不是不好，但没必要；</li>
-<li>要有对象感，有目标感觉，你的简历要为HR着想；</li>
-<li>有对话能力来指引你的对象；</li>
-<li>面试时：<ul>
-<li>看几个问题：<ul>
-<li>一个人的社会化程度：能不能早到几分钟，把身上的汗给消了。</li>
-<li>沟通和表达的能力，表达：让自己的能力体现出来，表现出来。沟通：理解他人的传达信息的能力；</li>
-<li>结构化的表达，能有个123方面，就算各个结构并没有很准确地表达出来，但能把这样结构化点描述出来就已经在给对象省时间了；</li>
-<li>是不是终生学习者；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>进入后：<ul>
-<li>是不是牛逼得让人觉得这个公司少了你不行；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2016/09/12/Igot_meeting170912/" data-id="cj8b29619001cx4qn5d1eujil" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/igot/">igot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -744,7 +755,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASCII-Unicode-UTF-8/">ASCII,Unicode,UTF-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -754,7 +765,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 15px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 12.5px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.25px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
+      <a href="/tags/ASCII-Unicode-UTF-8/" style="font-size: 10px;">ASCII,Unicode,UTF-8</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.25px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTTP/" style="font-size: 11.25px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/database/" style="font-size: 12.5px;">database</a> <a href="/tags/essay/" style="font-size: 15px;">essay</a> <a href="/tags/framework/" style="font-size: 17.5px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 12.5px;">igot</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/job/" style="font-size: 12.5px;">job</a> <a href="/tags/jsp/" style="font-size: 11.25px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 13.75px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 11.25px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.25px;">tips</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.25px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 13.75px;">面向对象</a>
     </div>
   </div>
 
@@ -763,7 +774,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -776,23 +787,23 @@
       <ul>
         
           <li>
+            <a href="/2017/11/05/2017-11-05-pretty-lady-in-three-kingdoms/">pretty-lady-in-three-kingdoms</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/03/2017-11-03-wuzhihong-live/">WuZhiHong-live-如何修炼坚韧的生命力</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/29/2017-10-29-ascii-unicode-utf-8/">ASCII&amp;Unicode&amp;UTF-8</a>
+          </li>
+        
+          <li>
             <a href="/2017/10/28/markdown-editSkill/">markdown 笔记</a>
           </li>
         
           <li>
             <a href="/2017/10/25/work-list-21071026/">work-list</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/18/newJobFifthDay/">工作第五天</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/09/java_Collections_Framewore/">java集合框架</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/08/waiting_alone/">独自等待</a>
           </li>
         
       </ul>
