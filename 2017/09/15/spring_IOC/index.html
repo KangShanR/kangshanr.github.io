@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://kangshanr.github.io/2017/09/15/spring_IOC/index.html">
 <meta property="og:site_name" content="KangShan">
 <meta property="og:description" content="Spring的反向控制思想 Spring说到底就是一个轻量级的容器，让它来负责各个实例的生产、管理、维护，而这些实例的参数与依赖关系都交由spring的配置文件来设置；">
-<meta property="og:updated_time" content="2017-10-09T05:50:07.821Z">
+<meta property="og:updated_time" content="2017-11-22T11:32:15.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring反转控制的思想">
 <meta name="twitter:description" content="Spring的反向控制思想 Spring说到底就是一个轻量级的容器，让它来负责各个实例的生产、管理、维护，而这些实例的参数与依赖关系都交由spring的配置文件来设置；">
@@ -103,10 +103,10 @@
 <p>概念：也可以叫依赖注入（Dependency Injection)，是spring的核心思想。通俗地理解就是将原本正向流程走的程序让其反向执行。<br>之所以也叫依赖注入，是因为在实现反向控制的过程中是将原本要在后面实例化的属性提前注入到自己的实例中。这样<strong>把离散的组件在运行时组装到一块</strong>，实现程序流程在运行时组装，这样就可以很方便地添加功能，比如：拦截器；</p>
 </blockquote>
 <h4 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h4><ul>
-<li>当我们要通过DAO层的dao与Service层的service对象来实现分业务层的访问数据库操作：<ul>
-<li><strong>正向思维：</strong>是先实例化一个Service对象，再在这个Service对象中实例一个Dao对象来，在Service方法中执行这个Dao对象的方法来访问数据库。</li>
-<li><strong>反向控制：</strong>Service与Dao都抽象出各自的接口，而在Service实现类中约定一个Dao接口的属性，service方法中再来调用这个Dao的方法；而在Spring中，这个属性的实现就叫注入，而这个注入是通过spring配置文件中的bean实现，在Service的bean中，有一个<code>&lt;property&gt;</code>的标签，这个标签中配置相关的dao的bean。<ul>
-<li><em>在这个例子中，Service与Dao都是作为独立的组件出现，在编码阶段，既没有实例化对象出来也没有设置依赖关系，而把它交给Spring，<strong>由Spring在运行阶段实例化并组装</strong>。这种颠覆传统编码过程就叫反转控制。</em></li>
+<li>当我们要通过 DAO 层的 dao 与 Service 层的 service 对象来实现分业务层的访问数据库操作：<ul>
+<li><strong>正向思维</strong>：是先实例化一个 Service 对象，再在这个 Service 对象中实例一个 Dao 对象来，在 Service 方法中执行这个 Dao 对象的方法来访问数据库。</li>
+<li><strong>反向控制</strong>：Service 与 Dao 都抽象出各自的接口，而在 Service 实现类中约定一个 Dao 接口的属性，service 方法中再来调用这个 Dao 的方法；而在 Spring 中，这个属性的实现就叫注入，而这个注入是通过 spring 配置文件中的 bean 实现，在 Service 的 bean 中，有一个 <code>&lt;property&gt;</code> 的标签，这个标签中配置相关的 dao 的 bean 。<ul>
+<li><em>在这个例子中， Service 与 Dao 都是作为独立的组件出现，在编码阶段，既没有实例化对象出来也没有设置依赖关系，而把它交给Spring，<strong>由 Spring 在运行阶段实例化并组装</strong>。这种颠覆传统编码过程就叫反转控制。</em></li>
 </ul>
 </li>
 </ul>
@@ -115,13 +115,13 @@
 <hr>
 <p><strong>Note:</strong></p>
 <ul>
-<li>反向控制在spring配置中高频地被使用，在实现AOP面向切面编程中高频地使用到反向控制来将各个方法注入到其他的方法之前或之后；</li>
+<li>反向控制在 spring 配置中高频地被使用，在实现AOP面向切面编程中高频地使用到反向控制来将各个方法注入到其他的方法之前或之后；</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kangshanr.github.io/2017/09/15/spring_IOC/" data-id="cj8b296450055x4qnqulhbjc2" class="article-share-link">Share</a>
+      <a data-url="https://kangshanr.github.io/2017/09/15/spring_IOC/" data-id="cjab8ioty0070dkqnpx0uk89a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework/">framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
@@ -170,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASCII-Unicode-UTF-8/">ASCII,Unicode,UTF-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DC/">DC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Live/">Live</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebProject/">WebProject</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ASCII/">ASCII</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DC/">DC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Live/">Live</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UTF-8/">UTF-8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unicode/">Unicode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebProject/">WebProject</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/essay/">essay</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework/">framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iget/">iget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/igot/">igot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leadingEnd/">leadingEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/movie/">movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/programming/">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts2/">struts2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tale/">tale</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/刘润/">刘润</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/协议/">协议</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计原则/">设计原则</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
     </div>
   </div>
 
@@ -180,7 +180,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ASCII-Unicode-UTF-8/" style="font-size: 10px;">ASCII,Unicode,UTF-8</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DC/" style="font-size: 10px;">DC</a> <a href="/tags/HTTP/" style="font-size: 11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Live/" style="font-size: 10px;">Live</a> <a href="/tags/WebProject/" style="font-size: 10px;">WebProject</a> <a href="/tags/database/" style="font-size: 13px;">database</a> <a href="/tags/essay/" style="font-size: 17px;">essay</a> <a href="/tags/framework/" style="font-size: 18px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/igot/" style="font-size: 13px;">igot</a> <a href="/tags/java/" style="font-size: 19px;">java</a> <a href="/tags/job/" style="font-size: 13px;">job</a> <a href="/tags/jsp/" style="font-size: 11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 12px;">movie</a> <a href="/tags/mysql/" style="font-size: 11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11px;">tips</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 11px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14px;">面向对象</a>
+      <a href="/tags/ASCII/" style="font-size: 11.11px;">ASCII</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DC/" style="font-size: 10px;">DC</a> <a href="/tags/HTTP/" style="font-size: 11.11px;">HTTP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Live/" style="font-size: 10px;">Live</a> <a href="/tags/UTF-8/" style="font-size: 10px;">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/WebProject/" style="font-size: 10px;">WebProject</a> <a href="/tags/database/" style="font-size: 13.33px;">database</a> <a href="/tags/essay/" style="font-size: 16.67px;">essay</a> <a href="/tags/framework/" style="font-size: 17.78px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/iget/" style="font-size: 10px;">iget</a> <a href="/tags/igot/" style="font-size: 13.33px;">igot</a> <a href="/tags/java/" style="font-size: 18.89px;">java</a> <a href="/tags/job/" style="font-size: 13.33px;">job</a> <a href="/tags/jsp/" style="font-size: 11.11px;">jsp</a> <a href="/tags/leadingEnd/" style="font-size: 14.44px;">leadingEnd</a> <a href="/tags/movie/" style="font-size: 12.22px;">movie</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/programming/" style="font-size: 20px;">programming</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/tale/" style="font-size: 10px;">tale</a> <a href="/tags/tips/" style="font-size: 11.11px;">tips</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/刘润/" style="font-size: 10px;">刘润</a> <a href="/tags/协议/" style="font-size: 10px;">协议</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 11.11px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 11.11px;">经济学</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 15.56px;">设计模式</a> <a href="/tags/面向对象/" style="font-size: 14.44px;">面向对象</a>
     </div>
   </div>
 
@@ -202,6 +202,10 @@
       <ul>
         
           <li>
+            <a href="/2017/11/22/2017-11-22-iget-live-liurun/">IGet-Live-LiuRun</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/18/2017-11-18-impression-of-justiceleague/">Impression of JusticeLeague</a>
           </li>
         
@@ -215,10 +219,6 @@
         
           <li>
             <a href="/2017/11/14/2017-11-14-iget-live-xuezhaofeng/">IGet-Live-XueZhaoFeng</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/14/2017-11-14-真诚才是唯一的答案/">真诚才是唯一的答案</a>
           </li>
         
       </ul>
