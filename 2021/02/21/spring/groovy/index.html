@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2021-02-21</span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#groovy"><span class="toc-text">groovy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#groovy-%E4%B8%8E-java-%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84"><span class="toc-text">groovy 与 java 不同之处</span></a></li></ol></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="groovy"><a href="#groovy" class="headerlink" title="groovy"></a>groovy</h1><p><a target="_blank" rel="noopener" href="https://groovy-lang.org/differences.html">reference</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>groovy 基于 JVM 运行，同样需要编译，但编译后与 java 编译后不一样。</p>
+<h3 id="groovy-与-java-不同之处"><a href="#groovy-与-java-不同之处" class="headerlink" title="groovy 与 java 不同之处"></a>groovy 与 java 不同之处</h3><ol>
+<li>groovy 不用显式 import 包；</li>
+<li>groovy 方法调用在运行时决定变量类型，而 java 是静态信息类型，在编译时根据其定义的类型决定方法调用。</li>
+<li>数组初始化与闭包<ol>
+<li>groovy 数组初始化： <code>new int[] ints = [1,2,3];</code></li>
+<li>java 数组初始化： <code>new int[] ints = &#123;1,2,3&#125;;</code></li>
+<li>在 groovy 中使用大括号是闭包：<code>Runnable r = &#123;println &quot;hello&quot;&#125;</code><ol>
+<li>groovy 取代 java8 中的 lambda 的就是闭包。</li>
+<li>java lambda expression: ``Runnable b = () -&gt; System.out.println(“run”);`</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>to be continued</li>
+</ol>
+
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2021/02/21/spring/filter/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/02/21/java/bridge%20method/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

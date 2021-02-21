@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/04/15/spring/Resources/">Resources in Spring</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-04-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="1-Resources-in-Spring"><a href="#1-Resources-in-Spring" class="headerlink" title="1. Resources in Spring"></a>1. Resources in Spring</h1><!-- TOC -->
+
+<ul>
+<li><a href="#1-resources-in-spring">1. Resources in Spring</a><ul>
+<li><a href="#11-%E8%B5%84%E6%BA%90%E5%88%86%E7%B1%BB%E5%86%85%E7%BD%AE%E7%9A%84-resource-%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0">1.1. 资源分类（内置的 Resource 接口实现）</a></li>
+<li><a href="#12-resourceloader">1.2. ResourceLoader</a></li>
+<li><a href="#13-application-contexts-and-resource-paths">1.3. Application Contexts and Resource Paths</a><ul>
+<li><a href="#131-constructing-a-application-contexts">1.3.1. Constructing a Application Contexts</a><ul>
+<li><a href="#1311-%E5%88%9B%E5%BB%BA-classpathxmlapplicationcontext-%E5%AE%9E%E4%BE%8B%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F">1.3.1.1. 创建 ClassPathXmlApplicationContext 实例快捷方式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#14-%E5%8D%A0%E4%BD%8D%E7%AC%A6">1.4. 占位符</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#resources">Spring 中的资源</a></p>
+<h2 id="1-1-资源分类（内置的-Resource-接口实现）"><a href="#1-1-资源分类（内置的-Resource-接口实现）" class="headerlink" title="1.1. 资源分类（内置的 Resource 接口实现）"></a>1.1. 资源分类（内置的 Resource 接口实现）</h2><ul>
+<li>UrlResource</li>
+<li>包装一个 <code>java.net.URL</code> 可以访问任何一个能通过 URL 访问的对象。</li>
+<li>所有的 URL 都有一个相应的 String 标明其路径。不同的前缀表示不同的 URL 类型。<ul>
+<li><code>file:</code> 表示文件系统路径</li>
+<li><code>http:</code> 表示通过 HTTP 协议访问的资源</li>
+<li><code>ftp:</code> 通过 ftp 访问的资源</li>
+</ul>
+</li>
+<li>ClassPathResource</li>
+<li>FileSystemResource</li>
+<li>ServletContextResource</li>
+<li>InputStreamResource</li>
+<li>ByteArrayResource</li>
+</ul>
+<h2 id="1-2-ResourceLoader"><a href="#1-2-ResourceLoader" class="headerlink" title="1.2. ResourceLoader"></a>1.2. ResourceLoader</h2><ul>
+<li>通过 String path 获取资源。会根据 path 前缀的不同来获取到不同类型的资源。<ul>
+<li><code>classpath:</code> 从 classpath 中加载</li>
+<li><code>file:</code> 从文件系统中加载一个 URL</li>
+<li><code>http:</code> 加载一个远程连接 URL</li>
+<li>(none): 根据 ApplicationContext 决定</li>
+</ul>
+</li>
+<li>ApplicationContext 本身有实现此接口，所有当有 bean 实现了 ResourceLoaderAware 接口可以使用 context 作为 loader 。</li>
+<li>推荐自注册一个 ResourceLoader ，直接使用 context 会将整个 context 耦合到 ResourceLoader 。</li>
+<li><code>@AutoWired</code> 注解可直接注册一个 ResourceLoader</li>
+</ul>
+<h2 id="1-3-Application-Contexts-and-Resource-Paths"><a href="#1-3-Application-Contexts-and-Resource-Paths" class="headerlink" title="1.3. Application Contexts and Resource Paths"></a>1.3. Application Contexts and Resource Paths</h2><h3 id="1-3-1-Constructing-a-Application-Contexts"><a href="#1-3-1-Constructing-a-Application-Contexts" class="headerlink" title="1.3.1. Constructing a Application Contexts"></a>1.3.1. Constructing a Application Contexts</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ctx = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;conf/appContext.xml&quot;</span>);</span><br><span class="line">ApplicationContext ctx =<span class="keyword">new</span> FileSystemXmlApplicationContext(<span class="string">&quot;conf/appContext.xml&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-1-1-创建-ClassPathXmlApplicationContext-实例快捷方式"><a href="#1-3-1-1-创建-ClassPathXmlApplicationContext-实例快捷方式" class="headerlink" title="1.3.1.1. 创建 ClassPathXmlApplicationContext 实例快捷方式"></a>1.3.1.1. 创建 ClassPathXmlApplicationContext 实例快捷方式</h4><p>当配置文件与某一个 java 文件在同一个路径中，可以使用 java class 文件的路径信息获取相应的文件信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ctx = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="keyword">new</span> String[] &#123;<span class="string">&quot;services.xml&quot;</span>, <span class="string">&quot;daos.xml&quot;</span>&#125;, MessengerService.class);</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-占位符"><a href="#1-4-占位符" class="headerlink" title="1.4. 占位符"></a>1.4. 占位符</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#resources-implementations">reference</a></p>
+<ul>
+<li>本质上使用 ClassLoader.getResource() 加载资源。</li>
+<li><code>classpath:*</code> 与 Ant-Style patterns 连用<ul>
+<li>如果目标文件没有在文件系统中，只有在有至少一个根目录时才会稳定地查找到文件（反例： <code>classpath*:*.xml</code>）。</li>
+<li>当有多个 classloader location 时，使用 <code>classpath:</code> 前缀会导致只有一个 class loader getResource() 时会正确查找，解决方案： 使用 <code>classpath*:</code> 为前缀</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/04/15/spring/Validation_databinding_typeConversion/">Spring Validating, Data Binding and Type Conversion</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-04-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="1-Validating-amp-Data-Binding-and-Type-Conversion"><a href="#1-Validating-amp-Data-Binding-and-Type-Conversion" class="headerlink" title="1. Validating &amp; Data Binding and Type Conversion"></a>1. Validating &amp; Data Binding and Type Conversion</h1><!-- TOC -->
+
+<ul>
+<li><a href="#1-validating--data-binding-and-type-conversion">1. Validating &amp; Data Binding and Type Conversion</a><ul>
+<li><a href="#11-validation-on-springs-validator-interface">1.1. Validation on Spring’s Validator Interface</a><ul>
+<li><a href="#111-configuring-a-bean-validation-provider">1.1.1. Configuring a Bean Validation Provider</a></li>
+<li><a href="#112-resolving-codes-to-error-messages">1.1.2. Resolving Codes to Error Messages</a></li>
+</ul>
+</li>
+<li><a href="#12-bean-manipulation-and-the-beanwrapper">1.2. Bean Manipulation and the <code>BeanWrapper</code></a><ul>
+<li><a href="#121-built-in-propertyeditor-implements">1.2.1. Built-in <code>PropertyEditor</code> Implements</a><ul>
+<li><a href="#1211-spring-%E5%86%85%E7%BD%AE%E7%9A%84-propertyeditor-%E5%AE%9E%E7%8E%B0">1.2.1.1. Spring 内置的 <code>PropertyEditor</code> 实现</a></li>
+<li><a href="#1212-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%AE%9A%E4%B9%89-propertyeditor">1.2.1.2. 注册自定义 <code>PropertyEditor</code></a><ul>
+<li><a href="#12121-%E4%BD%BF%E7%94%A8-propertyeditorregistrar">1.2.1.2.1. 使用 <code>PropertyEditorRegistrar</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#13-spring-type-conversion">1.3. Spring Type Conversion</a><ul>
+<li><a href="#131-converter-spi">1.3.1. Converter SPI</a></li>
+<li><a href="#132-converterfactory">1.3.2. ConverterFactory</a></li>
+<li><a href="#133-genericconverter">1.3.3. GenericConverter</a></li>
+<li><a href="#134-conditionalgenericconverter">1.3.4. ConditionalGenericConverter</a></li>
+<li><a href="#135-formatting">1.3.5. Formatting</a></li>
+<li><a href="#136-the-conversionservice-api">1.3.6. The <code>ConversionService</code> API</a></li>
+<li><a href="#137-%E9%85%8D%E7%BD%AE-conversionservice">1.3.7. 配置 <code>ConversionService</code></a></li>
+</ul>
+</li>
+<li><a href="#14-spring-field-formatting">1.4. Spring Field Formatting</a><ul>
+<li><a href="#141-%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8-formatting">1.4.1. 注解驱动 Formatting</a></li>
+<li><a href="#142-%E6%8B%93%E5%B1%95-formatting-%E6%B3%A8%E5%86%8C">1.4.2. 拓展 Formatting 注册</a></li>
+</ul>
+</li>
+<li><a href="#15-spring-mvc-%E4%B8%AD%E9%85%8D%E7%BD%AE%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84-converter">1.5. Spring MVC 中配置序列化与反序列化的 Converter</a><ul>
+<li><a href="#151-%E5%BA%8F%E5%88%97%E5%8C%96%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE">1.5.1. 序列化时间类型数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation">spring reference</a></p>
+<p>Spring 中的 数据验证、数据绑定、类型转换。</p>
+<h2 id="1-1-Validation-on-Spring’s-Validator-Interface"><a href="#1-1-Validation-on-Spring’s-Validator-Interface" class="headerlink" title="1.1. Validation on Spring’s Validator Interface"></a>1.1. Validation on Spring’s Validator Interface</h2><ul>
+<li>实现接口 Validator ，定义验证各个 POJO 的代码。</li>
+<li>结合 `ValidationUtils 使用</li>
+</ul>
+<h3 id="1-1-1-Configuring-a-Bean-Validation-Provider"><a href="#1-1-1-Configuring-a-Bean-Validation-Provider" class="headerlink" title="1.1.1. Configuring a Bean Validation Provider"></a>1.1.1. Configuring a Bean Validation Provider</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation-beanvalidation-overview">reference</a></p>
+<ul>
+<li><p><code>LocalValidatorFactoryBean</code> 继承了 ValidatorFactory 和 Validator 两个接口，将其注册为一个 Bean。</p>
+</li>
+<li><p>在需要使用验证的 Bean 中注入 Validator 即可。</p>
+</li>
+<li><p>使用 <code>@Constraint</code> 自定义约束，再使用 <code>ConstraintValidator</code> 实现约束行为。</p>
+</li>
+<li><p>Spring 驱动方法验证</p>
+<ul>
+<li><p>整合方法验证直接将 <code>MethodValidationPostProcessor</code> 注册到容器中</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> MethodValidationPostProcessor <span class="title">validationPostProcessor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MethodValidationPostProcessor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目标类必须使用 Spring 的 <code>@Validated</code> 注解，同时目标类依赖 AOP 代理，否则不能正常工作。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-2-Resolving-Codes-to-Error-Messages"><a href="#1-1-2-Resolving-Codes-to-Error-Messages" class="headerlink" title="1.1.2. Resolving Codes to Error Messages"></a>1.1.2. Resolving Codes to Error Messages</h3><ul>
+<li>如果需要使用 <code>MessageSource</code> 输出错误信息，可以使用在拒绝字段时提供的 error code。</li>
+<li><code>MessageCodesResolver</code> 决定 <code>Error</code> 注册哪个 error code 。</li>
+<li>默认解析器 <code>DefaultMessageCodesResolver</code> 不仅注册 reject 时提供的 message 与 code，也包括传递的字段名。</li>
+</ul>
+<h2 id="1-2-Bean-Manipulation-and-the-BeanWrapper"><a href="#1-2-Bean-Manipulation-and-the-BeanWrapper" class="headerlink" title="1.2. Bean Manipulation and the BeanWrapper"></a>1.2. Bean Manipulation and the <code>BeanWrapper</code></h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation">reference</a></p>
+<ul>
+<li><p>Spring 定义一个 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/beans/package-summary.html">bean</a> 的原则：一个类有默认的构造器，对于其属性要有其 setter 与 getter 。</p>
+</li>
+<li><p>beans package 中重要的接口 <code>BeanWrapper</code> 提供了访问设置 bean 各种属性的功能。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">BeanWrapper company = <span class="keyword">new</span> BeanWrapperImpl(<span class="keyword">new</span> Company());</span><br><span class="line"><span class="comment">// setting the company name..</span></span><br><span class="line">company.setPropertyValue(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Some Company Inc.&quot;</span>);</span><br><span class="line"><span class="comment">// ... can also be done like this:</span></span><br><span class="line">PropertyValue value = <span class="keyword">new</span> PropertyValue(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Some Company Inc.&quot;</span>);</span><br><span class="line">company.setPropertyValue(value);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ok, let&#x27;s create the director and tie it to the company:</span></span><br><span class="line">BeanWrapper jim = <span class="keyword">new</span> BeanWrapperImpl(<span class="keyword">new</span> Employee());</span><br><span class="line">jim.setPropertyValue(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Jim Stravinsky&quot;</span>);</span><br><span class="line">company.setPropertyValue(<span class="string">&quot;managingDirector&quot;</span>, jim.getWrappedInstance());</span><br><span class="line"></span><br><span class="line"><span class="comment">// retrieving the salary of the managingDirector through the company</span></span><br><span class="line">Float salary = (Float) company.getPropertyValue(<span class="string">&quot;managingDirector.salary&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="1-2-1-Built-in-PropertyEditor-Implements"><a href="#1-2-1-Built-in-PropertyEditor-Implements" class="headerlink" title="1.2.1. Built-in PropertyEditor Implements"></a>1.2.1. Built-in <code>PropertyEditor</code> Implements</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation">reference</a></p>
+<ul>
+<li>Spring 使用 <code>PropertyEditor</code> 的概念来完成 <code>Object</code> 与 <code>String</code> 之间的转换。</li>
+<li>常用使用场景：<ul>
+<li>给 bean 设置 properties。在 xml 给 bean 配置了 class property ，使用 <code>ClassEditor</code> 将 String 转成 Class 对象。</li>
+<li>在 Spring MVC 中使用 <code>PropertyEditor</code> 解析 HTTP 请求参数（可手动绑定 <code>CommandController</code> 所有子类）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-1-1-Spring-内置的-PropertyEditor-实现"><a href="#1-2-1-1-Spring-内置的-PropertyEditor-实现" class="headerlink" title="1.2.1.1. Spring 内置的 PropertyEditor 实现"></a>1.2.1.1. Spring 内置的 <code>PropertyEditor</code> 实现</h4><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation">reference</a></p>
+<p>其中有默认注册为 <code>BeanWrapperImpl</code> ，Spring 将自动使用这些组件实现 String 与 各个 type 的转换。</p>
+<h4 id="1-2-1-2-注册自定义-PropertyEditor"><a href="#1-2-1-2-注册自定义-PropertyEditor" class="headerlink" title="1.2.1.2. 注册自定义 PropertyEditor"></a>1.2.1.2. 注册自定义 <code>PropertyEditor</code></h4><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#validation">reference</a></p>
+<p>两种注册方式：</p>
+<ol>
+<li>当有获取到 BeanFactory reference 时，使用 ConfigurableBeanFactory 其 <code>registerCustomEditor()</code> 方法将自定义的 PropertyEditor 注册进来（不推荐）。</li>
+<li>使用名为 <code>CustomEditorConfigurer</code> 的 bean factory post-processor，可使用注册 bean 方式注册，可设置其内置属性。</li>
+</ol>
+<ul>
+<li><p>实现一个 PropertyEditor</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExoticTypeEditor</span> <span class="keyword">extends</span> <span class="title">PropertyEditorSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAsText</span><span class="params">(String text)</span> </span>&#123;</span><br><span class="line">        setValue(<span class="keyword">new</span> ExoticType(text.toUpperCase()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 editor 注册到配置器中</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.beans.factory.config.CustomEditorConfigurer&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;customEditors&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;example.ExoticType&quot;</span> <span class="attr">value</span>=<span class="string">&quot;example.ExoticTypeEditor&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="1-2-1-2-1-使用-PropertyEditorRegistrar"><a href="#1-2-1-2-1-使用-PropertyEditorRegistrar" class="headerlink" title="1.2.1.2.1. 使用 PropertyEditorRegistrar"></a>1.2.1.2.1. 使用 <code>PropertyEditorRegistrar</code></h5><ul>
+<li>在不同场景需要使用同一系列的 editor 时更适合此注册器。</li>
+<li>与接口 <code>CustomEditorConfigurer</code> 连用，将 PropertyEditorRegistrar 实例注册到 CustomerEditorConfigurer 中，editor 可轻松地共享到 <code>DataBinder</code> 与 Spring MVC Controller。同时，这样操作在每次调用 PropertyEditor 时都创建一个新的实例，而避免了同步。</li>
+</ul>
+<h2 id="1-3-Spring-Type-Conversion"><a href="#1-3-Spring-Type-Conversion" class="headerlink" title="1.3. Spring Type Conversion"></a>1.3. Spring Type Conversion</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-beans-conversion-customeditor-registration">reference</a></p>
+<h3 id="1-3-1-Converter-SPI"><a href="#1-3-1-Converter-SPI" class="headerlink" title="1.3.1. Converter SPI"></a>1.3.1. Converter SPI</h3><ul>
+<li>函数式接口， <code>Converter&lt;S, T&gt;</code></li>
+</ul>
+<h3 id="1-3-2-ConverterFactory"><a href="#1-3-2-ConverterFactory" class="headerlink" title="1.3.2. ConverterFactory"></a>1.3.2. ConverterFactory</h3><ul>
+<li>使用 <code>ConverterFactory&lt;S, R&gt;</code> 可以实现提供将一个类型转换成多个类型的 不同的转换器。</li>
+</ul>
+<h3 id="1-3-3-GenericConverter"><a href="#1-3-3-GenericConverter" class="headerlink" title="1.3.3. GenericConverter"></a>1.3.3. GenericConverter</h3><p>相对于 Converter 提供了更复杂灵活的转换功能。针对转换多个目标 类型。</p>
+<h3 id="1-3-4-ConditionalGenericConverter"><a href="#1-3-4-ConditionalGenericConverter" class="headerlink" title="1.3.4. ConditionalGenericConverter"></a>1.3.4. ConditionalGenericConverter</h3><ul>
+<li>联合了 <code>GenericConverter</code> 和 <code>ConditionalConverter</code> 两个接口而成，可以指定目标字段进行转换。</li>
+<li>可以给 GenericConverter 加上条件，指定允许哪些转换，哪些不允许；</li>
+</ul>
+<h3 id="1-3-5-Formatting"><a href="#1-3-5-Formatting" class="headerlink" title="1.3.5. Formatting"></a>1.3.5. Formatting</h3><h3 id="1-3-6-The-ConversionService-API"><a href="#1-3-6-The-ConversionService-API" class="headerlink" title="1.3.6. The ConversionService API"></a>1.3.6. The <code>ConversionService</code> API</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#core-convert-ConversionService-API">reference</a></p>
+<ul>
+<li>大部分 <code>ConversionService</code> 实现了 <code>ConverterRegistry</code> ，这就提供了注册 Converter 的 SPI。内部实现将 conversion 工作委托给注册的 converter 。</li>
+<li><code>GenericConversionService</code> 覆盖了大部分 converter 使用场景</li>
+<li><code>ConversionServiceFactory</code> 提供工厂创建常用 <code>ConversionService</code> 。</li>
+</ul>
+<h3 id="1-3-7-配置-ConversionService"><a href="#1-3-7-配置-ConversionService" class="headerlink" title="1.3.7. 配置 ConversionService"></a>1.3.7. 配置 <code>ConversionService</code></h3><ul>
+<li>使用默认的 <code>ConversionServiceFactoryBean</code> 为容器默认转换器服务，其提供了基础数据转换器（详见 <code>&#123;@link DefaultConversionService # addDefaultConverters()&#125;</code>）。</li>
+<li>添加自定义转换器</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;conversionService&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">&quot;org.springframework.context.support.ConversionServiceFactoryBean&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;converters&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;example.MyCustomConverter&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用默认转换复合类型数据（集合转集合）<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#core-convert-ConversionService-API">reference</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DefaultConversionService cs = <span class="keyword">new</span> DefaultConversionService();</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; input = ...</span><br><span class="line">cs.convert(input,</span><br><span class="line">    TypeDescriptor.forObject(input), <span class="comment">// List&lt;Integer&gt; type descriptor</span></span><br><span class="line">    TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(String.class)));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>DefaultConversionService</code> 默认添加各个转换器到 Spring 容器中</li>
+<li>添加自定义 Converter 到其中，使用时直接调用 convert 方法，其在添加时是将各个 converter 放入一个指定 map 中，在使用时再 get 到相应的目标 converter 再再使用（这里可以看出来，再复杂的系统设计，最后都回归到了数据结构中）。</li>
+</ul>
+<p><em>规律：一个工具有多个功能时就可以集成到一个 service 组件中：Converter -&gt; ConverterService。再将一个组件注册到 IoC 容器中，在容器中任何位置自动装配上此组件即可使用。</em></p>
+<h2 id="1-4-Spring-Field-Formatting"><a href="#1-4-Spring-Field-Formatting" class="headerlink" title="1.4. Spring Field Formatting"></a>1.4. Spring Field Formatting</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#format">reference</a></p>
+<p>formatting 是 converting 的一个子集。在客户端环境（web 应用或桌面应用），需要将 <code>String</code> 与各个类型互转，同时也需要将 String 本地化。这个格式化的过程在 core.convert.Converter SPI 并没有直接解决。Spring 3 中引入 Formatting SPI 提供了可选的 <code>PropertyEditor</code>实现来完成格式化。</p>
+<ul>
+<li><code>Formatter</code> 接口实现了 Printer 与 Parser 两个接口。</li>
+</ul>
+<h3 id="1-4-1-注解驱动-Formatting"><a href="#1-4-1-注解驱动-Formatting" class="headerlink" title="1.4.1. 注解驱动 Formatting"></a>1.4.1. 注解驱动 Formatting</h3><ul>
+<li><code>AnnotationFormatterFactory&lt;? extend Annotation&gt;</code> 实现此接口，使用注解指定类中字段格式化。常用注解所在包： <code>org.springframework.format.annotation</code></li>
+</ul>
+<h3 id="1-4-2-拓展-Formatting-注册"><a href="#1-4-2-拓展-Formatting-注册" class="headerlink" title="1.4.2. 拓展 Formatting 注册"></a>1.4.2. 拓展 Formatting 注册</h3><ol>
+<li>使用 FormatterRegistry SPI，其中可以提供多种类型的 formatter 注册包括注解指定字段、直接指定字段类型，最终 formatter 根据其 parser 与 printer 转换成两个 converter 注册到 conversionService 中</li>
+</ol>
+<h2 id="1-5-Spring-MVC-中配置序列化与反序列化的-Converter"><a href="#1-5-Spring-MVC-中配置序列化与反序列化的-Converter" class="headerlink" title="1.5. Spring MVC 中配置序列化与反序列化的 Converter"></a>1.5. Spring MVC 中配置序列化与反序列化的 Converter</h2><p>使用 JSR310 的序列化工具。</p>
+<h3 id="1-5-1-序列化时间类型数据"><a href="#1-5-1-序列化时间类型数据" class="headerlink" title="1.5.1. 序列化时间类型数据"></a>1.5.1. 序列化时间类型数据</h3><p>默认情况下其添加的 jdk8 与 LocalDateTimeSerialize 等序列化工具使用的 formatter 常并不是我们想的结果，这时需要配置自己想要的 formatter。</p>
+<ul>
+<li>jdk time 包 DateTimeFormatter 有具体的构造方法。可直接使用其 Builder 类 ： <code>DateTimeFormatterBuilder</code> 。<ul>
+<li><code>ResolveStyle</code> 指定 DateTime 解析模式：STRICT 严格按照日期来，超出则无效；SMART 智能模式，比如天超过当月最大天就到最大的；LENENT 宽容模式，超出边界也将被转换，比如：月份 15</li>
+<li>指定 pattern ，在 builder 中 addPattern(String pattern) ，方法注释有对详细注释，其中有调用达到指定 pattern 字符等效方法说明。</li>
+<li>builder.configure() 中最后将所有的 serializer 与 deserializer 都添加进 new SimpleModule 中，再将 simpleModule 注册到 objectMapper 中（所有的配置数据都会注册入 objectMapper），最后 build 方法即将此 objectMapper 返回供 <code>AbstractJackson2HttpMessageConverter</code> 构造（for Spring MVC）使用。</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/04/10/spring/spring%20boot/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-04-10</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="spring-boot"><a href="#spring-boot" class="headerlink" title="spring boot"></a>spring boot</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-scoop-cli-installation">reference</a></p>
+<p>安装 spring CLI(command line interface)，后再运行本地 groovy 文件。</p>
+<h2 id="spring-boot-的简化处理"><a href="#spring-boot-的简化处理" class="headerlink" title="spring boot 的简化处理"></a>spring boot 的简化处理</h2><ol>
+<li>将所有依赖都写入其基本配置中，最大简化其配置；</li>
+<li>自动扫描，一个注解自动识别所有的需要扫描的包与 bean；</li>
+<li><code>@RestController</code> 指定此类为一个特殊处理器， spring 会识到并用来处理网络请求；</li>
+<li><code>@RequestMapping</code> 提供 “路由” 信息给 spring ，spring 也会对处理结果进行渲染返回给调用者；</li>
+<li><code>@EnableAutoConfiguration</code> 有这个注解 spring boot 会主动根据 pom 文件引入的依赖为你配置，eg: pom 中配置了 <code>spring-boot-starter-web</code> , spring boot 会假设工程是一个 web 应用并为其添加相应的依赖。</li>
+<li><code>@ComponentScan</code> 自动扫描包中的 spring 组件。</li>
+<li><code>@Configuration</code> 相当于 spring bean 的容器，也可以外部的 bean 或配置组件导入。</li>
+<li><code>@SpringBootApplication</code> 声明 spring boot 入口，拥有的功能相当于 <code>@EnableAutoConfiguration</code> <code>@Configuration</code> <code>@ComponentScan</code> 三者之和。同时， spring boot 的入口类最好放在包根路径下，因为组件扫描时时会隐式地将此注解所在类定义为 search package 。<code>@SpringBootApplication</code> 和 <code>@EnableAutoConfiguration</code> 永远只添加一个，一般建议选择任意一个添加到主 <code>@Configuration</code> 类上。</li>
+<li>组件导入<ol>
+<li>建议使用 <code>@Configuration</code> java 组件， <code>@Import</code> 可用来将其他组件导入，也可以使用 <code>@ComponentScan</code> 自动扫描所有的 spring 组件，包括 <code>@Configuration</code> 配置组件</li>
+<li>如果非要使用 xml 配置，使用 <code>@ImportResource</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="create-an-executable-jar"><a href="#create-an-executable-jar" class="headerlink" title="create an executable jar"></a>create an executable jar</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-dependencies">reference</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.3.2.BUILD-SNAPSHOT/maven-plugin/reference/html/">build spring boot on maven</a></p>
+<p>对于一个工程来说依赖各个 jar 包，而 java 并没有提供一个标准的方式去加载内嵌的 jar ，因此不能发布一个独立的程序包。</p>
+<p>为此，很多开发者的解决方案是创建一个 ‘uber’ jar，所谓 uber jar 是指将应用所有的依赖的 class 文件整合成一个单独的包。这样做的问题在于：1、 难以查看依赖库；2、不同 jar 包中要是存在同名的 class 就会出现问题。</p>
+<p>spring boot 使用了不同的方式达到直接使用内嵌包。</p>
+<ol>
+<li>打包： <code>mvn package</code></li>
+<li>查看 jar 包内打包文件 <code>mvn tvf jar_file</code></li>
+<li>pom 中 groupid <code>org.springframework.boot</code></li>
+<li>指定打包为可执行 jar 包的插件</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="how-to-series"><a href="#how-to-series" class="headerlink" title="how to series"></a>how to series</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-properties-and-configuration">spring boot HOWTO 系列</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38520638/how-to-set-spring-profile-from-system-variable">设置 spring 项目 profile</a></p>
+<h3 id="spring-项目中使用-profile"><a href="#spring-项目中使用-profile" class="headerlink" title="spring 项目中使用 profile"></a>spring 项目中使用 profile</h3><p><a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-profiles">spring 项目 profile</a></p>
+<p>用以指定当前运行环境，可以 maven 打包时也可以设置针对环境打包。</p>
+<p>获取当前活跃的 profile ，参考 <code>6. Get Active Profiles</code></p>
+<h2 id="Structuring-Code"><a href="#Structuring-Code" class="headerlink" title="Structuring Code"></a>Structuring Code</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-structuring-your-code">reference</a></p>
+<h3 id="Locating-the-Main-Application-Class"><a href="#Locating-the-Main-Application-Class" class="headerlink" title="Locating the Main Application Class"></a>Locating the Main Application Class</h3><ul>
+<li>在根目录添加 Application.class 主类放在根目录上，使用 <code>@SpringBootApplication</code> 注解在主类上。此注解也隐匿地定义了某些特定项目的基础查找包 <code>base search package</code> 。_如果在root package 定义多个 application.class 打包发布时会认定哪个为项目入口呢？_亲测结果：<code>spring-boot-maven-plugin:2.3.1.RELEASE:repackage failed: Unable to find a single main class from the following candidates</code> 打包插件将报出不能找到唯一的主类异常</li>
+<li>若不使用 <code>@SpringBootApplication</code> 注解，可以使用 <code>@EnableAutoConfiguration</code> <code>@ComponentScan</code> 两个注解实现相同功能</li>
+</ul>
+<h3 id="Auto-configuration"><a href="#Auto-configuration" class="headerlink" title="Auto-configuration"></a>Auto-configuration</h3><blockquote>
+<p>自动配置</p>
+</blockquote>
+<ul>
+<li>使用 <code>@EnableAutoConfiguration</code> 后，spring boot 会检测 classpath 所有的内容进行自动添加配置。</li>
+<li>可以在运行时加上 –debug 进入 debug 模式查看自动配置了哪些东西。</li>
+<li>应该逐渐用特定的配置代替自动配置。</li>
+<li>若 spring boot 自动配置了不需要的配置，可以在 <code>@SpringBootApplication</code> 或 <code>@EnableAutoConfiguration</code> 添加排除 exclude ，若排除的类不在 classpath 中可以指定其全限定名到 <code>excludename</code>。也可以添加配置 <code>spring.autoconfigure.exclude</code> 指定自动配置排除配置。</li>
+</ul>
+<h3 id="Spring-Beans-and-Dependency-Injection"><a href="#Spring-Beans-and-Dependency-Injection" class="headerlink" title="Spring Beans and Dependency Injection"></a>Spring Beans and Dependency Injection</h3><ul>
+<li>spring 中的 bean 注入：使用构造器注入 <code>private final Dependency d;</code> 使用 final 修辞字段让其不能被修改。</li>
+</ul>
+<h3 id="Using-the-SpringBootApplication-Annotation"><a href="#Using-the-SpringBootApplication-Annotation" class="headerlink" title="Using the @SpringBootApplication Annotation"></a>Using the @SpringBootApplication Annotation</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-spring-beans-and-dependency-injection">reference</a></p>
+<p>@SpringBootApplication 注解有三个特性，分别对应三个注解：</p>
+<ol>
+<li>@EnableAutoConfiguration</li>
+<li>@ComponentScan</li>
+<li>@Configuration</li>
+</ol>
+<p>@SpringBootApplication 提供别名以实现定义以上前两个注解的功能。</p>
+<h2 id="Developer-Tools"><a href="#Developer-Tools" class="headerlink" title="Developer Tools"></a>Developer Tools</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools">reference</a></p>
+<p>添加 spring-boot-devtools 依赖，实现热启动。其实现原理是固有的jar包代码使用一个固定的 classloader，而开发变动的代码使用另一个classloader，当发生变动时，重启一个 classloader 加载新的编译的代码。所以热启动相对冷启动要快些，因为其不用加载旧的不变的依赖的jar包中的代码。</p>
+<ul>
+<li>使用 trigger-file 触发项目重启。<code>spring.devtools.restart.trigger-file=&lt;.reloadtrigger&gt;</code> 手动更新了 trigger 文件才会触发更新。trigger 文件可以自定义在 classpath 中任意地方，而配置文件指定配置文件不需要全限定名，更新代码后只需要修改保存一下trigger文件即可触发reload。</li>
+<li>如果使用了Ultimate Edition IDEA 可以点击 relauch 触发重启。</li>
+<li>生产模式下devtool 自动关闭，如果项目启动通过 java -jar 运行一个包或从一个特定的 classloader 中开始，devtools 将自动识别在生产模式中。如果应用在窗口中开启需要排除 devtools 或者直接添加系统参数 <code>-Dspring.devtools.restart.enabled=false</code>。</li>
+</ul>
+<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><p>Spring Boot 源码</p>
+<h3 id="单例-bean-注册器中-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry"><a href="#单例-bean-注册器中-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry" class="headerlink" title="单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry"></a>单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry</h3><ul>
+<li>dependentBeanMap 注释 <code>Map between dependent bean names: bean name to Set of dependent bean names.</code> 表示 bean 与依赖此 bean 的映射 map 。</li>
+<li>dependenciesForBeanMap <code>Map between depending bean names: bean name to Set of bean names for the bean&#39;s dependencies.</code> 表示 bean 与 此 bean 依赖的 bean 的映射关系集合。<ul>
+<li>上述结论来自方法 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry#registerDependentBean 及其注释说明。同时可以从自动装配方法 org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#autowireByType line:1511 推导：解析本bean 自动装配的依赖 autowiredBeanNames 出后，在注册处调用方法 line:1516 参数是本 bean 依赖 autowiredBeanName 为第一个参数，而本 beanName 是第二个参数（这时的依赖关系是： 本bean 依赖 autowiredBean）。再看此 registerDependentBean 方法，其执行是将第一个参数 beanName（此时就是本 bean 的依赖bean） 放入了 dependenciesForBeanMap 而 本 beanName 作为 了第二个参数 放入了 dependentBeanMap 。</li>
+</ul>
+</li>
+<li>CGLIB 策略生成子类创建 bean: org.springframework.beans.factory.support.CglibSubclassingInstantiationStrategy.CglibSubclassCreator#createEnhancedSubclass</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/03/15/java/java%20socket/">socket</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-03-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h1><p>TCP 级别通信 API 。 socket 意为 插座，能理解为一切通信应用的都需要接到“插座”上。</p>
+<h2 id="java-socket"><a href="#java-socket" class="headerlink" title="java socket"></a>java socket</h2><p>java socket 编程。<a target="_blank" rel="noopener" href="https://cs.lmu.edu/~ray/notes/javanetexamples/#date">reference</a></p>
+<ul>
+<li>ServerSocket 用于监听指定端口的 socket 。<ul>
+<li>question: 并发地对端口进行访问， socket 是怎么处理？要对其排队吗？</li>
+<li>还是说在传输层已经做好的信息的排队？</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/01/29/java/java-type/">java - Type</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-01-29</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="1-java-Type"><a href="#1-java-Type" class="headerlink" title="1. java Type"></a>1. java Type</h1><!-- TOC -->autoauto1. [1. java Type](#1-java-type)auto    1. [1.1. java generic](#11-java-generic)auto        1. [1.1.1. 范型通配符](#111-范型通配符)auto            1. [1.1.1.1. PECS 原则](#1111-pecs-原则)autoauto<!-- /TOC -->
+
+<blockquote>
+<p>java 中使用的范型相关的 Type。在反序列化时，对于范型相关的类需要使用到的 Type 。mc</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011983531/article/details/80295479">参考</a></p>
+<h2 id="1-1-java-generic"><a href="#1-1-java-generic" class="headerlink" title="1.1. java generic"></a>1.1. java generic</h2><p>java 范型 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30662109/article/details/98836666?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase">reference</a></p>
+<ul>
+<li>静态方法要实现范型，要在返回结果前加上范型标识 <code>&lt;T, R&gt; void generic()</code></li>
+<li>使用无参的范型方法要在使用时确定范型类型在方法前加上范型参数：<code>builder.&lt;String, Integer&gt;build()</code>。否则，编译器只会当范型类型为 Object。</li>
+<li>范型构造器的使用与无参范型构造的实现：通过上一条即可实现。</li>
+</ul>
+<h3 id="1-1-1-范型通配符"><a href="#1-1-1-范型通配符" class="headerlink" title="1.1.1. 范型通配符"></a>1.1.1. 范型通配符</h3><ul>
+<li>范型中 <code>super</code> 与 <code>extends</code> 的区别使用、非常规意义<ul>
+<li><code>? super</code> 指定范型类型下界，是所指类型与其父类型直至根类 Object。这种通配读取出数据只能使用 Object 接收，而可以正常地写入数据。<ul>
+<li>原因：当外部容器被 <code>? super</code> 通配指定了下界，也就指定了容器中数据类型的最细粒度，符合最小粒度与粒度更小的数据都可合法地写入。而读取数据时，对于通配的数据类型的存在，只能选择最大粒度的数据类型接收才能保证正确接收。</li>
+</ul>
+</li>
+<li><code>extends</code> 则相反，使用此通配，将不能进行 add ，只能为其指定一个现成的上界及上界之下的类型列表，可读。因为通配符 <code>? extends</code> 的存在（只要是目标类型及其子类都算合法），写入时编译器不知道此时类型应该按哪一个类型算。而读取时，编译器知道容器中所有通配的类型的上界就是最粗粒度，只按是粗粒度取出数据即可。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-1-1-PECS-原则"><a href="#1-1-1-1-PECS-原则" class="headerlink" title="1.1.1.1. PECS 原则"></a>1.1.1.1. PECS 原则</h4><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2723397/what-is-pecs-producer-extends-consumer-super">reference</a></p>
+<p>在范型中使用通配符时，遵守 PECS 原则：</p>
+<ul>
+<li>一个容器如果只读取类型 T 的数据， 不写入，使用 <code>? extends T</code> 通配：Producer Extends。<em>之所以此叫 Producer ，因为此时容器是一个 Producer，提供数据用以消费</em></li>
+<li>容器如果只写入类型 T 数据，不用读取，使用 <code>? super T</code> 通配： Comsumer Super。可以读取，不过读出来的只能识别为 Object。<em>同理，此时容器是一个消费数据的 consumer</em><ul>
+<li>所以一般方法返回结果（要往内写数据用以返回）使用 super 通配，而方法参数（要读取其中的数据）使用 extends 通配</li>
+</ul>
+</li>
+<li>如果即要读取又要写入，就不使用通配符</li>
+</ul>
+<hr>
+<ul>
+<li>Arrays.asList(T …) 方法产生的一个 ArrayList 是 Arrays 中定义的一个并未完全实现抽象类 AbstractList 的 List，使用其 add(T t) 方法会抛出异常。</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/01/23/java/java-code-rule/">java code rule</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-01-23</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="java-naming-rule"><a href="#java-naming-rule" class="headerlink" title="java naming rule"></a>java naming rule</h1><blockquote>
+<p>编程过程中应该遵循的规范</p>
+</blockquote>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><blockquote>
+<p>编程过程中命名规范</p>
+</blockquote>
+<h3 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h3><ul>
+<li>匈牙利命名法（目前被抛弃的一种命名规则）：名字最前使用小写简写字母来表示一定的意义，其后接 大驼峰 命名的单词。比如：lAge，表示一个 long 数据类型的年龄；</li>
+<li>驼峰命名法：分为大驼峰与小驼峰，最常用的命名法，这儿如果是长句式名字， google 规范：先去 单引号 ，再去 横线，再使用驼峰命名，如果是 iOS 这种词，直接规范成： Ios。</li>
+<li>蛇形命名法：c++ 与 java 中的常量使用这种命名法，比如：CONFIG_NAME</li>
+<li>串式命名法：前端代码中常用，比如：office-length</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/01/22/java/java-abstractclass-interface/">java-abstractClass&amp;interface</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-01-22</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="abstract-class-amp-interface"><a href="#abstract-class-amp-interface" class="headerlink" title="abstract class &amp; interface"></a>abstract class &amp; interface</h1><blockquote>
+<p>java 中 抽象类与接口</p>
+</blockquote>
+<h2 id="两者的异同"><a href="#两者的异同" class="headerlink" title="两者的异同"></a>两者的异同</h2><p>同：</p>
+<ol>
+<li>都是面向对象中抽象的使用，相对于抽象类，接口是极其抽象的；</li>
+</ol>
+<p>异：</p>
+<ol>
+<li>抽象类作为一种类，可以有各种成员，具有所有的普通类的特性。而接口只能有 public static final 的属性成员，接口方法都是缺省为 public abstract 修辞。</li>
+<li>抽象类作为一种类用于声明一种对象（其子类的共同属性抽象为父类的方法）较为合适，而接口通常用于声明一种行为。</li>
+<li>一个普通类只能于继承一个抽象类，却可以实现多个接口。</li>
+</ol>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2019/01/22/java/java-try-catch-finally/">java-try-catch-finally</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2019-01-22</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="java-try"><a href="#java-try" class="headerlink" title="java try"></a>java try</h1><blockquote>
+<p>在 java 程序中，try catch finally 的使用执行顺序：</p>
+</blockquote>
+<ol>
+<li>只要有 finally 是不是其中的代码就一定会执行？<ol>
+<li>不一定，当在 try 的代码块中存在着让程序停止的代码，那么就不会执行到 finally 中去。比如： <code>System.exit();</code></li>
+</ol>
+</li>
+<li>当 try 代码块进行了 return 后，在 finally 中再进行 return 一个新的值，将会以 finally 中的值为最终值。</li>
+<li>当 try 块中进行了运算一个值，再在 finally 中去进行运算并返回，最终值通常理解为是两次运算都进行的结果，但如果这个值是一个基本类型的数据，结果是在 try 中进行的运算可能无效的。<ol>
+<li>原因：如果这个值是一个基本类型时，如果 <strong>没有将这个值进行 return</strong> ，那么运算结果并没有被赋予到之前方法的形参栈帧上去，而这个时候直接到 finally 代码块中进行运算，就直接取到原方法未被赋结果值的参数，这个时候就会出现 try 代码块不被执行的结果。</li>
+</ol>
+</li>
+</ol>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/11/26/spring/Spring-AOP/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-11-26</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><ul>
+<li><a href="#aop">AOP</a><ul>
+<li><a href="#11-aop-concepts">1.1. AOP Concepts</a></li>
+<li><a href="#12-aop-%E5%AE%9E%E7%8E%B0%E5%88%86%E4%B8%BA%E4%B8%A4%E7%B1%BB">1.2. aop 实现分为两类</a></li>
+<li><a href="#13-spring-aop">1.3. spring aop</a><ul>
+<li><a href="#131-aop-proxies">1.3.1. AOP Proxies</a></li>
+</ul>
+</li>
+<li><a href="#14-aspectj-support">1.4. @AspectJ Support</a><ul>
+<li><a href="#141-enable-aspectj-support">1.4.1. Enable @AspectJ Support</a></li>
+<li><a href="#142-declaring-an-aspect">1.4.2. Declaring an Aspect</a></li>
+<li><a href="#143-declaring-a-pointcut">1.4.3. Declaring a Pointcut</a><ul>
+<li><a href="#1431-supported-pointcut-designators">1.4.3.1. Supported Pointcut Designators</a><ul>
+<li><a href="#14311-spring-aop-%E4%B8%8E-aspectj-%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84">1.4.3.1.1. Spring AOP 与 AspectJ 不同之处</a></li>
+<li><a href="#14312-notes">1.4.3.1.2. Notes</a></li>
+</ul>
+</li>
+<li><a href="#1432-combining-pointcut-expressions">1.4.3.2. Combining Pointcut Expressions</a></li>
+<li><a href="#1433-examples">1.4.3.3. Examples</a></li>
+<li><a href="#1434-optimize">1.4.3.4. optimize</a></li>
+</ul>
+</li>
+<li><a href="#144-declaring-advice">1.4.4. Declaring Advice</a><ul>
+<li><a href="#advice-parameters">Advice Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<blockquote>
+<p>aop aspect oriented programming 。面向切面编程，常用于具有横切性质的系统级服务，如：事务管理、安全检查、缓存、对象池管理。<br><strong>需要说明的是</strong> aop 是一种编程思想，并不仅限于 java 更不仅限于 spring 。但这儿主要针对 java spring aop 进行讨论。纵向重复代码在横向上抽取。</p>
+</blockquote>
+<p>AspectJ 是基于 java 语言的 aop 框架，提供了强大的 aop 功能，其他众多的 aop 框架都借鉴了其思想。包括两个部分：</p>
+<ul>
+<li>定义如何表达/定义 aop 语法规范。用于解决 java 中的交叉关注点问题。</li>
+<li>工具部分：编译/调试。</li>
+</ul>
+<h2 id="1-1-AOP-Concepts"><a href="#1-1-AOP-Concepts" class="headerlink" title="1.1. AOP Concepts"></a>1.1. AOP Concepts</h2><p>Aspect Oriented Programming 基本概念</p>
+<ol>
+<li>Aspect: 多个类间的模块化的事物。企业应用中的事务管理就是很好的跨类切面的例子。在 Spring AOP 中通过常规类（schema 途径）或注解 <code>@AspectsJ</code> 实现切面。</li>
+<li>Join Point: 程序执行中的某一点，如一个方法执行或异常处理。在 Spring AOP 中，一个 Joint Point 通常代表一个方法执行。</li>
+<li>Advice: 切面在入点（Joint Point）所采用的动作。大多框架（包括 Spring AOP）将 Advice 建模成拦截器，并为 Join Point 维护一个拦截器链。Advice 类型有：”Around” “Before” “After” 。Spring AOP 包括以下类型：<ol>
+<li>Before Advice：在 Join Point 前执行的增强。除非抛出异常，此类型的 Advice 并不能阻止 Joint Point 流程的执行。</li>
+<li>After Returning Advice：在 Join Point 正常流程执行完成（未抛出异常）后执行。</li>
+<li>After Throwing Advice: 在方法因异常退出时执行</li>
+<li>After(finally) advice: 在 join point 方法结束后执行（不管是正常结束还是异常结束）。</li>
+<li>Around advice：在 join point 前后都可执行的 advice。最强势的 advice ，可自定义方法调用前后的行为，也可以决定 join point 是否执行或通过返回自定义的结果（或抛出异常）实现增强方法的快捷执行。</li>
+</ol>
+</li>
+<li>Pointcut： 匹配 Join Point 的判断。Advice 关联一个 Pointcut 表达式，并在每一个匹配上 Pointcut 的切点处执行（eg：执行有某个特定名字的方法）。匹配上 Pointcut 表达式的 Join Point 的概念是 AOP 的核心，Spring 默认使用使用 AspectJ pointcut 表达式语言。</li>
+<li>Introduction: 引入外部方法或字段到一个类。Spring AOP 可以引入新的接口与相应的实现到被增强的类。在 AspectJ 社区中，introduction 通常被当作一个内部类的定义。</li>
+<li>Target Object:被一个或多个增加的对象。也被当作被增强的对象。Spring AOP 通过运行时代理实现，所以 Target Object 也是一个代理对象。</li>
+<li>AOP Proxy：AOP 框架实现 aspect 规约（增加方法执行等等）而创建的对象。在 Spring AOP 中，AOP proxy 通常为 JDK 动态代理或 CGlib 代理。</li>
+<li>Weaving: 将 aspect 与其他应用的类型或对象连接以创建增加类。此动作可在编译期（通过 AspectJ Compiler）、加载期、运行时进行。Spring AOP 与大多 Java AOP 框架一样都在编译期执行 weaving。</li>
+</ol>
+<h2 id="1-2-aop-实现分为两类"><a href="#1-2-aop-实现分为两类" class="headerlink" title="1.2. aop 实现分为两类"></a>1.2. aop 实现分为两类</h2><ul>
+<li>静态 AOP 实现：在编译阶段就对程序进行修改，即实现对目标类的增强，生成静态的 AOP 代理类，以 aspcetj 为代表。具有良好的性能，但需要特殊的编译器。</li>
+<li>动态 AOP 实现：AOP 框架在运行阶段动态生成 AOP 代理，以实现对目标对象的增加，如： spring AOP 。纯java 实现，无需特殊编译器，性能相对略差。</li>
+</ul>
+<p><strong>基本概念</strong>：</p>
+<ul>
+<li>Aspect 切面：用于组织多个 advice ， advice 就放在 aspect 中定义；</li>
+<li>Joinpoint 连接点：程序执行过程中明确的点，如：方法的调用/异常的拋出。 在 Spring AOP 中，连接点总是 方法调用。</li>
+<li>Advice 增强：AOP 框架支持在特定的切入点执行的增加处理。类型有：Before Around After</li>
+<li>Pointcut 切入点：中以插入增强处理的连接点。当连接点满足指定要求时，该连接点将被添加增加处理，该连接点也就说变成了切点。</li>
+</ul>
+<h2 id="1-3-spring-aop"><a href="#1-3-spring-aop" class="headerlink" title="1.3. spring aop"></a>1.3. spring aop</h2><ul>
+<li><p>Spring AOP 代理由 IoC 容器负责生成、管理，其依赖关系也由 IoC 窗口负责管理。</p>
+</li>
+<li><p>在 Spring 使用 Aspectj 支持需要添加三个库：</p>
+<ul>
+<li>aspcetjweaver.jar</li>
+<li>aspectjrt.jar</li>
+<li>aopalliance.jar</li>
+</ul>
+</li>
+<li><p>配置文件加如下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--启动@AspectJ支持--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--指定自动搜索Bean组件、自动搜索切面类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;edu.shu.sprint.service&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span>=<span class="string">&quot;annotation&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;org.aspectj.lang.annotation.Aspect&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="1-3-1-AOP-Proxies"><a href="#1-3-1-AOP-Proxies" class="headerlink" title="1.3.1. AOP Proxies"></a>1.3.1. AOP Proxies</h3><ul>
+<li>Spring AOP 默认使用 JDK 动态代理，也可以使用 CGLIB 代理，一般在被代理对象没有实现接口的情况下使用。</li>
+</ul>
+<h2 id="1-4-AspectJ-Support"><a href="#1-4-AspectJ-Support" class="headerlink" title="1.4. @AspectJ Support"></a>1.4. @AspectJ Support</h2><h3 id="1-4-1-Enable-AspectJ-Support"><a href="#1-4-1-Enable-AspectJ-Support" class="headerlink" title="1.4.1. Enable @AspectJ Support"></a>1.4.1. Enable @AspectJ Support</h3><ul>
+<li>在 <code>@Configuration</code> 上添加 <code>@EnableAspectJAutoProxy</code> 注解，让被增加的 bean 自动代理。</li>
+<li>使用 XML 配置 添加标签 <code>&lt;aop:aspectj-autoproxy /&gt;</code></li>
+</ul>
+<h3 id="1-4-2-Declaring-an-Aspect"><a href="#1-4-2-Declaring-an-Aspect" class="headerlink" title="1.4.2. Declaring an Aspect"></a>1.4.2. Declaring an Aspect</h3><p>当 @AspectJ 打开后，Spring 会自动检测容器中定义的 Aspect 。定义 Aspect 的方法有两种：</p>
+<ol>
+<li>使用 XML 配置添加了 <code>@Aspect</code> 的 bean</li>
+<li>使用自动扫描注解 <code>@Aspect</code> 的 bean，使用自动扫描 bean 方式时需要在 bean 上添加额外的 <code>@Component</code> 或自定义的扫描组件注解。</li>
+</ol>
+<ul>
+<li>使用 <code>@Aspect</code> 注解后的 bean 与其它类一样可以有自己的字段方法，同样可以定义 pointcut/advice</li>
+<li>Aspects 不能成为其他 aspect 增强的目标，因为 aspect 已经被 <code>@Aspect</code> 注解为一个 Aspect 被自动代理排除在外。</li>
+</ul>
+<h3 id="1-4-3-Declaring-a-Pointcut"><a href="#1-4-3-Declaring-a-Pointcut" class="headerlink" title="1.4.3. Declaring a Pointcut"></a>1.4.3. Declaring a Pointcut</h3><p>一个 Pointcut 的定义包括两部分:</p>
+<ol>
+<li>由名与任意参数组成的签名（由一个方法定义，此方法签名的返回值必须为 <code>void</code>）；</li>
+<li>使用 <code>@Pointcut</code> 注解表达的 pointcut 表达式。</li>
+</ol>
+<h4 id="1-4-3-1-Supported-Pointcut-Designators"><a href="#1-4-3-1-Supported-Pointcut-Designators" class="headerlink" title="1.4.3.1. Supported Pointcut Designators"></a>1.4.3.1. Supported Pointcut Designators</h4><p>支持 Pointcut 的标识符（PCD pointcut designators 用来匹配符合的 join point，限制 Spring AOP 方法执行）</p>
+<ul>
+<li>execution: 匹配 join points，主要的 pointcut 标识符</li>
+<li>within: 限制 join points 所在的类需要是特定类型</li>
+<li>this: bean reference（Spring AOP 代理对象）为指定类型的实例限定 join points 匹配</li>
+<li>target: 目标对象（被代理的应用对象）是指定 type 的实例</li>
+<li>args: 限制参数（arguments）为指定类型（type） 的实例</li>
+<li>@target：限制执行对象需要有指定类型的注解</li>
+<li>@args: 限制运行时被传递的参数必须有指定类型的注解</li>
+<li>@within: 限制 join points 所在的类需要有指定的注解</li>
+<li>@annotation: 限制 join points (AOP 中所执行的方法) 需要有指定的注解。</li>
+</ul>
+<h5 id="1-4-3-1-1-Spring-AOP-与-AspectJ-不同之处"><a href="#1-4-3-1-1-Spring-AOP-与-AspectJ-不同之处" class="headerlink" title="1.4.3.1.1. Spring AOP 与 AspectJ 不同之处"></a>1.4.3.1.1. Spring AOP 与 AspectJ 不同之处</h5><ul>
+<li>除以上几个标志符外，AspectJ 还有其他的 Designator（如：<code>call</code>,<code>withinCode</code>,<code>@withinCode</code>, etc.），但若在 Spring 中使用这些标志符会抛出 <code>IllegalArgumentException</code>。</li>
+<li>Spring AOP 窄化了 AspectJ 中标志符的定义，join points 只匹配了方法执行。</li>
+<li>AspectJ 还有基于类型的语义（type-based semantics），且其标志符 <code>this</code> <code>target</code> 都是指相同的对象：执行方法的对象。而在 Spring AOP 是基于代理的系统，其代理（与 <code>this</code> 绑定）与其在代理之后的目标对象（与 <code>target</code> 绑定）是不同的。</li>
+<li>因为 Spring AOP is proxy-based 框架本质，所以直接调用其目标对象，并不能实现 AOP 拦截。JDK 动态代理只能对 public interface method 进行拦截，而CGLIB 代理 public/protected （如果需要，package-visible  方法也可以）都可被代理。</li>
+<li><code>bean</code> Spring AOP 有一个原生 AspectJ 所没有的 PCD ： <code>bean</code>。通过 bean name 匹配 bean ，也可加上通配符 <code>*</code> 匹配 bean 集合。与其他标签符一样， bean 可以使用 <code>&amp;&amp;</code> <code>||</code> <code>!</code> 运算符。  <ul>
+<li><code>bean</code> 是针对 Spring 扩展的 PCD ，因此在 <code>@Aspect</code> 模式中无效。 <code>bean</code> PCD 在实例级别上运行不仅仅是在类型级别上，instance-based PCD 是 Spring 基于代理的 AOP 框架的功能，与 Spring bean 工厂紧密整合，因此能自然而直接地通过 name 识别 bean。</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-4-3-1-2-Notes"><a href="#1-4-3-1-2-Notes" class="headerlink" title="1.4.3.1.2. Notes"></a>1.4.3.1.2. Notes</h5><ul>
+<li>切点定义通常与任何拦截的方法相匹配。如果切入点被严格定义为只公开的，那么即使在 CGLIB 代理场景中，通过代理进行潜在的非公开交互，也需要相应地定义它。</li>
+<li>如果拦截需要包含目标对象的方法调用或构造器，需要使用 Spring 驱动的 native AspectJ weaving 而不是 Spring AOP 代理驱动的框架。</li>
+</ul>
+<h4 id="1-4-3-2-Combining-Pointcut-Expressions"><a href="#1-4-3-2-Combining-Pointcut-Expressions" class="headerlink" title="1.4.3.2. Combining Pointcut Expressions"></a>1.4.3.2. Combining Pointcut Expressions</h4><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.5.RELEASE/spring-framework-reference/core.html#aop-pointcuts-designators">reference</a></p>
+<p>eg:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Pointcut(&quot;execution(public * *(..))&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">anyPublicOperation</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Pointcut(&quot;within(com.xyz.someapp.trading..*)&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inTrading</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Pointcut(&quot;anyPublicOperation() &amp;&amp; inTrading()&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">tradingOperation</span><span class="params">()</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>第一个 pointcut 使用 <code>execution</code> 匹配访问级别为 public 的方法</p>
+</li>
+<li><p>第二个 pointcut 使用 <code>within</code> 匹配 <code>trading</code> 包下的方法</p>
+</li>
+<li><p>第三个 pointcut 使用 <code>&amp;&amp;</code> 运算符将前两个 pointcut 交集</p>
+</li>
+<li><p>使用更小的命名组件组装一个更复杂的 pointcut expression 更为合适，通过 name 引用 pointcut 时，java 的可见性规则（private/default/protected/public）会被引入。但 visibility rules 并不影响 pointcut 匹配。</p>
+</li>
+</ul>
+<h4 id="1-4-3-3-Examples"><a href="#1-4-3-3-Examples" class="headerlink" title="1.4.3.3. Examples"></a>1.4.3.3. Examples</h4><p>最常用的 PCD : <code>execution</code>，对于此 PCD ，其标准的 pointcut expression 是：<code>execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern) thrown-pattern?)</code></p>
+<ul>
+<li>除 ret-type-pattern (返回类型字段) /name-pattern/param-pattern 外，其他字段都是可选的。</li>
+<li>returning-type-pattern 指定 join points 匹配的返回类型，<code>*</code> 表示任何类型都匹配。全限定名的类型只匹配返回类型为指定类型的方法。</li>
+<li>name-pattern 匹配方法名，可以使用 <code>*</code> 通配所有或部分方法名，如果定义了 declaring-type-pattern（指定定义方法所在类），在其后追加一个 <code>.</code> 与 name-pattern 组件连用。</li>
+<li>param-pattern 相对复杂一些。<code>()</code> 表示匹配无参数的方法，<code>(..)</code> 表示匹配任意数量参数的方法，<code>(*)</code> 表示匹配含一个任何类型的参数，<code>(*,String)</code> 表示匹配有两个参数的方法，其中第一个参数为任何类型，第二个参数为 String 。<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/spring-framework-reference/core.html#aop-pointcuts-designators">Spring Reference</a><a target="_blank" rel="noopener" href="https://www.eclipse.org/aspectj/doc/released/progguide/semantics-pointcuts.html">AspectJ reference</a></li>
+<li><code>execution(param)</code> 模式下的匹配与 <code>args()</code> 模式匹配的不同：execution 模式下表示一个方法在签名处定义的参数为指定类型，而 args() 模式表示在方法在运行时被传递的参数为指定类型。</li>
+</ul>
+<h4 id="1-4-3-4-optimize"><a href="#1-4-3-4-optimize" class="headerlink" title="1.4.3.4. optimize"></a>1.4.3.4. optimize</h4><p>优化 PCD</p>
+<p>为了优化性能，AspectJ 在编译期处理 pointcut。检查代码并决定 join points 是否匹配(静态或动态)一个指定的 pointcut 是耗能不低的。（动态匹配指通过静态分析并不能完全决定是否匹配，需要添加一个 test 在代码处在运行时决定实际是否匹配）。当首次解析一个 pointcut 时，AspectJ 会为匹配流程将 pointcut 重写成一个最优形式。一般来说，pointcuts 会被重写成 DNF(Disjunctive Normal Form)，且 pointcut 组件会按越易计算越先检查的顺序重排序。这就意味着不需要考虑不同的 PCD 性能开销与 pointcuts 定义的顺序。</p>
+<p>已知的 PCD 自然地分为三组：</p>
+<ol>
+<li>kinded designator 选择一个类型的 join point : <code>execution</code> <code>get</code> <code>set</code> <code>handler</code></li>
+<li>scoping designator 选择 join point 范围 : <code>within</code> <code>withincode</code></li>
+<li>contextual designators 根据上下文匹配 join points : <code>this</code> <code>target</code> <code>@annotation</code></li>
+</ol>
+<p>notes:</p>
+<ol>
+<li>一个优质的 pointcut 至少需要包含 kinded 与 scoping 两种类型的 designator;</li>
+<li>仅提供 kinded designator 或 contextual desinator 能够正常工作，但性能不佳，因为需要额外的解析</li>
+<li>Scoping designator 可快速匹配，使用此类 PCD 可以快速地忽略不必要的 join points 组。</li>
+</ol>
+<h3 id="1-4-4-Declaring-Advice"><a href="#1-4-4-Declaring-Advice" class="headerlink" title="1.4.4. Declaring Advice"></a>1.4.4. Declaring Advice</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/spring-framework-reference/core.html#aop-pointcuts-designators">reference</a></p>
+<p>Advice 与一个 pointcut expression 相关联，并在此 pointcut 匹配的方法执行 before/after/around 切点执行。这个 pointcut expression 要么是一个被命名的 pointcut 简单引用（<em>直接写 pointcut 的方法名即可_），要么是一个 advice 相应位置的 pointcut expression(_直接用这种写法不就不用再单独写 pointcut 了吗？</em>)。</p>
+<ul>
+<li><p>Before Advice: <code>@Before(&quot;com.xyz.myapp.SystemArchitecture.dataAccessOperation()&quot;)</code></p>
+</li>
+<li><p>After Returning Advice :  一个正常执行完成的方法执行增强。使用注解 <code>@AfterReturning(returning=&quot;retVal&quot;)</code> ，可以指定方法执行的返回值为 Advice 方法的参数。指定属性 <code>returning</code> 的值与 Advice 定义的参数名要保持一致，同时 <code>returning</code> 语句也会和 advice 方法中指定的参数类型对 join points 进行约束，其方法执行与此处 advice 方法参数的类型需要匹配。</p>
+<ul>
+<li>需要注意的是：使用此类型的 Advice 返回的引用不可能完全与原来的引用无关。</li>
+</ul>
+</li>
+<li><p>After Throwing Advice : 抛出异常的方法执行的增强。可以使用 <code>throwing=</code> 与其异常参数类型配合限制异常的匹配。同样，advice 方法参数名要与 throwing 的值一致，且参数类型也会对 pointcuts 进行约束。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AfterThrowingExample</span> </span>&#123;</span><br><span class="line">    <span class="meta">@AfterThrowing(</span></span><br><span class="line"><span class="meta">        pointcut=&quot;com.xyz.myapp.SystemArchitecture.dataAccessOperation()&quot;,</span></span><br><span class="line"><span class="meta">        throwing=&quot;ex&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doRecoveryActions</span><span class="params">(DataAccessException ex)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>After Advice: 在切点正常、异常执行完后进行增强。</p>
+</li>
+<li><p>Around Advice: 在切点周围进行增强，可以在方法执行前后进行工作，用于在需要在方法执行前后在线程安全内分享状态。切记使用最小形式的 advice 满足需求，能使用 Before advice 就不要用 Around advice。</p>
+<ul>
+<li>使用 @Around 注解声明，第一个参数必须是 ProceedingJoinPoint，调用其 proceed() 方法就是执行切点的方法，此方法可以传参数 Object[] ，数组中的值被用于方法执行时的参数。</li>
+<li>Advice 的参数 JoinPoint 的 proceed() 是否执行、执行任何次数都合法。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Advice-Parameters"><a href="#Advice-Parameters" class="headerlink" title="Advice Parameters"></a>Advice Parameters</h4><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/spring-framework-reference/core.html#aop-advice-after-throwing">reference</a></p>
+<ul>
+<li>Access current JoinPoint ，任何增强方法都可以添加第一个参数 JoinPoint，ProceedingJoinPoint 是其子类。可以从 JoinPoint 调用方法获取 args/this proxy/target object/signature/toString</li>
+<li>传递参数给 Advice 。使用 <code>args()</code> 传递参数到 advice ，可以将其写在 Pointcut 中再在 Advice 中引用 pointcut，也可以直接在 pointcut expression 中添加 args 子句。</li>
+<li>Advice Parameters and Generics。范型参数在 advice 中的使用，直接在 advice 中指定类型，同样会约束 pointcut。<ul>
+<li>直接在参数中指定范型类型。</li>
+<li>如果参数是 Collection<T> ，只能指定为 Collection&lt;?&gt;，再手动检查其类型。</li>
+</ul>
+</li>
+<li>Determining Argument Names。指定 Advice 参数名，使用 <code>argNames=</code>,默认第一个参数 JoinPoint 不用显式指定出来。</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/11/01/mysql/mysql/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-11-01</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="mysql-server-amp-client"><a href="#mysql-server-amp-client" class="headerlink" title="mysql server &amp; client"></a>mysql server &amp; client</h1><blockquote>
+<p>mysql 部署 server 及 client 请求</p>
+</blockquote>
+<h2 id="mysql-server"><a href="#mysql-server" class="headerlink" title="mysql server"></a>mysql server</h2><blockquote>
+<p>mysql server 的部署及请求<a target="_blank" rel="noopener" href="http://www.cnblogs.com/QingXiaxu/p/7987302.html">参考</a></p>
+</blockquote>
+<p>localhost 的 testing 尝试：</p>
+<ul>
+<li>下载 mysql 安装包，解压后将 bin 添加到环境变量中。</li>
+<li>在其根目录添加 data 文件夹及 my.ini 配置文件</li>
+<li>初始化 mysql 服务 <code>mysqld --initialize --user=mysql --console</code><ul>
+<li>初始化后，data 文件夹中会生成相应的各个文件</li>
+<li>生成临时账户及密码： root@localhost: W&gt;pg*LYv&gt;6up</li>
+</ul>
+</li>
+<li>添加 MySQL 服务到电脑系统服务中： <code>sc create MySQL binPath= &quot;C:\Program Files\MySQL\MySQL Server 5.7\bin\mysqld.exe&quot;</code><ul>
+<li>添加错了时，可以使用命令删除服务 <code>sc delete serviceName</code></li>
+</ul>
+</li>
+<li>启动服务 <code>NET START MySQL</code>（到此，MySQL 的 server 算是启动完成，可以使用 client 命令进行登录访问了）</li>
+<li>mysql 服务： <code>net stop MySQL</code></li>
+<li>删除 mysql 服务（需要先停止服务）： <code>mysqld -remove</code><ul>
+<li>以上添加 mysql 到电脑服务系统步骤可以不用做一样可以启动 mysql 服务：<ul>
+<li>需要的操作是：控制台进入到 mysql 安装目录 bin 中<ul>
+<li>直接启动 mysqld.exe <code>mysqld --console</code> –console 打开日志记录</li>
+<li>关闭服务：<code>mysqladmin -uroot shutdown</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查看当前 mysql server 连接情况命令： <code>show processlist</code> 将会看到当前 mysql server 连接的各个 client 的 ip/port/status/user/db 等</li>
+</ul>
+<h2 id="mysql-client-operate"><a href="#mysql-client-operate" class="headerlink" title="mysql client operate"></a>mysql client operate</h2><blockquote>
+<p>在 mysql 控制台操作数据库</p>
+</blockquote>
+<p><em>note: mysql server 命令行都必须使用 <code>;</code>  或 <code>\g</code> 结尾，否则不会执行。</em></p>
+<ul>
+<li>登录：<code>mysql -h host_address -u username [-p]</code> -p 决定是否带上密码<br>登录全更改初始密码：</li>
+<li><code>SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;password&#39;);</code></li>
+<li><code>UPDATE mysql.user SET authentication_string = PASSWORD(&#39;password&#39;), password_expired = &#39;N&#39; WHERE User = &#39;root&#39; AND Host = &#39;localhost&#39;;</code><ul>
+<li>（office laptop sql root password: <code>111</code>; desktop mysql database root password:’’）</li>
+<li>从此行更改用户密码的命令可以得出：<ul>
+<li><code>mysql</code> 库 <code>user</code> 表是存放用户的表</li>
+<li>其中的 <code>authentication_string</code> 字段用于存放密码</li>
+<li>密码格式：PASSWORD(‘password’)</li>
+<li>需要 <strong>注意</strong> 的是： mysql 5.7 后不再支持 PASSWORD() 函数，取而代之的是 MD%()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>退出控制台：<code>exit|quit</code></li>
+</ul>
+<p>常用命令：</p>
+<ul>
+<li>查找库内所有的表名： <code>SELECT table_name FROM information_schema.tables WHERE table_schema = &#39;databaseName&#39; AND table_type=&#39;base TABLE&#39;;</code></li>
+<li>选择库：<code>USE database</code></li>
+<li>查看库内所有表名：<code>SHOW TABLES;</code></li>
+<li>添加库： <code>CREATE DATABASE db_name character set &#123;字符集&#125;;</code></li>
+<li>删除库： <code>DROP database;</code></li>
+<li>删除表：<code>DROP TABLE (TABLE name);</code></li>
+<li>查看库创建信息 ： <code>show create database (database name);</code></li>
+<li>查看表创建信息： <code>show create TABLE (TABLE name);</code></li>
+<li>查看表所有 column : <code>SHOW COLUMNS FROM (TABLE name);</code></li>
+<li>查看表所有 index : <code>SHOW INDEX FROM TABLE</code></li>
+<li>查看表状态信息： <code>SHOW TABLE STATUS [FROM db_name] [LIKE &#39;TABLE&#39;] [\G]</code></li>
+<li>查看表：<code>desc (table_name);</code></li>
+<li>修改表名：<code>rename TABLE 表名 to 新表名;</code></li>
+</ul>
+<h3 id="mysql-服务添加新用户"><a href="#mysql-服务添加新用户" class="headerlink" title="mysql 服务添加新用户"></a>mysql 服务添加新用户</h3><blockquote>
+<p>当 mysql 服务初始化完成并启动后，登录 root 账户后可以在 client 使用命令添加用户，只需要在 mysql 库 user 表中插入数据即可。</p>
+</blockquote>
+<p>执行命令：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span></span><br><span class="line">  (host, <span class="keyword">user</span>, password,select_priv, insert_priv, update_priv)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">&#x27;localhost&#x27;</span>, <span class="string">&#x27;guest&#x27;</span>, PASSWORD(<span class="string">&#x27;guest123&#x27;</span>), <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><em>note: user 表中所有的以 <code>_priv</code> 结尾的字段都是表示相关的权限（privilege），<code>Y</code> 表示有， <code>N</code> 表示无此权限。</em></p>
+<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><blockquote>
+<p>对表属性字段进行更改的操作</p>
+</blockquote>
+<p>创建表：</p>
+<blockquote>
+<p>CREATE TABLE (table name) ((field name) (字段类型) (字段长度) [约束]));</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">TABLE</span> if <span class="keyword">not</span> <span class="keyword">exists</span> `<span class="keyword">user</span>`(</span><br><span class="line">    `id` <span class="type">int</span> unsigned  <span class="keyword">not</span> <span class="keyword">null</span> auto_increment,`username` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">null</span>,</span><br><span class="line">    `remark` <span class="type">varchar</span>(<span class="number">30</span>), <span class="keyword">primary</span> key (`id`)</span><br><span class="line">    )</span><br><span class="line">    engine<span class="operator">=</span>innodb <span class="keyword">default</span> charset<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;用户表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改表名: <code>rename TABLE 原表名 TO 新表名;</code></li>
+<li>添加列：<code>ALTER TABLE 表名 ADD 字段名 类型(长度) [约束] COMMENT 备注;</code></li>
+<li>修改列：<code>ALTER TABLE 表名 MODIFY 字段名 类型(长度) [约束] COMMENT 备注;</code> 可指定列字符集，在其中加入: <code>CHARSET (utf8mb4)</code>;</li>
+<li>修改列名：<code>ALTER TABLE 表名 CHANGE 旧字段名 新字段名 类型(长度) [约束] COMMENT 备注;</code></li>
+<li>删除列：<code>ALTER TABLE 表名 DROP 列名;</code></li>
+<li>修改表字符集：<code>ALTER TABLE 表名 CHARSET (charsetname);</code></li>
+<li>修改表备注：<code>ALTER TABLE 表名 COMMENT=&#39;your comments&#39;;</code> 表备注与列备注不同，使用了 <code>=</code></li>
+</ul>
+<h3 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h3><blockquote>
+<p>对表中行数据进行更改</p>
+</blockquote>
+<ul>
+<li>表插入数据：<ul>
+<li><code>INSERT into 表名 （字段名...） values (value1), (value2), (value3);</code> 插入指定字段名数据</li>
+<li><code>INSERT into 表名 values (row1, row2, row3);</code> 此各必须插入所有字段</li>
+</ul>
+</li>
+<li>修改行数据 <code>UPDATE 表名 SET field1=value, field2=value2 [WHERE condition];</code></li>
+<li>删除行数据： <code>DELETE FROM 表名 [WHERE condition];</code></li>
+<li>删除表内所有数据： <code>TRUNCATE TABLE tablename;</code> 与 delete 不加 WHERE 条件区别在于 此命令将删除所有后新建一张同样的表所有其新行 id 从 0 开始，而 delete 将从之前删除的最大的 id 开始。</li>
+</ul>
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><blockquote>
+<p>mysql 查询 DQL</p>
+</blockquote>
+<ul>
+<li><p>查询：</p>
+<ul>
+<li>模糊查询：今天（Feb 18 2020才知道：除了 <code>%</code> 可以指定多个点位符外， <code>_</code> 还可以当作单个占位符使用。</li>
+<li>顺序： select &gt;&gt; from &gt;&gt; WHERE &gt;&gt; group by &gt;&gt; having &gt;&gt; order by</li>
+</ul>
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3></li>
+</ul>
+<blockquote>
+<p>多表联接查询</p>
+</blockquote>
+<p>分类：</p>
+<ol>
+<li>交叉连接查询 <code>SELECT * from tableA,tableB;</code> （不推荐使用，其算法会将两张表每行数据进行组合得到一个行数之积的结果再 select）</li>
+<li>内连接查询 <code>INNER JOIN</code> ，其中 <code>INNER</code> 可省略<ol>
+<li>隐式内连接 <code>SELECT * FROM A,B [WHERE condition];</code></li>
+<li>显式内连接 <code>SELECT * FROM A JOIN B [ON condition];</code></li>
+</ol>
+</li>
+<li>外连接查询 keywork: <code>OUTER JOIN</code> , <code>OUTER</code> 可省略<ol>
+<li>左外连接: <code>LEFT OUTER JOIN</code> eg: <code>SELECT * FROM A LEFT OUTER JOIN B [WHERE condition];</code></li>
+<li>右外连接：<code>RIGHT OUTER JOIN</code> eg: <code>SELECT * FROM A RIGHT OUTER JOIN B [WHERE condition];</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="mysql-engine"><a href="#mysql-engine" class="headerlink" title="mysql engine"></a>mysql engine</h2><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/0201zcr/p/5296843.html">参考博客</a></p>
+<ul>
+<li>mysql数据库引擎类别有：<ul>
+<li>ISAM：<ul>
+<li>读取速度很快，不占用大量内存资源；</li>
+<li>不足之处：不支持事务，不能容错（如果硬盘崩溃，则不能恢复了）；</li>
+</ul>
+</li>
+<li>MYISAM：<ul>
+<li>Mysql的默认引擎，是ISAM的扩展格式，提供了ISAM没有的索引和字段管理功能外，还使用表格锁定的机制，达到人优化多个并发的读写操作，代价是要常用<code>OPTIMIZE TABLE</code>来恢复被更新机制浪费的空间。</li>
+<li>MYISAM强调用ISAM所有的快速读取操作，这也让MYISAM在WEB开发中受到青睐；</li>
+</ul>
+</li>
+<li>HEAP：<ul>
+<li>HEAP允许只驻留在内存里的临时表格。驻留在内存里让HEAP要比ISAM和MYISAM都快，但是它所管理的数据是不稳定的，而且如果在关机之前没有进行保存，那么所有的数据都会丢失。</li>
+<li>在数据行被删除的时候，HEAP也不会浪费大量的空间。</li>
+<li>HEAP表格在你需要使用SELECT表达式来选择和操控数据的时候非常有用。要记住，在用完表格之后就删除表格；</li>
+</ul>
+</li>
+<li>INNODB和BEAKLEYDB（BDB)：<ul>
+<li>INNODB和BERKLEYDB（BDB）数据库引擎都是造就MYSQL灵活性的技术的直接产品，这项技术就是MYSQL++ API。</li>
+<li>在使用MYSQL的时候，你所面对的每一个挑战几乎都源于ISAM和MYISAM数据库引擎不支持事务处理也不支持外键。</li>
+<li>尽管要比ISAM和MYISAM引擎慢很多，但是INNODB和BDB包括了对事务处理和外来键的支持，这两点都是前两个引擎所没有的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于-INNODB-引擎"><a href="#关于-INNODB-引擎" class="headerlink" title="关于 INNODB 引擎"></a>关于 INNODB 引擎</h3><p><strong>InnoDB:</strong></p>
+<ul>
+<li>Innodb引擎提供了对数据库ACID事务的支持，并且实现了SQL标准的四种隔离级别；<ul>
+<li><strong>ACID</strong><ul>
+<li>A  事务的原子性(Atomicity)：指一个事务要么全部执行,要么不执行.也就是说一个事务不可能只执行了一半就停止了.比如你从取款机取钱,这个事务可以分成两个步骤:1划卡,2出钱.不可能划了卡,而钱却没出来.这两步必须同时完成.要么就不完成.</li>
+<li>C 事务的一致性(Consistency)：指事务的运行并不改变数据库中数据的一致性.例如,完整性约束了a+b=10,一个事务改变了a,那么b也应该随之改变.</li>
+<li>I 独立性(Isolation）:事务的独立性也有称作隔离性,是指两个以上的事务不会出现交错执行的状态.因为这样可能会导致数据不一致.</li>
+<li>D 持久性(Durability）:事务的持久性是指事务执行成功以后,该事务所对数据库所作的更改便是持久的保存在数据库之中，不会无缘无故的回滚.</li>
+</ul>
+</li>
+<li>该引擎还提供了行级锁和外键约束，它的设计目标是<strong>处理大容量数据库系统</strong>，它本身其实就是基于MySQL后台的完整数据库系统，MySQL运行时Innodb会在内存中建立缓冲池，用于缓冲数据和索引。</li>
+</ul>
+</li>
+<li>与MYISAM相比：<ul>
+<li>MyIASM是MySQL<strong>默认的引擎</strong>，但是它没有提供对数据库事务的支持，也不支持行级锁和外键，因此当INSERT(插入)或UPDATE(更新)数据时即写操作需要锁定整个表，效率便会低一些。不过和Innodb不同，<strong>MyIASM中存储了表的行数</strong>，于是SELECT COUNT(*) FROM TABLE时只需要直接读取已经保存好的值而不需要进行全表扫描。</li>
+<li>如果表的<strong>读操作远远多于写操作且不需要数据库事务的支持</strong>，那么MyIASM也是很好的选择。</li>
+<li><strong>大尺寸的数据集趋向于选择InnoDB引擎</strong>，因为它支持事务处理和故障恢复。</li>
+<li>数据库的大小决定了故障恢复的时间长短，<strong>InnoDB可以利用事务日志进行数据恢复</strong>，这会比较快。</li>
+<li>主键查询在InnoDB引擎下也会相当快，不过需要注意的是如果主键太长也会导致性能问题，关于这个问题我会在下文中讲到。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Index-索引"><a href="#Index-索引" class="headerlink" title="Index 索引"></a>Index 索引</h3><blockquote>
+<p><strong>索引（Index）是帮助MySQL高效获取数据的数据结构。</strong></p>
+</blockquote>
+<ul>
+<li>MyIASM和Innodb都使用了树这种数据结构做为索引。谈到树，就不得不谈到B-tree与B+tree；</li>
+<li>MyISAM引擎中用到的索引结构：<ul>
+<li>MyISAM引擎的索引结构为B+Tree，其中B+Tree的数据域存储的内容为实际数据的地址，也就是说它的<strong>索引和实际的数据是分开的</strong>，只不过是用索引指向了实际的数据，这种索引就是所谓的<strong>非聚集索引</strong>。</li>
+</ul>
+</li>
+<li>Innodb引擎的索引结构：<ul>
+<li>与MyISAM引擎的索引结构同样也是B+Tree，但是<strong>Innodb的索引文件本身就是数据文件</strong>，即<strong>B+Tree的数据域存储的就是实际的数据</strong>，这种索引就是<strong>聚集索引</strong>。</li>
+<li>这个索引的key就是数据表的主键，因此InnoDB表数据文件本身就是主索引。</li>
+<li>和MyISAM不同，InnoDB的辅助索引数据域存储的也是相应记录主键的值而不是地址，所以当以辅助索引查找时，会先根据辅助索引找到主键，再根据主键索引找到实际的数据。</li>
+<li>所以Innodb不建议使用过长的主键，否则会使辅助索引变得过大。建议使用自增的字段作为主键，这样B+Tree的每一个结点都会被顺序的填满，而不会频繁的分裂调整，会有效的提升插入数据的效率。</li>
+<li>InnoDB的数据文件本身就是索引文件。从上文知道，MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的叶节点data域保存了完整的数据记录。</li>
+<li>这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。</li>
+</ul>
+</li>
+<li>这两种引擎都使用B+tree，不同之处在于：<ul>
+<li>MyISAM的的索引使用的是<strong>非聚集索引</strong>，而<strong>InnoDB使用的是聚集索引</strong>；</li>
+<li>所谓<strong>非聚集索引就是索引与实际的数据是分开的</strong>，索引只是指向了实际的数据；</li>
+<li><strong>聚集索引指索引就是索引文件本身就是数据</strong>，数据域存储的就是实际的数据；</li>
+</ul>
+</li>
+</ul>
+<h2 id="mysql-transaction"><a href="#mysql-transaction" class="headerlink" title="mysql transaction"></a>mysql transaction</h2><p>mysql 的事务</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
+<li>开启事务：<code>start transaction;</code></li>
+<li>提交事务：<code>commit;</code></li>
+<li>回滚事务：<code>rollback;</code></li>
+</ul>
+<h3 id="事务相关"><a href="#事务相关" class="headerlink" title="事务相关"></a>事务相关</h3><ul>
+<li>mysql 默认开启事务，一条语句执行时默认开启一个事务，根据结果自动提交或回滚。开启事务语句一执行，便开启了手动事务；</li>
+<li>oracle 事务默认手动开启；</li>
+<li>mysql 事务提交或回滚前，在同一个连接内能查询到此事务内前面执行 sql 的结果。其他连接不行；这应该是事务隔离级别决定的，待确认。</li>
+</ul>
+<h3 id="数据库的事务隔离级别"><a href="#数据库的事务隔离级别" class="headerlink" title="数据库的事务隔离级别"></a>数据库的事务隔离级别</h3><h4 id="并发事务下"><a href="#并发事务下" class="headerlink" title="并发事务下"></a>并发事务下</h4><ul>
+<li>先引入并发事务出现错误的概念：<ul>
+<li>脏读：T1 更新了数据，但未提交，这时 T2 读取 T1 事务中未提交的数据，但 T1 回滚操作，T2 读取就无效，这就叫脏读；</li>
+<li>不可重复读：T1 读取，T2 修改了数据，T1 再次读时就讲到修改过的数据，这叫不可重复读</li>
+<li>幻读：事务 T1 读取一条 where 条件语句，T2 插入一行也符合的，这时 T1 再次查询可以看到新数据，这叫幻读</li>
+</ul>
+</li>
+<li>事务隔离级别：用以解决并发事务中出现的错误<ul>
+<li>READ UNCOMMITED,允许以上三种</li>
+<li>READ COMMITED,允许幻想读、不可重复读，不允许脏读</li>
+<li>REPEATABLE READ:允许幻想读，不允许不可重复读与脏读</li>
+<li>SERIALIAZABLE，串行事务，性能最低三者都不允许</li>
+</ul>
+</li>
+<li>Oracle 不支持脏读，默认使用 READ COMMITED，支持 READ COMMITED/SERIALIZABLE</li>
+<li>MySQL 标准定义的默认事务隔离级别是 REPEATABLE READ</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_data_warehouse">reference</a></p>
+<p>OLTP: Online Transaction Process 多写类类型<br>data warehouse 多读少写类型</p>
+
+                
+            </div>
+        </article>
+    
+</div>
+<div class="paginator">
+    
+        
+        <a class="prev" href="/page/4/">
+            <i class="iconfont icon-prev"></i>
+            Prev
+        </a>
+        
+        
+        <a class="next" href="/page/6/">
+            Next
+            <i class="iconfont icon-next"></i>
+        </a>
+        
+    
+</div>
+
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

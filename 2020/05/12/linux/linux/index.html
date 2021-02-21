@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2020-05-12</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux"><span class="toc-text">linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat"><span class="toc-text">tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql"><span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis"><span class="toc-text">redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">磁盘管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91"><span class="toc-text">文档编辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-text">环境变量设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firewall-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-text">firewall 防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E5%8E%8B%E7%BC%A9"><span class="toc-text">备份压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF"><span class="toc-text">关机重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-text">文件权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-text">网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-operation"><span class="toc-text">windows operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rpm"><span class="toc-text">rpm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="toc-text">服务命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows10-amp-Ubuntu"><span class="toc-text">windows10 &amp; Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98"><span class="toc-text">安装问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><p>desktop virtual machine: root 123456</p>
+<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p>在 linux 上安装 Tomcat 并启动。(root 123456)</p>
+<ol>
+<li>安装 tomcat 后，进入 bin 中启动 <code>./startup.sh</code>;</li>
+<li>必须开启防火墙：<ol>
+<li><code>vim /etc/sysconfig/iptables</code> 打开系统 ip 配置文件</li>
+<li>添加配置 <code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT</code><ol>
+<li>(直接调用服务写配置：<code>/sbin/iptables -I INPUT -p tcp --dport 6379 -j ACCEPT</code>)</li>
+</ol>
+</li>
+<li>重启防火墙 <code>service iptables restart</code><ol>
+<li>加上路径的命令为： <code>/etc/rc.d/init.d/iptables save</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>通过外部网络可访问 tomcat 了。</li>
+</ol>
+<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>在 linux 安装 mysql 并运行。（本地虚拟机上：root 12345）</p>
+<p>问题：March 12 2020 在虚拟机上 linux 设置自动启动 mysql 后，在使用 <code>service mysql stop</code> 命令出现错误：“ERROR! MySQL server PID file could not be found”。最后使用 stackoverflow 上方法解决：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41616251/error-mysql-server-pid-file-could-not-be-found-in-osx-sierra">stackoverflow</a></p>
+<ol>
+<li><code>ps -ef | grep mysql --color</code> 查找出正在运行的 mysql 进程；</li>
+<li><code>kill -9 PID</code> 杀掉进程；</li>
+<li>再使用 <code>service mysql start</code> 启动 mysql ，后面再使用 <code>service mysql stop</code> 正常停止 mysql。</li>
+</ol>
+<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>在 linux 上安装 redis 使用</p>
+<ol>
+<li>编译好 redis 后运行 redis  不能直接使用 <code>redis-server</code> ，需要使用 <code>./redis-server</code> 才能启动；</li>
+<li>修改 redis 服务后台启动：<ol>
+<li>将 redis.conf 文件 copy 到 bin 目录下，将其 <code>daemonize</code> 修改为 <code>yes</code>;</li>
+<li>启动 redis-server 时加上参数：<code>./redis-server redis.conf</code>；</li>
+</ol>
+</li>
+</ol>
+<h2 id="磁盘管理命令"><a href="#磁盘管理命令" class="headerlink" title="磁盘管理命令"></a>磁盘管理命令</h2><ul>
+<li><code>ls [参数] [文件或目录]</code> list 查看目录下所有文件<ul>
+<li><code>-a</code> 或 <code>--all</code> 查看全部，包括隐藏的</li>
+<li><code>-l</code> 简化版: <code>ll</code> 详细格式列表</li>
+</ul>
+</li>
+<li><code>cd [目录]</code> change directory<ul>
+<li><code>~</code> 当前用户目录</li>
+<li><code>/</code> 根目录</li>
+<li><code>.</code> 当前目录</li>
+<li><code>..</code> 上级目录</li>
+<li><code>-</code> 上次所在目录</li>
+</ul>
+</li>
+<li><code>pwd</code> print working directory 打印当前所在目录</li>
+<li><code>mkdir</code> make directory</li>
+<li><code>rmdir</code> remove directory 移除空目录</li>
+<li>scp secure copy 可以从远程服务器拷贝，同时加密</li>
+</ul>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ul>
+<li><code>cat [OPTION]... [FILE]...</code> concatenate 将文件输出级联到另一个文件或终端<ul>
+<li><code>cat &gt; &#123;file&#125;</code> 指定到同一个文件</li>
+</ul>
+</li>
+<li><code>lsb_release [OPTION]</code> 查看系统发布版本</li>
+<li><code>more &#123;file&#125;</code>  分页显示文件内容<ul>
+<li>enter 向下显示一行（默认1行，可定义）</li>
+<li>空格/ctrl+F 显示下一页</li>
+<li><code>B</code>  back 返回上一屏</li>
+<li><code>q</code> 退出 more</li>
+</ul>
+</li>
+<li><code>less [参数] &#123;file&#125;</code><ul>
+<li><code>-m</code> 显示 more 命令一样的 百分比</li>
+<li><code>-N</code> 显示行号</li>
+<li>后续命令<ul>
+<li>空格/page down 向下翻页</li>
+<li>page up/b(back) 向上翻页</li>
+<li>上下方向键/y与enter键 向上下一行</li>
+<li><code>?</code> <code>/</code> 向上/下搜索<ul>
+<li><code>n</code>/<code>N</code> 跳到下一个/上一个查找的结果</li>
+</ul>
+</li>
+<li><code>q</code> 退出</li>
+<li>左右方向键 左右滚屏</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>tail [parameter] [file]</code><ul>
+<li><code>-n</code> 显示行数</li>
+<li><code>-f</code> 动态跟踪文件，查看动态日志</li>
+<li>ctrl + c 退出</li>
+</ul>
+</li>
+<li><code>find [path] [parameter]</code> 在目录中查找文件<ul>
+<li><code>-name</code>  指定字符串作为查找的样本</li>
+</ul>
+</li>
+</ul>
+<h2 id="文档编辑"><a href="#文档编辑" class="headerlink" title="文档编辑"></a>文档编辑</h2><ul>
+<li><code>|</code> 管道命令，一般与 grep 联用，在上一个结果中进行操作下一个命令</li>
+<li><a target="_blank" rel="noopener" href="https://vim.rtorr.com/"><code>vim [file]</code> 或者 <code>vi [file]</code> 命令</a> <a target="_blank" rel="noopener" href="https://spin.atomicobject.com/2016/04/19/vim-commands-cheat-sheet/">cheat sheet</a><ul>
+<li>进入到文件 vi 编辑状态后，有三种状态：<ul>
+<li>command mode 命令模式，此模式下按 <code>:</code> 进入底行模式， <code>i</code>/<code>a</code>/<code>o</code> 进入到插入模式<ul>
+<li><code>i</code> 在光标前插入 <code>shift + i</code> 在光标所在行前插入</li>
+<li><code>a</code> 在光标后插入， <code>shift + a</code> 在光标所在行最后插入</li>
+<li><code>o</code> 在光标所在行下一行插入新行， <code>shift + o</code> 在光标所在行前一行插入新行</li>
+<li>i - Insert at cursor (goes into insert mode)</li>
+<li>a - Write after cursor (goes into insert mode)</li>
+<li>A - Write at the end of line (goes into insert mode)</li>
+<li>ESC - Terminate insert mode</li>
+<li>u - Undo last change</li>
+<li>U - Undo all changes to the entire line</li>
+<li>o - Open a new line (goes into insert mode)</li>
+<li>dd - Delete line</li>
+<li>3dd - Delete 3 lines.</li>
+<li>D - Delete contents of line after the cursor</li>
+<li>C - Delete contents of a line after the cursor and insert new text. Press ESC key to end insertion.</li>
+<li>dw - Delete word</li>
+<li>4dw - Delete 4 words</li>
+<li>cw - Change word</li>
+<li>x - Delete character at the cursor</li>
+<li>r - Replace character</li>
+<li>R - Overwrite characters from cursor onward</li>
+<li>s - Substitute one character under cursor continue to insert</li>
+<li>S - Substitute entire line and begin to insert at the beginning of the line</li>
+<li><code>~</code> Change case of individual character, 前面加上数字将实现指定数量个字符的大小写切换</li>
+</ul>
+</li>
+<li>last line mode 底行模式， w write, q quit 退出到编辑模式, ! force</li>
+<li>insert mode 插入模式，esc 退出到底行模式</li>
+</ul>
+</li>
+<li>copy &amp; paste<ul>
+<li><code>yy</code> 单行复制 yank current line</li>
+<li><code>y$</code> 复制光标到行尾 yank to end of the current line from cursor</li>
+<li><code>yw</code> 复制从光标处到 token 尾 yank from cursor to end of the current word</li>
+<li><code>yW</code> 从光标处复制到 word 尾</li>
+<li><code>nyy</code> n 行复制</li>
+<li><code>p</code>/<code>P</code> 在光标后/前粘贴</li>
+<li><code>gg</code> 到文本第一行</li>
+<li><code>shift + gg</code> 到文本最后一行</li>
+</ul>
+</li>
+<li>delete<ul>
+<li><code>dd</code>删除光标所在行</li>
+<li><code>ndd</code> 删除 n 行</li>
+</ul>
+</li>
+<li><code>u</code> undo</li>
+<li>ctrl + <code>r</code> redo</li>
+<li>Movement<ul>
+<li>h j k l 左下上右四个方向移动 cursor 在前加上数字可实现多个字符的跳动</li>
+<li>b w B W 向 back forward 方向移动整个 token/word ，在其前数字指定移动数量</li>
+<li>^ $ 移动光标到行首尾</li>
+<li>ctrl + u/d 向上下翻页up/down ，cursor 跟着一起翻页</li>
+<li>整页翻页 ctrl-f ctrl-b<ul>
+<li>f 就是forward b就是backward</li>
+<li>翻半页 ctrl-d ctrl-u d=down u=up</li>
+<li>滚一行ctrl-e ctrl-y</li>
+<li>zz 让光标所在的行居屏幕中央</li>
+<li>zt 让光标所在的行居屏幕最上一行 t=top</li>
+<li>zb 让光标所在的行居屏幕最下一行 b=bottom</li>
+</ul>
+</li>
+<li>*<line-number>*G 跳到指定行</li>
+<li>H M L 跳到页面上中下 High Middle Low</li>
+<li><code>*</code> <code>#</code> 下一个与当前 cursor 所在 token 相同的 token ，前面加上数字指定跳跃数量</li>
+<li><code>n</code> <code>N</code> 重复上一次命令结果往上/下找</li>
+<li><code>&#39;&#39;</code> 两次 <code>&#39;</code> ，跳回上一次输入此命令的行首。相当于对特殊行进行一次记录，但只能记录一个历史，感觉没啥用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>grep [parameter] [regular expression] &#123;file&#125;</code> Global Regular expression print 过滤搜索特定字符。匹配到的结果是行，rgep 可以多个，file 也可多个，也可用 * 匹配当前路径所有文件<ul>
+<li><code>-i</code> 或 <code>-ignore-case</code> 忽略大小写</li>
+<li><code>--color[=auto|=never|=always]</code> ：可以将找到的关键词部分加上颜色的显示</li>
+<li><code>-A2</code> after 显示匹配行+其后2行</li>
+<li><code>-B</code> before</li>
+<li><code>-C</code> 前后都有</li>
+<li>c 统计行数</li>
+<li>r recursive 递归查找包括子路径文件</li>
+<li>n number of line 显示行号</li>
+<li>E extend 扩展 regexp</li>
+</ul>
+</li>
+<li>命令行中使用命令<ul>
+<li><code>ctrl + e</code> 移动到行尾 end</li>
+<li><code>ctrl + a</code> 移动到行 首</li>
+<li><code>ctrl + w</code> 删除光标前一个 token</li>
+<li><code>esc + d</code> 删除光标后一个 token</li>
+<li><code>ESC + f</code> 向前移动一个 token</li>
+<li><code>esc + b</code> 向后移动一个 token</li>
+</ul>
+</li>
+</ul>
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><ul>
+<li><code>ps [parameter]</code> process status 进程运行状态<ul>
+<li><code>-e</code> 与 <code>-A</code> 相同显示所有进程</li>
+<li><code>-f</code> 显示UID, PPIP, C, STIME 栏位</li>
+</ul>
+</li>
+<li><code>kill [parameter] [process]</code><ul>
+<li><code>-9 pid</code> 强制终止</li>
+</ul>
+</li>
+<li><code>lscpu</code> 查看 cpu 信息</li>
+<li><code>dpkg --print-architecture</code> <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/180726/easy-command-line-method-to-determine-specific-arm-architecture-string">查看指令集</a></li>
+<li>sudo superuser do<ul>
+<li>sudo [command] 给普通用户命令加上超级用户权限</li>
+</ul>
+</li>
+<li>没有安装 systemmd(systemctl) 命令，使用 service {servicename} {start|stop|restart} 代替</li>
+<li><code>uname</code> unix name 查看系统版本信息</li>
+<li><code>update-alternatives [options] command</code> 管理系统可选项命令,建立命令的符号链接<ul>
+<li>当安装多个命令版本时,使用此命令配置各命令的优先级或管理其默认项,在安装 jdk 时需要配合环境变量配置设置系统 java 命令.</li>
+<li><code>update-alternatives --install link name path priority [--slave link name path] ...</code> 可以将命令(path)生成符号链接(name)添加到环境变量目录(link) eg: <code>update-alternatives --install /usr/bin/java java /usr/local/java/jdk-8/bin/java 1</code></li>
+<li><code>--config</code> 交互配置命令,如果需要在命令使用配置,使用 <code>--set</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/58814/how-do-i-add-environment-variables">reference</a><br><a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/EnvironmentVariables">环境变量设置</a></p>
+</blockquote>
+<ul>
+<li>设置当前 shell 变量 : <code>name=value</code> 此语法设置的变量只在当前 shell 中有效,同时 <strong>不能被当前 shell 启动的进程所读取到</strong>.</li>
+<li>设置当前 shell 变量并对当前 shell 环境启动的进程生效:<code>export [-fn] [name=[value] ...]</code> <code>export -p</code> 给 shell 设置变量.变量域只在当前 shell ,从当前 shell 启动的进程都能读到此变量,而其他 shell 打开的进程不能读取到.<ul>
+<li>将每个 name 变量自动导入到后续执行的命令的环境中, value 使用前需要对其赋值.</li>
+<li>命令选项<ul>
+<li>-f 引用到某个 shell function</li>
+<li>-n 从 name 中移除导出属性 <em>?</em></li>
+<li>-p 显示所有被导入的变量与函数</li>
+<li><code>--</code> 关闭选项处理 <em>?</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>永久地对所有 bush sessions 功能添加变量: 将变量设置行添加到 <code>$HOME/.bashrc</code> 或者 .profile .bash_login 中,三者更推荐 .profile ,其他两个都只是在 shell 执行中会有效,对桌面应用无效.</li>
+<li>系统范围内(所有用户进程)永久添加变量: 添加到 /etc/environment, <code>sudo -H gedit /etc/environment</code>. 格式: <code>VARNAME=&quot;value&quot;</code>.或者在 /etc/profile.d/ 中添加脚本,脚本中使用 export 添加环境变量.此目录中的脚本都会在所有用户所有 shell 执行前先执行.<ul>
+<li>需要重新登录当前用户才能对当前用户生效.</li>
+</ul>
+</li>
+<li><code>source &lt;filename&gt; [arguments]</code> 在当前 shell 中读取并执行文件中的命令, $PATH 中的变量会被用来查询在文件中指定的目录.如果参数 arguments 提供了,会被用来当作 shell 执行的位置参数(参数顺序被指定可以在 shell 中的使用 $n 获取). source 命令快捷方式: <code>.</code> .</li>
+</ul>
+<h2 id="firewall-防火墙"><a href="#firewall-防火墙" class="headerlink" title="firewall 防火墙"></a>firewall 防火墙</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011846257/article/details/54707864">reference</a></p>
+<p>添加 iptables 规则时需要将其添加成 REJECT 所有其他的端口之前，否则将无效。</p>
+<h2 id="备份压缩"><a href="#备份压缩" class="headerlink" title="备份压缩"></a>备份压缩</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-difference-between-tar-gz-zip-and-tar-gz-in-Linux#:~:text=gz%20is%20a%20single%20file,an%20arbitrary%20number%20of%20filed.">difference between .gz and .tar</a></p>
+</blockquote>
+<ul>
+<li><code>.gz</code> 文件是使用 gzip 压缩过的文件后缀，而 tar 只是用于将多个文件进行打包并不包含压缩。</li>
+<li><code>tar</code><ul>
+<li><code>-c</code> create 创建归档</li>
+<li><code>-x</code> extract 解档</li>
+<li><code>-z</code> 使用 <strong>gzip</strong> 压缩</li>
+<li><code>-v</code> verbose 显示压缩的文件</li>
+<li><code>-f</code> file 是否使用档名</li>
+</ul>
+</li>
+</ul>
+<h2 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h2><ul>
+<li><code>reboot</code> 重启 CentOS</li>
+<li><code>halt</code> 关机 CentOS</li>
+<li>debian<ul>
+<li>reboot</li>
+<li>shutdown</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><p><code>chmod [parameter] &lt;权限范围&gt; &lt;符号&gt;&lt;权限代码&gt;</code> change mode 更改权限</p>
+<ul>
+<li><code>-R</code> 或 <code>-recursive</code> 递归将文件夹中所有文件都更改</li>
+<li>权限范围<ul>
+<li><code>u</code> user</li>
+<li><code>g</code> group</li>
+<li><code>o</code> other</li>
+<li><code>a</code> all</li>
+</ul>
+</li>
+<li>权限符号<ul>
+<li><code>+</code> 添加</li>
+<li><code>-</code> 取消</li>
+</ul>
+</li>
+<li>权限代号<ul>
+<li><code>r</code> read 4</li>
+<li><code>w</code> write 2</li>
+<li><code>x</code> execute 1</li>
+<li><code>-</code> none 0</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>查看 网络配置 文件位置: <code>/etc/sysconfig/networking-scripts/ifcfg-eth0</code></p>
+<h3 id="windows-operation"><a href="#windows-operation" class="headerlink" title="windows operation"></a>windows operation</h3><p>windows 操作系统中相关命令行。</p>
+<ul>
+<li>刷新 dns 数据命令：</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看电脑网络端口使用情况，类似于在 linux 中使用 <code>ps</code> 命令<ul>
+<li><code>netstat -ano</code> 命令行命令可以看到各个进程 pid 与 address 占用情况</li>
+<li><code>netstat -ano|findstr portNum</code> 查看指定端口占用情况，这儿查看的端口占用包括了本地地址的占用与外部地址的占用</li>
+<li><code>tasklist|findstr &#39;pid&#39;</code> 查看指定 pid 的进程使用</li>
+<li><code>taskkill /pid pid /f</code> 杀死进程 pid 指 progress id 进程 id<ul>
+<li>前两个步骤任选一个与最后个连用就可查找出端口被哪个进程给占用。</li>
+<li>也可以使用前两个步骤配合任务管理器查找，相对于命令行来说更直观。</li>
+<li>在 windows 系统中可用，不知在 linux 中是否可用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><blockquote>
+<p>resources package manager 资源包管理器，其相应的包文件后缀为 <code>.rpm</code> 在 red hat/Fedora/SUSE 系列使用此包管理，而在 Debian/Ubuntu 系列使用 <code>dpkg</code> 命令，其包文件后缀为 <code>.deb</code> 。</p>
+</blockquote>
+<p>command lind : `rpm [parameter] [软件]</p>
+<p>使用 rpm 管理系统软件包，可以定制软件的更新、安装与卸载。<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/">reference</a></p>
+<ol>
+<li>下载软件包的 rpm 文件，再使用 rpm 命令安装仓库</li>
+<li>安装后，可以使用 yum-util 的 yum-config-manager 管理包，也可以直接进入 /etc/yum.repos.d/{software}.repo 文件查看管理软件包数据</li>
+<li>使用 yum install {software} 安装软件，安装时会自动根据其 repo 仓库配置文件安装指定的软件版本</li>
+</ol>
+<ul>
+<li><code>-v</code> verbose 显示指令执行过程</li>
+<li><code>-h</code> 或 <code>--hash</code> 套件安装时显示列出指令</li>
+<li><code>-q</code> question 询问模式，遇到问题时指令会先询问用户</li>
+<li><code>-a</code> all 显示所有的套件</li>
+<li><code>-i</code> 或 <code>--install</code>&lt;套件档&gt; 安装指定的套件档</li>
+<li><code>-U</code> 或 <code>--upgrade &lt;套件档&gt;</code> 更新指定的套件档</li>
+<li><code>-e &lt;套件档&gt;</code> erase 删除指定的套件档</li>
+<li><code>--nodeps</code> no dependence 不验证套件间的关联性</li>
+<li>常用命令：<ul>
+<li><code>rpm -qa</code> 查看安装的软件</li>
+<li><code>rpm -e --nodeps &lt;软件名&gt;</code> 删除软件</li>
+<li><code>rpm -iph &lt;package&gt;</code> 安装</li>
+<li><code>rpm -Uph &lt;软件&gt;</code> 更新软件</li>
+</ul>
+</li>
+</ul>
+<h2 id="服务命令"><a href="#服务命令" class="headerlink" title="服务命令"></a>服务命令</h2><ul>
+<li><code>service &lt;service name&gt; restart</code> 重启服务</li>
+<li><code>service &lt;service name&gt; start</code> 启动服务</li>
+<li><code>service &lt;service name&gt; stop</code> 停止服务</li>
+</ul>
+<h2 id="windows10-amp-Ubuntu"><a href="#windows10-amp-Ubuntu" class="headerlink" title="windows10 &amp; Ubuntu"></a>windows10 &amp; Ubuntu</h2><blockquote>
+<p>win10 + ubuntu 双系统安装与使用</p>
+</blockquote>
+<h2 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h2><ul>
+<li>目前在台式机双显卡上遇到最大的问题是使用nvidia独显并不能设置分辨率为1920x1080，相反使用核显反而能。但是如果连接核显VGA接口又不能正常启动系统，只能先连接独显DVI－I接口让系统启动，启动后再将连接线接到VGA接口。<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19571221">显示器接口认识</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shixin_0125/article/details/72793300">修改分辨率</a>，在使用DVI-I接口时并不能设置成功，只能设置到未连接的VGA 或 HDMI 接口上。</li>
+<li>使用 ｀xrandr｀ 命令查看系统正使用的接口与其分辨率</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5c1db6364141">双系统下时间相差 8 小时</a></li>
+<li>ubuntu 默认使用其 snap 安装软件，其安装的 vscode 被阉割，不能在其中输入中文，需要自行安装完整版。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35092399/article/details/105526908">reference</a></li>
+<li>ubuntu 中安装软件包使用 dpkg 命令，一般流程：<ul>
+<li>使用 <code>wget</code> 下载 <code>＊.deb</code> 包，或直接在其官方网站上手动下载其提供的 linux 版本包；</li>
+<li><a target="_blank" rel="noopener" href="https://help.ubuntu.com/kubuntu/desktopguide/zh_CN/manual-install.html">安装</a>。可直接在右击 .deb 文件选择 Kubuntu Package Menu -&gt; install。也可以使用 dpkg 命令安装。卸载时使用 apt-get remove 包名。</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://itectec.com/ubuntu/ubuntu-what-do-the-nomodeset-quiet-and-splash-kernel-parameters-mean/">禁用启动时显卡加载参数</a><ul>
+<li><code>nomodeset</code> 添加此参数指令会让 kernel 不加载显卡驱动使用 BIOS 模式也并非一定要 X server 被加载。</li>
+<li><code>quiet splash</code> 使用静默状态的启动，否则任何消息会打断 splash 桌面</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a999wt/article/details/8227154">在 Ubuntu 中使用 U 盘</a><ul>
+<li>需要将 U 盘挂载（ <code>mount</code> 命令）到系统中，一般使用 /mnt 目录挂载</li>
+<li>挂载后在 /mnt 目录中就可以看到 U 盘内容了。此处有个坑是如果挂载前已经进入 /mnt 目录，挂载后是看不到 U 盘内容的，需要重新进入目录才能看到。</li>
+<li>操作完 U 盘内容后使得命令 <code>umount</code> 命令卸载 U 盘。<ul>
+<li>卸载 U 盘可能会出现 device is busy 的提示，等一会儿就自动卸载。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/programming/" title="programming">programming</a>
+            
+            <a class="tag" href="/tags/linux/" title="linux">linux</a>
+            
+            <a class="tag" href="/tags/OS/" title="OS">OS</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2020/06/11/java/JMM/lock/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2020/04/21/spring/Spring-Test/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

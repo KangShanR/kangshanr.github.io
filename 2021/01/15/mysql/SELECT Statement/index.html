@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2021-01-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SELECT"><span class="toc-text">SELECT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Join-Clause"><span class="toc-text">Join Clause</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h1><h2 id="Join-Clause"><a href="#Join-Clause" class="headerlink" title="Join Clause"></a>Join Clause</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">reference</a></p>
+<ul>
+<li><p>在 MYSQL 中，<code>JOIN</code>, <code>CROSS JOIN</code> 与 <code>INNER JOIN</code> 在语法是等同的，彼此之间可以相互替换。但在标准 sql 中它们有所区别，inner join 使用 on 子句，而 cross join 使用其他的。</p>
+</li>
+<li><p>表引用 table_reference 可使用别名：<code>tbl_name as alias_name</code> 或 <code>tbl_name alias_name</code>。</p>
+</li>
+<li><p>table_subquery 也叫派生表或子查询，这样的一个子查询必须有一个结果集表名：<code>SELECT * FROM (SELECT 1, 2, 3) AS t1;</code></p>
+</li>
+<li><p>单次 join 最多引用 61 张表，这其中包括派生表和外部查询块的 FROM 子句视图。</p>
+</li>
+<li><p><code>INNER JOIN</code> 与 <code>,</code> 在语义上等价于没有 join 条件，都会在指定表间结果产生笛卡尔积结果。（Cartesian product 每张表的数据互相匹配）。但同时也可以在其后加上 on join条件。</p>
+<ul>
+<li>但 <code>,</code> 的优先级低于其他 INNER JOIN,CROSS JOIN,LEFT JOIN 等。如果与这些操作符混用，an error of the form Unknown column ‘col_name’ in ‘on clause’ may occur。</li>
+</ul>
+</li>
+<li><p>在 ON 的查询条件 search_condition 可以是 where 子句中可以使用的任何条件表达式。但一般来讲，ON 子句用来指定怎么 join ，而 WHERE 用来指定哪些行进入到结果集中。</p>
+</li>
+<li><p>如果使用了 LEFT JOIN ON／USING 且右表没有数据行可匹配，则右表字段都会是 NULL.可以使用这种形式语句查询表中在另外一张表中没有匹配的数据。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> left_tbl.<span class="operator">*</span> <span class="keyword">FROM</span> left_tbl <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> right_tbl <span class="keyword">ON</span> left_tbl.id <span class="operator">=</span> right_tbl.id <span class="keyword">WHERE</span> right_tbl.id <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>USING 语法：在 LEFT JOIN 语句中，与 <code>ON</code> 作用类似，但 USING 不用指定 l.id = r.id，是直接要求两个表字段名一致而直接指定多表共有的字段值一致就 JOIN 成功。eg：<code>SELECT * FROM left_table LEFT JOIN right_table USING(id);</code> = <code>SELECT * FROM left_table LEFT JOIN right_table ON left_table.id = right_table.id;</code></p>
+</li>
+<li><p><code>USING(join_column_list)</code> 子句将多个列放入参数中，这样要求多表都有这些列名存在。</p>
+</li>
+<li><p><code>NATURAL [LEFT] JOIN</code> 等同于使用 <code>INNER JOIN</code> 或 <code>LEFT JOIN</code> 并使用 <code>USING</code> 子句指定两表同名的列在其中。</p>
+</li>
+<li><p><code>RIGHT JOIN</code> 与 <code>left join</code> 工作原理类似，但为保持代码跨库端口化，推荐使用 <code>left join</code>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/partitioning-selection.html">PARTITION</a>在写DDL时将表分片，指定范围内为一片，查询时可以直接查询片内数据。（不知道这样是否可以将索引单片内查询而提高查询效率？）</p>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/mysql/" title="mysql">mysql</a>
+            
+            <a class="tag" href="/tags/InnoDB/" title="InnoDB">InnoDB</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2021/01/22/java/Pattern/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/01/15/mysql/Stored%20Routine%20Syntax/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

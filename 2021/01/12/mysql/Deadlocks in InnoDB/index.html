@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2021-01-12</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Deadlocks-in-InnoDB"><span class="toc-text">Deadlocks in InnoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#An-InnoDB-Deadlock-Example"><span class="toc-text">An InnoDB Deadlock Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deadlock-Detection"><span class="toc-text">Deadlock Detection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Disabling-Deadlock-Detection"><span class="toc-text">Disabling Deadlock Detection</span></a></li></ol></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="Deadlocks-in-InnoDB"><a href="#Deadlocks-in-InnoDB" class="headerlink" title="Deadlocks in InnoDB"></a>Deadlocks in InnoDB</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks.html">reference</a></p>
+</blockquote>
+<p>当不同的事务因为持有其他事务需要的锁不能继续处理时的场景叫死锁。因为事务之间在等待对方的资源释放，但又不释放自己所持有的资源。</p>
+<p>当多个事务通过语句 <code>SELECT ... FOR UPDATE</code> 或 <code>UPDATE</code> 对多张表中的行加锁，但加锁顺序不一致时会产生死锁。</p>
+<p>为降低死锁产生的可能性：</p>
+<ul>
+<li>使用事务而不要使用 <code>LOCK TABLES</code> 语句。</li>
+<li>让 insert/update 事务尽量小，以保证事务打开的时间尽量短。</li>
+<li>当不同的事务更新多张表或大量数据行时，在每个事务中使用相同的操作顺序（如：<code>SELECT ... FOR UPDATE</code>）；</li>
+<li>为 <code>SELECT ... FOR UPDATE</code> 与 <code>UPDATE</code> 语句使用的 column 创建索引。</li>
+</ul>
+<p><em>事务隔离级别不影响死锁产生的可能性，因为事务隔离级别只改变读的行为，而死锁产生来源于写操作。</em></p>
+<p>当死锁产生且死锁检测打开（默认打开状态），InnoDB 会检测死锁状态并回滚其中一个事务。如果使用配置 <code>innodb_deadlock_detect</code> 关闭了死锁检测，发生死锁时，InnoDB 根据配置 <code>innodb_lock_wait_timeout</code> 回滚事务。所以就算应用逻辑是正确的，也必须处理这种事务必须重试的场景。使用命令行 <code>SHOW ENGINE INNODB STATUS</code> 可以查看 InnoDB 用户事务的最后一个死锁。如果事务结构或应用错误处理伴随着高频的死锁，使用 <code>innodb_print_all_deadlocks=1</code> 将所有的死锁信息打印到 mysqld 错误日志中。</p>
+<h2 id="An-InnoDB-Deadlock-Example"><a href="#An-InnoDB-Deadlock-Example" class="headerlink" title="An InnoDB Deadlock Example"></a>An InnoDB Deadlock Example</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlock-example.html">reference</a></p>
+<blockquote>
+<p>一个死锁例子。其中有两个客户端分别访问按以下顺序执行命令。</p>
+</blockquote>
+<ol>
+<li>clientA 创建表并在其中插入一条记录；</li>
+<li>clientA 开启新事务并使用 <code>SELECT * FROM t WHERE id = 1 LOCK IN SHARE MODE</code> 查询出这条数据；</li>
+<li>clientB 开启事务并执行删除这条数据的命令：<code>DELETE FROM t WHERE id = 1;</code>这个时候，因为 clientA 持有该行数据的 s-lock ，clientB 的 x-lock 不能立即获取，只会产生一个 x-lock 的请求放入到队列中。</li>
+<li>clientA 这时执行 <code>DELETE FROM t WHERE ID = 1;</code>。这个时候产生死锁。产生原因：clientA 需要一个 x-lock，但 clientB 已经有一个 x-lock 请求在队列中同时它又在等待　clientA 释放其正持有 s-lock 。A 正持有的 s-lock 也因为 B 优先的 x-lock 请求而不能升级为 x-lock 。最终结果是，InnoDB 为其中一个 client 生成一个 error，并释放其所持有的锁。这个 client 返回错误：<code>ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction</code>，同时，另外的 client 的锁请求得到响应而删除这行数据。</li>
+</ol>
+<h2 id="Deadlock-Detection"><a href="#Deadlock-Detection" class="headerlink" title="Deadlock Detection"></a>Deadlock Detection</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlock-detection.html">死锁检测</a></p>
+</blockquote>
+<p>当死锁检测打开（默认），InnoDB 会自动检测死锁并回滚基中一个或多个事务以打断死锁链条。InnoDB 会尝试回滚最小的事务，事务的大小取决于 inserted,updated,deleted 的行数。</p>
+<p>当 innodb_table_locks = 1 且 autocommit = 0 时， InnoDB 对表锁有感知，并且 InnoDB 之上的 MYSQL 层也感知行级锁。否则，InnoDB 不能对 MYSQL <code>LOCK TABLES</code> 语句加的表锁或 InnoDB 之外的存储引擎设置的锁进行死锁检测。这些场景下可以用设置系统变量 <code>innodb_lock_wait_timeout</code> 来解决。</p>
+<p>如果 InnoDB 监听的 LASTED DETECTED DEADLOCK 输出包含 “TOO DEEP OR LONG SEARCH IN THE LOCK TABLE WAITS-FOR GRAPH, WE WILL ROLL BACK FOLLOWING TRANSACTION,” 的信息，这表明 wait-for list 上等待的事务数量超过了限制数量 200　。当等待列表事务数量超过 200 时直接当作死锁发生，并且尝试检查等待列表的事务是回滚过的。同样，如果等待列表上事务所拥有的加锁线程必须加超过 1000000 个锁也会产生这个错误。</p>
+<h3 id="Disabling-Deadlock-Detection"><a href="#Disabling-Deadlock-Detection" class="headerlink" title="Disabling Deadlock Detection"></a>Disabling Deadlock Detection</h3><p>在高并发系统中，死锁检测在一定数量线程等待相同的锁时会造成响应延迟。这种情况下，关闭死锁检测在死锁发生时根据 <code>innodb_lock_wait_timeout</code> 设置来回滚事务会更高效。关闭死锁检测使用 <code>innodb_deadlock_detect</code> 配置项。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/mysql/" title="mysql">mysql</a>
+            
+            <a class="tag" href="/tags/InnoDB/" title="InnoDB">InnoDB</a>
+            
+            <a class="tag" href="/tags/Deadlock/" title="Deadlock">Deadlock</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2021/01/13/mysql/How%20to%20Minimize%20and%20Handle%20Deadlocks/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/01/12/mysql/Phantom%20Rows/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

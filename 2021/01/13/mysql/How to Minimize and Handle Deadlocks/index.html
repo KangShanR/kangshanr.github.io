@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2021-01-13</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How-to-Minimize-and-Handle-Deadlocks"><span class="toc-text">How to Minimize and Handle Deadlocks</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="How-to-Minimize-and-Handle-Deadlocks"><a href="#How-to-Minimize-and-Handle-Deadlocks" class="headerlink" title="How to Minimize and Handle Deadlocks"></a>How to Minimize and Handle Deadlocks</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html">reference</a></p>
+<p>死锁最小化建立在<a href="./Deadlocks%20in%20InnoDB.md">死锁检测</a>之上。</p>
+</blockquote>
+<p>死锁是事务型中经典问题，如果出现死锁的频率不高不是一个危险的问题。通常来讲，需要在应用中为死锁场景下事务重试做好准备。</p>
+<p>InnoDB 自动使用行级锁。可能仅仅是在插入修改单行就出现死锁，这是因为这些操作并非真正的原子操作，它们会自动地在插入或修改的 index record（可能多个）上设置锁。（设置锁并非直接加锁，而是先请求锁，获得锁后再持有锁。）</p>
+<p>降低死锁概念的技术：</p>
+<ol>
+<li><p>每次都使用 <code>SHOW ENGINE INNODB STATUS</code> 命令查看最近死锁的来源，这样可以帮助微调应用避免死锁。</p>
+</li>
+<li><p>如果高频出现死锁警告，打开 <code>innodb_print_all_deadlocks</code> 配置以收集更多 debug 信息。每个死锁的信息都记录在 MYSQL 的 error log 中。当完成 debug 后关闭此配置。</p>
+</li>
+<li><p>应用中随便为死锁准备重新发布事务，死锁并不危险，只会重试。</p>
+</li>
+<li><p>尽量精简事务以降低其发生冲突的可能。</p>
+</li>
+<li><p>更新完相应的记录立即提交事务以降低其冲突的可能。实际操作中，不要让一个交互式的 mysql session 长时间不提交。</p>
+</li>
+<li><p>如果使用锁读（locking read: SELECT … FOR UPDATE/SELECT … LOCK IN SHARE MODE），尝试使用更低的事务隔离级别，如：READ COMMITTED。</p>
+</li>
+<li><p>当在同一个事务中修改多个表数据或单表多行数据时，保证每次（业务中不同的代码块）操作顺序的一致。这样事务会形成很好的队列而不出现死锁。例如：在应用中组织数据库的操作在 function 中或调用存储过程，而不是在应用不同的地方编写多个类似的增删改的 sql 语句。</p>
+</li>
+<li><p>在表中添加合适的索引。这样可以减少查询扫描的 index records 记录，因而添加更少的锁。使用 <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/explain.html">EXPLAIN SELECT</a> 来让 MYSQL server 决定查询的最适索引。</p>
+</li>
+<li><p>尽量少加锁。如果允许 SELECT 语句返回老版本快照，就不要选择添加 FOR UPDATE/LOCK IN SHARE MODE 子句进入锁读。使用 READ COMMITTED 隔离级别对一致性读也有帮助，因为在事务中都能读取到最新的快照。</p>
+</li>
+<li><p>如果别无他法，可以将事务序列化到表级锁上。使用示例（注意语句顺序）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> autocommit<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">LOCK TABLES t1 WRITE, t2 READ, ...;</span><br><span class="line">... do something <span class="keyword">with</span> tables t1 <span class="keyword">and</span> t2 here ...</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<p>表级锁阻止表上的并发更新，可以避免忙系统少响应的消耗上的死锁。</p>
+</li>
+<li><p>另外一个序列化事务的方法是创建一个辅助标识表，这个表只有一条数据。使每一个事务在访问其他表前必须先更新这行数据。这样可以保证所有事务都排列执行。需要注意的是，InnoDB 死锁检测算法在这种场景下依然工作，因为这个序列化锁是个行级锁。在 MYSQL 表级锁情况下，死锁问题使用超时方法来解决。</p>
+</li>
+</ol>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/mysql/" title="mysql">mysql</a>
+            
+            <a class="tag" href="/tags/InnoDB/" title="InnoDB">InnoDB</a>
+            
+            <a class="tag" href="/tags/Deadlock/" title="Deadlock">Deadlock</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2021/01/15/mysql/Stored%20Routine%20Syntax/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/01/12/mysql/Deadlocks%20in%20InnoDB/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

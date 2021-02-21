@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2020-09-23</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpEL"><span class="toc-text">SpEL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpEL-Reference"><span class="toc-text">SpEL Reference</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean-Reference"><span class="toc-text">Bean Reference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ternary-Operator-if-then-else"><span class="toc-text">Ternary Operator(if-then-else)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Elvis-Operator"><span class="toc-text">Elvis Operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Safe-Navigation-Operator"><span class="toc-text">Safe Navigation Operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection-Selection"><span class="toc-text">Collection Selection</span></a></li></ol></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="SpEL"><a href="#SpEL" class="headerlink" title="SpEL"></a>SpEL</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-beandef">Spring 表达式</a></p>
+<h2 id="SpEL-Reference"><a href="#SpEL-Reference" class="headerlink" title="SpEL Reference"></a>SpEL Reference</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-operator-safe-navigation">reference</a></p>
+<h3 id="Bean-Reference"><a href="#Bean-Reference" class="headerlink" title="Bean Reference"></a>Bean Reference</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-ref-variables">bean reference</a></p>
+<ul>
+<li>需要 evaluation Context 中配置上 BeanResolver 。</li>
+<li>引用 bean 时 <code>@something</code></li>
+<li>引用 Factory Bean <code>&amp;something</code></li>
+</ul>
+<h3 id="Ternary-Operator-if-then-else"><a href="#Ternary-Operator-if-then-else" class="headerlink" title="Ternary Operator(if-then-else)"></a>Ternary Operator(if-then-else)</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-ref-variables">三元运算符</a></p>
+<p><code>&quot;false ? &#39;trueExp&#39; : &#39;falseExp&#39;&quot;</code></p>
+<h3 id="Elvis-Operator"><a href="#Elvis-Operator" class="headerlink" title="Elvis Operator"></a>Elvis Operator</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-operator-elvis">Elvis’ hairstyle Operator</a></p>
+<p>猫王运算符 <code>?:</code> 等价于 <code>notNull ? value:default</code></p>
+<h3 id="Safe-Navigation-Operator"><a href="#Safe-Navigation-Operator" class="headerlink" title="Safe Navigation Operator"></a>Safe Navigation Operator</h3><p>表达式中使用安全导引 <code>Members?.location</code> 如果是所取的数据为 null 将返回 null 而不是直接 NullPointerException 。</p>
+<h3 id="Collection-Selection"><a href="#Collection-Selection" class="headerlink" title="Collection Selection"></a>Collection Selection</h3><p>集合 List/Map 选择器，对于一个 List 选择器作用于其每一个元素，而 Map 作用于其 Map.Entry 。</p>
+<ul>
+<li>表达式中对 list 数据进行筛选 <code>locations.?[city == &#39;Serbian&#39;]</code> 选择 city 为 Serbian 的数据。</li>
+<li><code>locations.?[value &gt; 10]</code> 选择 map 中 value &gt; 10 的数据。</li>
+</ul>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/java/" title="java">java</a>
+            
+            <a class="tag" href="/tags/Spring/" title="Spring">Spring</a>
+            
+            <a class="tag" href="/tags/SpEL/" title="SpEL">SpEL</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2020/10/12/java/java-keywords/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2020/09/15/java/ClassLoader/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

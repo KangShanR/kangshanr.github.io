@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/10/11/java/java-bigdecimal/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-10-11</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="BigDecimal"><a href="#BigDecimal" class="headerlink" title="BigDecimal"></a>BigDecimal</h1><h2 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h2><ul>
+<li>四舍五入<ul>
+<li>BigDecimal.ROUND_UP 进位，保留后的位数往上增，如果是负数，则相反成为保留为更小的数。</li>
+<li>BigDecimal.ROUND_DOWN 下降位，保留后的位数后往下减，如果是负数，则保留为更大的数。</li>
+<li>BigDecimal.ROUND_CEILING 进位，保留后的位数往上增，不管是正数还是负数。</li>
+<li>BigDecimal.ROUND_FLOOR ，保留后的位数往下减，不管是正数还是负数。</li>
+</ul>
+</li>
+</ul>
+<p><strong>note</strong>:UP 模式与 CEILING 模式的区别：看英文单词意思，可以看出来， CEILING 只会往大了加，不管是正数还是负数，而 UP 会读取到 数的正负方向，朝着数的方向增加。如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> BigDecimal(<span class="number">4.03</span>).setScale(<span class="number">1</span>, BigDecimal.ROUND_UP)<span class="comment">//结果是： 4.1</span></span><br><span class="line"><span class="keyword">new</span> BigDecimal(-<span class="number">4.03</span>).setScale(<span class="number">1</span>, BigDecimal.ROUND_UP)<span class="comment">//结果是： -4.1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> BigDecimal(<span class="number">4.03</span>).setScale(<span class="number">1</span>, BigDecimal.ROUND_CEILING)<span class="comment">//结果是： 4.1</span></span><br><span class="line"><span class="keyword">new</span> BigDecimal(-<span class="number">4.03</span>).setScale(<span class="number">1</span>, BigDecimal.ROUND_CEILING)<span class="comment">// 结果是： -4.0</span></span><br></pre></td></tr></table></figure>
+
+<p>DOWN 模式 与 FLOOR 模式的区别则同理可得。</p>
+<ul>
+<li>compare<ul>
+<li>在使用中，从数据库取出来的  数据 其 stringCache 为四位小数 比如： 0 就会被记为 0.0000 ，这个时候如果使用 BigDecimal.ZERO 与 取出来的数据 <code>0</code> 进行 equals 方法比较，返回结果就是 false 。如果要实现值的正常比较，就应该使用 BigDecimal.compare() 方法 根据其返回 int 数据来进行判断比较。</li>
+</ul>
+</li>
+<li><em>已不推荐使用此种取小数位数方式，推荐使用 <code>java.math.RoundingMode</code></em>  </li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/09/28/java/super-in-param-extends-in-result/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-09-28</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="lt-extends-R-gt-method-lt-super-T-gt-通配符在定义方法的参数与返回结果时的原理"><a href="#lt-extends-R-gt-method-lt-super-T-gt-通配符在定义方法的参数与返回结果时的原理" class="headerlink" title="&lt;? extends R&gt; method(&lt;? super T&gt;) 通配符在定义方法的参数与返回结果时的原理"></a>&lt;? extends R&gt; method(&lt;? super T&gt;) 通配符在定义方法的参数与返回结果时的原理</h1><ul>
+<li>extends 规定了上界；用作返回结果限定；</li>
+<li>super 规定了下界；用作参数限定</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/09/28/java/date-calenda/">Date&amp;Calenda</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-09-28</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="Date-amp-Calender-amp-LocalDateTime"><a href="#Date-amp-Calender-amp-LocalDateTime" class="headerlink" title="Date &amp; Calender &amp; LocalDateTime"></a>Date &amp; Calender &amp; LocalDateTime</h1><blockquote>
+<p>日期 Data 类诸多方法已经被废弃，很多方法都建议使用 Calendar 中的新方法。而比较两个 日期 不用将 Date 转成 Calendar 进行比较，直接使用 Date.after(Date date) 等一系列方法即可。</p>
+</blockquote>
+<h2 id="LocalDateTime"><a href="#LocalDateTime" class="headerlink" title="LocalDateTime"></a>LocalDateTime</h2><blockquote>
+<p>LocalDateTime is one of new feature in java8, 相应还有 LocalDate 与 LocalTime 。</p>
+</blockquote>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/09/28/java/JMM/CompletableFuture/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-09-28</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="Java-Concurrent"><a href="#Java-Concurrent" class="headerlink" title="Java Concurrent"></a>Java Concurrent</h1><blockquote>
+<p>Java 多线程</p>
+</blockquote>
+<h2 id="CompletableFuture"><a href="#CompletableFuture" class="headerlink" title="CompletableFuture"></a>CompletableFuture</h2><p>Java 异步编程的神器，利用执行器 Executor 去执行多个任务时内置多个整合异步执行结果的方法，且全面支持 Java8 的函数式接口。</p>
+<p>然而完全不能用于异步，只能在当前线程外开启异步而不能异步于当前线程执行任务。也就是说执行再多的异步任务，当前线程还是得等到 CompletableFuture 聚合出结果来才能执行下一步。 要在当前线程执行任务，使用线程池 ThreadPoolExecutor 。</p>
+<h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><blockquote>
+<p>使用线程池实现多线程编程</p>
+</blockquote>
+<p>工厂类 Executors 提供了便捷的构造线程池的方法，</p>
+<ol>
+<li>Executors.newCachedThreadPool() 无限线程数量，自动回收线程</li>
+<li>newFixedThreadPool() 固定线程数量线程池</li>
+<li>newSingleThreadExecutor() 单线程执行器</li>
+</ol>
+<p>如果需要更详细地控制微调线程池，就需要使用类中其他参数。</p>
+<h3 id="Core-and-Maximum-Pool-Size"><a href="#Core-and-Maximum-Pool-Size" class="headerlink" title="Core and Maximum Pool Size"></a>Core and Maximum Pool Size</h3><p>ThreadPoolExecutor 会根据 corePoolSize 与 maximumPoolSize 自动调整线程池 pool size 。</p>
+<p>当一个新的任务通过 execute(Runnable r) 方法被提交时，如果正在运行的线程数量低于 corePoolSize，这时会创建一个新的线程用以执行任务，不管此时其他已初始化好的线程是否是空闲状态。如果正运行的线程数量超过 corePoolSize 但少于 maximumPoolSize ，只有当队列是满的时才会创建新的线程执行任务。设置 corePoolSize == maximumPoolSize 就是设置了一个 fixed size Thread Pool 。如果设置 maximumPoolSize 为无限大（ Integer.MAX_VALUE ），就让线程池可并发执行任意数量的任务。一般来说， core Pool size 与 maximum pool size 在构造时设置好，但也可以使用 setCorePoolSize() 与 setMaximumPoolSize() 方法动态设置。</p>
+<h3 id="Queuing-任务队列"><a href="#Queuing-任务队列" class="headerlink" title="Queuing 任务队列"></a>Queuing 任务队列</h3><blockquote>
+<p>用于放置提交的不能当前执行的任务。BlockingQueue</p>
+</blockquote>
+<p>队列与 pool size 关系：</p>
+<ul>
+<li>如果正在运行的线程数量低于 corePoolSize ，执行器将添加一个线程而非放入队列。</li>
+<li>如果运行的线程数量超过 corePoolSize，执行器将排队入队列而非添加线程。</li>
+<li>当请求不能放置入队列，如果运行线程数量未超过 maximumPoolSize 将新添加一个线程，否则将拒绝请求。</li>
+</ul>
+<h3 id="三种排列策略"><a href="#三种排列策略" class="headerlink" title="三种排列策略"></a>三种排列策略</h3><ol>
+<li>直接移交 direct handoff 。SynchronousQueue ，直接将任务提交给执行器不放置入队列。</li>
+<li>无限队列 LinkedBlockingQueue</li>
+<li>有限队列 ArrayBlockingQueue</li>
+</ol>
+<h3 id="任务拒绝"><a href="#任务拒绝" class="headerlink" title="任务拒绝"></a>任务拒绝</h3><p>当运行线程数量与队列容量都有限且已饱和，此时执行器将拒绝提交的任务。RejectedExecutionHandler#rejectExecution(Runnable, ThreadPoolExecutor).预定义的四种拒绝策略：</p>
+<ol>
+<li>默认的 ThreadPoolExecutor.AbortPolicy ，直接抛出运行时异常 RejectedExecutionException。</li>
+<li>ThreadPoolExecutor.CallerRunsPolicy，让提交任务的线程自己运行任务。可以降低高峰时请求任务执行数量。</li>
+<li>ThreadPoolExecutor.DiscardPolicy，直接丢弃提交的任务。</li>
+<li>ThreadPoolExecutor.DiscardOldestPolicy，丢弃队列中最老的任务。</li>
+</ol>
+<p>可自定义任务拒绝策略。实现 RejectedExecutionHandler .</p>
+<h3 id="Hook-Methods"><a href="#Hook-Methods" class="headerlink" title="Hook Methods"></a>Hook Methods</h3><p>在每个线程任务执行前后添加钩子用以执行自定义。如果钩子方法抛出异常，内部线程执行可能执行失败并被中断。</p>
+<ol>
+<li>beforeExecute(Thread, Runnable)</li>
+<li>afterExecute(Runnable, Throwable)</li>
+</ol>
+<h3 id="队列维护-Queue-Maintenance"><a href="#队列维护-Queue-Maintenance" class="headerlink" title="队列维护 Queue Maintenance"></a>队列维护 Queue Maintenance</h3><p>getQueue() 方法允许访问队列，但只推荐用以监控与 debug。当大量任务被取消，可使用 remove() purge() 方法回收队列空间。</p>
+<h3 id="线程池析构"><a href="#线程池析构" class="headerlink" title="线程池析构"></a>线程池析构</h3><p>如果线程池不再被引用且没有线程在其中，将自动关闭 shutdown 。如果需要保证不被引用的线程池未被用户调用 shutdown() 方法被回收，需要将无用的线程死亡。方法是设置恰当的生命时长 keep-alive time ，低于0 的 corePoolSize 或 allowCoreThreadTimeOut(true)。</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/09/26/java/java8-features/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-09-26</span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="1-java8-new-features"><a href="#1-java8-new-features" class="headerlink" title="1. java8 new features"></a>1. java8 new features</h1><!-- TOC -->
+
+<ul>
+<li><a href="#1-java8-new-features">1. java8 new features</a><ul>
+<li><a href="#11-stream">1.1. stream</a></li>
+<li><a href="#12-%E5%AF%B9-stream-%E8%BF%9B%E8%A1%8C%E4%BB%A5%E4%B8%8B%E6%93%8D%E4%BD%9C%E4%BC%9A%E5%B0%86%E6%B5%81%E5%85%B3%E9%97%AD%E8%80%8C%E4%B8%8D%E8%83%BD%E5%86%8D%E8%BF%9B%E8%A1%8C%E5%88%A9%E7%94%A8">1.2. 对 stream 进行以下操作会将流关闭而不能再进行利用</a></li>
+<li><a href="#13-method">1.3. method</a><ul>
+<li><a href="#131-peekconsumer">1.3.1. peek(Consumer())</a></li>
+</ul>
+</li>
+<li><a href="#14-java8-time">1.4. java8 time</a><ul>
+<li><a href="#141-java8-%E4%B8%AD%E7%9A%84%E5%90%84%E4%B8%AA%E6%96%B0%E5%A2%9E%E7%9A%84%E7%B1%BB">1.4.1. java8 中的各个新增的类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<h2 id="1-1-stream"><a href="#1-1-stream" class="headerlink" title="1.1. stream"></a>1.1. stream</h2><blockquote>
+<p>列表进行 stream() 方法生成列表相应的流对象。对列表进行操作而不影响列表本身，很方便的一个对列表进行统计、过滤的特性。</p>
+</blockquote>
+<h2 id="1-2-对-stream-进行以下操作会将流关闭而不能再进行利用"><a href="#1-2-对-stream-进行以下操作会将流关闭而不能再进行利用" class="headerlink" title="1.2. 对 stream 进行以下操作会将流关闭而不能再进行利用"></a>1.2. 对 stream 进行以下操作会将流关闭而不能再进行利用</h2><ul>
+<li>collect(Collector&lt;T, T&gt;) 常常将流进行操作后返回为 List<T> 进行再利用。这个时候就将关闭了，不能进行下一步流操作。</li>
+<li>count() 此方法是统计流中数据数量，这个方法也会将流关闭。</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>如果在使用 流 的过程中，需要对流进行反复操作而又不得不使用用将其关闭的方法时，我们可以多次使用原列表生成流，这样可以多次操作。</p>
+</blockquote>
+</blockquote>
+<h2 id="1-3-method"><a href="#1-3-method" class="headerlink" title="1.3. method"></a>1.3. method</h2><blockquote>
+<p>流对于列表进行操作有诸多函数式接口参数方法，可以对列表进行过滤、筛选、求最值。</p>
+</blockquote>
+<h3 id="1-3-1-peek-Consumer"><a href="#1-3-1-peek-Consumer" class="headerlink" title="1.3.1. peek(Consumer())"></a>1.3.1. peek(Consumer())</h3><blockquote>
+<p>这个方法需要使用将对 流 中的元素进行依次的消费。但如果要表现出来，需要在其后跟上 collect() 方法。</p>
+</blockquote>
+<h2 id="1-4-java8-time"><a href="#1-4-java8-time" class="headerlink" title="1.4. java8 time"></a>1.4. java8 time</h2><p>java 8 time 包提供了更耐用的日历系统。</p>
+<ul>
+<li>chronology 年代表</li>
+<li>ISO： International Standardization Organization :国际标准化组织<ul>
+<li>IsoChronology 国际标准年代</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-1-java8-中的各个新增的类"><a href="#1-4-1-java8-中的各个新增的类" class="headerlink" title="1.4.1. java8 中的各个新增的类"></a>1.4.1. java8 中的各个新增的类</h3><ul>
+<li>Instant 瞬时，用以表示从 1970-01-01T00:00:00S 点开始计算的时间线中的某一个瞬间。两个属性<ul>
+<li>seconds 秒，即从 1970 年开始计时到此对象代表的时刻经过的秒数</li>
+<li>nanos 纳秒，相应的纳秒数</li>
+</ul>
+</li>
+<li>ZoneId 时区 id，代表各个不同的时区<ul>
+<li>常用于 Instant 与 LocalDateTime 之间的转换；</li>
+<li>有两种类型的 ZoneId:<ul>
+<li>固定偏移量：从标准时间 UTC(universal time coordinated)/Greenwich 完全解析偏移量而来</li>
+<li>地理区域：根据地理位置定义的整个时区，其与 UTC/Greenwich 标准时间偏移量是整小时</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/11/17/java/Anotation/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-11-17</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="Anotation"><a href="#Anotation" class="headerlink" title="Anotation"></a>Anotation</h1><blockquote>
+<p>有注解，必有其解析器。解析器使用类反射做了注解所增加的功能。</p>
+</blockquote>
+<h2 id="注解的定义与使用"><a href="#注解的定义与使用" class="headerlink" title="注解的定义与使用"></a>注解的定义与使用</h2><blockquote>
+<p>注解是 JAVA5.0 之后的高级特性。可以使用自定义注解来使用。</p>
+</blockquote>
+<h3 id="四个元注解"><a href="#四个元注解" class="headerlink" title="四个元注解"></a>四个元注解</h3><p>注解的注解，用于标注该注解的基本属性。</p>
+<ul>
+<li>@Documented 注解是否包含在 JavaDoc 中</li>
+<li>@Retention 什么时候使用该注解，定义该注解的生命周期<ul>
+<li>RetentionPolicy.SOURCE</li>
+<li>RetentionPolicy.CLASS</li>
+<li>RetentionPolicy.RUNTIME</li>
+</ul>
+</li>
+<li>@Target 定义该注解使用的地方<ul>
+<li>ElementType.TYPE 类、接口、枚举等</li>
+<li>ElementType.FIELD 字段属性</li>
+<li>ElementType.METHOD 方法</li>
+<li>ElementType.PARAMETER 方法参数</li>
+<li>ElementType.CONSTRUCTOR 构造函数</li>
+<li>ElementType.LOCAL_VARIABLE 本地变量</li>
+<li>ElementType.PACKAGE 包</li>
+</ul>
+</li>
+<li>@Inherited 是否允许子类继承该注解</li>
+</ul>
+<h3 id="注解的定义"><a href="#注解的定义" class="headerlink" title="注解的定义"></a>注解的定义</h3><p>注解定义中的属性只能是 String、Enum、及基本数据类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> Todo &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Priority</span> </span>&#123;LOW, MEDIUM, HIGH&#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Status</span> </span>&#123;STARTED, NOT_STARTED&#125;</span><br><span class="line">  <span class="function">String <span class="title">author</span><span class="params">()</span> <span class="keyword">default</span> &quot;Yash&quot;</span>;</span><br><span class="line">  <span class="function">Priority <span class="title">priority</span><span class="params">()</span> <span class="keyword">default</span> Priority.LOW</span>;</span><br><span class="line">  <span class="function">Status <span class="title">status</span><span class="params">()</span> <span class="keyword">default</span> Status.NOT_STARTED</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果注解中属性只有一个，那么使用时不需要写属性名，直接写值即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="meta">@interface</span> Remark&#123;</span><br><span class="line">  <span class="function">String <span class="title">author</span><span class="params">()</span> <span class="keyword">default</span> &quot;kfc&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Remark(&quot;jfk&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Change</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注解的解析器"><a href="#注解的解析器" class="headerlink" title="注解的解析器"></a>注解的解析器</h3><ul>
+<li>使用注解必然要写好其解析器，根据注解的不同生命周期，其解析器对相应的注解进行进行解析，获取其属性值，并做相应的处理。</li>
+<li>注解的保留策略：如果是 <code>RetentionPolicy.SOURCECODE</code>，则其在编译阶段会被使用，因为此时编译器根据其 源码策略 对其进行处理。</li>
+<li>注解的解析器是如果工作的？参照 spring 。</li>
+</ul>
+<h2 id="注解-Autowired-的使用"><a href="#注解-Autowired-的使用" class="headerlink" title="注解 @Autowired 的使用"></a>注解 @Autowired 的使用</h2><p>单词： autowired 的意思就是自动装配。而在 java 编程中使用此注解就是将标注过注解的都自动装配到 spring 容器中。</p>
+<p>据此理解的话，在编码中：</p>
+<ul>
+<li><p>如果是属性被此注解标注，则此属性就将这个 bean 注入到容器中，不用写此属性的 getter() 与 setter() 方法，在 bean.xml 配置中也不用写此属性的 <code>&lt;property&gt;</code> 标签了；</p>
+</li>
+<li><p>如果方法或构造函数被 @Autowired 注解，则此方法参数中的 bean 就会自动被查找装入到这个方法中；</p>
+</li>
+<li><p>注解的解析器是 {@link AutowiredAnnotationBeanPostProcessor}</p>
+</li>
+<li><p>可以使用此注解对构造器、方法、变量进入注入 bean 依赖。在构造器上，只能有一个构造器上此注解的 required 属性是 true。使用此注解后，方法参数中的 bean 将自动从 spring contaner 中查找并注入。</p>
+<ul>
+<li>当多个构造器上是 not required 时，选择策略是：容器中能满足最多的构造参数的构造器会被选择，当只有一个构造器时，可以省略 <code>@AutoWired</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="注解-ResponseBody"><a href="#注解-ResponseBody" class="headerlink" title="注解 @ResponseBody"></a>注解 @ResponseBody</h2><p>此注解标明这个方法返回不经过视图解析器处理，直接将处理信息写成字节流返回给浏览器，成为 json 对象写到浏览器页面中。</p>
+<h2 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h2><ul>
+<li>此注解将请求的 body 部分数据使用 converter 解析并将相应的数据绑定到要返回的对象上；</li>
+<li>使用 converter 解析的结果绑定到 controller 中的方法的参数上；</li>
+<li>使用json 解析时，使用的属性访问器，也就是说要对应请求 json 数据 key 与属性访问器对应，而不是与请求 vo 的 property 的名对应；</li>
+</ul>
+<h2 id="RequiresPermissions"><a href="#RequiresPermissions" class="headerlink" title="@RequiresPermissions"></a>@RequiresPermissions</h2><p>shiro 框架中的权限验证注解，用于验证是否拥有某权限。</p>
+<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h2><p>用于将方法参数绑定到请求路径中去</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span>  </span><br><span class="line"><span class="meta">@RequestMapping(&quot;/owners/&#123;ownerId&#125;&quot;)</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RelativePathUriTemplateController</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/pets/&#123;petId&#125;&quot;)</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findPet</span><span class="params">(<span class="meta">@PathVariable</span> String ownerId, <span class="meta">@PathVariable</span> String petId, Model model)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// implementation omitted</span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="RequestHeader-CookieValue"><a href="#RequestHeader-CookieValue" class="headerlink" title="@RequestHeader @CookieValue"></a>@RequestHeader @CookieValue</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(<span class="meta">@RequestHeader(&quot;Accept-Encoding&quot;)</span> String encoding,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="meta">@RequestHeader(&quot;Keep-Alive&quot;)</span> <span class="keyword">long</span> keepAlive)</span>  </span>&#123;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>上面的代码就参数 encoding 与 keepAlive 分别绑定到了请求的 Header 中去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(<span class="meta">@CookieValue(&quot;JSESSIONID&quot;)</span> String cookie)</span>  </span>&#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而这一段代码就将参数 cookie 绑定到 JSESSIONID 上。<br><em>note:关于这儿的请求是将请求的 header/cookie 中的值绑定到请求方法参数中还是将请求时的参数绑定到 header/cookie 中是一个未搞清的问题。查找上说是将 header/cookie 值绑定到请求方法参数中，但如果是这样就没必要设置这个参数了，直接获取这些值在方法中调用就是，而后者却更有必要，调用方法时参数就直接当作 header/cookie 值去请求了看来也更合理</em></p>
+<h3 id="Repository"><a href="#Repository" class="headerlink" title="@Repository"></a>@Repository</h3><blockquote>
+<p>对应 dao 层的数据</p>
+</blockquote>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/11/09/linux/win10+ubuntu/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-11-09</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="windows10-amp-Ubuntu"><a href="#windows10-amp-Ubuntu" class="headerlink" title="windows10 &amp; Ubuntu"></a>windows10 &amp; Ubuntu</h1><blockquote>
+<p>win10 + ubuntu 双系统安装与使用</p>
+</blockquote>
+<h2 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h2><ul>
+<li>目前在台式机双显卡上遇到最大的问题是使用nvidia独显并不能设置分辨率为1920x1080，相反使用核显反而能。但是如果连接核显VGA接口又不能正常启动系统，只能先连接独显DVI－I接口让系统启动，启动后再将连接线接到VGA接口。<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19571221">显示器接口认识</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shixin_0125/article/details/72793300">修改分辨率</a>，在使用DVI-I接口时并不能设置成功，只能设置到未连接的VGA 或 HDMI 接口上。</li>
+<li>使用 ｀xrandr｀ 命令查看系统正使用的接口与其分辨率</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5c1db6364141">双系统下时间相差 8 小时</a></li>
+<li>ubuntu 默认使用其 snap 安装软件，其安装的 vscode 被阉割，不能在其中输入中文，需要自行安装完整版。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35092399/article/details/105526908">reference</a></li>
+<li>ubuntu 中安装软件包使用 dpkg 命令，一般流程：<ul>
+<li>使用 <code>wget</code> 下载 <code>＊.deb</code> 包，或直接在其官方网站上手动下载其提供的 linux 版本包；</li>
+<li><a target="_blank" rel="noopener" href="https://help.ubuntu.com/kubuntu/desktopguide/zh_CN/manual-install.html">安装</a>。可直接在右击 .deb 文件选择 Kubuntu Package Menu -&gt; install。也可以使用 dpkg 命令安装。卸载时使用 apt-get remove 包名。</li>
+</ul>
+</li>
+</ul>
+<h2 id="cheat-tips"><a href="#cheat-tips" class="headerlink" title="cheat tips"></a>cheat tips</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/rlhua/article/details/24669037">添加交换区swap</a></li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/09/15/spring/Spring%20IOC/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-09-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="1-Spring-IoC"><a href="#1-Spring-IoC" class="headerlink" title="1. Spring IoC"></a>1. Spring IoC</h1><!-- TOC -->
+
+<ul>
+<li><a href="#1-spring-ioc">1. Spring IoC</a><ul>
+<li><a href="#11-%E5%8F%8D%E5%90%91%E6%8E%A7%E5%88%B6inverse-of-control">1.1. 反向控制（Inverse of Control)</a><ul>
+<li><a href="#111-%E4%B8%BE%E4%BE%8B">1.1.1. 举例</a></li>
+</ul>
+</li>
+<li><a href="#12-container-configuration">1.2. Container Configuration</a><ul>
+<li><a href="#121-java-based-container-configuration">1.2.1. java based container configuration</a><ul>
+<li><a href="#1211-annotationconfigapplicationcontext-%E5%88%9D%E5%A7%8B%E5%8C%96-ioc-%E5%AE%B9%E5%99%A8">1.2.1.1. AnnotationConfigApplicationContext 初始化 IoC 容器</a></li>
+<li><a href="#1212-componentscan">1.2.1.2. ComponentScan</a></li>
+<li><a href="#1213-annotationconfigwebapplicationcontext">1.2.1.3. AnnotationConfigWebApplicationContext</a></li>
+<li><a href="#fine-tuning-annotation-based-autowiring-with-qualifiers">Fine-tuning Annotation-based Autowiring with Qualifiers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#13-container-extension-points">1.3. Container Extension points</a><ul>
+<li><a href="#131-%E8%87%AA%E5%AE%9A%E4%B9%89-beanpostprocessor">1.3.1. 自定义 BeanPostProcessor</a></li>
+<li><a href="#132-%E8%87%AA%E5%AE%9A%E4%B9%89-beanfactorypostprocessor">1.3.2. 自定义 BeanFactoryPostProcessor</a></li>
+<li><a href="#133-%E9%80%9A%E8%BF%87-factorybean-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%9D%E5%A7%8B%E5%8C%96%E9%80%BB%E8%BE%91">1.3.3. 通过 FactoryBean 自定义初始化逻辑</a></li>
+</ul>
+</li>
+<li><a href="#14-applicationcontext-%E9%A2%9D%E5%A4%96%E5%8A%9F%E8%83%BD">1.4. ApplicationContext 额外功能</a><ul>
+<li><a href="#141-%E4%BD%BF%E7%94%A8-messageresource-%E5%81%9A%E5%9B%BD%E9%99%85%E5%8C%96">1.4.1. 使用 MessageResource 做国际化</a></li>
+<li><a href="#142-%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6">1.4.2. 标准事件与自定义事件</a><ul>
+<li><a href="#1421-%E5%86%85%E7%BD%AE%E7%9A%84%E4%BA%8B%E4%BB%B6">1.4.2.1. 内置的事件</a></li>
+<li><a href="#1422-%E7%9B%91%E5%90%AC%E5%99%A8%E5%AE%9E%E7%8E%B0">1.4.2.2. 监听器实现</a></li>
+</ul>
+</li>
+<li><a href="#143-web-%E5%BA%94%E7%94%A8%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%8C%96-applicationcontext">1.4.3. Web 应用中实例化 ApplicationContext</a></li>
+<li><a href="#144-%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA-spring-applicationcontext-%E4%B8%BA-java-ee-rar-%E6%96%87%E4%BB%B6">1.4.4. 发布一个 Spring ApplicationContext 为 Java EE RAR 文件</a></li>
+</ul>
+</li>
+<li><a href="#15-environment-abstraction">1.5. Environment Abstraction</a><ul>
+<li><a href="#151-%E4%BD%BF%E7%94%A8-profile-%E6%B3%A8%E8%A7%A3-bean">1.5.1. 使用 @Profile 注解 bean</a></li>
+<li><a href="#152-%E6%BF%80%E6%B4%BB%E9%A1%B9%E7%9B%AE-profile">1.5.2. 激活项目 Profile</a></li>
+<li><a href="#153-propertysource-abstraction">1.5.3. PropertySource Abstraction</a></li>
+<li><a href="#154-%E4%BD%BF%E7%94%A8-propertysource">1.5.4. 使用 @PropertySource</a></li>
+<li><a href="#155-placeholder-resolution-in-statement">1.5.5. Placeholder Resolution in Statement</a></li>
+</ul>
+</li>
+<li><a href="#16-beanfactory">1.6. BeanFactory</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<blockquote>
+<p>Spring 说到底就是一个轻量级的容器，让它来负责各个实例的生产、管理、维护，而这些实例的参数与依赖关系都交由 spring 的配置文件来设置；</p>
+</blockquote>
+                    <div class="read-more">
+                        <a href="/2017/09/15/spring/Spring%20IOC/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/08/23/spring/Spring_Bean/">spring bean的理解</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-08-23</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h1 id="1-Spring-Bean"><a href="#1-Spring-Bean" class="headerlink" title="1. Spring Bean"></a>1. Spring Bean</h1><!-- TOC -->
+
+<ul>
+<li><a href="#1-spring-bean">1. Spring Bean</a><ul>
+<li><a href="#11-%E7%9F%A5%E8%AF%86%E7%82%B9">1.1. 知识点</a></li>
+<li><a href="#12-spring-bean-%E7%9A%84%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D">1.2. spring bean 的自动装配</a></li>
+<li><a href="#13-%E5%88%9B%E5%BB%BA-bean-%E7%9A%84%E6%96%B9%E5%BC%8F">1.3. 创建 bean 的方式</a></li>
+<li><a href="#14-bean-scope">1.4. Bean Scope</a><ul>
+<li><a href="#141-web-application-bean-scope">1.4.1. Web application bean scope</a></li>
+<li><a href="#142-%E5%8D%8F%E8%B0%83%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8D%E5%90%8C%E7%9A%84-bean">1.4.2. 协调作用域不同的 bean</a></li>
+</ul>
+</li>
+<li><a href="#15-dependencies">1.5. Dependencies</a><ul>
+<li><a href="#151-dependency-injection">1.5.1. Dependency injection</a><ul>
+<li><a href="#1511-constructor-injection">1.5.1.1. constructor injection</a></li>
+<li><a href="#1512-setter-injection">1.5.1.2. setter injection</a></li>
+<li><a href="#1513-%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90">1.5.1.3. 依赖解析</a><ul>
+<li><a href="#15131-%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96">1.5.1.3.1. 循环依赖</a></li>
+<li><a href="#15132-spring-%E4%BE%9D%E8%B5%96%E5%8A%A0%E8%BD%BD%E7%89%B9%E6%80%A7">1.5.1.3.2. spring 依赖加载特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#152-depends-on">1.5.2. Depends On</a></li>
+<li><a href="#153-lazy-initialized-beans">1.5.3. lazy-initialized beans</a></li>
+<li><a href="#154-autowiring-collaborators">1.5.4. AutoWiring Collaborators</a><ul>
+<li><a href="#1541-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%9A%84%E4%B8%8D%E8%B6%B3">1.5.4.1. 使用自动装配的不足</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#16-%E8%87%AA%E5%AE%9A%E4%B9%89-bean-%E7%89%B9%E6%80%A7">1.6. 自定义 bean 特性</a><ul>
+<li><a href="#161-%E6%8C%87%E5%AE%9A%E5%9B%9E%E8%B0%83%E6%96%B9%E6%B3%95">1.6.1. 指定回调方法</a></li>
+<li><a href="#162-shutting-down-the-spring-ioc-container-gracefully-in-non-web-applications">1.6.2. Shutting Down the Spring IoC Container Gracefully in Non-Web Applications</a></li>
+<li><a href="#163-applicationcontextaware-and-beannameaware">1.6.3. ApplicationContextAware and BeanNameAware</a><ul>
+<li><a href="#1631-applicationcontextaware">1.6.3.1. ApplicationContextAware</a></li>
+<li><a href="#1632-beannameaware">1.6.3.2. BeanNameAware</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#bean-definition-inheritance">Bean Definition Inheritance</a></li>
+<li><a href="#18-spring-bean-%E9%9B%B6%E9%85%8D%E7%BD%AE%E6%94%AF%E6%8C%81">1.8. spring bean 零配置支持</a><ul>
+<li><a href="#181-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E4%B8%8E%E7%B2%BE%E7%A1%AE%E8%A3%85%E9%85%8D-spring-40">1.8.1. 自动装配与精确装配 spring 4.0</a><ul>
+<li><a href="#1811-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%BE%AE%E8%B0%83">1.8.1.1. 自动装配微调</a></li>
+</ul>
+</li>
+<li><a href="#182-resource-%E5%8C%B9%E9%85%8D">1.8.2. @Resource 匹配</a></li>
+<li><a href="#183-value-%E6%B3%A8%E5%85%A5%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE">1.8.3. @Value 注入配置数据</a></li>
+<li><a href="#184-%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%9D%A5%E5%AE%9A%E5%88%B6-bean-%E6%96%B9%E6%B3%95%E6%88%90%E5%91%98%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">1.8.4. 使用注解来定制 bean 方法成员的生命周期</a></li>
+</ul>
+</li>
+<li><a href="#19-classpath-scanning-and-managed-components">1.9. Classpath Scanning and Managed Components</a><ul>
+<li><a href="#191-%E8%87%AA%E5%8A%A8%E6%A3%80%E6%B5%8B-class-%E5%B9%B6%E6%B3%A8%E5%86%8C-bean-definition">1.9.1. 自动检测 class 并注册 Bean Definition</a></li>
+<li><a href="#192-class-scanning-filter">1.9.2. Class Scanning Filter</a><ul>
+<li><a href="#1921-filter-%E7%B1%BB%E5%9E%8B">1.9.2.1. Filter 类型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#110-spring-%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84-bean-%E5%AE%9E%E7%8E%B0%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95">1.10. spring 容器中的 bean 实现不同方法</a><ul>
+<li><a href="#1101-bean-annotation">1.10.1. @Bean Annotation</a></li>
+</ul>
+</li>
+<li><a href="#111-naming-bean">1.11. Naming Bean</a><ul>
+<li><a href="#1111-aliasing-bean">1.11.1. Aliasing Bean</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<blockquote>
+<p><strong>前言：</strong><br>Spring 中的 bean 配置就是将各个类配置在 bean.xml 文件中，成为一个个的组件，方便实现各个组件之间的重新装配，这也是实现 spring 的依赖注入的方便法门；</p>
+<p>因此就可以理解，一个个的 bean 就是一个个的类的实例，但在 spring 运行时，spring 容器装配各个组件时初始化这些类实例时，也就会涉及到类的构造函数，装配各个组件时会涉及到各种类型参数；</p>
+<p>Spring中的配置各个 bean 时有许多不曾注意到的小知识点，这儿一并给总结出来。</p>
+</blockquote>
+                    <div class="read-more">
+                        <a href="/2017/08/23/spring/Spring_Bean/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/08/15/spring/spring/"></a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-08-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <!-- TOC -->
+
+<ul>
+<li><a href="#1-spring">1. spring</a><ul>
+<li><a href="#11-ioc">1.1. ioc</a><ul>
+<li><a href="#111-beanfactory">1.1.1. BeanFactory</a></li>
+<li><a href="#112-applicationcontext">1.1.2. ApplicationContext</a></li>
+</ul>
+</li>
+<li><a href="#12-core-%E6%A8%A1%E5%9D%97">1.2. Core 模块</a></li>
+<li><a href="#13-aop-%E6%A8%A1%E5%9D%97">1.3. AOP 模块</a></li>
+<li><a href="#14-orm-%E6%A8%A1%E5%9D%97">1.4. ORM 模块</a><ul>
+<li><a href="#141-%E5%AE%9E%E4%BD%93%E7%B1%BB">1.4.1. 实体类</a><ul>
+<li><a href="#1411-%E9%85%8D%E7%BD%AE%E9%9B%86%E6%88%90hibernate">1.4.1.1. 配置集成Hibernate</a></li>
+</ul>
+</li>
+<li><a href="#142-hibernate%E7%9A%84%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86">1.4.2. Hibernate的事务管理</a></li>
+<li><a href="#143-spring%E7%9A%84beanxml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%90%86%E8%A7%A3">1.4.3. spring的bean.xml配置文件的理解</a></li>
+</ul>
+</li>
+<li><a href="#15-source-codes">1.5. source codes</a></li>
+<li><a href="#rap-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8">rap 在项目开发中的使用</a><ul>
+<li><a href="#%E9%97%AE%E9%A2%98">问题</a></li>
+</ul>
+</li>
+<li><a href="#properties-in-springmvc">properties in springmvc</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<h1 id="1-spring"><a href="#1-spring" class="headerlink" title="1. spring"></a>1. spring</h1><blockquote>
+<p>spring 配置 beans 的底层原理就在于通过封装好的解析 xml 类，将 xml 文件中配置好的 bean 实例出一个对象来，再通过配置实现 bean 之间的相互引用，而实现将要用到的 bean （实用类）实例化并使用；</p>
+</blockquote>
+<ul>
+<li>通过 DI(dependency injection) 依赖注入，实现 IoC(Inverse of Control) 反转控制，将所有的 bean 注入 IoC 容器。</li>
+<li>ioc 等于 di</li>
+<li>IoC 的实现：将容器在装配 bean 时，先通过其构造器或工厂生产一个实例后，再根据其配置去构造 bean 的各个依赖。这与传统的实例生成方法相反，所以叫反转控制。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#application-startup-steps">启动步骤</a></li>
+</ul>
+<h2 id="1-1-ioc"><a href="#1-1-ioc" class="headerlink" title="1.1. ioc"></a>1.1. ioc</h2><h3 id="1-1-1-BeanFactory"><a href="#1-1-1-BeanFactory" class="headerlink" title="1.1.1. BeanFactory"></a>1.1.1. BeanFactory</h3><p>最基础的 ioc 容器 BeanFactory 源码：</p>
+<p>Bean factory implementations should support the standard bean lifecycle interfaces as far as possible. The full set of initialization methods and their standard order is:</p>
+<ol>
+<li>BeanNameAware’s {@code setBeanName}</li>
+<li>BeanClassLoaderAware’s {@code setBeanClassLoader}</li>
+<li>BeanFactoryAware’s {@code setBeanFactory}</li>
+<li>EnvironmentAware’s {@code setEnvironment}</li>
+<li>EmbeddedValueResolverAware’s {@code setEmbeddedValueResolver}</li>
+<li>ResourceLoaderAware’s {@code setResourceLoader}(only applicable when running in an application context)</li>
+<li>ApplicationEventPublisherAware’s {@code setApplicationEventPublisher}(only applicable when running in an application context)</li>
+<li>MessageSourceAware’s {@code setMessageSource}(only applicable when running in an application context)</li>
+<li>ApplicationContextAware’s {@code setApplicationContext}(only applicable when running in an application context)</li>
+<li>ServletContextAware’s {@code setServletContext}(only applicable when running in a web application context)</li>
+<li>{@code postProcessBeforeInitialization} methods of BeanPostProcessors</li>
+<li>InitializingBean’s {@code afterPropertiesSet}</li>
+<li>a custom init-method definition {@code postProcessAfterInitialization} methods of BeanPostProcessors</li>
+</ol>
+<p>On shutdown of a bean factory, the following lifecycle methods apply:</p>
+<ol>
+<li>{@code postProcessBeforeDestruction} methods of DestructionAwareBeanPostProcessors</li>
+<li>DisposableBean’s {@code destroy}</li>
+<li>a custom destroy-method definition</li>
+</ol>
+<h3 id="1-1-2-ApplicationContext"><a href="#1-1-2-ApplicationContext" class="headerlink" title="1.1.2. ApplicationContext"></a>1.1.2. ApplicationContext</h3><h2 id="1-2-Core-模块"><a href="#1-2-Core-模块" class="headerlink" title="1.2. Core 模块"></a>1.2. Core 模块</h2><ul>
+<li>bean 标签：<ul>
+<li>id 属性指定这个实例的唯一标识；</li>
+<li>class 属性，用来指定这个实例的类定义；</li>
+<li>property 子元素，指定这个对象的属性，比如：user 对象中有属性 name ，那么这个这个 user 的 bean 对象就应该有一个子元素标签 property ，同时如果这个属性是另外一个本地的 bean ， name 属性指向这个属性：<code>&lt;property name=&quot;advice&quot; id=&quot;beanId&quot;&gt;</code> 直接使用 id 属性来引用到其他的 bean 的 id 就行；</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-AOP-模块"><a href="#1-3-AOP-模块" class="headerlink" title="1.3. AOP 模块"></a>1.3. AOP 模块</h2><blockquote>
+<p>Aspect Oriented Programming , 面向切面编程</p>
+</blockquote>
+<ul>
+<li><p>切面 Aspect :可以理解为模块，比如，读写数据库、权限检查、异常情况记录；</p>
+</li>
+<li><p>Advice ，增强：拦截器实现增强接口 Advisor ，不同的拦截器实现不同的增强接口，比如：方法前拦截器</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MethodBeforeInterceptor implements MethodBeforeAdvice&#123;</span><br><span class="line">    <span class="comment">//方法前拦截器</span></span><br><span class="line">    <span class="comment">//调用对象的方法前将执行该方法。参数分别为被调用的方法、参数、对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(Method method, Object[] args, Object instance)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;即将要执行的方法：&quot;</span> + method.getName());</span><br><span class="line">        <span class="comment">//如果是 Service</span></span><br><span class="line">        <span class="keyword">if</span>(instance <span class="keyword">instanceof</span> WaiterServiceImpl)</span><br><span class="line">            String name = ((AopServiceImpl) instance).getName();</span><br><span class="line">                <span class="keyword">if</span>(name == <span class="keyword">null</span>)<span class="comment">//检查是否为空</span></span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;name 属性不能为 null&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        method.invoke(instance,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拦截器，interceptor，也是 pointcut 的核心:</p>
+<ul>
+<li><p>spring拦截器的配置实现，通过增加配置：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;aopMethodBeforeInterceptor&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.aop.supoort.NameMatchMethodPointcutAdvisor&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;advice&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.snail.aopdemo.advice.MethodBeforeInterceptor&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mappedName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;withAop&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从上面的代码可以看出：</p>
+<ul>
+<li><p>spring实现拦截器都是通过增强器Advisor，而这个增强器是一个代理，将参数（自定义的Advice）作为参数传入其中；</p>
+</li>
+<li><p>同时mappedName属性用来指定拦截的方法，这个方法并不是增加类中的方法，而是到时要执行到的所有的匹配方法名字段的方法；</p>
+</li>
+<li><p>同时：spring支持由正则表达式配置切入点：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;patterns&quot;</span>&gt;</span>      <span class="comment">&lt;!-- 正则表达式配置切入点--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>.*get.*<span class="tag">&lt;/<span class="name">value</span>&gt;</span> <span class="comment">&lt;!--包含get字段的方法就被拦截&gt;</span></span><br><span class="line"><span class="comment">        &lt;value&gt;.*absquatulate&lt;/value&gt;  &lt;!--包含absquatutulat字段的方法被拦截&gt;</span></span><br><span class="line"><span class="comment">    &lt;/list&gt;</span></span><br><span class="line"><span class="comment">&lt;/property&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-4-ORM-模块"><a href="#1-4-ORM-模块" class="headerlink" title="1.4. ORM 模块"></a>1.4. ORM 模块</h2><blockquote>
+<p>Object RelativeDatabase Mapping,对象关系型数据库映射</p>
+</blockquote>
+<ul>
+<li>简介：<ul>
+<li>此模块对 Hibernate/JDO/TopLink、iBatis 等 ORM 框架提供支持；</li>
+<li>Spring 提供在 DAO 层提供 HibernateDaoSupport 类与 JDBCTemplate 类；</li>
+<li>在 Spring 里，Hibernate 与 SessionFactory 等只是 Spring 一个特殊的 Bean ，由 spring 负责实例化与销毁；所以也就不需要与 Hibernate 的 API 打交道，不需要开启关闭 Hibernate 的 Session/Transaction ， Spring 自动维护这些对象；</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-1-实体类"><a href="#1-4-1-实体类" class="headerlink" title="1.4.1. 实体类"></a>1.4.1. 实体类</h3><p>这儿用User类举例：</p>
+<ul>
+<li><p>使用注解来让User中属性与数据库中表的列相关联；</p>
+</li>
+<li><p>Entity类的注解：</p>
+<ul>
+<li>@Entity，表明这个类为实体类；</li>
+<li>@Table（name=”users”),指明此实体类与数据库users表相关联；</li>
+<li>属性的注解：<ul>
+<li>@Id，主键注解，表明这属性为数据库表中的主键</li>
+<li>@GeneratedValue（strategy=GenerationType.IDENTITY),指明该主键生成策略为自增</li>
+<li>@Temporal（value = TemporalType.Date),表明列属性为Date</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DAO层接口，不同的Entity对应不同的DAO接口：</p>
+<ul>
+<li><p>UserDao接口，就定义对User表的操作：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">(User user)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUsers</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span> <span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findUserByName</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UserDao接口的实现类，UserDaoImpl：</p>
+<ul>
+<li>这个实现类要继承HibernateDaoSupport类，这就意味着从父类继承了Hibernate与HibernateTimplate对象，该对象就对实体对象进行各类操作；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">extends</span> <span class="title">HibernateDaoSupport</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    <span class="comment">//实现接口中的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.getHibernateTemplate().persist(user);<span class="comment">//使用父类方法get到Template,并调用其persist方法将user存入</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span></span>&#123;   <span class="comment">//查询记录条数</span></span><br><span class="line">        Number num = (Number)<span class="keyword">this</span>.getSession(<span class="keyword">true</span>).createQuery(<span class="string">&quot;select count (*) from User).uniqueResult();</span></span><br><span class="line"><span class="string">        return n.intValue();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    public List&lt;User&gt; findUsers()&#123;  //查询所有的user</span></span><br><span class="line"><span class="string">        return this.getHibernateTemplate().find(&quot;</span>select * from User<span class="string">&quot;);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    public User findUserByName(String name)&#123;  //根据用户名查询用户</span></span><br><span class="line"><span class="string">        List&lt;User&gt; users = this.getHibernateTemplate().find&#123;&quot;</span>select * from User u where u.name=?<span class="string">&quot;, name);  //使用Template</span></span><br><span class="line"><span class="string">        if(users.size() &gt; 0)</span></span><br><span class="line"><span class="string">            return users.get(0);返回第一条</span></span><br><span class="line"><span class="string">        return null;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>- **从上述代码例子中可以看出:**
+    - 查询(Read)、创建(Create)都由父类HibernateDaoSupport提供的getHibernateTemplate方法获取到实例并执行实例的方法来实现，其中查询使用实例方法find(String sql, Stirng 拼接String），而save则用持久化方法persist(Object user);
+    - 当要涉及到数据库计算时，则用getSession获取到与数据库的会话对象，让会话对象执行sql统计语句；
+    - 同时，所有sql语言的操作对象都指向实体类，而没有对数据库中的表进行组织sql语句；
+- **个人理解：**spring通过封装Hibernate在框架中，让DAO接口的实现类继承HibernateDaoSupport尖，就将Hibernate对象创建出来，而直接操作这个对象的方法来获取session/Hibernate对象直接与数据库交互，而就节省了操作JDBC的代码；
+</code></pre>
+<h4 id="1-4-1-1-配置集成Hibernate"><a href="#1-4-1-1-配置集成Hibernate" class="headerlink" title="1.4.1.1. 配置集成Hibernate"></a>1.4.1.1. 配置集成Hibernate</h4><ul>
+<li>在spring的bean.xml文件中配置集成hibernate到目前这一步只需要**<em>配置三个bean**</em>：<ul>
+<li>数据源datasource，这是一切的基础，所有的操作最终都会落到对数据库的操作上；</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;datasource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.apache.commonsdbcp.BasicDataSource&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.gjt.mm.mysql.Driver&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc\:mysql\://localhost\:3306/ssh&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">propery</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><em>- 数据源的配置就是用依赖包中的一个封装好的类（这儿就是BasicDataSource）的对象，并将这个对象的属性值配置好，这些属性就包括了数据库的驱动、连接的url、连接数据库的用户名、密码。可以想象的是，这个处理数据库的对象封装了所有的连接数据库的方法，使用密码与用户名，交给驱动对象，这个驱动对象就按照提供的url连接到主机上的数据库，并登录到数据库；</em><br>    - 有了数据源，就可以将关联连接库的数据源配置到sessionFactory中去：</p>
+<pre><code>    <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;sessionFactory&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.orm.hibernate4.annotation.AnnotationSessionFactoryBean&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;destroy&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;dataSource&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;annotatedClasses&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.woniuxy.orm.class_qulified_name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;hibernateProperties&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pros</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pro</span> <span class="attr">key</span>=<span class="string">&quot;hibernate.dialect&quot;</span>&gt;</span></span><br><span class="line">                org.hibernate.dialect.MySQLDialect</span><br><span class="line">            <span class="tag">&lt;/<span class="name">pro</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pro</span> <span class="attr">key</span>=<span class="string">&quot;hibernate.show_sql&quot;</span>&gt;</span>true<span class="tag">&lt;/<span class="name">pro</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pro</span> <span class="attr">key</span>=<span class="string">&quot;hibernate.format_sql&quot;</span>&gt;</span>true<span class="tag">&lt;/<span class="name">pro</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pro</span> <span class="attr">key</span>=<span class="string">&quot;hibernate.hbm2ddl.auto&quot;</span>&gt;</span>create<span class="tag">&lt;/<span class="name">pro</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pros</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+    - *配置会话工厂（因为我们的实体类使用的注解映射，所以就使用注解会话工厂AnnotationSessionFatoryBean)其中包括了：数据源、实体类还有hibernate,而hibernate的配置就包括了方言、输出sql语句、格式化sql语句、创建表结构*
+- 有了会话工厂，距离操作数据库就只有让Dao配置为bean，而操作代码就getBean来获取到这个Dao的实例，让这个实例来操作数据库：
+        &lt;bean id=&quot;userDao&quot; class=&quot;daoImpl_qualified_name&quot;&gt;
+            &lt;property name=&quot;sessionfactory&quot; ref=&quot;sessionFactory&quot; /&gt;
+        &lt;/bean&gt;
+    - *在Dao的bean中，将前面配置好的sessionFactory装配到其中*
+- 以上情况是实体类User是使用注解来配置的，这种情况下，使用的sessionFactory是AnnotationSessionFactoryBean,但当实体类是使用xml文件来配置时，使用的配置bean应该是LocalSessionFactoryBean。同时，sessionFactory中配置实体的方式也变成：
+        &lt;property name=&quot;mappingDirectoryLocations&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;classpath:entiteis_配置文件的路径&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+</code></pre>
+<hr>
+<h3 id="1-4-2-Hibernate的事务管理"><a href="#1-4-2-Hibernate的事务管理" class="headerlink" title="1.4.2. Hibernate的事务管理"></a>1.4.2. Hibernate的事务管理</h3><ul>
+<li><strong>分层的做法：应用层调用Service层，Service层对数据进行检查（是否重复之类），然后Service层（注入一个Dao属性）调用Dao层，Dao层调用Hibernate实现数据的操作。原则上不允许跨层访问，业务层次分明。</strong></li>
+<li>事务管理transaction，对应的层为Service层；</li>
+</ul>
+<h3 id="1-4-3-spring的bean-xml配置文件的理解"><a href="#1-4-3-spring的bean-xml配置文件的理解" class="headerlink" title="1.4.3. spring的bean.xml配置文件的理解"></a>1.4.3. spring的bean.xml配置文件的理解</h3><ul>
+<li>所有的操作都基于对数据库的crud，所以所有的配置都围绕着操作数据库；</li>
+<li>所以，第一个bean的是数据源：dataSource<ul>
+<li>其中的属性就包括：<ul>
+<li>连接数据库的驱动：driverClassName</li>
+<li>数据库连接url:url</li>
+<li>数据库连接用户名：username</li>
+<li>数据库连接密码：password</li>
+</ul>
+</li>
+<li>通常情况下，我们把数据源信息都单独分离在jdbc.properties文件中，并在要用到的配置文件中将其配置为上下文<code>&lt;context:property-placeholder&gt; location=&quot;classpath:jdbc.properties/&gt;</code>，之后就可以在数据源dataSource中配置其中的属性：<code>&lt;property name=&quot;driverClass&quot; value=&quot;$&#123;driver&#125;&quot;&gt;&lt;/property&gt;</code></li>
+</ul>
+</li>
+<li>第二个配置的bean：sessionFactory<ul>
+<li>这儿就把上一次配置好的dataSource数据源装配到sessionFactory的属性中：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置本地会话工厂bean --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;sessionFactory&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.orm.hibernate5.LocalSessionFactoryBean&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置数据源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定hibernate配置文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;configLocations&quot;</span> <span class="attr">value</span>=<span class="string">&quot;classpath:hibernate.cfg.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定hibernate映射文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mappingDirectoryLocations&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:mappings/*.xml<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Note:<em>这儿配置spring的sessionFactory属性就会把 Hibernate sessionFactory属性覆盖；</em></li>
+<li>configLocations属性：<em>将指定路径的配置文件都加载进去，相应的LocalSessionFactoryBean中的的此属性的setter方法的参数为可变参数:</em></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setConfigLocations</span><span class="params">(Resource... configLocations)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.configLocations = configLocations;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>而在上述代码中，hibernate的配置文件也直接引入到sessionFatory中来，而在外部的hibernate配置文件：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 配置方言 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;hibernate.dialect&quot;</span>&gt;</span>org.hibernate.dialect.MySQL5InnoDBDialect<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- session上下文控制权:交给session来控制 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;hibernate.current_session_context_class&quot;</span>&gt;</span>org.springframework.orm.hibernate5.SpringSessionContext<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 格式化sql语句 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;format_sql&quot;</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 显示sql语句 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;show_sql&quot;</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 表的生成策略 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;hbm2ddl.auto&quot;</span>&gt;</span>update<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中配置了部分的Hibernate属性，同时也可以配置c3p0的属性在其中；</li>
+<li>第三个配置：事务管理器transactionManager<ul>
+<li>将前面配置好的sessionFactory装配到这个bean中，作为sessionFactory属性值；</li>
+</ul>
+</li>
+<li>第四个配置：tx:advice，配置事务的传播特性，指定具备事务的方法名；</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 事务配置增强 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">&quot;txAdvice&quot;</span> <span class="attr">transaction-manager</span>=<span class="string">&quot;txMng&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;save*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;update*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;delete*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;batch*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;get*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span> <span class="attr">read-only</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;load*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span> <span class="attr">read-only</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;find*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span> <span class="attr">read-only</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 统配 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;*&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span> <span class="attr">read-only</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>- 最后一行统配就指定了所有的方法都配置上事务，同时 isolation 指此事务的隔离级别，propagation 指事务的传播属性，read-only 指是否为只读；
+</code></pre>
+<ul>
+<li>第五个配置aop:config，配置事务的切入点，以及被管理的对象</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">&quot;interceptorPointCuts&quot;</span> <span class="attr">expression</span>=<span class="string">&quot;execution(* com.woniuxy.sshdemo.service.impl.*(..))&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">&quot;txAdvice&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;interceptorPointCuts&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>- 先将切面的切点配置进来，也就是各个service的执行对象。再将这此切点配置到advisor中
+</code></pre>
+<ul>
+<li>其它的配置：<ul>
+<li>dao的执行类，配置一个id加上sessionFactory;</li>
+<li>service的执行类,配置上dao这个属性的对象；</li>
+</ul>
+</li>
+<li><strong>使用注解来实现事务的配置</strong><ul>
+<li>这时bean.xml：<ul>
+<li>数据源不变</li>
+<li>sessionFactory不变；</li>
+<li>事务管理器trasactionManager依然不变；</li>
+<li>变的是：添加一个事务注解驱动<code>tx:annotation-driven trasaction-manager=&quot;transactionManager&quot;/&gt;</code>，添加这个驱动配置后，对产生事务的类添加注解<code>@Transactional</code>，标记这个类为事务类，对其中的事务方法添加注解<code>@Transactional(isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED)</code>注解（标明了这个方法的隔离水平与传播水平）。这样的注解就取代了上面例子中tx:advice与aop:config两个配置节点的功能；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-5-source-codes"><a href="#1-5-source-codes" class="headerlink" title="1.5. source codes"></a>1.5. source codes</h2><p>源码</p>
+<ul>
+<li><code>@Configuration</code> 用以配置 spring 组件的注解，其文档有详细说明大部分的注解使用。</li>
+<li>使用 <code>@ContextConfiguration(locations=&#123;classpath*:xxx&#125;)</code> 时， <code>classpath*:</code> 表示可以从 jar 包里拿配置文件</li>
+</ul>
+<h2 id="rap-在项目开发中的使用"><a href="#rap-在项目开发中的使用" class="headerlink" title="rap 在项目开发中的使用"></a>rap 在项目开发中的使用</h2><blockquote>
+<p>date: “2017-12-05 19:08”</p>
+</blockquote>
+<p>使用 rap 来定义接口数据，这样方便前端开发人员与我们后端开发在各个接口请求上一致，更方便开发。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>mock 的使用中： <code>@mock=true</code> 在各个参数后面表示默认的数据格式样式吗？<ul>
+<li>时间类型/枚举类型等其他的数据选择什么类型？string？</li>
+</ul>
+</li>
+</ul>
+<h2 id="properties-in-springmvc"><a href="#properties-in-springmvc" class="headerlink" title="properties in springmvc"></a>properties in springmvc</h2><blockquote>
+<p>date: “2018-12-03 15:05” <a target="_blank" rel="noopener" href="https://www.baeldung.com/properties-with-spring">参考文档</a></p>
+</blockquote>
+<ul>
+<li>在 xml 文件中引入 properties ： <code>&lt;context:property-placeholder location=&quot;classpath:foo.properties&quot; /&gt;</code></li>
+<li>在配置 bean java 文件中可以使用注解将其配置：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@PropertySource(&quot;classpath:foo.properties&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PropertiesWithJavaConfig</span></span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>- 另外一个更有用的注解方法：
+</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PropertySource(&#123;</span></span><br><span class="line"><span class="meta">  &quot;classpath:persistence-$&#123;envTarget:mysql&#125;.properties&quot;&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>  <strong>note</strong>:<br>    - <a target="_blank" rel="noopener" href="http://www.cnblogs.com/jycboy/p/7349139.html">参考</a><br>    - classpath 是指被编译过后的 src 中所有的文件（包括：java、xml、properties）都放在的 WEB-INFO/classes 的文件夹。<br>    - <code>**/</code> 表示 任意目录。<code>**/mysql*.properties</code> 就表示任意目录下的以 <code>mysql</code> 开关的 properties 文件</p>
+<ul>
+<li><p>在 java 配置文件中插入一个 property 值使用标签 <code>@Value</code> ： <code>@Value(&quot;$&#123;jdbc.url:defaultUrl&#125;&quot;)</code> ， <code>:</code> 后面跟的是默认值。</p>
+</li>
+<li><p>在 xml 配置文件中插入一个 property 值</p>
+<pre><code class="xml">&lt;bean id=&quot;dataSource&quot;&gt;
+  &lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+</li>
+</ul>
+
+                
+            </div>
+        </article>
+    
+</div>
+<div class="paginator">
+    
+        
+        <a class="prev" href="/page/5/">
+            <i class="iconfont icon-prev"></i>
+            Prev
+        </a>
+        
+        
+        <a class="next" href="/page/7/">
+            Next
+            <i class="iconfont icon-next"></i>
+        </a>
+        
+    
+</div>
+
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

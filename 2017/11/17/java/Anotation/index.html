@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2017-11-17</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/programming/">programming</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Anotation"><span class="toc-text">Anotation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-text">注解的定义与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E4%B8%AA%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="toc-text">四个元注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">注解的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-text">注解的解析器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-Autowired-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">注解 @Autowired 的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-ResponseBody"><span class="toc-text">注解 @ResponseBody</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequestBody"><span class="toc-text">@RequestBody</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RequiresPermissions"><span class="toc-text">@RequiresPermissions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PathVariable"><span class="toc-text">@PathVariable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestHeader-CookieValue"><span class="toc-text">@RequestHeader @CookieValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Repository"><span class="toc-text">@Repository</span></a></li></ol></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="Anotation"><a href="#Anotation" class="headerlink" title="Anotation"></a>Anotation</h1><blockquote>
+<p>有注解，必有其解析器。解析器使用类反射做了注解所增加的功能。</p>
+</blockquote>
+<h2 id="注解的定义与使用"><a href="#注解的定义与使用" class="headerlink" title="注解的定义与使用"></a>注解的定义与使用</h2><blockquote>
+<p>注解是 JAVA5.0 之后的高级特性。可以使用自定义注解来使用。</p>
+</blockquote>
+<h3 id="四个元注解"><a href="#四个元注解" class="headerlink" title="四个元注解"></a>四个元注解</h3><p>注解的注解，用于标注该注解的基本属性。</p>
+<ul>
+<li>@Documented 注解是否包含在 JavaDoc 中</li>
+<li>@Retention 什么时候使用该注解，定义该注解的生命周期<ul>
+<li>RetentionPolicy.SOURCE</li>
+<li>RetentionPolicy.CLASS</li>
+<li>RetentionPolicy.RUNTIME</li>
+</ul>
+</li>
+<li>@Target 定义该注解使用的地方<ul>
+<li>ElementType.TYPE 类、接口、枚举等</li>
+<li>ElementType.FIELD 字段属性</li>
+<li>ElementType.METHOD 方法</li>
+<li>ElementType.PARAMETER 方法参数</li>
+<li>ElementType.CONSTRUCTOR 构造函数</li>
+<li>ElementType.LOCAL_VARIABLE 本地变量</li>
+<li>ElementType.PACKAGE 包</li>
+</ul>
+</li>
+<li>@Inherited 是否允许子类继承该注解</li>
+</ul>
+<h3 id="注解的定义"><a href="#注解的定义" class="headerlink" title="注解的定义"></a>注解的定义</h3><p>注解定义中的属性只能是 String、Enum、及基本数据类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> Todo &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Priority</span> </span>&#123;LOW, MEDIUM, HIGH&#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Status</span> </span>&#123;STARTED, NOT_STARTED&#125;</span><br><span class="line">  <span class="function">String <span class="title">author</span><span class="params">()</span> <span class="keyword">default</span> &quot;Yash&quot;</span>;</span><br><span class="line">  <span class="function">Priority <span class="title">priority</span><span class="params">()</span> <span class="keyword">default</span> Priority.LOW</span>;</span><br><span class="line">  <span class="function">Status <span class="title">status</span><span class="params">()</span> <span class="keyword">default</span> Status.NOT_STARTED</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果注解中属性只有一个，那么使用时不需要写属性名，直接写值即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="meta">@interface</span> Remark&#123;</span><br><span class="line">  <span class="function">String <span class="title">author</span><span class="params">()</span> <span class="keyword">default</span> &quot;kfc&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Remark(&quot;jfk&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Change</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注解的解析器"><a href="#注解的解析器" class="headerlink" title="注解的解析器"></a>注解的解析器</h3><ul>
+<li>使用注解必然要写好其解析器，根据注解的不同生命周期，其解析器对相应的注解进行进行解析，获取其属性值，并做相应的处理。</li>
+<li>注解的保留策略：如果是 <code>RetentionPolicy.SOURCECODE</code>，则其在编译阶段会被使用，因为此时编译器根据其 源码策略 对其进行处理。</li>
+<li>注解的解析器是如果工作的？参照 spring 。</li>
+</ul>
+<h2 id="注解-Autowired-的使用"><a href="#注解-Autowired-的使用" class="headerlink" title="注解 @Autowired 的使用"></a>注解 @Autowired 的使用</h2><p>单词： autowired 的意思就是自动装配。而在 java 编程中使用此注解就是将标注过注解的都自动装配到 spring 容器中。</p>
+<p>据此理解的话，在编码中：</p>
+<ul>
+<li><p>如果是属性被此注解标注，则此属性就将这个 bean 注入到容器中，不用写此属性的 getter() 与 setter() 方法，在 bean.xml 配置中也不用写此属性的 <code>&lt;property&gt;</code> 标签了；</p>
+</li>
+<li><p>如果方法或构造函数被 @Autowired 注解，则此方法参数中的 bean 就会自动被查找装入到这个方法中；</p>
+</li>
+<li><p>注解的解析器是 {@link AutowiredAnnotationBeanPostProcessor}</p>
+</li>
+<li><p>可以使用此注解对构造器、方法、变量进入注入 bean 依赖。在构造器上，只能有一个构造器上此注解的 required 属性是 true。使用此注解后，方法参数中的 bean 将自动从 spring contaner 中查找并注入。</p>
+<ul>
+<li>当多个构造器上是 not required 时，选择策略是：容器中能满足最多的构造参数的构造器会被选择，当只有一个构造器时，可以省略 <code>@AutoWired</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="注解-ResponseBody"><a href="#注解-ResponseBody" class="headerlink" title="注解 @ResponseBody"></a>注解 @ResponseBody</h2><p>此注解标明这个方法返回不经过视图解析器处理，直接将处理信息写成字节流返回给浏览器，成为 json 对象写到浏览器页面中。</p>
+<h2 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h2><ul>
+<li>此注解将请求的 body 部分数据使用 converter 解析并将相应的数据绑定到要返回的对象上；</li>
+<li>使用 converter 解析的结果绑定到 controller 中的方法的参数上；</li>
+<li>使用json 解析时，使用的属性访问器，也就是说要对应请求 json 数据 key 与属性访问器对应，而不是与请求 vo 的 property 的名对应；</li>
+</ul>
+<h2 id="RequiresPermissions"><a href="#RequiresPermissions" class="headerlink" title="@RequiresPermissions"></a>@RequiresPermissions</h2><p>shiro 框架中的权限验证注解，用于验证是否拥有某权限。</p>
+<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h2><p>用于将方法参数绑定到请求路径中去</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span>  </span><br><span class="line"><span class="meta">@RequestMapping(&quot;/owners/&#123;ownerId&#125;&quot;)</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RelativePathUriTemplateController</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/pets/&#123;petId&#125;&quot;)</span>  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findPet</span><span class="params">(<span class="meta">@PathVariable</span> String ownerId, <span class="meta">@PathVariable</span> String petId, Model model)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// implementation omitted</span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h3 id="RequestHeader-CookieValue"><a href="#RequestHeader-CookieValue" class="headerlink" title="@RequestHeader @CookieValue"></a>@RequestHeader @CookieValue</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(<span class="meta">@RequestHeader(&quot;Accept-Encoding&quot;)</span> String encoding,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="meta">@RequestHeader(&quot;Keep-Alive&quot;)</span> <span class="keyword">long</span> keepAlive)</span>  </span>&#123;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>上面的代码就参数 encoding 与 keepAlive 分别绑定到了请求的 Header 中去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/displayHeaderInfo.do&quot;)</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayHeaderInfo</span><span class="params">(<span class="meta">@CookieValue(&quot;JSESSIONID&quot;)</span> String cookie)</span>  </span>&#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而这一段代码就将参数 cookie 绑定到 JSESSIONID 上。<br><em>note:关于这儿的请求是将请求的 header/cookie 中的值绑定到请求方法参数中还是将请求时的参数绑定到 header/cookie 中是一个未搞清的问题。查找上说是将 header/cookie 值绑定到请求方法参数中，但如果是这样就没必要设置这个参数了，直接获取这些值在方法中调用就是，而后者却更有必要，调用方法时参数就直接当作 header/cookie 值去请求了看来也更合理</em></p>
+<h3 id="Repository"><a href="#Repository" class="headerlink" title="@Repository"></a>@Repository</h3><blockquote>
+<p>对应 dao 层的数据</p>
+</blockquote>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/java/" title="java">java</a>
+            
+            <a class="tag" href="/tags/programming/" title="programming">programming</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2018/09/26/java/java8-features/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2017/11/09/linux/win10+ubuntu/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title"></h2>
+            <div class="post-meta">
+                <span class="post-time">2018-09-28</span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Concurrent"><span class="toc-text">Java Concurrent</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CompletableFuture"><span class="toc-text">CompletableFuture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadPoolExecutor"><span class="toc-text">ThreadPoolExecutor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-and-Maximum-Pool-Size"><span class="toc-text">Core and Maximum Pool Size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queuing-%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="toc-text">Queuing 任务队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%8E%92%E5%88%97%E7%AD%96%E7%95%A5"><span class="toc-text">三种排列策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%8B%92%E7%BB%9D"><span class="toc-text">任务拒绝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hook-Methods"><span class="toc-text">Hook Methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%BB%B4%E6%8A%A4-Queue-Maintenance"><span class="toc-text">队列维护 Queue Maintenance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9E%90%E6%9E%84"><span class="toc-text">线程池析构</span></a></li></ol></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="Java-Concurrent"><a href="#Java-Concurrent" class="headerlink" title="Java Concurrent"></a>Java Concurrent</h1><blockquote>
+<p>Java 多线程</p>
+</blockquote>
+<h2 id="CompletableFuture"><a href="#CompletableFuture" class="headerlink" title="CompletableFuture"></a>CompletableFuture</h2><p>Java 异步编程的神器，利用执行器 Executor 去执行多个任务时内置多个整合异步执行结果的方法，且全面支持 Java8 的函数式接口。</p>
+<p>然而完全不能用于异步，只能在当前线程外开启异步而不能异步于当前线程执行任务。也就是说执行再多的异步任务，当前线程还是得等到 CompletableFuture 聚合出结果来才能执行下一步。 要在当前线程执行任务，使用线程池 ThreadPoolExecutor 。</p>
+<h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><blockquote>
+<p>使用线程池实现多线程编程</p>
+</blockquote>
+<p>工厂类 Executors 提供了便捷的构造线程池的方法，</p>
+<ol>
+<li>Executors.newCachedThreadPool() 无限线程数量，自动回收线程</li>
+<li>newFixedThreadPool() 固定线程数量线程池</li>
+<li>newSingleThreadExecutor() 单线程执行器</li>
+</ol>
+<p>如果需要更详细地控制微调线程池，就需要使用类中其他参数。</p>
+<h3 id="Core-and-Maximum-Pool-Size"><a href="#Core-and-Maximum-Pool-Size" class="headerlink" title="Core and Maximum Pool Size"></a>Core and Maximum Pool Size</h3><p>ThreadPoolExecutor 会根据 corePoolSize 与 maximumPoolSize 自动调整线程池 pool size 。</p>
+<p>当一个新的任务通过 execute(Runnable r) 方法被提交时，如果正在运行的线程数量低于 corePoolSize，这时会创建一个新的线程用以执行任务，不管此时其他已初始化好的线程是否是空闲状态。如果正运行的线程数量超过 corePoolSize 但少于 maximumPoolSize ，只有当队列是满的时才会创建新的线程执行任务。设置 corePoolSize == maximumPoolSize 就是设置了一个 fixed size Thread Pool 。如果设置 maximumPoolSize 为无限大（ Integer.MAX_VALUE ），就让线程池可并发执行任意数量的任务。一般来说， core Pool size 与 maximum pool size 在构造时设置好，但也可以使用 setCorePoolSize() 与 setMaximumPoolSize() 方法动态设置。</p>
+<h3 id="Queuing-任务队列"><a href="#Queuing-任务队列" class="headerlink" title="Queuing 任务队列"></a>Queuing 任务队列</h3><blockquote>
+<p>用于放置提交的不能当前执行的任务。BlockingQueue</p>
+</blockquote>
+<p>队列与 pool size 关系：</p>
+<ul>
+<li>如果正在运行的线程数量低于 corePoolSize ，执行器将添加一个线程而非放入队列。</li>
+<li>如果运行的线程数量超过 corePoolSize，执行器将排队入队列而非添加线程。</li>
+<li>当请求不能放置入队列，如果运行线程数量未超过 maximumPoolSize 将新添加一个线程，否则将拒绝请求。</li>
+</ul>
+<h3 id="三种排列策略"><a href="#三种排列策略" class="headerlink" title="三种排列策略"></a>三种排列策略</h3><ol>
+<li>直接移交 direct handoff 。SynchronousQueue ，直接将任务提交给执行器不放置入队列。</li>
+<li>无限队列 LinkedBlockingQueue</li>
+<li>有限队列 ArrayBlockingQueue</li>
+</ol>
+<h3 id="任务拒绝"><a href="#任务拒绝" class="headerlink" title="任务拒绝"></a>任务拒绝</h3><p>当运行线程数量与队列容量都有限且已饱和，此时执行器将拒绝提交的任务。RejectedExecutionHandler#rejectExecution(Runnable, ThreadPoolExecutor).预定义的四种拒绝策略：</p>
+<ol>
+<li>默认的 ThreadPoolExecutor.AbortPolicy ，直接抛出运行时异常 RejectedExecutionException。</li>
+<li>ThreadPoolExecutor.CallerRunsPolicy，让提交任务的线程自己运行任务。可以降低高峰时请求任务执行数量。</li>
+<li>ThreadPoolExecutor.DiscardPolicy，直接丢弃提交的任务。</li>
+<li>ThreadPoolExecutor.DiscardOldestPolicy，丢弃队列中最老的任务。</li>
+</ol>
+<p>可自定义任务拒绝策略。实现 RejectedExecutionHandler .</p>
+<h3 id="Hook-Methods"><a href="#Hook-Methods" class="headerlink" title="Hook Methods"></a>Hook Methods</h3><p>在每个线程任务执行前后添加钩子用以执行自定义。如果钩子方法抛出异常，内部线程执行可能执行失败并被中断。</p>
+<ol>
+<li>beforeExecute(Thread, Runnable)</li>
+<li>afterExecute(Runnable, Throwable)</li>
+</ol>
+<h3 id="队列维护-Queue-Maintenance"><a href="#队列维护-Queue-Maintenance" class="headerlink" title="队列维护 Queue Maintenance"></a>队列维护 Queue Maintenance</h3><p>getQueue() 方法允许访问队列，但只推荐用以监控与 debug。当大量任务被取消，可使用 remove() purge() 方法回收队列空间。</p>
+<h3 id="线程池析构"><a href="#线程池析构" class="headerlink" title="线程池析构"></a>线程池析构</h3><p>如果线程池不再被引用且没有线程在其中，将自动关闭 shutdown 。如果需要保证不被引用的线程池未被用户调用 shutdown() 方法被回收，需要将无用的线程死亡。方法是设置恰当的生命时长 keep-alive time ，低于0 的 corePoolSize 或 allowCoreThreadTimeOut(true)。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/java/" title="java">java</a>
+            
+            <a class="tag" href="/tags/concurrent/" title="concurrent">concurrent</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2018/09/28/java/date-calenda/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">Date&amp;Calenda</span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2018/09/26/java/java8-features/">
+                <span class="nav-default"></span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
+        <i class="iconfont icon-weibo"></i>
+    </a>
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>
