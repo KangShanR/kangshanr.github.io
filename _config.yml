@@ -96,10 +96,25 @@ include:
 exclude:
 ignore:
 
+# layout: tags
+layout: categories
+
+github_username: KangShanR
+weibo_username: hey_you_go
+zhihu_username:
+
+comment:
+  owner: KangShanR
+  repo: 
+  id: 074819c3098d17273370
+  secret: 7b600971b388f1af62c5802851a6b8a9130634cd        
+        
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: Sky
+theme_config:
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
