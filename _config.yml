@@ -8,6 +8,7 @@ subtitle: ''
 description: '我的技术博客'
 keywords:
 author: Kang Shan
+since: 2017
 language: en
 timezone: 'Asia/Shanghai'
 
@@ -98,11 +99,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: Sky
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
+  type:
   repo: 
-  branch: master
+  branch: 
