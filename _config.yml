@@ -119,6 +119,8 @@ theme_config:
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type:
-  repo: 
-  branch: 
+  type: git
+  repo: https://github.com/KangShanR/kangshanr.github.io
+  branch: master
+  name: KangShanR
+  token: '13158507745zzq'
