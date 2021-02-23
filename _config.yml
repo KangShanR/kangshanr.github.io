@@ -14,7 +14,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://kangshanr.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -93,11 +93,11 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
-exclude:
-ignore:
+exclude: _drafts/*
+ignore: 
 
 # layout: tags
-layout: categories
+layout: tags
 
 github_username: KangShanR
 weibo_username: hey_you_go
@@ -112,7 +112,7 @@ comment:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: sky
+theme: Coder-2.0
 theme_config:
 
 
