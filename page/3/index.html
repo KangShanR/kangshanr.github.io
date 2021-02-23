@@ -1,723 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kang Shan</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Kang Shan
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
     
 <link rel="stylesheet" href="/css/style.css">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
-
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
 <meta name="generator" content="Hexo 5.4.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
-
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                Home
-            </a>
-            
-
-            
-            <a href="/archives" class="header-nav-link">
-                Archives
-            </a>
-            
-
-            
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
-
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
-        </div>
-
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">Home</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">Archives</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">Tags</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">About</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/12/10/linux/shell/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-12-10</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><blockquote>
-<p>Shell 是一个可以执行命令／程序／shell 脚本的环境，提供了访问 Unix 系统的接口。其根据输入执行程序，执行完成后将结果展示出来。 <a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix/unix-what-is-shell.htm">Shell</a></p>
-</blockquote>
-<h2 id="variable"><a href="#variable" class="headerlink" title="variable"></a>variable</h2><blockquote>
-<p>变量</p>
-</blockquote>
-<ul>
-<li>只读变量 <code>readonly variable</code></li>
-<li><code>unset &#123;variable_name&#125;</code> 重置一个变量，只读变量不可重置，重置后不能再访问</li>
-<li>变量类型<ul>
-<li>Local variable.存在于当前shell实例中的变量，shell开启程序后，程序不能访问local variable .</li>
-<li>Environment variable. 环境变量，shell进程中任何地方可以获取环境变量.</li>
-<li>Shell variable.shell脚本中定义的变量，可以是 local variable ,也可是Environment variable .</li>
-</ul>
-</li>
-</ul>
-<h2 id="Basic-operators"><a href="#Basic-operators" class="headerlink" title="Basic operators"></a>Basic operators</h2><p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix/unix-basic-operators.htm">reference</a></p>
-<h3 id="Arithmetic-operators"><a href="#Arithmetic-operators" class="headerlink" title="Arithmetic operators"></a>Arithmetic operators</h3><ul>
-<li>使用基础运算符时引用变量需要同样使用 <code>$</code> 符号，但赋值时直接使用变量名即可。<code>expr a = $b</code></li>
-<li>运算符与表达式之间需要空格分开。<code>expr $a != $b</code></li>
-<li><code>*</code> 乘号使用需要添加转义 <code>\*</code></li>
-<li>条件表达式使用需要被方括号(括号与表达式之间需要空格分隔)所包围：　<code>[ $a == $b ]</code></li>
-</ul>
-<h3 id="Relational-Operators"><a href="#Relational-Operators" class="headerlink" title="Relational Operators"></a>Relational Operators</h3><ul>
-<li>同样需要方括号与空格包围变量 <code>[ $a -eq $b ]</code></li>
-<li><code>-eq</code> equals</li>
-<li><code>-ne</code> not equals</li>
-<li><code>-gt</code> greater than</li>
-<li><code>-lt</code> less than</li>
-<li><code>-ge</code> greater or equals</li>
-<li><code>-le</code> less or equals</li>
-<li>关系运算符支付数值类，如果是string类必须是代表数值的string，eg:<code>&quot;100&quot;</code></li>
-</ul>
-<h3 id="Boolean-Operators"><a href="#Boolean-Operators" class="headerlink" title="Boolean Operators"></a>Boolean Operators</h3><ul>
-<li><code>!</code> 取反</li>
-<li><code>-o</code> OR</li>
-<li><code>-a</code> AND</li>
-<li>eg: <code>[ $a -gt 100 -a $b -le 20 ]</code></li>
-</ul>
-<h3 id="String-Operators"><a href="#String-Operators" class="headerlink" title="String Operators"></a>String Operators</h3><ul>
-<li><code>=</code></li>
-<li><code>!=</code></li>
-<li><code>-z</code> zero 检测字串其长度是否为 ０  <code>[ -z $a ]</code></li>
-<li><code>-n</code> not-zero 字串长度不为 0 <code>[ -n $a ]</code></li>
-<li>str 检测字串是否为 empty <code>[ $a ]</code></li>
-</ul>
-<h3 id="File-Test-Operators"><a href="#File-Test-Operators" class="headerlink" title="File Test Operators"></a>File Test Operators</h3><p>检测关联到文件的变量属性。假如一个变量 <code>file</code> 关联到一个 test 文件，大小100bytes，有 read/write/execute 权限。其相关命令如下：</p>
-<ul>
-<li><code>-b file</code> check if file is a block special file. <code>[ -b $file ]</code> false</li>
-<li><code>-c file</code> check if file is a character special file. <code>[ -c $file ]</code> false</li>
-<li><code>-d file</code> check if file is a directory. <code>[ -d $file ]</code> false</li>
-<li><code>-f file</code> check if file is an ordinal file as opposed to a directory or special file. <code>[ -f $file ]</code> is true</li>
-<li><code>-e file</code> check if file exists. <code>[ -e $file ]</code> is true</li>
-<li><code>-r</code>/<code>-w</code>/<code>-x</code> check if file is readable/writable/executable.</li>
-</ul>
-<h2 id="Decision-Making"><a href="#Decision-Making" class="headerlink" title="Decision Making"></a>Decision Making</h2><p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix/unix-decision-making.htm">reference</a></p>
-<p>shell 中两种类似 switch case 的分支语句：</p>
-<ol>
-<li>if…elif…else…fi</li>
-<li>case…esac</li>
-</ol>
-<h2 id="Process-Control"><a href="#Process-Control" class="headerlink" title="Ｐrocess Control"></a>Ｐrocess Control</h2><ul>
-<li>until 与 while 中的条件相反，满足条件在 while中循环，而不满足条件才在 until 中循环。</li>
-<li><code>break n</code> 跳出循环，其中 n 代表正整数，默认不写为 1 只跳出当前层循环，而如果需要跳出第二层循环（从内往外数）就指定 n 为 2 。</li>
-</ul>
-<h2 id="Substitutions"><a href="#Substitutions" class="headerlink" title="Substitutions"></a>Substitutions</h2><blockquote>
-<p>转义</p>
-</blockquote>
-<p>常用转义符号：</p>
-<ul>
-<li><code>\n</code> new line</li>
-<li><code>\r</code> carriage return</li>
-<li><code>\t</code> horizontal tab</li>
-<li><code>\\</code> back slash</li>
-<li><code>\a</code> alert</li>
-<li><code>\b</code> backspace</li>
-<li><code>\c</code> suppress trailing line</li>
-<li><code>\f</code> form feed</li>
-<li><code>\v</code> vertical tab</li>
-</ul>
-<h3 id="Command-Substitution"><a href="#Command-Substitution" class="headerlink" title="Command Substitution"></a>Command Substitution</h3><p><code>command</code> 使用 back quote 将命令包围起来，命令执行结果将返回。eg: echo “today is <code>date</code>“</p>
-<h3 id="Variable-Substitution"><a href="#Variable-Substitution" class="headerlink" title="Variable Substitution"></a>Variable Substitution</h3><blockquote>
-<p>变量转义</p>
-</blockquote>
-<p>使用变量转义可以将对变量进行检查，并对其返回值或变量作修改。</p>
-<ul>
-<li><code>$&#123;var:-word&#125;</code> 如果变量 var 为 null  或未设置，将使用 word 转义为结果， var 变量不会被设置成 word.</li>
-<li><code>$&#123;var&#125;</code> 转义 var 的值</li>
-<li><code>$&#123;var:=word&#125;</code> 转义 var 并将 word 赋值给 var。</li>
-<li><code>$&#123;var:?message&#125;</code> 如果 var 未设置或为 null ，message 将打印到 standard error。用以检测变量 var 是否正确设置。</li>
-<li><code>$&#123;var:+word&#125;</code> 如果 var 已设置，work 将转义给 var ，但 var 不会改变。</li>
-</ul>
-<h2 id="Quoting-Mechanisms"><a href="#Quoting-Mechanisms" class="headerlink" title="Quoting Mechanisms"></a>Quoting Mechanisms</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix/unix-quoting-mechanisms.htm">引用机制</a></p>
-</blockquote>
-<h3 id="Meta-Characters"><a href="#Meta-Characters" class="headerlink" title="Meta Characters"></a>Meta Characters</h3><blockquote>
-<p>Unix 元字符在 shell 中有特殊含义，所以在命令中如果要使用其为普通字串，需要在其前加上转义符号 backslash <code>\</code>。 Unix 中的元字符包括：</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* ? [ ] &#x27; &quot; \ $ ; &amp; ( ) | ^ &lt; &gt; new-line space tab</span><br></pre></td></tr></table></figure>
-
-<p><code>?</code> 代表任何一个字符，而 <code>*</code> 代表任意多个字符。</p>
-<h3 id="quoting"><a href="#quoting" class="headerlink" title="quoting"></a>quoting</h3><blockquote>
-<p>引用方式有四种</p>
-</blockquote>
-<ol>
-<li>单引号引用 <code>&#39;</code>，特殊符号会将全部的元字符给转义为字面量。当需要输出单引号时，此时可以使用 backslash 将其转义输出。</li>
-<li>双引号引用 <code>&quot;</code>，大部分特殊符号被双引号引用有将丢失其特殊意义，但有例外：$ ` $ &#39; &quot; \</li>
-<li>backslash <code>\</code>, 所有特殊变量在 backslash 后都将丢失其特殊意义</li>
-<li>back quote `, 被 back quote 包围的任何字符都将会被当作命令执行。</li>
-</ol>
-<h2 id="IO-Redirection"><a href="#IO-Redirection" class="headerlink" title="IO Redirection"></a>IO Redirection</h2><blockquote>
-<p>IO 重定向</p>
-</blockquote>
-<p>重定向的命令有：</p>
-<ol>
-<li><code>pgm &gt; file</code> 重定向到输出文件</li>
-<li><code>pgm &gt;&gt; file</code> 将输出追加到指定文件</li>
-<li><code>pgm &lt; file</code> 程序从文件读取输入</li>
-<li><code>n &gt; file</code> 将 n fd 的流输出重定向到文件 file</li>
-<li><code>n &gt;&gt; file</code> 将 fd n 的流输出重定向追加到文件 file</li>
-<li><code>n &gt;&amp; m</code> 合并 fd n 流与 fd m 流输出</li>
-<li><code>n &lt;&amp; m</code> 合并输入流 fd n 与 fd m</li>
-<li><code>&lt;&lt; tag</code>  Standard input comes from here through next tag at the start of line</li>
-<li><code>|</code> 管道，将前一个程序／应用的输出发送到下一个</li>
-</ol>
-<p>NOTE: <em>file descriptor（fd） 在 Unix 中使用非负整数表示，其中 0 表示标准输入 STDIN，1 表示标准输出 STDOUT，2 表示错误输出 STDERR</em><br>在 Unix 系统中每个非守护进程都有以上三个 IO 流，进程通过 kernel 访问文件 file table / inode table。</p>
-<p>在脚本中实现交互</p>
-<ol>
-<li>使用重定向</li>
-<li>使用管道</li>
-<li>使用 expect （需要安装此功能）</li>
-</ol>
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><blockquote>
-<p>Unix shell function</p>
-</blockquote>
-<ul>
-<li>定义 function 其语法是：在方法名后跟上 <code>function_name () &#123;&#125;</code>，传递参数直接在命令行中添加，在方法中调用参数使用 <code>$n</code></li>
-<li>返回数据使用关键字 <code>return</code></li>
-<li><code>exit</code> 会终结整个 shell 执行，而不是 function 。</li>
-<li><code>$?</code> 获取上一次命令返回值 <code>ret=$?</code>，此值只是一个整数代表结果，不能返回字符及其他</li>
-<li>shell 文件调用需要使用 <code>. shell_file</code></li>
-<li>shell 文件后缀可以不用写，一样的效果</li>
-<li>shell 文件头指定 shell  执行 bash 类型也可不写，让系统默认的 shell 执行即可</li>
-<li><code>echo $PATH</code> 可以看到系统全局变量，其中一般包括了 ~/bin ，所以要以在此文件路径中添加自己想要的全局 shell ，而实现任何地方不添加绝对路径前缀调用此 shell 。</li>
-<li><code>$HOME</code> 调用当前用户目录，在 shell 中使用 ～ 不会生效。</li>
-</ul>
-<h2 id="Alias"><a href="#Alias" class="headerlink" title="Alias"></a>Alias</h2><blockquote>
-<p>给 bash shell 命令添加别名.<a target="_blank" rel="noopener" href="https://blog.csdn.net/doiido/article/details/43762791">reference</a></p>
-</blockquote>
-<ul>
-<li>使用命令 <code>alias command=&#39;command arguments&#39;</code> 给命令添加别名，从而缩小写常用参数的工作。eg: <code>alias grep=&#39;grep -iE --color=auto&#39;</code>，可以实现使用 grep 命令自动添加两个参数</li>
-<li>如果要永久实现别名生效可以将命令添加到 ~/.bashrc 文件中并执行此文件</li>
-<li>解除别名设置使用命令 <code>unalias name</code></li>
-</ul>
-<h2 id="添加机器命令别名与进入日志脚本"><a href="#添加机器命令别名与进入日志脚本" class="headerlink" title="添加机器命令别名与进入日志脚本"></a>添加机器命令别名与进入日志脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">D=`date +%F`</span><br><span class="line"></span><br><span class="line">echo &quot;today: $D&quot;</span><br><span class="line">echo &quot;AUGUMENTS: $@&quot;</span><br><span class="line">PT=&quot;/smapp/servers/snxia-api-app/logs/$D/&quot;</span><br><span class="line">echo &quot;path: $PT&quot;</span><br><span class="line">LOG_TYPE=&quot;&quot;</span><br><span class="line"></span><br><span class="line">alias grep=&#x27;grep -iE --color&#x27;</span><br><span class="line"></span><br><span class="line">if [ $# -eq 0 ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;No arguments&quot;</span><br><span class="line">    cd $PT</span><br><span class="line">else</span><br><span class="line">    get_log_type $2</span><br><span class="line">    if [ $1 = &quot;v&quot; ]</span><br><span class="line">    then</span><br><span class="line">        echo &quot;vim ...&quot;</span><br><span class="line">        vim &quot;$PT/$LOG_TYPE&quot;</span><br><span class="line">    fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">get_log_type () &#123;</span><br><span class="line">    echo &quot;arguments: $*&quot;</span><br><span class="line">    if [ $1 = &quot;e&quot; ]</span><br><span class="line">    then</span><br><span class="line">        LOG_TYPE=&quot;error-log.log&quot;</span><br><span class="line">    elif [ $1 = &quot;i&quot; ]</span><br><span class="line">    then</span><br><span class="line">        LGO_TYPE=&quot;info-log.log&quot;</span><br><span class="line">    else [ $1 = &quot;w&quot; ]</span><br><span class="line">        LOG_TYPE=&quot;warn-log.log&quot;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><h3 id="Shell-脚本中-cd-命令不生效"><a href="#Shell-脚本中-cd-命令不生效" class="headerlink" title="Shell 脚本中 cd 命令不生效"></a>Shell 脚本中 cd 命令不生效</h3><p>再现：在 l 脚本中写了 cd 命令，再放在 PATH 中，在 terminal 直接调用这个脚本 <code>l</code> ，发现当前目录还是原目录并未进入到脚本中指定的目录。</p>
-<p>原因：在接 terminal 调用脚本，是在当前 shell 环境中执行另外一个进程，进程结束就返回了原 shell 。</p>
-<p>解决：使用 <code>source</code> 或 <code>.</code> 命令在当前 shell 中执行脚本，而不是直接调用脚本。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/12/09/java/java%20transient/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-12-09</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="transient"><a href="#transient" class="headerlink" title="transient"></a>transient</h1><p>用于标明在序列化时此变量不被序列化，反序列化时会将其赋予默认值。</p>
-<ul>
-<li>与 final 连用，final 修辞字段值会直接被序列化，因此 transient 修辞 final 字段无效</li>
-<li>与 static 连用，static 字段非对象所拥有，所以 transient 修辞的 static 字段无效。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/11/10/java/java%20reflect/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-11-10</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/11/03/java/java/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-11-03</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="java-overview"><a href="#java-overview" class="headerlink" title="java overview"></a>java overview</h1><p>关于 java 的概述。<a target="_blank" rel="noopener" href="https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html">官方文档</a></p>
-<h2 id="java-platform"><a href="#java-platform" class="headerlink" title="java platform"></a>java platform</h2><ul>
-<li>java SE：java standard edition。java 标准版本，包括了 java 虚拟机，各类基础的 API 。</li>
-<li>java EE：java enterprise edition。构建于 java SE之上，提供 API 与运行时环境，用来开发、运行大型复杂安全可靠的网络应用。</li>
-<li>java ME：java micro edition。提供小型虚拟机与 API，用以在小型设备（如：手机）开发应用。用于小型设备应用开发的 API 常为特定的类库，因而java ME 的 API 是 java SE 所提供的 API 的子集。java ME 应用请求的服务器一般为 java EE 开发的。</li>
-<li>javaFX： JavaFX 平台用于创建富网络应用，这些应用常用轻量级用户交互 API 开发。JavaFX 应用通过硬件加速绘制器与媒体引擎，达到高性能、现代外观的效果。同时也能够使用高级 APIs 连接网络数据。JavaFX 应用也可作为 Java EE 服务的客户端。</li>
-</ul>
-<h2 id="shadowing"><a href="#shadowing" class="headerlink" title="shadowing"></a>shadowing</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html#shadowing">tutorial</a></p>
-<p>定义到内部同名变量、方法参数名会 shadows 外部的变量或参数。方法中可以使用 <code>this.x</code> 调用对象的变量，而在内部类中可以使用 <code>Outer.this.x</code> 调用。</p>
-<h2 id="java-IO"><a href="#java-IO" class="headerlink" title="java IO"></a>java IO</h2><h3 id="Data-Streams"><a href="#Data-Streams" class="headerlink" title="Data Streams"></a>Data Streams</h3><p>使用 Data Streams 可以讲IO 基本类型数据与 String。</p>
-<h3 id="Object-Streams"><a href="#Object-Streams" class="headerlink" title="Object Streams"></a>Object Streams</h3><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/essential/io/objectstreams.html">reference</a></p>
-<ul>
-<li>使用 Java Object Stream 可以 IO 引用类型数据。Java Object 实现 Serializable 接口即可被 IO 。</li>
-<li>Object stream 类是 ObjectInputStream 和 ObjectOutputStream，分别实现了 ObjectInput 与 ObjectOutput ，同时这两个又是 DataInput 与 DataOutput 的子接口，所以 object stream 同样包含了基本数据值与对象值。</li>
-<li>将一个 object 写入 stream 时，需要将其引用的 object 同时写入，以此类推直到最初的基本类型。两个 object 引用了同一个 object ，在写入 stream 时只会写一个 object 但外层两个 object 拥有不同的两个 reference 。在 read back 时也可以将引用关系给复原。但如果外层两个 object 被写入了不同的 stream 中，在 read back 时会恢复成两个不同的对象。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/10/21/java/guigargage/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-10-21</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="guigarage"><a href="#guigarage" class="headerlink" title="guigarage"></a>guigarage</h1><p><a target="_blank" rel="noopener" href="https://guigarage.com/2014/06/datafx-tutorial-4/">reference</a></p>
-<ul>
-<li>使用此包实现桌面应用程序<a target="_blank" rel="noopener" href="https://guigarage.com/2014/06/datafx-tutorial-4/">参考架构</a></li>
-<li></li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/10/20/java/jar/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-10-20</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/java/">java</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Java-jar"><a href="#Java-jar" class="headerlink" title="Java jar"></a>Java jar</h1><p>java archive</p>
-<ul>
-<li>使用 jdk 自带工具 javac 编译 java 文件成 class 字节码，再用打包命令 <code>java jar cfmv jar-name manifest-file class-files</code></li>
-</ul>
-<h2 id="installed-extensions"><a href="#installed-extensions" class="headerlink" title="installed extensions"></a>installed extensions</h2><p>添加外部的 jar 用作扩展。</p>
-<ul>
-<li>可在命令行中添加 classpath 的参数，指定 classpath 引用外部 jar 包，也可以在 manifest 文件中指定多个 classpath 。</li>
-<li>可以直接在 jre 中添加扩展。path：jre/lib/ext</li>
-<li>若有多个 jre，可以在用户目录中指定让多个 jre 使用同一个 jar 包：usr/java/packages/lib/ext</li>
-</ul>
-<h2 id="java-command-line"><a href="#java-command-line" class="headerlink" title="java command line"></a><code>java</code> command line</h2><blockquote>
-<p><code>java</code> 命令行在启动一个 java 进程时至关重要。其中关系到设置 jvm 的各项参数，项目启动的配置参数等等。</p>
-</blockquote>
-<ul>
-<li><code>-</code> 标准选项 standard option</li>
-<li><code>-X</code> 非标准选项 non-standard option<ul>
-<li><code>-Xmn&lt;size&gt;</code> 设置堆中最大／初始新生代大小。max nursery，如果需要设置初始大小与最大新生代大小，使用 <code>-XX:NewSize</code> 和  <code>-XX:MaxNewSize</code>。新生代设置过小会导致 GC 频率过高，设置过大，会导致 full GC 时间过长。Oracle 推荐新生代大小在堆的1/4 ~ 1/2 。</li>
-<li><code>-Xms&lt;size&gt;</code> 设置初始堆大小。单位为 byte ，大小需要为 1024 的倍数且超过 1m。如果没有设置此项，jvm 会计算新生代与老年代的初始大小之和为此项配置的值。</li>
-<li><code>-Xmx&lt;size&gt;</code> 要求与 Xms 一致，等于 <code>-XX:MaxHeapSize</code>，用以设置堆的内存最大分配置额。</li>
-</ul>
-</li>
-<li><code>-XX</code> 高级选项 advanced option</li>
-<li><code>-D&lt;name&gt;=&lt;value&gt;</code> 设置系统属性</li>
-</ul>
-<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html">Oracle reference</a></p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/10/12/java/java-keywords/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-10-12</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="java-key-words"><a href="#java-key-words" class="headerlink" title="java key words"></a>java key words</h1><h2 id="transient【瞬时】"><a href="#transient【瞬时】" class="headerlink" title="transient【瞬时】"></a>transient【瞬时】</h2><p>用以序列化、反序列化时所排除的变量，在进行序列化、反序列化时 transient 修辞的变量将不被序列化、反序列化。</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/volatile.html">reference</a></p>
-<ul>
-<li>volatile 用于将变量放置于主存而非 CPU 缓存，以避免多核多线程中读取变量产生可见性问题。</li>
-</ul>
-<h3 id="volatile-可见性保证原则"><a href="#volatile-可见性保证原则" class="headerlink" title="volatile 可见性保证原则"></a>volatile 可见性保证原则</h3><p>可见性指在线程间变量被读写的正确性， java volatile 原则不仅保证 volatile 变量本身，也保证其相关变量：</p>
-<ul>
-<li>对于一个线程A写 volatile 变量随后线程 B 读取 volatile 变量的场景中，所有在线程A 写 volatile 变量前的变量对线程 A 都具可见性，同时，在线程 B 读取 volatile 变量后所有的变量对线程B 具可见性。</li>
-<li>线程A在读取一个 volatile 变量时，所有的变量都对线程 A 保持可见性也可以从主存中生读。</li>
-</ul>
-<h3 id="指令重排"><a href="#指令重排" class="headerlink" title="指令重排"></a>指令重排</h3><p>JVM 与 CPU 为提升性能而允许指令重排。<em>使用指令重排可以将同一个变量的声明与赋值放在一起而提升性能？</em></p>
-<p>指令重排带来的问题就是打乱了 volatile 可见性原则。</p>
-<h3 id="volatile-happen-before-原则"><a href="#volatile-happen-before-原则" class="headerlink" title="volatile happen-before 原则"></a>volatile happen-before 原则</h3><p>为保证指令重排不对 volatile 可见性干预，volatile 有 Happens-Before 原则。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/09/23/spring/Spring%20Expression%20Language/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-09-23</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="SpEL"><a href="#SpEL" class="headerlink" title="SpEL"></a>SpEL</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-beandef">Spring 表达式</a></p>
-<h2 id="SpEL-Reference"><a href="#SpEL-Reference" class="headerlink" title="SpEL Reference"></a>SpEL Reference</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-operator-safe-navigation">reference</a></p>
-<h3 id="Bean-Reference"><a href="#Bean-Reference" class="headerlink" title="Bean Reference"></a>Bean Reference</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-ref-variables">bean reference</a></p>
-<ul>
-<li>需要 evaluation Context 中配置上 BeanResolver 。</li>
-<li>引用 bean 时 <code>@something</code></li>
-<li>引用 Factory Bean <code>&amp;something</code></li>
-</ul>
-<h3 id="Ternary-Operator-if-then-else"><a href="#Ternary-Operator-if-then-else" class="headerlink" title="Ternary Operator(if-then-else)"></a>Ternary Operator(if-then-else)</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-ref-variables">三元运算符</a></p>
-<p><code>&quot;false ? &#39;trueExp&#39; : &#39;falseExp&#39;&quot;</code></p>
-<h3 id="Elvis-Operator"><a href="#Elvis-Operator" class="headerlink" title="Elvis Operator"></a>Elvis Operator</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-operator-elvis">Elvis’ hairstyle Operator</a></p>
-<p>猫王运算符 <code>?:</code> 等价于 <code>notNull ? value:default</code></p>
-<h3 id="Safe-Navigation-Operator"><a href="#Safe-Navigation-Operator" class="headerlink" title="Safe Navigation Operator"></a>Safe Navigation Operator</h3><p>表达式中使用安全导引 <code>Members?.location</code> 如果是所取的数据为 null 将返回 null 而不是直接 NullPointerException 。</p>
-<h3 id="Collection-Selection"><a href="#Collection-Selection" class="headerlink" title="Collection Selection"></a>Collection Selection</h3><p>集合 List/Map 选择器，对于一个 List 选择器作用于其每一个元素，而 Map 作用于其 Map.Entry 。</p>
-<ul>
-<li>表达式中对 list 数据进行筛选 <code>locations.?[city == &#39;Serbian&#39;]</code> 选择 city 为 Serbian 的数据。</li>
-<li><code>locations.?[value &gt; 10]</code> 选择 map 中 value &gt; 10 的数据。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/09/15/java/ClassLoader/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-09-15</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h1><ul>
-<li>ClassLoader 用于加载文件系统中 class 文件。</li>
-<li>每个 Class 对象都可以通过 getClassLoader() 方法获取到其加载器。</li>
-<li>数组 class 对象不通过 classLoader 加载，在运行时需要时再加载。数组元素的 classLoader 与 数组的 classLoader 是同一个，如果数组元素是基本类型，此数组没有 classLoader 。</li>
-<li>ClassLoader 使用委托模式查找 classes 和 resources 。当请求找资源时，ClassLoader 实例在查找资源前会先委托其 父加载器查找。虚拟机内置的 ClassLoader 叫 “bootstrap class loader”， bootstrap class loader 没有父加载器，但常扮演其他加载器的父加载器。</li>
-<li>ClassLoader 用于加载除 class 外的文件资源，eg: .properties</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/08/13/java/URI%20in%20Java/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-08-13</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="URI-in-Java"><a href="#URI-in-Java" class="headerlink" title="URI in Java"></a>URI in Java</h1><p>URI syntax and components <a target="_blank" rel="noopener" href="https://www.ietf.org/rfc/rfc2396.txt">URI 语法</a></p>
-<p>At the highest level a URI reference (hereinafter simply “URI”) in string form has the syntax <code>[scheme:]scheme-specific-part[#fragment]</code></p>
-<h2 id="URI-分类"><a href="#URI-分类" class="headerlink" title="URI 分类"></a>URI 分类</h2><ul>
-<li>opaque 模糊类：不以 slash character <code>/</code> 开头，不需要进一步解析。eg：<ul>
-<li>mailto:<a href="mailto:&#106;&#97;&#x76;&#x61;&#x2d;&#x6e;&#x65;&#116;&#x40;&#106;&#97;&#x76;&#97;&#x2e;&#x73;&#117;&#x6e;&#46;&#99;&#111;&#109;">&#106;&#97;&#x76;&#x61;&#x2d;&#x6e;&#x65;&#116;&#x40;&#106;&#97;&#x76;&#97;&#x2e;&#x73;&#117;&#x6e;&#46;&#99;&#111;&#109;</a></li>
-<li>ews:comp.lang.java</li>
-<li>urn:isbn:096139210x</li>
-</ul>
-</li>
-<li>hierarchical 层级类，要么 scheme-specific-part 以 slash character <code>/</code> 开头的绝对 URI，要么是不指定 scheme 的相对 URI 。<ul>
-<li>eg：<ul>
-<li><a target="_blank" rel="noopener" href="http://java.sun.com/j2se/1.3/">http://java.sun.com/j2se/1.3/</a></li>
-<li>docs/guide/collections/designfaq.html#28</li>
-<li>../../../demo/jfc/SwingSet2/src/SwingSet2.java</li>
-<li>file:///~/calendar</li>
-</ul>
-</li>
-<li>层级类的 URI 需要进一步解析，其解析语法是 <code>[scheme:][//authority][path][?query][#fragment]</code><ul>
-<li>如果指定了层级类 URI 的权限组件部分，either server-based, or registry-based。server-based 权限解析语法：<code>[user-info@]host[:port]</code>。几乎目前所有 URI 都是 server-based ，如果使用此语法解析权限组件失败，将认为此权限组件是 registry-based 。</li>
-<li>path 组件如果以slash character <code>/</code> 开头，则表明其是绝对路径，否则是相对的。<em>The path of a hierarchical URI that is either absolute or specifies an authority is always absolute.</em></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>All told, then, a URI instance has the following nine components:</p>
-<p>Describes the components of a URI:scheme,scheme-specific-part,authority,user-info,host,port,path,query,fragment</p>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>scheme</td>
-<td>String</td>
-</tr>
-<tr>
-<td>scheme-specific-part</td>
-<td>String</td>
-</tr>
-<tr>
-<td>authority</td>
-<td>String</td>
-</tr>
-<tr>
-<td>user-info</td>
-<td>String</td>
-</tr>
-<tr>
-<td>host</td>
-<td>String</td>
-</tr>
-<tr>
-<td>port</td>
-<td>int</td>
-</tr>
-<tr>
-<td>path</td>
-<td>String</td>
-</tr>
-<tr>
-<td>query</td>
-<td>String</td>
-</tr>
-<tr>
-<td>fragment</td>
-<td>String</td>
-</tr>
-</tbody></table>
-<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>URL: Uniform Resource Locator.</p>
-<p>URL 与 URI 之间相互转换，使用方法： <code>URL.toURI()</code> 与 <code>URI.toURL()</code> 。</p>
-<p>URL 不负责编码与解码，所以其不识别转义后的 URL 与转义前的 RUL。URL 的 HTML 形式的解码可使用 URLEncoder 与 URLDecoder 。</p>
-<h2 id="URI-文档翻译"><a href="#URI-文档翻译" class="headerlink" title="URI 文档翻译"></a>URI 文档翻译</h2><p><a target="_blank" rel="noopener" href="https://www.ietf.org/rfc/rfc2396.txt">original doc</a></p>
-<blockquote>
-<p>文档语法：<br>This document uses two conventions to describe and define the syntax for URI.  The first, called the layout form, is a general of the order of components and component separators, as in</p>
-</blockquote>
-<blockquote>
-<pre><code> &lt;first&gt;/&lt;second&gt;;&lt;third&gt;?&lt;fourth&gt;
-</code></pre>
-</blockquote>
-<blockquote>
-<p>The component names are enclosed in angle-brackets and any characters outside angle-brackets are literal separators.  Whitespace should be ignored.  These descriptions are used informally and do not define the syntax requirements.<br>The second convention is a BNF-like grammar, used to define the formal URI syntax.  The grammar is that of [RFC822], except that “|” is used to designate alternatives.  Briefly, rules are separated from definitions by an equal “=”, indentation is used to continue a rule definition over more than one line, literals are quoted with “”, parentheses “(“ and “)” are used to group elements, optional elements are enclosed in “[“ and “]” brackets, and elements may be preceded with <n>* to designate n or more repetitions of the following element; n defaults to 0.<br>Unlike many specifications that use a BNF-like grammar to define the bytes (octets) allowed by a protocol, the URI grammar is defined in terms of characters.  Each literal in the grammar corresponds to the character it represents, rather than to the octet encoding of that character in any particular coded character set.  How a URI is represented in terms of bits and bytes on the wire is dependent upon the character encoding of the protocol used to transport it, or the charset of the document which contains it.</p>
-</blockquote>
-<h3 id="保留字符"><a href="#保留字符" class="headerlink" title="保留字符"></a>保留字符</h3><blockquote>
-<p>reserved    = “;” | “/“ | “?” | “:” | “@” | “&amp;” | “=” | “+” |”$” | “,”</p>
-</blockquote>
-<p>如果使用了这些保留字符在 URI 中，需要转义。这些保留字符可以出现在 URI 中但不能出现在特定的 URI 组件中。一般来讲，如果 URI 语义改变或保留字符被转义为 US-ASCII 码所替换，字符就将被保留。</p>
-<h3 id="非保留字符"><a href="#非保留字符" class="headerlink" title="非保留字符"></a>非保留字符</h3><p>大小写字母数字与标点符号</p>
-<blockquote>
-<p>unreserved  = alphanum | mark<br>mark        = “-“ | “_” | “.” | “!” | “~” | “*” | “‘“ | “(“ | “)”</p>
-</blockquote>
-<p>在 URI 中都为非保留字符，非保留字符被转义后仍保留原语义。但最好不要转义除非上下文只接受转义 URI。</p>
-<h3 id="转义编码"><a href="#转义编码" class="headerlink" title="转义编码"></a>转义编码</h3><p>转义后的八进制符是由三个字符组成：<code>%</code> 加上两个十六进制字符。eg: <code>%20</code> 表示 ASCII 码 32 space。</p>
-<p>是否转义取决于转义算法，一般只需要将保留字符转义，而非保留字符可不转义。</p>
-<h3 id="被排除的-ASCII-字符"><a href="#被排除的-ASCII-字符" class="headerlink" title="被排除的 ASCII 字符"></a>被排除的 ASCII 字符</h3><ul>
-<li>控制符 US-ASCII coded characters 00-1F, 7F hexadecimal</li>
-<li>空格 space US-ASCII coded character 20 hexadecimal</li>
-<li>分隔符 delims “&lt;” | “&gt;” | “#” | “%” | &lt;”&gt; 网关代理用于分隔符 “{“ | “}” | “|” | “&quot; | “^” | “[“ | “]” | “`”</li>
-</ul>
-<h2 id="URI-句法部件-（URI-Syntactic-Components）"><a href="#URI-句法部件-（URI-Syntactic-Components）" class="headerlink" title="URI 句法部件 （URI Syntactic Components）"></a>URI 句法部件 （URI Syntactic Components）</h2><p>URI 语法主要取决于 scheme ，一般来讲，绝对 URI 的写法： <code>&lt;scheme&gt;:&lt;scheme-specific-part&gt;</code>。使用的 scheme 后跟 <code>;</code> 再跟上一个意义解释取决于 scheme 的 String。</p>
-<p>URI 语法并不要求 scheme-specific-part 部分有任何通用结构，也不需要有一般性规则。但其子集会遵循在命名空间代表层级关系的通用语法，该请求由四个主要组件组成： <code>&lt;scheme&gt;://&lt;authority&gt;&lt;path&gt;?&lt;query&gt;</code>。除了 scheme ，其他每一个组件都非必须。例如：有些 URI scheme 不允许 authority 组件，而其他的不使用 <code>&lt;query&gt;</code> 组件。</p>
-<p><code>absoluteURI   = scheme &quot;:&quot; ( hier_part | opaque_part )</code></p>
-<p>本质上层级 URI 使用 slash <code>/</code> 分隔。某些文件系统同样使用 <code>/</code> 构成文件名层级，所以这两者类似，但这不表明 URI 资源就是一个文件或 URI 映射到一个文件系统路径名。</p>
-<blockquote>
-<p>hier_part     = ( net_path | abs_path ) [ “?” query ]</p>
-</blockquote>
-<blockquote>
-<p>net_path      = “//“ authority [ abs_path ]</p>
-</blockquote>
-<blockquote>
-<p>abs_path      = “/“  path_segments</p>
-</blockquote>
-<p>URI 不使用 <code>/</code> 分隔层级的话，将被通用 URI 解析器识别为不透明 ‘opaque’；</p>
-<p>opaque_part   = uric_no_slash *uric</p>
-<p>uric_no_slash = unreserved | escaped | “;” | “?” | “:” | “@” |”&amp;” | “=” | “+” | “$” | “,”</p>
-<p>使用 <code>&lt;path&gt;</code> 表示 <code>&lt;abs_path&gt;</code> 与 <code>&lt;opaque_part&gt;</code> 结构，因为对于任一给定的 URI 它们相互排斥，且能被编译成单一组件。</p>
-<h3 id="Scheme-组件"><a href="#Scheme-组件" class="headerlink" title="Scheme 组件"></a>Scheme 组件</h3><p>如有多种方式访问资源一样，URI 也可以有多种形式的 scheme 来识别资源。URI 由保留字符分隔的组件序列组成，其中第一个组件定义了剩余的 URI 字串的语义。</p>
-<p>Scheme 由小写字母、数字、plus <code>+</code>/period <code>.</code>/hyphen <code>-</code> 所构成，且只能以 小字字母开头，大写字母将被自动转为小写字母。<code>scheme = alpha *( alpha | digit | &quot;+&quot; | &quot;-&quot; | &quot;.&quot; )</code>。相对 URI 从 base URI 继承而来，不以 scheme 开头。</p>
-<h3 id="Path-组件"><a href="#Path-组件" class="headerlink" title="Path 组件"></a>Path 组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">path          &#x3D; [ abs_path | opaque_part ]</span><br><span class="line"></span><br><span class="line">path_segments &#x3D; segment *( &quot;&#x2F;&quot; segment )</span><br><span class="line">segment       &#x3D; *pchar *( &quot;;&quot; param )</span><br><span class="line">param         &#x3D; *pchar</span><br><span class="line"></span><br><span class="line">pchar         &#x3D; unreserved | escaped |&quot;:&quot; | &quot;@&quot; | &quot;&amp;&quot; | &quot;&#x3D;&quot; | &quot;+&quot; | &quot;$&quot; | &quot;,&quot;</span><br></pre></td></tr></table></figure>
-
-<p>一个路径组件可由多个 segment 组成，segment 由 <code>/</code> 分隔。一个 segment 中，<code>/</code>,<code>?</code>,<code>=</code>,<code>;</code> 为保留字符。同时可由多个参数构成，参数之间使用 <code>;</code> 分隔。</p>
-<h3 id="Query-组件"><a href="#Query-组件" class="headerlink" title="Query 组件"></a>Query 组件</h3><blockquote>
-<p>   The query component is a string of information to be interpreted by the resource.</p>
-<p>query         = *uric</p>
-<p>Within a query component, the characters “;”, “/“, “?”, “:”, “@”, “&amp;”, “=”, “+”, “,”, and “$” are reserved.</p>
-</blockquote>
-
-                
-            </div>
-        </article>
-    
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng">
+    <p class="logot">
+         Kang Shan 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            My Tech Blogs 
+        </h3>
+    </p>
 </div>
-<div class="paginator">
+
+<div class="hd">
+    <ol class="breadcrumb">
+        
+            <li><a class="ba" href="/%E5%B0%8F%E5%B0%8F%E7%A0%81%E5%86%9C">关于我👀</a></li>
+        
+            <li><a class="ba" href="https://kangshanr.github.io/">访问主站🎉</a></li>
+        
+            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/KangShanR">Github🐒</a></li>
+        
+    </ol>
+    <hr class="breadcrumbhr">
+</div>
+<div class="hd">
+    
     
         
-        <a class="prev" href="/page/2/">
-            <i class="iconfont icon-prev"></i>
-            Prev
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2020年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2020/12/10/linux/shell/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    December 10th
+                </div>
+            </div>
         </a>
+    
         
         
-        <a class="next" href="/page/4/">
-            Next
-            <i class="iconfont icon-next"></i>
+        <a class="flink" href="/2020/12/09/java/java%20transient/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    December 9th
+                </div>
+            </div>
         </a>
+    
         
+        
+        <a class="flink" href="/2020/11/10/java/java%20reflect/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    November 10th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/11/03/java/java/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    November 3rd
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/10/21/java/guigargage/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    October 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/10/20/java/jar/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    October 20th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/10/12/java/java-keywords/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    October 12th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/09/23/spring/Spring%20Expression%20Language/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    September 23rd
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/09/15/java/ClassLoader/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    September 15th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/08/13/java/URI%20in%20Java/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    August 13th
+                </div>
+            </div>
+        </a>
     
 </div>
-
-    </div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Kang | <a target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
 </div>
-<footer class="footer-social">
-    
-    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
-        <i class="iconfont icon-github"></i>
-    </a>
-    
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
 
-    
+<script src="/libs/jquery.min.js"></script>
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
-    
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2021
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
-    </div>
-</footer>
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="/js/index.js"></script>
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    
-    var gitment = new Gitment({
-        id: '',
-        owner: 'KangShanR',
-        repo: '',
-        oauth: {
-            client_id: '074819c3098d17273370',
-            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
-        }
-    });
-    gitment.render('comment-container');
-    
-
-</script>
 </html>

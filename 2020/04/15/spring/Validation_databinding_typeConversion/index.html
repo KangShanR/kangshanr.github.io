@@ -1,106 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kang Shan</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Kang Shan
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
     
 <link rel="stylesheet" href="/css/style.css">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
-
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
 <meta name="generator" content="Hexo 5.4.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
-
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                Home
-            </a>
-            
-
-            
-            <a href="/archives" class="header-nav-link">
-                Archives
-            </a>
-            
-
-            
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
-
-            
-        </nav>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            Spring Validating, Data Binding and Type Conversion
+        </p>
+        <hr>
     </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
-        </div>
-
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">Home</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">Archives</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">Tags</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">About</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">Spring Validating, Data Binding and Type Conversion</h2>
-            <div class="post-meta">
-                <span class="post-time">2020-04-15</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Validating-amp-Data-Binding-and-Type-Conversion"><span class="toc-text">1. Validating &amp; Data Binding and Type Conversion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Validation-on-Spring%E2%80%99s-Validator-Interface"><span class="toc-text">1.1. Validation on Spring’s Validator Interface</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-Configuring-a-Bean-Validation-Provider"><span class="toc-text">1.1.1. Configuring a Bean Validation Provider</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-Resolving-Codes-to-Error-Messages"><span class="toc-text">1.1.2. Resolving Codes to Error Messages</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Bean-Manipulation-and-the-BeanWrapper"><span class="toc-text">1.2. Bean Manipulation and the BeanWrapper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-Built-in-PropertyEditor-Implements"><span class="toc-text">1.2.1. Built-in PropertyEditor Implements</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-1-Spring-%E5%86%85%E7%BD%AE%E7%9A%84-PropertyEditor-%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.2.1.1. Spring 内置的 PropertyEditor 实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%AE%9A%E4%B9%89-PropertyEditor"><span class="toc-text">1.2.1.2. 注册自定义 PropertyEditor</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-2-1-%E4%BD%BF%E7%94%A8-PropertyEditorRegistrar"><span class="toc-text">1.2.1.2.1. 使用 PropertyEditorRegistrar</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Spring-Type-Conversion"><span class="toc-text">1.3. Spring Type Conversion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-Converter-SPI"><span class="toc-text">1.3.1. Converter SPI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-ConverterFactory"><span class="toc-text">1.3.2. ConverterFactory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-GenericConverter"><span class="toc-text">1.3.3. GenericConverter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-4-ConditionalGenericConverter"><span class="toc-text">1.3.4. ConditionalGenericConverter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-5-Formatting"><span class="toc-text">1.3.5. Formatting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-6-The-ConversionService-API"><span class="toc-text">1.3.6. The ConversionService API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-7-%E9%85%8D%E7%BD%AE-ConversionService"><span class="toc-text">1.3.7. 配置 ConversionService</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-Spring-Field-Formatting"><span class="toc-text">1.4. Spring Field Formatting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8-Formatting"><span class="toc-text">1.4.1. 注解驱动 Formatting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-%E6%8B%93%E5%B1%95-Formatting-%E6%B3%A8%E5%86%8C"><span class="toc-text">1.4.2. 拓展 Formatting 注册</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-Spring-MVC-%E4%B8%AD%E9%85%8D%E7%BD%AE%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84-Converter"><span class="toc-text">1.5. Spring MVC 中配置序列化与反序列化的 Converter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-1-%E5%BA%8F%E5%88%97%E5%8C%96%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">1.5.1. 序列化时间类型数据</span></a></li></ol></li></ol></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
-</div>
-        <div class="post-content">
-            <h1 id="1-Validating-amp-Data-Binding-and-Type-Conversion"><a href="#1-Validating-amp-Data-Binding-and-Type-Conversion" class="headerlink" title="1. Validating &amp; Data Binding and Type Conversion"></a>1. Validating &amp; Data Binding and Type Conversion</h1><!-- TOC -->
+    <div class="post-content">
+        <h1 id="1-Validating-amp-Data-Binding-and-Type-Conversion"><a href="#1-Validating-amp-Data-Binding-and-Type-Conversion" class="headerlink" title="1. Validating &amp; Data Binding and Type Conversion"></a>1. Validating &amp; Data Binding and Type Conversion</h1><!-- TOC -->
 
 <ul>
 <li><a href="#1-validating--data-binding-and-type-conversion">1. Validating &amp; Data Binding and Type Conversion</a><ul>
@@ -268,97 +199,61 @@
 </li>
 </ul>
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="/tags/java/" title="java">java</a>
-            
-            <a class="tag" href="/tags/spring/" title="spring">spring</a>
-            
-            <a class="tag" href="/tags/validating/" title="validating">validating</a>
-            
-            <a class="tag" href="/tags/data-binding/" title="data binding">data binding</a>
-            
-            <a class="tag" href="/tags/type-conversion/" title="type conversion">type conversion</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
-    
-        
-            <a class="prev" href="/2020/04/15/spring/Resources/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">Resources in Spring</span>
-                <span class="nav-mobile">Prev</span>
-            </a>
-        
-        
-            <a class="next" href="/2020/04/10/spring/spring%20boot/">
-                <span class="nav-default"></span>
-                <span class="nav-mobile">Next</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
-    
-</div>
-<div id="comment-container"></div>
     </div>
+
+    
 </div>
-<footer class="footer-social">
-    
-    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
-        <i class="iconfont icon-github"></i>
-    </a>
-    
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Kang | <a target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
+</div>
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
 
-    
+<script src="/libs/jquery.min.js"></script>
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
-    
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2021
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
-    </div>
-</footer>
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="/js/index.js"></script>
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    
-    var gitment = new Gitment({
-        id: 'Spring Validating, Data Binding and Type Conversion',
-        owner: 'KangShanR',
-        repo: '',
-        oauth: {
-            client_id: '074819c3098d17273370',
-            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
-        }
-    });
-    gitment.render('comment-container');
-    
-
-</script>
 </html>

@@ -1,1191 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kang Shan</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Kang Shan
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
     
 <link rel="stylesheet" href="/css/style.css">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
-
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
 <meta name="generator" content="Hexo 5.4.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
-
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                Home
-            </a>
-            
-
-            
-            <a href="/archives" class="header-nav-link">
-                Archives
-            </a>
-            
-
-            
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
-
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
-        </div>
-
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">Home</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">Archives</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">Tags</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">About</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/08/12/java/File/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-08-12</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="File"><a href="#File" class="headerlink" title="File"></a>File</h1><p>java <code>File</code> 类</p>
-<p>文件系统中前缀概念：</p>
-<ul>
-<li>Unix 系统文件系统中绝对路径前缀是 <code>/</code>，相对路径没有前缀</li>
-<li>Windows 平台路径前缀包括了：驱动符号后跟上 <code>:</code> (组成驱动指示符)，如果是绝对路径，将追加上 <code>\\</code><ul>
-<li>UNC（universal Naming Conversion）路径名是 <code>\\\\</code>, hostname 与 share name 放在第一二位。相对路径无前缀、驱动指示符</li>
-</ul>
-</li>
-</ul>
-<p>文件系统分隔符</p>
-<ul>
-<li>Unix 系统的分隔符 <code>/</code></li>
-<li>Windows 系统 <code>\\</code></li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/08/12/java/Garbege%20Collection/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-08-12</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Java-Garbage-Collection"><a href="#Java-Garbage-Collection" class="headerlink" title="Java Garbage Collection"></a>Java Garbage Collection</h1><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/">reference</a></p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/08/07/java/ServiceProvider/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-08-07</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="ServiceProvider"><a href="#ServiceProvider" class="headerlink" title="ServiceProvider"></a>ServiceProvider</h1><p>服务供应类 java.util.ServiceLoader</p>
-<p>要使用此需要将 Provider 实现与 Service 定义写入到 META-INF/services 文件中，以 UTF-8 编码方式，详情参照源码文档。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/07/23/spring/SpringBoot-Features/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-07-23</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Spring-Boot-Features"><a href="#Spring-Boot-Features" class="headerlink" title="Spring Boot Features"></a>Spring Boot Features</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features">SpringBoot 的特性</a></p>
-<h2 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h2><p>Spring Profiles 提供隔离配置的功能，可以做到不同环境生效不同的配置。在 <code>@Component</code> <code>@Configuration</code> <code>@ConfigurationProperties</code> 上添加 <code>@Profile</code> 注解即可指定其生效环境。如果 <code>@ConfigurationProperties</code> 的配置 bean 是通过 <code>@EnableConfigurationProperties</code> 注册而不是通过自动扫描，<code>@Profile</code> 需要注解在配置组件 <code>@Configuration</code> 类上。</p>
-<p>指定 profile 的方式有： 添加配置 <code>spring.profiles.active=dev,test</code> 的形式，也可以是通过命令行参数添加 <code>--spring.profiles.active=pro</code>。</p>
-<h2 id="SpringBoot-Testing"><a href="#SpringBoot-Testing" class="headerlink" title="SpringBoot Testing"></a>SpringBoot Testing</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-with-mock-environment">reference</a></p>
-<p>使用 SpringBoot Test 相对于 Spring更为方便一些。如果使用 Junit5 只需要一个注解 <code>@SpringBootTest</code></p>
-<ul>
-<li>可以使用服务端测试，也可以使用客户端测试。</li>
-</ul>
-<h2 id="logging"><a href="#logging" class="headerlink" title="logging"></a>logging</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-logging">reference</a></p>
-<ul>
-<li>使用配置 logging.file.name 与 logging.file.path 指定日志文件名与路径，如果不指定文件名仅打印到控制台，如果不指定文件路径将写文件在当前路径。</li>
-</ul>
-<h3 id="logging-level"><a href="#logging-level" class="headerlink" title="logging level"></a>logging level</h3><ul>
-<li>指定日志级别 <code>logging.level.&lt;logger-name&gt;=&lt;level&gt;</code> logger 指日志器，可以是类或包</li>
-<li>可以在环境变量中添加参数指定日志级别 <code>LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB=DEBUG</code> ，但这不指定类的日志器，因为环境变量中会将所有大写转换成小写。使用 SPRING_APPLICATION_JSON 变量（在命令行参数、系统变量、命令行参数中添加 Json）实现。</li>
-</ul>
-<h3 id="Log-Groups"><a href="#Log-Groups" class="headerlink" title="Log Groups"></a>Log Groups</h3><ul>
-<li>直接定义多个类或包到同一个组 <code>logging.level.tomcat=org.apache.catalina,org.apache.coyote</code> ，再直接指定组的日志级别 <code>logging.level.tomcat=DEBUG</code></li>
-<li>Spring Boot 预定义了日志组 sql 与 web</li>
-</ul>
-<h3 id="Custom-Log-Configuration"><a href="#Custom-Log-Configuration" class="headerlink" title="Custom Log Configuration"></a>Custom Log Configuration</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-logback-extensions">reference</a></p>
-<p>在系统变量中指定日志系统 <code>org.springframework.boot.logging.LoggingSystem</code> ，此值必须是 LoggingSystem 的实现类全限定名。同时此属性只能在系统属性中指定，因为日志开头在 ApplicationContext 初始化完成前就会使用日志系统。</p>
-<ul>
-<li>LoggingSystem 实现有三种：Logback/Log4j2/JavaUtilLogging ，其中 Logback 功能最全。</li>
-<li>通过配置文件或 Environment 属性 <code>logging.config</code> 可以自定义日志系统</li>
-</ul>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-json">reference</a></p>
-<p>Spring Boot 整合了三种 JSON 映射库：</p>
-<ol>
-<li>Gson，SpringBoot 自动配置为 bean 并可以通过 spring.gson.* 配置多个属性，更详细地控制可以通过 GsonBuilderCustomizer bean 实现。</li>
-<li>Jackson，Spring 偏好并默认的。当 Jackson 在 classpath 中时， 一个 ObjectMapper bean 会自动注入，并可自定义多个配置属性。</li>
-<li>JSON-B</li>
-</ol>
-<h2 id="Developing-Web-Applications"><a href="#Developing-Web-Applications" class="headerlink" title="Developing Web Applications"></a>Developing Web Applications</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-developing-web-applications">reference</a></p>
-<h3 id="The-Spring-Web-MVC-Framework"><a href="#The-Spring-Web-MVC-Framework" class="headerlink" title="The Spring Web MVC Framework"></a>The Spring Web MVC Framework</h3><h4 id="Custom-JSON-Serializers-and-Deserializers"><a href="#Custom-JSON-Serializers-and-Deserializers" class="headerlink" title="Custom JSON Serializers and Deserializers"></a>Custom JSON Serializers and Deserializers</h4><p>@JsonComponent 注解添加 jackson 序列化反序列化器到容器中。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/07/22/spring/SpringBoot-SpringApplication/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-07-22</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="1-SpringApplication"><a href="#1-SpringApplication" class="headerlink" title="1. SpringApplication"></a>1. SpringApplication</h1><!-- TOC -->
-
-<ul>
-<li><a href="#1-springapplication">1. SpringApplication</a><ul>
-<li><a href="#11-application-availability">1.1. Application Availability</a><ul>
-<li><a href="#111-liveness-state">1.1.1. Liveness State</a></li>
-<li><a href="#112-readiness-state">1.1.2. Readiness State</a></li>
-<li><a href="#113-managing-the-application-availability-state">1.1.3. Managing the Application Availability State</a></li>
-</ul>
-</li>
-<li><a href="#12-application-events-and-listeners">1.2. Application Events and Listeners</a></li>
-<li><a href="#13-web-environment">1.3. Web Environment</a></li>
-<li><a href="#14-accessing-application-arguments">1.4. Accessing Application Arguments</a></li>
-<li><a href="#using-the-applicationrunner-and-commandlinerunner">Using the ApplicationRunner and CommandLineRunner</a></li>
-<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B">初始化流程</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application">SpringBoot Features</a></p>
-<h2 id="1-1-Application-Availability"><a href="#1-1-Application-Availability" class="headerlink" title="1.1. Application Availability"></a>1.1. Application Availability</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">系统可用性</a></p>
-<p>可以通过注入 <code>ApplicationAvailability</code> 接口到 bean 中以获取应用可用性状态。</p>
-<h3 id="1-1-1-Liveness-State"><a href="#1-1-1-Liveness-State" class="headerlink" title="1.1.1. Liveness State"></a>1.1.1. Liveness State</h3><p>应用活性，用以表明应用内部状态是否能正常工作，或是否能从异常中自动恢复。如果不能（失活），基础平台应该重启应用。一般来说，应用活性不应该基于外部检查，否则外部检查系统（数据库、缓存、Web API）出现异常，将触发大量重启与平台累积的失败。</p>
-<p>Spring Boot 应用的内部状态一般取决于 <code>ApplicationContext</code>。如果 ApplicationContext 成功启动，Spring Boot 就将认为应用在有效的状态。只要 context  be refreshed ，应用就被认为是有活性的。</p>
-<h3 id="1-1-2-Readiness-State"><a href="#1-1-2-Readiness-State" class="headerlink" title="1.1.2. Readiness State"></a>1.1.2. Readiness State</h3><p>应用就绪状态，用以表明应用是否对处理流量准备就绪。未进入就绪状态将告诉 platform 平台此时不宜路由流量到应用。典型的场景是在应用启动阶段，当 <code>CommandLineRunner</code> 与 <code>ApplicationRunner</code> 组件正在被处理时，或者应用忙于其他流量请求时而不能处理当前流量请求时。</p>
-<p>需要在程序启动阶段添加任务可以通过将 bean 实现接口 <code>ApplicationRunner</code> 或 <code>CommandLineRunner</code>，而不是使用 Spring 组件生命周期回调 <code>@PostConstruct</code>。以上两个接口分别可获取到程序启动参数和命令行参数。</p>
-<h3 id="1-1-3-Managing-the-Application-Availability-State"><a href="#1-1-3-Managing-the-Application-Availability-State" class="headerlink" title="1.1.3. Managing the Application Availability State"></a>1.1.3. Managing the Application Availability State</h3><ol>
-<li>获取应用当前可用性状态：注入 <code>ApplicationAvailability</code> 接口并调用其方法；</li>
-<li>监听应用可用性变化：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EventListener</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStateChange</span><span class="params">(AvailabilityChangeEvent&lt;ReadinessState&gt; event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (event.getState()) &#123;</span><br><span class="line">    <span class="keyword">case</span> ACCEPTING_TRAFFIC:</span><br><span class="line">        <span class="comment">// create file /tmp/healthy</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> REFUSING_TRAFFIC:</span><br><span class="line">        <span class="comment">// remove file /tmp/healthy</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>更新应用可用性状态</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ApplicationEventPublisher eventPublisher;</span><br><span class="line"><span class="comment">//自动 constructor 注入 publisher</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LocalCacheVerifier</span><span class="params">(ApplicationEventPublisher eventPublisher)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.eventPublisher = eventPublisher;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkLocalCache</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (CacheCompletelyBrokenException ex) &#123;</span><br><span class="line">        <span class="comment">//发布一个可用性更新事件</span></span><br><span class="line">        AvailabilityChangeEvent.publish(<span class="keyword">this</span>.eventPublisher, ex, LivenessState.BROKEN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-2-Application-Events-and-Listeners"><a href="#1-2-Application-Events-and-Listeners" class="headerlink" title="1.2. Application Events and Listeners"></a>1.2. Application Events and Listeners</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">应用事件与监听器</a></p>
-<p>除了常规的应用事件 <code>ContextRefreshedEvent</code>， 一个 Spring 应用还可以发送其他事件。其中一些事件在整个应用上下文 <code>ApplicationContext</code> 创建前，对于这种事件并不能注册其监听器为一个 <code>Bean</code> ，但可以通过 <code>SpringApplication.addListeners()</code> 或 <code>SpringApplicationBuilder.listeners()</code> 方法注册。如果需要不考虑上下文是否创建自动注册监听器，可以在工程中 <code>META-INF/spring.factories</code> 引入监听器，使用 key <code>org.springframework.context.ApplicationListener=com.myproject.MyListener</code> 。</p>
-<p>应用开始启动后，事件发布顺序如下：</p>
-<ol>
-<li><code>ApplicationStartingEvent</code> 在应用刚开始启动，除 listeners initializers 已注册外，所有的其他处理工作都还未开启时。</li>
-<li><code>ApplicationEnvironmentPreparedEvent</code> 事件发布时机：<code>Environment</code> 在上下文中已清晰但上下文还未创建时</li>
-<li><code>ApplicationContextInitializedEvent</code> 在 <code>ApplicationContext</code> 已准备且 ApplicationInitializers 已被调用但 bean definitions 还未加载时</li>
-<li><code>ApplicationPreparedEvent</code> refreshed 开始之前 bean definitions 加载之后</li>
-<li><code>ApplicationStartedEvent</code>context refreshed 之后，application runners 与 command-line runners 调用之前</li>
-<li><code>AvailabilityChangeEvent</code> 在 <code>LivenessState.CORRECT</code> 可用性表明应用程序已具活性后</li>
-<li><code>ApplicationReadyEvent</code> 在所有的 application/command-line runner 被调用之后</li>
-<li><code>AvailabilityChangeEvent</code> 应用已为服务请求准备就绪 <code>ReadinessState.ACCEPTING_TRAFFIC</code> 之后</li>
-<li><code>ApplicationFailedEvent</code> 启动异常之后</li>
-</ol>
-<p>以上 9 个事件是与 <code>SpringApplication</code> 绑定的事件，除此外，在 <code>ApplicationPreparedEvent</code> 与 <code>ApplicationStartedEvent</code> 之间还有两个事件：</p>
-<ol>
-<li><code>WebServerInitializedEvent</code> <code>WebServer</code> 准备就绪后。而 <code>ServletWebServerInitializedEvent</code> 与 <code>ReactiveWebServerInitializedEvent</code> 分别在 servlet 与 reactive variants 就绪后。</li>
-<li><code>ContextRefreshedEvent</code> <code>ApplicationContext</code> 刷新后 when an ApplicationContext is refreshed.</li>
-</ol>
-<p>Spring Boot 就是使用以上各个事件来处理各类任务。</p>
-<p><em>根据以上顺序，倒推 Spring 应用启动的处理有：</em></p>
-<ol>
-<li>注册 listeners 与 initializers</li>
-<li>创建环境配置 <code>Environment</code></li>
-<li>创建上下文 ApplicationContext ，调用 ApplicationInitializers</li>
-<li>加载 bean definitions</li>
-<li>如果是 web 工程应用，加载相关 WebServer: ServletWebServer/ReactiveWebServer</li>
-<li>刷新 ApplicationContext</li>
-<li>改变应用可用性为活性 <code>LivenessState.CORRECT</code></li>
-<li>调用 application runner command-line runner</li>
-<li>改变应用服务请求就绪状态为就绪 <code>ReadinessState.ACCEPTING_TRAFFIC</code></li>
-</ol>
-<p>Spring Framework 的事件发布机制在子 context 发布事件后，父 context 同样会收到相应的事件发布，所以如果应用使用了 SpringApplication 层级，一个监听器会收到相同类型的 application event。为了区别来自哪里，可以将 Context 注入对比。如果 listener 是个 bean 直接使用 @AutoWired 注入，如果 listener 不是 bean 需要实现 ApplicationContextAware 接口注入。</p>
-<h2 id="1-3-Web-Environment"><a href="#1-3-Web-Environment" class="headerlink" title="1.3. Web Environment"></a>1.3. Web Environment</h2><p>SpringApplication 根据代码行为来创建正确的 <code>ApplicationContext</code> ，决定 <code>WebApplicationType</code> 的算法是：</p>
-<ol>
-<li>如果存在 Spring MVC ，使用 <code>AnnotationConfigServletWebApplicationContext</code></li>
-<li>如果不使用 Spring MVC 使用 Spring WebFlux，则使用 <code>AnnotationConfigReactiveWebServerApplicationContext</code></li>
-<li>否则，使用 <code>AnnotationConfigApplicationContext</code></li>
-</ol>
-<p>算法决定了，如果一个应用使用了 Spring MVC 也使用了 Spring WebFlux ，将按 Spring MVC 处理。可使用 <code>setWebApplicationType(WebApplicationType)</code> 方法直接覆盖算法决定。如果要完全控制 <code>ApplicationContext</code> 使用方法 <code>setApplicationContestClass(...)</code>。在使用 JUnit 测试时，不需要 web 层，可调方法 <code>sebWebApplicationType(WebApplicationType.NONE)</code></p>
-<h2 id="1-4-Accessing-Application-Arguments"><a href="#1-4-Accessing-Application-Arguments" class="headerlink" title="1.4. Accessing Application Arguments"></a>1.4. Accessing Application Arguments</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment">访问应用参数</a></p>
-<p>在 Spring Boot 中，当需要访问应用参数时，注入一个 <code>ApplicationArguments</code> bean，即可直接访问 <code>String[]</code> 参数或编译成 option 与 not-option 形式的参数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoWired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyBean</span><span class="params">(ApplicationArguments args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> debug = args.containsOption(<span class="string">&quot;debug&quot;</span>);</span><br><span class="line">    List&lt;String&gt; files = args.getNonOptionArgs();</span><br><span class="line">    <span class="comment">// if run with &quot;--debug logfile.txt&quot; debug=true, files=[&quot;logfile.txt&quot;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Spring Boot 也注册了一个与 Environment 关联的 <code>CommandLinePropertySource</code>，这就意味着可以在程序中使用 <code>@Value</code> 注解直接注入各个命令行参数。</p>
-<h2 id="Using-the-ApplicationRunner-and-CommandLineRunner"><a href="#Using-the-ApplicationRunner-and-CommandLineRunner" class="headerlink" title="Using the ApplicationRunner and CommandLineRunner"></a>Using the ApplicationRunner and CommandLineRunner</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment">使用应用、命令行Runner</a></p>
-<p>如果需要在 SpringApplication 启动后执行某些代码，可以实现 <code>ApplicationRunner</code> 或 <code>CommandLineRunner</code> 接口，这两个接口都提供一个 <code>run(ApplicationArguments)</code> 方法定义，其实现都是在 <code>SpringApplication.run(...)</code> 方法完成之前调用。如果有多个 Runner 需要执行，可以在 Runner 上添加 <code>Order</code> 接口或 <code>@Order</code> 注解用以指定顺序。</p>
-<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><blockquote>
-<p>spring boot 在初始化中把大量工作做了。</p>
-</blockquote>
-<ol>
-<li>加载 environment 数据</li>
-<li>创建 context</li>
-<li>context refresh<ol>
-<li>其中对入口类进行数据扫描，工作在 <code>org.springframework.context.annotation.ConfigurationClassParser#doProcessConfigurationClass</code>，大量调用 ConfigurationClassParser 进行数据解析。</li>
-<li>org.springframework.context.annotation.ConfigurationClassParser#doProcessConfigurationClass 该解析器方法处理所有的 configuration 配置类数据，包括各注解 @Component @ComponentScan @PropertiesSource @Import @ImportSource @Bean 内嵌类、父类、接口默认方法 数据</li>
-<li><code>org.springframework.context.support.PostProcessorRegistrationDelegate#invokeBeanFactoryPostProcessors(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, java.util.List&lt;org.springframework.beans.factory.config.BeanFactoryPostProcessor&gt;)</code> 调用 beanFactoryPostProcessor ，其就包括了将所有的 component 中的 beanDefinition 注册到容器 BeanDefinitionRegistry 中，也包括调用所有的 BeanPostProcessor .</li>
-<li>注册 BeanFactoryProcessor 时从 BeanDefinitionRegistry 获取其 BeanDefinition 进行初始化 bean 。</li>
-<li>org.springframework.beans.factory.support.CglibSubclassingInstantiationStrategy.CglibSubclassCreator#createEnhancedSubclass 使用 CGLIB 动态代理生成 bean 子类</li>
-</ol>
-</li>
-</ol>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/07/19/spring/SpringBoot-ExternalizedConfiguration/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-07-19</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Externalized-Configuration"><a href="#Externalized-Configuration" class="headerlink" title="Externalized Configuration"></a>Externalized Configuration</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config">spring boot 外部配置</a></p>
-<blockquote>
-<p>外部配置</p>
-</blockquote>
-<p>一个应用，其通常添加外部配置的方式：properties file, yml files, environment variables, 命令行参数扩展配置。配置属性可以通过 <code>@Value</code> 直接被注入到 bean 中，通过 <code>Environment</code> 抽象直接访问，也可以通过 <code>@ConfigurationProperties</code> 绑定到结构对象上。</p>
-<p>Spring Boot 加载 <code>PropertySource</code> 有明确的顺序，以保证正确覆盖配置值。其<strong>配置优先级</strong>从高到低依次为：</p>
-<ol>
-<li>当 devtool 在激活状态时， <code>$HOME/.config/spring-boot</code> 中的 devtool 全局配置</li>
-<li><code>@TestPropertySource</code> 注解的 test 配置</li>
-<li><code>@SpringBootTest</code> 注解与局部应用 test 注解上的 <code>Properties</code> 属性</li>
-<li>命令行参数</li>
-<li>内嵌于环境变量或系统属性的行内 JSON <code>SPRING_APPLICATION_JSON</code> 属性</li>
-<li><code>ServletConfig</code> 初始化参数</li>
-<li><code>ServletContext</code> 初始化参数</li>
-<li><code>java:comp/env</code> JNDI 属性</li>
-<li><code>System.getProperties()</code> Java 系统属性</li>
-<li>操作系统环境变量 OS environment variables</li>
-<li><code>random.*</code> 中的随机属性值 <code>RandomValuePropertySource</code></li>
-<li>包外的特定 profile 属性文件 <code>application-&#123;profile&#125;.properties</code> 与 YAML 变体</li>
-<li>包内特定 profile 属性文件 <code>application-&#123;profile&#125;.properties</code> 或 YAML 变体</li>
-<li>包外应用属性文件 <code>application.properties</code> 和 YAML 变体</li>
-<li>包内应用配置文件  <code>application.properties</code> 和 YAML 变体</li>
-<li><code>@PropertySource</code> 注解于 configuration 类上标注的属性文件。需要注意的是，这种配置在 application refreshed 前不会被加载到 <code>Environment</code> 中去，因此如果使用这种方式添加诸如 <code>logging.*</code> <code>spring.main.*</code> 配置是无效的，因为在 context refreshed 前，这些配置已经被读取了。</li>
-<li>通过 <code>SpringApplication.setDefaultProperties()</code> 设置的默认属性。</li>
-</ol>
-<p>Spring Boot 在加载配置时支持通配路径，在外部指定不同路径下的同名配置文件时使用通配路径就会很方便。<strong>通配路径必须包含且仅包含一个 <code>*</code> ，并且当以文件夹结尾时以 <code>/</code> 结尾，以文件为查找对象时以 <code>/&lt;filename&gt;</code> 结尾</strong>。查找出的位置以文件路径的字母顺序排序。</p>
-<h2 id="Configuring-Random-Values"><a href="#Configuring-Random-Values" class="headerlink" title="Configuring Random Values"></a>Configuring Random Values</h2><p>配置随机值随机注入一个 integer/long/uuid/string :</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">my.secret</span>=<span class="string">$&#123;random.value&#125;</span></span><br><span class="line"><span class="meta">my.number</span>=<span class="string">$&#123;random.int&#125;</span></span><br><span class="line"><span class="meta">my.bignumber</span>=<span class="string">$&#123;random.long&#125;</span></span><br><span class="line"><span class="meta">my.uuid</span>=<span class="string">$&#123;random.uuid&#125;</span></span><br><span class="line"><span class="meta">my.number.less.than.ten</span>=<span class="string">$&#123;random.int(10)&#125;</span></span><br><span class="line"><span class="meta">my.number.in.range</span>=<span class="string">$&#123;random.int[1024,65536]&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>随机配置语法 <code>$&#123;random.int*&#125;</code>是 <code>OPEN value (,max) CLOSE</code> <code>OPEN</code> 与 <code>CLOSE</code> 指代任意符号用以将最大值与最小值包起来，<code>value</code> 与 <code>max</code> 是 integer 。如果提供 <code>max</code>，<code>value</code> 就指最小值，<code>max</code> 指最大值（不包含）。</p>
-<h2 id="Accessing-Command-Line-Properties"><a href="#Accessing-Command-Line-Properties" class="headerlink" title="Accessing Command Line Properties"></a>Accessing Command Line Properties</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config">访问命令行参数</a></p>
-<p>默认情况下命令行参数在 Spring 配置中有最高优先级别。在启动命令行中以 <code>--</code> 开始指定命令行参数。如果需要禁用命令行参数加入到系统 <code>Environment</code> 中，可以 <code>SpringApplication.setAddCommandLineProperties(false)</code>。</p>
-<h2 id="Application-Property-Files"><a href="#Application-Property-Files" class="headerlink" title="Application Property Files"></a>Application Property Files</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-application-property-files">应用配置文件</a></p>
-<p><code>SpringApplication</code> 将不同位置的配置文件 <code>application.properties</code> 或 <code>.yaml</code> 数据加载到 <code>Environment</code> 中，不同位置加载优先级为：</p>
-<ol>
-<li>当前路径子路径 <code>/config</code></li>
-<li>当前路径 The current directory</li>
-<li>classpath <code>/config</code> 包</li>
-<li>classpath 根</li>
-</ol>
-<p>高优先级配置会覆盖低优先级配置。</p>
-<p>如果需要修改配置文件，可以指定环境属性 <code>spring.config.name</code> 指定另一个配置文件，同时可指定 <code>spring.config.location</code> 多个配置文件路径（可为逗号 <code>,</code> 分隔的多个文件夹路径或文件路径，排列越靠后优先级越高）。这两个环境属性在很早期需要用以加载文件，所以必需以环境属性的方式（An OS Environment Variable, a system property, a command-line argument）指定。</p>
-<p>当 <code>spring.config.location</code> 指定文件夹路径时，需要以 <code>/</code> 结尾，在运行时将在其后追加 <code>spring.config.name</code> 中分离出的文件名与 profile-specific file name 。当 location 指定了全文件名时，直接使用此文件名，但不支持 profile-specific variant，并被 profile-specific 属性覆盖。</p>
-<p><code>spring.config.additional-location</code> 用以指定额外的配置路径，其优先级大于默认的路径</p>
-<h2 id="Profile-specific-Properties"><a href="#Profile-specific-Properties" class="headerlink" title="Profile-specific Properties"></a>Profile-specific Properties</h2><p>通过 <code>spring.profiles.active</code> 变量激活当前应用的配置文件。profile 配置文件规约其名为 <code>application-&#123;profile&#125;.properties</code> ，当没有指定 profile 时， Environment 自动使用 <code>default</code> 作为 profile 环境配置，<code>application-default.properties</code> 中的属性将被加载。</p>
-<p>与标准的 <code>application.properties</code> 配置文件一样，profile 配置文件将从指定位置加载，同时不管所打包的 jar 包内还是包内，profile-specific file 配置覆盖 non-specific ones。If several profiles are specified, a last-wins strategy applies.如果指定多个，后者覆盖前者。</p>
-<p>如果在 <code>spring.config.location</code> 中指定了配置文件，那么此文件在 profile-specific variant 匹配中就不再考虑了。换句话说，如果需要使用 profile-specific 策略匹配配置文件，就不要在 <code>spring.config.location</code> 中添加相关的文件，最好其中只指定 directories 不指定文件。</p>
-<h2 id="Placeholders-in-Properties"><a href="#Placeholders-in-Properties" class="headerlink" title="Placeholders in Properties"></a>Placeholders in Properties</h2><p>在使用配置文件中 <code>application.properties</code> 配置的值时会通过存在的 <code>Environment</code> 过滤，所以，可以在配置中使用占位符 <code>$&#123;&#125;</code> 引用先前定义好的配置（如：系统属性）。</p>
-<h2 id="Type-safe-Configuration-Properties"><a href="#Type-safe-Configuration-Properties" class="headerlink" title="Type-safe Configuration Properties"></a>Type-safe Configuration Properties</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding">类型安全配置属性</a></p>
-</blockquote>
-<h3 id="JavaBean-Properties-Binding"><a href="#JavaBean-Properties-Binding" class="headerlink" title="JavaBean Properties Binding"></a>JavaBean Properties Binding</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding">JavaBean 属性绑定</a></p>
-<ul>
-<li>Spring Boot 映射配置到 javaBean 属性中并不是直接使用类的 Accessors(getter/setter)；</li>
-<li>如同 Spring MVC ，配置属性绑定通过标准的 Java Beans 属性描述符实现，所以在默认的空的构造器与 getter setter 通常是必须的；</li>
-<li>在以下情况下 setter 可以省略：<ul>
-<li>被初始化过的 Maps，只需要 getter 不需要 setter，因为他们可以通过 binder 改变。</li>
-<li>Collections Arrays 要么通过 <code>.yml</code> index 要么通过 <code>.properties</code> 的逗号分隔的单个值。在后者，setter 是必须的。如果初始化一个 collection ，保证其是可变的。</li>
-<li>如果是内嵌的 POJO 属性，且已被初始化，setter 可以省略。如果需要让 binder 快速初始化 POJO ，这时 setter 是需要的。</li>
-</ul>
-</li>
-<li>使用 Lombok 自动生成时，保证不要生成特定类型的构造器，因为容器可能需要用来初始化对象。</li>
-<li>只有标准 Java Bean 属性才能被绑定，<strong>不支持绑定属性到静态字段上。</strong></li>
-</ul>
-<h3 id="Constructor-Binding"><a href="#Constructor-Binding" class="headerlink" title="Constructor Binding"></a>Constructor Binding</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding">构造器绑定</a></p>
-<ul>
-<li>在类上添加注解 <code>@ConstructorBinding</code></li>
-<li>内嵌的属性 POJO 也会使用构造器绑定方式绑定配置属性。</li>
-<li>默认值可使用 <code>@DefaultValue(&quot;default&quot;)</code> 注解添加在属性上，当 binder 找不到相关的配置就会强制将默认值添加到指定属性上</li>
-<li>默认情况下，如果没有为属性配置值，对象属性将为 null 。如果需要返回一个非 null POJO，可以指定一个空的 <code>@DefaultValue</code> 在其上。</li>
-<li>使用构造器绑定，<strong>需要添加 <code>@EnableConfigurationProperties</code> 或配置属性扫描</strong>。常规 Spring Bean 创建机制创建的 Bean （@Component @Bean @Import）上并不能通过此构建器绑定属性。</li>
-<li>如果绑定的 Class 有多个 Constructor ，可直接将 <code>@ConstructorBinding</code> 注解在需要的构造器上。</li>
-</ul>
-<h3 id="Enable-ConfigurationProperties-annotated-Types"><a href="#Enable-ConfigurationProperties-annotated-Types" class="headerlink" title="Enable @ConfigurationProperties-annotated Types"></a>Enable @ConfigurationProperties-annotated Types</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding">注册配置 bean</a></p>
-<ul>
-<li>Spring Boot 提供了绑定配置到类的机制也提供注册其为 Bean 的机制。可以一个类一个类地配置也可像组件扫描一样配置属性扫描。</li>
-<li>如果需要部分扫描到配置属性，可以在 <code>@EnableConfigurationProperties</code> 指定 type.class ，任意 <code>@Configuration</code> 组件是添加此属性。</li>
-<li>添加 <code>@ConfigurationPropertiesScan</code> 注解在 Application 上会自动扫描包内所有的配置属性 Bean，注解上可添加包。</li>
-<li>当 Bean 注册到容器中后，这个 bean 有一个便名 <code>&lt;prefix&gt;-&lt;fqn&gt;</code> ，<code>&lt;prefix&gt;</code> 是在 <code>@ConfigurationProperties(prefix=&quot;&quot;)</code> 上指定的前缀， <code>&lt;fqn&gt;</code> 指其全限定名。如果没有指定 prefix ，只有全限定名会为此 bean 所用。<em>这他妈有啥用？</em></li>
-</ul>
-<h3 id="Using-ConfigurationProperties-annotated-Types"><a href="#Using-ConfigurationProperties-annotated-Types" class="headerlink" title="Using @ConfigurationProperties-annotated Types"></a>Using @ConfigurationProperties-annotated Types</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding">使用自动配置属性 Bean</a></p>
-<p>在组件 Bean 直接无注解注入 <code>private final ConfiguredData configuredData;</code></p>
-<h3 id="Third-party-Configuration"><a href="#Third-party-Configuration" class="headerlink" title="Third-party Configuration"></a>Third-party Configuration</h3><blockquote>
-<p>第三方 Bean 属性注入</p>
-</blockquote>
-<ul>
-<li>直接在注入第三方 Bean 方法定义处加上 <code>@ConfigurationProperties</code> 注解，将自动将同名配置注入到 Bean 属性中。</li>
-</ul>
-<h3 id="Relaxed-Binding"><a href="#Relaxed-Binding" class="headerlink" title="Relaxed Binding"></a>Relaxed Binding</h3><blockquote>
-<p>松绑定</p>
-</blockquote>
-<p>Spring Boot 松绑定 Environment 属性到 @ConfigurationProperties bean 中，所以不需要精确匹配 Environment 属性名与 bean 属性名。常见的例子是使用 dash-separated 或大小写环境属性 context-path 绑定到 contextPath，PORT绑定到 port。</p>
-<p>使用 <code>@ConfigurationProperties(prefix=&quot;project.data&quot;)</code> 注解在有名为 <code>firstName</code> 属性的 bean 上（prefix 的值必须为 Kebab Case 写法），那么在配置文件中可以使用：</p>
-<ol>
-<li><code>project.data.first-name</code>: Kebab Case （小写，单词分隔使用 <code>-</code>，看起来像羊肉串，所以叫 Kebab Case），推荐在 <code>.properties</code> 或 <code>.yml</code> 中使用</li>
-<li><code>project.data.firstName</code> : standard camel case syntax 标准驼峰语法</li>
-<li><code>project.data.first_name</code> : underscore notation，下划线符号，在 <code>.properties</code> <code>.yml</code> 中一种可选的写法</li>
-<li><code>PROJECT_DATA_FIRSTNAME</code> : upper case format，推荐在系统环境变量中使用。</li>
-</ol>
-<h4 id="从环境变量绑定数据-Binding-from-Environment-Variables"><a href="#从环境变量绑定数据-Binding-from-Environment-Variables" class="headerlink" title="从环境变量绑定数据 Binding from Environment Variables"></a>从环境变量绑定数据 Binding from Environment Variables</h4><p>大多操作系统的环境变量都使用严格命名规则，如 Linux 系统 shell 变量只能使用字母数字下划线，Unix 系统 shell 变量只能使用大写。Spring Boot 为与这些系统兼容，规则如下：</p>
-<ol>
-<li>用 <code>_</code> 代替 <code>.</code></li>
-<li>移除所有的 <code>-</code></li>
-<li>转换为大写形式</li>
-</ol>
-<p>比如：配置属性 <code>spring.main.log-startup-info</code> 将被系统环境变量 <code>SPRING_MAIN_LOGSTARTUPINFO</code> 的值所绑定。note:<em>下划线并不会被 dash 所替换</em></p>
-<p>环境变量同样可以绑定到数组对象，数组的下标数字被下划线代替：<code>data[0].name</code> 被环境变量 DATA_0_NAME 值所赋。</p>
-<h3 id="Merging-Complex-Types"><a href="#Merging-Complex-Types" class="headerlink" title="Merging Complex Types"></a>Merging Complex Types</h3><p>使用 <code>.yml</code> 与 <code>.properties</code> 外部配置文件添加属性给bean 时，会自动将各个同配置注入到列表属性中，也可以在其中指定不同的 profile 下不同的属性。</p>
-<h3 id="Properties-Conversion"><a href="#Properties-Conversion" class="headerlink" title="Properties Conversion"></a>Properties Conversion</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-relaxed-binding">reference</a></p>
-<p>Spring Boot 内置转换器可以将对多个类型数据进行转换，使用 <code>@**Unit</code> 注解指定单位</p>
-<ol>
-<li>Duration，ms <code>@DurationUnit</code> ns us ms s m h d</li>
-<li>Period ， days <code>@PeriodUnit</code> y m w(weeks is a shortcut means “7 days”) d</li>
-<li>DataSize, byte <code>@DataSizeUnit</code> B KB MB GB TB</li>
-</ol>
-<p>可自定义 converter。</p>
-<h3 id="ConfigurationProperties-Validation"><a href="#ConfigurationProperties-Validation" class="headerlink" title="@ConfigurationProperties Validation"></a>@ConfigurationProperties Validation</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-validation">reference</a></p>
-<ul>
-<li>在注解 <code>@ConfigurationProperties</code> 的类上添加 <code>@Validated</code> ， 用以约束字段。也可以使用 JSR-303 <code>@Validation</code> （需要保证 JSR-303 在 classpath 之中）。在 @Configuration 组件 bean 定义处添加 <code>@Validated</code> 注解用以验证 bean 。</li>
-<li>验证内嵌的属性，其相应的字段需要添加 <code>@Valid</code> 注解</li>
-<li>自定义 Spring Validator 通过添加一个名为 <code>configurationPropertiesValidator</code> bean 定义静态方法实现，之所以要为 静态的 ，因为 configurationProperties validator 在应用生命周期很早阶段就需要实例化并使用，为避免与外部 <code>@Configuration</code> 类耦合而需要过早地将外部组件类实例化引起的错误，所以需要将此 validator bean 方法定义为静态的。</li>
-</ul>
-<h3 id="ConfigurationProperties-vs-Value"><a href="#ConfigurationProperties-vs-Value" class="headerlink" title="@ConfigurationProperties vs. @Value"></a>@ConfigurationProperties vs. @Value</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-validation">reference</a></p>
-<ul>
-<li><code>@Value</code> 是容器核心特性，不提供类似类型安全的特性，支持部分 spring 松绑定，不支持 元数据，但比 <code>@ConfigurationProperties</code> 多支持 SpEL 表达式。</li>
-<li>如果同一个组件定义了多个配置属性，推荐使用 <code>@ConfigurationProperties</code> 在bean 类上，这样可以做结构化类型安全的bean 用以注入到 bean 中。</li>
-<li>如果需要使用 <code>@Value</code> ，推荐引用属性名通过其标准形式 Kebab-Case using only lowercase letters 。这样做可以让 Spring Boot 使用与 <code>@ConfigurationProperties</code> 松绑定相同的逻辑。如：使用 <code>@Value(&quot;&#123;demo.first-name&#125;&quot;)</code> ，那么配置文件中的 <code>demo.firstName</code> 与 <code>demo.first-name</code>与系统环境变量 <code>DEMO_FIRSTNAME</code> 都会被当作有效配置（优先级此处不作讨论）。而如果使用 <code>@Value(&quot;&#123;demo.firstName&#125;&quot;)</code> 只有配置文件中的 <code>demo.firstName</code> 会被识别到。</li>
-</ul>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><blockquote>
-<p>spring 中的环境属性 org.springframework.core.env.Environment。</p>
-</blockquote>
-<p>此接口用于当前应用在运行时的环境，应用环境的两个关键模型是 <code>profiles</code> 与 <code>properties</code>。与 property 相关的访问方法定义于其父接口 <code>PropertyResolver</code> 。PropertyResolver 定义了很多可以直接将 String convert 2 T 的方法。</p>
-<p>要实现操作应用的 Environment ，能过 <code>ConfigurableEnvironment</code> 实现。//TODO</p>
-<p><code>profile</code> 是特定命名的一组的 bean definition，只有在指定 profile 是激活状态才能将这组 bean 注册于容器。</p>
-<p>ApplicationContext 中的 bean 都可以通过 EnvironmentAware 接口或注入 <code>@Inject Environment</code> 获取应用配置数据。 通常情况下，大多数应用级别的 bean 不需要直接与 Environment 交互获取配置数据，可以直接使用属性占位符配置器（PropertySourcesPlaceholderConfigurer） <code>$&#123;&#125;</code> 获取属性配置值。PropertySourcesPlaceholderConfigurer 是 EnvironmentAware ，并从 Spring 3.1 开始只要配置 <code>&lt;context:property-placeholder/&gt;</code> ，就默认注册。</p>
-<h3 id="AbstractEnvironment"><a href="#AbstractEnvironment" class="headerlink" title="AbstractEnvironment"></a>AbstractEnvironment</h3><p>基本的环境变量，实现了接口 <code>ConfigurableEnvironment</code> 。其内部定义了基本的应用环境属性：忽略系统环境变量 <code>IGNORE_GETENV_PROPERTY_NAME</code> 默认为 false， 激活状态配置 <code>ACTIVE_PROFILES_PROPERTY_NAME</code> ，默认配置 <code>DEFAULT_PROFILES_PROPERTY_NAME</code> ，默认配置名 <code>RESERVED_DEFAULT_PROFILE_NAME</code> 。</p>
-<h3 id="StandardEnvironment"><a href="#StandardEnvironment" class="headerlink" title="StandardEnvironment"></a>StandardEnvironment</h3><p>继承自 AbstractEnvironment ，在其基础上添加了系统变量 <code>SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME</code> 与环境变量 <code>SYSTEM_PROPERTIES_PROPERTY_SOURCE_NAME</code>。系统变量优先级更高，其初始化过程中先添加系统变量再添加环境变量在配置数据最末（环境变量可在同一个系统中跨服务共用，而系统变量是针对一个 JVM 而设置）。</p>
-<h3 id="StandardServletEnvironment"><a href="#StandardServletEnvironment" class="headerlink" title="StandardServletEnvironment"></a>StandardServletEnvironment</h3><p>StandardServletEnvironment 基于 Servlet 的 web 应用 Environment 实现，继承自 StandardEnvironment 。每个基于 Servlet 的 web 应用 ApplicationContext 都会默认初始化一个实例。此环境会在 StandardEnvironment 的基础上依次（决定了配置变量的优先级从高到低）添加变量： servlet Config 属性 <code>SERVLET_CONTEXT_PROPERTY_SOURCE_NAME</code>，servlet context 属性 <code>SERVLET_CONFIG_PROPERTY_SOURCE_NAME</code> ，JNDI 属性 <code>JNDI_PROPERTY_SOURCE_NAME</code> 。</p>
-<h2 id="PropertySourcePlaceHolderConfigurer"><a href="#PropertySourcePlaceHolderConfigurer" class="headerlink" title="PropertySourcePlaceHolderConfigurer"></a>PropertySourcePlaceHolderConfigurer</h2><p>使用此配置器解析 ApplicationContext 中的所有的 BeanDefinition 中的占位符（默认格式 <code>$&#123;value&#125;</code>）。其实现了 <code>BeanFactoryPostProcessor</code> ，在 ApplicationContext 初始化阶段，会自动扫描所有的 BeanDefinition 并将所有使用占位符的地方都使用配置数据值进行替换。以此来实现占位符引入配置到 bean 中。</p>
-<h3 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h3><p>用于字段或方法参数上的注解，用以表明其默认值。典型应用于表达式驱动依赖注入，也支持处理器方法参数的动态方案，如 Spring MVC。</p>
-<p><code>@Value</code> 注解的实际的处理是通过 <code>AutowiredAnnotationBeanPostProcessor</code> 实现，这就意味着不能使用此注解用于 BeanFactoryPostProcessor 与 BeanPostProcessor。</p>
-<h4 id="AutowiredAnnotationBeanPostProcessor"><a href="#AutowiredAnnotationBeanPostProcessor" class="headerlink" title="AutowiredAnnotationBeanPostProcessor"></a>AutowiredAnnotationBeanPostProcessor</h4><p>一个 BeanPostProcessor 。//todo</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/06/11/java/JMM/lock/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-06-11</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/java/">java</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Lock-in-Java"><a href="#Lock-in-Java" class="headerlink" title="Lock in Java"></a>Lock in Java</h1><p>java 并发编程中的 lock.</p>
-<p><a href="java.util.concurrent.locks.Lock">reference</a></p>
-<h2 id="features"><a href="#features" class="headerlink" title="features"></a>features</h2><ul>
-<li><p>Lock 的限制访问共有资源，但某些 Lock 也可以让多个线程同时访问共享资源，如：{@link ReadWriteLock}。</p>
-</li>
-<li><p>Lock 提供了 synchronized 方法、语句同样的功能，但要更为灵活。synchronized 提供访问每一个对象隐式关联的监听锁，但其强制锁的获取与释放都使用阻塞结构方式：</p>
-<ul>
-<li>多个锁被获取后，其释放的顺序必须与获取的顺序相反；</li>
-<li>所有锁在释放时必须与其获取的语义范围一致。</li>
-</ul>
-</li>
-<li><p>synchronized 范围机制（scoping mechanism）使获取监听锁编程方式更为容易，也有益于避免包含锁的编程错误。但在某些情况下需要使用更为灵活的锁，比如在并发遍历数据结构时需要交替进行或链式锁定：</p>
-<ol>
-<li>在获取节点 A 的锁</li>
-<li>获取节点 B 的锁；</li>
-<li>释放节点 A 的锁再获取节点 C 的锁；</li>
-<li>释放节点 B 的锁再获取节点 D 的锁，依次类推。</li>
-<li>通过允许一个锁在不同的范围内获取与释放，与多个锁以任意顺序获取与释放实现以上功能。</li>
-</ol>
-</li>
-<li><p>灵活性带来了额外的工作，缺少阻塞结构也就移除了在 synchronized 语句或方法中自动释放锁的功能。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lock l = ...;</span><br><span class="line">l.lock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// access the resource protected by this lock</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  l.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>此外，可使用 tryLock() ，此方法获取锁可以被打断，使用方法 lockInterruptibly() 打断获取锁的流程。也可以使用 tryLock(long, TimeUnit) 方法实现超时限制获取锁。</p>
-</li>
-<li><p>Lock 可以实现与隐式监听锁很不一样的行为与语义，诸如顺序保证、非重入使用、死锁检测，如果 Lock 要实现这此语义，需要文档中特别说明。</p>
-</li>
-<li><p>需要注意的是 Lock 实例与其他对象实例一样可以作为 synchronized 语句的锁对象，使用 Lock 实例作为 synchronized 语句的锁目标与 Lock 实例本身的 lock() 方法调用没有任何特别的关系。除在 Lock 本身内部实现外，建议尽量避免如此使用。</p>
-</li>
-</ul>
-<h3 id="内存同步"><a href="#内存同步" class="headerlink" title="内存同步"></a>内存同步</h3><ul>
-<li>所有 Lock 实现必须强制像内置的监听锁样实现内存同步语义，<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4">Java SE 文档描述</a></li>
-<li>成功的 lock 与 unlock 执行必须与锁与解锁动作语义一样实现内存同步效果。</li>
-</ul>
-<h3 id="实现注意事项"><a href="#实现注意事项" class="headerlink" title="实现注意事项"></a>实现注意事项</h3><ul>
-<li>锁获取有三种不同的形式，可中断、不可中断、超时设置（interruptible/non-interruptible/timed），其性能特质、顺序保证也各不相同。此外，中断一个正在获取锁的特性可能不会实现。</li>
-<li>因此一个 Lock 的实现中对于三种形式的锁获取并不需要保证都有明确定义相同的语义与规范，也可以不需要在锁获取进行时中断的属性。</li>
-</ul>
-<h2 id="TODO-list"><a href="#TODO-list" class="headerlink" title="TODO list"></a>TODO list</h2><ul>
-<li><input disabled="" type="checkbox"> <a href="java.util.concurrent.locks.ReentrantLock">ReentrantLock</a></li>
-<li><input disabled="" type="checkbox"> <a href="java.util.concurrent.locks.ReadWriteLock">ReadWriteLock</a></li>
-<li><input disabled="" type="checkbox"> <a href="java.util.concurrent.locks.ReentrantReadWriteLock">ReentrantReadWriteLock</a></li>
-<li><input disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/index.html">JSE 8 specifications</a></li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/05/12/linux/linux/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-05-12</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><p>desktop virtual machine: root 123456</p>
-<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p>在 linux 上安装 Tomcat 并启动。(root 123456)</p>
-<ol>
-<li>安装 tomcat 后，进入 bin 中启动 <code>./startup.sh</code>;</li>
-<li>必须开启防火墙：<ol>
-<li><code>vim /etc/sysconfig/iptables</code> 打开系统 ip 配置文件</li>
-<li>添加配置 <code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT</code><ol>
-<li>(直接调用服务写配置：<code>/sbin/iptables -I INPUT -p tcp --dport 6379 -j ACCEPT</code>)</li>
-</ol>
-</li>
-<li>重启防火墙 <code>service iptables restart</code><ol>
-<li>加上路径的命令为： <code>/etc/rc.d/init.d/iptables save</code></li>
-</ol>
-</li>
-</ol>
-</li>
-<li>通过外部网络可访问 tomcat 了。</li>
-</ol>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>在 linux 安装 mysql 并运行。（本地虚拟机上：root 12345）</p>
-<p>问题：March 12 2020 在虚拟机上 linux 设置自动启动 mysql 后，在使用 <code>service mysql stop</code> 命令出现错误：“ERROR! MySQL server PID file could not be found”。最后使用 stackoverflow 上方法解决：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41616251/error-mysql-server-pid-file-could-not-be-found-in-osx-sierra">stackoverflow</a></p>
-<ol>
-<li><code>ps -ef | grep mysql --color</code> 查找出正在运行的 mysql 进程；</li>
-<li><code>kill -9 PID</code> 杀掉进程；</li>
-<li>再使用 <code>service mysql start</code> 启动 mysql ，后面再使用 <code>service mysql stop</code> 正常停止 mysql。</li>
-</ol>
-<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>在 linux 上安装 redis 使用</p>
-<ol>
-<li>编译好 redis 后运行 redis  不能直接使用 <code>redis-server</code> ，需要使用 <code>./redis-server</code> 才能启动；</li>
-<li>修改 redis 服务后台启动：<ol>
-<li>将 redis.conf 文件 copy 到 bin 目录下，将其 <code>daemonize</code> 修改为 <code>yes</code>;</li>
-<li>启动 redis-server 时加上参数：<code>./redis-server redis.conf</code>；</li>
-</ol>
-</li>
-</ol>
-<h2 id="磁盘管理命令"><a href="#磁盘管理命令" class="headerlink" title="磁盘管理命令"></a>磁盘管理命令</h2><ul>
-<li><code>ls [参数] [文件或目录]</code> list 查看目录下所有文件<ul>
-<li><code>-a</code> 或 <code>--all</code> 查看全部，包括隐藏的</li>
-<li><code>-l</code> 简化版: <code>ll</code> 详细格式列表</li>
-</ul>
-</li>
-<li><code>cd [目录]</code> change directory<ul>
-<li><code>~</code> 当前用户目录</li>
-<li><code>/</code> 根目录</li>
-<li><code>.</code> 当前目录</li>
-<li><code>..</code> 上级目录</li>
-<li><code>-</code> 上次所在目录</li>
-</ul>
-</li>
-<li><code>pwd</code> print working directory 打印当前所在目录</li>
-<li><code>mkdir</code> make directory</li>
-<li><code>rmdir</code> remove directory 移除空目录</li>
-<li>scp secure copy 可以从远程服务器拷贝，同时加密</li>
-</ul>
-<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ul>
-<li><code>cat [OPTION]... [FILE]...</code> concatenate 将文件输出级联到另一个文件或终端<ul>
-<li><code>cat &gt; &#123;file&#125;</code> 指定到同一个文件</li>
-</ul>
-</li>
-<li><code>lsb_release [OPTION]</code> 查看系统发布版本</li>
-<li><code>more &#123;file&#125;</code>  分页显示文件内容<ul>
-<li>enter 向下显示一行（默认1行，可定义）</li>
-<li>空格/ctrl+F 显示下一页</li>
-<li><code>B</code>  back 返回上一屏</li>
-<li><code>q</code> 退出 more</li>
-</ul>
-</li>
-<li><code>less [参数] &#123;file&#125;</code><ul>
-<li><code>-m</code> 显示 more 命令一样的 百分比</li>
-<li><code>-N</code> 显示行号</li>
-<li>后续命令<ul>
-<li>空格/page down 向下翻页</li>
-<li>page up/b(back) 向上翻页</li>
-<li>上下方向键/y与enter键 向上下一行</li>
-<li><code>?</code> <code>/</code> 向上/下搜索<ul>
-<li><code>n</code>/<code>N</code> 跳到下一个/上一个查找的结果</li>
-</ul>
-</li>
-<li><code>q</code> 退出</li>
-<li>左右方向键 左右滚屏</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>tail [parameter] [file]</code><ul>
-<li><code>-n</code> 显示行数</li>
-<li><code>-f</code> 动态跟踪文件，查看动态日志</li>
-<li>ctrl + c 退出</li>
-</ul>
-</li>
-<li><code>find [path] [parameter]</code> 在目录中查找文件<ul>
-<li><code>-name</code>  指定字符串作为查找的样本</li>
-</ul>
-</li>
-</ul>
-<h2 id="文档编辑"><a href="#文档编辑" class="headerlink" title="文档编辑"></a>文档编辑</h2><ul>
-<li><code>|</code> 管道命令，一般与 grep 联用，在上一个结果中进行操作下一个命令</li>
-<li><a target="_blank" rel="noopener" href="https://vim.rtorr.com/"><code>vim [file]</code> 或者 <code>vi [file]</code> 命令</a> <a target="_blank" rel="noopener" href="https://spin.atomicobject.com/2016/04/19/vim-commands-cheat-sheet/">cheat sheet</a><ul>
-<li>进入到文件 vi 编辑状态后，有三种状态：<ul>
-<li>command mode 命令模式，此模式下按 <code>:</code> 进入底行模式， <code>i</code>/<code>a</code>/<code>o</code> 进入到插入模式<ul>
-<li><code>i</code> 在光标前插入 <code>shift + i</code> 在光标所在行前插入</li>
-<li><code>a</code> 在光标后插入， <code>shift + a</code> 在光标所在行最后插入</li>
-<li><code>o</code> 在光标所在行下一行插入新行， <code>shift + o</code> 在光标所在行前一行插入新行</li>
-<li>i - Insert at cursor (goes into insert mode)</li>
-<li>a - Write after cursor (goes into insert mode)</li>
-<li>A - Write at the end of line (goes into insert mode)</li>
-<li>ESC - Terminate insert mode</li>
-<li>u - Undo last change</li>
-<li>U - Undo all changes to the entire line</li>
-<li>o - Open a new line (goes into insert mode)</li>
-<li>dd - Delete line</li>
-<li>3dd - Delete 3 lines.</li>
-<li>D - Delete contents of line after the cursor</li>
-<li>C - Delete contents of a line after the cursor and insert new text. Press ESC key to end insertion.</li>
-<li>dw - Delete word</li>
-<li>4dw - Delete 4 words</li>
-<li>cw - Change word</li>
-<li>x - Delete character at the cursor</li>
-<li>r - Replace character</li>
-<li>R - Overwrite characters from cursor onward</li>
-<li>s - Substitute one character under cursor continue to insert</li>
-<li>S - Substitute entire line and begin to insert at the beginning of the line</li>
-<li><code>~</code> Change case of individual character, 前面加上数字将实现指定数量个字符的大小写切换</li>
-</ul>
-</li>
-<li>last line mode 底行模式， w write, q quit 退出到编辑模式, ! force</li>
-<li>insert mode 插入模式，esc 退出到底行模式</li>
-</ul>
-</li>
-<li>copy &amp; paste<ul>
-<li><code>yy</code> 单行复制 yank current line</li>
-<li><code>y$</code> 复制光标到行尾 yank to end of the current line from cursor</li>
-<li><code>yw</code> 复制从光标处到 token 尾 yank from cursor to end of the current word</li>
-<li><code>yW</code> 从光标处复制到 word 尾</li>
-<li><code>nyy</code> n 行复制</li>
-<li><code>p</code>/<code>P</code> 在光标后/前粘贴</li>
-<li><code>gg</code> 到文本第一行</li>
-<li><code>shift + gg</code> 到文本最后一行</li>
-</ul>
-</li>
-<li>delete<ul>
-<li><code>dd</code>删除光标所在行</li>
-<li><code>ndd</code> 删除 n 行</li>
-</ul>
-</li>
-<li><code>u</code> undo</li>
-<li>ctrl + <code>r</code> redo</li>
-<li>Movement<ul>
-<li>h j k l 左下上右四个方向移动 cursor 在前加上数字可实现多个字符的跳动</li>
-<li>b w B W 向 back forward 方向移动整个 token/word ，在其前数字指定移动数量</li>
-<li>^ $ 移动光标到行首尾</li>
-<li>ctrl + u/d 向上下翻页up/down ，cursor 跟着一起翻页</li>
-<li>整页翻页 ctrl-f ctrl-b<ul>
-<li>f 就是forward b就是backward</li>
-<li>翻半页 ctrl-d ctrl-u d=down u=up</li>
-<li>滚一行ctrl-e ctrl-y</li>
-<li>zz 让光标所在的行居屏幕中央</li>
-<li>zt 让光标所在的行居屏幕最上一行 t=top</li>
-<li>zb 让光标所在的行居屏幕最下一行 b=bottom</li>
-</ul>
-</li>
-<li>*<line-number>*G 跳到指定行</li>
-<li>H M L 跳到页面上中下 High Middle Low</li>
-<li><code>*</code> <code>#</code> 下一个与当前 cursor 所在 token 相同的 token ，前面加上数字指定跳跃数量</li>
-<li><code>n</code> <code>N</code> 重复上一次命令结果往上/下找</li>
-<li><code>&#39;&#39;</code> 两次 <code>&#39;</code> ，跳回上一次输入此命令的行首。相当于对特殊行进行一次记录，但只能记录一个历史，感觉没啥用。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>grep [parameter] [regular expression] &#123;file&#125;</code> Global Regular expression print 过滤搜索特定字符。匹配到的结果是行，rgep 可以多个，file 也可多个，也可用 * 匹配当前路径所有文件<ul>
-<li><code>-i</code> 或 <code>-ignore-case</code> 忽略大小写</li>
-<li><code>--color[=auto|=never|=always]</code> ：可以将找到的关键词部分加上颜色的显示</li>
-<li><code>-A2</code> after 显示匹配行+其后2行</li>
-<li><code>-B</code> before</li>
-<li><code>-C</code> 前后都有</li>
-<li>c 统计行数</li>
-<li>r recursive 递归查找包括子路径文件</li>
-<li>n number of line 显示行号</li>
-<li>E extend 扩展 regexp</li>
-</ul>
-</li>
-<li>命令行中使用命令<ul>
-<li><code>ctrl + e</code> 移动到行尾 end</li>
-<li><code>ctrl + a</code> 移动到行 首</li>
-<li><code>ctrl + w</code> 删除光标前一个 token</li>
-<li><code>esc + d</code> 删除光标后一个 token</li>
-<li><code>ESC + f</code> 向前移动一个 token</li>
-<li><code>esc + b</code> 向后移动一个 token</li>
-</ul>
-</li>
-</ul>
-<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><ul>
-<li><code>ps [parameter]</code> process status 进程运行状态<ul>
-<li><code>-e</code> 与 <code>-A</code> 相同显示所有进程</li>
-<li><code>-f</code> 显示UID, PPIP, C, STIME 栏位</li>
-</ul>
-</li>
-<li><code>kill [parameter] [process]</code><ul>
-<li><code>-9 pid</code> 强制终止</li>
-</ul>
-</li>
-<li><code>lscpu</code> 查看 cpu 信息</li>
-<li><code>dpkg --print-architecture</code> <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/180726/easy-command-line-method-to-determine-specific-arm-architecture-string">查看指令集</a></li>
-<li>sudo superuser do<ul>
-<li>sudo [command] 给普通用户命令加上超级用户权限</li>
-</ul>
-</li>
-<li>没有安装 systemmd(systemctl) 命令，使用 service {servicename} {start|stop|restart} 代替</li>
-<li><code>uname</code> unix name 查看系统版本信息</li>
-<li><code>update-alternatives [options] command</code> 管理系统可选项命令,建立命令的符号链接<ul>
-<li>当安装多个命令版本时,使用此命令配置各命令的优先级或管理其默认项,在安装 jdk 时需要配合环境变量配置设置系统 java 命令.</li>
-<li><code>update-alternatives --install link name path priority [--slave link name path] ...</code> 可以将命令(path)生成符号链接(name)添加到环境变量目录(link) eg: <code>update-alternatives --install /usr/bin/java java /usr/local/java/jdk-8/bin/java 1</code></li>
-<li><code>--config</code> 交互配置命令,如果需要在命令使用配置,使用 <code>--set</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/58814/how-do-i-add-environment-variables">reference</a><br><a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/EnvironmentVariables">环境变量设置</a></p>
-</blockquote>
-<ul>
-<li>设置当前 shell 变量 : <code>name=value</code> 此语法设置的变量只在当前 shell 中有效,同时 <strong>不能被当前 shell 启动的进程所读取到</strong>.</li>
-<li>设置当前 shell 变量并对当前 shell 环境启动的进程生效:<code>export [-fn] [name=[value] ...]</code> <code>export -p</code> 给 shell 设置变量.变量域只在当前 shell ,从当前 shell 启动的进程都能读到此变量,而其他 shell 打开的进程不能读取到.<ul>
-<li>将每个 name 变量自动导入到后续执行的命令的环境中, value 使用前需要对其赋值.</li>
-<li>命令选项<ul>
-<li>-f 引用到某个 shell function</li>
-<li>-n 从 name 中移除导出属性 <em>?</em></li>
-<li>-p 显示所有被导入的变量与函数</li>
-<li><code>--</code> 关闭选项处理 <em>?</em></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>永久地对所有 bush sessions 功能添加变量: 将变量设置行添加到 <code>$HOME/.bashrc</code> 或者 .profile .bash_login 中,三者更推荐 .profile ,其他两个都只是在 shell 执行中会有效,对桌面应用无效.</li>
-<li>系统范围内(所有用户进程)永久添加变量: 添加到 /etc/environment, <code>sudo -H gedit /etc/environment</code>. 格式: <code>VARNAME=&quot;value&quot;</code>.或者在 /etc/profile.d/ 中添加脚本,脚本中使用 export 添加环境变量.此目录中的脚本都会在所有用户所有 shell 执行前先执行.<ul>
-<li>需要重新登录当前用户才能对当前用户生效.</li>
-</ul>
-</li>
-<li><code>source &lt;filename&gt; [arguments]</code> 在当前 shell 中读取并执行文件中的命令, $PATH 中的变量会被用来查询在文件中指定的目录.如果参数 arguments 提供了,会被用来当作 shell 执行的位置参数(参数顺序被指定可以在 shell 中的使用 $n 获取). source 命令快捷方式: <code>.</code> .</li>
-</ul>
-<h2 id="firewall-防火墙"><a href="#firewall-防火墙" class="headerlink" title="firewall 防火墙"></a>firewall 防火墙</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011846257/article/details/54707864">reference</a></p>
-<p>添加 iptables 规则时需要将其添加成 REJECT 所有其他的端口之前，否则将无效。</p>
-<h2 id="备份压缩"><a href="#备份压缩" class="headerlink" title="备份压缩"></a>备份压缩</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-difference-between-tar-gz-zip-and-tar-gz-in-Linux#:~:text=gz%20is%20a%20single%20file,an%20arbitrary%20number%20of%20filed.">difference between .gz and .tar</a></p>
-</blockquote>
-<ul>
-<li><code>.gz</code> 文件是使用 gzip 压缩过的文件后缀，而 tar 只是用于将多个文件进行打包并不包含压缩。</li>
-<li><code>tar</code><ul>
-<li><code>-c</code> create 创建归档</li>
-<li><code>-x</code> extract 解档</li>
-<li><code>-z</code> 使用 <strong>gzip</strong> 压缩</li>
-<li><code>-v</code> verbose 显示压缩的文件</li>
-<li><code>-f</code> file 是否使用档名</li>
-</ul>
-</li>
-</ul>
-<h2 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h2><ul>
-<li><code>reboot</code> 重启 CentOS</li>
-<li><code>halt</code> 关机 CentOS</li>
-<li>debian<ul>
-<li>reboot</li>
-<li>shutdown</li>
-</ul>
-</li>
-</ul>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><p><code>chmod [parameter] &lt;权限范围&gt; &lt;符号&gt;&lt;权限代码&gt;</code> change mode 更改权限</p>
-<ul>
-<li><code>-R</code> 或 <code>-recursive</code> 递归将文件夹中所有文件都更改</li>
-<li>权限范围<ul>
-<li><code>u</code> user</li>
-<li><code>g</code> group</li>
-<li><code>o</code> other</li>
-<li><code>a</code> all</li>
-</ul>
-</li>
-<li>权限符号<ul>
-<li><code>+</code> 添加</li>
-<li><code>-</code> 取消</li>
-</ul>
-</li>
-<li>权限代号<ul>
-<li><code>r</code> read 4</li>
-<li><code>w</code> write 2</li>
-<li><code>x</code> execute 1</li>
-<li><code>-</code> none 0</li>
-</ul>
-</li>
-</ul>
-<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>查看 网络配置 文件位置: <code>/etc/sysconfig/networking-scripts/ifcfg-eth0</code></p>
-<h3 id="windows-operation"><a href="#windows-operation" class="headerlink" title="windows operation"></a>windows operation</h3><p>windows 操作系统中相关命令行。</p>
-<ul>
-<li>刷新 dns 数据命令：</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看电脑网络端口使用情况，类似于在 linux 中使用 <code>ps</code> 命令<ul>
-<li><code>netstat -ano</code> 命令行命令可以看到各个进程 pid 与 address 占用情况</li>
-<li><code>netstat -ano|findstr portNum</code> 查看指定端口占用情况，这儿查看的端口占用包括了本地地址的占用与外部地址的占用</li>
-<li><code>tasklist|findstr &#39;pid&#39;</code> 查看指定 pid 的进程使用</li>
-<li><code>taskkill /pid pid /f</code> 杀死进程 pid 指 progress id 进程 id<ul>
-<li>前两个步骤任选一个与最后个连用就可查找出端口被哪个进程给占用。</li>
-<li>也可以使用前两个步骤配合任务管理器查找，相对于命令行来说更直观。</li>
-<li>在 windows 系统中可用，不知在 linux 中是否可用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><blockquote>
-<p>resources package manager 资源包管理器，其相应的包文件后缀为 <code>.rpm</code> 在 red hat/Fedora/SUSE 系列使用此包管理，而在 Debian/Ubuntu 系列使用 <code>dpkg</code> 命令，其包文件后缀为 <code>.deb</code> 。</p>
-</blockquote>
-<p>command lind : `rpm [parameter] [软件]</p>
-<p>使用 rpm 管理系统软件包，可以定制软件的更新、安装与卸载。<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/">reference</a></p>
-<ol>
-<li>下载软件包的 rpm 文件，再使用 rpm 命令安装仓库</li>
-<li>安装后，可以使用 yum-util 的 yum-config-manager 管理包，也可以直接进入 /etc/yum.repos.d/{software}.repo 文件查看管理软件包数据</li>
-<li>使用 yum install {software} 安装软件，安装时会自动根据其 repo 仓库配置文件安装指定的软件版本</li>
-</ol>
-<ul>
-<li><code>-v</code> verbose 显示指令执行过程</li>
-<li><code>-h</code> 或 <code>--hash</code> 套件安装时显示列出指令</li>
-<li><code>-q</code> question 询问模式，遇到问题时指令会先询问用户</li>
-<li><code>-a</code> all 显示所有的套件</li>
-<li><code>-i</code> 或 <code>--install</code>&lt;套件档&gt; 安装指定的套件档</li>
-<li><code>-U</code> 或 <code>--upgrade &lt;套件档&gt;</code> 更新指定的套件档</li>
-<li><code>-e &lt;套件档&gt;</code> erase 删除指定的套件档</li>
-<li><code>--nodeps</code> no dependence 不验证套件间的关联性</li>
-<li>常用命令：<ul>
-<li><code>rpm -qa</code> 查看安装的软件</li>
-<li><code>rpm -e --nodeps &lt;软件名&gt;</code> 删除软件</li>
-<li><code>rpm -iph &lt;package&gt;</code> 安装</li>
-<li><code>rpm -Uph &lt;软件&gt;</code> 更新软件</li>
-</ul>
-</li>
-</ul>
-<h2 id="服务命令"><a href="#服务命令" class="headerlink" title="服务命令"></a>服务命令</h2><ul>
-<li><code>service &lt;service name&gt; restart</code> 重启服务</li>
-<li><code>service &lt;service name&gt; start</code> 启动服务</li>
-<li><code>service &lt;service name&gt; stop</code> 停止服务</li>
-</ul>
-<h2 id="windows10-amp-Ubuntu"><a href="#windows10-amp-Ubuntu" class="headerlink" title="windows10 &amp; Ubuntu"></a>windows10 &amp; Ubuntu</h2><blockquote>
-<p>win10 + ubuntu 双系统安装与使用</p>
-</blockquote>
-<h2 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h2><ul>
-<li>目前在台式机双显卡上遇到最大的问题是使用nvidia独显并不能设置分辨率为1920x1080，相反使用核显反而能。但是如果连接核显VGA接口又不能正常启动系统，只能先连接独显DVI－I接口让系统启动，启动后再将连接线接到VGA接口。<ul>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19571221">显示器接口认识</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shixin_0125/article/details/72793300">修改分辨率</a>，在使用DVI-I接口时并不能设置成功，只能设置到未连接的VGA 或 HDMI 接口上。</li>
-<li>使用 ｀xrandr｀ 命令查看系统正使用的接口与其分辨率</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5c1db6364141">双系统下时间相差 8 小时</a></li>
-<li>ubuntu 默认使用其 snap 安装软件，其安装的 vscode 被阉割，不能在其中输入中文，需要自行安装完整版。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35092399/article/details/105526908">reference</a></li>
-<li>ubuntu 中安装软件包使用 dpkg 命令，一般流程：<ul>
-<li>使用 <code>wget</code> 下载 <code>＊.deb</code> 包，或直接在其官方网站上手动下载其提供的 linux 版本包；</li>
-<li><a target="_blank" rel="noopener" href="https://help.ubuntu.com/kubuntu/desktopguide/zh_CN/manual-install.html">安装</a>。可直接在右击 .deb 文件选择 Kubuntu Package Menu -&gt; install。也可以使用 dpkg 命令安装。卸载时使用 apt-get remove 包名。</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://itectec.com/ubuntu/ubuntu-what-do-the-nomodeset-quiet-and-splash-kernel-parameters-mean/">禁用启动时显卡加载参数</a><ul>
-<li><code>nomodeset</code> 添加此参数指令会让 kernel 不加载显卡驱动使用 BIOS 模式也并非一定要 X server 被加载。</li>
-<li><code>quiet splash</code> 使用静默状态的启动，否则任何消息会打断 splash 桌面</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a999wt/article/details/8227154">在 Ubuntu 中使用 U 盘</a><ul>
-<li>需要将 U 盘挂载（ <code>mount</code> 命令）到系统中，一般使用 /mnt 目录挂载</li>
-<li>挂载后在 /mnt 目录中就可以看到 U 盘内容了。此处有个坑是如果挂载前已经进入 /mnt 目录，挂载后是看不到 U 盘内容的，需要重新进入目录才能看到。</li>
-<li>操作完 U 盘内容后使得命令 <code>umount</code> 命令卸载 U 盘。<ul>
-<li>卸载 U 盘可能会出现 device is busy 的提示，等一会儿就自动卸载。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/04/21/spring/Spring-Test/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-04-21</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="1-Spring-Test"><a href="#1-Spring-Test" class="headerlink" title="1. Spring Test"></a>1. Spring Test</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testing-introduction">reference</a></p>
-<ul>
-<li><a href="#1-spring-test">1. Spring Test</a><ul>
-<li><a href="#11-%E6%8C%87%E5%AE%9A%E6%B5%8B%E8%AF%95%E4%B8%8A%E4%B8%8B%E6%96%87-spring-testcontext-framework">1.1. 指定测试上下文 Spring TestContext Framework</a><ul>
-<li><a href="#111-context-management">1.1.1. Context Management</a><ul>
-<li><a href="#1111-context-configuration-with-context-initializers">1.1.1.1. Context Configuration with Context Initializers</a></li>
-<li><a href="#1112-context-configuration-inheritance">1.1.1.2. Context Configuration Inheritance</a></li>
-<li><a href="#1113-context-configuration-with-environment-profiles">1.1.1.3. <strong>Context Configuration with Environment Profiles</strong></a></li>
-<li><a href="#1114-context-configuration-with-test-property-source">1.1.1.4. Context Configuration with Test Property Source</a></li>
-<li><a href="#1115-declaring-test-property-source">1.1.1.5. Declaring Test Property Source</a></li>
-<li><a href="#1116-default-properties-file-detection">1.1.1.6. Default Properties File Detection</a></li>
-<li><a href="#1117-precedence">1.1.1.7. Precedence</a></li>
-<li><a href="#1118-inheriting-and-overriding-test-property-source">1.1.1.8. Inheriting and Overriding Test Property Source</a></li>
-<li><a href="#1119-context-configuration-with-dynamic-property-sources">1.1.1.9. Context Configuration with Dynamic Property Sources</a></li>
-<li><a href="#11110-loading-a-webapplicationcontext">1.1.1.10. Loading a WebApplicationContext</a></li>
-<li><a href="#context-cache">Context Cache</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-
-<p>使用 <code>@TestPropertySource</code> 指定配置文件。</p>
-<ul>
-<li><code>Environment</code> <code>PropertyResolver</code> 配置信息解析基础接口。<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-property-sources">reference</a></li>
-</ul>
-<h2 id="1-1-指定测试上下文-Spring-TestContext-Framework"><a href="#1-1-指定测试上下文-Spring-TestContext-Framework" class="headerlink" title="1.1. 指定测试上下文 Spring TestContext Framework"></a>1.1. 指定测试上下文 Spring TestContext Framework</h2><h3 id="1-1-1-Context-Management"><a href="#1-1-1-Context-Management" class="headerlink" title="1.1.1. Context Management"></a>1.1.1. Context Management</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-javaconfig">reference</a></p>
-<blockquote>
-<p>@SpringJunitWebConfig 注解包含了 @ContextConfiguration 与 @ExtentionWith(SpringExtention.class), @WebAppConfiguration ，使用此注解不用再添加 @ContextConfiguration 与 @ExtentionWith(SpringExtention.class)</p>
-</blockquote>
-<ul>
-<li>通过注解 <code>@ContextConfiguration</code> 引入测试上下文，可以指定多个配置文件为上下文无数据：xml 配置文件(location/value 默认属性)、Groovy scripts 配置文件(location/value 默认属性)、java based configuration 文件</li>
-<li>xml 与 groovy script 配置属性为 location ，省略此属性会自动检测与 Test 文件同名的配置文件。</li>
-<li>指定基于 java 注解的配置文件时，使用属性 <code>class</code>属性，只要是 SpringBean java 配置文件都可以指定，包括没有使用 Spring 注解但因为其唯一的构造器而被当作 Spring bean 的 java 文件。也包括提供 Bean 方法的类。同样如果此属性缺失，SpringTestContext 框架会自动检测默认的配置文件。<code>AnnotationConfigContextLoader</code> 与 <code>AnnotationWebConfigContextLoader</code> 会自动检测测试类内嵌的静态配置类。内嵌配置类名可以任意定，同样一个测试类中可以有任意多个内嵌配置类。</li>
-</ul>
-<p>Mixing XML,Groovy Scripts, and Component Classes**</p>
-<blockquote>
-<p>混合多类型资源的上下文</p>
-</blockquote>
-<p>当需要混合三各类型的配置组件到上下文中时，第三方框架 SpringBoot 支持同时指定。但基于历史原因，Spring 标准部署并不支持。大体上 Spring 框架中 Spring-test 模块 <code>SmartContextLoader</code> 实现对每个测试上下文只支持单一资源类型，但并意味着只能使用一种资源类型。例外是 <code>GenericGroovyXmlContextLoader</code> 与 <code>GenericGroovyXmlWebContextLoader</code> 支持同时加载 <strong>XML 配置文件与 Groovy scripts</strong> 。此外，第三方框架 <code>@ContextConfiguration</code> 支持同时指定 <code>location</code> 与 <code>classes</code> 属性。并且就算在标准的测试框架中，也可以使用选择一种资源类型作为切入口，在切入口中添加其他类型的资源到其中来实现加载多种类型资源到上下文。</p>
-<h4 id="1-1-1-1-Context-Configuration-with-Context-Initializers"><a href="#1-1-1-1-Context-Configuration-with-Context-Initializers" class="headerlink" title="1.1.1.1. Context Configuration with Context Initializers"></a>1.1.1.1. Context Configuration with Context Initializers</h4><p>在 <code>@ContextConfiguration</code> 注解中添加  <strong>initializers</strong> 属性给上下文指定<strong>初始化器</strong>，初始化器实现 <code>ApplicationContextInitializer</code> ，其作用在于初始化配置的上下文 ConfigurableApplicationContext （注册 Property Source ，激活 Profile 。ContextLoader 与 FrameworkServlet 分别有定义 <code>contextInitializersClasses</code> context-param init-param）。每个初始化器都需要支持其实现的 Ordered 接口或 <code>@Order</code> 注解用以保持其初始化动作的秩序。</p>
-<p>也可以在 <code>@ContextConfiguration</code> 中不指定配置文件(locations,values, classes 属性)只添加初始化器 initializers ，在初始化器中指定配置上下文数据。</p>
-<h4 id="1-1-1-2-Context-Configuration-Inheritance"><a href="#1-1-1-2-Context-Configuration-Inheritance" class="headerlink" title="1.1.1.2. Context Configuration Inheritance"></a>1.1.1.2. Context Configuration Inheritance</h4><p>上下文配置层级</p>
-<p><code>@ContextConfiguration</code> 注解属性 <code>inheritLocations</code> <code>inheritInitializers</code> 用以指定是否保留上下文配置的继承关系，默认为 true 。这意味着默认情况下，测试类间的上下文数据（resource locations,component classes, context initializers）都是自上而下继承的。如有重复，子类覆盖父类。</p>
-<h4 id="1-1-1-3-Context-Configuration-with-Environment-Profiles"><a href="#1-1-1-3-Context-Configuration-with-Environment-Profiles" class="headerlink" title="1.1.1.3. Context Configuration with Environment Profiles"></a>1.1.1.3. <strong><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-inheritance">Context Configuration with Environment Profiles</a></strong></h4><p>Spring 框架有一流的环境配置概念支持，测试中使用注解 <code>@ActiveProfiles</code> 以支持为测试加载 ApplicationContext 时激活的 Profiles 。@ActiveProfiles 支付 <code>SmartContextLoader</code> 但不支持老版的 <code>ContextLoader</code> SPI 实现。</p>
-<ul>
-<li>profile 在没有指定的情况下是 <code>default</code> ，可以使用此缺省的 profile 。</li>
-<li>@ActiveProfiles 激活注解同样支持上下层级继承，断开继承关系使用属性 <code>inheritProfiles</code> 属性。</li>
-<li>如果需要在运行时决定激活 profile ，可以自定义 <code>ActiveProfileResolver</code> ，并使用 <code>resolver</code> 属性注册到 @ActiveProfiles 中。</li>
-</ul>
-<h4 id="1-1-1-4-Context-Configuration-with-Test-Property-Source"><a href="#1-1-1-4-Context-Configuration-with-Test-Property-Source" class="headerlink" title="1.1.1.4. Context Configuration with Test Property Source"></a>1.1.1.4. <a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-inheritance">Context Configuration with Test Property Source</a></h4><p>与 @Configuration 配置上的 @PropertySource 类似，测试上下文的 @TestPropertySource 注解同样引入配置数据到上下文。</p>
-<ul>
-<li>同样在 SmartContextLoader 上支持，而老版 ContextLoader 不支持。</li>
-</ul>
-<h4 id="1-1-1-5-Declaring-Test-Property-Source"><a href="#1-1-1-5-Declaring-Test-Property-Source" class="headerlink" title="1.1.1.5. Declaring Test Property Source"></a>1.1.1.5. Declaring Test Property Source</h4><p>@TestPropertySource 中的 locations, value 属性用以指定配置文件。三种方式：</p>
-<ol>
-<li>简平式 “fig/fig.properties” 指定包相对路径与当前测试文件同一个包</li>
-<li>以 slash <code>/</code> 开头指定绝对路径</li>
-<li>以资源协议开头的路径 “classpath:,file:, http:” 使用指定协议定位资源</li>
-</ol>
-<ul>
-<li>可在 @TestPropertySource 中指定 properties 属性指定 key-value 属性配置，其拥有最高优先权。key-value 语法有三种形式：</li>
-</ul>
-<ol>
-<li>key=value</li>
-<li>key:value</li>
-<li>key value</li>
-</ol>
-<ul>
-<li>从 Spring Framework 5.2 开始，同一个测试类中可以指定多个 @TestPropertySource 后者覆盖前者。</li>
-<li>还可以使用派生自 @TestPropertySource 组合多个注解添加配置数据，但原生的 @TestPropertySource 优先权更高会覆盖派生注解。</li>
-</ul>
-<h4 id="1-1-1-6-Default-Properties-File-Detection"><a href="#1-1-1-6-Default-Properties-File-Detection" class="headerlink" title="1.1.1.6. Default Properties File Detection"></a>1.1.1.6. Default Properties File Detection</h4><p>当 @TestPropertySource 注解没有指定属性数据位置，当会按 clathpath: 协议自动检测与测试类同名的属性文件。</p>
-<h4 id="1-1-1-7-Precedence"><a href="#1-1-1-7-Precedence" class="headerlink" title="1.1.1.7. Precedence"></a>1.1.1.7. Precedence</h4><p>使用 @TestPropertySource 注解添加的配置值优先级超过系统环境变量、java 系统属性、@PropertySource 注解等方式添加的配置值，其中 properties 属性添加的 inlined 属性高于 location 引入的外部配置文件。但 @DynamicPropertySource 注解引入的配置值有更高的优先级。</p>
-<h4 id="1-1-1-8-Inheriting-and-Overriding-Test-Property-Source"><a href="#1-1-1-8-Inheriting-and-Overriding-Test-Property-Source" class="headerlink" title="1.1.1.8. Inheriting and Overriding Test Property Source"></a>1.1.1.8. Inheriting and Overriding Test Property Source</h4><p>@TestPropertySource 注解同样有属性 inheritLocations, inheritProperties 用以指定是否自上继承配置数据，默认为 true 。</p>
-<h4 id="1-1-1-9-Context-Configuration-with-Dynamic-Property-Sources"><a href="#1-1-1-9-Context-Configuration-with-Dynamic-Property-Sources" class="headerlink" title="1.1.1.9. Context Configuration with Dynamic Property Sources"></a>1.1.1.9. <a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-inheritance">Context Configuration with Dynamic Property Sources</a></h4><ul>
-<li>@DynamicPropertySource 注解需要用在一个静态方法上，方法参数为是一个 DynamicPropertyRegistry;</li>
-<li>需要指定外部容器在测试类上 @TestContainer</li>
-<li>@DynamicPropertySource 有比 @TestPropertySource 更高的优先级</li>
-</ul>
-<h4 id="1-1-1-10-Loading-a-WebApplicationContext"><a href="#1-1-1-10-Loading-a-WebApplicationContext" class="headerlink" title="1.1.1.10. Loading a WebApplicationContext"></a>1.1.1.10. <a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-web">Loading a WebApplicationContext</a></h4><p>直接注入 Mock, Context 使用</p>
-<h4 id="Context-Cache"><a href="#Context-Cache" class="headerlink" title="Context Cache"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testcontext-ctx-management-web">Context Cache</a></h4><p>上下文缓存，使用了缓存，后续测试会更快。</p>
-<p>使用上下文缓存只在于测试类使用了相同的上下文，且在同一次编译启动中才能使用，如果测试类使用了不同的上下文（@ContextConfiguration initializers, classes, location）profiles, properties ，或者测试之间重启了 Context 都不能使用缓存。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/04/21/java/JMM/Volatile/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-04-21</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="1-Java-Volatile"><a href="#1-Java-Volatile" class="headerlink" title="1. Java Volatile"></a>1. Java Volatile</h1><!-- TOC -->
-
-<ul>
-<li><a href="#1-java-volatile">1. Java Volatile</a><ul>
-<li><a href="#11-volatile-in-double-check-singleton">1.1. Volatile in Double Check Singleton</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-
-<p>java 中关键字 volatile 的使用 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AE0oeKiCU_aetfkW9Qk0cg">reference</a></p>
-<ul>
-<li>volatile 的做法：<ul>
-<li>使用内存屏障让前后的指令重排（为提升效率，而在编译运行期对指令进行重排）都不干扰所修辞的变量；</li>
-<li>单个线程里对共享变量的更新强制刷新到主内存中，而使其他线程中本地内存中的共享变量失效。</li>
-<li>不保证原子性，<ul>
-<li>保证原子性：使用 <code>synchronize</code></li>
-<li>使用 <code>lock</code></li>
-<li>前两种太重，可使用 Atomic 包，其使用 CAS 循环实现原子操作。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-1-Volatile-in-Double-Check-Singleton"><a href="#1-1-Volatile-in-Double-Check-Singleton" class="headerlink" title="1.1. Volatile in Double Check Singleton"></a>1.1. Volatile in Double Check Singleton</h2><p>双检锁单例中的共享变量需要加上 <code>volatile</code> 才能真正做到正确，否则在多线程情况下出现问题。</p>
-<p>单例模式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Singleton ins;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ins == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ins == <span class="keyword">null</span>) &#123;</span><br><span class="line">                ins = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ins;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>当 <code>int = new Instance()</code> 这一行代码并非原子性，其指定分为 3 个 :<ul>
-<li>a. memory = allocate() 分配内存；</li>
-<li>b. ctorInstance(memory) 初始化对象；</li>
-<li>c. ins=memory 设置 ins 指向刚分配的地址。</li>
-</ul>
-</li>
-<li>a -&gt; b -&gt; c 三条指令可能会被重排 a -&gt; c -&gt; b 的顺序。在双检锁的案例中，当线程1走到 c 时，其他线程走到第一层检查 ins 是否为空时，会得到 false 的结果，因为此时 ins 已指向了一个内存地址，而线程1 此时还未为其初始化，而出现 bug 。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng">
+    <p class="logot">
+         Kang Shan 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            My Tech Blogs 
+        </h3>
+    </p>
 </div>
-<div class="paginator">
+
+<div class="hd">
+    <ol class="breadcrumb">
+        
+            <li><a class="ba" href="/%E5%B0%8F%E5%B0%8F%E7%A0%81%E5%86%9C">关于我👀</a></li>
+        
+            <li><a class="ba" href="https://kangshanr.github.io/">访问主站🎉</a></li>
+        
+            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/KangShanR">Github🐒</a></li>
+        
+    </ol>
+    <hr class="breadcrumbhr">
+</div>
+<div class="hd">
+    
     
         
-        <a class="prev" href="/page/3/">
-            <i class="iconfont icon-prev"></i>
-            Prev
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2020年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2020/08/12/java/File/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    August 12th
+                </div>
+            </div>
         </a>
+    
         
         
-        <a class="next" href="/page/5/">
-            Next
-            <i class="iconfont icon-next"></i>
+        <a class="flink" href="/2020/08/12/java/Garbege%20Collection/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    August 12th
+                </div>
+            </div>
         </a>
+    
         
+        
+        <a class="flink" href="/2020/08/07/java/ServiceProvider/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    August 7th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/23/spring/SpringBoot-Features/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    July 23rd
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/22/spring/SpringBoot-SpringApplication/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    July 22nd
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/19/spring/SpringBoot-ExternalizedConfiguration/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    July 19th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/06/11/java/JMM/lock/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    June 11th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/12/linux/linux/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    May 12th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/21/spring/Spring-Test/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    April 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/21/java/JMM/Volatile/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    April 21st
+                </div>
+            </div>
+        </a>
     
 </div>
-
-    </div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Kang | <a target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
 </div>
-<footer class="footer-social">
-    
-    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
-        <i class="iconfont icon-github"></i>
-    </a>
-    
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
 
-    
+<script src="/libs/jquery.min.js"></script>
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
-    
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2021
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
-    </div>
-</footer>
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="/js/index.js"></script>
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    
-    var gitment = new Gitment({
-        id: '',
-        owner: 'KangShanR',
-        repo: '',
-        oauth: {
-            client_id: '074819c3098d17273370',
-            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
-        }
-    });
-    gitment.render('comment-container');
-    
-
-</script>
 </html>

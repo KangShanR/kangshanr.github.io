@@ -1,577 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kang Shan</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Kang Shan
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
     
 <link rel="stylesheet" href="/css/style.css">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
-
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
 <meta name="generator" content="Hexo 5.4.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
-
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                Home
-            </a>
-            
-
-            
-            <a href="/archives" class="header-nav-link">
-                Archives
-            </a>
-            
-
-            
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
-
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
-        </div>
-
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">Home</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">Archives</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">Tags</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">About</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/21/spring/filter/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-21</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h1><blockquote>
-<p>filter in tomcat web project。<a target="_blank" rel="noopener" href="https://docs.oracle.com/javaee/7/api/">referrence</a></p>
-</blockquote>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>过滤器用于在每次请求到达 servlet 前对请求进行处理。</p>
-<p>过滤器中的 dofilter(request, response, filterChain) 方法是过滤器的核心方法。官方对于此方法说法：</p>
-<blockquote>
-<p>The doFilter method of the Filter is called by the container each time a request/response pair is passed through the chain due to a client request for a resource at the end of the chain. The FilterChain passed in to this method allows the Filter to pass on the request and response to the next entity in the chain.<br>A typical implementation of this method would follow the following pattern:</p>
-</blockquote>
-<ol>
-<li>Examine the request</li>
-<li>Optionally wrap the request object with a custom implementation to filter content or headers for input filtering</li>
-<li>Optionally wrap the response object with a custom implementation to filter content or headers for output filtering</li>
-<li>Either invoke the next entity in the chain using the FilterChain object (chain.doFilter()),<ol>
-<li>or not pass on the request/response pair to the next entity in the filter chain to block the request processing</li>
-</ol>
-</li>
-<li>Directly set headers on the response after invocation of the next entity in the filter chain.</li>
-</ol>
-<ul>
-<li>注册： 在 web.xml 中使用 <code>&lt;filter&gt;</code> 与 <code>&lt;filter-mapping&gt;</code> 标签进行注册。过滤链的先后顺序与 web.xml 中 <code>&lt;filter-mapping&gt;</code> 的顺序一致。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/21/spring/groovy/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-21</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="groovy"><a href="#groovy" class="headerlink" title="groovy"></a>groovy</h1><p><a target="_blank" rel="noopener" href="https://groovy-lang.org/differences.html">reference</a></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>groovy 基于 JVM 运行，同样需要编译，但编译后与 java 编译后不一样。</p>
-<h3 id="groovy-与-java-不同之处"><a href="#groovy-与-java-不同之处" class="headerlink" title="groovy 与 java 不同之处"></a>groovy 与 java 不同之处</h3><ol>
-<li>groovy 不用显式 import 包；</li>
-<li>groovy 方法调用在运行时决定变量类型，而 java 是静态信息类型，在编译时根据其定义的类型决定方法调用。</li>
-<li>数组初始化与闭包<ol>
-<li>groovy 数组初始化： <code>new int[] ints = [1,2,3];</code></li>
-<li>java 数组初始化： <code>new int[] ints = &#123;1,2,3&#125;;</code></li>
-<li>在 groovy 中使用大括号是闭包：<code>Runnable r = &#123;println &quot;hello&quot;&#125;</code><ol>
-<li>groovy 取代 java8 中的 lambda 的就是闭包。</li>
-<li>java lambda expression: ``Runnable b = () -&gt; System.out.println(“run”);`</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>to be continued</li>
-</ol>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/21/java/bridge%20method/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-21</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Bridge-Method"><a href="#Bridge-Method" class="headerlink" title="Bridge Method"></a>Bridge Method</h1><p><a target="_blank" rel="noopener" href="http://stas-blogspot.blogspot.com/2010/03/java-bridge-methods-explained.html#:~:text=Bridge%20methods%20in%20Java%20are,the%20actual%20method%20being%20invoked.">reference</a></p>
-<p>简言之，继承过来的与范型签名的方法都是 bridge method。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/21/linux/command%20line/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-21</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h1><h2 id="vim-编辑器命令行"><a href="#vim-编辑器命令行" class="headerlink" title="vim 编辑器命令行"></a>vim 编辑器命令行</h2><blockquote>
-<p>以下命令是在编辑整个文件时（未进入到文件编辑内部时）进行行操作。</p>
-</blockquote>
-<p><strong>note:</strong></p>
-<ul>
-<li>行编辑时， backspace 只会让光标向前行动，不能删除前一个字符</li>
-<li>行编辑时，使用 delete 可以光标所在处后单个字符进行删除</li>
-</ul>
-<p><strong>文件操作相关命令:</strong></p>
-<ul>
-<li>从行编辑模式进行到文本编辑模式命令： i</li>
-<li>从文本编辑模式进行到行模式命令： esc</li>
-<li>当进行到行编辑模式时：<ul>
-<li>:w 保存（write）</li>
-<li>:wq 保存退出(write quite)</li>
-<li>:q! 强制退出并不保存</li>
-<li>:w (newfile) 将另存为一个新的文件，原文件保持不变。如果新文件已经存在，可以在 <code>:w</code> 后加上 <code>!</code> 强制覆盖</li>
-<li>:x 保存文件并退出，此命令与 <code>:wq</code> 的区别在于：此命令只有在有过修改时才会保存，而 <code>:wq</code> 命令不管有没有修改都会强制进行保存更新修改时间。</li>
-</ul>
-</li>
-</ul>
-<h3 id="行文本编辑命令"><a href="#行文本编辑命令" class="headerlink" title="行文本编辑命令"></a>行文本编辑命令</h3><ul>
-<li><n>dd 剪切光标所在行起的 n 行</li>
-<li>dd 剪切光标所在行</li>
-<li>d0 剪切光标所在处到行首</li>
-<li>d$ 剪切光标所在处到行尾</li>
-<li><n>yy 复制光标所在行起的 n 行</li>
-<li>p 粘贴</li>
-<li>u 撤销操作</li>
-<li>ctrl + r 恢复撤销</li>
-<li>:(n),(m) m (j) 将 n 行到 m 行移动到 j 行之后。（移动到篇首就将 j 设置为 0）</li>
-<li>:(n),(m) co (j) 将 n 行到 m 行复制到 j 行之后。（复制到篇首就将 j 设置为 0）</li>
-<li>:(n),(m) de 将 n 行到 m 行删除</li>
-</ul>
-<p><strong>查看日志用</strong></p>
-<ul>
-<li>/(chars) 查找文档中的字符，可用正则<ul>
-<li>进入到筛选高亮界面时</li>
-<li>n 切换到下一个</li>
-<li>N 上一个</li>
-</ul>
-</li>
-</ul>
-<h3 id="设置-vim-编辑器的行号显示"><a href="#设置-vim-编辑器的行号显示" class="headerlink" title="设置 vim 编辑器的行号显示"></a>设置 vim 编辑器的行号显示</h3><p><strong>临时设置</strong></p>
-<ul>
-<li>在行行编辑模式下，执行命令： <code>:set nu</code> 或 <code>:set number</code></li>
-<li>取消行号显示： <code>:set nonu</code> 或 <code>:set nonumber</code></li>
-</ul>
-<p><strong>在配置文件中设置默认显示</strong></p>
-<ul>
-<li>在用户模块配置：在 <code>~.vimrc</code> 中写入命令 <code>set nu</code> 即可以配置（如果用户目录中没有此配置文件，直接 使用 <code>vi ~.vimrc</code> 命令新建并写入即可）</li>
-<li>在 git 模块中配置： 在 git 安装目录中 <code>/etc/vimrc</code> 定稿命令行 <code>set nu</code><ul>
-<li>以上两种方式的区别在于，用户模块只对该用户有效，而 git 模块是使用 git 都会有效</li>
-</ul>
-</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/21/java/JMM/BlockingQueue/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-21</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h1><h2 id="对于操作阻塞队列响应的四种策略"><a href="#对于操作阻塞队列响应的四种策略" class="headerlink" title="对于操作阻塞队列响应的四种策略"></a>对于操作阻塞队列响应的四种策略</h2><ol>
-<li>报出异常</li>
-<li>返回特殊值 null / 0</li>
-<li>一直阻塞</li>
-<li>限制时间内阻塞</li>
-</ol>
-<table BORDER CELLPADDING=3 CELLSPACING=1>
- <caption>Summary of BlockingQueue methods</caption>
-  <tr>
-    <td></td>
-    <td ALIGN=CENTER><em>Throws exception</em></td>
-    <td ALIGN=CENTER><em>Special value</em></td>
-    <td ALIGN=CENTER><em>Blocks</em></td>
-    <td ALIGN=CENTER><em>Times out</em></td>
-  </tr>
-  <tr>
-    <td><b>Insert</b></td>
-    <td>{@link #add add(e)}</td>
-    <td>{@link #offer offer(e)}</td>
-    <td>{@link #put put(e)}</td>
-    <td>{@link #offer(Object, long, TimeUnit) offer(e, time, unit)}</td>
-  </tr>
-  <tr>
-    <td><b>Remove</b></td>
-    <td>{@link #remove remove()}</td>
-    <td>{@link #poll poll()}</td>
-    <td>{@link #take take()}</td>
-    <td>{@link #poll(long, TimeUnit) poll(time, unit)}</td>
-  </tr>
-  <tr>
-    <td><b>Examine</b></td>
-    <td>{@link #element element()}</td>
-    <td>{@link #peek peek()}</td>
-    <td><em>not applicable</em></td>
-    <td><em>not applicable</em></td>
-  </tr>
- </table>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/21/java/JMM/Java%20Merory%20Model/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-21</span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Java-Memory-Model"><a href="#Java-Memory-Model" class="headerlink" title="Java Memory Model"></a>Java Memory Model</h1><p><a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/">reference</a></p>
-<h2 id="JSR-133-Java-Memory-Model-FAQ"><a href="#JSR-133-Java-Memory-Model-FAQ" class="headerlink" title="JSR 133 (Java Memory Model) FAQ"></a>JSR 133 (Java Memory Model) FAQ</h2><p><a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html">reference</a></p>
-<h3 id="How-does-synchronization-do"><a href="#How-does-synchronization-do" class="headerlink" title="How does synchronization do?"></a>How does synchronization do?</h3><ul>
-<li>Synchronization 同步存在多方面含义。最为人所知的是恒定排他性：一旦某个线程获取到 monitor ，monitor 上的同步意味着一个线程进入了 monitor 所保护的同步块，在此线程退出此同步块前没有其他线程能够再进入。</li>
-<li>同步同时保证一个线程在进入同步块前与中的写对于其他在相同 monitor 的线程保持可预测的可见性。当退出同步块，会释放 monitor ，这会将缓存中的数据 flush 到主存中，让此线程的写对其他线程可见。在进入同步块前，我们需要获取 monitor ，这带来的内存效应是将处理器 processor 的缓存置为无效，这样变量就必须从主存中重载。这样我们看到的效果就是前一次释放的所有写都可见。</li>
-<li>讨论缓存时并不意味问题只发生在多核心机器中，单核心机器中轻易地产生重排序。比如：编译器不可能在在获取前或释放后移动代码。我们在讨论获取与释放缓存时是省了很多可能的效果。</li>
-<li><strong>新 JMM 语义创建了内存操作（read field, write field, lock, unlock）与其他线程的操作（start, join）的局部顺序，在此语义下，一些操作 happens-before 其他操作。当一个操作 happens-before 另一个操作，第一个操作保证排在第二个操作前，且对于第二个操作来说，第一个的所有操作对第二个可见。</strong>其中规则包括：<ul>
-<li>程序命令指定下，一个线程所有操作都发生在后一个线程所有操作前；</li>
-<li>一个 monitor 的解锁 unlock 发生在此 monitor 后来的锁 lock 之前；</li>
-<li>同一个 volatile 下，写发生在后来的读之前；</li>
-<li>一个线程的 start() 方法调用执行发生成这个线程的所有行为（action）之前；</li>
-<li>一个线程的所有行为 action 发生在其 join() 方法调用成功返回的线程之前。</li>
-</ul>
-</li>
-<li>这就意味着：同一个 monitor 保护下，一个退出同步块之前的线程可见的所有内存操作对任何进入同步块后线程都是可见的。因为所有的内存操作在 release 是发生，而所有的 release 又在 acquire 前发生。</li>
-</ul>
-<p>**Important Note:**为保证构建正确的 happens-before 关系，两个线程需要在同一个 monitor 上进行同步。线程Ａ同步在X上的可见对同步在Ｙ上的线程Ｂ并不可见。release 与 acquire 需要匹配在同一个 monitor 上才能执行正确的语义。</p>
-<h3 id="How-does-a-final-fields-work-under-the-new-JMM"><a href="#How-does-a-final-fields-work-under-the-new-JMM" class="headerlink" title="How does a final fields work under the new JMM?"></a>How does a final fields work under the new JMM?</h3><ul>
-<li>对象的常量字段都在其构造器内赋值。</li>
-<li>一旦构造完成，即使没有添加 synchronization，常量字段的数据可以被其他所有线程可见。此外，常量字段所引用的对象或数组的可见值将被更新到与常量字段一样保持最新。</li>
-<li>一个对象正确的构造意味着：在构造期间对象的引用没有“逃逸”。<strong>换句话说：不要将被构造对象的引用置于任何其他线程可见的位置，不要将其指向静态字段，不要将其注册为其他任何对象的监听器，等等。这些操作应该在对象构造完成之后进行，而不是在构造期间进行。</strong></li>
-<li>正确构造同样保证了引用常量字段所指向的对象或数组值在构造后依然是最新的值，所以可以让常量的指针指向对象或数组，而不用担心其他线程看到正确的引用看不到引用的值。但在这里最新的值仅仅是指构造完成后，不是所有的阶段。</li>
-<li>对于一个不可变对象（所有字段都是常量）被一个线程构造完成后，如果其他所有线程想要正确可见，仍然需要使用 synchronization 。并没有其他途径可以保证，这就要求程序获取常量字段代码对于并发的管理理解深入而细致，</li>
-<li>JMM 对于使用 JNI 修改常量字段的行为并没有定义。</li>
-</ul>
-<h3 id="What-does-volatile-do"><a href="#What-does-volatile-do" class="headerlink" title="What does volatile do?"></a>What does volatile do?</h3><ul>
-<li>volatile 字段用于线程间状态交流。对于 volatile 字段的读取都会获取到其他程的最后一次写。volatile 被设计用于不接受因缓存（cache）或指令重排（reordering）导致的 stale 值的字段。</li>
-<li>volatile 维持半同步，用于标识字段以让在 processor 缓存中，被一个线程修改后立即被 flush 到主存中，编译器与运行时被禁止将 volatile 字段值置于 processor 寄存器中，从而保证其他线程对其修改可见。</li>
-<li>指令重排限制：<ul>
-<li>老版 JMM 不允许对 volatile 字段进行 reordering ，但可以对非 volatile 字段进行重排。这让 volatile 字段成了一个线程间信号条件的方式。</li>
-<li>新版 JMM 除会限制字段不能被指令重排（reordering），同时要求 volatile 字段周围的字段都不能轻易被 reordering 。</li>
-<li>volatile 字段在修改与释放 monitor 内存效果一致（将 processor 缓存数据 flush 到主存中，从而其他线程可见），在读取与获取 monitor 内存效果一致（将本地处理器缓存中数据置为无效，变量值不得不从主存中读取）。</li>
-</ul>
-</li>
-</ul>
-<p><strong>Important Note:</strong></p>
-<ul>
-<li>多线程访问 volatile 变量都是为了合适地设置 happens-before 关系。并不是线程A在写 volatile field f 时所有可见在线程Ｂ访问 volatile field g 后都可见。释放与获取锁需要匹配到相同的 volatile 字段才能保证语义正确。</li>
-</ul>
-<h3 id="Does-the-new-JMM-fix-the-“double-checked-locking”-problem"><a href="#Does-the-new-JMM-fix-the-“double-checked-locking”-problem" class="headerlink" title="Does the new JMM fix the “double-checked locking” problem?"></a>Does the new JMM fix the “double-checked locking” problem?</h3><p>双检锁问题</p>
-<ul>
-<li>单例模式中很多人喜欢使用双检锁模式，认为其可以降低线程阻塞概率。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//double-checked locking, Don&#x27;t do like this!</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Ins ins = <span class="keyword">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Ins <span class="title">getIns</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ins == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ins == <span class="keyword">null</span>)&#123;</span><br><span class="line">                ins = <span class="keyword">new</span> Ins();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ins;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>上段代码的问题在于：在 synchronized 代码块中， ins 的初始化与赋值指令可能会被编译器或缓存重排，从而导致 ins 在某一时期内依然是个半初始化的对象，在这期间 synchronized 块外部其他读取 ins 的线程就会读取到这个半初始化的 ins 对象，就会产生使用未初始化完成的 ins 错误。</li>
-<li>在老版JMM 中添加 volatile 关键字到 ins 字段前并不能解决问题，在 JVM1.5 新版 JMM 的 volatile 可以解决问题。在使用 volatile 修辞后的 ins 并不会出现指令重排，也构成了内部线程初始化与外部线程读取的 happens-before 关系（一旦 ins 开始初始化，其他线程必须对其结果可见，也就是需要在其初始化完成前才读取到）。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/02/05/java/JMM/Lock%20Condition/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-02-05</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h1><h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><blockquote>
-<p>Condition 源码文档翻译</p>
-</blockquote>
-<ul>
-<li>Condition 区别于 Object monitor 方法（wait, notify, notifyAll）：联合任意 Lock 实现，对于第个 object 提供多个等待区（wait-sets）。Lock 代替 synchronized 方法语句，Condition 代替 Object monitor 方法。</li>
-<li>Condition （也叫条件变量 condition variables、条件队列 condition queues）提供了一种挂起一个线程执行的方式，线程挂起直到另一个线程通过在某状态为 true 时通知为止。因为这种共享的状态信息发生在不同的线程中，所以其必须被保护，一个某种形式的 lock 与 condition 相关联。等待一个 condition 提供的关系属性是其原子地释放其关联的 lock 并挂起当前线程，就像 <a href="./Thread.md">Object.wait()</a> 。</li>
-<li>Condition 实例与 Lock 实例对象严格绑定的，要获取指定 Lock 的 Condition 实例对象，调用方法 Lock 实例的 newCondition() 方法。</li>
-<li>一个 Condition 可以实现与 Object monitor 方法不一样的行为、语义，比如：通知的顺序保证、执行通知时不需要持有 lock 。如果某个 Condition 实现提供了某项指定语义，需要在其文档中加以说明。</li>
-<li>需要注意的是, Condition 对象与其他普通对象无异，同样可以被用于 synchronized 语句中，同样可以调用其 monitor （wait/notification）方法。使用 Condition 实例作为锁，与 Condition 关联的 Lock 对象与调用 Condition 的 signaling(),waiting() 方法并没有特殊关系。但建议不要用 Condition 实例当作 synchronized 锁对象，以避免歧义。</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/30/spring/SpringIoC-ExtendPoints/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-01-30</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Spring-Container-Extend-Points"><a href="#Spring-Container-Extend-Points" class="headerlink" title="Spring Container Extend Points"></a>Spring Container Extend Points</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-extension">Container Extend Points</a></p>
-<p>spring 提供两种后处理器：</p>
-<ol>
-<li>bean 后处理器 对容器中的 bean 进行后处理 加强<ol>
-<li>bean 后处理器是一种特殊的 bean 无需 id 属性，不对外提供服务对 容器内其他 bean 进行后处理，其他的 bean 创建成功后，对 bean 进行近一步的增强处理。</li>
-<li>bean 后处理器必须实现 BeanPostProcessor 接口。该接口有两个方法：<ol>
-<li>Object postProcessBeforeInitialization(Object bean, String beanName)</li>
-<li>Object postProcessAfterInitialization(Object bean, String beanName)<ol>
-<li>这两个方法的参数：bean 是即将进行后处理的 bean ， beanName 是这个 bean 在容器中配置的 id</li>
-<li>before 方法用于 bean 初始化（调用 afterPropertiesSet; 调用 init-method 指定的方法）之前， after 方法用于 bean 初始化之后。</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>如果使用 BeanFactory 作为 spring 容器，必须手动注册 bean 后处理器，必须获取 bean 后处理器实例</li>
-</ol>
-</li>
-<li>容器后处理器 对 ioc 容器进行加强处理，增加其功能<ol>
-<li>负责处理容器本身，用于增加容器功能</li>
-<li>容器后处理器必须实现 BeanFactoryPostProcessor 接口，其中方法：<ol>
-<li>postProcessBeanFactory(ConfigurableListableBeanFactory BeanFactory)</li>
-</ol>
-</li>
-<li>同样，如果 使用 BeanFactory 作为容器，必须手动调用容器后处理器来处理 BeanFactory 容器。</li>
-</ol>
-</li>
-</ol>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/22/java/Pattern/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-01-22</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h1><h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><ul>
-<li>split(CharSequence cs, int limit) 使用正则表达式分割字串,limit 用以指定数量，当为非正数时不限制数量，但为　0   时会丢弃最后面的空串 <code>&quot;&quot;</code>;</li>
-<li>split(cs) = split(cs, 0)</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/15/mysql/SELECT%20Statement/"></a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-01-15</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/programming/">programming</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h1><h2 id="Join-Clause"><a href="#Join-Clause" class="headerlink" title="Join Clause"></a>Join Clause</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">reference</a></p>
-<ul>
-<li><p>在 MYSQL 中，<code>JOIN</code>, <code>CROSS JOIN</code> 与 <code>INNER JOIN</code> 在语法是等同的，彼此之间可以相互替换。但在标准 sql 中它们有所区别，inner join 使用 on 子句，而 cross join 使用其他的。</p>
-</li>
-<li><p>表引用 table_reference 可使用别名：<code>tbl_name as alias_name</code> 或 <code>tbl_name alias_name</code>。</p>
-</li>
-<li><p>table_subquery 也叫派生表或子查询，这样的一个子查询必须有一个结果集表名：<code>SELECT * FROM (SELECT 1, 2, 3) AS t1;</code></p>
-</li>
-<li><p>单次 join 最多引用 61 张表，这其中包括派生表和外部查询块的 FROM 子句视图。</p>
-</li>
-<li><p><code>INNER JOIN</code> 与 <code>,</code> 在语义上等价于没有 join 条件，都会在指定表间结果产生笛卡尔积结果。（Cartesian product 每张表的数据互相匹配）。但同时也可以在其后加上 on join条件。</p>
-<ul>
-<li>但 <code>,</code> 的优先级低于其他 INNER JOIN,CROSS JOIN,LEFT JOIN 等。如果与这些操作符混用，an error of the form Unknown column ‘col_name’ in ‘on clause’ may occur。</li>
-</ul>
-</li>
-<li><p>在 ON 的查询条件 search_condition 可以是 where 子句中可以使用的任何条件表达式。但一般来讲，ON 子句用来指定怎么 join ，而 WHERE 用来指定哪些行进入到结果集中。</p>
-</li>
-<li><p>如果使用了 LEFT JOIN ON／USING 且右表没有数据行可匹配，则右表字段都会是 NULL.可以使用这种形式语句查询表中在另外一张表中没有匹配的数据。</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> left_tbl.<span class="operator">*</span> <span class="keyword">FROM</span> left_tbl <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> right_tbl <span class="keyword">ON</span> left_tbl.id <span class="operator">=</span> right_tbl.id <span class="keyword">WHERE</span> right_tbl.id <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>USING 语法：在 LEFT JOIN 语句中，与 <code>ON</code> 作用类似，但 USING 不用指定 l.id = r.id，是直接要求两个表字段名一致而直接指定多表共有的字段值一致就 JOIN 成功。eg：<code>SELECT * FROM left_table LEFT JOIN right_table USING(id);</code> = <code>SELECT * FROM left_table LEFT JOIN right_table ON left_table.id = right_table.id;</code></p>
-</li>
-<li><p><code>USING(join_column_list)</code> 子句将多个列放入参数中，这样要求多表都有这些列名存在。</p>
-</li>
-<li><p><code>NATURAL [LEFT] JOIN</code> 等同于使用 <code>INNER JOIN</code> 或 <code>LEFT JOIN</code> 并使用 <code>USING</code> 子句指定两表同名的列在其中。</p>
-</li>
-<li><p><code>RIGHT JOIN</code> 与 <code>left join</code> 工作原理类似，但为保持代码跨库端口化，推荐使用 <code>left join</code>。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/partitioning-selection.html">PARTITION</a>在写DDL时将表分片，指定范围内为一片，查询时可以直接查询片内数据。（不知道这样是否可以将索引单片内查询而提高查询效率？）</p>
-</li>
-</ul>
-
-                
-            </div>
-        </article>
-    
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/male.png" class="logopng">
+    <p class="logot">
+         Kang Shan 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+            My Tech Blogs 
+        </h3>
+    </p>
 </div>
-<div class="paginator">
+
+<div class="hd">
+    <ol class="breadcrumb">
+        
+            <li><a class="ba" href="/%E5%B0%8F%E5%B0%8F%E7%A0%81%E5%86%9C">关于我👀</a></li>
+        
+            <li><a class="ba" href="https://kangshanr.github.io/">访问主站🎉</a></li>
+        
+            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/KangShanR">Github🐒</a></li>
+        
+    </ol>
+    <hr class="breadcrumbhr">
+</div>
+<div class="hd">
+    
     
         
         
-        <a class="next" href="/page/2/">
-            Next
-            <i class="iconfont icon-next"></i>
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2021年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2021/02/21/spring/filter/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 21st
+                </div>
+            </div>
         </a>
+    
         
+        
+        <a class="flink" href="/2021/02/21/spring/groovy/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/02/21/java/bridge%20method/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/02/21/linux/command%20line/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/02/21/java/JMM/BlockingQueue/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/02/21/java/JMM/Java%20Merory%20Model/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 21st
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/02/05/java/JMM/Lock%20Condition/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    February 5th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/01/30/spring/SpringIoC-ExtendPoints/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    January 30th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/01/22/java/Pattern/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    January 22nd
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2021/01/15/mysql/SELECT%20Statement/">
+            <div class="list">
+                <div class="postname">
+                    
+                </div>
+                <div class="posttime">
+                    January 15th
+                </div>
+            </div>
+        </a>
     
 </div>
-
-    </div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Kang | <a target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
 </div>
-<footer class="footer-social">
-    
-    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
-        <i class="iconfont icon-github"></i>
-    </a>
-    
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
 
-    
+<script src="/libs/jquery.min.js"></script>
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
-    
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2021
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
-    </div>
-</footer>
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="/js/index.js"></script>
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    
-    var gitment = new Gitment({
-        id: '',
-        owner: 'KangShanR',
-        repo: '',
-        oauth: {
-            client_id: '074819c3098d17273370',
-            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
-        }
-    });
-    gitment.render('comment-container');
-    
-
-</script>
 </html>
