@@ -72,6 +72,8 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+layout: tags
+
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
 meta_generator: true
@@ -97,7 +99,7 @@ exclude: _drafts/*
 ignore: 
 
 github_username: KangShanR
-weibo_username: hey_you_go
+weibo_username: 
 zhihu_username:
 
 comment:
@@ -120,4 +122,4 @@ deploy:
   repo: https://github.com/KangShanR/kangshanr.github.io
   branch: master
   name: KangShanR
-  token: '13158507745zzq'
+  token: 
