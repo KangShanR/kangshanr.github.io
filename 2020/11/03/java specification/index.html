@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,23 +94,23 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-overview"><span class="toc-text">java overview</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java-platform"><span class="toc-text">java platform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shadowing"><span class="toc-text">shadowing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-IO"><span class="toc-text">java IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Streams"><span class="toc-text">Data Streams</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-Streams"><span class="toc-text">Object Streams</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-java-platform"><span class="toc-text">.1. java platform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-shadowing"><span class="toc-text">.2. shadowing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-java-IO"><span class="toc-text">.3. java IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Data-Streams"><span class="toc-text">.3.1. Data Streams</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Object-Streams"><span class="toc-text">.3.2. Object Streams</span></a></li></ol></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="java-overview"><a href="#java-overview" class="headerlink" title="java overview"></a>java overview</h1><p>关于 java 的概述文档翻译。<a target="_blank" rel="noopener" href="https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html">官方文档</a></p>
-<h2 id="java-platform"><a href="#java-platform" class="headerlink" title="java platform"></a>java platform</h2><ul>
+            <p>关于 java 的概述文档翻译。<a target="_blank" rel="noopener" href="https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html">官方文档</a></p>
+<h2 id="1-java-platform"><a href="#1-java-platform" class="headerlink" title=".1. java platform"></a>.1. java platform</h2><ul>
 <li>java SE：java standard edition。java 标准版本，包括了 java 虚拟机，各类基础的 API 。<span id="more"></span></li>
 <li>java EE：java enterprise edition。构建于 java SE之上，提供 API 与运行时环境，用来开发、运行大型复杂安全可靠的网络应用。</li>
 <li>java ME：java micro edition。提供小型虚拟机与 API，用以在小型设备（如：手机）开发应用。用于小型设备应用开发的 API 常为特定的类库，因而java ME 的 API 是 java SE 所提供的 API 的子集。java ME 应用请求的服务器一般为 java EE 开发的。</li>
 <li>javaFX： JavaFX 平台用于创建富网络应用，这些应用常用轻量级用户交互 API 开发。JavaFX 应用通过硬件加速绘制器与媒体引擎，达到高性能、现代外观的效果。同时也能够使用高级 APIs 连接网络数据。JavaFX 应用也可作为 Java EE 服务的客户端。</li>
 </ul>
-<h2 id="shadowing"><a href="#shadowing" class="headerlink" title="shadowing"></a>shadowing</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html#shadowing">tutorial</a></p>
+<h2 id="2-shadowing"><a href="#2-shadowing" class="headerlink" title=".2. shadowing"></a>.2. shadowing</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html#shadowing">tutorial</a></p>
 <p>定义到内部同名变量、方法参数名会 shadows 外部的变量或参数。方法中可以使用 <code>this.x</code> 调用对象的变量，而在内部类中可以使用 <code>Outer.this.x</code> 调用。</p>
-<h2 id="java-IO"><a href="#java-IO" class="headerlink" title="java IO"></a>java IO</h2><h3 id="Data-Streams"><a href="#Data-Streams" class="headerlink" title="Data Streams"></a>Data Streams</h3><p>使用 Data Streams 可以讲IO 基本类型数据与 String。</p>
-<h3 id="Object-Streams"><a href="#Object-Streams" class="headerlink" title="Object Streams"></a>Object Streams</h3><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/essential/io/objectstreams.html">reference</a></p>
+<h2 id="3-java-IO"><a href="#3-java-IO" class="headerlink" title=".3. java IO"></a>.3. java IO</h2><h3 id="3-1-Data-Streams"><a href="#3-1-Data-Streams" class="headerlink" title=".3.1. Data Streams"></a>.3.1. Data Streams</h3><p>使用 Data Streams 可以讲IO 基本类型数据与 String。</p>
+<h3 id="3-2-Object-Streams"><a href="#3-2-Object-Streams" class="headerlink" title=".3.2. Object Streams"></a>.3.2. Object Streams</h3><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/essential/io/objectstreams.html">reference</a></p>
 <ul>
 <li>使用 Java Object Stream 可以 IO 引用类型数据。Java Object 实现 Serializable 接口即可被 IO 。</li>
 <li>Object stream 类是 ObjectInputStream 和 ObjectOutputStream，分别实现了 ObjectInput 与 ObjectOutput ，同时这两个又是 DataInput 与 DataOutput 的子接口，所以 object stream 同样包含了基本数据值与对象值。</li>
@@ -165,10 +161,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

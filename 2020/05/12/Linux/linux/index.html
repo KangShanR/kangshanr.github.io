@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,14 +94,13 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux"><span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat"><span class="toc-text">tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql"><span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis"><span class="toc-text">redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">磁盘管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91"><span class="toc-text">文档编辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-text">环境变量设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firewall-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-text">firewall 防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E5%8E%8B%E7%BC%A9"><span class="toc-text">备份压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF"><span class="toc-text">关机重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-text">文件权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-text">网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-operation"><span class="toc-text">windows operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rpm"><span class="toc-text">rpm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="toc-text">服务命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows10-amp-Ubuntu"><span class="toc-text">windows10 &amp; Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98"><span class="toc-text">安装问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-tomcat"><span class="toc-text">.1. tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-mysql"><span class="toc-text">.2. mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-redis"><span class="toc-text">.3. redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">.4. 磁盘管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">.5. 文件管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91"><span class="toc-text">.6. 文档编辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">.7. 系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-text">.8. 环境变量设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-firewall-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-text">.9. firewall 防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%A4%87%E4%BB%BD%E5%8E%8B%E7%BC%A9"><span class="toc-text">.10. 备份压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%85%B3%E6%9C%BA%E9%87%8D%E5%90%AF"><span class="toc-text">.11. 关机重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-text">.12. 文件权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-text">.13. 网络配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-1-windows-operation"><span class="toc-text">.13.1. windows operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-rpm"><span class="toc-text">.14. rpm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E6%9C%8D%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="toc-text">.15. 服务命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-windows10-amp-Ubuntu"><span class="toc-text">.16. windows10 &amp; Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98"><span class="toc-text">.17. 安装问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E4%BD%BF%E7%94%A8"><span class="toc-text">.18. 使用</span></a></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>desktop virtual machine: root 123456</p>
-<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p>在 linux 上安装 Tomcat 并启动。(root 123456)<span id="more"></span></p>
+            <h2 id="1-tomcat"><a href="#1-tomcat" class="headerlink" title=".1. tomcat"></a>.1. tomcat</h2><p>在 linux 上安装 Tomcat 并启动。(root 123456)<span id="more"></span></p>
 <ol>
 <li>安装 tomcat 后，进入 bin 中启动 <code>./startup.sh</code>;</li>
 <li>必须开启防火墙：<ol>
@@ -122,14 +117,14 @@
 </li>
 <li>通过外部网络可访问 tomcat 了。</li>
 </ol>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><p>在 linux 安装 mysql 并运行。（本地虚拟机上：root 12345）</p>
+<h2 id="2-mysql"><a href="#2-mysql" class="headerlink" title=".2. mysql"></a>.2. mysql</h2><p>在 linux 安装 mysql 并运行。（本地虚拟机上：root 12345）</p>
 <p>问题：March 12 2020 在虚拟机上 linux 设置自动启动 mysql 后，在使用 <code>service mysql stop</code> 命令出现错误：“ERROR! MySQL server PID file could not be found”。最后使用 stackoverflow 上方法解决：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41616251/error-mysql-server-pid-file-could-not-be-found-in-osx-sierra">stackoverflow</a></p>
 <ol>
 <li><code>ps -ef | grep mysql --color</code> 查找出正在运行的 mysql 进程；</li>
 <li><code>kill -9 PID</code> 杀掉进程；</li>
 <li>再使用 <code>service mysql start</code> 启动 mysql ，后面再使用 <code>service mysql stop</code> 正常停止 mysql。</li>
 </ol>
-<h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>在 linux 上安装 redis 使用</p>
+<h2 id="3-redis"><a href="#3-redis" class="headerlink" title=".3. redis"></a>.3. redis</h2><p>在 linux 上安装 redis 使用</p>
 <ol>
 <li>编译好 redis 后运行 redis  不能直接使用 <code>redis-server</code> ，需要使用 <code>./redis-server</code> 才能启动；</li>
 <li>修改 redis 服务后台启动：<ol>
@@ -138,7 +133,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="磁盘管理命令"><a href="#磁盘管理命令" class="headerlink" title="磁盘管理命令"></a>磁盘管理命令</h2><ul>
+<h2 id="4-磁盘管理命令"><a href="#4-磁盘管理命令" class="headerlink" title=".4. 磁盘管理命令"></a>.4. 磁盘管理命令</h2><ul>
 <li><code>ls [参数] [文件或目录]</code> list 查看目录下所有文件<ul>
 <li><code>-a</code> 或 <code>--all</code> 查看全部，包括隐藏的</li>
 <li><code>-l</code> 简化版: <code>ll</code> 详细格式列表</li>
@@ -157,7 +152,7 @@
 <li><code>rmdir</code> remove directory 移除空目录</li>
 <li>scp secure copy 可以从远程服务器拷贝，同时加密</li>
 </ul>
-<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ul>
+<h2 id="5-文件管理"><a href="#5-文件管理" class="headerlink" title=".5. 文件管理"></a>.5. 文件管理</h2><ul>
 <li><code>cat [OPTION]... [FILE]...</code> concatenate 将文件输出级联到另一个文件或终端<ul>
 <li><code>cat &gt; &#123;file&#125;</code> 指定到同一个文件</li>
 </ul>
@@ -198,7 +193,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="文档编辑"><a href="#文档编辑" class="headerlink" title="文档编辑"></a>文档编辑</h2><ul>
+<h2 id="6-文档编辑"><a href="#6-文档编辑" class="headerlink" title=".6. 文档编辑"></a>.6. 文档编辑</h2><ul>
 <li><code>|</code> 管道命令，一般与 grep 联用，在上一个结果中进行操作下一个命令</li>
 <li><a target="_blank" rel="noopener" href="https://vim.rtorr.com/"><code>vim [file]</code> 或者 <code>vi [file]</code> 命令</a> <a target="_blank" rel="noopener" href="https://spin.atomicobject.com/2016/04/19/vim-commands-cheat-sheet/">cheat sheet</a><ul>
 <li>进入到文件 vi 编辑状态后，有三种状态：<ul>
@@ -295,7 +290,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><ul>
+<h2 id="7-系统命令"><a href="#7-系统命令" class="headerlink" title=".7. 系统命令"></a>.7. 系统命令</h2><ul>
 <li><code>ps [parameter]</code> process status 进程运行状态<ul>
 <li><code>-e</code> 与 <code>-A</code> 相同显示所有进程</li>
 <li><code>-f</code> 显示UID, PPIP, C, STIME 栏位</li>
@@ -320,7 +315,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h2><blockquote>
+<h2 id="8-环境变量设置"><a href="#8-环境变量设置" class="headerlink" title=".8. 环境变量设置"></a>.8. 环境变量设置</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/58814/how-do-i-add-environment-variables">reference</a><br><a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/EnvironmentVariables">环境变量设置</a></p>
 </blockquote>
 <ul>
@@ -343,9 +338,9 @@
 </li>
 <li><code>source &lt;filename&gt; [arguments]</code> 在当前 shell 中读取并执行文件中的命令, $PATH 中的变量会被用来查询在文件中指定的目录.如果参数 arguments 提供了,会被用来当作 shell 执行的位置参数(参数顺序被指定可以在 shell 中的使用 $n 获取). source 命令快捷方式: <code>.</code> .</li>
 </ul>
-<h2 id="firewall-防火墙"><a href="#firewall-防火墙" class="headerlink" title="firewall 防火墙"></a>firewall 防火墙</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011846257/article/details/54707864">reference</a></p>
+<h2 id="9-firewall-防火墙"><a href="#9-firewall-防火墙" class="headerlink" title=".9. firewall 防火墙"></a>.9. firewall 防火墙</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011846257/article/details/54707864">reference</a></p>
 <p>添加 iptables 规则时需要将其添加成 REJECT 所有其他的端口之前，否则将无效。</p>
-<h2 id="备份压缩"><a href="#备份压缩" class="headerlink" title="备份压缩"></a>备份压缩</h2><blockquote>
+<h2 id="10-备份压缩"><a href="#10-备份压缩" class="headerlink" title=".10. 备份压缩"></a>.10. 备份压缩</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-difference-between-tar-gz-zip-and-tar-gz-in-Linux#:~:text=gz%20is%20a%20single%20file,an%20arbitrary%20number%20of%20filed.">difference between .gz and .tar</a></p>
 </blockquote>
 <ul>
@@ -359,7 +354,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="关机重启"><a href="#关机重启" class="headerlink" title="关机重启"></a>关机重启</h2><ul>
+<h2 id="11-关机重启"><a href="#11-关机重启" class="headerlink" title=".11. 关机重启"></a>.11. 关机重启</h2><ul>
 <li><code>reboot</code> 重启 CentOS</li>
 <li><code>halt</code> 关机 CentOS</li>
 <li>debian<ul>
@@ -368,7 +363,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><p><code>chmod [parameter] &lt;权限范围&gt; &lt;符号&gt;&lt;权限代码&gt;</code> change mode 更改权限</p>
+<h2 id="12-文件权限"><a href="#12-文件权限" class="headerlink" title=".12. 文件权限"></a>.12. 文件权限</h2><p><code>chmod [parameter] &lt;权限范围&gt; &lt;符号&gt;&lt;权限代码&gt;</code> change mode 更改权限</p>
 <ul>
 <li><code>-R</code> 或 <code>-recursive</code> 递归将文件夹中所有文件都更改</li>
 <li>权限范围<ul>
@@ -391,8 +386,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>查看 网络配置 文件位置: <code>/etc/sysconfig/networking-scripts/ifcfg-eth0</code></p>
-<h3 id="windows-operation"><a href="#windows-operation" class="headerlink" title="windows operation"></a>windows operation</h3><p>windows 操作系统中相关命令行。</p>
+<h2 id="13-网络配置"><a href="#13-网络配置" class="headerlink" title=".13. 网络配置"></a>.13. 网络配置</h2><p>查看 网络配置 文件位置: <code>/etc/sysconfig/networking-scripts/ifcfg-eth0</code></p>
+<h3 id="13-1-windows-operation"><a href="#13-1-windows-operation" class="headerlink" title=".13.1. windows operation"></a>.13.1. windows operation</h3><p>windows 操作系统中相关命令行。</p>
 <ul>
 <li>刷新 dns 数据命令：</li>
 </ul>
@@ -412,7 +407,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><blockquote>
+<h2 id="14-rpm"><a href="#14-rpm" class="headerlink" title=".14. rpm"></a>.14. rpm</h2><blockquote>
 <p>resources package manager 资源包管理器，其相应的包文件后缀为 <code>.rpm</code> 在 red hat/Fedora/SUSE 系列使用此包管理，而在 Debian/Ubuntu 系列使用 <code>dpkg</code> 命令，其包文件后缀为 <code>.deb</code> 。</p>
 </blockquote>
 <p>command lind : `rpm [parameter] [软件]</p>
@@ -439,15 +434,15 @@
 </ul>
 </li>
 </ul>
-<h2 id="服务命令"><a href="#服务命令" class="headerlink" title="服务命令"></a>服务命令</h2><ul>
+<h2 id="15-服务命令"><a href="#15-服务命令" class="headerlink" title=".15. 服务命令"></a>.15. 服务命令</h2><ul>
 <li><code>service &lt;service name&gt; restart</code> 重启服务</li>
 <li><code>service &lt;service name&gt; start</code> 启动服务</li>
 <li><code>service &lt;service name&gt; stop</code> 停止服务</li>
 </ul>
-<h2 id="windows10-amp-Ubuntu"><a href="#windows10-amp-Ubuntu" class="headerlink" title="windows10 &amp; Ubuntu"></a>windows10 &amp; Ubuntu</h2><blockquote>
+<h2 id="16-windows10-amp-Ubuntu"><a href="#16-windows10-amp-Ubuntu" class="headerlink" title=".16. windows10 &amp; Ubuntu"></a>.16. windows10 &amp; Ubuntu</h2><blockquote>
 <p>win10 + ubuntu 双系统安装与使用</p>
 </blockquote>
-<h2 id="安装问题"><a href="#安装问题" class="headerlink" title="安装问题"></a>安装问题</h2><ul>
+<h2 id="17-安装问题"><a href="#17-安装问题" class="headerlink" title=".17. 安装问题"></a>.17. 安装问题</h2><ul>
 <li>目前在台式机双显卡上遇到最大的问题是使用nvidia独显并不能设置分辨率为1920x1080，相反使用核显反而能。但是如果连接核显VGA接口又不能正常启动系统，只能先连接独显DVI－I接口让系统启动，启动后再将连接线接到VGA接口。<ul>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19571221">显示器接口认识</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shixin_0125/article/details/72793300">修改分辨率</a>，在使用DVI-I接口时并不能设置成功，只能设置到未连接的VGA 或 HDMI 接口上。</li>
@@ -467,7 +462,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<h2 id="18-使用"><a href="#18-使用" class="headerlink" title=".18. 使用"></a>.18. 使用</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a999wt/article/details/8227154">在 Ubuntu 中使用 U 盘</a><ul>
 <li>需要将 U 盘挂载（ <code>mount</code> 命令）到系统中，一般使用 /mnt 目录挂载</li>
 <li>挂载后在 /mnt 目录中就可以看到 U 盘内容了。此处有个坑是如果挂载前已经进入 /mnt 目录，挂载后是看不到 U 盘内容的，需要重新进入目录才能看到。</li>
@@ -496,15 +491,15 @@
 <div class="paginator">
     
         
-            <a class="prev" href="/2020/07/19/Spring/SpringBoot-ExternalizedConfiguration/">
+            <a class="prev" href="/2020/06/11/JMM/lock/">
                 <i class="iconfont icon-prev"></i>
-                <span class="nav-default">SpringBoot Externalized Configuration</span>
+                <span class="nav-default">Lock in Java</span>
                 <span class="nav-mobile">Prev</span>
             </a>
         
         
-            <a class="next" href="/2020/04/21/Spring/Spring-Test/">
-                <span class="nav-default">Spring Test</span>
+            <a class="next" href="/2020/04/21/JMM/Volatile/">
+                <span class="nav-default">Volatile</span>
                 <span class="nav-mobile">Next</span>
                 <i class="iconfont icon-next"></i>
             </a>
@@ -523,10 +518,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

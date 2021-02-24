@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,21 +94,21 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InnoDB"><span class="toc-text">InnoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Locking-Readings"><span class="toc-text">Locking Readings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%86%99%E9%97%AE%E9%A2%98"><span class="toc-text">并发写问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Consistent-Read"><span class="toc-text">Consistent Read</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Versioning"><span class="toc-text">Multi-Versioning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB-Locking"><span class="toc-text">InnoDB Locking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E9%94%81%E4%B8%8E%E6%8E%92%E4%BB%96%E9%94%81"><span class="toc-text">共享锁与排他锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-text">意向锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E9%94%81"><span class="toc-text">记录锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81"><span class="toc-text">间隙锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Next-Key-Lock"><span class="toc-text">Next-Key Lock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Insert-intention-locks"><span class="toc-text">Insert intention locks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Auto-inc-Locks"><span class="toc-text">Auto-inc Locks</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Locking-Readings"><span class="toc-text">.1. Locking Readings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B9%B6%E5%8F%91%E5%86%99%E9%97%AE%E9%A2%98"><span class="toc-text">.2. 并发写问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Consistent-Read"><span class="toc-text">.2.1. Consistent Read</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Multi-Versioning"><span class="toc-text">.3. Multi-Versioning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-InnoDB-Locking"><span class="toc-text">.4. InnoDB Locking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%85%B1%E4%BA%AB%E9%94%81%E4%B8%8E%E6%8E%92%E4%BB%96%E9%94%81"><span class="toc-text">.4.1. 共享锁与排他锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-text">.4.2. 意向锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%AE%B0%E5%BD%95%E9%94%81"><span class="toc-text">.4.3. 记录锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E9%97%B4%E9%9A%99%E9%94%81"><span class="toc-text">.4.4. 间隙锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-Next-Key-Lock"><span class="toc-text">.4.5. Next-Key Lock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-Insert-intention-locks"><span class="toc-text">.4.6. Insert intention locks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-Auto-inc-Locks"><span class="toc-text">.4.7. Auto-inc Locks</span></a></li></ol></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h1><blockquote>
+            <blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">官方文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/08/20/innodb-lock.html">美团文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/show-engine.html">查看Innodb引擎数据</a></p>
 </blockquote>
-<h2 id="Locking-Readings"><a href="#Locking-Readings" class="headerlink" title="Locking Readings"></a>Locking Readings</h2><blockquote>
+<h2 id="1-Locking-Readings"><a href="#1-Locking-Readings" class="headerlink" title=".1. Locking Readings"></a>.1. Locking Readings</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">锁读</a></p>
 </blockquote>
-<h2 id="并发写问题"><a href="#并发写问题" class="headerlink" title="并发写问题"></a>并发写问题</h2><blockquote>
+<h2 id="2-并发写问题"><a href="#2-并发写问题" class="headerlink" title=".2. 并发写问题"></a>.2. 并发写问题</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengzheng/p/12557762.html">CSDN</a></p>
 </blockquote>
 <ul>
@@ -120,13 +116,13 @@
 <li>在可重复读隔离级别下，InnoDB 加间隙锁可以防止幻读，同理，如果没有索引将会把所在行之外所有列都加上间隙锁，而导致范围外的行也需要阻塞到当前锁释放才能插入。</li>
 <li>意向锁是表锁，只用来表示该表有没行正被锁住，而以免有行被锁住时想要加表锁修改表结构，需要每行查询是否有行锁。<span id="more"></span></li>
 </ul>
-<h3 id="Consistent-Read"><a href="#Consistent-Read" class="headerlink" title="Consistent Read"></a>Consistent Read</h3><blockquote>
+<h3 id="2-1-Consistent-Read"><a href="#2-1-Consistent-Read" class="headerlink" title=".2.1. Consistent Read"></a>.2.1. Consistent Read</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_consistent_read">一致性读</a></p>
 </blockquote>
 <ul>
 <li>在事务中使用一致性读可以避免并发，在读已提交和可重复读隔离级别中，默认是使用一致性读的。</li>
 </ul>
-<h2 id="Multi-Versioning"><a href="#Multi-Versioning" class="headerlink" title="Multi-Versioning"></a>Multi-Versioning</h2><blockquote>
+<h2 id="3-Multi-Versioning"><a href="#3-Multi-Versioning" class="headerlink" title=".3. Multi-Versioning"></a>.3. Multi-Versioning</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html">多版本</a></p>
 </blockquote>
 <ul>
@@ -136,10 +132,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="InnoDB-Locking"><a href="#InnoDB-Locking" class="headerlink" title="InnoDB Locking"></a>InnoDB Locking</h2><blockquote>
+<h2 id="4-InnoDB-Locking"><a href="#4-InnoDB-Locking" class="headerlink" title=".4. InnoDB Locking"></a>.4. InnoDB Locking</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html">锁</a></p>
 </blockquote>
-<h3 id="共享锁与排他锁"><a href="#共享锁与排他锁" class="headerlink" title="共享锁与排他锁"></a>共享锁与排他锁</h3><blockquote>
+<h3 id="4-1-共享锁与排他锁"><a href="#4-1-共享锁与排他锁" class="headerlink" title=".4.1. 共享锁与排他锁"></a>.4.1. 共享锁与排他锁</h3><blockquote>
 <p>Shared and Exclusive Locks。Innodb 实现两种标准行锁：shared（S） lock 与 exclusive（X） lock。</p>
 </blockquote>
 <ul>
@@ -152,7 +148,7 @@
 </li>
 <li>如果 T1 获取到的是 r 的X 锁，其他事务想要获取 r 的任何类型锁都需要等待 T1 释放了 r 的锁才行。</li>
 </ul>
-<h3 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h3><blockquote>
+<h3 id="4-2-意向锁"><a href="#4-2-意向锁" class="headerlink" title=".4.2. 意向锁"></a>.4.2. 意向锁</h3><blockquote>
 <p>Intention lock，分为排他意向锁 IX 与共享意向锁 IS。用以支撑 InnoDB 多粒度锁控制（行锁与表锁同时存在）。<br><code>LOCK TABLES ... WRITE</code> 语句持有指定表的排他 X 锁。</p>
 </blockquote>
 <ul>
@@ -213,14 +209,14 @@
 <li>如果一个事务想获取一个已存在的锁且不能被获取到，将产生<strong>死锁</strong>。</li>
 <li>意向锁不阻塞其他，但若要请求全表除外（<code>LOCK TABLES ... WRITE</code>）。</li>
 </ul>
-<h3 id="记录锁"><a href="#记录锁" class="headerlink" title="记录锁"></a>记录锁</h3><blockquote>
+<h3 id="4-3-记录锁"><a href="#4-3-记录锁" class="headerlink" title=".4.3. 记录锁"></a>.4.3. 记录锁</h3><blockquote>
 <p>record_lock：<code>select * from t where f = 10 for update;</code></p>
 </blockquote>
 <ul>
 <li>用于锁住单行数据，阻止其他事务<strong>插入</strong>、<strong>更新</strong>、<strong>删除</strong>（不阻止其他事务读取） f ＝ 10 的行。</li>
 <li>record_lock 只会锁索引记录，如果表中没有建索引，Innodb 将会创建一个隐藏的聚簇索引，并使用此索引来锁住行。</li>
 </ul>
-<h3 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h3><blockquote>
+<h3 id="4-4-间隙锁"><a href="#4-4-间隙锁" class="headerlink" title=".4.4. 间隙锁"></a>.4.4. 间隙锁</h3><blockquote>
 <p>Gap Locks, 间隙锁是加在索引记录之间的锁，或在间隙记录之前或之后。<code>SELECT c1 FROM t WHERE c1 BETWEEN 10 AND 20 FOR UPDATE;</code>，此语句所加的间隙锁阻止了其他事务的插入一个 t.c1 = 15 的行，不管表 t 中是否已有一条同值记录，因为间隙锁将锁住范围内的所有行。</p>
 </blockquote>
 <ul>
@@ -231,7 +227,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Next-Key-Lock"><a href="#Next-Key-Lock" class="headerlink" title="Next-Key Lock"></a>Next-Key Lock</h3><blockquote>
+<h3 id="4-5-Next-Key-Lock"><a href="#4-5-Next-Key-Lock" class="headerlink" title=".4.5. Next-Key Lock"></a>.4.5. Next-Key Lock</h3><blockquote>
 <p>后键锁，是一个 record-lock 与 gap-lock 的组合。</p>
 </blockquote>
 <ul>
@@ -243,7 +239,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Insert-intention-locks"><a href="#Insert-intention-locks" class="headerlink" title="Insert intention locks"></a>Insert intention locks</h3><blockquote>
+<h3 id="4-6-Insert-intention-locks"><a href="#4-6-Insert-intention-locks" class="headerlink" title=".4.6. Insert intention locks"></a>.4.6. Insert intention locks</h3><blockquote>
 <p>插入意向锁, 用在插入操作中插入行前设置的一种间隙锁. 此锁用来标识插入同一个索引间隙的多个事务之间如果不插入在同一个位置,那么事务之间无需等待彼此.eg:假设现有索引值 4 与 7 ,另有两个事务尝试各自插入 5 与 6 .<strong>插入意向锁的获取优先于插入行的排他锁获取</strong>,但彼此不阻塞因为各行并不冲突.</p>
 </blockquote>
 <p>对于包含一个索引值有 90 和 102 的表,client A 先在 id &gt; 100 的索引记录上添加了排他锁,这个排他锁包含了 (90, 102] 的 gap-lock</p>
@@ -253,7 +249,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">START</span> TRANSACTION;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> child (id) <span class="keyword">VALUES</span> (<span class="number">101</span>);</span><br></pre></td></tr></table></figure>
 
 <p>client B 在间隙中插入新数据,这个事务将会拿到 insert-intention-lock 同时等待获取排他锁.</p>
-<h3 id="Auto-inc-Locks"><a href="#Auto-inc-Locks" class="headerlink" title="Auto-inc Locks"></a>Auto-inc Locks</h3><blockquote>
+<h3 id="4-7-Auto-inc-Locks"><a href="#4-7-Auto-inc-Locks" class="headerlink" title=".4.7. Auto-inc Locks"></a>.4.7. Auto-inc Locks</h3><blockquote>
 <p>自增锁,事务在插入包含自增列 AUTO_INCREMENT 的表数据时所持有的表级锁.在最简单的场景,如果一个事务在往表中插入数据,其他插入数据的事务必须等待,以保证前事务能获取到连续的主键值.</p>
 </blockquote>
 <p>innodb_autoinc_lock_mode 配置控制自增锁的算法.此配置值用以在自增值的有序性与插入操作的并发性上平衡.</p>
@@ -283,8 +279,8 @@
             </a>
         
         
-            <a class="next" href="/2020/12/10/Linux/command%20line/">
-                <span class="nav-default">Shell</span>
+            <a class="next" href="/2020/12/28/JMM/Thread/">
+                <span class="nav-default">Java Thread &amp; Java Object</span>
                 <span class="nav-mobile">Next</span>
                 <i class="iconfont icon-next"></i>
             </a>
@@ -303,10 +299,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

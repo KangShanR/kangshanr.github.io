@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -84,6 +80,64 @@
     
         <article class="post-abstract">
             <div class="post-title">
+                <h2><a class="post-title-link" href="/2021/02/05/JMM/Lock%20Condition/">Lock Condition</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2021-02-05</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Java/">Java</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>Java 新式锁所用以判定条件接口
+                    <div class="read-more">
+                        <a href="/2021/02/05/JMM/Lock%20Condition/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2021/01/28/JMM/Java%20Merory%20Model/">Java Memory Model</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2021-01-28</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Java/">Java</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p>Java 内存模型<a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/">reference</a></p>
+<h2 id="1-JSR-133-Java-Memory-Model-FAQ"><a href="#1-JSR-133-Java-Memory-Model-FAQ" class="headerlink" title=".1. JSR 133 (Java Memory Model) FAQ"></a>.1. JSR 133 (Java Memory Model) FAQ</h2><p><a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html">reference</a></p>
+<h3 id="1-1-How-does-synchronization-do"><a href="#1-1-How-does-synchronization-do" class="headerlink" title=".1.1. How does synchronization do?"></a>.1.1. How does synchronization do?</h3><ul>
+<li>Synchronization 同步存在多方面含义。最为人所知的是恒定排他性：一旦某个线程获取到 monitor ，monitor 上的同步意味着一个线程进入了 monitor 所保护的同步块，在此线程退出此同步块前没有其他线程能够再进入。
+                    <div class="read-more">
+                        <a href="/2021/01/28/JMM/Java%20Merory%20Model/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
                 <h2><a class="post-title-link" href="/2021/01/15/Mysql/SELECT%20Statement/">SELECT in Mysql</a></h2>
             </div>
             <div class="post-meta">
@@ -98,12 +152,10 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h1><blockquote>
-<p>mysql 中查询语句</p>
+                    <blockquote>
+<p>Mysql 中查询语句</p>
 </blockquote>
-<h2 id="Join-Clause"><a href="#Join-Clause" class="headerlink" title="Join Clause"></a>Join Clause</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">reference</a></p>
-<ul>
-<li><p>在 MYSQL 中，<code>JOIN</code>, <code>CROSS JOIN</code> 与 <code>INNER JOIN</code> 在语法是等同的，彼此之间可以相互替换。但在标准 sql 中它们有所区别，inner join 使用 on 子句，而 cross join 使用其他的。
+<h2 id="1-Join-Clause"><a href="#1-Join-Clause" class="headerlink" title=".1. Join Clause"></a>.1. Join Clause</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/join.html">reference</a>
                     <div class="read-more">
                         <a href="/2021/01/15/Mysql/SELECT%20Statement/" class="read-more-link">
                             ReadMore
@@ -130,7 +182,7 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="How-to-Minimize-and-Handle-Deadlocks"><a href="#How-to-Minimize-and-Handle-Deadlocks" class="headerlink" title="How to Minimize and Handle Deadlocks"></a>How to Minimize and Handle Deadlocks</h1><blockquote>
+                    <blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html">reference</a></p>
 <p>死锁最小化建立在<a href="./Deadlocks%20in%20InnoDB.md">死锁检测</a>之上。</p>
 </blockquote>
@@ -161,7 +213,7 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="Deadlocks-in-InnoDB"><a href="#Deadlocks-in-InnoDB" class="headerlink" title="Deadlocks in InnoDB"></a>Deadlocks in InnoDB</h1><blockquote>
+                    <blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks.html">reference</a></p>
 </blockquote>
 <p>当不同的事务因为持有其他事务需要的锁不能继续处理时的场景叫死锁。因为事务之间在等待对方的资源释放，但又不释放自己所持有的资源。
@@ -191,7 +243,7 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="Phantom-Rows"><a href="#Phantom-Rows" class="headerlink" title="Phantom Rows"></a>Phantom Rows</h1><blockquote>
+                    <h1 id="1-Phantom-Rows"><a href="#1-Phantom-Rows" class="headerlink" title="1. Phantom Rows"></a>1. Phantom Rows</h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-next-key-locking.html">reference</a></p>
 <p>在一个事务中执行相同的查询得到不同的数据谓之为<em>幻读</em>。比如：在一个 SELECT 两次执行中，第二次查询到一行第一次查询时没有行。这一行就叫<em>幻读行</em>。
                     <div class="read-more">
@@ -220,7 +272,7 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="InnoDB-Indexes-On-Disk-Structures"><a href="#InnoDB-Indexes-On-Disk-Structures" class="headerlink" title="InnoDB Indexes On-Disk Structures"></a>InnoDB Indexes On-Disk Structures</h1><h2 id="Clustered-and-Secondary-Indexes"><a href="#Clustered-and-Secondary-Indexes" class="headerlink" title="Clustered and Secondary Indexes"></a>Clustered and Secondary Indexes</h2><blockquote>
+                    <h2 id="1-Clustered-and-Secondary-Indexes"><a href="#1-Clustered-and-Secondary-Indexes" class="headerlink" title=".1. Clustered and Secondary Indexes"></a>.1. Clustered and Secondary Indexes</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-index-types.html">reference</a></p>
 <p>InnoDB 中每张都有聚簇索引用以存储行数据。一般来讲，聚簇索引等于主键。为获取更好的查询修改性能， 需要了解使用聚簇索引优化每张表的常用查询与 DML 操作。
                     <div class="read-more">
@@ -249,7 +301,7 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="Locks-set-by-different-SQL-in-the-InnoDB"><a href="#Locks-set-by-different-SQL-in-the-InnoDB" class="headerlink" title="Locks set by different SQL in the InnoDB"></a>Locks set by different SQL in the InnoDB</h1><blockquote>
+                    <blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-locks-set.html">reference</a></p>
 <p>对于一个　locking－read、UPDATE、DELETE 的处理过程中通常只对被扫描到的索引记录加锁，不管 where 条件中其他条件所排除的行。InnoDB 不记忆具体 WHERE 条件，只记忆被扫描的索引范围。所加之锁一般为 next－key lock ，除对表记录行加锁外还在其前加上 gap－lock 。gap－lock 可被显示地禁用造成 next-key lock 失效，另外事务隔离级别也会影响锁。
                     <div class="read-more">
@@ -278,9 +330,9 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="InnoDB-Transaction-Model"><a href="#InnoDB-Transaction-Model" class="headerlink" title="InnoDB Transaction Model"></a>InnoDB Transaction Model</h1><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html">reference</a></p>
+                    <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html">reference</a></p>
 <p><a href="./InnoDB%20Transaction%20Isolation%20Level.md">InnoDB Isolation Level Note</a></p>
-<h2 id="Autocommit-commit-rollback"><a href="#Autocommit-commit-rollback" class="headerlink" title="Autocommit commit rollback"></a>Autocommit commit rollback</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-autocommit-commit-rollback.html">reference</a></p>
+<h2 id="1-Autocommit-commit-rollback"><a href="#1-Autocommit-commit-rollback" class="headerlink" title=".1. Autocommit commit rollback"></a>.1. Autocommit commit rollback</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-autocommit-commit-rollback.html">reference</a></p>
 <blockquote>
 <p>在 InnoDB 中所有用户的活动都在事务之中，如果 autocommit＝ON 每个 SQL 语句都会形成一个自有的事务。默认情况下 Ｍysql 开启一个session都会在每个连接都会设置autocommit＝on，MYSQL 只要语句没有返回错误都会提交。
                     <div class="read-more">
@@ -309,80 +361,11 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="InnoDB-Transaction-Isolation-Level"><a href="#InnoDB-Transaction-Isolation-Level" class="headerlink" title="InnoDB Transaction Isolation Level"></a>InnoDB Transaction Isolation Level</h1><blockquote>
+                    <blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html">InnoDB 事务模型</a></p>
 <p>InnoDB 事务模型的目标是联合数据库多视图属性与传统的多阶段锁。InnoDB 类似 Oracle ，其执行锁到行级别，同时默认执行查询不加锁并保持一致性读。InnoDB 锁数据存储空间效率高，不随锁数量增加而剧增。锁表全行也不用担心 InnoDB 内存耗尽。
                     <div class="read-more">
                         <a href="/2021/01/06/Mysql/InnoDB%20Transaction%20Isolation%20Level/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/12/29/Mysql/InnoDB/">InnoDB</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-12-29</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Mysql/">Mysql</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">官方文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/08/20/innodb-lock.html">美团文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/show-engine.html">查看Innodb引擎数据</a></p>
-</blockquote>
-<h2 id="Locking-Readings"><a href="#Locking-Readings" class="headerlink" title="Locking Readings"></a>Locking Readings</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">锁读</a></p>
-</blockquote>
-<h2 id="并发写问题"><a href="#并发写问题" class="headerlink" title="并发写问题"></a>并发写问题</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengzheng/p/12557762.html">CSDN</a></p>
-</blockquote>
-<ul>
-<li>在并发写同一行数据时，如果 where 条件字段没有加索引，innoDB 会对所有行加行锁，再对条件进行筛选，不符合条件的行再释放锁。一锁一放损耗极大，所以建议适当添加索引。</li>
-<li>在可重复读隔离级别下，InnoDB 加间隙锁可以防止幻读，同理，如果没有索引将会把所在行之外所有列都加上间隙锁，而导致范围外的行也需要阻塞到当前锁释放才能插入。</li>
-<li>意向锁是表锁，只用来表示该表有没行正被锁住，而以免有行被锁住时想要加表锁修改表结构，需要每行查询是否有行锁。
-                    <div class="read-more">
-                        <a href="/2020/12/29/Mysql/InnoDB/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/12/10/Linux/command%20line/">Shell</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-12-10</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Linux/">Linux</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h1><h2 id="vim-编辑器命令行"><a href="#vim-编辑器命令行" class="headerlink" title="vim 编辑器命令行"></a>vim 编辑器命令行</h2><blockquote>
-<p>以下命令是在编辑整个文件时（未进入到文件编辑内部时）进行行操作。
-                    <div class="read-more">
-                        <a href="/2020/12/10/Linux/command%20line/" class="read-more-link">
                             ReadMore
                             <i class="iconfont icon-readmore"></i>
                         </a>
@@ -415,10 +398,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,16 +94,16 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql-server-amp-client"><span class="toc-text">mysql server &amp; client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-server"><span class="toc-text">mysql server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-client-operate"><span class="toc-text">mysql client operate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-%E6%9C%8D%E5%8A%A1%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%94%A8%E6%88%B7"><span class="toc-text">mysql 服务添加新用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDL"><span class="toc-text">DDL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DML"><span class="toc-text">DML</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DQL"><span class="toc-text">DQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">多表查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-engine"><span class="toc-text">mysql engine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-INNODB-%E5%BC%95%E6%93%8E"><span class="toc-text">关于 INNODB 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Index-%E7%B4%A2%E5%BC%95"><span class="toc-text">Index 索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-transaction"><span class="toc-text">mysql transaction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3"><span class="toc-text">事务相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">数据库的事务隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E4%B8%8B"><span class="toc-text">并发事务下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-text">分类</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-mysql-server"><span class="toc-text">.1. mysql server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-mysql-client-operate"><span class="toc-text">.2. mysql client operate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-mysql-%E6%9C%8D%E5%8A%A1%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%94%A8%E6%88%B7"><span class="toc-text">.2.1. mysql 服务添加新用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-DDL"><span class="toc-text">.3. DDL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-DML"><span class="toc-text">.3.1. DML</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-DQL"><span class="toc-text">.4. DQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">.4.1. 多表查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-mysql-engine"><span class="toc-text">.5. mysql engine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%85%B3%E4%BA%8E-INNODB-%E5%BC%95%E6%93%8E"><span class="toc-text">.5.1. 关于 INNODB 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Index-%E7%B4%A2%E5%BC%95"><span class="toc-text">.5.2. Index 索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-mysql-transaction"><span class="toc-text">.6. mysql transaction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">.6.1. 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3"><span class="toc-text">.6.2. 事务相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">.6.3. 数据库的事务隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-1-%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E4%B8%8B"><span class="toc-text">.6.3.1. 并发事务下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%88%86%E7%B1%BB"><span class="toc-text">.7. 分类</span></a></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="mysql-server-amp-client"><a href="#mysql-server-amp-client" class="headerlink" title="mysql server &amp; client"></a>mysql server &amp; client</h1><blockquote>
+            <blockquote>
 <p>mysql 部署 server 及 client 请求</p>
 </blockquote>
-<h2 id="mysql-server"><a href="#mysql-server" class="headerlink" title="mysql server"></a>mysql server</h2><blockquote>
+<h2 id="1-mysql-server"><a href="#1-mysql-server" class="headerlink" title=".1. mysql server"></a>.1. mysql server</h2><blockquote>
 <p>mysql server 的部署及请求<a target="_blank" rel="noopener" href="http://www.cnblogs.com/QingXiaxu/p/7987302.html">参考</a><span id="more"></span></p>
 </blockquote>
 <p>localhost 的 testing 尝试：</p>
@@ -138,7 +134,7 @@
 </li>
 <li>查看当前 mysql server 连接情况命令： <code>show processlist</code> 将会看到当前 mysql server 连接的各个 client 的 ip/port/status/user/db 等</li>
 </ul>
-<h2 id="mysql-client-operate"><a href="#mysql-client-operate" class="headerlink" title="mysql client operate"></a>mysql client operate</h2><blockquote>
+<h2 id="2-mysql-client-operate"><a href="#2-mysql-client-operate" class="headerlink" title=".2. mysql client operate"></a>.2. mysql client operate</h2><blockquote>
 <p>在 mysql 控制台操作数据库</p>
 </blockquote>
 <p><em>note: mysql server 命令行都必须使用 <code>;</code>  或 <code>\g</code> 结尾，否则不会执行。</em></p>
@@ -174,14 +170,14 @@
 <li>查看表：<code>desc (table_name);</code></li>
 <li>修改表名：<code>rename TABLE 表名 to 新表名;</code></li>
 </ul>
-<h3 id="mysql-服务添加新用户"><a href="#mysql-服务添加新用户" class="headerlink" title="mysql 服务添加新用户"></a>mysql 服务添加新用户</h3><blockquote>
+<h3 id="2-1-mysql-服务添加新用户"><a href="#2-1-mysql-服务添加新用户" class="headerlink" title=".2.1. mysql 服务添加新用户"></a>.2.1. mysql 服务添加新用户</h3><blockquote>
 <p>当 mysql 服务初始化完成并启动后，登录 root 账户后可以在 client 使用命令添加用户，只需要在 mysql 库 user 表中插入数据即可。</p>
 </blockquote>
 <p>执行命令：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span></span><br><span class="line">  (host, <span class="keyword">user</span>, password,select_priv, insert_priv, update_priv)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">&#x27;localhost&#x27;</span>, <span class="string">&#x27;guest&#x27;</span>, PASSWORD(<span class="string">&#x27;guest123&#x27;</span>), <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p><em>note: user 表中所有的以 <code>_priv</code> 结尾的字段都是表示相关的权限（privilege），<code>Y</code> 表示有， <code>N</code> 表示无此权限。</em></p>
-<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><blockquote>
+<h2 id="3-DDL"><a href="#3-DDL" class="headerlink" title=".3. DDL"></a>.3. DDL</h2><blockquote>
 <p>对表属性字段进行更改的操作</p>
 </blockquote>
 <p>创建表：</p>
@@ -199,7 +195,7 @@
 <li>修改表字符集：<code>ALTER TABLE 表名 CHARSET (charsetname);</code></li>
 <li>修改表备注：<code>ALTER TABLE 表名 COMMENT=&#39;your comments&#39;;</code> 表备注与列备注不同，使用了 <code>=</code></li>
 </ul>
-<h3 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h3><blockquote>
+<h3 id="3-1-DML"><a href="#3-1-DML" class="headerlink" title=".3.1. DML"></a>.3.1. DML</h3><blockquote>
 <p>对表中行数据进行更改</p>
 </blockquote>
 <ul>
@@ -212,7 +208,7 @@
 <li>删除行数据： <code>DELETE FROM 表名 [WHERE condition];</code></li>
 <li>删除表内所有数据： <code>TRUNCATE TABLE tablename;</code> 与 delete 不加 WHERE 条件区别在于 此命令将删除所有后新建一张同样的表所有其新行 id 从 0 开始，而 delete 将从之前删除的最大的 id 开始。</li>
 </ul>
-<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><blockquote>
+<h2 id="4-DQL"><a href="#4-DQL" class="headerlink" title=".4. DQL"></a>.4. DQL</h2><blockquote>
 <p>mysql 查询 DQL</p>
 </blockquote>
 <ul>
@@ -221,7 +217,7 @@
 <li>模糊查询：今天（Feb 18 2020才知道：除了 <code>%</code> 可以指定多个点位符外， <code>_</code> 还可以当作单个占位符使用。</li>
 <li>顺序： select &gt;&gt; from &gt;&gt; WHERE &gt;&gt; group by &gt;&gt; having &gt;&gt; order by</li>
 </ul>
-<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3></li>
+<h3 id="4-1-多表查询"><a href="#4-1-多表查询" class="headerlink" title=".4.1. 多表查询"></a>.4.1. 多表查询</h3></li>
 </ul>
 <blockquote>
 <p>多表联接查询</p>
@@ -240,7 +236,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="mysql-engine"><a href="#mysql-engine" class="headerlink" title="mysql engine"></a>mysql engine</h2><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/0201zcr/p/5296843.html">参考博客</a></p>
+<h2 id="5-mysql-engine"><a href="#5-mysql-engine" class="headerlink" title=".5. mysql engine"></a>.5. mysql engine</h2><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/0201zcr/p/5296843.html">参考博客</a></p>
 <ul>
 <li>mysql数据库引擎类别有：<ul>
 <li>ISAM：<ul>
@@ -268,7 +264,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="关于-INNODB-引擎"><a href="#关于-INNODB-引擎" class="headerlink" title="关于 INNODB 引擎"></a>关于 INNODB 引擎</h3><p><strong>InnoDB:</strong></p>
+<h3 id="5-1-关于-INNODB-引擎"><a href="#5-1-关于-INNODB-引擎" class="headerlink" title=".5.1. 关于 INNODB 引擎"></a>.5.1. 关于 INNODB 引擎</h3><p><strong>InnoDB:</strong></p>
 <ul>
 <li>Innodb引擎提供了对数据库ACID事务的支持，并且实现了SQL标准的四种隔离级别；<ul>
 <li><strong>ACID</strong><ul>
@@ -290,7 +286,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Index-索引"><a href="#Index-索引" class="headerlink" title="Index 索引"></a>Index 索引</h3><blockquote>
+<h3 id="5-2-Index-索引"><a href="#5-2-Index-索引" class="headerlink" title=".5.2. Index 索引"></a>.5.2. Index 索引</h3><blockquote>
 <p><strong>索引（Index）是帮助MySQL高效获取数据的数据结构。</strong></p>
 </blockquote>
 <ul>
@@ -315,18 +311,18 @@
 </ul>
 </li>
 </ul>
-<h2 id="mysql-transaction"><a href="#mysql-transaction" class="headerlink" title="mysql transaction"></a>mysql transaction</h2><p>mysql 的事务</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
+<h2 id="6-mysql-transaction"><a href="#6-mysql-transaction" class="headerlink" title=".6. mysql transaction"></a>.6. mysql transaction</h2><p>mysql 的事务</p>
+<h3 id="6-1-语法"><a href="#6-1-语法" class="headerlink" title=".6.1. 语法"></a>.6.1. 语法</h3><ul>
 <li>开启事务：<code>start transaction;</code></li>
 <li>提交事务：<code>commit;</code></li>
 <li>回滚事务：<code>rollback;</code></li>
 </ul>
-<h3 id="事务相关"><a href="#事务相关" class="headerlink" title="事务相关"></a>事务相关</h3><ul>
+<h3 id="6-2-事务相关"><a href="#6-2-事务相关" class="headerlink" title=".6.2. 事务相关"></a>.6.2. 事务相关</h3><ul>
 <li>mysql 默认开启事务，一条语句执行时默认开启一个事务，根据结果自动提交或回滚。开启事务语句一执行，便开启了手动事务；</li>
 <li>oracle 事务默认手动开启；</li>
 <li>mysql 事务提交或回滚前，在同一个连接内能查询到此事务内前面执行 sql 的结果。其他连接不行；这应该是事务隔离级别决定的，待确认。</li>
 </ul>
-<h3 id="数据库的事务隔离级别"><a href="#数据库的事务隔离级别" class="headerlink" title="数据库的事务隔离级别"></a>数据库的事务隔离级别</h3><h4 id="并发事务下"><a href="#并发事务下" class="headerlink" title="并发事务下"></a>并发事务下</h4><ul>
+<h3 id="6-3-数据库的事务隔离级别"><a href="#6-3-数据库的事务隔离级别" class="headerlink" title=".6.3. 数据库的事务隔离级别"></a>.6.3. 数据库的事务隔离级别</h3><h4 id="6-3-1-并发事务下"><a href="#6-3-1-并发事务下" class="headerlink" title=".6.3.1. 并发事务下"></a>.6.3.1. 并发事务下</h4><ul>
 <li>先引入并发事务出现错误的概念：<ul>
 <li>脏读：T1 更新了数据，但未提交，这时 T2 读取 T1 事务中未提交的数据，但 T1 回滚操作，T2 读取就无效，这就叫脏读；</li>
 <li>不可重复读：T1 读取，T2 修改了数据，T1 再次读时就讲到修改过的数据，这叫不可重复读</li>
@@ -343,7 +339,7 @@
 <li>Oracle 不支持脏读，默认使用 READ COMMITED，支持 READ COMMITED/SERIALIZABLE</li>
 <li>MySQL 标准定义的默认事务隔离级别是 REPEATABLE READ</li>
 </ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_data_warehouse">reference</a></p>
+<h2 id="7-分类"><a href="#7-分类" class="headerlink" title=".7. 分类"></a>.7. 分类</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_data_warehouse">reference</a></p>
 <p>OLTP: Online Transaction Process 多写类类型<br>data warehouse 多读少写类型</p>
 
         </div>
@@ -366,8 +362,8 @@
             </a>
         
         
-            <a class="next" href="/2017/09/15/Spring/Spring%20IOC/">
-                <span class="nav-default">Spring IoC</span>
+            <a class="next" href="/2018/09/28/JMM/CompletableFuture/">
+                <span class="nav-default">Java Concurrent</span>
                 <span class="nav-mobile">Next</span>
                 <i class="iconfont icon-next"></i>
             </a>
@@ -386,10 +382,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

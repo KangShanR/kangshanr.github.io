@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,29 +94,29 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-key-words"><span class="toc-text">java key words</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#transient%E3%80%90%E7%9E%AC%E6%97%B6%E3%80%91"><span class="toc-text">transient【瞬时】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile"><span class="toc-text">volatile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile-%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%88%99"><span class="toc-text">volatile 可见性保证原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92"><span class="toc-text">指令重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile-happen-before-%E5%8E%9F%E5%88%99"><span class="toc-text">volatile happen-before 原则</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-transient%E3%80%90%E7%9E%AC%E6%97%B6%E3%80%91"><span class="toc-text">.1. transient【瞬时】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-volatile"><span class="toc-text">.2. volatile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-volatile-%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%88%99"><span class="toc-text">.2.1. volatile 可见性保证原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92"><span class="toc-text">.2.2. 指令重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-volatile-happen-before-%E5%8E%9F%E5%88%99"><span class="toc-text">.2.3. volatile happen-before 原则</span></a></li></ol></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="java-key-words"><a href="#java-key-words" class="headerlink" title="java key words"></a>java key words</h1><h2 id="transient【瞬时】"><a href="#transient【瞬时】" class="headerlink" title="transient【瞬时】"></a>transient【瞬时】</h2><p>用以序列化、反序列化时所排除的变量，在进行序列化、反序列化时 transient 修辞的变量将不被序列化、反序列化。</p>
+            <h2 id="1-transient【瞬时】"><a href="#1-transient【瞬时】" class="headerlink" title=".1. transient【瞬时】"></a>.1. transient【瞬时】</h2><p>用以序列化、反序列化时所排除的变量，在进行序列化、反序列化时 transient 修辞的变量将不被序列化、反序列化。</p>
 <ul>
 <li>与 final 连用，final 修辞字段值会直接被序列化，因此 transient 修辞 final 字段无效</li>
 <li>与 static 连用，static 字段非对象所拥有，所以 transient 修辞的 static 字段无效。<span id="more"></span></li>
 </ul>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/volatile.html">reference</a></p>
+<h2 id="2-volatile"><a href="#2-volatile" class="headerlink" title=".2. volatile"></a>.2. volatile</h2><p><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/volatile.html">reference</a></p>
 <ul>
 <li>volatile 用于将变量放置于主存而非 CPU 缓存，以避免多核多线程中读取变量产生可见性问题。</li>
 </ul>
-<h3 id="volatile-可见性保证原则"><a href="#volatile-可见性保证原则" class="headerlink" title="volatile 可见性保证原则"></a>volatile 可见性保证原则</h3><p>可见性指在线程间变量被读写的正确性， java volatile 原则不仅保证 volatile 变量本身，也保证其相关变量：</p>
+<h3 id="2-1-volatile-可见性保证原则"><a href="#2-1-volatile-可见性保证原则" class="headerlink" title=".2.1. volatile 可见性保证原则"></a>.2.1. volatile 可见性保证原则</h3><p>可见性指在线程间变量被读写的正确性， java volatile 原则不仅保证 volatile 变量本身，也保证其相关变量：</p>
 <ul>
 <li>对于一个线程A写 volatile 变量随后线程 B 读取 volatile 变量的场景中，所有在线程A 写 volatile 变量前的变量对线程 A 都具可见性，同时，在线程 B 读取 volatile 变量后所有的变量对线程B 具可见性。</li>
 <li>线程A在读取一个 volatile 变量时，所有的变量都对线程 A 保持可见性也可以从主存中生读。</li>
 </ul>
-<h3 id="指令重排"><a href="#指令重排" class="headerlink" title="指令重排"></a>指令重排</h3><p>JVM 与 CPU 为提升性能而允许指令重排。<em>使用指令重排可以将同一个变量的声明与赋值放在一起而提升性能？</em></p>
+<h3 id="2-2-指令重排"><a href="#2-2-指令重排" class="headerlink" title=".2.2. 指令重排"></a>.2.2. 指令重排</h3><p>JVM 与 CPU 为提升性能而允许指令重排。<em>使用指令重排可以将同一个变量的声明与赋值放在一起而提升性能？</em></p>
 <p>指令重排带来的问题就是打乱了 volatile 可见性原则。</p>
-<h3 id="volatile-happen-before-原则"><a href="#volatile-happen-before-原则" class="headerlink" title="volatile happen-before 原则"></a>volatile happen-before 原则</h3><p>为保证指令重排不对 volatile 可见性干预，volatile 有 Happens-Before 原则。</p>
+<h3 id="2-3-volatile-happen-before-原则"><a href="#2-3-volatile-happen-before-原则" class="headerlink" title=".2.3. volatile happen-before 原则"></a>.2.3. volatile happen-before 原则</h3><p>为保证指令重排不对 volatile 可见性干预，volatile 有 Happens-Before 原则。</p>
 
         </div>
         
@@ -166,10 +162,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -89,7 +85,7 @@
                 
                 <span class="post-category">
                     
-                    <a class="category" href="/categories/java/">java</a>
+                    <a class="category" href="/categories/Java/">Java</a>
                     
                 </span>
                 
@@ -98,23 +94,23 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-jar"><span class="toc-text">Java jar</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#installed-extensions"><span class="toc-text">installed extensions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-command-line"><span class="toc-text">java command line</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM"><span class="toc-text">JVM</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-installed-extensions"><span class="toc-text">.1. installed extensions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-java-command-line"><span class="toc-text">.2. java command line</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-JVM"><span class="toc-text">.3. JVM</span></a></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="Java-jar"><a href="#Java-jar" class="headerlink" title="Java jar"></a>Java jar</h1><p>java archive</p>
+            <p>java archive</p>
 <ul>
 <li>使用 jdk 自带工具 javac 编译 java 文件成 class 字节码，再用打包命令 <code>java jar cfmv jar-name manifest-file class-files</code><span id="more"></span></li>
 </ul>
-<h2 id="installed-extensions"><a href="#installed-extensions" class="headerlink" title="installed extensions"></a>installed extensions</h2><p>添加外部的 jar 用作扩展。</p>
+<h2 id="1-installed-extensions"><a href="#1-installed-extensions" class="headerlink" title=".1. installed extensions"></a>.1. installed extensions</h2><p>添加外部的 jar 用作扩展。</p>
 <ul>
 <li>可在命令行中添加 classpath 的参数，指定 classpath 引用外部 jar 包，也可以在 manifest 文件中指定多个 classpath 。</li>
 <li>可以直接在 jre 中添加扩展。path：jre/lib/ext</li>
 <li>若有多个 jre，可以在用户目录中指定让多个 jre 使用同一个 jar 包：usr/java/packages/lib/ext</li>
 </ul>
-<h2 id="java-command-line"><a href="#java-command-line" class="headerlink" title="java command line"></a><code>java</code> command line</h2><blockquote>
+<h2 id="2-java-command-line"><a href="#2-java-command-line" class="headerlink" title=".2. java command line"></a>.2. <code>java</code> command line</h2><blockquote>
 <p><code>java</code> 命令行在启动一个 java 进程时至关重要。其中关系到设置 jvm 的各项参数，项目启动的配置参数等等。</p>
 </blockquote>
 <ul>
@@ -128,7 +124,7 @@
 <li><code>-XX</code> 高级选项 advanced option</li>
 <li><code>-D&lt;name&gt;=&lt;value&gt;</code> 设置系统属性</li>
 </ul>
-<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html">Oracle reference</a></p>
+<h2 id="3-JVM"><a href="#3-JVM" class="headerlink" title=".3. JVM"></a>.3. JVM</h2><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html">Oracle reference</a></p>
 
         </div>
         
@@ -176,10 +172,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

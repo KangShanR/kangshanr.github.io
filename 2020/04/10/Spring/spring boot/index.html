@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -89,7 +85,7 @@
                 
                 <span class="post-category">
                     
-                    <a class="category" href="/categories/programming/">programming</a>
+                    <a class="category" href="/categories/Mysql/">Mysql</a>
                     
                 </span>
                 
@@ -98,15 +94,15 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot"><span class="toc-text">spring boot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-boot-%E7%9A%84%E7%AE%80%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-text">spring boot 的简化处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#create-an-executable-jar"><span class="toc-text">create an executable jar</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#how-to-series"><span class="toc-text">how to series</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-profile"><span class="toc-text">spring 项目中使用 profile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Structuring-Code"><span class="toc-text">Structuring Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Locating-the-Main-Application-Class"><span class="toc-text">Locating the Main Application Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Auto-configuration"><span class="toc-text">Auto-configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Beans-and-Dependency-Injection"><span class="toc-text">Spring Beans and Dependency Injection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-the-SpringBootApplication-Annotation"><span class="toc-text">Using the @SpringBootApplication Annotation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Developer-Tools"><span class="toc-text">Developer Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Source-Code"><span class="toc-text">Source Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B-bean-%E6%B3%A8%E5%86%8C%E5%99%A8%E4%B8%AD-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry"><span class="toc-text">单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-spring-boot-%E7%9A%84%E7%AE%80%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-text">.1. spring boot 的简化处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-create-an-executable-jar"><span class="toc-text">.1.1. create an executable jar</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-how-to-series"><span class="toc-text">.2. how to series</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-spring-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-profile"><span class="toc-text">.2.1. spring 项目中使用 profile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Structuring-Code"><span class="toc-text">.3. Structuring Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Locating-the-Main-Application-Class"><span class="toc-text">.3.1. Locating the Main Application Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Auto-configuration"><span class="toc-text">.3.2. Auto-configuration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Spring-Beans-and-Dependency-Injection"><span class="toc-text">.3.3. Spring Beans and Dependency Injection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Using-the-SpringBootApplication-Annotation"><span class="toc-text">.3.4. Using the @SpringBootApplication Annotation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Developer-Tools"><span class="toc-text">.4. Developer Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Source-Code"><span class="toc-text">.5. Source Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%8D%95%E4%BE%8B-bean-%E6%B3%A8%E5%86%8C%E5%99%A8%E4%B8%AD-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry"><span class="toc-text">.5.1. 单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry</span></a></li></ol></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="spring-boot"><a href="#spring-boot" class="headerlink" title="spring boot"></a>spring boot</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-scoop-cli-installation">reference</a></p>
+            <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-scoop-cli-installation">reference</a></p>
 <p>安装 spring CLI(command line interface)，后再运行本地 groovy 文件。<span id="more"></span></p>
-<h2 id="spring-boot-的简化处理"><a href="#spring-boot-的简化处理" class="headerlink" title="spring boot 的简化处理"></a>spring boot 的简化处理</h2><ol>
+<h2 id="1-spring-boot-的简化处理"><a href="#1-spring-boot-的简化处理" class="headerlink" title=".1. spring boot 的简化处理"></a>.1. spring boot 的简化处理</h2><ol>
 <li>将所有依赖都写入其基本配置中，最大简化其配置；</li>
 <li>自动扫描，一个注解自动识别所有的需要扫描的包与 bean；</li>
 <li><code>@RestController</code> 指定此类为一个特殊处理器， spring 会识到并用来处理网络请求；</li>
@@ -121,7 +117,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="create-an-executable-jar"><a href="#create-an-executable-jar" class="headerlink" title="create an executable jar"></a>create an executable jar</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-dependencies">reference</a></p>
+<h3 id="1-1-create-an-executable-jar"><a href="#1-1-create-an-executable-jar" class="headerlink" title=".1.1. create an executable jar"></a>.1.1. create an executable jar</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-dependencies">reference</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.3.2.BUILD-SNAPSHOT/maven-plugin/reference/html/">build spring boot on maven</a></p>
 <p>对于一个工程来说依赖各个 jar 包，而 java 并没有提供一个标准的方式去加载内嵌的 jar ，因此不能发布一个独立的程序包。</p>
 <p>为此，很多开发者的解决方案是创建一个 ‘uber’ jar，所谓 uber jar 是指将应用所有的依赖的 class 文件整合成一个单独的包。这样做的问题在于：1、 难以查看依赖库；2、不同 jar 包中要是存在同名的 class 就会出现问题。</p>
@@ -134,17 +130,17 @@
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="how-to-series"><a href="#how-to-series" class="headerlink" title="how to series"></a>how to series</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-properties-and-configuration">spring boot HOWTO 系列</a></p>
+<h2 id="2-how-to-series"><a href="#2-how-to-series" class="headerlink" title=".2. how to series"></a>.2. how to series</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-properties-and-configuration">spring boot HOWTO 系列</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38520638/how-to-set-spring-profile-from-system-variable">设置 spring 项目 profile</a></p>
-<h3 id="spring-项目中使用-profile"><a href="#spring-项目中使用-profile" class="headerlink" title="spring 项目中使用 profile"></a>spring 项目中使用 profile</h3><p><a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-profiles">spring 项目 profile</a></p>
+<h3 id="2-1-spring-项目中使用-profile"><a href="#2-1-spring-项目中使用-profile" class="headerlink" title=".2.1. spring 项目中使用 profile"></a>.2.1. spring 项目中使用 profile</h3><p><a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-profiles">spring 项目 profile</a></p>
 <p>用以指定当前运行环境，可以 maven 打包时也可以设置针对环境打包。</p>
 <p>获取当前活跃的 profile ，参考 <code>6. Get Active Profiles</code></p>
-<h2 id="Structuring-Code"><a href="#Structuring-Code" class="headerlink" title="Structuring Code"></a>Structuring Code</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-structuring-your-code">reference</a></p>
-<h3 id="Locating-the-Main-Application-Class"><a href="#Locating-the-Main-Application-Class" class="headerlink" title="Locating the Main Application Class"></a>Locating the Main Application Class</h3><ul>
+<h2 id="3-Structuring-Code"><a href="#3-Structuring-Code" class="headerlink" title=".3. Structuring Code"></a>.3. Structuring Code</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-structuring-your-code">reference</a></p>
+<h3 id="3-1-Locating-the-Main-Application-Class"><a href="#3-1-Locating-the-Main-Application-Class" class="headerlink" title=".3.1. Locating the Main Application Class"></a>.3.1. Locating the Main Application Class</h3><ul>
 <li>在根目录添加 Application.class 主类放在根目录上，使用 <code>@SpringBootApplication</code> 注解在主类上。此注解也隐匿地定义了某些特定项目的基础查找包 <code>base search package</code> 。_如果在root package 定义多个 application.class 打包发布时会认定哪个为项目入口呢？_亲测结果：<code>spring-boot-maven-plugin:2.3.1.RELEASE:repackage failed: Unable to find a single main class from the following candidates</code> 打包插件将报出不能找到唯一的主类异常</li>
 <li>若不使用 <code>@SpringBootApplication</code> 注解，可以使用 <code>@EnableAutoConfiguration</code> <code>@ComponentScan</code> 两个注解实现相同功能</li>
 </ul>
-<h3 id="Auto-configuration"><a href="#Auto-configuration" class="headerlink" title="Auto-configuration"></a>Auto-configuration</h3><blockquote>
+<h3 id="3-2-Auto-configuration"><a href="#3-2-Auto-configuration" class="headerlink" title=".3.2. Auto-configuration"></a>.3.2. Auto-configuration</h3><blockquote>
 <p>自动配置</p>
 </blockquote>
 <ul>
@@ -153,10 +149,10 @@
 <li>应该逐渐用特定的配置代替自动配置。</li>
 <li>若 spring boot 自动配置了不需要的配置，可以在 <code>@SpringBootApplication</code> 或 <code>@EnableAutoConfiguration</code> 添加排除 exclude ，若排除的类不在 classpath 中可以指定其全限定名到 <code>excludename</code>。也可以添加配置 <code>spring.autoconfigure.exclude</code> 指定自动配置排除配置。</li>
 </ul>
-<h3 id="Spring-Beans-and-Dependency-Injection"><a href="#Spring-Beans-and-Dependency-Injection" class="headerlink" title="Spring Beans and Dependency Injection"></a>Spring Beans and Dependency Injection</h3><ul>
+<h3 id="3-3-Spring-Beans-and-Dependency-Injection"><a href="#3-3-Spring-Beans-and-Dependency-Injection" class="headerlink" title=".3.3. Spring Beans and Dependency Injection"></a>.3.3. Spring Beans and Dependency Injection</h3><ul>
 <li>spring 中的 bean 注入：使用构造器注入 <code>private final Dependency d;</code> 使用 final 修辞字段让其不能被修改。</li>
 </ul>
-<h3 id="Using-the-SpringBootApplication-Annotation"><a href="#Using-the-SpringBootApplication-Annotation" class="headerlink" title="Using the @SpringBootApplication Annotation"></a>Using the @SpringBootApplication Annotation</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-spring-beans-and-dependency-injection">reference</a></p>
+<h3 id="3-4-Using-the-SpringBootApplication-Annotation"><a href="#3-4-Using-the-SpringBootApplication-Annotation" class="headerlink" title=".3.4. Using the @SpringBootApplication Annotation"></a>.3.4. Using the @SpringBootApplication Annotation</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-spring-beans-and-dependency-injection">reference</a></p>
 <p>@SpringBootApplication 注解有三个特性，分别对应三个注解：</p>
 <ol>
 <li>@EnableAutoConfiguration</li>
@@ -164,15 +160,15 @@
 <li>@Configuration</li>
 </ol>
 <p>@SpringBootApplication 提供别名以实现定义以上前两个注解的功能。</p>
-<h2 id="Developer-Tools"><a href="#Developer-Tools" class="headerlink" title="Developer Tools"></a>Developer Tools</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools">reference</a></p>
+<h2 id="4-Developer-Tools"><a href="#4-Developer-Tools" class="headerlink" title=".4. Developer Tools"></a>.4. Developer Tools</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools">reference</a></p>
 <p>添加 spring-boot-devtools 依赖，实现热启动。其实现原理是固有的jar包代码使用一个固定的 classloader，而开发变动的代码使用另一个classloader，当发生变动时，重启一个 classloader 加载新的编译的代码。所以热启动相对冷启动要快些，因为其不用加载旧的不变的依赖的jar包中的代码。</p>
 <ul>
 <li>使用 trigger-file 触发项目重启。<code>spring.devtools.restart.trigger-file=&lt;.reloadtrigger&gt;</code> 手动更新了 trigger 文件才会触发更新。trigger 文件可以自定义在 classpath 中任意地方，而配置文件指定配置文件不需要全限定名，更新代码后只需要修改保存一下trigger文件即可触发reload。</li>
 <li>如果使用了Ultimate Edition IDEA 可以点击 relauch 触发重启。</li>
 <li>生产模式下devtool 自动关闭，如果项目启动通过 java -jar 运行一个包或从一个特定的 classloader 中开始，devtools 将自动识别在生产模式中。如果应用在窗口中开启需要排除 devtools 或者直接添加系统参数 <code>-Dspring.devtools.restart.enabled=false</code>。</li>
 </ul>
-<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><p>Spring Boot 源码</p>
-<h3 id="单例-bean-注册器中-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry"><a href="#单例-bean-注册器中-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry" class="headerlink" title="单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry"></a>单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry</h3><ul>
+<h2 id="5-Source-Code"><a href="#5-Source-Code" class="headerlink" title=".5. Source Code"></a>.5. Source Code</h2><p>Spring Boot 源码</p>
+<h3 id="5-1-单例-bean-注册器中-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry"><a href="#5-1-单例-bean-注册器中-org-springframework-beans-factory-support-DefaultSingletonBeanRegistry" class="headerlink" title=".5.1. 单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry"></a>.5.1. 单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry</h3><ul>
 <li>dependentBeanMap 注释 <code>Map between dependent bean names: bean name to Set of dependent bean names.</code> 表示 bean 与依赖此 bean 的映射 map 。</li>
 <li>dependenciesForBeanMap <code>Map between depending bean names: bean name to Set of bean names for the bean&#39;s dependencies.</code> 表示 bean 与 此 bean 依赖的 bean 的映射关系集合。<ul>
 <li>上述结论来自方法 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry#registerDependentBean 及其注释说明。同时可以从自动装配方法 org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#autowireByType line:1511 推导：解析本bean 自动装配的依赖 autowiredBeanNames 出后，在注册处调用方法 line:1516 参数是本 bean 依赖 autowiredBeanName 为第一个参数，而本 beanName 是第二个参数（这时的依赖关系是： 本bean 依赖 autowiredBean）。再看此 registerDependentBean 方法，其执行是将第一个参数 beanName（此时就是本 bean 的依赖bean） 放入了 dependenciesForBeanMap 而 本 beanName 作为 了第二个参数 放入了 dependentBeanMap 。</li>
@@ -225,10 +221,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

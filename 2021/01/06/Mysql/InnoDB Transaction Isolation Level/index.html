@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,13 +94,13 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InnoDB-Transaction-Isolation-Level"><span class="toc-text">InnoDB Transaction Isolation Level</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#REPEATABLE-READ"><span class="toc-text">REPEATABLE READ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#READ-COMMITTED"><span class="toc-text">READ COMMITTED</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#READ-UNCOMMITTED"><span class="toc-text">READ UNCOMMITTED</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SERIALIZABLE"><span class="toc-text">SERIALIZABLE</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-REPEATABLE-READ"><span class="toc-text">.1. REPEATABLE READ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-READ-COMMITTED"><span class="toc-text">.2. READ COMMITTED</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%A1%88%E4%BE%8B"><span class="toc-text">.2.1. 案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-READ-UNCOMMITTED"><span class="toc-text">.3. READ UNCOMMITTED</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-SERIALIZABLE"><span class="toc-text">.4. SERIALIZABLE</span></a></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="InnoDB-Transaction-Isolation-Level"><a href="#InnoDB-Transaction-Isolation-Level" class="headerlink" title="InnoDB Transaction Isolation Level"></a>InnoDB Transaction Isolation Level</h1><blockquote>
+            <blockquote>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html">InnoDB 事务模型</a></p>
 <p>InnoDB 事务模型的目标是联合数据库多视图属性与传统的多阶段锁。InnoDB 类似 Oracle ，其执行锁到行级别，同时默认执行查询不加锁并保持一致性读。InnoDB 锁数据存储空间效率高，不随锁数量增加而剧增。锁表全行也不用担心 InnoDB 内存耗尽。<span id="more"></span></p>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html">InnoDB 隔离级别</a></p>
@@ -117,7 +113,7 @@
 <li>幻读，事务A读事务B（新插入了数据）提交后，发现前面读到的数据比之后读到的数据少了一部分。</li>
 </ol>
 <p>可以设置全局，也可以设置到 session ，设置后开启新的 session 即可生效。</p>
-<h2 id="REPEATABLE-READ"><a href="#REPEATABLE-READ" class="headerlink" title="REPEATABLE READ"></a>REPEATABLE READ</h2><p>可重复读，事务在执行语句之初就去读取需要查询的数据并放在视图中，在事务提交之前保存之前都不更新此视图（<strong>新插入的数据还是会再读取到视图中</strong>）。所以这样可以防止不可重复读，不能防止幻读。</p>
+<h2 id="1-REPEATABLE-READ"><a href="#1-REPEATABLE-READ" class="headerlink" title=".1. REPEATABLE READ"></a>.1. REPEATABLE READ</h2><p>可重复读，事务在执行语句之初就去读取需要查询的数据并放在视图中，在事务提交之前保存之前都不更新此视图（<strong>新插入的数据还是会再读取到视图中</strong>）。所以这样可以防止不可重复读，不能防止幻读。</p>
 <ol>
 <li>对于一致性非锁读（普通查询），同一事务内会保持一致性，第一次读数据会产生快照。（如果查询条件不一样呢？会再查询出新的快照出来还是会对后面新查询进行优化先在已有快照里匹配呢？）</li>
 <li>对于锁读（select … for update/lock in share mode）/update/delete 语句，加锁的情况取决于查询条件：<ol>
@@ -126,7 +122,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="READ-COMMITTED"><a href="#READ-COMMITTED" class="headerlink" title="READ COMMITTED"></a>READ COMMITTED</h2><p>读已提交，事务提交后才去读。事务在执行每一条查询前都会查询结果放到事务的视图中，可以防止脏读，不能防止不可重复读与幻读</p>
+<h2 id="2-READ-COMMITTED"><a href="#2-READ-COMMITTED" class="headerlink" title=".2. READ COMMITTED"></a>.2. READ COMMITTED</h2><p>读已提交，事务提交后才去读。事务在执行每一条查询前都会查询结果放到事务的视图中，可以防止脏读，不能防止不可重复读与幻读</p>
 <ol>
 <li>一致性非锁读(consistent non-locking reads,　普通查询)　事务内所有的 sets and reads 都在其快照中。</li>
 <li>锁读（locking reads, select … for update/lock in share mode）/update/delete, InnoDB 只会锁索引记录，而不会在数据行前添加 gap-lock ，因而允许了添加新数据行在锁行前（幻读）。这种隔离级别下 gap-lock 只会对外键约束检查与重复　key　检查生效。<ol>
@@ -144,7 +140,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t (a <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>, b <span class="type">INT</span>) ENGINE <span class="operator">=</span> InnoDB;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="number">2</span>),(<span class="number">2</span>,<span class="number">3</span>),(<span class="number">3</span>,<span class="number">2</span>),(<span class="number">4</span>,<span class="number">3</span>),(<span class="number">5</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-案例"><a href="#2-1-案例" class="headerlink" title=".2.1. 案例"></a>.2.1. 案例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t (a <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>, b <span class="type">INT</span>) ENGINE <span class="operator">=</span> InnoDB;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="number">2</span>),(<span class="number">2</span>,<span class="number">3</span>),(<span class="number">3</span>,<span class="number">2</span>),(<span class="number">4</span>,<span class="number">3</span>),(<span class="number">5</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
 
 <p>创建表 t ，但<strong>没有索引</strong>，所以<strong>查询与索引扫描使用记录锁隐藏的聚簇索引而非索引列</strong>。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Session A</span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line">UPDATE t <span class="keyword">SET</span> b <span class="operator">=</span> <span class="number">5</span> <span class="keyword">WHERE</span> b <span class="operator">=</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
@@ -186,10 +182,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="READ-UNCOMMITTED"><a href="#READ-UNCOMMITTED" class="headerlink" title="READ UNCOMMITTED"></a>READ UNCOMMITTED</h2><ul>
+<h2 id="3-READ-UNCOMMITTED"><a href="#3-READ-UNCOMMITTED" class="headerlink" title=".3. READ UNCOMMITTED"></a>.3. READ UNCOMMITTED</h2><ul>
 <li>SELECT 语句执行不加锁，但早期版本可能会在行上加锁。使用用此隔离级别不能保证读一致性，俗称“脏读”。而在其他方面此隔离级别与 READ COMMITTED 一致。<em>读未提交，事务未提交就可以读到数据更新，不能阻止以上三种任何隐患，直接读取事务中修改后的值，没有视图概念。</em></li>
 </ul>
-<h2 id="SERIALIZABLE"><a href="#SERIALIZABLE" class="headerlink" title="SERIALIZABLE"></a>SERIALIZABLE</h2><blockquote>
+<h2 id="4-SERIALIZABLE"><a href="#4-SERIALIZABLE" class="headerlink" title=".4. SERIALIZABLE"></a>.4. SERIALIZABLE</h2><blockquote>
 <p>串行化，事务之间排队执行，防止一切隐患。</p>
 </blockquote>
 <p>串行化类似 REPEATABLE READ ，但如果 autocommit=OFF ,InnoDB 会隐式地将普通 SELECT 语句转换成 SELECT … FOR SHARE 。如果 autocommit=ON ,SELECT 在自己的事务中，这是只读且如果执行一致性读（不加锁）能被串行化的，并且也不需要为其他事务加锁。如果需要强迫一个普通 SELECT 为其他事务修改的行阻塞，关闭 autocommit 。</p>
@@ -236,10 +232,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

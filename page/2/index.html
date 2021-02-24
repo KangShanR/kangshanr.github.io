@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -84,6 +80,106 @@
     
         <article class="post-abstract">
             <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/12/29/Mysql/InnoDB/">InnoDB</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-12-29</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Mysql/">Mysql</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/08/20/innodb-lock.html">美团文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/show-engine.html">查看Innodb引擎数据</a></p>
+</blockquote>
+<h2 id="1-Locking-Readings"><a href="#1-Locking-Readings" class="headerlink" title=".1. Locking Readings"></a>.1. Locking Readings</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">锁读</a></p>
+</blockquote>
+<h2 id="2-并发写问题"><a href="#2-并发写问题" class="headerlink" title=".2. 并发写问题"></a>.2. 并发写问题</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengzheng/p/12557762.html">CSDN</a></p>
+</blockquote>
+<ul>
+<li>在并发写同一行数据时，如果 where 条件字段没有加索引，innoDB 会对所有行加行锁，再对条件进行筛选，不符合条件的行再释放锁。一锁一放损耗极大，所以建议适当添加索引。</li>
+<li>在可重复读隔离级别下，InnoDB 加间隙锁可以防止幻读，同理，如果没有索引将会把所在行之外所有列都加上间隙锁，而导致范围外的行也需要阻塞到当前锁释放才能插入。</li>
+<li>意向锁是表锁，只用来表示该表有没行正被锁住，而以免有行被锁住时想要加表锁修改表结构，需要每行查询是否有行锁。
+                    <div class="read-more">
+                        <a href="/2020/12/29/Mysql/InnoDB/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/12/28/JMM/Thread/">Java Thread &amp; Java Object</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-12-28</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Java/">Java</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>Java 线程与对象的基本方法</p>
+</blockquote>
+<h2 id="1-Thread"><a href="#1-Thread" class="headerlink" title=".1. Thread"></a>.1. Thread</h2><blockquote>
+<p>java thread
+                    <div class="read-more">
+                        <a href="/2020/12/28/JMM/Thread/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/12/10/Linux/command%20line/">Shell</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-12-10</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Linux/">Linux</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h2 id="1-vim-编辑器命令行"><a href="#1-vim-编辑器命令行" class="headerlink" title=".1. vim 编辑器命令行"></a>.1. vim 编辑器命令行</h2><blockquote>
+<p>以下命令是在编辑整个文件时（未进入到文件编辑内部时）进行行操作。
+                    <div class="read-more">
+                        <a href="/2020/12/10/Linux/command%20line/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
                 <h2><a class="post-title-link" href="/2020/12/10/Linux/shell/">Hash</a></h2>
             </div>
             <div class="post-meta">
@@ -91,14 +187,16 @@
                 
                 <span class="post-category">
                     
-                    <a class="category" href="/categories/programming/">programming</a>
+                    <a class="category" href="/categories/Linux/">Linux</a>
+                    
+                    <a class="category" href="/categories/Linux/Shell/">Shell</a>
                     
                 </span>
                 
             </div>
             <div class="post-content">
                 
-                    <h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><blockquote>
+                    <blockquote>
 <p>Shell 是一个可以执行命令／程序／shell 脚本的环境，提供了访问 Unix 系统的接口。其根据输入执行程序，执行完成后将结果展示出来。 <a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/unix/unix-what-is-shell.htm">Shell</a>
                     <div class="read-more">
                         <a href="/2020/12/10/Linux/shell/" class="read-more-link">
@@ -126,8 +224,8 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="java-overview"><a href="#java-overview" class="headerlink" title="java overview"></a>java overview</h1><p>关于 java 的概述文档翻译。<a target="_blank" rel="noopener" href="https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html">官方文档</a></p>
-<h2 id="java-platform"><a href="#java-platform" class="headerlink" title="java platform"></a>java platform</h2><ul>
+                    <p>关于 java 的概述文档翻译。<a target="_blank" rel="noopener" href="https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html">官方文档</a></p>
+<h2 id="1-java-platform"><a href="#1-java-platform" class="headerlink" title=".1. java platform"></a>.1. java platform</h2><ul>
 <li>java SE：java standard edition。java 标准版本，包括了 java 虚拟机，各类基础的 API 。
                     <div class="read-more">
                         <a href="/2020/11/03/java%20specification/" class="read-more-link">
@@ -148,14 +246,14 @@
                 
                 <span class="post-category">
                     
-                    <a class="category" href="/categories/java/">java</a>
+                    <a class="category" href="/categories/Java/">Java</a>
                     
                 </span>
                 
             </div>
             <div class="post-content">
                 
-                    <h1 id="Java-jar"><a href="#Java-jar" class="headerlink" title="Java jar"></a>Java jar</h1><p>java archive</p>
+                    <p>java archive</p>
 <ul>
 <li>使用 jdk 自带工具 javac 编译 java 文件成 class 字节码，再用打包命令 <code>java jar cfmv jar-name manifest-file class-files</code>
                     <div class="read-more">
@@ -184,7 +282,7 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="java-key-words"><a href="#java-key-words" class="headerlink" title="java key words"></a>java key words</h1><h2 id="transient【瞬时】"><a href="#transient【瞬时】" class="headerlink" title="transient【瞬时】"></a>transient【瞬时】</h2><p>用以序列化、反序列化时所排除的变量，在进行序列化、反序列化时 transient 修辞的变量将不被序列化、反序列化。</p>
+                    <h2 id="1-transient【瞬时】"><a href="#1-transient【瞬时】" class="headerlink" title=".1. transient【瞬时】"></a>.1. transient【瞬时】</h2><p>用以序列化、反序列化时所排除的变量，在进行序列化、反序列化时 transient 修辞的变量将不被序列化、反序列化。</p>
 <ul>
 <li>与 final 连用，final 修辞字段值会直接被序列化，因此 transient 修辞 final 字段无效</li>
 <li>与 static 连用，static 字段非对象所拥有，所以 transient 修辞的 static 字段无效。
@@ -214,9 +312,9 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="SpEL"><a href="#SpEL" class="headerlink" title="SpEL"></a>SpEL</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-beandef">Spring 表达式</a></p>
-<h2 id="SpEL-Reference"><a href="#SpEL-Reference" class="headerlink" title="SpEL Reference"></a>SpEL Reference</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-operator-safe-navigation">reference</a></p>
-<h3 id="Bean-Reference"><a href="#Bean-Reference" class="headerlink" title="Bean Reference"></a>Bean Reference</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-ref-variables">bean reference</a></p>
+                    <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-beandef">Spring 表达式</a></p>
+<h2 id="1-SpEL-Reference"><a href="#1-SpEL-Reference" class="headerlink" title=".1. SpEL Reference"></a>.1. SpEL Reference</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-operator-safe-navigation">reference</a></p>
+<h3 id="1-1-Bean-Reference"><a href="#1-1-Bean-Reference" class="headerlink" title=".1.1. Bean Reference"></a>.1.1. Bean Reference</h3><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.9.RELEASE/spring-framework-reference/core.html#expressions-ref-variables">bean reference</a></p>
 <ul>
 <li>需要 evaluation Context 中配置上 BeanResolver 。</li>
 <li>引用 bean 时 <code>@something</code></li>
@@ -247,30 +345,9 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="1-URI-in-Java"><a href="#1-URI-in-Java" class="headerlink" title="1. URI in Java"></a>1. URI in Java</h1><!-- TOC -->
-
-<ul>
-<li><a href="#1-uri-in-java">1. URI in Java</a><ul>
-<li><a href="#11-uri-%E5%88%86%E7%B1%BB">1.1. URI 分类</a></li>
-<li><a href="#12-url">1.2. URL</a></li>
-<li><a href="#13-uri-%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91">1.3. URI 文档翻译</a><ul>
-<li><a href="#131-%E4%BF%9D%E7%95%99%E5%AD%97%E7%AC%A6">1.3.1. 保留字符</a></li>
-<li><a href="#132-%E9%9D%9E%E4%BF%9D%E7%95%99%E5%AD%97%E7%AC%A6">1.3.2. 非保留字符</a></li>
-<li><a href="#133-%E8%BD%AC%E4%B9%89%E7%BC%96%E7%A0%81">1.3.3. 转义编码</a></li>
-<li><a href="#134-%E8%A2%AB%E6%8E%92%E9%99%A4%E7%9A%84-ascii-%E5%AD%97%E7%AC%A6">1.3.4. 被排除的 ASCII 字符</a></li>
-</ul>
-</li>
-<li><a href="#14-uri-%E5%8F%A5%E6%B3%95%E9%83%A8%E4%BB%B6-uri-syntactic-components">1.4. URI 句法部件 （URI Syntactic Components）</a><ul>
-<li><a href="#141-scheme-%E7%BB%84%E4%BB%B6">1.4.1. Scheme 组件</a></li>
-<li><a href="#142-path-%E7%BB%84%E4%BB%B6">1.4.2. Path 组件</a></li>
-<li><a href="#143-query-%E7%BB%84%E4%BB%B6">1.4.3. Query 组件</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>URI syntax and components <a target="_blank" rel="noopener" href="https://www.ietf.org/rfc/rfc2396.txt">URI 语法</a></p>
+                    <blockquote>
+<p>URI syntax and components <a target="_blank" rel="noopener" href="https://www.ietf.org/rfc/rfc2396.txt">URI 语法与组件</a></p>
+</blockquote>
 <p>At the highest level a URI reference (hereinafter simply “URI”) in string form has the syntax <code>[scheme:]scheme-specific-part[#fragment]</code>
                     <div class="read-more">
                         <a href="/2020/08/13/URI%20in%20Java/" class="read-more-link">
@@ -298,118 +375,11 @@
             </div>
             <div class="post-content">
                 
-                    <h1 id="Spring-Boot-Features"><a href="#Spring-Boot-Features" class="headerlink" title="Spring Boot Features"></a>Spring Boot Features</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features">SpringBoot 的特性</a></p>
-<h2 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h2><p>Spring Profiles 提供隔离配置的功能，可以做到不同环境生效不同的配置。在 <code>@Component</code> <code>@Configuration</code> <code>@ConfigurationProperties</code> 上添加 <code>@Profile</code> 注解即可指定其生效环境。如果 <code>@ConfigurationProperties</code> 的配置 bean 是通过 <code>@EnableConfigurationProperties</code> 注册而不是通过自动扫描，<code>@Profile</code> 需要注解在配置组件 <code>@Configuration</code> 类上。</p>
+                    <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features">SpringBoot 的特性</a></p>
+<h2 id="1-Profiles"><a href="#1-Profiles" class="headerlink" title=".1. Profiles"></a>.1. Profiles</h2><p>Spring Profiles 提供隔离配置的功能，可以做到不同环境生效不同的配置。在 <code>@Component</code> <code>@Configuration</code> <code>@ConfigurationProperties</code> 上添加 <code>@Profile</code> 注解即可指定其生效环境。如果 <code>@ConfigurationProperties</code> 的配置 bean 是通过 <code>@EnableConfigurationProperties</code> 注册而不是通过自动扫描，<code>@Profile</code> 需要注解在配置组件 <code>@Configuration</code> 类上。</p>
 <p>指定 profile 的方式有： 添加配置 <code>spring.profiles.active=dev,test</code> 的形式，也可以是通过命令行参数添加 <code>--spring.profiles.active=pro</code>。
                     <div class="read-more">
                         <a href="/2020/07/23/Spring/SpringBoot-Features/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/07/22/Spring/SpringBoot-SpringApplication/">SpringApplication</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-07-22</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/SpringBoot/">SpringBoot</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="1-SpringApplication"><a href="#1-SpringApplication" class="headerlink" title="1. SpringApplication"></a>1. SpringApplication</h1><!-- TOC -->
-
-<ul>
-<li><a href="#1-springapplication">1. SpringApplication</a><ul>
-<li><a href="#11-application-availability">1.1. Application Availability</a><ul>
-<li><a href="#111-liveness-state">1.1.1. Liveness State</a></li>
-<li><a href="#112-readiness-state">1.1.2. Readiness State</a></li>
-<li><a href="#113-managing-the-application-availability-state">1.1.3. Managing the Application Availability State</a></li>
-</ul>
-</li>
-<li><a href="#12-application-events-and-listeners">1.2. Application Events and Listeners</a></li>
-<li><a href="#13-web-environment">1.3. Web Environment</a></li>
-<li><a href="#14-accessing-application-arguments">1.4. Accessing Application Arguments</a></li>
-<li><a href="#15-using-the-applicationrunner-and-commandlinerunner">1.5. Using the ApplicationRunner and CommandLineRunner</a></li>
-<li><a href="#16-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B">1.6. 初始化流程</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application">SpringBoot Features</a></p>
-<h2 id="1-1-Application-Availability"><a href="#1-1-Application-Availability" class="headerlink" title="1.1. Application Availability"></a>1.1. Application Availability</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">系统可用性</a></p>
-<p>可以通过注入 <code>ApplicationAvailability</code> 接口到 bean 中以获取应用可用性状态。
-                    <div class="read-more">
-                        <a href="/2020/07/22/Spring/SpringBoot-SpringApplication/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/07/19/Spring/SpringBoot-ExternalizedConfiguration/">SpringBoot Externalized Configuration</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-07-19</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/SpringBoot/">SpringBoot</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Externalized-Configuration"><a href="#Externalized-Configuration" class="headerlink" title="Externalized Configuration"></a>Externalized Configuration</h1><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config">spring boot 外部配置</a></p>
-<blockquote>
-<p>外部配置</p>
-</blockquote>
-<p>一个应用，其通常添加外部配置的方式：properties file, yml files, environment variables, 命令行参数扩展配置。配置属性可以通过 <code>@Value</code> 直接被注入到 bean 中，通过 <code>Environment</code> 抽象直接访问，也可以通过 <code>@ConfigurationProperties</code> 绑定到结构对象上。
-                    <div class="read-more">
-                        <a href="/2020/07/19/Spring/SpringBoot-ExternalizedConfiguration/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/05/12/Linux/linux/">Linux</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-05-12</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Linux/">Linux</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>desktop virtual machine: root 123456</p>
-<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><p>在 linux 上安装 Tomcat 并启动。(root 123456)
-                    <div class="read-more">
-                        <a href="/2020/05/12/Linux/linux/" class="read-more-link">
                             ReadMore
                             <i class="iconfont icon-readmore"></i>
                         </a>
@@ -447,10 +417,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

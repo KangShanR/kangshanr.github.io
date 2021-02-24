@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -98,39 +94,20 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-SpringApplication"><span class="toc-text">1. SpringApplication</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Application-Availability"><span class="toc-text">1.1. Application Availability</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-Liveness-State"><span class="toc-text">1.1.1. Liveness State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-Readiness-State"><span class="toc-text">1.1.2. Readiness State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-Managing-the-Application-Availability-State"><span class="toc-text">1.1.3. Managing the Application Availability State</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-Application-Events-and-Listeners"><span class="toc-text">1.2. Application Events and Listeners</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Web-Environment"><span class="toc-text">1.3. Web Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-Accessing-Application-Arguments"><span class="toc-text">1.4. Accessing Application Arguments</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-the-ApplicationRunner-and-CommandLineRunner"><span class="toc-text">Using the ApplicationRunner and CommandLineRunner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="toc-text">初始化流程</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Application-Availability"><span class="toc-text">.1. Application Availability</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Liveness-State"><span class="toc-text">.1.1. Liveness State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Readiness-State"><span class="toc-text">.1.2. Readiness State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Managing-the-Application-Availability-State"><span class="toc-text">.1.3. Managing the Application Availability State</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Application-Events-and-Listeners"><span class="toc-text">.2. Application Events and Listeners</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Web-Environment"><span class="toc-text">.3. Web Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Accessing-Application-Arguments"><span class="toc-text">.4. Accessing Application Arguments</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Using-the-ApplicationRunner-and-CommandLineRunner"><span class="toc-text">.5. Using the ApplicationRunner and CommandLineRunner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="toc-text">.6. 初始化流程</span></a></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h1 id="1-SpringApplication"><a href="#1-SpringApplication" class="headerlink" title="1. SpringApplication"></a>1. SpringApplication</h1><!-- TOC -->
-
-<ul>
-<li><a href="#1-springapplication">1. SpringApplication</a><ul>
-<li><a href="#11-application-availability">1.1. Application Availability</a><ul>
-<li><a href="#111-liveness-state">1.1.1. Liveness State</a></li>
-<li><a href="#112-readiness-state">1.1.2. Readiness State</a></li>
-<li><a href="#113-managing-the-application-availability-state">1.1.3. Managing the Application Availability State</a></li>
-</ul>
-</li>
-<li><a href="#12-application-events-and-listeners">1.2. Application Events and Listeners</a></li>
-<li><a href="#13-web-environment">1.3. Web Environment</a></li>
-<li><a href="#14-accessing-application-arguments">1.4. Accessing Application Arguments</a></li>
-<li><a href="#15-using-the-applicationrunner-and-commandlinerunner">1.5. Using the ApplicationRunner and CommandLineRunner</a></li>
-<li><a href="#16-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B">1.6. 初始化流程</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application">SpringBoot Features</a></p>
-<h2 id="1-1-Application-Availability"><a href="#1-1-Application-Availability" class="headerlink" title="1.1. Application Availability"></a>1.1. Application Availability</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">系统可用性</a></p>
+            <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application">SpringBoot Features</a></p>
+<h2 id="1-Application-Availability"><a href="#1-Application-Availability" class="headerlink" title=".1. Application Availability"></a>.1. Application Availability</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">系统可用性</a></p>
 <p>可以通过注入 <code>ApplicationAvailability</code> 接口到 bean 中以获取应用可用性状态。<span id="more"></span></p>
-<h3 id="1-1-1-Liveness-State"><a href="#1-1-1-Liveness-State" class="headerlink" title="1.1.1. Liveness State"></a>1.1.1. Liveness State</h3><p>应用活性，用以表明应用内部状态是否能正常工作，或是否能从异常中自动恢复。如果不能（失活），基础平台应该重启应用。一般来说，应用活性不应该基于外部检查，否则外部检查系统（数据库、缓存、Web API）出现异常，将触发大量重启与平台累积的失败。</p>
+<h3 id="1-1-Liveness-State"><a href="#1-1-Liveness-State" class="headerlink" title=".1.1. Liveness State"></a>.1.1. Liveness State</h3><p>应用活性，用以表明应用内部状态是否能正常工作，或是否能从异常中自动恢复。如果不能（失活），基础平台应该重启应用。一般来说，应用活性不应该基于外部检查，否则外部检查系统（数据库、缓存、Web API）出现异常，将触发大量重启与平台累积的失败。</p>
 <p>Spring Boot 应用的内部状态一般取决于 <code>ApplicationContext</code>。如果 ApplicationContext 成功启动，Spring Boot 就将认为应用在有效的状态。只要 context  be refreshed ，应用就被认为是有活性的。</p>
-<h3 id="1-1-2-Readiness-State"><a href="#1-1-2-Readiness-State" class="headerlink" title="1.1.2. Readiness State"></a>1.1.2. Readiness State</h3><p>应用就绪状态，用以表明应用是否对处理流量准备就绪。未进入就绪状态将告诉 platform 平台此时不宜路由流量到应用。典型的场景是在应用启动阶段，当 <code>CommandLineRunner</code> 与 <code>ApplicationRunner</code> 组件正在被处理时，或者应用忙于其他流量请求时而不能处理当前流量请求时。</p>
+<h3 id="1-2-Readiness-State"><a href="#1-2-Readiness-State" class="headerlink" title=".1.2. Readiness State"></a>.1.2. Readiness State</h3><p>应用就绪状态，用以表明应用是否对处理流量准备就绪。未进入就绪状态将告诉 platform 平台此时不宜路由流量到应用。典型的场景是在应用启动阶段，当 <code>CommandLineRunner</code> 与 <code>ApplicationRunner</code> 组件正在被处理时，或者应用忙于其他流量请求时而不能处理当前流量请求时。</p>
 <p>需要在程序启动阶段添加任务可以通过将 bean 实现接口 <code>ApplicationRunner</code> 或 <code>CommandLineRunner</code>，而不是使用 Spring 组件生命周期回调 <code>@PostConstruct</code>。以上两个接口分别可获取到程序启动参数和命令行参数。</p>
-<h3 id="1-1-3-Managing-the-Application-Availability-State"><a href="#1-1-3-Managing-the-Application-Availability-State" class="headerlink" title="1.1.3. Managing the Application Availability State"></a>1.1.3. Managing the Application Availability State</h3><ol>
+<h3 id="1-3-Managing-the-Application-Availability-State"><a href="#1-3-Managing-the-Application-Availability-State" class="headerlink" title=".1.3. Managing the Application Availability State"></a>.1.3. Managing the Application Availability State</h3><ol>
 <li>获取应用当前可用性状态：注入 <code>ApplicationAvailability</code> 接口并调用其方法；</li>
 <li>监听应用可用性变化：</li>
 </ol>
@@ -139,7 +116,7 @@
 <p>更新应用可用性状态</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ApplicationEventPublisher eventPublisher;</span><br><span class="line"><span class="comment">//自动 constructor 注入 publisher</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LocalCacheVerifier</span><span class="params">(ApplicationEventPublisher eventPublisher)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.eventPublisher = eventPublisher;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkLocalCache</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (CacheCompletelyBrokenException ex) &#123;</span><br><span class="line">        <span class="comment">//发布一个可用性更新事件</span></span><br><span class="line">        AvailabilityChangeEvent.publish(<span class="keyword">this</span>.eventPublisher, ex, LivenessState.BROKEN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="1-2-Application-Events-and-Listeners"><a href="#1-2-Application-Events-and-Listeners" class="headerlink" title="1.2. Application Events and Listeners"></a>1.2. Application Events and Listeners</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">应用事件与监听器</a></p>
+<h2 id="2-Application-Events-and-Listeners"><a href="#2-Application-Events-and-Listeners" class="headerlink" title=".2. Application Events and Listeners"></a>.2. Application Events and Listeners</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">应用事件与监听器</a></p>
 <p>除了常规的应用事件 <code>ContextRefreshedEvent</code>， 一个 Spring 应用还可以发送其他事件。其中一些事件在整个应用上下文 <code>ApplicationContext</code> 创建前，对于这种事件并不能注册其监听器为一个 <code>Bean</code> ，但可以通过 <code>SpringApplication.addListeners()</code> 或 <code>SpringApplicationBuilder.listeners()</code> 方法注册。如果需要不考虑上下文是否创建自动注册监听器，可以在工程中 <code>META-INF/spring.factories</code> 引入监听器，使用 key <code>org.springframework.context.ApplicationListener=com.myproject.MyListener</code> 。</p>
 <p>应用开始启动后，事件发布顺序如下：</p>
 <ol>
@@ -172,21 +149,21 @@
 <li>改变应用服务请求就绪状态为就绪 <code>ReadinessState.ACCEPTING_TRAFFIC</code></li>
 </ol>
 <p>Spring Framework 的事件发布机制在子 context 发布事件后，父 context 同样会收到相应的事件发布，所以如果应用使用了 SpringApplication 层级，一个监听器会收到相同类型的 application event。为了区别来自哪里，可以将 Context 注入对比。如果 listener 是个 bean 直接使用 @AutoWired 注入，如果 listener 不是 bean 需要实现 ApplicationContextAware 接口注入。</p>
-<h2 id="1-3-Web-Environment"><a href="#1-3-Web-Environment" class="headerlink" title="1.3. Web Environment"></a>1.3. Web Environment</h2><p>SpringApplication 根据代码行为来创建正确的 <code>ApplicationContext</code> ，决定 <code>WebApplicationType</code> 的算法是：</p>
+<h2 id="3-Web-Environment"><a href="#3-Web-Environment" class="headerlink" title=".3. Web Environment"></a>.3. Web Environment</h2><p>SpringApplication 根据代码行为来创建正确的 <code>ApplicationContext</code> ，决定 <code>WebApplicationType</code> 的算法是：</p>
 <ol>
 <li>如果存在 Spring MVC ，使用 <code>AnnotationConfigServletWebApplicationContext</code></li>
 <li>如果不使用 Spring MVC 使用 Spring WebFlux，则使用 <code>AnnotationConfigReactiveWebServerApplicationContext</code></li>
 <li>否则，使用 <code>AnnotationConfigApplicationContext</code></li>
 </ol>
 <p>算法决定了，如果一个应用使用了 Spring MVC 也使用了 Spring WebFlux ，将按 Spring MVC 处理。可使用 <code>setWebApplicationType(WebApplicationType)</code> 方法直接覆盖算法决定。如果要完全控制 <code>ApplicationContext</code> 使用方法 <code>setApplicationContestClass(...)</code>。在使用 JUnit 测试时，不需要 web 层，可调方法 <code>sebWebApplicationType(WebApplicationType.NONE)</code></p>
-<h2 id="1-4-Accessing-Application-Arguments"><a href="#1-4-Accessing-Application-Arguments" class="headerlink" title="1.4. Accessing Application Arguments"></a>1.4. Accessing Application Arguments</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment">访问应用参数</a></p>
+<h2 id="4-Accessing-Application-Arguments"><a href="#4-Accessing-Application-Arguments" class="headerlink" title=".4. Accessing Application Arguments"></a>.4. Accessing Application Arguments</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment">访问应用参数</a></p>
 <p>在 Spring Boot 中，当需要访问应用参数时，注入一个 <code>ApplicationArguments</code> bean，即可直接访问 <code>String[]</code> 参数或编译成 option 与 not-option 形式的参数。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoWired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyBean</span><span class="params">(ApplicationArguments args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> debug = args.containsOption(<span class="string">&quot;debug&quot;</span>);</span><br><span class="line">    List&lt;String&gt; files = args.getNonOptionArgs();</span><br><span class="line">    <span class="comment">// if run with &quot;--debug logfile.txt&quot; debug=true, files=[&quot;logfile.txt&quot;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Spring Boot 也注册了一个与 Environment 关联的 <code>CommandLinePropertySource</code>，这就意味着可以在程序中使用 <code>@Value</code> 注解直接注入各个命令行参数。</p>
-<h2 id="Using-the-ApplicationRunner-and-CommandLineRunner"><a href="#Using-the-ApplicationRunner-and-CommandLineRunner" class="headerlink" title="Using the ApplicationRunner and CommandLineRunner"></a>Using the ApplicationRunner and CommandLineRunner</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment">使用应用、命令行Runner</a></p>
+<h2 id="5-Using-the-ApplicationRunner-and-CommandLineRunner"><a href="#5-Using-the-ApplicationRunner-and-CommandLineRunner" class="headerlink" title=".5. Using the ApplicationRunner and CommandLineRunner"></a>.5. Using the ApplicationRunner and CommandLineRunner</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment">使用应用、命令行Runner</a></p>
 <p>如果需要在 SpringApplication 启动后执行某些代码，可以实现 <code>ApplicationRunner</code> 或 <code>CommandLineRunner</code> 接口，这两个接口都提供一个 <code>run(ApplicationArguments)</code> 方法定义，其实现都是在 <code>SpringApplication.run(...)</code> 方法完成之前调用。如果有多个 Runner 需要执行，可以在 Runner 上添加 <code>Order</code> 接口或 <code>@Order</code> 注解用以指定顺序。</p>
-<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><blockquote>
+<h2 id="6-初始化流程"><a href="#6-初始化流程" class="headerlink" title=".6. 初始化流程"></a>.6. 初始化流程</h2><blockquote>
 <p>spring boot 在初始化中把大量工作做了。</p>
 </blockquote>
 <ol>
@@ -244,10 +221,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

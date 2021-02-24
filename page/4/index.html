@@ -32,10 +32,6 @@
             
 
             
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
 
             
             <a href="/about/" class="header-nav-link">
@@ -84,6 +80,184 @@
     
         <article class="post-abstract">
             <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/11/01/Mysql/mysql/">Mysql Overview</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-11-01</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Mysql/">Mysql</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>mysql 部署 server 及 client 请求</p>
+</blockquote>
+<h2 id="1-mysql-server"><a href="#1-mysql-server" class="headerlink" title=".1. mysql server"></a>.1. mysql server</h2><blockquote>
+<p>mysql server 的部署及请求<a target="_blank" rel="noopener" href="http://www.cnblogs.com/QingXiaxu/p/7987302.html">参考</a>
+                    <div class="read-more">
+                        <a href="/2018/11/01/Mysql/mysql/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2018/09/28/JMM/CompletableFuture/">Java Concurrent</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2018-09-28</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Java/">Java</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>Java 多线程</p>
+</blockquote>
+<h2 id="1-CompletableFuture"><a href="#1-CompletableFuture" class="headerlink" title=".1. CompletableFuture"></a>.1. CompletableFuture</h2><p>Java 异步编程的神器，利用执行器 Executor 去执行多个任务时内置多个整合异步执行结果的方法，且全面支持 Java8 的函数式接口。</p>
+<p>然而完全不能用于异步，只能在当前线程外开启异步而不能异步于当前线程执行任务。也就是说执行再多的异步任务，当前线程还是得等到 CompletableFuture 聚合出结果来才能执行下一步。 要在当前线程执行任务，使用线程池 ThreadPoolExecutor 。</p>
+                    <div class="read-more">
+                        <a href="/2018/09/28/JMM/CompletableFuture/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/09/15/Spring/Spring%20IOC/">Spring IoC</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-09-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Spring/">Spring</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>Spring 说到底就是一个轻量级的容器，让它来负责各个实例的生产、管理、维护，而这些实例的参数与依赖关系都交由 spring 的配置文件来设置；
+                    <div class="read-more">
+                        <a href="/2017/09/15/Spring/Spring%20IOC/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/08/23/Spring/Spring_Bean/">Spring bean</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-08-23</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Spring/">Spring</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p><strong>前言：</strong><br>Spring 中的 bean 配置就是将各个类配置在 bean.xml 文件中，成为一个个的组件，方便实现各个组件之间的重新装配，这也是实现 spring 的依赖注入的方便法门；</p>
+<p>因此就可以理解，一个个的 bean 就是一个个的类的实例，但在 spring 运行时，spring 容器装配各个组件时初始化这些类实例时，也就会涉及到类的构造函数，装配各个组件时会涉及到各种类型参数；</p>
+<p>Spring中的配置各个 bean 时有许多不曾注意到的小知识点，这儿一并给总结出来。</p>
+</blockquote>
+                    <div class="read-more">
+                        <a href="/2017/08/23/Spring/Spring_Bean/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/08/20/Spring/springMVC/">SpringMVC</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-08-20</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Spring/">Spring</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>SpringMVC 同样是一种 MVC 架构，它与传统 MVC 框架的不同之处在于使用了中央调度器，用中央调度器 DispatcherServlet 来分发所有的请求与响应，中央调度器的存在就大大降低了其他组件之间的耦合度。这种分发请求与响应的实现得益于 spring 的装配。</p>
+</blockquote>
+                    <div class="read-more">
+                        <a href="/2017/08/20/Spring/springMVC/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2017/08/15/Spring/spring/">Spring</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2017-08-15</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Spring/">Spring</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <blockquote>
+<p>spring 配置 beans 的底层原理就在于通过封装好的解析 xml 类，将 xml 文件中配置好的 bean 实例出一个对象来，再通过配置实现 bean 之间的相互引用，而实现将要用到的 bean （实用类）实例化并使用；
+                    <div class="read-more">
+                        <a href="/2017/08/15/Spring/spring/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
                 <h2><a class="post-title-link" href="/2017/04/13/Hash/">Hash</a></h2>
             </div>
             <div class="post-meta">
@@ -91,14 +265,14 @@
                 
                 <span class="post-category">
                     
-                    <a class="category" href="/categories/programming/">programming</a>
+                    <a class="category" href="/categories/Java/">Java</a>
                     
                 </span>
                 
             </div>
             <div class="post-content">
                 
-                    <h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><p>Hash 算法应用在 Java 集合框架。其中 HashTable 基本实现数据结构的 HashTable 。HashMap 的底层有 HashTable 同时也有红黑树。HashSet 的内部就是一个HashMap 。
+                    <p>Hash 算法应用在 Java 集合框架。其中 HashTable 基本实现数据结构的 HashTable 。HashMap 的底层有 HashTable 同时也有红黑树。HashSet 的内部就是一个HashMap 。
                     <div class="read-more">
                         <a href="/2017/04/13/Hash/" class="read-more-link">
                             ReadMore
@@ -133,10 +307,6 @@
 
     
 
-    
-    <a class="social-link" target="_blank" href="http://weibo.com/hey_you_go">
-        <i class="iconfont icon-weibo"></i>
-    </a>
     
 
     <div class="footer-copyright">

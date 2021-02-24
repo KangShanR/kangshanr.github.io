@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                About
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">Lock in Java</h2>
+            <div class="post-meta">
+                <span class="post-time">2020-06-11</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Java/">Java</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-features"><span class="toc-text">.1. features</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%86%85%E5%AD%98%E5%90%8C%E6%AD%A5"><span class="toc-text">.1.1. 内存同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%9E%E7%8E%B0%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">.1.2. 实现注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TODO-list"><span class="toc-text">.2. TODO list</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>java 并发编程中的 lock.<span id="more"></span></p>
+<p><a href="java.util.concurrent.locks.Lock">reference</a></p>
+<h2 id="1-features"><a href="#1-features" class="headerlink" title=".1. features"></a>.1. features</h2><ul>
+<li><p>Lock 的限制访问共有资源，但某些 Lock 也可以让多个线程同时访问共享资源，如：{@link ReadWriteLock}。</p>
+</li>
+<li><p>Lock 提供了 synchronized 方法、语句同样的功能，但要更为灵活。synchronized 提供访问每一个对象隐式关联的监听锁，但其强制锁的获取与释放都使用阻塞结构方式：</p>
+<ul>
+<li>多个锁被获取后，其释放的顺序必须与获取的顺序相反；</li>
+<li>所有锁在释放时必须与其获取的语义范围一致。</li>
+</ul>
+</li>
+<li><p>synchronized 范围机制（scoping mechanism）使获取监听锁编程方式更为容易，也有益于避免包含锁的编程错误。但在某些情况下需要使用更为灵活的锁，比如在并发遍历数据结构时需要交替进行或链式锁定：</p>
+<ol>
+<li>在获取节点 A 的锁</li>
+<li>获取节点 B 的锁；</li>
+<li>释放节点 A 的锁再获取节点 C 的锁；</li>
+<li>释放节点 B 的锁再获取节点 D 的锁，依次类推。</li>
+<li>通过允许一个锁在不同的范围内获取与释放，与多个锁以任意顺序获取与释放实现以上功能。</li>
+</ol>
+</li>
+<li><p>灵活性带来了额外的工作，缺少阻塞结构也就移除了在 synchronized 语句或方法中自动释放锁的功能。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lock l = ...;</span><br><span class="line">l.lock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// access the resource protected by this lock</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  l.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此外，可使用 tryLock() ，此方法获取锁可以被打断，使用方法 lockInterruptibly() 打断获取锁的流程。也可以使用 tryLock(long, TimeUnit) 方法实现超时限制获取锁。</p>
+</li>
+<li><p>Lock 可以实现与隐式监听锁很不一样的行为与语义，诸如顺序保证、非重入使用、死锁检测，如果 Lock 要实现这此语义，需要文档中特别说明。</p>
+</li>
+<li><p>需要注意的是 Lock 实例与其他对象实例一样可以作为 synchronized 语句的锁对象，使用 Lock 实例作为 synchronized 语句的锁目标与 Lock 实例本身的 lock() 方法调用没有任何特别的关系。除在 Lock 本身内部实现外，建议尽量避免如此使用。</p>
+</li>
+</ul>
+<h3 id="1-1-内存同步"><a href="#1-1-内存同步" class="headerlink" title=".1.1. 内存同步"></a>.1.1. 内存同步</h3><ul>
+<li>所有 Lock 实现必须强制像内置的监听锁样实现内存同步语义，<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4">Java SE 文档描述</a></li>
+<li>成功的 lock 与 unlock 执行必须与锁与解锁动作语义一样实现内存同步效果。</li>
+</ul>
+<h3 id="1-2-实现注意事项"><a href="#1-2-实现注意事项" class="headerlink" title=".1.2. 实现注意事项"></a>.1.2. 实现注意事项</h3><ul>
+<li>锁获取有三种不同的形式，可中断、不可中断、超时设置（interruptible/non-interruptible/timed），其性能特质、顺序保证也各不相同。此外，中断一个正在获取锁的特性可能不会实现。</li>
+<li>因此一个 Lock 的实现中对于三种形式的锁获取并不需要保证都有明确定义相同的语义与规范，也可以不需要在锁获取进行时中断的属性。</li>
+</ul>
+<h2 id="2-TODO-list"><a href="#2-TODO-list" class="headerlink" title=".2. TODO list"></a>.2. TODO list</h2><ul>
+<li><input disabled="" type="checkbox"> <a href="java.util.concurrent.locks.ReentrantLock">ReentrantLock</a></li>
+<li><input disabled="" type="checkbox"> <a href="java.util.concurrent.locks.ReadWriteLock">ReadWriteLock</a></li>
+<li><input disabled="" type="checkbox"> <a href="java.util.concurrent.locks.ReentrantReadWriteLock">ReentrantReadWriteLock</a></li>
+<li><input disabled="" type="checkbox"> <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/index.html">JSE 8 specifications</a></li>
+</ul>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/concurrent/" title="concurrent">concurrent</a>
+            
+            <a class="tag" href="/tags/lock/" title="lock">lock</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2020/07/19/Spring/SpringBoot-ExternalizedConfiguration/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">SpringBoot Externalized Configuration</span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2020/05/12/Linux/linux/">
+                <span class="nav-default">Linux</span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: 'Lock in Java',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>
