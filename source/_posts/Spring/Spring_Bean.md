@@ -3,54 +3,8 @@ layout: post
 title: Spring bean
 date: 2017-08-23 02:04:38
 tags: [Spring, Java]
-categories: Spring
+categories: [Spring]
 ---
-
-# 1. Spring Bean
-
-<!-- TOC -->
-
-- [1. Spring Bean](#1-spring-bean)
-  - [1.1. 知识点](#11-知识点)
-  - [1.2. spring bean 的自动装配](#12-spring-bean-的自动装配)
-  - [1.3. 创建 bean 的方式](#13-创建-bean-的方式)
-  - [1.4. Bean Scope](#14-bean-scope)
-    - [1.4.1. Web application bean scope](#141-web-application-bean-scope)
-    - [1.4.2. 协调作用域不同的 bean](#142-协调作用域不同的-bean)
-  - [1.5. Dependencies](#15-dependencies)
-    - [1.5.1. Dependency injection](#151-dependency-injection)
-      - [1.5.1.1. constructor injection](#1511-constructor-injection)
-      - [1.5.1.2. setter injection](#1512-setter-injection)
-      - [1.5.1.3. 依赖解析](#1513-依赖解析)
-        - [1.5.1.3.1. 循环依赖](#15131-循环依赖)
-        - [1.5.1.3.2. spring 依赖加载特性](#15132-spring-依赖加载特性)
-    - [1.5.2. Depends On](#152-depends-on)
-    - [1.5.3. lazy-initialized beans](#153-lazy-initialized-beans)
-    - [1.5.4. AutoWiring Collaborators](#154-autowiring-collaborators)
-      - [1.5.4.1. 使用自动装配的不足](#1541-使用自动装配的不足)
-  - [1.6. 自定义 bean 特性](#16-自定义-bean-特性)
-    - [1.6.1. 指定回调方法](#161-指定回调方法)
-    - [1.6.2. Shutting Down the Spring IoC Container Gracefully in Non-Web Applications](#162-shutting-down-the-spring-ioc-container-gracefully-in-non-web-applications)
-    - [1.6.3. ApplicationContextAware and BeanNameAware](#163-applicationcontextaware-and-beannameaware)
-      - [1.6.3.1. ApplicationContextAware](#1631-applicationcontextaware)
-      - [1.6.3.2. BeanNameAware](#1632-beannameaware)
-  - [Bean Definition Inheritance](#bean-definition-inheritance)
-  - [1.8. spring bean 零配置支持](#18-spring-bean-零配置支持)
-    - [1.8.1. 自动装配与精确装配 spring 4.0](#181-自动装配与精确装配-spring-40)
-      - [1.8.1.1. 自动装配微调](#1811-自动装配微调)
-    - [1.8.2. @Resource 匹配](#182-resource-匹配)
-    - [1.8.3. @Value 注入配置数据](#183-value-注入配置数据)
-    - [1.8.4. 使用注解来定制 bean 方法成员的生命周期](#184-使用注解来定制-bean-方法成员的生命周期)
-  - [1.9. Classpath Scanning and Managed Components](#19-classpath-scanning-and-managed-components)
-    - [1.9.1. 自动检测 class 并注册 Bean Definition](#191-自动检测-class-并注册-bean-definition)
-    - [1.9.2. Class Scanning Filter](#192-class-scanning-filter)
-      - [1.9.2.1. Filter 类型](#1921-filter-类型)
-  - [1.10. spring 容器中的 bean 实现不同方法](#110-spring-容器中的-bean-实现不同方法)
-    - [1.10.1. @Bean Annotation](#1101-bean-annotation)
-  - [1.11. Naming Bean](#111-naming-bean)
-    - [1.11.1. Aliasing Bean](#1111-aliasing-bean)
-
-<!-- /TOC -->
 
 > **前言：**
 > Spring 中的 bean 配置就是将各个类配置在 bean.xml 文件中，成为一个个的组件，方便实现各个组件之间的重新装配，这也是实现 spring 的依赖注入的方便法门；
@@ -58,10 +12,9 @@ categories: Spring
 > 因此就可以理解，一个个的 bean 就是一个个的类的实例，但在 spring 运行时，spring 容器装配各个组件时初始化这些类实例时，也就会涉及到类的构造函数，装配各个组件时会涉及到各种类型参数；
 >
 > Spring中的配置各个 bean 时有许多不曾注意到的小知识点，这儿一并给总结出来。
-
 <!--more-->
 
-## 1.1. 知识点
+## .1. 知识点
 
 1. Spring 容器初始化各个 bean 组件时，默认组件为 **单态模式**（singleton，也叫单例模式）也就是当这个类只有一个实例，如果要实现非单态（prototype，标准类型），则将这个 bean 的 `singleton` 属性设置为 `false` ；
 2. **构造函数** 的参数的配置，使用 `<constructor-arg>` 标签，多个参数就使用多个此标签，且要保证各个参数的顺序要与构造函数的参数顺序保持一致；
@@ -95,7 +48,7 @@ categories: Spring
 <bean id="test" class="com.kk.springdemo.A" init-method="initMethodName"></bean>
 ```
 
-## 1.2. spring bean 的自动装配
+## .2. spring bean 的自动装配
 
 > 上述情况每个 bean 的装配都由我们自己来在 xml 文件中通过 ref 属性来显式指定。但 spring 中有更为方便的方法：自动装配。
 
@@ -123,7 +76,7 @@ _当一个 Bean 既使用自动装配依赖，又使用 ref 显式指定依赖�
 
 _一个模块的 spring 配置文件根节点就是 `<beans>` ，也就是用这个节点来配置了一个 bean 池，再在这个里面配置了各个属性，也就是在这其中配置了各个 bean 与池的其他属性。_
 
-## 1.3. 创建 bean 的方式
+## .3. 创建 bean 的方式
 
 > 共 3 种
 
@@ -133,7 +86,7 @@ _一个模块的 spring 配置文件根节点就是 `<beans>` ，也就是用这
 2. 静态工厂方法创建 bean 。使用静态工厂创建 bean 时必须指定 `<bean class="">` 这儿的 class 属性就是用来指定静态工厂， factory-method 属性指定工厂的创建方法， 如果此方法需要参数，通过 constructor-arg 属性来指定。
 3. 实例工厂方法创建 bean 。顾名思义，此方法与 静态工厂方法 的不同之处在于使用工厂实例进行创建 bean 。所以这儿能过 factory-bean 来指定工厂实例，再通过 factory-method 指定创建 bean 的方法。如果需要参数通过 constructor-arg 指定参数值。
 
-## 1.4. Bean Scope
+## .4. Bean Scope
 
 Bean scope : bean 领域，指 bean 的生存策略，共 6 种，其中 4 种只存在于 web 应用 context 中。
 
@@ -155,7 +108,7 @@ Bean scope : bean 领域，指 bean 的生存策略，共 6 种，其中 4 种�
     3. 方法可以是抽象方法也可是具体方法，IoC 容器会通过 CGLIB 为方法所在的类生成子类覆盖方法，所以 `@Lookup` 只能在 IoC 容器能通过常规构造器初始化的 bean 中才能生效。也就是：Lookup 不能为工厂方法生产 bean 方法所替代，因为不能动态地为工厂方法所生产的 bean 提供子类。method 与 class 均不能为 final 修辞。
     4. 在 spring 使用场景中需要注意：需要为 Lookup 方法提供具体实现，否则 component scanning 之类会过滤掉抽象 bean。同时， Lookup method 不能在 configuration class 中配置的 `@Bean` 方法上生效，需要使用 `@Inject` 之类的注解代替。
 
-### 1.4.1. Web application bean scope
+### .4.1. Web application bean scope
 
  request/session/application/websocket scope 都用于 web application context，如果是一个普通的应用程序，使胳膊这几个 scope 会抛出 IllegalStateException。[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-scopes-sing-prot-interaction)
 
@@ -188,7 +141,7 @@ Bean scope : bean 领域，指 bean 的生存策略，共 6 种，其中 4 种�
    3. 如果代理的对象是 ptototype scope，则代理每次调用时将产生一个新的 beanA 实例供调用。
    4. 代理 scope 并非唯一的在长域 bean 访问短域 bean 的方式，也可定义注入点（构造器、setter argument、autowired field）为 `ObjectFactory<MyBean>` ，通过调用其 `getObject()` 获取新的实例 bean。
 
-### 1.4.2. 协调作用域不同的 bean
+### .4.2. 协调作用域不同的 bean
 
 > 当 singleton bean 依赖于 prototype bean 时，会因为 spring 窗口初始化时会先预初始化 singleton bean ，如果  singleton bean 依赖于 prototype bean ，就不得不先将依赖的 prototype bean 初始化好，再注入到 singleton bean。这就带来一个不同步的问题（多个 singleton bean 依赖了同一个 prototype bean）。
 
@@ -202,11 +155,11 @@ Bean scope : bean 领域，指 bean 的生存策略，共 6 种，其中 4 种�
 
 _Spring会采用运行时动态增强的方式来实现 `<lookup-method.../>`元素所指定的抽象方法，如果目标抽象类实现过接口，Spring 会采用 JDK 动态代理来实现该抽象类，并为之实现抽象方法；如果目标抽象类没有实现过接口，Spring会采用cglib实现该抽象类，并为之实现抽象方法。Spring4.0 的 spring-core-xxx.jar 包中已经集成了 cglib 类库。_
 
-## 1.5. Dependencies
+## .5. Dependencies
 
 spring IoC 容器中各个 bean 相互依赖。
 
-### 1.5.1. Dependency injection
+### .5.1. Dependency injection
 
 依赖注入
 
@@ -214,7 +167,7 @@ spring IoC 容器中各个 bean 相互依赖。
 
 区别：constructor 与工厂方法注入在初始化就注入，而 setter 注入在初始化后注入依赖。
 
-#### 1.5.1.1. constructor injection
+#### .5.1.1. constructor injection
 
 [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-constructor-injection)
 
@@ -232,11 +185,11 @@ spring IoC 容器中各个 bean 相互依赖。
 
    1. 指定参数名，同时需要在方法上添加 `@ConstructorProperties({"years", "ultimateAnswer"})`；
 
-#### 1.5.1.2. setter injection
+#### .5.1.2. setter injection
 
 在 bean 实例化后调用，同一个 bean 的依赖注入两种方式都可使用。[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-setter-injection)
 
-#### 1.5.1.3. 依赖解析
+#### .5.1.3. 依赖解析
 
 1. `ApplicationContext` 通过配置元数据创建并初始化，配置数据可以通过 xml/Java code/annotations 完成。
 2. 每个 bean 的依赖表现为 bean 的属性、构造器参数、工厂方法参数形式，当 bean 被创建时，这些依赖已准备好。
@@ -245,7 +198,7 @@ spring IoC 容器中各个 bean 相互依赖。
 5. 默认 spring IoC 容器在创建时会将 bean scope 域定为 singleton，且会预先初始化 bean ，否则只有在请求时才会被创建。
 6. bean 的创建可能会形成图形结构：bean 的依赖的创建及其依赖的依赖的创建。
 
-##### 1.5.1.3.1. 循环依赖
+##### .5.1.3.1. 循环依赖
 
 bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依赖了 beanA，且两者的依赖都是通过构造器依赖。当出现循环依赖时，IoC 在运行时会抛出 `BeanCurrentlyInCreationException`。
 
@@ -253,16 +206,16 @@ bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依
 
 循环依赖与正常依赖不同之处：循环依赖其中一个 bean 强制在完全初始化前注入另一个 bean 。_IoC container 来做的？_
 
-##### 1.5.1.3.2. spring 依赖加载特性
+##### .5.1.3.2. spring 依赖加载特性
 
 1. spring 在容器加载时会自动检测配置的潜在问题，诸如：引用缺失、循环依赖；
 2. spring 实际创建 bean 时会尽晚地设置属性和解析依赖（在未使用某个依赖前并不注入此依赖），这意味着在 spring container 正确加载后请求对象会出现创建对象或其依赖的异常，比如：bean throws a exception of  a missing of invalid property。为此，`ApplicationContext` 的实现默认预先初始化 singleton scope beans。用预先的时间与内存消耗来初始化 bean 在 `ApplicationContext` 创建时显露出配置的问题。
 
-### 1.5.2. Depends On
+### .5.2. Depends On
 
 使用 `depends-on` 属性决定本 bean 的初始化依赖于其他的 bean，Spring 会在本 bean 初始化前完成依赖的 bean 的初始化，同时在销毁依赖的 bean 前先销毁本 bean 。
 
-### 1.5.3. lazy-initialized beans
+### .5.3. lazy-initialized beans
 
 指定懒加载 bean 。
 
@@ -271,7 +224,7 @@ bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依
 - 当一个懒加载的 bean 是一个非懒加载 singleton scope bean 的依赖时，此 bean 一样会因为需要预先实例化其他 bean 而被实例化用以装配。
 - 设置容器全局懒加载 `<beans default-lazy-init="true">`。
 
-### 1.5.4. AutoWiring Collaborators
+### .5.4. AutoWiring Collaborators
 
 设置自动装配 bean 。
 
@@ -283,7 +236,7 @@ bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依
     - `constructor`，与 `byType` 类似，不过只应用于 constructor 参数。如果没有类型一致的 bean，将抛出异常。
 - `byType` 和 `constructor` 可以装配一个类型匹配的数组或集合。这种情况下，容器中所有类型匹配的 bean 都会被装配在其中，如果使用 map 来接收，其 key 就是 bean name 。
 
-#### 1.5.4.1. 使用自动装配的不足
+#### .5.4.1. 使用自动装配的不足
 
 1. 显式地指定装配会自动装配，同时自动装配不能装配一个基本类型数据、String、Class 和这些类型的数组；
 2. 自动装配相对显式装配指代不够清晰；
@@ -296,7 +249,7 @@ bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依
 3. 在多个符合条件的 bean 中挑选一个作为主候选 bean ，指定其 `<bean/>` 中属性 `primary=true`；
 4. 使用更细粒度控制的注解配置。
 
-## 1.6. 自定义 bean 特性
+## .6. 自定义 bean 特性
 
 [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-nature)
 
@@ -304,7 +257,7 @@ bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依
 - 指定 `<bean/>` 属性 `destroy-method=inferred`，可使 spring 自动推断 bean 销毁前执行公共回调方法，如：`close()/shutdown()`。同理在 `<beans/>` 中设定属性 `default-destroy-method=inferred` 可指定所有的 bean 的销毁前回调方法；
 - 可在 `<beans/>` 中添加属性 `default-init-method="init"` 指定默认的初始化回调方法名，让配置中所有的 bean 都保持一致调用名此回调；
 
-### 1.6.1. 指定回调方法
+### .6.1. 指定回调方法
 
 在 spring 2.5 后，指定回调方法有 3 种
 
@@ -316,7 +269,7 @@ bean 之间相互 constructor 依赖。beanA 依赖了 beanB ，同时 beanB 依
 
 **Note:** 回调方法执行是在当前对象的依赖都准备好之后，但在代理、拦截器这些机制应用之前，所以 init() 前置回调如果需要访问代理、拦截器之类是做不到的。
 
-### 1.6.2. Shutting Down the Spring IoC Container Gracefully in Non-Web Applications
+### .6.2. Shutting Down the Spring IoC Container Gracefully in Non-Web Applications
 
 [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-factory-shutdown)
 
@@ -338,17 +291,17 @@ public final class Boot {
 }
 ```
 
-### 1.6.3. ApplicationContextAware and BeanNameAware
+### .6.3. ApplicationContextAware and BeanNameAware
 
 [reference](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lifecycle-processor)
 
-#### 1.6.3.1. ApplicationContextAware
+#### .6.3.1. ApplicationContextAware
 
 实现 ApplicationContextAware 接口获取 ApplicationContext 。以获得操纵 ApplicationContext 的方法。但这样会让业务代码与 Spring 耦合。
 
 可以使用 Spring AutoWiring 特性，自动注入 ApplicationContext 。
 
-#### 1.6.3.2. BeanNameAware
+#### .6.3.2. BeanNameAware
 
 实现此接口的 bean 会提供一个定义 bean name 的方法，在 bean properties 设置之后且在其初始化回调（`InitializingBean` `afterPorpertiesSet` 或自定义初始化方法）执行之前会执行此方法。
 
@@ -360,7 +313,7 @@ public interface BeanNameAware {
 
 Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初始化回调 自定义 init 方法/afterPropertiesSet/InitializingBean 执行之前。
 
-## Bean Definition Inheritance
+## .7. Bean Definition Inheritance
 
 [reference](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-child-bean-definitions)
 
@@ -370,7 +323,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 - `parent=beanId` 指定当前 bean definition 继承目标 bean 。被继承的 bean 可以是抽象的。
 - 抽象的 bean definition 不能被初始化。ApplicationContext 默认会预初始化所有的 singleton，因此所有想被当作模版用 parent bean definition 在指定了class 后一定要指定其为 abstract=true，否则 application context 会对其进行初始化。
 
-## 1.8. spring bean 零配置支持
+## .8. spring bean 零配置支持
 
 > spring 零配置是指通过**注解**来实现 beans.xml 中配置 spring bean 容器的功能
 > 在 spring 配置文件中指定自动扫描的包： `<context:component-scan base-package="package.path.name"/>`
@@ -380,7 +333,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
     - 此配置隐匿地注册了很多 post-processor 包括： `AutowiredAnnotationBeanPostProcessor, CommonAnnotationBeanPostProcessor, PersistenceAnnotationBeanPostProcessor, and the aforementioned RequiredAnnotationBeanPostProcessor`
     - 此配置只查询同一级别的应用上下文的注解，所以如果只是在 DispatcherServlet 的 `WebApplicationContext` 配置，那么就只会扫描到 Controller 而不会扫描到 Service 的注解。
 
-### 1.8.1. 自动装配与精确装配 spring 4.0
+### .8.1. 自动装配与精确装配 spring 4.0
 
 `@Autowired` 指定自动装配
 
@@ -395,7 +348,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 - `BeanFactory, ApplicationContext, Environment, ResourceLoader, ApplicationEventPublisher, and MessageSource` 这些 Spring 基础工具都是自动解析，直接使用 `@AutoWired` 即可。
 - 可用于 Constructor 上标明此构造器用于生产 bean 用于自动装配。
 
-#### 1.8.1.1. 自动装配微调
+#### .8.1.1. 自动装配微调
 
 1. 使用 `@Primary` 指定众多实现 bean 中一个为主 bean，当自动装配时优先使用此 bean；
 2. 使用 `@Qualifier` 指定修辞词，在 bean 定义上加入修辞词：`<qualifier value="main"/>` ，使用处加上注解 `@Qualifier("main")` 即指定相应的 bean 为需要的装配对象。
@@ -410,7 +363,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 7. 可使用范型约束来达到 qualifier 的效果。在 `@AutoWired` 注入依赖时，如果依赖实现的是一个范型接口，注入点就使用此范型类型作为 type 即可以注入此实现。
 8. `@Qualifier` 定义 bean metadata 直接注解于 class 或 method 之上即可。
 
-### 1.8.2. @Resource 匹配
+### .8.2. @Resource 匹配
 
 > 位于 javax.anotation 包
 
@@ -421,7 +374,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 - 注解在 field 上与字段名匹配，注解在 setter 方法上与类的 property 名匹配。
 - `BeanFactory, ApplicationContext, Environment, ResourceLoader, ApplicationEventPublisher, and MessageSource` 这些 Spring 基础工具都是自动解析，不用 bean define 直接使用 `@Resource` 可进入注入。
 
-### 1.8.3. @Value 注入配置数据
+### .8.3. @Value 注入配置数据
 
 `@Value` 注入外部属性。[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-autowired-annotation)
 
@@ -454,14 +407,14 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 
 6. Spring Boot 默认使用 `PropertySourcesPlaceholderConfigurer` ，其配置的外部文件为 `application.properties` `application.yml`
 
-### 1.8.4. 使用注解来定制 bean 方法成员的生命周期
+### .8.4. 使用注解来定制 bean 方法成员的生命周期
 
 现个注解实现(javax.annotation 包)：
 
 - `@PostConstruct` 顾名思义，是在 bean 构造之后执行，修辞的是 bean 的初始化方法；
 - `@PreDestroy` 修辞 bean 销毁之前执行的方法
 
-## 1.9. Classpath Scanning and Managed Components
+## .9. Classpath Scanning and Managed Components
 
 配置元数据，Spring 容器会根据元配置数据生成 BeanDefinition，bean 的注入可以通过前面介绍的使用注解实现，但基本的 bean 定义还是使用的 xml 配置。Spring 3.0 开始引入 classpath scan，用以检测 Spring bean 组件。在扫描到的 classes 中，匹配到指定条件且有在容器中注册相应的 bean 定义。
 
@@ -470,12 +423,12 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 - `@Service` 标注为一个 service 层业务逻辑组件类
 - `@Controller` 标注为一个表现层控制器组件类
 
-### 1.9.1. 自动检测 class 并注册 Bean Definition
+### .9.1. 自动检测 class 并注册 Bean Definition
 
 - Spring 会自动检测各个标准版本 class 并注册相应的 BeanDefinition 实例（ApplicationContext 信息）。
 - 需要在配置 `Configuration` 类上添加 `@ComponentScan` 注解，其中 `basePackages` 属性可以是基础包名也可以是多个 bean class（用 `,` `;` 或空格 ` ` 分隔）。
 
-### 1.9.2. Class Scanning Filter
+### .9.2. Class Scanning Filter
 
 在 Spring Class 扫描中添加过滤器。[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-value-annotations)
 
@@ -484,7 +437,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 - `includeFilters` 添加过滤器
 - `excludeFilters` 拦截过滤器
   
-#### 1.9.2.1. Filter 类型
+#### .9.2.1. Filter 类型
 
 1. annotation 默认，指定有某个注解的类为目标组件
 2. assignable 指定某个类或接口为目标组件
@@ -492,7 +445,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 4. regex 正则表达式匹配目标组件的 bean name
 5. custom 自定义实现 `org.springframework.core.type.TypeFilter` 过滤器
 
-## 1.10. spring 容器中的 bean 实现不同方法
+## .10. spring 容器中的 bean 实现不同方法
 
 [参考](https://www.cnblogs.com/duanxz/p/7493276.html)
 
@@ -504,7 +457,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
 
 [获取 xml applicationContext 方法参考](https://www.cnblogs.com/yjbjingcha/p/6752265.html)
 
-### 1.10.1. @Bean Annotation
+### .10.1. @Bean Annotation
 
 使用 `@Bean` 注册一个实例到 IoC 容器中。
 
@@ -515,7 +468,7 @@ Note: BeanNameAware 回调执行是在 bean 基础属性配置好之后，在初
     - 在 `@Bean` 中指定 `initMethod` `destroyMethod` 两个 bean 方法名，用以决定 bean 在初始化后现销毁前的回调。
     - `destroyMethod` 默认为 `deferred` 推断模式，在容器销毁前自行推断其销毁方法，如果想在容器销毁时保留 bean ，可以指定 `destroyMethod=""`。
 
-## 1.11. Naming Bean
+## .11. Naming Bean
 
 bean 的命名[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-basics)
 
@@ -524,7 +477,7 @@ bean 的命名[reference](https://docs.spring.io/spring/docs/current/spring-fram
 - 对于 component scan ，Spring 为未命名的 componet 命名。取类的 simple name 小驼峰化为其名。特例：对于类名字母数量不只1个且前两个字符都是大写字母的情况， spring 会保留其原名。
 - 指定多个名：可使用逗号 `,`，分号 `;`，空格 `` 加以分隔。
 
-### 1.11.1. Aliasing Bean
+### .11.1. Aliasing Bean
 
 给 bean 起别名。[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-basics)
 

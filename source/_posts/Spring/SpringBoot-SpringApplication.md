@@ -7,43 +7,27 @@ categories: SpringBoot
 description: Spring Boot SpringApplication
 ---
 
-# 1. SpringApplication
-
-<!-- TOC -->
-
-- [1. SpringApplication](#1-springapplication)
-    - [1.1. Application Availability](#11-application-availability)
-        - [1.1.1. Liveness State](#111-liveness-state)
-        - [1.1.2. Readiness State](#112-readiness-state)
-        - [1.1.3. Managing the Application Availability State](#113-managing-the-application-availability-state)
-    - [1.2. Application Events and Listeners](#12-application-events-and-listeners)
-    - [1.3. Web Environment](#13-web-environment)
-    - [1.4. Accessing Application Arguments](#14-accessing-application-arguments)
-    - [1.5. Using the ApplicationRunner and CommandLineRunner](#15-using-the-applicationrunner-and-commandlinerunner)
-    - [1.6. 初始化流程](#16-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B)
-
-<!-- /TOC -->
 [SpringBoot Features](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application)
 
-## 1.1. Application Availability
+## .1. Application Availability
 
 [系统可用性](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability)
 
 可以通过注入 `ApplicationAvailability` 接口到 bean 中以获取应用可用性状态。<!--more-->
 
-### 1.1.1. Liveness State
+### .1.1. Liveness State
 
 应用活性，用以表明应用内部状态是否能正常工作，或是否能从异常中自动恢复。如果不能（失活），基础平台应该重启应用。一般来说，应用活性不应该基于外部检查，否则外部检查系统（数据库、缓存、Web API）出现异常，将触发大量重启与平台累积的失败。
 
 Spring Boot 应用的内部状态一般取决于 `ApplicationContext`。如果 ApplicationContext 成功启动，Spring Boot 就将认为应用在有效的状态。只要 context  be refreshed ，应用就被认为是有活性的。
 
-### 1.1.2. Readiness State
+### .1.2. Readiness State
 
 应用就绪状态，用以表明应用是否对处理流量准备就绪。未进入就绪状态将告诉 platform 平台此时不宜路由流量到应用。典型的场景是在应用启动阶段，当 `CommandLineRunner` 与 `ApplicationRunner` 组件正在被处理时，或者应用忙于其他流量请求时而不能处理当前流量请求时。
 
 需要在程序启动阶段添加任务可以通过将 bean 实现接口 `ApplicationRunner` 或 `CommandLineRunner`，而不是使用 Spring 组件生命周期回调 `@PostConstruct`。以上两个接口分别可获取到程序启动参数和命令行参数。
 
-### 1.1.3. Managing the Application Availability State
+### .1.3. Managing the Application Availability State
 
 1. 获取应用当前可用性状态：注入 `ApplicationAvailability` 接口并调用其方法；
 2. 监听应用可用性变化：
@@ -82,7 +66,7 @@ public void checkLocalCache() {
 }
 ```
 
-## 1.2. Application Events and Listeners
+## .2. Application Events and Listeners
 
 [应用事件与监听器](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability)
 
@@ -121,7 +105,7 @@ _根据以上顺序，倒推 Spring 应用启动的处理有：_
 
 Spring Framework 的事件发布机制在子 context 发布事件后，父 context 同样会收到相应的事件发布，所以如果应用使用了 SpringApplication 层级，一个监听器会收到相同类型的 application event。为了区别来自哪里，可以将 Context 注入对比。如果 listener 是个 bean 直接使用 @AutoWired 注入，如果 listener 不是 bean 需要实现 ApplicationContextAware 接口注入。
 
-## 1.3. Web Environment
+## .3. Web Environment
 
 SpringApplication 根据代码行为来创建正确的 `ApplicationContext` ，决定 `WebApplicationType` 的算法是：
 
@@ -131,7 +115,7 @@ SpringApplication 根据代码行为来创建正确的 `ApplicationContext` ，�
 
 算法决定了，如果一个应用使用了 Spring MVC 也使用了 Spring WebFlux ，将按 Spring MVC 处理。可使用 `setWebApplicationType(WebApplicationType)` 方法直接覆盖算法决定。如果要完全控制 `ApplicationContext` 使用方法 `setApplicationContestClass(...)`。在使用 JUnit 测试时，不需要 web 层，可调方法 `sebWebApplicationType(WebApplicationType.NONE)`
 
-## 1.4. Accessing Application Arguments
+## .4. Accessing Application Arguments
 
 [访问应用参数](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment)
 
@@ -148,13 +132,13 @@ public MyBean(ApplicationArguments args) {
 
 Spring Boot 也注册了一个与 Environment 关联的 `CommandLinePropertySource`，这就意味着可以在程序中使用 `@Value` 注解直接注入各个命令行参数。
 
-## Using the ApplicationRunner and CommandLineRunner
+## .5. Using the ApplicationRunner and CommandLineRunner
 
 [使用应用、命令行Runner](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-web-environment)
 
 如果需要在 SpringApplication 启动后执行某些代码，可以实现 `ApplicationRunner` 或 `CommandLineRunner` 接口，这两个接口都提供一个 `run(ApplicationArguments)` 方法定义，其实现都是在 `SpringApplication.run(...)` 方法完成之前调用。如果有多个 Runner 需要执行，可以在 Runner 上添加 `Order` 接口或 `@Order` 注解用以指定顺序。
 
-## 初始化流程
+## .6. 初始化流程
 
 > spring boot 在初始化中把大量工作做了。
 

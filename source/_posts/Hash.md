@@ -2,16 +2,14 @@
 title: Hash
 layout: post
 date: 2017-04-13 15:02:43
-categories: programming
+categories: [Java]
 tags: [programming,java, HashMap]
 description: hash function && hash table
 ---
 
-# Hash
-
 Hash 算法应用在 Java 集合框架。其中 HashTable 基本实现数据结构的 HashTable 。HashMap 的底层有 HashTable 同时也有红黑树。HashSet 的内部就是一个HashMap 。<!--more-->
 
-## Map
+## .1. Map
 
 - map接口：是一种将键对象和值对象进行关联的容器，而且值对象可以是另一个Map，这样类推下去可以形成多级映射；
 - Map中键对象不允许重复，且键的唯一性很重要；
@@ -21,7 +19,7 @@ Hash 算法应用在 Java 集合框架。其中 HashTable 基本实现数据结�
     - TreeMap，其键按序存放
     - HashTable，是 Dictionary 的子类，与 HashMap 类似；
 
-## HashMap
+## .2. HashMap
 
 [reference](https://www.jianshu.com/p/c658df4f4c77)
 
@@ -71,7 +69,7 @@ static final int hash(Object key) {
     }
     ```
 
-## HashTable 与 HashMap 的区别
+## .3. HashTable 与 HashMap 的区别
 
 - 底层基本与 HashMap 一致，初始都是使用 HashTable 算法，使用链表来解决 Hash Collision 。但 HashMap 更高明的算法在于，其中链表长度超过阈值 8 就链表会转为红黑树，这也避免了整个 HashTable 退化成一个 链表。
 - HashTable 为同步的，可以保证一定的线程安全。

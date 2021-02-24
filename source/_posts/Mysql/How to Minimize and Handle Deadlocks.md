@@ -2,12 +2,10 @@
 title: How to Minimize and Handle Deadlocks
 layout: post
 tag: [mysql, InnoDB, Deadlock]
-categories: Mysql
+categories: [Mysql]
 description: How to Minimize and Handle Deadlocks?
 date: "2021-1-13 22:6:00"
 ---
-
-# How to Minimize and Handle Deadlocks
 
 > [reference](https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html)
 >

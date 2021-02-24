@@ -2,14 +2,12 @@
 title: InnoDB Indexes On-Disk Structures
 layout: post
 tag: [mysql, InnoDB, index]
-categories: Mysql
+categories: [Mysql]
 description: The On-disk structures of Index in the InnoDB
 date: "2021-1-7 10:4:00"
 ---
 
-# InnoDB Indexes On-Disk Structures
-
-## Clustered and Secondary Indexes
+## .1. Clustered and Secondary Indexes
 
 > [reference](https://dev.mysql.com/doc/refman/5.7/en/innodb-index-types.html)
 >
@@ -19,17 +17,17 @@ date: "2021-1-7 10:4:00"
 - 如果没有定义主键，Mysql会设置第一个唯一索引列（其key非空），InnoDB 以此列为聚簇索引。
 - 如果表未设置主键也没有合适的唯一索引，InnoDB 将在内部生成一个名为 GEN_CLUST_INDEX 的聚簇索引，此索引在一个包含原生 ID 值的组合列上。表中各列使用这个 ID 值排序，这个原生 ID 占 6-byte，新行插入时自增，因此这些行都按物理插入顺序排列。
 
-### How to Clustered Index Speed Up Queries
+### .1.1. How to Clustered Index Speed Up Queries
 
 因为聚簇索引查询直接访问所有源数据页，所以通过聚簇索引访问行更快速。如果表够大，相对于将原数据与索引记录分在不同页存储的存储结构，聚簇索引结构会节省磁盘 I/O 操作。
 
-### How Secondary Indexes Relate to the Clustered Index
+### .1.2. How Secondary Indexes Relate to the Clustered Index
 
 除聚簇索引外的索引都叫二级索引。在 InnoDB 中，一个二级索引包含行的主键，类似二级索引的列。InnoDB 使用主键值去查询聚簇索引中的行。
 
 如果主键过长，二级索引将占用更多空间，所以尽量使用短的主键。
 
-## The Physical Structure of an InnoDB Index
+## .2. The Physical Structure of an InnoDB Index
 
 > [reference](https://dev.mysql.com/doc/refman/5.7/en/innodb-physical-structure.html)
 
@@ -41,7 +39,7 @@ date: "2021-1-7 10:4:00"
 - InnoDB 的索引页大小可以通过配置项 `innodb_page_size`　设置，配置优先于 MYSQL 实例的初始化，一旦设置需要重新初始化实例才能修改。配置支持的值包括：64KB,32KB,16KB(default),8KB,4KB。
 - 一个 MYSQL 实例使用了一个特定的 page_size 后，不能使用另一个使用不同 page_size 的实例的数据文件与日志文件。（数据文件与日志文件也就是说可以共用）
 
-## Sorted Index Builds
+## .3. Sorted Index Builds
 
 > [reference](https://dev.mysql.com/doc/refman/5.7/en/sorted-index-builds.html)
 

@@ -3,44 +3,8 @@ title: SpringMVC
 layout: post
 date: 2017-08-20 13:29:17
 tags: [Java,Spring, SpringMVC]
-categories: Spring
+categories: [Spring]
 ---
-
-# 1. SpringMVC
-
-<!-- TOC -->
-
-- [1. SpringMVC](#1-springmvc)
-    - [1.1. 核心对象](#11-%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1)
-        - [1.1.1. springMVC 中的处理器](#111-springmvc-%E4%B8%AD%E7%9A%84%E5%A4%84%E7%90%86%E5%99%A8)
-    - [1.2. 使用代码代替 xml 配置文件](#12-%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E4%BB%A3%E6%9B%BF-xml-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
-        - [1.2.1. LocalResolver 区域解析器](#121-localresolver-%E5%8C%BA%E5%9F%9F%E8%A7%A3%E6%9E%90%E5%99%A8)
-        - [1.2.2. 多部件解析器 MultipartResolver](#122-%E5%A4%9A%E9%83%A8%E4%BB%B6%E8%A7%A3%E6%9E%90%E5%99%A8-multipartresolver)
-        - [1.2.3. json 数据交互](#123-json-%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92)
-        - [1.2.4. JsonConvert2HttpMessage](#124-jsonconvert2httpmessage)
-        - [1.2.5. xml 数据交互](#125-xml-%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92)
-        - [1.2.6. 数据校验](#126-%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C)
-        - [1.2.7. Restful 架构](#127-restful-%E6%9E%B6%E6%9E%84)
-    - [1.3. configuration based on java codes](#13-configuration-based-on-java-codes)
-        - [1.3.1. ant style](#131-ant-style)
-        - [1.3.2. RequestMapping](#132-requestmapping)
-            - [1.3.2.1. URI Pattern](#1321-uri-pattern)
-            - [1.3.2.2. 自定义注解](#1322-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3)
-            - [1.3.2.3. Explicit Registrations](#1323-explicit-registrations)
-    - [1.4. Functional Endpoints](#14-functional-endpoints)
-    - [1.5. Annotated Controllers](#15-annotated-controllers)
-        - [1.5.1. DataBidder](#151-databidder)
-        - [1.5.2. Exceptions](#152-exceptions)
-            - [1.5.2.1. 异常处理器链 Chain of Exceptions](#1521-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8%E9%93%BE-chain-of-exceptions)
-    - [1.6. Asynchronous Requests](#16-asynchronous-requests)
-        - [1.6.1. Processing](#161-processing)
-            - [1.6.1.1. Compared to WebFlux](#1611-compared-to-webflux)
-        - [1.6.2. Http Streaming](#162-http-streaming)
-            - [1.6.2.1. Objects](#1621-objects)
-            - [1.6.2.2. Raw Data](#1622-raw-data)
-        - [1.6.3. Configuration](#163-configuration)
-
-<!-- /TOC -->
 
 > SpringMVC 同样是一种 MVC 架构，它与传统 MVC 框架的不同之处在于使用了中央调度器，用中央调度器 DispatcherServlet 来分发所有的请求与响应，中央调度器的存在就大大降低了其他组件之间的耦合度。这种分发请求与响应的实现得益于 spring 的装配。
 
@@ -69,7 +33,7 @@ categories: Spring
 		1. 当为负数时，只有第一次使用时才会初始化，这也就带来一个问题，第一次访问时就会慢一些；
 		2. 当为非负数时，中央处理器会在servlet容器启动时初始化，而这个数值就是初始化的顺序；
 
-## 1.1. 核心对象
+## .1. 核心对象
 
 > 各个核心对象都有默认值，也就是说如果没有手动配置这些， springmvc 会按默认配置进行构建窗口。默认配置文件：spring-webmvc 包中 org.springframework.web.servlet 中的 DispatcherServlet.properties 。
 
@@ -161,7 +125,7 @@ categories: Spring
 - **Tips:**
     - *在spring-webmvc包中web_servlet包中最后有一个配置文件DispatcherServlet.properties，这个文件就规定了springmvc的默认核心对象；*
 
-### 1.1.1. springMVC 中的处理器
+### .1.1. springMVC 中的处理器
 
 在 DispatcherServlet 中， spring 规约的处理器 bean [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-servlet-special-bean-types)
 
@@ -189,11 +153,11 @@ categories: Spring
 			1. 响应jason数据：`response.setCharacterEncoding("utf-8");`
 			2. `response.getWriter().write(String "jason格式的字符串");`
 
-## 1.2. 使用代码代替 xml 配置文件
+## .2. 使用代码代替 xml 配置文件
 
 参照 spring mvc doc： org.springframework.web.WebApplicationInitializer。
 
-### 1.2.1. LocalResolver 区域解析器
+### .2.1. LocalResolver 区域解析器
 
 在 springmvc 中配置这个解析器，用于国际化。其中解析器常用的有：
 
@@ -202,11 +166,11 @@ categories: Spring
 - SessionLocaleResolver
     - 它通过检验用户会话中预置的属性来解析区域。如果该会话属性不存在，它会根据accept-language HTTP头部确定默认区域。
 
-### 1.2.2. 多部件解析器 MultipartResolver
+### .2.2. 多部件解析器 MultipartResolver
 
 用于文件上传，需要引入包：commons-fileupload 与 commons-io
 
-### 1.2.3. json 数据交互
+### .2.3. json 数据交互
 
 > 在前后端分离的项目中，特别是存在为移动端提供的接口都应该使用 json 数据的格式对前端提供接口。
 
@@ -236,13 +200,13 @@ categories: Spring
 - @ResponseBody
     - 用于将 controller 返回的结果 使用 converter 转换成 json/xml 格式直接 response 给浏览器
 
-### JsonConvert2HttpMessage
+### .2.4. JsonConvert2HttpMessage
 
 在 spring mvc 中将请求与响应数据转换成 Http 所需要的对象需要使用到序列化与反序列化。其中使用时 mvc 中的配置 configureMessageConverters 方法。在使用时有一个问题，当使用 Jackson2ObjectMapperBuilder 来build 一个 JsonMapper 时，其本身会在 class path 中去寻找所需要的 Module ，并将项目中存在的  module 注册到 builder 中默认的 objectMapper 中。如果此时再手动在 builder 上注册  module 会出现重复的 module 如 JavaTimeModule objectMapper 默认 feature (MapperFeature.IGNORE_DUPLICATE_MODULE_REGISTRATIONS) 会忽略掉重复的 module 注册，因此手动在 builder 注册的重复 module 会失效，包括手动添加的 module 的各种属性。比如，指定 java8.javaTimeModule 中的 LocalDateTime 反序列化/序列化格式为 "YYYY-MM-dd HH:mm:ss"(其默认为 "YYYY-MM-ddTHH:mm:ss")，将会无效。
 
 - 解决办法：直接在 builder 中手动注册 LocalDateTime 序列化与反序列化器格式，而不在 builder 中注册相应的 module。这样处理的结果是，builder 默认会注册 JavaTimeModule 到其 ObjectMapper ，但也会注册一个 SimpleModule 到 ObjectMapper ，同时 simple 的权限更高，在序列化时会优先使用 simpleModule。
 
-### 1.2.4. xml 数据交互
+### .2.5. xml 数据交互
 
 使用的渲染 view 是 mappingJackson2XmlView
 
@@ -265,23 +229,23 @@ categories: Spring
 使用：
  同样使用两个标签 `@RequestBody` `@ResponseBody` 并联合使用 `@RequestMapping(produces={}, consumes={})` 来确定请求与返回数据的格式。
 
-### 1.2.5. 数据校验
+### .2.6. 数据校验
 
 springmvc 中可以直接使用 Hibernate 的一个校验框架：hibernate-validator。基于注解实现数据的校验。
 
-### 1.2.6. Restful 架构
+### .2.7. Restful 架构
 
 - 只是一种规范，终极的目标是资源 URI
 
-## 1.3. configuration based on java codes
+## .3. configuration based on java codes
 
 使用 java 代码配置 mvc [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config)
 
-### 1.3.1. ant style
+### .3.1. ant style
 
 关于 spring 中写 ant style 路径规则参照此类 doc: `org.springframework.util.AntPathMatcher`
 
-### 1.3.2. RequestMapping
+### .3.2. RequestMapping
 
 - 可使用正则表达式来匹配 url 参数
 - pattern 匹配比较，越具体的 url 越匹配。
@@ -302,7 +266,7 @@ springmvc 中可以直接使用 Hibernate 的一个校验框架：hibernate-vali
 - @ResponseStatus 可以给特定方法 controller 指定其响应状态码
 - @ExceptionHandler 注解在 @ControllerAdvice 中异常处理，其 doc 说明了很多问题。
 
-#### 1.3.2.1. URI Pattern
+#### .3.2.1. URI Pattern
 
 URI 路径样式与通配符
 
@@ -314,11 +278,11 @@ URI 路径样式与通配符
 - `{*path}` 匹配任意个路径片段并捕获其为 `path` 变量
     - 使用捕获的变量使用 `@PathVariable` 注解在 handler 参数中即可。
 
-#### 1.3.2.2. 自定义注解
+#### .3.2.2. 自定义注解
 
 _Spring MVC also supports custom request-mapping attributes with custom request-matching logic. This is a more advanced option that requires subclass RequestMappingHandlerMapping and overriding the getCustomMethodCondition method, where you can check the custom attribute and return your own RequestCondition._
 
-#### 1.3.2.3. Explicit Registrations
+#### .3.2.3. Explicit Registrations
 
 显式注册 RequestMapping
 
@@ -337,19 +301,19 @@ public void setHandlerMapping(RequestMappingHandlerMapping mapping, UserHandler 
 
 将 handler 中的方法与 `/user/{id}` 映射关联上。
 
-## 1.4. Functional Endpoints
+## .4. Functional Endpoints
 
 函数式 mvc 编程，与 jdk8 很好地整合。可以直接使用流式编码将请求与响应数据装配好，诸如：header/body[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#webmvc-fn)
 
-## 1.5. Annotated Controllers
+## .5. Annotated Controllers
 
 Spring MVC 提供的注解式 Controller。[reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-controller)
 
-### 1.5.1. DataBidder
+### .5.1. DataBidder
 
 使用 `@DataBidder` 给 Controller 添加数据绑定。
 
-### 1.5.2. Exceptions
+### .5.2. Exceptions
 
 [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-exceptionhandlers)
 
@@ -362,7 +326,7 @@ Spring MVC中的异常处理器 HandlerExceptionResolver 的实现：
 3. ResponseStatusExceptionResolver 通过注解 `@ResponseStatus` 处理异常。根据注解值映射其到相应 HTTP 状态码
 4. ExceptionHandlerExceptionResolver 通过调用 Controller 或 ControllerAdvice 中的 `@ExceptionHandler` 方法处理异常。
 
-#### 1.5.2.1. 异常处理器链 Chain of Exceptions
+#### .5.2.1. 异常处理器链 Chain of Exceptions
 
 1. 形成异常处理器链直接 declare 多个异常处理器 bean 即可，指定其 `order` 值，越高的 order 值，执行处理得越晚。
 2. 异常处理器返回数据规约：
@@ -382,11 +346,11 @@ Spring MVC中的异常处理器 HandlerExceptionResolver 的实现：
 
 3. Spring MVC 自动注册内置的异常处理器处理的异常包括：Spring MVC 异常、`@ResponseStatus` 注解的异常、`@ExceptionHandler` 注解的方法处理。可自定义异常处理器列表替换内置的处理器。
 
-## 1.6.  Asynchronous Requests
+## .6. Asynchronous Requests
 
 > 异步请求
 
-### Processing
+### .6.1. Processing
 
 > 异步请求的处理
 
@@ -394,25 +358,25 @@ Spring MVC中的异常处理器 HandlerExceptionResolver 的实现：
 2. `request.startAsync()` 方法返回 AsyncContext，可以使用此对象进行更细致地控制异步处理。
 3. 异步处理完成后，DispatcherServlet 将接收处理结果继续处理 response 。
 
-#### Compared to WebFlux
+#### .6.1.1. Compared to WebFlux
 
 1. Spring WebFlux 不仅不需要构建在 Servlet API 之上，而且不需要异步 request ，因为其就是为异步请求而生。异步处理已设计在其框架之中，天生支持所有阶段的请求处理。
 
-### Http Streaming
+### .6.2. Http Streaming
 
 > [流式响应 Http 请求](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-async-http-streaming)
 
-#### Objects
+#### .6.2.1. Objects
 
 1. 使用 ResponseBodyEmitter 让返回一个 value 可以生产对象流，每个对象都将被 HttpMessageConverter 序列化被写进 response 对象。
 2. 也可以将 ResponseBodyEmitter 写入一个 ResponseBody 中，实现自定义 header 与 status 。
 3. 当 Emitter 出现 I/O 异常，如：Client 离开。应用不需要清理连接，不需要调用 emitter.complete() / emitter.completeWithError()。Servlet Container 会自动初始化一个 AsyncListener 错误通知，Spring MVC 来完成 completeWithError 的调用。整个请求将执行一个最终的 Async 分发到应用，期间 Spring MVC 将使用配置异常处理器完成此次请求。
 
-#### Raw Data
+#### .6.2.2. Raw Data
 
 > 有时需要直接返回不经过 message conversion 的生肉数据到响应输出流，比如：文件下载，这时可以使用 `StreamingResponseBody` 作为返回数据类型。
 
-### Configuration
+### .6.3. Configuration
 
 > 异步请求的配置 [reference](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-async-configuration)
 

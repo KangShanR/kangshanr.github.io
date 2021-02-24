@@ -2,16 +2,12 @@
 layout: "post"
 title: Linux
 date: 2020-5-12 18:52:00
-categories: Linux
+categories: [Linux]
 tags: [programming, linux, OS]
 description: linux
 ---
 
-# Linux
-
-desktop virtual machine: root 123456
-
-## tomcat
+## .1. tomcat
 
 在 linux 上安装 Tomcat 并启动。(root 123456)<!--more-->
 
@@ -24,7 +20,7 @@ desktop virtual machine: root 123456
       1. 加上路径的命令为： `/etc/rc.d/init.d/iptables save`
 3. 通过外部网络可访问 tomcat 了。
 
-## mysql
+## .2. mysql
 
 在 linux 安装 mysql 并运行。（本地虚拟机上：root 12345）
 
@@ -34,7 +30,7 @@ desktop virtual machine: root 123456
 2. `kill -9 PID` 杀掉进程；
 3. 再使用 `service mysql start` 启动 mysql ，后面再使用 `service mysql stop` 正常停止 mysql。
 
-## redis
+## .3. redis
 
 在 linux 上安装 redis 使用
 
@@ -43,7 +39,7 @@ desktop virtual machine: root 123456
    1. 将 redis.conf 文件 copy 到 bin 目录下，将其 `daemonize` 修改为 `yes`;
    2. 启动 redis-server 时加上参数：`./redis-server redis.conf`；
 
-## 磁盘管理命令
+## .4. 磁盘管理命令
 
 - `ls [参数] [文件或目录]` list 查看目录下所有文件
     - `-a` 或 `--all` 查看全部，包括隐藏的
@@ -59,7 +55,7 @@ desktop virtual machine: root 123456
 - `rmdir` remove directory 移除空目录
 - scp secure copy 可以从远程服务器拷贝，同时加密
 
-## 文件管理
+## .5. 文件管理
 
 - `cat [OPTION]... [FILE]...` concatenate 将文件输出级联到另一个文件或终端
     - `cat > {file}` 指定到同一个文件
@@ -87,7 +83,7 @@ desktop virtual machine: root 123456
 - `find [path] [parameter]` 在目录中查找文件
     - `-name`  指定字符串作为查找的样本
 
-## 文档编辑
+## .6. 文档编辑
 
 - `|` 管道命令，一般与 grep 联用，在上一个结果中进行操作下一个命令
 - [`vim [file]` 或者 `vi [file]` 命令](https://vim.rtorr.com/) [cheat sheet](https://spin.atomicobject.com/2016/04/19/vim-commands-cheat-sheet/)
@@ -167,7 +163,7 @@ desktop virtual machine: root 123456
     - `ESC + f` 向前移动一个 token
     - `esc + b` 向后移动一个 token
 
-## 系统命令
+## .7. 系统命令
 
 - `ps [parameter]` process status 进程运行状态
     - `-e` 与 `-A` 相同显示所有进程
@@ -185,7 +181,7 @@ desktop virtual machine: root 123456
     - `update-alternatives --install link name path priority [--slave link name path] ...` 可以将命令(path)生成符号链接(name)添加到环境变量目录(link) eg: `update-alternatives --install /usr/bin/java java /usr/local/java/jdk-8/bin/java 1`
     - `--config` 交互配置命令,如果需要在命令使用配置,使用 `--set`
 
-## 环境变量设置
+## .8. 环境变量设置
 
 > [reference](https://askubuntu.com/questions/58814/how-do-i-add-environment-variables)
 > [环境变量设置](https://help.ubuntu.com/community/EnvironmentVariables)
@@ -203,13 +199,13 @@ desktop virtual machine: root 123456
     - 需要重新登录当前用户才能对当前用户生效.
 - `source <filename> [arguments]` 在当前 shell 中读取并执行文件中的命令, $PATH 中的变量会被用来查询在文件中指定的目录.如果参数 arguments 提供了,会被用来当作 shell 执行的位置参数(参数顺序被指定可以在 shell 中的使用 $n 获取). source 命令快捷方式: `.` .
 
-## firewall 防火墙
+## .9. firewall 防火墙
 
 [reference](https://blog.csdn.net/u011846257/article/details/54707864)
 
 添加 iptables 规则时需要将其添加成 REJECT 所有其他的端口之前，否则将无效。
 
-## 备份压缩
+## .10. 备份压缩
 
 > [difference between .gz and .tar](https://www.quora.com/What-is-the-difference-between-tar-gz-zip-and-tar-gz-in-Linux#:~:text=gz%20is%20a%20single%20file,an%20arbitrary%20number%20of%20filed.)
 
@@ -221,7 +217,7 @@ desktop virtual machine: root 123456
     - `-v` verbose 显示压缩的文件
     - `-f` file 是否使用档名
 
-## 关机重启
+## .11. 关机重启
 
 - `reboot` 重启 CentOS
 - `halt` 关机 CentOS
@@ -229,7 +225,7 @@ desktop virtual machine: root 123456
     - reboot
     - shutdown
 
-## 文件权限
+## .12. 文件权限
 
 `chmod [parameter] <权限范围> <符号><权限代码>` change mode 更改权限
 
@@ -248,11 +244,11 @@ desktop virtual machine: root 123456
     - `x` execute 1
     - `-` none 0
 
-## 网络配置
+## .13. 网络配置
 
 查看 网络配置 文件位置: `/etc/sysconfig/networking-scripts/ifcfg-eth0`
 
-### windows operation
+### .13.1. windows operation
 
 windows 操作系统中相关命令行。
 
@@ -271,7 +267,7 @@ ipconfig/flushdns
         - 也可以使用前两个步骤配合任务管理器查找，相对于命令行来说更直观。
         - 在 windows 系统中可用，不知在 linux 中是否可用
 
-## rpm
+## .14. rpm
 
 > resources package manager 资源包管理器，其相应的包文件后缀为 `.rpm` 在 red hat/Fedora/SUSE 系列使用此包管理，而在 Debian/Ubuntu 系列使用 `dpkg` 命令，其包文件后缀为 `.deb` 。
 
@@ -297,17 +293,17 @@ command lind : `rpm [parameter] [软件]
     - `rpm -iph <package>` 安装
     - `rpm -Uph <软件>` 更新软件
 
-## 服务命令
+## .15. 服务命令
 
 - `service <service name> restart` 重启服务
 - `service <service name> start` 启动服务
 - `service <service name> stop` 停止服务
 
-## windows10 & Ubuntu
+## .16. windows10 & Ubuntu
 
 > win10 + ubuntu 双系统安装与使用
 
-## 安装问题
+## .17. 安装问题
 
 - 目前在台式机双显卡上遇到最大的问题是使用nvidia独显并不能设置分辨率为1920x1080，相反使用核显反而能。但是如果连接核显VGA接口又不能正常启动系统，只能先连接独显DVI－I接口让系统启动，启动后再将连接线接到VGA接口。
     - [显示器接口认识](https://www.zhihu.com/question/19571221)
@@ -322,7 +318,7 @@ command lind : `rpm [parameter] [软件]
     - `nomodeset` 添加此参数指令会让 kernel 不加载显卡驱动使用 BIOS 模式也并非一定要 X server 被加载。
     - `quiet splash` 使用静默状态的启动，否则任何消息会打断 splash 桌面
 
-## 使用
+## .18. 使用
 
 - [在 Ubuntu 中使用 U 盘](https://blog.csdn.net/a999wt/article/details/8227154)
     - 需要将 U 盘挂载（ `mount` 命令）到系统中，一般使用 /mnt 目录挂载

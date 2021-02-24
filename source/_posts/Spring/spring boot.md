@@ -3,17 +3,15 @@ layout: post
 title: "Resources in Spring"
 date: 2020-04-10 12:14:38
 tags: [framework,java,spring boot]
-categories: programming
+categories: [Mysql]
 description: spring boot
 ---
-
-# spring boot
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-scoop-cli-installation)
 
 安装 spring CLI(command line interface)，后再运行本地 groovy 文件。<!--more-->
 
-## spring boot 的简化处理
+## .1. spring boot 的简化处理
 
 1. 将所有依赖都写入其基本配置中，最大简化其配置；
 2. 自动扫描，一个注解自动识别所有的需要扫描的包与 bean；
@@ -27,7 +25,7 @@ description: spring boot
    1. 建议使用 `@Configuration` java 组件， `@Import` 可用来将其他组件导入，也可以使用 `@ComponentScan` 自动扫描所有的 spring 组件，包括 `@Configuration` 配置组件
    2. 如果非要使用 xml 配置，使用 `@ImportResource`
 
-### create an executable jar
+### .1.1. create an executable jar
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started-first-application-dependencies)
 
@@ -55,13 +53,13 @@ spring boot 使用了不同的方式达到直接使用内嵌包。
 </build>
 ```
 
-## how to series
+## .2. how to series
 
 [spring boot HOWTO 系列](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-properties-and-configuration)
 
 [设置 spring 项目 profile](https://stackoverflow.com/questions/38520638/how-to-set-spring-profile-from-system-variable)
 
-### spring 项目中使用 profile
+### .2.1. spring 项目中使用 profile
 
 [spring 项目 profile](https://www.baeldung.com/spring-profiles)
 
@@ -69,16 +67,16 @@ spring boot 使用了不同的方式达到直接使用内嵌包。
 
 获取当前活跃的 profile ，参考 `6. Get Active Profiles`
 
-## Structuring Code
+## .3. Structuring Code
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-structuring-your-code)
 
-### Locating the Main Application Class
+### .3.1. Locating the Main Application Class
 
 - 在根目录添加 Application.class 主类放在根目录上，使用 `@SpringBootApplication` 注解在主类上。此注解也隐匿地定义了某些特定项目的基础查找包 `base search package` 。_如果在root package 定义多个 application.class 打包发布时会认定哪个为项目入口呢？_亲测结果：`spring-boot-maven-plugin:2.3.1.RELEASE:repackage failed: Unable to find a single main class from the following candidates` 打包插件将报出不能找到唯一的主类异常
 - 若不使用 `@SpringBootApplication` 注解，可以使用 `@EnableAutoConfiguration` `@ComponentScan` 两个注解实现相同功能
 
-### Auto-configuration
+### .3.2. Auto-configuration
 
 > 自动配置
 
@@ -87,11 +85,11 @@ spring boot 使用了不同的方式达到直接使用内嵌包。
 - 应该逐渐用特定的配置代替自动配置。
 - 若 spring boot 自动配置了不需要的配置，可以在 `@SpringBootApplication` 或 `@EnableAutoConfiguration` 添加排除 exclude ，若排除的类不在 classpath 中可以指定其全限定名到 `excludename`。也可以添加配置 `spring.autoconfigure.exclude` 指定自动配置排除配置。
 
-### Spring Beans and Dependency Injection
+### .3.3. Spring Beans and Dependency Injection
 
 - spring 中的 bean 注入：使用构造器注入 `private final Dependency d;` 使用 final 修辞字段让其不能被修改。
 
-### Using the @SpringBootApplication Annotation
+### .3.4. Using the @SpringBootApplication Annotation
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-spring-beans-and-dependency-injection)
 
@@ -103,7 +101,7 @@ spring boot 使用了不同的方式达到直接使用内嵌包。
 
 @SpringBootApplication 提供别名以实现定义以上前两个注解的功能。
 
-## Developer Tools
+## .4. Developer Tools
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools)
 
@@ -113,11 +111,11 @@ spring boot 使用了不同的方式达到直接使用内嵌包。
 - 如果使用了Ultimate Edition IDEA 可以点击 relauch 触发重启。
 - 生产模式下devtool 自动关闭，如果项目启动通过 java -jar 运行一个包或从一个特定的 classloader 中开始，devtools 将自动识别在生产模式中。如果应用在窗口中开启需要排除 devtools 或者直接添加系统参数 `-Dspring.devtools.restart.enabled=false`。
 
-## Source Code
+## .5. Source Code
 
 Spring Boot 源码
 
-### 单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry
+### .5.1. 单例 bean 注册器中 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry
 
 - dependentBeanMap 注释 `Map between dependent bean names: bean name to Set of dependent bean names.` 表示 bean 与依赖此 bean 的映射 map 。
 - dependenciesForBeanMap `Map between depending bean names: bean name to Set of bean names for the bean's dependencies.` 表示 bean 与 此 bean 依赖的 bean 的映射关系集合。

@@ -3,14 +3,12 @@ title: Mysql Overview
 layout: "post"
 tag: "mysql"
 date: "2018-11-01 10:13"
-categories: Mysql
+categories: [Mysql]
 ---
-
-# mysql server & client
 
 > mysql 部署 server 及 client 请求
 
-## mysql server
+## .1. mysql server
 
 > mysql server 的部署及请求[参考](http://www.cnblogs.com/QingXiaxu/p/7987302.html)<!--more-->
 
@@ -32,7 +30,7 @@ localhost 的 testing 尝试：
             - 关闭服务：`mysqladmin -uroot shutdown`
 - 查看当前 mysql server 连接情况命令： `show processlist` 将会看到当前 mysql server 连接的各个 client 的 ip/port/status/user/db 等
 
-## mysql client operate
+## .2. mysql client operate
 
 > 在 mysql 控制台操作数据库
 
@@ -66,7 +64,7 @@ _note: mysql server 命令行都必须使用 `;`  或 `\g` 结尾，否则不会
 - 查看表：`desc (table_name);`
 - 修改表名：`rename TABLE 表名 to 新表名;`
 
-### mysql 服务添加新用户
+### .2.1. mysql 服务添加新用户
 
 > 当 mysql 服务初始化完成并启动后，登录 root 账户后可以在 client 使用命令添加用户，只需要在 mysql 库 user 表中插入数据即可。
 
@@ -80,7 +78,7 @@ INSERT INTO user
 
 _note: user 表中所有的以 `_priv` 结尾的字段都是表示相关的权限（privilege），`Y` 表示有， `N` 表示无此权限。_
 
-## DDL
+## .3. DDL
 
 > 对表属性字段进行更改的操作
 
@@ -104,7 +102,7 @@ create TABLE if not exists `user`(
 - 修改表字符集：`ALTER TABLE 表名 CHARSET (charsetname);`
 - 修改表备注：`ALTER TABLE 表名 COMMENT='your comments';` 表备注与列备注不同，使用了 `=`
 
-### DML
+### .3.1. DML
 
 > 对表中行数据进行更改
 
@@ -115,7 +113,7 @@ create TABLE if not exists `user`(
 - 删除行数据： `DELETE FROM 表名 [WHERE condition];`
 - 删除表内所有数据： `TRUNCATE TABLE tablename;` 与 delete 不加 WHERE 条件区别在于 此命令将删除所有后新建一张同样的表所有其新行 id 从 0 开始，而 delete 将从之前删除的最大的 id 开始。
 
-## DQL
+## .4. DQL
 
 > mysql 查询 DQL
 
@@ -123,7 +121,7 @@ create TABLE if not exists `user`(
     - 模糊查询：今天（Feb 18 2020才知道：除了 `%` 可以指定多个点位符外， `_` 还可以当作单个占位符使用。
     - 顺序： select >> from >> WHERE >> group by >> having >> order by
   
-### 多表查询
+### .4.1. 多表查询
 
 > 多表联接查询
 
@@ -137,7 +135,7 @@ create TABLE if not exists `user`(
    1. 左外连接: `LEFT OUTER JOIN` eg: `SELECT * FROM A LEFT OUTER JOIN B [WHERE condition];`
    2. 右外连接：`RIGHT OUTER JOIN` eg: `SELECT * FROM A RIGHT OUTER JOIN B [WHERE condition];`
 
-## mysql engine
+## .5. mysql engine
 
 [参考博客](http://www.cnblogs.com/0201zcr/p/5296843.html)
 
@@ -157,7 +155,7 @@ create TABLE if not exists `user`(
         - 在使用MYSQL的时候，你所面对的每一个挑战几乎都源于ISAM和MYISAM数据库引擎不支持事务处理也不支持外键。
         - 尽管要比ISAM和MYISAM引擎慢很多，但是INNODB和BDB包括了对事务处理和外来键的支持，这两点都是前两个引擎所没有的。
 
-### 关于 INNODB 引擎
+### .5.1. 关于 INNODB 引擎
 
 **InnoDB:**
 
@@ -175,7 +173,7 @@ create TABLE if not exists `user`(
     - 数据库的大小决定了故障恢复的时间长短，**InnoDB可以利用事务日志进行数据恢复**，这会比较快。
     - 主键查询在InnoDB引擎下也会相当快，不过需要注意的是如果主键太长也会导致性能问题，关于这个问题我会在下文中讲到。
 
-### Index 索引
+### .5.2. Index 索引
 
 > **索引（Index）是帮助MySQL高效获取数据的数据结构。**
 
@@ -194,25 +192,25 @@ create TABLE if not exists `user`(
     - 所谓**非聚集索引就是索引与实际的数据是分开的**，索引只是指向了实际的数据；
     - **聚集索引指索引就是索引文件本身就是数据**，数据域存储的就是实际的数据；
 
-## mysql transaction
+## .6. mysql transaction
 
 mysql 的事务
 
-### 语法
+### .6.1. 语法
 
 - 开启事务：`start transaction;`
 - 提交事务：`commit;`
 - 回滚事务：`rollback;`
 
-### 事务相关
+### .6.2. 事务相关
 
 - mysql 默认开启事务，一条语句执行时默认开启一个事务，根据结果自动提交或回滚。开启事务语句一执行，便开启了手动事务；
 - oracle 事务默认手动开启；
 - mysql 事务提交或回滚前，在同一个连接内能查询到此事务内前面执行 sql 的结果。其他连接不行；这应该是事务隔离级别决定的，待确认。
 
-### 数据库的事务隔离级别
+### .6.3. 数据库的事务隔离级别
 
-#### 并发事务下
+#### .6.3.1. 并发事务下
 
 - 先引入并发事务出现错误的概念：
     - 脏读：T1 更新了数据，但未提交，这时 T2 读取 T1 事务中未提交的数据，但 T1 回滚操作，T2 读取就无效，这就叫脏读；
@@ -226,7 +224,7 @@ mysql 的事务
 - Oracle 不支持脏读，默认使用 READ COMMITED，支持 READ COMMITED/SERIALIZABLE
 - MySQL 标准定义的默认事务隔离级别是 REPEATABLE READ
 
-## 分类
+## .7. 分类
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_data_warehouse)
 

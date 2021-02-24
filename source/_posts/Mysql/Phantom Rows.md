@@ -2,12 +2,12 @@
 title: Phantom Rows
 layout: post
 tag: [mysql, InnoDB, Lock]
-categories: Mysql
+categories: [Mysql]
 description: Phantom rows && prevention
 date: "2021-1-12 21:12:00"
 ---
 
-# Phantom Rows
+# 1. Phantom Rows
 
 > [reference](https://dev.mysql.com/doc/refman/5.7/en/innodb-next-key-locking.html)
 >

@@ -2,14 +2,12 @@
 title: Shell
 layout: post
 date: 2020-12-10 18:01:00
-categories: Linux
+categories: [Linux]
 tags: [programming, linux, shell]
 description: linux command line
 ---
 
-# 命令行
-
-## vim 编辑器命令行
+## .1. vim 编辑器命令行
 
 > 以下命令是在编辑整个文件时（未进入到文件编辑内部时）进行行操作。<!--more-->
 
@@ -27,7 +25,7 @@ description: linux command line
     - :w (newfile) 将另存为一个新的文件，原文件保持不变。如果新文件已经存在，可以在 `:w` 后加上 `!` 强制覆盖
     - :x 保存文件并退出，此命令与 `:wq` 的区别在于：此命令只有在有过修改时才会保存，而 `:wq` 命令不管有没有修改都会强制进行保存更新修改时间。
 
-### 行文本编辑命令
+### .1.1. 行文本编辑命令
 
 - <n>dd 剪切光标所在行起的 n 行
 - dd 剪切光标所在行
@@ -48,7 +46,7 @@ description: linux command line
     - n 切换到下一个
     - N 上一个
 
-### 设置 vim 编辑器的行号显示
+### .1.2. 设置 vim 编辑器的行号显示
 
 **临时设置**
 

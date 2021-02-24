@@ -96,9 +96,6 @@ include:
 exclude: _drafts/*
 ignore: 
 
-# layout: tags
-layout: tags
-
 github_username: KangShanR
 weibo_username: hey_you_go
 zhihu_username:

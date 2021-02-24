@@ -2,12 +2,10 @@
 title: InnoDB Transaction Isolation Level
 layout: post
 tag: [mysql, InnoDB]
-categories: Mysql
+categories: [Mysql]
 description: The InnoDB Glory
 date: "2021-1-6 10:59:00"
 ---
-
-# InnoDB Transaction Isolation Level
 
 > [InnoDB 事务模型](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
 >
@@ -25,7 +23,7 @@ date: "2021-1-6 10:59:00"
 
 可以设置全局，也可以设置到 session ，设置后开启新的 session 即可生效。
 
-## REPEATABLE READ
+## .1. REPEATABLE READ
 
 可重复读，事务在执行语句之初就去读取需要查询的数据并放在视图中，在事务提交之前保存之前都不更新此视图（**新插入的数据还是会再读取到视图中**）。所以这样可以防止不可重复读，不能防止幻读。
 
@@ -34,7 +32,7 @@ date: "2021-1-6 10:59:00"
    1. 唯一索引作为唯一查询条件进行查询：InnoDB 只会锁住查询到的唯一记录，不会添加 gap-lock
    2. 对于其他查询: InnoDB 会锁住扫描到的范围内所有索引记录，同时会在其前加上 next-key-lock 或 gap－lock 以阻止其他事务在其间隙插入新的记录（幻读）。
 
-## READ COMMITTED
+## .2. READ COMMITTED
 
 读已提交，事务提交后才去读。事务在执行每一条查询前都会查询结果放到事务的视图中，可以防止脏读，不能防止不可重复读与幻读
 
@@ -48,7 +46,7 @@ date: "2021-1-6 10:59:00"
    1. lock_unsafe 是全局配置，而　READ COMMITTED 可以设置到 session　级别;
    2. lock_unsafe 只能数据库启动时设置，而 READ COMMITTED 可以在数据库服务器运行中设置。
 
-### 案例
+### .2.1. 案例
 
 ```sql
 CREATE TABLE t (a INT NOT NULL, b INT) ENGINE = InnoDB;
@@ -129,11 +127,11 @@ session B 在 session A 后执行更新语句。
 
     - 第一个 UPDATE 将获取并持有 b=2 的行，而第二个 UPDATE 在获取相同记录的 x-lock 时被阻塞。
 
-## READ UNCOMMITTED
+## .3. READ UNCOMMITTED
 
 - SELECT 语句执行不加锁，但早期版本可能会在行上加锁。使用用此隔离级别不能保证读一致性，俗称“脏读”。而在其他方面此隔离级别与 READ COMMITTED 一致。*读未提交，事务未提交就可以读到数据更新，不能阻止以上三种任何隐患，直接读取事务中修改后的值，没有视图概念。*
 
-## SERIALIZABLE
+## .4. SERIALIZABLE
 
 > 串行化，事务之间排队执行，防止一切隐患。
 

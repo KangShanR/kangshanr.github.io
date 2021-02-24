@@ -2,11 +2,9 @@
 title: SpringBoot Externalized Configuration
 date: 2020-07-19 23:48:38
 tags: [Java,SpringBoot,Configuration, Spring]
-categories: SpringBoot
+categories: [SpringBoot]
 description: spring boot 外部配置的应用
 ---
-
-# Externalized Configuration
 
 [spring boot 外部配置](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config)
 
@@ -36,7 +34,7 @@ Spring Boot 加载 `PropertySource` 有明确的顺序，以保证正确覆盖�
 
 Spring Boot 在加载配置时支持通配路径，在外部指定不同路径下的同名配置文件时使用通配路径就会很方便。**通配路径必须包含且仅包含一个 `*` ，并且当以文件夹结尾时以 `/` 结尾，以文件为查找对象时以 `/<filename>` 结尾**。查找出的位置以文件路径的字母顺序排序。
 
-## Configuring Random Values
+## .1. Configuring Random Values
 
 配置随机值随机注入一个 integer/long/uuid/string :
 
@@ -51,13 +49,13 @@ my.number.in.range=${random.int[1024,65536]}
 
 随机配置语法 `${random.int*}`是 `OPEN value (,max) CLOSE` `OPEN` 与 `CLOSE` 指代任意符号用以将最大值与最小值包起来，`value` 与 `max` 是 integer 。如果提供 `max`，`value` 就指最小值，`max` 指最大值（不包含）。
 
-## Accessing Command Line Properties
+## .2. Accessing Command Line Properties
 
 [访问命令行参数](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config)
 
 默认情况下命令行参数在 Spring 配置中有最高优先级别。在启动命令行中以 `--` 开始指定命令行参数。如果需要禁用命令行参数加入到系统 `Environment` 中，可以 `SpringApplication.setAddCommandLineProperties(false)`。
 
-## Application Property Files
+## .3. Application Property Files
 
 [应用配置文件](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-application-property-files)
 
@@ -76,7 +74,7 @@ my.number.in.range=${random.int[1024,65536]}
 
 `spring.config.additional-location` 用以指定额外的配置路径，其优先级大于默认的路径
 
-## Profile-specific Properties
+## .4. Profile-specific Properties
 
 通过 `spring.profiles.active` 变量激活当前应用的配置文件。profile 配置文件规约其名为 `application-{profile}.properties` ，当没有指定 profile 时， Environment 自动使用 `default` 作为 profile 环境配置，`application-default.properties` 中的属性将被加载。
 
@@ -84,15 +82,15 @@ my.number.in.range=${random.int[1024,65536]}
 
 如果在 `spring.config.location` 中指定了配置文件，那么此文件在 profile-specific variant 匹配中就不再考虑了。换句话说，如果需要使用 profile-specific 策略匹配配置文件，就不要在 `spring.config.location` 中添加相关的文件，最好其中只指定 directories 不指定文件。
 
-## Placeholders in Properties
+## .5. Placeholders in Properties
 
 在使用配置文件中 `application.properties` 配置的值时会通过存在的 `Environment` 过滤，所以，可以在配置中使用占位符 `${}` 引用先前定义好的配置（如：系统属性）。
 
-## Type-safe Configuration Properties
+## .6. Type-safe Configuration Properties
 
 > [类型安全配置属性](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding)
 
-### JavaBean Properties Binding
+### .6.1. JavaBean Properties Binding
 
 [JavaBean 属性绑定](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding)
 
@@ -105,7 +103,7 @@ my.number.in.range=${random.int[1024,65536]}
 - 使用 Lombok 自动生成时，保证不要生成特定类型的构造器，因为容器可能需要用来初始化对象。
 - 只有标准 Java Bean 属性才能被绑定，**不支持绑定属性到静态字段上。**
 
-### Constructor Binding
+### .6.2. Constructor Binding
 
 [构造器绑定](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding)
 
@@ -116,7 +114,7 @@ my.number.in.range=${random.int[1024,65536]}
 - 使用构造器绑定，**需要添加 `@EnableConfigurationProperties` 或配置属性扫描**。常规 Spring Bean 创建机制创建的 Bean （@Component @Bean @Import）上并不能通过此构建器绑定属性。
 - 如果绑定的 Class 有多个 Constructor ，可直接将 `@ConstructorBinding` 注解在需要的构造器上。
 
-### Enable @ConfigurationProperties-annotated Types
+### .6.3. Enable @ConfigurationProperties-annotated Types
 
 [注册配置 bean](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding)
 
@@ -125,19 +123,19 @@ my.number.in.range=${random.int[1024,65536]}
 - 添加 `@ConfigurationPropertiesScan` 注解在 Application 上会自动扫描包内所有的配置属性 Bean，注解上可添加包。
 - 当 Bean 注册到容器中后，这个 bean 有一个便名 `<prefix>-<fqn>` ，`<prefix>` 是在 `@ConfigurationProperties(prefix="")` 上指定的前缀， `<fqn>` 指其全限定名。如果没有指定 prefix ，只有全限定名会为此 bean 所用。_这他妈有啥用？_
 
-### Using @ConfigurationProperties-annotated Types
+### .6.4. Using @ConfigurationProperties-annotated Types
 
 [使用自动配置属性 Bean](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-java-bean-binding)
 
 在组件 Bean 直接无注解注入 `private final ConfiguredData configuredData;`
 
-### Third-party Configuration
+### .6.5. Third-party Configuration
 
 > 第三方 Bean 属性注入
 
 - 直接在注入第三方 Bean 方法定义处加上 `@ConfigurationProperties` 注解，将自动将同名配置注入到 Bean 属性中。
 
-### Relaxed Binding
+### .6.6. Relaxed Binding
 
 > 松绑定
 
@@ -150,7 +148,7 @@ Spring Boot 松绑定 Environment 属性到 @ConfigurationProperties bean 中，
 3. `project.data.first_name` : underscore notation，下划线符号，在 `.properties` `.yml` 中一种可选的写法
 4. `PROJECT_DATA_FIRSTNAME` : upper case format，推荐在系统环境变量中使用。
 
-#### 从环境变量绑定数据 Binding from Environment Variables
+#### .6.6.1. 从环境变量绑定数据 Binding from Environment Variables
 
 大多操作系统的环境变量都使用严格命名规则，如 Linux 系统 shell 变量只能使用字母数字下划线，Unix 系统 shell 变量只能使用大写。Spring Boot 为与这些系统兼容，规则如下：
 
@@ -162,11 +160,11 @@ Spring Boot 松绑定 Environment 属性到 @ConfigurationProperties bean 中，
 
 环境变量同样可以绑定到数组对象，数组的下标数字被下划线代替：`data[0].name` 被环境变量 DATA_0_NAME 值所赋。
 
-### Merging Complex Types
+### .6.7. Merging Complex Types
 
 使用 `.yml` 与 `.properties` 外部配置文件添加属性给bean 时，会自动将各个同配置注入到列表属性中，也可以在其中指定不同的 profile 下不同的属性。
 
-### Properties Conversion
+### .6.8. Properties Conversion
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-relaxed-binding)
 
@@ -178,7 +176,7 @@ Spring Boot 内置转换器可以将对多个类型数据进行转换，使用 `
 
 可自定义 converter。
 
-### @ConfigurationProperties Validation
+### .6.9. @ConfigurationProperties Validation
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-validation)
 
@@ -186,7 +184,7 @@ Spring Boot 内置转换器可以将对多个类型数据进行转换，使用 `
 - 验证内嵌的属性，其相应的字段需要添加 `@Valid` 注解
 - 自定义 Spring Validator 通过添加一个名为 `configurationPropertiesValidator` bean 定义静态方法实现，之所以要为 静态的 ，因为 configurationProperties validator 在应用生命周期很早阶段就需要实例化并使用，为避免与外部 `@Configuration` 类耦合而需要过早地将外部组件类实例化引起的错误，所以需要将此 validator bean 方法定义为静态的。
 
-### @ConfigurationProperties vs. @Value
+### .6.10. @ConfigurationProperties vs. @Value
 
 [reference](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-validation)
 
@@ -194,7 +192,7 @@ Spring Boot 内置转换器可以将对多个类型数据进行转换，使用 `
 - 如果同一个组件定义了多个配置属性，推荐使用 `@ConfigurationProperties` 在bean 类上，这样可以做结构化类型安全的bean 用以注入到 bean 中。
 - 如果需要使用 `@Value` ，推荐引用属性名通过其标准形式 Kebab-Case using only lowercase letters 。这样做可以让 Spring Boot 使用与 `@ConfigurationProperties` 松绑定相同的逻辑。如：使用 `@Value("{demo.first-name}")` ，那么配置文件中的 `demo.firstName` 与 `demo.first-name`与系统环境变量 `DEMO_FIRSTNAME` 都会被当作有效配置（优先级此处不作讨论）。而如果使用 `@Value("{demo.firstName}")` 只有配置文件中的 `demo.firstName` 会被识别到。
 
-## Environment
+## .7. Environment
 
 > spring 中的环境属性 org.springframework.core.env.Environment。
 
@@ -206,28 +204,28 @@ Spring Boot 内置转换器可以将对多个类型数据进行转换，使用 `
 
 ApplicationContext 中的 bean 都可以通过 EnvironmentAware 接口或注入 `@Inject Environment` 获取应用配置数据。 通常情况下，大多数应用级别的 bean 不需要直接与 Environment 交互获取配置数据，可以直接使用属性占位符配置器（PropertySourcesPlaceholderConfigurer） `${}` 获取属性配置值。PropertySourcesPlaceholderConfigurer 是 EnvironmentAware ，并从 Spring 3.1 开始只要配置 `<context:property-placeholder/>` ，就默认注册。
 
-### AbstractEnvironment
+### .7.1. AbstractEnvironment
 
 基本的环境变量，实现了接口 `ConfigurableEnvironment` 。其内部定义了基本的应用环境属性：忽略系统环境变量 `IGNORE_GETENV_PROPERTY_NAME` 默认为 false， 激活状态配置 `ACTIVE_PROFILES_PROPERTY_NAME` ，默认配置 `DEFAULT_PROFILES_PROPERTY_NAME` ，默认配置名 `RESERVED_DEFAULT_PROFILE_NAME` 。
 
-### StandardEnvironment
+### .7.2. StandardEnvironment
 
 继承自 AbstractEnvironment ，在其基础上添加了系统变量 `SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME` 与环境变量 `SYSTEM_PROPERTIES_PROPERTY_SOURCE_NAME`。系统变量优先级更高，其初始化过程中先添加系统变量再添加环境变量在配置数据最末（环境变量可在同一个系统中跨服务共用，而系统变量是针对一个 JVM 而设置）。
 
-### StandardServletEnvironment
+### .7.3. StandardServletEnvironment
 
 StandardServletEnvironment 基于 Servlet 的 web 应用 Environment 实现，继承自 StandardEnvironment 。每个基于 Servlet 的 web 应用 ApplicationContext 都会默认初始化一个实例。此环境会在 StandardEnvironment 的基础上依次（决定了配置变量的优先级从高到低）添加变量： servlet Config 属性 `SERVLET_CONTEXT_PROPERTY_SOURCE_NAME`，servlet context 属性 `SERVLET_CONFIG_PROPERTY_SOURCE_NAME` ，JNDI 属性 `JNDI_PROPERTY_SOURCE_NAME` 。
 
-## PropertySourcePlaceHolderConfigurer
+## .8. PropertySourcePlaceHolderConfigurer
 
 使用此配置器解析 ApplicationContext 中的所有的 BeanDefinition 中的占位符（默认格式 `${value}`）。其实现了 `BeanFactoryPostProcessor` ，在 ApplicationContext 初始化阶段，会自动扫描所有的 BeanDefinition 并将所有使用占位符的地方都使用配置数据值进行替换。以此来实现占位符引入配置到 bean 中。
 
-### @Value
+### .8.1. @Value
 
 用于字段或方法参数上的注解，用以表明其默认值。典型应用于表达式驱动依赖注入，也支持处理器方法参数的动态方案，如 Spring MVC。
 
 `@Value` 注解的实际的处理是通过 `AutowiredAnnotationBeanPostProcessor` 实现，这就意味着不能使用此注解用于 BeanFactoryPostProcessor 与 BeanPostProcessor。
 
-#### AutowiredAnnotationBeanPostProcessor
+#### .8.1.1. AutowiredAnnotationBeanPostProcessor
 
 一个 BeanPostProcessor 。//todo

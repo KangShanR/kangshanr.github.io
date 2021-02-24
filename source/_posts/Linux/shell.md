@@ -2,16 +2,14 @@
 title: Hash
 layout: Shell
 date: 2020-12-10 18:01:00
-categories: programming
+categories: [Linux, Shell]
 tags: [programming, linux, shell]
 description: linux shell script
 ---
 
-# Shell
-
 > Shell 是一个可以执行命令／程序／shell 脚本的环境，提供了访问 Unix 系统的接口。其根据输入执行程序，执行完成后将结果展示出来。 [Shell](https://www.tutorialspoint.com/unix/unix-what-is-shell.htm)<!--more-->
 
-## variable
+## .1. variable
 
 > 变量
 
@@ -22,18 +20,18 @@ description: linux shell script
     - Environment variable. 环境变量，shell进程中任何地方可以获取环境变量.
     - Shell variable.shell脚本中定义的变量，可以是 local variable ,也可是Environment variable .
 
-## Basic operators
+## .2. Basic operators
 
 [reference](https://www.tutorialspoint.com/unix/unix-basic-operators.htm)
 
-### Arithmetic operators
+### .2.1. Arithmetic operators
 
 - 使用基础运算符时引用变量需要同样使用 `$` 符号，但赋值时直接使用变量名即可。`expr a = $b`
 - 运算符与表达式之间需要空格分开。`expr $a != $b`
 - `*` 乘号使用需要添加转义 `\*`
 - 条件表达式使用需要被方括号(括号与表达式之间需要空格分隔)所包围：　`[ $a == $b ]`
 
-### Relational Operators
+### .2.2. Relational Operators
 
 - 同样需要方括号与空格包围变量 `[ $a -eq $b ]`
 - `-eq` equals
@@ -44,14 +42,14 @@ description: linux shell script
 - `-le` less or equals
 - 关系运算符支付数值类，如果是string类必须是代表数值的string，eg:`"100"`
 
-### Boolean Operators
+### .2.3. Boolean Operators
 
 - `!` 取反
 - `-o` OR
 - `-a` AND
 - eg: `[ $a -gt 100 -a $b -le 20 ]`
 
-### String Operators
+### .2.4. String Operators
 
 - `=`
 - `!=`
@@ -59,7 +57,7 @@ description: linux shell script
 - `-n` not-zero 字串长度不为 0 `[ -n $a ]`
 - str 检测字串是否为 empty `[ $a ]`
 
-### File Test Operators
+### .2.5. File Test Operators
 
 检测关联到文件的变量属性。假如一个变量 `file` 关联到一个 test 文件，大小100bytes，有 read/write/execute 权限。其相关命令如下：
 
@@ -70,7 +68,7 @@ description: linux shell script
 - `-e file` check if file exists. `[ -e $file ]` is true
 - `-r`/`-w`/`-x` check if file is readable/writable/executable.
 
-## Decision Making
+## .3. Decision Making
 
 [reference](https://www.tutorialspoint.com/unix/unix-decision-making.htm)
 
@@ -79,12 +77,12 @@ shell 中两种类似 switch case 的分支语句：
 1. if...elif...else...fi
 2. case...esac
 
-## Ｐrocess Control
+## .4. Ｐrocess Control
 
 - until 与 while 中的条件相反，满足条件在 while中循环，而不满足条件才在 until 中循环。
 - `break n` 跳出循环，其中 n 代表正整数，默认不写为 1 只跳出当前层循环，而如果需要跳出第二层循环（从内往外数）就指定 n 为 2 。
 
-## Substitutions
+## .5. Substitutions
 
 > 转义
 
@@ -100,11 +98,11 @@ shell 中两种类似 switch case 的分支语句：
 - `\f` form feed
 - `\v` vertical tab
 
-### Command Substitution
+### .5.1. Command Substitution
 
 `command` 使用 back quote 将命令包围起来，命令执行结果将返回。eg: echo "today is `date`"
 
-### Variable Substitution
+### .5.2. Variable Substitution
 
 > 变量转义
 
@@ -116,11 +114,11 @@ shell 中两种类似 switch case 的分支语句：
 - `${var:?message}` 如果 var 未设置或为 null ，message 将打印到 standard error。用以检测变量 var 是否正确设置。
 - `${var:+word}` 如果 var 已设置，work 将转义给 var ，但 var 不会改变。
 
-## Quoting Mechanisms
+## .6. Quoting Mechanisms
 
 > [引用机制](https://www.tutorialspoint.com/unix/unix-quoting-mechanisms.htm)
 
-### Meta Characters
+### .6.1. Meta Characters
 
 > Unix 元字符在 shell 中有特殊含义，所以在命令中如果要使用其为普通字串，需要在其前加上转义符号 backslash `\`。 Unix 中的元字符包括：
 
@@ -130,7 +128,7 @@ shell 中两种类似 switch case 的分支语句：
 
 `?` 代表任何一个字符，而 `*` 代表任意多个字符。
 
-### quoting
+### .6.2. quoting
 
 > 引用方式有四种
 
@@ -139,7 +137,7 @@ shell 中两种类似 switch case 的分支语句：
 3. backslash `\`, 所有特殊变量在 backslash 后都将丢失其特殊意义
 4. back quote `, 被 back quote 包围的任何字符都将会被当作命令执行。
 
-## IO Redirection
+## .7. IO Redirection
 
 > IO 重定向
 
@@ -164,7 +162,7 @@ NOTE: *file descriptor（fd） 在 Unix 中使用非负整数表示，其中 0 �
 2. 使用管道
 3. 使用 expect （需要安装此功能）
 
-## Functions
+## .8. Functions
 
 > Unix shell function
 
@@ -178,7 +176,7 @@ NOTE: *file descriptor（fd） 在 Unix 中使用非负整数表示，其中 0 �
 - `echo $PATH` 可以看到系统全局变量，其中一般包括了 ~/bin ，所以要以在此文件路径中添加自己想要的全局 shell ，而实现任何地方不添加绝对路径前缀调用此 shell 。
 - `$HOME` 调用当前用户目录，在 shell 中使用 ～ 不会生效。
 
-## Alias
+## .9. Alias
 
 > 给 bash shell 命令添加别名.[reference](https://blog.csdn.net/doiido/article/details/43762791)
 
@@ -186,7 +184,7 @@ NOTE: *file descriptor（fd） 在 Unix 中使用非负整数表示，其中 0 �
 - 如果要永久实现别名生效可以将命令添加到 ~/.bashrc 文件中并执行此文件
 - 解除别名设置使用命令 `unalias name`
 
-## 添加机器命令别名与进入日志脚本
+## .10. 添加机器命令别名与进入日志脚本
 
 ```shell
 #!/bin/bash
@@ -229,9 +227,9 @@ get_log_type () {
 
 ```
 
-## Questions
+## .11. Questions
 
-### Shell 脚本中 cd 命令不生效
+### .11.1. Shell 脚本中 cd 命令不生效
 
 再现：在 l 脚本中写了 cd 命令，再放在 PATH 中，在 terminal 直接调用这个脚本 `l` ，发现当前目录还是原目录并未进入到脚本中指定的目录。
 

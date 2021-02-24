@@ -2,18 +2,16 @@
 title: InnoDB Transaction Model
 layout: post
 tag: [mysql, InnoDB, commit]
-categories: Mysql
+categories: [Mysql]
 description: The InnoDB transactions' commit & rollback
 date: "2021-1-6 13:52:00"
 ---
-
-# InnoDB Transaction Model
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
 
 [InnoDB Isolation Level Note](./InnoDB%20Transaction%20Isolation%20Level.md)
 
-## Autocommit commit rollback
+## .1. Autocommit commit rollback
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-autocommit-commit-rollback.html)
 
@@ -24,7 +22,7 @@ date: "2021-1-6 13:52:00"
 - 如果一个 session autocommit=0，没有显式地提交最后一个事务，MYSQL 会自动圆滚这个事务。
 - 某些语句会[隐式地结束一个事务](https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html)，在你执行语句之前好像提交过一样。
 
-## Consistent Nonlocking Reads
+## .2. Consistent Nonlocking Reads
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
 
@@ -91,7 +89,7 @@ date: "2021-1-6 13:52:00"
     - InnoDB 默认对这引起语句使用更严格的锁且 `SELECT` 部分使用 READ COMMITTED （在相同事务内，一致性读 sets gets 都针对其自有快照）。
     - 执行非锁读的场景，设置事务隔离级别为 READ COMMITTED / READ UNCOMMITTED 以避免对所选表中数据行加锁。
 
-## Locking Reads
+## .3. Locking Reads
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html)
 
@@ -128,7 +126,7 @@ date: "2021-1-6 13:52:00"
         SELECT * FROM t1 WHERE c1 = (SELECT c1 FROM t2 FOR UPDATE) FOR UPDATE;
         ```
 
-### Locking Read Examples
+### .3.1. Locking Read Examples
 
 > 假设你想在表 child 中插入一条新数据,并保证子表数据在父表 parent 表中有相应的行.你的应用代码能保证以下操作相对完整.
 
@@ -156,7 +154,7 @@ date: "2021-1-6 13:52:00"
 
         - 其中 SELECT 语句仅仅是获取当前连接的 id 信息,不访问任何表.
 
-### Locking Read Concurrency with NOWAIT and SKIP LOCKED
+### .3.2. Locking Read Concurrency with NOWAIT and SKIP LOCKED
 
 > MYSQL 8.0 版本才开始有此选项。
 >

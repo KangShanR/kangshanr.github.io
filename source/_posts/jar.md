@@ -1,18 +1,16 @@
 ---
 title: Java Jar
 date: 2020-10-20 11:02:00
-categories: java
+categories: [Java]
 tags: [java, jar, package, jvm]
 description: java jar
 ---
-
-# Java jar
 
 java archive
 
 - 使用 jdk 自带工具 javac 编译 java 文件成 class 字节码，再用打包命令 `java jar cfmv jar-name manifest-file class-files`<!--more-->
 
-## installed extensions
+## .1. installed extensions
 
 添加外部的 jar 用作扩展。
 
@@ -20,7 +18,7 @@ java archive
 - 可以直接在 jre 中添加扩展。path：jre/lib/ext
 - 若有多个 jre，可以在用户目录中指定让多个 jre 使用同一个 jar 包：usr/java/packages/lib/ext
 
-## `java` command line
+## .2. `java` command line
 
 > `java` 命令行在启动一个 java 进程时至关重要。其中关系到设置 jvm 的各项参数，项目启动的配置参数等等。
 
@@ -32,6 +30,6 @@ java archive
 - `-XX` 高级选项 advanced option
 - `-D<name>=<value>` 设置系统属性
 
-## JVM
+## .3. JVM
 
 [Oracle reference](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/toc.html)

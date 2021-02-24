@@ -3,42 +3,8 @@ layout: post
 title: "Spring IoC"
 date: 2017-09-15 12:14:38
 tags: [Spring, Java]
-categories: Spring
+categories: [Spring]
 ---
-
-# 1. Spring IoC
-
-<!-- TOC -->
-
-- [1. Spring IoC](#1-spring-ioc)
-  - [1.1. 反向控制（Inverse of Control)](#11-反向控制inverse-of-control)
-    - [1.1.1. 举例](#111-举例)
-  - [1.2. Container Configuration](#12-container-configuration)
-    - [1.2.1. java based container configuration](#121-java-based-container-configuration)
-      - [1.2.1.1. AnnotationConfigApplicationContext 初始化 IoC 容器](#1211-annotationconfigapplicationcontext-初始化-ioc-容器)
-      - [1.2.1.2. ComponentScan](#1212-componentscan)
-      - [1.2.1.3. AnnotationConfigWebApplicationContext](#1213-annotationconfigwebapplicationcontext)
-      - [Fine-tuning Annotation-based Autowiring with Qualifiers](#fine-tuning-annotation-based-autowiring-with-qualifiers)
-  - [1.3. Container Extension points](#13-container-extension-points)
-    - [1.3.1. 自定义 BeanPostProcessor](#131-自定义-beanpostprocessor)
-    - [1.3.2. 自定义 BeanFactoryPostProcessor](#132-自定义-beanfactorypostprocessor)
-    - [1.3.3. 通过 FactoryBean 自定义初始化逻辑](#133-通过-factorybean-自定义初始化逻辑)
-  - [1.4. ApplicationContext 额外功能](#14-applicationcontext-额外功能)
-    - [1.4.1. 使用 MessageResource 做国际化](#141-使用-messageresource-做国际化)
-    - [1.4.2. 标准事件与自定义事件](#142-标准事件与自定义事件)
-      - [1.4.2.1. 内置的事件](#1421-内置的事件)
-      - [1.4.2.2. 监听器实现](#1422-监听器实现)
-    - [1.4.3. Web 应用中实例化 ApplicationContext](#143-web-应用中实例化-applicationcontext)
-    - [1.4.4. 发布一个 Spring ApplicationContext 为 Java EE RAR 文件](#144-发布一个-spring-applicationcontext-为-java-ee-rar-文件)
-  - [1.5. Environment Abstraction](#15-environment-abstraction)
-    - [1.5.1. 使用 @Profile 注解 bean](#151-使用-profile-注解-bean)
-    - [1.5.2. 激活项目 Profile](#152-激活项目-profile)
-    - [1.5.3. PropertySource Abstraction](#153-propertysource-abstraction)
-    - [1.5.4. 使用 @PropertySource](#154-使用-propertysource)
-    - [1.5.5. Placeholder Resolution in Statement](#155-placeholder-resolution-in-statement)
-  - [1.6. BeanFactory](#16-beanfactory)
-
-<!-- /TOC -->
 
 > Spring 说到底就是一个轻量级的容器，让它来负责各个实例的生产、管理、维护，而这些实例的参数与依赖关系都交由 spring 的配置文件来设置；<!--more-->
 

@@ -2,17 +2,16 @@
 title: SELECT in Mysql
 layout: post
 tag: [mysql, InnoDB]
-categories: Mysql
+categories: [Mysql]
 description: SELECT statements in Mysql
 date: "2021-1-15 14:53:00"
 ---
-# SELECT
 
-> mysql 中查询语句
+> Mysql 中查询语句
 
-## Join Clause
+## .1. Join Clause
 
-[reference](https://dev.mysql.com/doc/refman/5.7/en/join.html)
+[reference](https://dev.mysql.com/doc/refman/5.7/en/join.html)<!--more-->
 
 - 在 MYSQL 中，`JOIN`, `CROSS JOIN` 与 `INNER JOIN` 在语法是等同的，彼此之间可以相互替换。但在标准 sql 中它们有所区别，inner join 使用 on 子句，而 cross join 使用其他的。<!--more-->
 - 表引用 table_reference 可使用别名：`tbl_name as alias_name` 或 `tbl_name alias_name`。
