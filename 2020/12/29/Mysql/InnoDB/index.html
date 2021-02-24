@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Kang Shan
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            InnoDB
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/08/20/innodb-lock.html">美团文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/show-engine.html">查看Innodb引擎数据</a></p>
+</blockquote>
+<h2 id="Locking-Readings"><a href="#Locking-Readings" class="headerlink" title="Locking Readings"></a>Locking Readings</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">锁读</a></p>
+</blockquote>
+<h2 id="并发写问题"><a href="#并发写问题" class="headerlink" title="并发写问题"></a>并发写问题</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengzheng/p/12557762.html">CSDN</a></p>
+</blockquote>
+<ul>
+<li>在并发写同一行数据时，如果 where 条件字段没有加索引，innoDB 会对所有行加行锁，再对条件进行筛选，不符合条件的行再释放锁。一锁一放损耗极大，所以建议适当添加索引。</li>
+<li>在可重复读隔离级别下，InnoDB 加间隙锁可以防止幻读，同理，如果没有索引将会把所在行之外所有列都加上间隙锁，而导致范围外的行也需要阻塞到当前锁释放才能插入。</li>
+<li>意向锁是表锁，只用来表示该表有没行正被锁住，而以免有行被锁住时想要加表锁修改表结构，需要每行查询是否有行锁。<span id="more"></span></li>
+</ul>
+<h3 id="Consistent-Read"><a href="#Consistent-Read" class="headerlink" title="Consistent Read"></a>Consistent Read</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_consistent_read">一致性读</a></p>
+</blockquote>
+<ul>
+<li>在事务中使用一致性读可以避免并发，在读已提交和可重复读隔离级别中，默认是使用一致性读的。</li>
+</ul>
+<h2 id="Multi-Versioning"><a href="#Multi-Versioning" class="headerlink" title="Multi-Versioning"></a>Multi-Versioning</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html">多版本</a></p>
+</blockquote>
+<ul>
+<li>覆盖索引 cover-index 在查询的字段都在索引结构中，而不需要通过回表查询主键<ul>
+<li>普通二级索引就是一种覆盖索引，其除索引字段外还包括了主键。</li>
+<li>当二级索引记录被标记为删除或被其他事务更新，覆盖索引技术不能被应用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="InnoDB-Locking"><a href="#InnoDB-Locking" class="headerlink" title="InnoDB Locking"></a>InnoDB Locking</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html">锁</a></p>
+</blockquote>
+<h3 id="共享锁与排他锁"><a href="#共享锁与排他锁" class="headerlink" title="共享锁与排他锁"></a>共享锁与排他锁</h3><blockquote>
+<p>Shared and Exclusive Locks。Innodb 实现两种标准行锁：shared（S） lock 与 exclusive（X） lock。</p>
+</blockquote>
+<ul>
+<li>S 锁允许获取到锁的事务读取该行</li>
+<li>X 锁允许获取到锁的事务修改、更新该行</li>
+<li>如果一个事务T1获取到行 r 的 S 锁，另一个事务T2需要获取 r 的锁的规则：<ul>
+<li>T2请求获取 r 的 S 锁，能够马上得到</li>
+<li>T2 请求获取 r 的 X 锁，不能立即成功</li>
+</ul>
+</li>
+<li>如果 T1 获取到的是 r 的X 锁，其他事务想要获取 r 的任何类型锁都需要等待 T1 释放了 r 的锁才行。</li>
+</ul>
+<h3 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h3><blockquote>
+<p>Intention lock，分为排他意向锁 IX 与共享意向锁 IS。用以支撑 InnoDB 多粒度锁控制（行锁与表锁同时存在）。<br><code>LOCK TABLES ... WRITE</code> 语句持有指定表的排他 X 锁。</p>
+</blockquote>
+<ul>
+<li>表级锁，用以标明事务在之后的行操作上所需要的锁类型。</li>
+<li>意向锁的两种形式：<ul>
+<li>IS 表明一个事务要设置一个 S 锁到表中某（多）行数据；</li>
+<li>IX 表明一个事务要设置一个 X 锁到表中某（多）行数据。</li>
+</ul>
+</li>
+<li><code>SELECT ... FOR SHARE</code> 将设置一个 IS 锁，而 <code>SELECT ... FOR UPDATE</code> 将设置一个 IX 锁。</li>
+<li>意向锁协议：<ul>
+<li>事务获取行 S 锁前需要获取该表的一个 IS 锁或更强的锁 （IX）；</li>
+<li>事务要获取表中行的 X 锁 前，需要先取得该表的一个 IX 锁。</li>
+</ul>
+</li>
+<li>表级锁兼容性矩阵表：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th>X</th>
+<th>IX</th>
+<th>S</th>
+<th>IS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X</td>
+<td>conflict</td>
+<td>conflict</td>
+<td>conflict</td>
+<td>conflict</td>
+</tr>
+<tr>
+<td align="center">IX</td>
+<td>conflict</td>
+<td>compatible</td>
+<td>conflict</td>
+<td>compatible</td>
+</tr>
+<tr>
+<td align="center">S</td>
+<td>conflict</td>
+<td>conflict</td>
+<td>compatible</td>
+<td>compatible</td>
+</tr>
+<tr>
+<td align="center">IS</td>
+<td>conflict</td>
+<td>compatible</td>
+<td>compatible</td>
+<td>compatible</td>
+</tr>
+</tbody></table>
+<ul>
+<li>如果一个事务想获取一个已存在的锁且不能被获取到，将产生<strong>死锁</strong>。</li>
+<li>意向锁不阻塞其他，但若要请求全表除外（<code>LOCK TABLES ... WRITE</code>）。</li>
+</ul>
+<h3 id="记录锁"><a href="#记录锁" class="headerlink" title="记录锁"></a>记录锁</h3><blockquote>
+<p>record_lock：<code>select * from t where f = 10 for update;</code></p>
+</blockquote>
+<ul>
+<li>用于锁住单行数据，阻止其他事务<strong>插入</strong>、<strong>更新</strong>、<strong>删除</strong>（不阻止其他事务读取） f ＝ 10 的行。</li>
+<li>record_lock 只会锁索引记录，如果表中没有建索引，Innodb 将会创建一个隐藏的聚簇索引，并使用此索引来锁住行。</li>
+</ul>
+<h3 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h3><blockquote>
+<p>Gap Locks, 间隙锁是加在索引记录之间的锁，或在间隙记录之前或之后。<code>SELECT c1 FROM t WHERE c1 BETWEEN 10 AND 20 FOR UPDATE;</code>，此语句所加的间隙锁阻止了其他事务的插入一个 t.c1 = 15 的行，不管表 t 中是否已有一条同值记录，因为间隙锁将锁住范围内的所有行。</p>
+</blockquote>
+<ul>
+<li><strong>使用唯一索引作为查询条件的单行查询是不需要添加间隙锁的</strong>（查询条件包含多个键组成的唯一索引中部分列名除外）。eg：对于列 id 有唯一索引的表执行的语句：<code>SELECT * FROM t WHERE id = 10;</code> 只会添加 record lock 到行，不管是否有其他会话在该行间隙前插入新行。如果 id 列并未加唯一索引，此语句将锁住间隙前。</li>
+<li>间隙锁是纯抑制性的，排它锁与共享锁在 gap-lock 这儿没有区别，同时，同一个 gap 可以有多个 gap-lock，<strong>只用来抑制其他事务在间隙插入新的数据</strong>。冲突的锁能在 gap 这儿并存的原因是如果索引记录被清除，记录上不同事务的间隙锁必须被合并。</li>
+<li>在读已提交隔离级别下，间隙锁对查询、索引扫描无效，仅对外键约束、重复键检查有效。<ul>
+<li>在 READ COMMITTED 隔离级别下，不匹配行的 record－lock 在 mysql 计算出 where 条件后就释放。对于 UPDATE 语句，Innodb 只保持半一致性：返回最近提交的版本给 Mysql，以让 Mysql 可以决定各行是否满足 UPdate 条件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Next-Key-Lock"><a href="#Next-Key-Lock" class="headerlink" title="Next-Key Lock"></a>Next-Key Lock</h3><blockquote>
+<p>后键锁，是一个 record-lock 与 gap-lock 的组合。</p>
+</blockquote>
+<ul>
+<li>record-lock 用以锁住索引所在行数据，而 gap-lock 锁住当前行前的间隙，以防止前面部分插入新的数据。</li>
+<li>默认情况下,InoDB 在可重复读的隔离级别下查询与索引扫描会使用 Next-Key lock 防止幻读。<em>由此可推断 InnoDB 索引 B+ tree 中叶子节点中的数据排列界限是左开右闭的，只有这样才做到只使用左界加间隙锁就可以防止幻读。同时插入已存在的数据时是从左边插入的。</em></li>
+<li>假设某索引包括值: 10,11,13,20 .那么在此索引上可能被 next-key lock 锁住的区间就包括:(负无穷大, 10] (10,12] (11,13] (13,20] (20,正无穷大) 4个区间<ul>
+<li>对于任何一个区间, next-key lock 会用一个 record-lock 锁住其右界值,同时在右界值到左界(不包含)的区间加上 gap-lock 防止插入新值.</li>
+<li>对于最后一个区间, InnoDB 会使用一个伪最大值 supremum (大于此索引中任何一个值), 这个 supremum 并不真实存在于索引中,所以对于最后一个区间只使用了 gap-lock.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Insert-intention-locks"><a href="#Insert-intention-locks" class="headerlink" title="Insert intention locks"></a>Insert intention locks</h3><blockquote>
+<p>插入意向锁, 用在插入操作中插入行前设置的一种间隙锁. 此锁用来标识插入同一个索引间隙的多个事务之间如果不插入在同一个位置,那么事务之间无需等待彼此.eg:假设现有索引值 4 与 7 ,另有两个事务尝试各自插入 5 与 6 .<strong>插入意向锁的获取优先于插入行的排他锁获取</strong>,但彼此不阻塞因为各行并不冲突.</p>
+</blockquote>
+<p>对于包含一个索引值有 90 和 102 的表,client A 先在 id &gt; 100 的索引记录上添加了排他锁,这个排他锁包含了 (90, 102] 的 gap-lock</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> child (id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>, <span class="keyword">PRIMARY</span> KEY(id)) ENGINE<span class="operator">=</span>InnoDB;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> child (id) <span class="keyword">values</span> (<span class="number">90</span>),(<span class="number">102</span>);</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">START</span> TRANSACTION;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> child <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> <span class="number">100</span> <span class="keyword">FOR</span> UPDATE;</span><br></pre></td></tr></table></figure>
+
+<p>client B 执行:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">START</span> TRANSACTION;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> child (id) <span class="keyword">VALUES</span> (<span class="number">101</span>);</span><br></pre></td></tr></table></figure>
+
+<p>client B 在间隙中插入新数据,这个事务将会拿到 insert-intention-lock 同时等待获取排他锁.</p>
+<h3 id="Auto-inc-Locks"><a href="#Auto-inc-Locks" class="headerlink" title="Auto-inc Locks"></a>Auto-inc Locks</h3><blockquote>
+<p>自增锁,事务在插入包含自增列 AUTO_INCREMENT 的表数据时所持有的表级锁.在最简单的场景,如果一个事务在往表中插入数据,其他插入数据的事务必须等待,以保证前事务能获取到连续的主键值.</p>
+</blockquote>
+<p>innodb_autoinc_lock_mode 配置控制自增锁的算法.此配置值用以在自增值的有序性与插入操作的并发性上平衡.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> reTry(<span class="keyword">IN</span> count <span class="type">INT</span>, <span class="keyword">OUT</span> res <span class="type">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">DECLARE</span> v1 <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line">  WHILE v1 <span class="operator">&lt;</span> count DO</span><br><span class="line">    UPDATE test <span class="keyword">SET</span> <span class="keyword">value</span> <span class="operator">=</span> <span class="keyword">value</span> <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">set</span> v1 <span class="operator">=</span> v1 <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">END</span> WHILE;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Kang | <a target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
+</div>
+<input type="hidden" id="web_style" value="light">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
