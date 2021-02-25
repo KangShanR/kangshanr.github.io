@@ -10,4 +10,5 @@ tags: []
 > **Email**:kangshan9988@gmail.com
 
 - 所用技术栈: [github](https://github.com/KangShanR/kangshanr.github.io) + [hexo](https://hexo.io/)
-- Hexo 主题 [sky](https://github.com/iJinxin/hexo-theme-sky).*(致谢[iJinxin](https://github.com/iJinxin))*
+- Hexo 主题: [sky](https://github.com/iJinxin/hexo-theme-sky)
+- *(致谢[iJinxin](https://github.com/iJinxin))*
