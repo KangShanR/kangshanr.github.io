@@ -48,7 +48,7 @@ static final int hash(Object key) {
 }
 ```
 
-- 如此做法：将高 16 位的 hashCode 与 hashCode 低 16 位进行 XOR (异或) 位运算。这样能保证结果高 16 位为 0 ，而低 16 位还不明白是如何保证 hashCode 不会冲突的。
+- 如此做法：将高 16 位的 hashCode 与 hashCode 低 16 位(同时高16位与16位0进行XOR,>>> 逻辑右移)进行 XOR (异或) 位运算。这样能保证结果高 16 位为 0 ，而低 16 位还不明白是如何保证 hashCode 不会冲突的。
 - HashTable 中直接对 HashCode 按 capacity 取模，而 HashMap 中其 threshold 并不单指总 Entry 数量阈值，在其初始化时指下一次 resize() capacity 的目标值。
 - HashTable 严格按时 HashTable 数据结构来定义，使用 Object hashCode() 计算其 hash 值，并按桶数量取模放置各个值入 HashTable 中。而在 HashMap 中，其对 Key 的 hash 值进入了高 16 位与低 16 位的或运算作为最终 hash 值，同时，在放置 Node 时，也并不是直接取模，使用 `hash & (capacity - 1)` 得到 bucket 下标。
     - 之所以能使用此种位运算获取到 bucket 下标，因为其桶数量 capacity 始终是 2 的次冥 （`10000` 的形式），`(capacity - 1)` 就会是 `1111` 的形式，而其与 hash 值进行 `&` 运算就刚好得到 hash 的模。
