@@ -80,47 +80,6 @@
     
         <article class="post-abstract">
             <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/12/29/Mysql/InnoDB/">InnoDB</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-12-29</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Mysql/">Mysql</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">官方文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/08/20/innodb-lock.html">美团文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/show-engine.html">查看Innodb引擎数据</a></p>
-</blockquote>
-<h2 id="1-Locking-Readings"><a href="#1-Locking-Readings" class="headerlink" title=".1. Locking Readings"></a>.1. Locking Readings</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">锁读</a></p>
-</blockquote>
-<h2 id="2-并发写问题"><a href="#2-并发写问题" class="headerlink" title=".2. 并发写问题"></a>.2. 并发写问题</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengzheng/p/12557762.html">CSDN</a></p>
-</blockquote>
-<ul>
-<li>在并发写同一行数据时，如果 where 条件字段没有加索引，innoDB 会对所有行加行锁，再对条件进行筛选，不符合条件的行再释放锁。一锁一放损耗极大，所以建议适当添加索引。</li>
-<li>在可重复读隔离级别下，InnoDB 加间隙锁可以防止幻读，同理，如果没有索引将会把所在行之外所有列都加上间隙锁，而导致范围外的行也需要阻塞到当前锁释放才能插入。</li>
-<li>意向锁是表锁，只用来表示该表有没行正被锁住，而以免有行被锁住时想要加表锁修改表结构，需要每行查询是否有行锁。
-                    <div class="read-more">
-                        <a href="/2020/12/29/Mysql/InnoDB/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
                 <h2><a class="post-title-link" href="/2020/12/28/JMM/Thread/">Java Thread &amp; Java Object</a></h2>
             </div>
             <div class="post-meta">
@@ -380,6 +339,35 @@
 <p>指定 profile 的方式有： 添加配置 <code>spring.profiles.active=dev,test</code> 的形式，也可以是通过命令行参数添加 <code>--spring.profiles.active=pro</code>。
                     <div class="read-more">
                         <a href="/2020/07/23/Spring/SpringBoot-Features/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/07/22/Spring/SpringBoot-SpringApplication/">SpringApplication</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-07-22</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/SpringBoot/">SpringBoot</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application">SpringBoot Features</a></p>
+<h2 id="1-Application-Availability"><a href="#1-Application-Availability" class="headerlink" title=".1. Application Availability"></a>.1. Application Availability</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">系统可用性</a></p>
+<p>可以通过注入 <code>ApplicationAvailability</code> 接口到 bean 中以获取应用可用性状态。
+                    <div class="read-more">
+                        <a href="/2020/07/22/Spring/SpringBoot-SpringApplication/" class="read-more-link">
                             ReadMore
                             <i class="iconfont icon-readmore"></i>
                         </a>
