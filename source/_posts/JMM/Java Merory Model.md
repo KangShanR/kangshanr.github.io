@@ -1,12 +1,12 @@
 ---
 layout: "post"
-title: Java Memory Model
+title: Java 内存模型(翻译)
 categories: [Java]
 date: "2021-1-28 13:26"
 tag: [java, concurrent, JMM]
 ---
 
-Java 内存模型[reference](http://www.cs.umd.edu/~pugh/java/memoryModel/)
+Java 内存模型文章翻译[原文](http://www.cs.umd.edu/~pugh/java/memoryModel/)
 
 ## .1. JSR 133 (Java Memory Model) FAQ
 

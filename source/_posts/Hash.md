@@ -1,5 +1,5 @@
 ---
-title: Hash
+title: HashMap
 layout: post
 date: 2017-04-13 15:02:43
 categories: [Java]
