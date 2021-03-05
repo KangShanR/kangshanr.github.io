@@ -1,14 +1,14 @@
 ---
 title: Binary Search Tree
-tags: [Algorithm, Tree]
+tags: [Algorithm, Binary Tree]
 categories: [Algorithm]
-date: 2021-3-5
+date: 2021-3-5 18:22:00
 ---
 
 ## [二叉查找树](https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9)
 
 > 在二叉树的基础上实现了插入数据排序,而实现了查找功能.
-
+<!--more-->
 ## [自平衡二分查找树](https://zh.wikipedia.org/zh-cn/AVL%E6%A0%91)
 
 > 在二分查找树的基础上实现通过自旋转实现平衡,以避免树高度过大出现查找复杂度退化为链表.Balance Binary Search Tree
