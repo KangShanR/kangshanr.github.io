@@ -10,17 +10,18 @@ categories: [Algorithm]
 
 在使用哈希算法对数据进行获取到哈希值后,如果直接取模放置到桶内,当需要对桶进行增减时,需要对已有的所有数据进行迁移,在实际应用于缓存时导致缓存雪崩,这个时候就需要一致性哈希算法了.
 
-## 一致性哈希Wikipedia翻译
+## 一致性哈希(翻译)
 
-[原文](https://en.wikipedia.org/wiki/Consistent_hashing)
+[Wikipedia原文地址](https://en.wikipedia.org/wiki/Consistent_hashing)
 
 这儿直接取了核心的技术片段进行翻译,未翻译内容包括:History,Example
+<!--more-->
 
 ### 基础实现
 
 思考一个负载均衡问题:大量对象(对话,网页,视频等)需要被指定到 n 个服务器中.一种方式是通过计算对象的id = `hash(o)` 并使用标准的哈希函数 `mod(n)`将对象平均地放置在这 n 个服务器中.但如果增加或减少服务器(n 改变了),系统中几乎所有的对象指定的服务器都得改变.这就带来服务器增减之类的事件引发几乎所有对象重新计算并移动到新的服务器中.
 
-![参考图](https://en.wikipedia.org/wiki/File:Consistent_hashing.pdf)
+![参考图](https://upload.wikimedia.org/wikipedia/commons/7/7a/Consistent_hashing.pdf)
 
 一致性哈希被设计用来避免此类问题.主要的实现方式是使用hash函数随机地将对象与服务器映射到一个整圆中(eg:在水平坐标轴上的角度`hash(o)` 对 360 取模)).每个对象被指定到顺时针方向上的下一个服务器上.这不仅让对象平均分布在服务器上,更重要的是,当一个服务器宕机从这个圆中移除时,只需要这个宕机服务器上的对象需要被重新指定到顺时针方向上的下一个服务器上.类似的,当一个新的服务器被添加到这个圆中时,只需要这个新服务器上的对象被重新指定即可.
 
