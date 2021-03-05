@@ -80,6 +80,64 @@
     
         <article class="post-abstract">
             <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/07/23/Spring/SpringBoot-Features/">Spring Boot Features</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-07-23</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/SpringBoot/">SpringBoot</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features">SpringBoot 的特性</a></p>
+<h2 id="1-Profiles"><a href="#1-Profiles" class="headerlink" title=".1. Profiles"></a>.1. Profiles</h2><p>Spring Profiles 提供隔离配置的功能，可以做到不同环境生效不同的配置。在 <code>@Component</code> <code>@Configuration</code> <code>@ConfigurationProperties</code> 上添加 <code>@Profile</code> 注解即可指定其生效环境。如果 <code>@ConfigurationProperties</code> 的配置 bean 是通过 <code>@EnableConfigurationProperties</code> 注册而不是通过自动扫描，<code>@Profile</code> 需要注解在配置组件 <code>@Configuration</code> 类上。</p>
+<p>指定 profile 的方式有： 添加配置 <code>spring.profiles.active=dev,test</code> 的形式，也可以是通过命令行参数添加 <code>--spring.profiles.active=pro</code>。
+                    <div class="read-more">
+                        <a href="/2020/07/23/Spring/SpringBoot-Features/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2020/07/22/Spring/SpringBoot-SpringApplication/">SpringApplication</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2020-07-22</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/SpringBoot/">SpringBoot</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-application">SpringBoot Features</a></p>
+<h2 id="1-Application-Availability"><a href="#1-Application-Availability" class="headerlink" title=".1. Application Availability"></a>.1. Application Availability</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-availability">系统可用性</a></p>
+<p>可以通过注入 <code>ApplicationAvailability</code> 接口到 bean 中以获取应用可用性状态。
+                    <div class="read-more">
+                        <a href="/2020/07/22/Spring/SpringBoot-SpringApplication/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
                 <h2><a class="post-title-link" href="/2020/07/19/Spring/SpringBoot-ExternalizedConfiguration/">SpringBoot Externalized Configuration</a></h2>
             </div>
             <div class="post-meta">
@@ -297,69 +355,6 @@
 <p>安装 spring CLI(command line interface)，后再运行本地 groovy 文件。
                     <div class="read-more">
                         <a href="/2020/04/10/Spring/spring%20boot/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2019/01/29/java-type/">java - Type</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2019-01-29</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Java/">Java</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <blockquote>
-<p>java 中使用的范型相关的 Type。在反序列化时，对于范型相关的类需要使用到的 Type 。mc</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011983531/article/details/80295479">参考</a></p>
-<h2 id="1-java-generic"><a href="#1-java-generic" class="headerlink" title=".1. java generic"></a>.1. java generic</h2><p>java 范型 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30662109/article/details/98836666?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase">reference</a></p>
-<ul>
-<li>静态方法要实现范型，要在返回结果前加上范型标识 <code>&lt;T, R&gt; void generic()</code></li>
-<li>使用无参的范型方法要在使用时确定范型类型在方法前加上范型参数：<code>builder.&lt;String, Integer&gt;build()</code>。否则，编译器只会当范型类型为 Object。</li>
-<li>范型构造器的使用与无参范型构造的实现：通过上一条即可实现。
-                    <div class="read-more">
-                        <a href="/2019/01/29/java-type/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2018/11/26/Spring/Spring-AOP/">AOP</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2018-11-26</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/AOP/">AOP</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <blockquote>
-<p>aop aspect oriented programming 。面向切面编程，常用于具有横切性质的系统级服务，如：事务管理、安全检查、缓存、对象池管理。<br><strong>需要说明的是</strong> aop 是一种编程思想，并不仅限于 java 更不仅限于 spring 。但这儿主要针对 java spring aop 进行讨论。纵向重复代码在横向上抽取。
-                    <div class="read-more">
-                        <a href="/2018/11/26/Spring/Spring-AOP/" class="read-more-link">
                             ReadMore
                             <i class="iconfont icon-readmore"></i>
                         </a>

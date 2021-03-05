@@ -80,7 +80,65 @@
     
         <article class="post-abstract">
             <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/28/JMM/Java%20Merory%20Model/">Java Memory Model</a></h2>
+                <h2><a class="post-title-link" href="/2021/03/05/Binary%20Search%20Tree/">Binary Search Tree</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2021-03-05</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Algorithm/">Algorithm</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9">二叉查找树</a></h2><blockquote>
+<p>在二叉树的基础上实现了插入数据排序,而实现了查找功能.</p>
+</blockquote>
+                    <div class="read-more">
+                        <a href="/2021/03/05/Binary%20Search%20Tree/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2021/03/03/Hashing/">一致性哈希</a></h2>
+            </div>
+            <div class="post-meta">
+                <span class="post-time">2021-03-03</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Algorithm/">Algorithm</a>
+                    
+                </span>
+                
+            </div>
+            <div class="post-content">
+                
+                    <h2 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h2><p>在使用哈希算法对数据进行获取到哈希值后,如果直接取模放置到桶内,当需要对桶进行增减时,需要对已有的所有数据进行迁移,在实际应用于缓存时导致缓存雪崩,这个时候就需要一致性哈希算法了.</p>
+<h2 id="一致性哈希-翻译"><a href="#一致性哈希-翻译" class="headerlink" title="一致性哈希(翻译)"></a>一致性哈希(翻译)</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Consistent_hashing">Wikipedia原文地址</a></p>
+<p>这儿直接取了核心的技术片段进行翻译,未翻译内容包括:History,Example</p>
+                    <div class="read-more">
+                        <a href="/2021/03/03/Hashing/" class="read-more-link">
+                            ReadMore
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
+                
+            </div>
+        </article>
+    
+        <article class="post-abstract">
+            <div class="post-title">
+                <h2><a class="post-title-link" href="/2021/01/28/JMM/Java%20Merory%20Model/">Java 内存模型(翻译)</a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-time">2021-01-28</span>
@@ -94,10 +152,7 @@
             </div>
             <div class="post-content">
                 
-                    <p>Java 内存模型<a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/">reference</a></p>
-<h2 id="1-JSR-133-Java-Memory-Model-FAQ"><a href="#1-JSR-133-Java-Memory-Model-FAQ" class="headerlink" title=".1. JSR 133 (Java Memory Model) FAQ"></a>.1. JSR 133 (Java Memory Model) FAQ</h2><p><a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html">reference</a></p>
-<h3 id="1-1-How-does-synchronization-do"><a href="#1-1-How-does-synchronization-do" class="headerlink" title=".1.1. How does synchronization do?"></a>.1.1. How does synchronization do?</h3><ul>
-<li>Synchronization 同步存在多方面含义。最为人所知的是恒定排他性：一旦某个线程获取到 monitor ，monitor 上的同步意味着一个线程进入了 monitor 所保护的同步块，在此线程退出此同步块前没有其他线程能够再进入。
+                    <p>Java 内存模型文章翻译 <a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/">原文地址</a></p>
                     <div class="read-more">
                         <a href="/2021/01/28/JMM/Java%20Merory%20Model/" class="read-more-link">
                             ReadMore
@@ -309,76 +364,6 @@
 <p>在 InnoDB 中所有用户的活动都在事务之中，如果 autocommit＝ON 每个 SQL 语句都会形成一个自有的事务。默认情况下 Ｍysql 开启一个session都会在每个连接都会设置autocommit＝on，MYSQL 只要语句没有返回错误都会提交。
                     <div class="read-more">
                         <a href="/2021/01/06/Mysql/InnoDB%20Transaction%20Model/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/06/Mysql/InnoDB%20Transaction%20Isolation%20Level/">InnoDB Transaction Isolation Level</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2021-01-06</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Mysql/">Mysql</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html">InnoDB 事务模型</a></p>
-<p>InnoDB 事务模型的目标是联合数据库多视图属性与传统的多阶段锁。InnoDB 类似 Oracle ，其执行锁到行级别，同时默认执行查询不加锁并保持一致性读。InnoDB 锁数据存储空间效率高，不随锁数量增加而剧增。锁表全行也不用担心 InnoDB 内存耗尽。
-                    <div class="read-more">
-                        <a href="/2021/01/06/Mysql/InnoDB%20Transaction%20Isolation%20Level/" class="read-more-link">
-                            ReadMore
-                            <i class="iconfont icon-readmore"></i>
-                        </a>
-                    </div>
-                
-            </div>
-        </article>
-    
-        <article class="post-abstract">
-            <div class="post-title">
-                <h2><a class="post-title-link" href="/2020/12/29/Mysql/InnoDB/">InnoDB</a></h2>
-            </div>
-            <div class="post-meta">
-                <span class="post-time">2020-12-29</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/Mysql/">Mysql</a>
-                    
-                </span>
-                
-            </div>
-            <div class="post-content">
-                
-                    <blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">官方文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2014/08/20/innodb-lock.html">美团文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/show-engine.html">查看Innodb引擎数据</a></p>
-</blockquote>
-<h2 id="1-Locking-Readings"><a href="#1-Locking-Readings" class="headerlink" title=".1. Locking Readings"></a>.1. Locking Readings</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">锁读</a></p>
-</blockquote>
-<h2 id="2-并发写问题"><a href="#2-并发写问题" class="headerlink" title=".2. 并发写问题"></a>.2. 并发写问题</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengzheng/p/12557762.html">CSDN</a></p>
-</blockquote>
-<ul>
-<li>在并发写同一行数据时，如果 where 条件字段没有加索引，innoDB 会对所有行加行锁，再对条件进行筛选，不符合条件的行再释放锁。一锁一放损耗极大，所以建议适当添加索引。</li>
-<li>在可重复读隔离级别下，InnoDB 加间隙锁可以防止幻读，同理，如果没有索引将会把所在行之外所有列都加上间隙锁，而导致范围外的行也需要阻塞到当前锁释放才能插入。</li>
-<li>意向锁是表锁，只用来表示该表有没行正被锁住，而以免有行被锁住时想要加表锁修改表结构，需要每行查询是否有行锁。
-                    <div class="read-more">
-                        <a href="/2020/12/29/Mysql/InnoDB/" class="read-more-link">
                             ReadMore
                             <i class="iconfont icon-readmore"></i>
                         </a>

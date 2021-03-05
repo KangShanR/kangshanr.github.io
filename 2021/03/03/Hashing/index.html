@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                About
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">一致性哈希</h2>
+            <div class="post-meta">
+                <span class="post-time">2021-03-03</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Algorithm/">Algorithm</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="toc-text">哈希算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C-%E7%BF%BB%E8%AF%91"><span class="toc-text">一致性哈希(翻译)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%AE%9E%E7%8E%B0"><span class="toc-text">基础实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-text">拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E5%8D%8F%E5%AE%9A%E5%93%88%E5%B8%8C%E6%AF%94%E8%BE%83"><span class="toc-text">与协定哈希比较</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h2 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h2><p>在使用哈希算法对数据进行获取到哈希值后,如果直接取模放置到桶内,当需要对桶进行增减时,需要对已有的所有数据进行迁移,在实际应用于缓存时导致缓存雪崩,这个时候就需要一致性哈希算法了.</p>
+<h2 id="一致性哈希-翻译"><a href="#一致性哈希-翻译" class="headerlink" title="一致性哈希(翻译)"></a>一致性哈希(翻译)</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Consistent_hashing">Wikipedia原文地址</a></p>
+<p>这儿直接取了核心的技术片段进行翻译,未翻译内容包括:History,Example</p>
+<span id="more"></span>
+
+<h3 id="基础实现"><a href="#基础实现" class="headerlink" title="基础实现"></a>基础实现</h3><p>思考一个负载均衡问题:大量对象(对话,网页,视频等)需要被指定到 n 个服务器中.一种方式是通过计算对象的id = <code>hash(o)</code> 并使用标准的哈希函数 <code>mod(n)</code>将对象平均地放置在这 n 个服务器中.但如果增加或减少服务器(n 改变了),系统中几乎所有的对象指定的服务器都得改变.这就带来服务器增减之类的事件引发几乎所有对象重新计算并移动到新的服务器中.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Consistent_hashing.pdf" alt="参考图"></p>
+<p>一致性哈希被设计用来避免此类问题.主要的实现方式是使用hash函数随机地将对象与服务器映射到一个整圆中(eg:在水平坐标轴上的角度<code>hash(o)</code> 对 360 取模)).每个对象被指定到顺时针方向上的下一个服务器上.这不仅让对象平均分布在服务器上,更重要的是,当一个服务器宕机从这个圆中移除时,只需要这个宕机服务器上的对象需要被重新指定到顺时针方向上的下一个服务器上.类似的,当一个新的服务器被添加到这个圆中时,只需要这个新服务器上的对象被重新指定即可.</p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>按基本算法,当某个server宕机,原在其上的对象会全部安排下顺时针方向的下一个server,这会让这个新的server产生原来的两位负载.解决方案:让每个server分布多个位置,这样可以防止出现以上情况.另外一种情况是,当一个对象访问过热(多次访问)而不得不将其放置在多个server上,这种情况下,对象通过遍历圆被指定到多个连续的server上.</p>
+<h3 id="与协定哈希比较"><a href="#与协定哈希比较" class="headerlink" title="与协定哈希比较"></a>与<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rendezvous_hashing">协定哈希</a>比较</h3><ul>
+<li>Rendezvous hashing 是让每个 client 都使用 Highest random weight hashing 算法,对于每个对象 O 都合适此算法而得出 O 在每个 site 上的权重,而只需要取最高权限的 site 放置对象 O 即可.</li>
+<li>一致性哈希是协定哈希的一种特殊情况,这种情况下Rendezvous hashing 的 k 是 1 .</li>
+<li>k 用来指定对象分布到按权重排序下的第几个 site .</li>
+<li>当某个 site 容量是其他 site 的 2 倍,在 site 的集合中放置其他site两倍数量即可实现”能者多劳”.但如果容量并不是整数倍这种做法会产生误差.</li>
+<li>当增减一个site/server ,只需要相应的O 进行重新指定即可,实现一致性哈希.</li>
+</ul>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/Hash/" title="Hash">Hash</a>
+            
+            <a class="tag" href="/tags/Consistent-Hashing/" title="Consistent-Hashing">Consistent-Hashing</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2021/03/05/Binary%20Search%20Tree/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">Binary Search Tree</span>
+                <span class="nav-mobile">Prev</span>
+            </a>
+        
+        
+            <a class="next" href="/2021/01/28/JMM/Java%20Merory%20Model/">
+                <span class="nav-default">Java 内存模型(翻译)</span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '一致性哈希',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>
