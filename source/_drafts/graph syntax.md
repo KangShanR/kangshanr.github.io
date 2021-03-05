@@ -28,4 +28,18 @@ graph TD
     C -->|no| G
     G ==>|检查通过|H
     H ==>O & M
+
+    
+    I((P))
+    H((N))
+    O((S))
+    L((G))
+    
+    class O red;
+    class A,L black;
+    classDef black fill:#666,stroke:#999,stroke-width:1px;
+    classDef red fill:#f66,stroke:#999,stroke-width:1px;
+    
+    
+    
 ```
