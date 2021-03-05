@@ -8,38 +8,23 @@
 
 ```mermaid
 graph TD
-    I([场站是否有距离配置])
-    H([开启充电成功])
-    O([充电坐标数据收集])
-    L(不在配置范围)
-    G[fa:fa-car 进入其他检查流程]
-    P[设备ID错误]
-    A(用户请求充电) --> C[是否指定套餐类型充电]
-    C ==>|yes| D([检查设备ID是否正确])
-    D -->|no| P
-    P -->M
-    D ==>|yes| I
-    I ==>|yes| J([是否在配置范围内])
-    J -->|no|L
-    J ==>|yes| G
-    I -->|no| G
-    L -->|定位问题请求失败|M(请求结束)
-    L -->O
-    C -->|no| G
-    G ==>|检查通过|H
-    H ==>O & M
+    P((P))
+    N((N))
+    S((S))
+    Sl((Sl))
+    Sr((Sr))
+    
+    
+    P-.->N
+    S-->P
+    P-->Sl
+    S-->Sr
+    
 
-    
-    I((P))
-    H((N))
-    O((S))
-    L((G))
-    
-    class O red;
-    class A,L black;
-    classDef black fill:#666,stroke:#999,stroke-width:1px;
-    classDef red fill:#f66,stroke:#999,stroke-width:1px;
-    
-    
-    
+    class Sl red;
+    class P,S,Sr black;
+    class N depr;
+    classDef black color:#fff,fill:#111,stroke:#999,stroke-width:1px;
+    classDef red color:#fff,fill:#f11,stroke:#999,stroke-width:1px;
+    classDef depr color:#eee,fill:#555,stroke:#999,stroke-width:1px;
 ```
