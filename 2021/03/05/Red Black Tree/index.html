@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kang Shan</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                About
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Kang Shan's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">红黑树</h2>
+            <div class="post-meta">
+                <span class="post-time">2021-03-05</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/Data-Structures-Algorithms/">Data Structures &amp; Algorithms</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E5%B1%9E%E6%80%A7"><span class="toc-text">红黑树属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C"><span class="toc-text">红黑树的插入操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Case%EF%BC%91"><span class="toc-text">Case１</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Case2"><span class="toc-text">Case2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Case3"><span class="toc-text">Case3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Case4"><span class="toc-text">Case4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Case5"><span class="toc-text">Case5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">红黑树的删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%83%85%E5%86%B5-%E5%BD%93%E8%BF%99%E4%B8%AA%E8%A2%AB%E5%88%A0%E9%99%A4%E7%9A%84%E8%8A%82%E7%82%B9%E6%98%AF%E7%BA%A2%E8%89%B2%E7%9A%84"><span class="toc-text">最简单的情况:当这个被删除的节点是红色的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E7%AE%80%E5%8D%95%E6%83%85%E5%86%B5-%E8%A2%AB%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9%E6%98%AF%E9%BB%91%E8%89%B2-%E5%90%8C%E6%97%B6%E5%85%B6%E6%9C%89%E4%B8%80%E4%B8%AA%E7%BA%A2%E8%89%B2%E5%AD%90%E8%8A%82%E7%82%B9"><span class="toc-text">另一种简单情况:被删除节点是黑色,同时其有一个红色子节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%E6%B2%A1%E6%9C%89%E5%AD%90%E8%8A%82%E7%82%B9"><span class="toc-text">其兄弟节点没有子节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A2%E8%89%B2%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%E6%9C%89%E4%B8%A4%E4%B8%AA%E9%BB%91%E8%89%B2%E8%8A%82%E7%82%B9"><span class="toc-text">红色兄弟节点有两个黑色节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E8%89%B2%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%E6%9C%89%E4%B8%A4%E4%B8%AA%E7%BA%A2%E5%AD%90%E8%8A%82%E7%82%B9-%E7%BA%A2%E8%89%B2%E7%88%B6%E8%8A%82%E7%82%B9"><span class="toc-text">黑色兄弟节点有两个红子节点(红色父节点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E8%89%B2%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9%E6%9C%89%E4%B8%A4%E4%B8%AA%E7%BA%A2%E5%AD%90%E8%8A%82%E7%82%B9-%E9%BB%91%E8%89%B2%E7%88%B6%E8%8A%82%E7%82%B9"><span class="toc-text">黑色兄弟节点有两个红子节点(黑色父节点)</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>要了解<strong>红黑树</strong>,需要了解<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9">二分查找树</a>与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/AVL%E6%A0%91">自平衡二分查找树</a>.</p>
+<blockquote>
+<p>二分查找树在二叉树的基础上实现了插入数据排序,而实现了查找功能.<br>而自平衡二分查找树在二分查找树的基础上实现通过自旋转实现平衡,以避免树高度过大出现查找复杂度退化为链表.Balance Binary Search Tree.<br>红黑树算自平衡二分查找树的一种,但其并不完全满足其要求只相对满足其完全的功能,以降低维护的成本,但最坏情况下两个分支高度差不会超过两倍.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="红黑树属性"><a href="#红黑树属性" class="headerlink" title="红黑树属性"></a>红黑树属性</h2><ol>
+<li>节点是红色或黑色.</li>
+<li>根节点必须是黑色.</li>
+<li>叶子节点都是黑色空节点.</li>
+<li>红色节点的两个子节点都必须是黑色(不允许存在连续的红色节点).</li>
+<li>从任何节点出发到叶子节点路径上黑色节点的数量必须一致.</li>
+</ol>
+<p>红黑树示例 <a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQMjAoKDEpKVxuICAgIFAyMSgoMTEpKVxuICAgIFAyMigoMTMpKVxuICAgIFAyMygoMTE0KSlcbiAgICBTMTAoKDIzKSlcbiAgICBTMTEoKDgpKVxuICAgIFMxMigoMTcpKVxuICAgIFAzMCgoNjMpKVxuICAgIFAzMSgoMTYxKSlcbiAgICBQMzIoKDMxMykpXG4gICAgUDMzKCgxNDQpKVxuICAgIE4xKChmKSlcbiAgICBOMigoZikpXG4gICAgTjMoKGYpKVxuICAgIE40KChmKSlcbiAgICBONSgoZikpXG4gICAgTjYoKGYpKVxuICAgIE43KChmKSlcbiAgICBOOCgoZikpXG4gICAgTjkoKGYpKVxuICAgIE4xMCgoZikpXG4gICAgTjExKChmKSlcbiAgICBOMTIoKGYpKVxuXG4gICAgUDIyLS0-UDIxXG4gICAgUDIyLS0-UDIzXG4gICAgUDIxLS0-UzExXG4gICAgUDIxLS0-UzEwXG4gICAgUzEwLS0-TjRcbiAgICBTMTAtLT5ONVxuICAgIFAyMy0tPlAzMFxuICAgIFAyMy0tPlAzMVxuICAgIFMxMS0tPlAyMFxuICAgIFAyMC0tPk4xXG4gICAgUDIwLS0-TjJcbiAgICBTMTEtLT5OM1xuICAgIFAzMC0tPlMxMlxuICAgIFAzMC0tPk44XG4gICAgUzEyLS0-TjZcbiAgICBTMTItLT5ON1xuICAgIFAzMS0tPlAzM1xuICAgIFAzMy0tPk45XG4gICAgUDMzLS0-TjEwXG4gICAgUDMxLS0-UDMyXG4gICAgUDMyLS0-TjExXG4gICAgUDMyLS0-TjEyXG5cbiAgICBjbGFzcyBQMjAsUDIxLFAyMyxTMTIsUDMzLFAzMiByZWQ7XG4gICAgY2xhc3MgUzExLFMxMCxQMjIsUDMwLFAzMSBibGFjaztcbiAgICBjbGFzcyBOMSxOMixOMyxONCxONSxONixONyxOOCxOOSxOMTAsTjExLE4xMiBkZXByO1xuXG4gICAgY2xhc3NEZWYgYmxhY2sgY29sb3I6I2ZmZixmaWxsOiMwMDAsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiByZWQgY29sb3I6I2ZmZixmaWxsOiNmMTEsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiBkZXByIGNvbG9yOiNlZWUsZmlsbDojMzMzLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQMjAoKDEpKVxuICAgIFAyMSgoMTEpKVxuICAgIFAyMigoMTMpKVxuICAgIFAyMygoMTE0KSlcbiAgICBTMTAoKDIzKSlcbiAgICBTMTEoKDgpKVxuICAgIFMxMigoMTcpKVxuICAgIFAzMCgoNjMpKVxuICAgIFAzMSgoMTYxKSlcbiAgICBQMzIoKDMxMykpXG4gICAgUDMzKCgxNDQpKVxuICAgIE4xKChmKSlcbiAgICBOMigoZikpXG4gICAgTjMoKGYpKVxuICAgIE40KChmKSlcbiAgICBONSgoZikpXG4gICAgTjYoKGYpKVxuICAgIE43KChmKSlcbiAgICBOOCgoZikpXG4gICAgTjkoKGYpKVxuICAgIE4xMCgoZikpXG4gICAgTjExKChmKSlcbiAgICBOMTIoKGYpKVxuXG4gICAgUDIyLS0-UDIxXG4gICAgUDIyLS0-UDIzXG4gICAgUDIxLS0-UzExXG4gICAgUDIxLS0-UzEwXG4gICAgUzEwLS0-TjRcbiAgICBTMTAtLT5ONVxuICAgIFAyMy0tPlAzMFxuICAgIFAyMy0tPlAzMVxuICAgIFMxMS0tPlAyMFxuICAgIFAyMC0tPk4xXG4gICAgUDIwLS0-TjJcbiAgICBTMTEtLT5OM1xuICAgIFAzMC0tPlMxMlxuICAgIFAzMC0tPk44XG4gICAgUzEyLS0-TjZcbiAgICBTMTItLT5ON1xuICAgIFAzMS0tPlAzM1xuICAgIFAzMy0tPk45XG4gICAgUDMzLS0-TjEwXG4gICAgUDMxLS0-UDMyXG4gICAgUDMyLS0-TjExXG4gICAgUDMyLS0-TjEyXG5cbiAgICBjbGFzcyBQMjAsUDIxLFAyMyxTMTIsUDMzLFAzMiByZWQ7XG4gICAgY2xhc3MgUzExLFMxMCxQMjIsUDMwLFAzMSBibGFjaztcbiAgICBjbGFzcyBOMSxOMixOMyxONCxONSxONixONyxOOCxOOSxOMTAsTjExLE4xMiBkZXByO1xuXG4gICAgY2xhc3NEZWYgYmxhY2sgY29sb3I6I2ZmZixmaWxsOiMwMDAsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiByZWQgY29sb3I6I2ZmZixmaWxsOiNmMTEsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiBkZXByIGNvbG9yOiNlZWUsZmlsbDojMzMzLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0"></a></p>
+<ul>
+<li>红黑树是自平衡二分查找树,也就是说二分查找树的特征都保留,而其颜色属性就用于平衡树高度,以防止数据结构查找修改复杂度退化为链表.</li>
+</ul>
+<h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><blockquote>
+<p>　红黑树插入是先按二分查找树的规律将新节点插入到树叶子节点,再对新节点所在关注点进行调色与旋转操作以满足颜色属性.所以这儿的操作都在已实现二分查找属性基础进行.同时为了减少插入带来的属性违背,新插入的节点都默认为红色.</p>
+</blockquote>
+<p>插入操作所有的情形有以下5种:</p>
+<p><em>以下操作默认使用P代指父节点,N为新插入节点,S代表兄弟节点,G代表祖父节点,U代表叔父节点,f代表叶子节点.</em></p>
+<h3 id="Case１"><a href="#Case１" class="headerlink" title="Case１"></a>Case１</h3><p>如果插入的节点位置在根上,直接将节点颜色改为黑色.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">    N((N))</span><br><span class="line">    F1((f))</span><br><span class="line">    F2((f))</span><br><span class="line">    </span><br><span class="line">    subgraph after</span><br><span class="line">    N--&gt;F1</span><br><span class="line">    N--&gt;F2</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    class 1 red;</span><br><span class="line">    class N black;</span><br><span class="line">    class F1,F2 depr;</span><br><span class="line">    class after sub;</span><br><span class="line"></span><br><span class="line">    classDef black color:#fff,fill:#000,stroke:#999,stroke-width:1px;</span><br><span class="line">    classDef red color:#fff,fill:#f11,stroke:#999,stroke-width:1px;</span><br><span class="line">    classDef depr color:#eee,fill:#333,stroke:#999,stroke-width:1px;</span><br><span class="line">    classDef sub color:#000,fill:#fff,stroke:#999,stroke-width:1px;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Case2"><a href="#Case2" class="headerlink" title="Case2"></a>Case2</h2><p>插入节点的父节点是黑色,此时不需要任何调整,所有原则皆满足.不增加黑色节点,任何路径上黑色节点数量不变,也没产生新的连续红节点.因为叶子节点始终是黑色加在新节点后面不会增加.同时,因为属性４的存在,新加节点分支不可能退化到相邻分支的２倍长度.</p>
+<p>插入前: <img src="https://mermaid.ink/svg/eyJjb2RlIjoiXG5ncmFwaCBURFxuXG4gICAgUGEoKFApKVxuICAgIFNhKChTKSlcbiAgICBGMWEoKGYpKVxuICAgIEYzYSgoZikpXG4gICAgRjRhKChmKSlcblxuICAgIHN1YmdyYXBoIGJlZm9yZVxuICAgIFBhLS0-fOaPkuWFpeiKgueCuXxGMWFcbiAgICBQYS0tPlNhXG4gICAgU2EtLT5GM2FcbiAgICBTYS0tPkY0YVxuICAgIGVuZFxuXG5cbiAgICBjbGFzcyBTYSxOLFMgcmVkO1xuICAgIGNsYXNzIFBhLFAgYmxhY2s7XG4gICAgY2xhc3MgRjFhLEYzYSxGNGEsRjEsRjIsRjMsRjQgZGVwcjtcbiAgICBjbGFzcyBiZWZvcmUsYWZ0ZXIgc3ViO1xuXG4gICAgY2xhc3NEZWYgYmxhY2sgY29sb3I6I2ZmZixmaWxsOiMwMDAsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiByZWQgY29sb3I6I2ZmZixmaWxsOiNmMTEsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiBkZXByIGNvbG9yOiNlZWUsZmlsbDojMzMzLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgc3ViIGNvbG9yOiMwMDAsZmlsbDojZmZmLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0" alt="picture"></p>
+<p>插入后: <a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiXG5ncmFwaCBURFxuXG4gICAgTigoTikpXG4gICAgUCgoUCkpXG4gICAgUygoUykpXG4gICAgRjEoKGYpKVxuICAgIEYyKChmKSlcbiAgICBGMygoZikpXG4gICAgRjQoKGYpKVxuXG4gICAgUC0tPk5cbiAgICBQLS0-U1xuICAgIE4tLT5GMVxuICAgIE4tLT5GMlxuICAgIFMtLT5GM1xuICAgIFMtLT5GNFxuXG5cbiAgICBjbGFzcyBTYSxOLFMgcmVkO1xuICAgIGNsYXNzIFBhLFAgYmxhY2s7XG4gICAgY2xhc3MgRjFhLEYzYSxGNGEsRjEsRjIsRjMsRjQgZGVwcjtcbiAgICBjbGFzcyBiZWZvcmUsYWZ0ZXIgc3ViO1xuXG4gICAgY2xhc3NEZWYgYmxhY2sgY29sb3I6I2ZmZixmaWxsOiMwMDAsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiByZWQgY29sb3I6I2ZmZixmaWxsOiNmMTEsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiBkZXByIGNvbG9yOiNlZWUsZmlsbDojMzMzLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgc3ViIGNvbG9yOiMwMDAsZmlsbDojZmZmLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiXG5ncmFwaCBURFxuXG4gICAgTigoTikpXG4gICAgUCgoUCkpXG4gICAgUygoUykpXG4gICAgRjEoKGYpKVxuICAgIEYyKChmKSlcbiAgICBGMygoZikpXG4gICAgRjQoKGYpKVxuXG4gICAgUC0tPk5cbiAgICBQLS0-U1xuICAgIE4tLT5GMVxuICAgIE4tLT5GMlxuICAgIFMtLT5GM1xuICAgIFMtLT5GNFxuXG5cbiAgICBjbGFzcyBTYSxOLFMgcmVkO1xuICAgIGNsYXNzIFBhLFAgYmxhY2s7XG4gICAgY2xhc3MgRjFhLEYzYSxGNGEsRjEsRjIsRjMsRjQgZGVwcjtcbiAgICBjbGFzcyBiZWZvcmUsYWZ0ZXIgc3ViO1xuXG4gICAgY2xhc3NEZWYgYmxhY2sgY29sb3I6I2ZmZixmaWxsOiMwMDAsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiByZWQgY29sb3I6I2ZmZixmaWxsOiNmMTEsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDtcbiAgICBjbGFzc0RlZiBkZXByIGNvbG9yOiNlZWUsZmlsbDojMzMzLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgc3ViIGNvbG9yOiMwMDAsZmlsbDojZmZmLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0"></a></p>
+<p><em>note:排除Case1,Case2的情况后,这个时候父节点只是红色.</em></p>
+<h3 id="Case3"><a href="#Case3" class="headerlink" title="Case3"></a>Case3</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Red-black_tree_insert_case_3.png" alt="picture"></p>
+<p>插入新节点的叔父节点是红色(排除Case1,Case2的情况后,这个时候父节点也是红色,也就是说上一层两个节点与当前节点都是红色).到目前为止,除当前新节点外,树的颜色原则是保持得很好的,新节点的插入打破了原则４(有连续的红色节点).这个时候出现的并排的红色节点只需要两个颜色一起改变(也就是直接将父节点与步父节点颜色变为黑色)即可将当前节点的原则４修复,这样做产生了新的黑节点,为了维持原则５同时两个变色的节点为兄弟节点,只需要将这两个节点的父节点变为红色即可修复当前节点层的原则５(这时原节点的祖父节点的变色带来的问题又放在不同的Case中一直递归到根节点).这样一直递归到根节点(根节点为黑色不修改而让产生的黑色节点最终放在了根节点而作用在所有的路径上),将所有节点的原则５修复.</p>
+<p><em>note:接下来的出现的情况只剩下叔父节点为黑色,父节点一层的颜色不一致.同时当前节点的父节点要么是在祖父节点左边要么在祖父节点右边,两类情况都使用旋转修复,方向相反而已.这个时候要修复原则4,只需要将两个红色节点变成兄弟节点即可(因为成为兄弟节点后,即不是连续红节点,也不增加黑色节点).</em></p>
+<h3 id="Case4"><a href="#Case4" class="headerlink" title="Case4"></a>Case4</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Red-black_tree_insert_case_4.png" alt="picture"></p>
+<p>如图所示:在新节点插入后,产生了两个连续的红节点(不在同一方向),这时要做的仅仅是将两个红节点旋转到同一方向以进入到 Case5.</p>
+<ol>
+<li>左旋(如果父节点在祖父节点右节点当前节点在父节点左节点则使用右旋)当前节点与父节点,使当前节点与父节点祖父节点在一个方向上(以方便后一步骤旋转祖父节点与父节点)进入Case5</li>
+</ol>
+<h3 id="Case5"><a href="#Case5" class="headerlink" title="Case5"></a>Case5</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Red-black_tree_insert_case_5.png" alt="case5"></p>
+<blockquote>
+<p>除 Case4 外, Case3 与直接刚插入新节点时都可能直接进入到 Case5 中来.</p>
+</blockquote>
+<ol>
+<li>右旋/左旋祖父节点与父点</li>
+<li>交换原父节点与原祖父节点颜色(原祖父节点颜色只会是黑色),这个时候原祖父节点成当前节点兄弟节点,原父节点成为节点的父节点,交换颜色即将原祖父节点变为红色,而原父节点变为黑色.达到的效果是,当前节点分支不再有连续红节点,也没有增加黑色节点,兄弟节点分支增加了一个红色节点,并不增加黑色节点.</li>
+</ol>
+<p>走到 Case5 到此插入完成,此外, Case3,Case2,Case1 都有可能完成插入.</p>
+<h2 id="红黑树的删除操作"><a href="#红黑树的删除操作" class="headerlink" title="红黑树的删除操作"></a>红黑树的删除操作</h2><blockquote>
+<p>基于二分查找树删除操作(在二分查找树中,各节点已经排序好删除一个节点只需要将其左分支最大的节点或右分支最小的节点替换到被删除的节点即可),红黑树删除某个节点可以直接转换为复制这个节点替换被删除节点,再将被复制节点删除.而作为分支上左分支上的最大节点或右分支上的最小节点,最多只有一个方向上相反(此处为方便理解不考虑空叶子节点,如果是替换左分支最大节点这个子节点就是替换节点的左子节点,如果是右分支最小节点删除就是此节点的右子节点)的子节点,因此删除操作剩下工作仅仅是删除这个最多有一个子节点的节点.</p>
+</blockquote>
+<p>接下来的讨论只针对删除这个最多一个子节点的节点.从头到尾穷尽此节点的情况与实现树平衡的步骤:</p>
+<p><em>以下讨论内容涉及到黑色节点数量时都不包含空叶子节点.同时,为方便理解假设原删除节点使用的是右分支的最小节点覆盖,在使用左分支的最大节点的情况下,左旋与右旋对调即可.</em></p>
+<h3 id="最简单的情况-当这个被删除的节点是红色的"><a href="#最简单的情况-当这个被删除的节点是红色的" class="headerlink" title="最简单的情况:当这个被删除的节点是红色的"></a>最简单的情况:当这个被删除的节点是红色的</h3><p>这种情况下,因为其最多只有一个子节点(不考虑空叶子节点),所以此红色节点没有有效的子节点(其子节点不能为红节点,但如果有一个黑子节点,其违背了原则5黑色节点数量不一致).这个时候直接删除该节点不会违背任何原则:既不会产生相邻红节点,也不会增减任何分支的黑色节点数量.</p>
+<p><em>note:剩下的情况都是被删除节点是黑色的</em></p>
+<h3 id="另一种简单情况-被删除节点是黑色-同时其有一个红色子节点"><a href="#另一种简单情况-被删除节点是黑色-同时其有一个红色子节点" class="headerlink" title="另一种简单情况:被删除节点是黑色,同时其有一个红色子节点"></a>另一种简单情况:被删除节点是黑色,同时其有一个红色子节点</h3><p>这种情况下,被删除的分支减少一个黑色节点,违背原则5,只需要将被删除节点子节点移动到被删除节点,同时改变此节点颜色为黑色即修复.</p>
+<p><em>Note:被删除节点除以上两种情况后,只剩下此节点是黑色且无子节点.要满足原则5,兄弟分支到叶子路径上必有一个黑色节点,可能的情况包括:有且只有一个黑色兄弟节点/黑色兄弟节点有两个红子节点/红色兄弟节点有两个黑色子节点.</em></p>
+<h3 id="其兄弟节点没有子节点"><a href="#其兄弟节点没有子节点" class="headerlink" title="其兄弟节点没有子节点"></a>其兄弟节点没有子节点</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Red-black_tree_delete_case_4.png" alt="picture"></p>
+<blockquote>
+<p>这种情况下,兄弟节点没有子节点那么<strong>其颜色只与被删除节点一致为黑色</strong>才能满足原则5(黑色节点数量一致).</p>
+</blockquote>
+<p>在原则5条件下,此时被删除节点所在分支与兄弟分支到叶子节点的黑色节点数量都为1(排除叶子节点),在删除被删除黑色节点后,其所在分支黑色节点数量相对其兄弟分支少1(破坏原则5).</p>
+<p>如果父节点P不管是红色还是黑色,什么都不需要做,删除分支直接舍弃,如果没有兄弟分支其本身颜色原则不被破坏,如果有兄弟分支,其原有的平衡也不会被破坏(因为删除节点分支已不存在不需要考虑黑色节点数量原则与红色节点不连续原则).</p>
+<h3 id="红色兄弟节点有两个黑色节点"><a href="#红色兄弟节点有两个黑色节点" class="headerlink" title="红色兄弟节点有两个黑色节点"></a>红色兄弟节点有两个黑色节点</h3><p><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUCAtLi0-TlxuICAgIFAgLS0-U1xuICAgIFMgLS0-U2xcbiAgICBTIC0tPlNyXG4gICAgXG5cbiAgICBjbGFzcyBTIHJlZDtcbiAgICBjbGFzcyBQLFNsLFNyLE4gYmxhY2s7XG4gICAgY2xhc3MgTiBkZXByO1xuICAgIGNsYXNzRGVmIGJsYWNrIGNvbG9yOiNmZmYsZmlsbDojMTExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgcmVkIGNvbG9yOiNmZmYsZmlsbDojZjExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgZGVwciBjb2xvcjojZWVlLGZpbGw6Izg4OCxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4OyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="picture"></p>
+<p>在满足原则4(红色节点不连续)情况下,父节点P只能是黑色.当删除节点N后,需要在左分支添加黑色节点,因此操作是:</p>
+<ol>
+<li>以P为轴左旋节点P与S,旋转后效果: <img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUCAtLi0-TlxuICAgIFAgLS0-U2xcbiAgICBTIC0tPlBcbiAgICBTIC0tPlNyXG4gICAgXG5cbiAgICBjbGFzcyBTIHJlZDtcbiAgICBjbGFzcyBQLFNsLFNyLE4gYmxhY2s7XG4gICAgY2xhc3MgTiBkZXByO1xuICAgIGNsYXNzRGVmIGJsYWNrIGNvbG9yOiNmZmYsZmlsbDojMTExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgcmVkIGNvbG9yOiNmZmYsZmlsbDojZjExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgZGVwciBjb2xvcjojZWVlLGZpbGw6Izg4OCxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4OyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="picture"></li>
+<li>左旋后,再将原父节点P与原兄弟节点S颜色互换以满足原则5.颜色互换后效果:<img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUCAtLi0-TlxuICAgIFAgLS0-U2xcbiAgICBTIC0tPlBcbiAgICBTIC0tPlNyXG4gICAgXG5cbiAgICBjbGFzcyBQIHJlZDtcbiAgICBjbGFzcyBTLFNsLFNyLE4gYmxhY2s7XG4gICAgY2xhc3MgTiBkZXByO1xuICAgIGNsYXNzRGVmIGJsYWNrIGNvbG9yOiNmZmYsZmlsbDojMTExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgcmVkIGNvbG9yOiNmZmYsZmlsbDojZjExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgZGVwciBjb2xvcjojZWVlLGZpbGw6Izg4OCxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4OyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="picture"></li>
+</ol>
+<h3 id="黑色兄弟节点有两个红子节点-红色父节点"><a href="#黑色兄弟节点有两个红子节点-红色父节点" class="headerlink" title="黑色兄弟节点有两个红子节点(红色父节点)"></a>黑色兄弟节点有两个红子节点(红色父节点)</h3><p><img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUCAtLi0-TlxuICAgIFAgLS0-U1xuICAgIFMgLS0-U2xcbiAgICBTIC0tPlNyXG4gICAgXG5cbiAgICBjbGFzcyBQLFNsLFNyIHJlZDtcbiAgICBjbGFzcyBTIGJsYWNrO1xuICAgIGNsYXNzIE4gZGVwcjtcbiAgICBjbGFzc0RlZiBibGFjayBjb2xvcjojZmZmLGZpbGw6IzExMSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4O1xuICAgIGNsYXNzRGVmIHJlZCBjb2xvcjojZmZmLGZpbGw6I2YxMSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4O1xuICAgIGNsYXNzRGVmIGRlcHIgY29sb3I6I2VlZSxmaWxsOiM1NTUsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDsiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ" alt="picture"></p>
+<ol>
+<li>先以P为轴左旋.左旋后结果: <img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUCAtLi0-TlxuICAgIFMgLS0-UFxuICAgIFAgLS0-U2xcbiAgICBTIC0tPlNyXG4gICAgXG5cbiAgICBjbGFzcyBQLFNsLFNyIHJlZDtcbiAgICBjbGFzcyBTIGJsYWNrO1xuICAgIGNsYXNzIE4gZGVwcjtcbiAgICBjbGFzc0RlZiBibGFjayBjb2xvcjojZmZmLGZpbGw6IzExMSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4O1xuICAgIGNsYXNzRGVmIHJlZCBjb2xvcjojZmZmLGZpbGw6I2YxMSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4O1xuICAgIGNsYXNzRGVmIGRlcHIgY29sb3I6I2VlZSxmaWxsOiM1NTUsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDsiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ" alt="picture"></li>
+<li>节点P/S/Sr 颜色都取反以满足原则4(红色节点不连续)与原则5(黑色节点数量相同),调色后效果: <img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUC0uLT5OXG4gICAgUy0tPlBcbiAgICBQLS0-U2xcbiAgICBTLS0-U3JcbiAgICBcblxuICAgIGNsYXNzIFAsU3IgcmVkO1xuICAgIGNsYXNzIFNsLFMgYmxhY2s7XG4gICAgY2xhc3MgTiBkZXByO1xuICAgIGNsYXNzRGVmIGJsYWNrIGNvbG9yOiNmZmYsZmlsbDojMTExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgcmVkIGNvbG9yOiNmZmYsZmlsbDojZjExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgZGVwciBjb2xvcjojZWVlLGZpbGw6IzU1NSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4OyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="picture"></li>
+</ol>
+<h3 id="黑色兄弟节点有两个红子节点-黑色父节点"><a href="#黑色兄弟节点有两个红子节点-黑色父节点" class="headerlink" title="黑色兄弟节点有两个红子节点(黑色父节点)"></a>黑色兄弟节点有两个红子节点(黑色父节点)</h3><p><img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUCAtLi0-TlxuICAgIFAgLS0-U1xuICAgIFMgLS0-U2xcbiAgICBTIC0tPlNyXG4gICAgXG5cbiAgICBjbGFzcyBTbCxTciByZWQ7XG4gICAgY2xhc3MgUCxTIGJsYWNrO1xuICAgIGNsYXNzIE4gZGVwcjtcbiAgICBjbGFzc0RlZiBibGFjayBjb2xvcjojZmZmLGZpbGw6IzExMSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4O1xuICAgIGNsYXNzRGVmIHJlZCBjb2xvcjojZmZmLGZpbGw6I2YxMSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4O1xuICAgIGNsYXNzRGVmIGRlcHIgY29sb3I6I2VlZSxmaWxsOiM1NTUsc3Ryb2tlOiM5OTksc3Ryb2tlLXdpZHRoOjFweDsiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ" alt="picture"></p>
+<ol>
+<li>以P为轴左旋,左旋后效果: <img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUC0uLT5OXG4gICAgUy0tPlBcbiAgICBQLS0-U2xcbiAgICBTLS0-U3JcbiAgICBcblxuICAgIGNsYXNzIFNsLFNyIHJlZDtcbiAgICBjbGFzcyBQLFMgYmxhY2s7XG4gICAgY2xhc3MgTiBkZXByO1xuICAgIGNsYXNzRGVmIGJsYWNrIGNvbG9yOiNmZmYsZmlsbDojMTExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgcmVkIGNvbG9yOiNmZmYsZmlsbDojZjExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgZGVwciBjb2xvcjojZWVlLGZpbGw6IzU1NSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4OyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="picture"></li>
+<li>Sr节点颜色涂为黑色.调色后效果: <img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBQKChQKSlcbiAgICBOKChOKSlcbiAgICBTKChTKSlcbiAgICBTbCgoU2wpKVxuICAgIFNyKChTcikpXG4gICAgXG4gICAgXG4gICAgUC0uLT5OXG4gICAgUy0tPlBcbiAgICBQLS0-U2xcbiAgICBTLS0-U3JcbiAgICBcblxuICAgIGNsYXNzIFNsIHJlZDtcbiAgICBjbGFzcyBQLFMsU3IgYmxhY2s7XG4gICAgY2xhc3MgTiBkZXByO1xuICAgIGNsYXNzRGVmIGJsYWNrIGNvbG9yOiNmZmYsZmlsbDojMTExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgcmVkIGNvbG9yOiNmZmYsZmlsbDojZjExLHN0cm9rZTojOTk5LHN0cm9rZS13aWR0aDoxcHg7XG4gICAgY2xhc3NEZWYgZGVwciBjb2xvcjojZWVlLGZpbGw6IzU1NSxzdHJva2U6Izk5OSxzdHJva2Utd2lkdGg6MXB4OyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9" alt="picture"></li>
+</ol>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/Algorithm/" title="Algorithm">Algorithm</a>
+            
+            <a class="tag" href="/tags/Binary-Tree/" title="Binary Tree">Binary Tree</a>
+            
+            <a class="tag" href="/tags/Red-Black-Tree/" title="Red Black Tree">Red Black Tree</a>
+            
+            <a class="tag" href="/tags/Binary-Search-Tree/" title="Binary Search Tree">Binary Search Tree</a>
+            
+            <a class="tag" href="/tags/Balance-Binary-Search-Tree/" title="Balance Binary Search Tree">Balance Binary Search Tree</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+        
+            <a class="next" href="/2021/03/03/Hashing/">
+                <span class="nav-default">一致性哈希</span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+    <a class="social-link" target="_blank" href="https://github.com/KangShanR">
+        <i class="iconfont icon-github"></i>
+    </a>
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Kang Shan</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+    var gitment = new Gitment({
+        id: '红黑树',
+        owner: 'KangShanR',
+        repo: '',
+        oauth: {
+            client_id: '074819c3098d17273370',
+            client_secret: '7b600971b388f1af62c5802851a6b8a9130634cd'
+        }
+    });
+    gitment.render('comment-container');
+    
+
+</script>
+</html>
