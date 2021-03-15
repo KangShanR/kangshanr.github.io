@@ -55,4 +55,31 @@ mark-compact
 
 GC 收集器中,将堆分成新生代与老年代,不同的代使用不同的回收算法.新生代使用 Copying 算法,而老年代使用 Mark-compact/Mark-sweeping 算法.
 
+## 垃圾收集器
 
+### Serial
+
+单线程收集器
+
+工作时用户线程需要停止 stop the world
+
+client 模式下使用
+
+### ParNew
+
+相对于 Serial 的优势在于是多线程
+
+可以与第一代并发老年代收集器(CMS)联用.
+
+### Parallel Scavenge
+
+使用复制算法新生代收集器.
+
+关注点与 CMS 不同在于:CMS 关注尽可能缩短用户线程在 GC 时停顿时间,而 Parallel Scavenge 关注吞吐量 throughput = 用户代码运行时间 / (用户代码运行时间 + 垃圾收集时间).
+
+
+### Serial Old
+
+### CMS
+
+### G1
