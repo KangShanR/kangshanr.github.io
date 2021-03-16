@@ -6,6 +6,29 @@ date: 2021-03-14 22:33
 
 ## Java 运行时数据区
 
+```mermaid
+stateDiagram-v2
+    state JVM-Runtime-Area {
+        state Threads {
+            state Stack {
+                state Frames {
+                    p : local parameter table
+                }
+            }
+        }
+        state Heap {
+            Y : Young Generation
+            O : Old Generation 
+        }
+
+        state Method-Area {
+            C : Constants Pool
+            C2 : Class Meta Data
+        }
+       
+    }
+```
+
 ### 程序计数器
 
 Program counter register
