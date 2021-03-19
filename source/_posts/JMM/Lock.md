@@ -50,7 +50,14 @@ java 并发编程中的 lock.<!--more-->
 
 ## 其他同步机制
 
-底层都使用 AQS (AbstractQueueSynchronizer) ,AQS 调用 UNSAFE 机制 park/unpark 等 CAS 方法.
+底层都使用 AQS (AbstractQueueSynchronizer) ,AQS 调用 UNSAFE 机制 park/unpark 等 CAS 方法.使用队列保存请求资源的线程.
+
+
+文档翻译:
+
+doReleaseShared() 方法共享模式下释放资源.
+
+给后来者发信号并保证传递给所有的等待线程(对于排他模式,需要发送信号时,释放只会对等待队列头发起).
 
 ### CountdownLatch
 
