@@ -48,6 +48,31 @@ java 并发编程中的 lock.<!--more-->
 - 锁获取有三种不同的形式，可中断、不可中断、超时设置（interruptible/non-interruptible/timed），其性能特质、顺序保证也各不相同。此外，中断一个正在获取锁的特性可能不会实现。
 - 因此一个 Lock 的实现中对于三种形式的锁获取并不需要保证都有明确定义相同的语义与规范，也可以不需要在锁获取进行时中断的属性。
 
+## 其他同步机制
+
+底层都使用 AQS (AbstractQueueSynchronizer) ,AQS 调用 UNSAFE 机制 park/unpark 等 CAS 方法.
+
+### CountdownLatch
+
+> 计数器, 不能重置.
+
+- 请求执行数量达到指定值再开始执行.
+- await() 方法让线程进入等待.
+- countDown 计数,数量达到指定值就执行.
+
+### CyclicBarrier
+
+> 栅栏,可循环使用
+
+- 当所有 partner 都调用了 await 才继续执行任务,并自动重置.让等待命令执行.
+- 手动重置会让等待的线程 BrokenBarrierException.
+
+### Semaphore
+
+信号量
+
+释放信号以让各等待线程执行.
+
 ## .2. TODO list
 
 - [ ] [ReentrantLock](java.util.concurrent.locks.ReentrantLock)

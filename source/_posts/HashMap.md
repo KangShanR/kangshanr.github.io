@@ -48,7 +48,7 @@ static final int hash(Object key) {
 }
 ```
 
-- 如此做法：将高 16 位的 hashCode 与 hashCode 低 16 位(同时高16位与16位0进行XOR,>>> 逻辑右移)进行 XOR (异或) 位运算。这样能保证结果高 16 位为 0 ，而低 16 位还不明白是如何保证 hashCode 不会冲突的。
+- 如此做法：将高 16 位的 hashCode 与 hashCode 低 16 位(同时高16位与16位0进行XOR,>>> 逻辑右移)进行 XOR (异或) 位运算。这样能保证在不同对象的 hash 值在高位不同而低位相同的情况下出现冲突,降低 hash 值的位数。
 - HashTable 中直接对 HashCode 按 capacity 取模，而 HashMap 中其 threshold 并不单指总 Entry 数量阈值，在其初始化时指下一次 resize() capacity 的目标值。
 - HashTable 严格按时 HashTable 数据结构来定义，使用 Object hashCode() 计算其 hash 值，并按桶数量取模放置各个值入 HashTable 中。而在 HashMap 中，其对 Key 的 hash 值进入了高 16 位与低 16 位的或运算作为最终 hash 值，同时，在放置 Node 时，也并不是直接取模，使用 `hash & (capacity - 1)` 得到 bucket 下标。
     - 之所以能使用此种位运算获取到 bucket 下标，因为其桶数量 capacity 始终是 2 的次冥 （`10000` 的形式），`(capacity - 1)` 就会是 `1111` 的形式，而其与 hash 值进行 `&` 运算就刚好得到 hash 的模。
@@ -73,3 +73,13 @@ static final int hash(Object key) {
 
 - 底层基本与 HashMap 一致，初始都是使用 HashTable 算法，使用链表来解决 Hash Collision 。但 HashMap 更高明的算法在于，其中链表长度超过阈值 8 就链表会转为红黑树，这也避免了整个 HashTable 退化成一个 链表。
 - HashTable 为同步的，可以保证一定的线程安全。
+
+## ConcurrentHashMap 如何保证线程安全
+
+> Base on JDK8
+
+- Collections 中提供的工具方法 Collections.synchronizedMap() 只提供了粗粒度的同步,在 Map 的 get put size 等方法上直接加上了 synchronized 在方法层面进行同步,在高并发情况下性能受影响.
+- ConcurrentHashMap 在基础节点数据都使用 volatile 保证其多核可见性,使用 CAS 无锁技术添加替换值,同时只在各个桶粒度加 synchronized 同步.
+- ConcurrentHashMap 的 put 方法实现:在其所在桶内无数据时直接使用 CAS 技术 casTabAt() 将新值添加进去,如果已存在值则进入到桶内,只对桶加同步机制,依次对比 key 是否相同直到链表尾.
+- initTable() 方法初始化其数组时使用 sizeCtl 作为并发标识,进入初始化先使用 Unsafe 机制 U.compareAndSwap(this, SIZECTL, sc, -1) 更新 sizeCtl 值
+    - 此方法中,this 表当前 ConcurrentHashMap 对象, SIZECTL 用来票房 sizeCtl 标记在类元数据中的偏移量.sc 是初始值, -1 是新值用以标识正在初始化数组.
