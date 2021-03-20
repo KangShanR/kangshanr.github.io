@@ -1,5 +1,5 @@
 ---
-title: 红黑树
+title: 红黑树插入删除操作
 tags: [Algorithm, Binary Tree, Red Black Tree, Binary Search Tree, Balance Binary Search Tree]
 categories: [Data Structures & Algorithms]
 date: 2021-3-5 18:22:00
@@ -12,7 +12,7 @@ date: 2021-3-5 18:22:00
 > 红黑树算自平衡二分查找树的一种,但其并不完全满足其要求只相对满足其完全的功能,以降低维护的成本,但最坏情况下两个分支高度差不会超过两倍.
 <!--more-->
 
-## 红黑树属性
+### 红黑树属性
 
 1. 节点是红色或黑色.
 2. 根节点必须是黑色.

@@ -9,7 +9,7 @@ description: linux
 
 ## .1. tomcat
 
-在 linux 上安装 Tomcat 并启动。(root 123456)<!--more-->
+在 linux 上安装 Tomcat 并启动。<!--more-->
 
 1. 安装 tomcat 后，进入 bin 中启动 `./startup.sh`;
 2. 必须开启防火墙：

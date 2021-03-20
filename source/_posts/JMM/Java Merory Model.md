@@ -1,12 +1,10 @@
 ---
 layout: "post"
-title: Java 内存模型(翻译)
+title: Java 内存模型常见问题(翻译)
 categories: [Java]
 date: "2021-1-28 13:26"
 tag: [Java, concurrent, JMM]
 ---
-
-## Java 内存模型常见问题
 
 > Java Memory Model,Java 内存模型,以下简称为 JMM .[原文](http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html)作者:Jeremy Manson/ Brian Goetz.本文章仅节选其核心段落翻译.
 <!--more-->
@@ -83,13 +81,9 @@ Java 的几种语言结构包括: volatile/final/synchronized,这些都用以对
     - 新版 JMM 除会限制字段不能被指令重排（reordering），同时要求 volatile 字段周围的字段都不能轻易被 reordering 。
     - volatile 字段在修改与释放 monitor 内存效果一致（将 processor 缓存数据 flush 到主存中，从而其他线程可见），在读取与获取 monitor 内存效果一致（将本地处理器缓存中数据置为无效，变量值不得不从主存中读取）。
 
-**Important Note:**
-
-- 多线程访问 volatile 变量都是为了合适地设置 happens-before 关系。并不是线程A在写 volatile field f 时所有可见在线程Ｂ访问 volatile field g 后都可见。释放与获取锁需要匹配到相同的 volatile 字段才能保证语义正确。
+**Important Note:**多线程访问 volatile 变量都是为了合适地设置 happens-before 关系。并不是线程A在写 volatile field f 时所有可见在线程Ｂ访问 volatile field g 后都可见。释放与获取锁需要匹配到相同的 volatile 字段才能保证语义正确。
 
 ### 新版 JMM 是否修复了双检锁问题?
-
-双检锁问题
 
 - 单例模式中很多人喜欢使用双检锁模式，认为其可以降低线程阻塞概率。
 
