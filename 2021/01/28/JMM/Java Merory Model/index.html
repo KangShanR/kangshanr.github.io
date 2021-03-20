@@ -79,7 +79,7 @@
         <div class="posts">
     <article class="post-whole">
         <div class="post-title">
-            <h2 class="title">Java 内存模型(翻译)</h2>
+            <h2 class="title">Java 内存模型常见问题(翻译)</h2>
             <div class="post-meta">
                 <span class="post-time">2021-01-28</span>
                 
@@ -94,13 +94,13 @@
         </div>
         <div class="post-toc" id="post-toc">
     <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">Java 内存模型常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">到底什么是内存模型?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80-%E5%A6%82-C-%E6%9C%89%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%90%97"><span class="toc-text">其他语言(如:C++)有内存模型吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Synchronization-%E5%90%8C%E6%AD%A5%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">Synchronization 同步到底做了什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%89%88-JMM-%E4%B8%AD-final-%E5%AD%97%E6%AE%B5%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-text">新版 JMM 中 final 字段如何工作?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">volatile 做了什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%89%88-JMM-%E6%98%AF%E5%90%A6%E4%BF%AE%E5%A4%8D%E4%BA%86%E5%8F%8C%E6%A3%80%E9%94%81%E9%97%AE%E9%A2%98"><span class="toc-text">新版 JMM 是否修复了双检锁问题?</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">到底什么是内存模型?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80-%E5%A6%82-C-%E6%9C%89%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%90%97"><span class="toc-text">其他语言(如:C++)有内存模型吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Synchronization-%E5%90%8C%E6%AD%A5%E5%88%B0%E5%BA%95%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">Synchronization 同步到底做了什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%89%88-JMM-%E4%B8%AD-final-%E5%AD%97%E6%AE%B5%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="toc-text">新版 JMM 中 final 字段如何工作?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">volatile 做了什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%89%88-JMM-%E6%98%AF%E5%90%A6%E4%BF%AE%E5%A4%8D%E4%BA%86%E5%8F%8C%E6%A3%80%E9%94%81%E9%97%AE%E9%A2%98"><span class="toc-text">新版 JMM 是否修复了双检锁问题?</span></a></li></ol>
     <div class="back-to-top" id="back-to-top">
         <a href="javascript:void(0);">回到顶部</a>
     </div>
 </div>
         <div class="post-content">
-            <h2 id="Java-内存模型常见问题"><a href="#Java-内存模型常见问题" class="headerlink" title="Java 内存模型常见问题"></a>Java 内存模型常见问题</h2><blockquote>
+            <blockquote>
 <p>Java Memory Model,Java 内存模型,以下简称为 JMM .<a target="_blank" rel="noopener" href="http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html">原文</a>作者:Jeremy Manson/ Brian Goetz.本文章仅节选其核心段落翻译.</p>
 </blockquote>
 <span id="more"></span>
@@ -150,12 +150,8 @@
 </ul>
 </li>
 </ul>
-<p><strong>Important Note:</strong></p>
-<ul>
-<li>多线程访问 volatile 变量都是为了合适地设置 happens-before 关系。并不是线程A在写 volatile field f 时所有可见在线程Ｂ访问 volatile field g 后都可见。释放与获取锁需要匹配到相同的 volatile 字段才能保证语义正确。</li>
-</ul>
-<h3 id="新版-JMM-是否修复了双检锁问题"><a href="#新版-JMM-是否修复了双检锁问题" class="headerlink" title="新版 JMM 是否修复了双检锁问题?"></a>新版 JMM 是否修复了双检锁问题?</h3><p>双检锁问题</p>
-<ul>
+<p>**Important Note:**多线程访问 volatile 变量都是为了合适地设置 happens-before 关系。并不是线程A在写 volatile field f 时所有可见在线程Ｂ访问 volatile field g 后都可见。释放与获取锁需要匹配到相同的 volatile 字段才能保证语义正确。</p>
+<h3 id="新版-JMM-是否修复了双检锁问题"><a href="#新版-JMM-是否修复了双检锁问题" class="headerlink" title="新版 JMM 是否修复了双检锁问题?"></a>新版 JMM 是否修复了双检锁问题?</h3><ul>
 <li>单例模式中很多人喜欢使用双检锁模式，认为其可以降低线程阻塞概率。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//double-checked locking, Don&#x27;t do like this!</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Ins ins = <span class="keyword">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Ins <span class="title">getIns</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ins == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ins == <span class="keyword">null</span>)&#123;</span><br><span class="line">                ins = <span class="keyword">new</span> Ins();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ins;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -238,7 +234,7 @@
 <script>
     
     var gitment = new Gitment({
-        id: 'Java 内存模型(翻译)',
+        id: 'Java 内存模型常见问题(翻译)',
         owner: 'KangShanR',
         repo: '',
         oauth: {
