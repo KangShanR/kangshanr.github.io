@@ -3,16 +3,54 @@ layout: "post"
 title: Java 内存模型(翻译)
 categories: [Java]
 date: "2021-1-28 13:26"
-tag: [java, concurrent, JMM]
+tag: [Java, concurrent, JMM]
 ---
 
-Java 内存模型文章翻译 [原文地址](http://www.cs.umd.edu/~pugh/java/memoryModel/)
+## Java 内存模型常见问题
+
+> Java Memory Model,Java 内存模型,以下简称为 JMM .[原文](http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html)作者:Jeremy Manson/ Brian Goetz.本文章仅节选其核心段落翻译.
 <!--more-->
-## .1. JSR 133 (Java Memory Model) FAQ
 
-[reference](http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html)
+### 到底什么是内存模型?
 
-### .1.1. How does synchronization do?
+在多核心处理器系统中,处理器通常有多层缓存,这提高了数据访问速度并降低了共享内存总线流量.这在提升性能的同时也带来一系列挑战,比如:两个处理器同一时间造访同一内存位置会发生什么?在哪种条件下他们才能获取到相同的值?
+
+在处理器层面,内存模型定义必要充分条件以达成共识:其他处理器在内存的写对当前处理器是可见的,当前处理器的内存写对其他处理器同样是可见.强内存模型处理器给定的内存位置在任何时间所有处理器都只会读到相同值.弱内存模型的处理器需要使用名为内存栅栏的特殊指令将处理器本地缓存 flush 或废弃,以便能获取到其他处理器的写或让自己的写被其他处理器所获取.通常在锁操作时执行这些内存栅栏,在高级语言层面编码可见.
+
+对内存栅栏需求的减少可以更容易编写强内存模型程序.但即使在强度最高的内存模型中,内存栅栏常常也是必要的.最近处理器设计趋势是更弱的内存模型,因为对缓存一致性更低的要求让处理器间更具伸缩性与更大的内存.
+
+跨线程间的写可见问题也受编译器指令重排的影响.比如:编译器认为将程序中写操作移动到更后的位置可以提升性能时,只要这次移动不会改变程序主义,便可随意移动.编译器更偏向一个操作,另一线程在其执行前不会看到重排,这也影响着缓存效果.
+
+此外,内存写命令在程序很容易地被重排,在这种情况下,其他线程可能会在程序中看到并认为一个并未执行的写已经执行过.所有的来自编译器/运行时/硬件的灵活性设计将以最优顺序执行,在内存模型的范围实现最优性能.
+
+示例代码:
+
+```java
+Class Reordering {
+  int x = 0, y = 0;
+  public void writer() {
+    x = 1;
+    y = 2;
+  }
+
+  public void reader() {
+    int r1 = y;
+    int r2 = x;
+  }
+}
+```
+
+假设两个线程并发执行以上代码,其他一线程看读取 y 值为 2.因为 y 的写操作在 x 后,编码者会假设这个时候 x 已经被写为 1 了.但写操作可能已经被指令重排了.指令重排的情况下,执行顺序可能变为: y 被写为 2 ,然后读取两个变量 x y,最后再写 x=1.这样的读取的结果就是 r1 的值是 2, 而 r2 的值是 0.
+
+JMM(Java 内存模型)描述了多线程编程中哪些行为是合法与线程如何通过内存交互.它描述了一个程序中变量间的关系与在一个真实计算机系统的内存或寄存器中存储与获取的低级别细节.这都要求在使用多类别的硬件与多类别编译器优化下能正确实现.
+
+Java 的几种语言结构包括: volatile/final/synchronized,这些都用以对编译器描述对程序的并发需求.Java 内存模型定义了 volatile 与 synchronized 的行为,更重要的是保证一个正确同步的 Java 程序在所有多处理器架构中正确运行.
+
+### 其他语言(如:C++)有内存模型吗?
+
+其他大部分编程语言,诸如:C / C++ ,并未直接支持多线程.这些语言针对发生在编译器与架构的重排序的保护依赖于使用的线程库(如:pthreads)、所使用的编译器和代码运行的平台.
+
+### Synchronization 同步到底做了什么?
 
 - Synchronization 同步存在多方面含义。最为人所知的是恒定排他性：一旦某个线程获取到 monitor ，monitor 上的同步意味着一个线程进入了 monitor 所保护的同步块，在此线程退出此同步块前没有其他线程能够再进入。
 - 同步同时保证一个线程在进入同步块前与中的写对于其他在相同 monitor 的线程保持可预测的可见性。当退出同步块，会释放 monitor ，这会将缓存中的数据 flush 到主存中，让此线程的写对其他线程可见。在进入同步块前，我们需要获取 monitor ，这带来的内存效应是将处理器 processor 的缓存置为无效，这样变量就必须从主存中重载。这样我们看到的效果就是前一次释放的所有写都可见。
@@ -27,7 +65,7 @@ Java 内存模型文章翻译 [原文地址](http://www.cs.umd.edu/~pugh/java/me
 
 **Important Note:**为保证构建正确的 happens-before 关系，两个线程需要在同一个 monitor 上进行同步。线程Ａ同步在X上的可见对同步在Ｙ上的线程Ｂ并不可见。release 与 acquire 需要匹配在同一个 monitor 上才能执行正确的语义。
 
-### .1.2. How does a final fields work under the new JMM?
+### 新版 JMM 中 final 字段如何工作?
 
 - 对象的常量字段都在其构造器内赋值。
 - 一旦构造完成，即使没有添加 synchronization，常量字段的数据可以被其他所有线程可见。此外，常量字段所引用的对象或数组的可见值将被更新到与常量字段一样保持最新。
@@ -36,7 +74,7 @@ Java 内存模型文章翻译 [原文地址](http://www.cs.umd.edu/~pugh/java/me
 - 对于一个不可变对象（所有字段都是常量）被一个线程构造完成后，如果其他所有线程想要正确可见，仍然需要使用 synchronization 。并没有其他途径可以保证，这就要求程序获取常量字段代码对于并发的管理理解深入而细致，
 - JMM 对于使用 JNI 修改常量字段的行为并没有定义。
 
-### .1.3. What does volatile do?
+### volatile 做了什么?
 
 - volatile 字段用于线程间状态交流。对于 volatile 字段的读取都会获取到其他程的最后一次写。volatile 被设计用于不接受因缓存（cache）或指令重排（reordering）导致的 stale 值的字段。
 - volatile 维持半同步，用于标识字段以让在 processor 缓存中，被一个线程修改后立即被 flush 到主存中，编译器与运行时被禁止将 volatile 字段值置于 processor 寄存器中，从而保证其他线程对其修改可见。
@@ -49,7 +87,7 @@ Java 内存模型文章翻译 [原文地址](http://www.cs.umd.edu/~pugh/java/me
 
 - 多线程访问 volatile 变量都是为了合适地设置 happens-before 关系。并不是线程A在写 volatile field f 时所有可见在线程Ｂ访问 volatile field g 后都可见。释放与获取锁需要匹配到相同的 volatile 字段才能保证语义正确。
 
-### .1.4. Does the new JMM fix the "double-checked locking" problem?
+### 新版 JMM 是否修复了双检锁问题?
 
 双检锁问题
 
