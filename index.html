@@ -198,7 +198,7 @@
     
         <article class="post-abstract">
             <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/13/Mysql/How%20to%20Minimize%20and%20Handle%20Deadlocks/">How to Minimize and Handle Deadlocks</a></h2>
+                <h2><a class="post-title-link" href="/2021/01/13/Mysql/How%20to%20Minimize%20and%20Handle%20Deadlocks/">怎样最小化并处理死锁?(翻译)</a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-time">2021-01-13</span>
@@ -213,8 +213,8 @@
             <div class="post-content">
                 
                     <blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html">reference</a></p>
-<p>死锁最小化建立在<a href="./Deadlocks%20in%20InnoDB.md">死锁检测</a>之上。</p>
+<p>[原文]](<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html</a>)</p>
+<p>死锁最小化建立在死锁检测之上。</p>
 </blockquote>
 <p>死锁是事务型中经典问题，如果出现死锁的频率不高不是一个危险的问题。通常来讲，需要在应用中为死锁场景下事务重试做好准备。
                     <div class="read-more">
@@ -229,7 +229,7 @@
     
         <article class="post-abstract">
             <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/12/Mysql/Deadlocks%20in%20InnoDB/">Deadlocks in InnoDB</a></h2>
+                <h2><a class="post-title-link" href="/2021/01/12/Mysql/Deadlocks%20in%20InnoDB/">InnoDB 死锁(翻译)</a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-time">2021-01-12</span>
@@ -288,7 +288,7 @@
     
         <article class="post-abstract">
             <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/07/Mysql/InnoDB%20Indexes%20On-Disk%20Structures/">InnoDB Indexes On-Disk Structures</a></h2>
+                <h2><a class="post-title-link" href="/2021/01/07/Mysql/InnoDB%20Indexes%20On-Disk%20Structures/">InnoDB 索引磁盘结构(翻译)</a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-time">2021-01-07</span>
@@ -302,8 +302,8 @@
             </div>
             <div class="post-content">
                 
-                    <h2 id="1-Clustered-and-Secondary-Indexes"><a href="#1-Clustered-and-Secondary-Indexes" class="headerlink" title=".1. Clustered and Secondary Indexes"></a>.1. Clustered and Secondary Indexes</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-index-types.html">reference</a></p>
+                    <h2 id="1-聚簇索引与二级索引"><a href="#1-聚簇索引与二级索引" class="headerlink" title=".1. 聚簇索引与二级索引"></a>.1. 聚簇索引与二级索引</h2><blockquote>
+<p>[原文]](<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-index-types.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-index-types.html</a>)</p>
 <p>InnoDB 中每张都有聚簇索引用以存储行数据。一般来讲，聚簇索引等于主键。为获取更好的查询修改性能， 需要了解使用聚簇索引优化每张表的常用查询与 DML 操作。
                     <div class="read-more">
                         <a href="/2021/01/07/Mysql/InnoDB%20Indexes%20On-Disk%20Structures/" class="read-more-link">
@@ -346,7 +346,7 @@
     
         <article class="post-abstract">
             <div class="post-title">
-                <h2><a class="post-title-link" href="/2021/01/06/Mysql/InnoDB%20Transaction%20Model/">InnoDB Transaction Model</a></h2>
+                <h2><a class="post-title-link" href="/2021/01/06/Mysql/InnoDB%20Transaction%20Model/">InnoDB 事务模型(翻译)</a></h2>
             </div>
             <div class="post-meta">
                 <span class="post-time">2021-01-06</span>
@@ -361,8 +361,7 @@
             <div class="post-content">
                 
                     <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html">reference</a></p>
-<p><a href="./InnoDB%20Transaction%20Isolation%20Level.md">InnoDB Isolation Level Note</a></p>
-<h2 id="1-Autocommit-commit-rollback"><a href="#1-Autocommit-commit-rollback" class="headerlink" title=".1. Autocommit commit rollback"></a>.1. Autocommit commit rollback</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-autocommit-commit-rollback.html">reference</a></p>
+<h2 id="1-自动提交与回滚"><a href="#1-自动提交与回滚" class="headerlink" title=".1. 自动提交与回滚"></a>.1. 自动提交与回滚</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-autocommit-commit-rollback.html">reference</a></p>
 <blockquote>
 <p>在 InnoDB 中所有用户的活动都在事务之中，如果 autocommit＝ON 每个 SQL 语句都会形成一个自有的事务。默认情况下 Ｍysql 开启一个session都会在每个连接都会设置autocommit＝on，MYSQL 只要语句没有返回错误都会提交。
                     <div class="read-more">
