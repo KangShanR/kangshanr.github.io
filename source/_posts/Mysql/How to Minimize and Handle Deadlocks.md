@@ -1,5 +1,5 @@
 ---
-title: How to Minimize and Handle Deadlocks
+title: 怎样最小化并处理死锁?(翻译)
 layout: post
 tag: [mysql, InnoDB, Deadlock]
 categories: [Mysql]
@@ -7,19 +7,19 @@ description: How to Minimize and Handle Deadlocks?
 date: "2021-1-13 22:6:00"
 ---
 
-> [reference](https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html)
+> [原文]](https://dev.mysql.com/doc/refman/5.7/en/innodb-deadlocks-handling.html)
 >
-> 死锁最小化建立在[死锁检测](./Deadlocks%20in%20InnoDB.md)之上。
+> 死锁最小化建立在死锁检测之上。
 
 死锁是事务型中经典问题，如果出现死锁的频率不高不是一个危险的问题。通常来讲，需要在应用中为死锁场景下事务重试做好准备。<!--more-->
 
 InnoDB 自动使用行级锁。可能仅仅是在插入修改单行就出现死锁，这是因为这些操作并非真正的原子操作，它们会自动地在插入或修改的 index record（可能多个）上设置锁。（设置锁并非直接加锁，而是先请求锁，获得锁后再持有锁。）
 
-降低死锁概念的技术：
+降低死锁技巧：
 
 1. 每次都使用 `SHOW ENGINE INNODB STATUS` 命令查看最近死锁的来源，这样可以帮助微调应用避免死锁。
 2. 如果高频出现死锁警告，打开 `innodb_print_all_deadlocks` 配置以收集更多 debug 信息。每个死锁的信息都记录在 MYSQL 的 error log 中。当完成 debug 后关闭此配置。
-3. 应用中随便为死锁准备重新发布事务，死锁并不危险，只会重试。
+3. 应用中随时为死锁准备重新发布事务，死锁并不危险，只会重试。
 4. 尽量精简事务以降低其发生冲突的可能。
 5. 更新完相应的记录立即提交事务以降低其冲突的可能。实际操作中，不要让一个交互式的 mysql session 长时间不提交。
 6. 如果使用锁读（locking read: SELECT ... FOR UPDATE/SELECT ... LOCK IN SHARE MODE），尝试使用更低的事务隔离级别，如：READ COMMITTED。

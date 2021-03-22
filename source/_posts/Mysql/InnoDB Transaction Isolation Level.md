@@ -1,5 +1,5 @@
 ---
-title: InnoDB Transaction Isolation Level
+title: InnoDB 事务隔离级别
 layout: post
 tag: [mysql, InnoDB]
 categories: [Mysql]
