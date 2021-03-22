@@ -1,5 +1,5 @@
 ---
-title: InnoDB Transaction Model
+title: InnoDB 事务模型(翻译)
 layout: post
 tag: [mysql, InnoDB, commit]
 categories: [Mysql]
@@ -9,9 +9,7 @@ date: "2021-1-6 13:52:00"
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-model.html)
 
-[InnoDB Isolation Level Note](./InnoDB%20Transaction%20Isolation%20Level.md)
-
-## .1. Autocommit commit rollback
+## .1. 自动提交与回滚
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-autocommit-commit-rollback.html)
 
@@ -22,11 +20,14 @@ date: "2021-1-6 13:52:00"
 - 如果一个 session autocommit=0，没有显式地提交最后一个事务，MYSQL 会自动圆滚这个事务。
 - 某些语句会[隐式地结束一个事务](https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html)，在你执行语句之前好像提交过一样。
 
-## .2. Consistent Nonlocking Reads
+## .2. 一致性非阻塞读
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
 
 > 一致性读指 InnoDB 使用多视图给数据库某时间点快照响应查询。此查询能看到在此时间点前提交的事务的更新，在此时间点后提交的事务或未提交的更新不能被看到。此规则例外：本事务内之前语句的更新将被查询到。此类异常情况会造成：更新某表内部分行，SELECT 能够看到这些被更新的行，但也可以看到任何行的老版本。如果其他 sessions 同时更新了这张表，那么就等到了表在数据库内从未出现的状态。
+
+2014.5-2015.4 四川青峰环艺景观设计有限公司 负责景观设计 3D建模
+2015.5-2016.9 驿东道
 
 - 如果在默认的 REPEATABLE READ 隔离级别下，在相同事务中所有的一致性读都会读取第一次查询建立的快照。若要获取到更新的快照，提交当前事务并开启一个新的。
 - 在 READ COMMITTED 隔离级别下，同一个事务中每个一致性读的 SETS 与 READS 都在其自己的更新的快照中进行。
@@ -89,7 +90,7 @@ date: "2021-1-6 13:52:00"
     - InnoDB 默认对这引起语句使用更严格的锁且 `SELECT` 部分使用 READ COMMITTED （在相同事务内，一致性读 sets gets 都针对其自有快照）。
     - 执行非锁读的场景，设置事务隔离级别为 READ COMMITTED / READ UNCOMMITTED 以避免对所选表中数据行加锁。
 
-## .3. Locking Reads
+## .3. 锁读
 
 [reference](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html)
 
@@ -126,7 +127,7 @@ date: "2021-1-6 13:52:00"
         SELECT * FROM t1 WHERE c1 = (SELECT c1 FROM t2 FOR UPDATE) FOR UPDATE;
         ```
 
-### .3.1. Locking Read Examples
+### .3.1. 锁读示例
 
 > 假设你想在表 child 中插入一条新数据,并保证子表数据在父表 parent 表中有相应的行.你的应用代码能保证以下操作相对完整.
 
@@ -154,7 +155,7 @@ date: "2021-1-6 13:52:00"
 
         - 其中 SELECT 语句仅仅是获取当前连接的 id 信息,不访问任何表.
 
-### .3.2. Locking Read Concurrency with NOWAIT and SKIP LOCKED
+### .3.2. 非等待与锁忽略的一致性读
 
 > MYSQL 8.0 版本才开始有此选项。
 >
@@ -194,7 +195,7 @@ date: "2021-1-6 13:52:00"
     mysql> SELECT * FROM t WHERE i = 2 FOR UPDATE NOWAIT;
     ERROR 3572 (HY000): Do not wait for lock.
 
-    # Session 3: SKIP LOCKED 并发查询路过 2
+    # Session 3: SKIP LOCKED 并发查询跳过 2
 
     mysql> START TRANSACTION;
 
