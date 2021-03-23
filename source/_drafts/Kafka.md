@@ -1,35 +1,38 @@
 ---
-title: Kafka
-tags: [Kafka]
+title: 消息队列
+tags: [Kafka,MQ]
 date: 2021-03-23 14:43
 ---
 
 ## Structure
 
-```mermaid
-stateDiagram-v2
-    state JVM-Runtime-Area {
-        state Threads {
-            state Stack {
-                state Frames {
-                    p : local parameter table
-                }
-            }
-        }
-        state Heap {
-            Y : Young Generation
-            O : Old Generation
-        }
-
-        state Method-Area {
-            C : Constants Pool
-            C2 : Class Meta Data
-        }
-    }
-```
-
+- MQ 作用?
+    - 解耦/异步/削峰 结合业务
 - MQ 高可用:kafka 直接使用多个 broker 上备份了每个主题的 follower partition
 - MQ 如何保证消费幂等性?
     - 业务下游上去处理.比如,在冷库里加唯一约束;查询数据日志是否有被消费;在redis 中添加记录.
 - MQ 如何保证可靠性传输?消息不丢失.
-    - 
+    - 消费端数据丢失: 还没消费到消费者这儿宕机了,但kafka收到提交的 offset.解决:关闭自动提交,完成消费后再手动提交.这儿引申出的问题是消费完成后未提交而宕机,解决方案是在消费业务中保证幂等.
+    - 生产端数据丢失: 生产完数据后宕机,需要 设置 acks=all,设置每条数据写入所有的 replica 才认为是成功, retries=max 失败的话无限重试
+    - kafka 数据丢失: Broker 宕机,重选 leader 时,未同步到 follower 上的数据丢失.解决:设置 replication.factor 大于1,以保证 partition 有至少两个副本;再 min.insync.replicas 大于1,至少有一个 follower 与 leader 保持联系.结合上面生产者数据丢失的配置
+- 保证消息顺序
+    - 生产数据时指定key,让同一类数据都到同一个 partition 中且保持顺序.在消费者那儿让单线程进行消费吞量低.如果必须多全程消费数据,可以让有前后关系的数据绑定在一个有顺序的组合消息,消费者消费组合的消息.或者维护队列让不同的线程在不同的队列中找消息消费.
+
+- 如何设计一个高并发系统？
+    - 系统拆分 将并发业务分到不同机器与库里
+    - MQ 削峰,高并发写的场景让其在排除慢慢处理
+    - redis 缓存,高并发读的场景
+    - elasticsearch, 联表查询场景
+    - 逃离不了的高并发写库 分库分表,读写分离
+
+### 读写分离
+
+- 原理:从库在将主库 binlog copy 到自己的 relayLog 中,再执行copy 过来的日志;
+- 两种机制:
+    - semi-sync 半同步复制,每次新的写入在从库中执行后再响应ack给主库,主库收到 ack 才确认此次同步成功,解决主库不可用的异常.
+    - 并行复制,库级别并行
+- 同步延迟解决方案:
+    - 最粗暴方法:让关键读也走主库,此方案会违背主从分离的主旨
+    - 业务代码注意到从库的延迟
+    - 打开并行复制
+    - 主库拆分为多个
