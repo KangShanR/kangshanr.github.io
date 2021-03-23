@@ -13,7 +13,9 @@ stateDiagram-v2
             state Stack {
                 state Frames {
                     p : local parameter table
+                    
                 }
+                R : register
             }
         }
         state Heap {
