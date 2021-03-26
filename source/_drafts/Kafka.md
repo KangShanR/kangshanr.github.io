@@ -25,6 +25,19 @@ date: 2021-03-23 14:43
     - elasticsearch, 联表查询场景
     - 逃离不了的高并发写库 分库分表,读写分离
 
+## Redis
+
+- 内存淘汰策略
+    - 定期删除 每隔 100 ms 随机抽取 key 检查删除
+    - 隋性删除 到过期时间后查询返回 nil 同时删除此 key
+    - 内存淘汰机制
+        - noeviction 不淘汰
+        - allkey-random 所有键在内存不够时候随机淘汰
+        - allkey-lru 内存不够时使用最近最少使用淘汰
+        - volatile-random 内存不足时,随机淘汰设置过过期时间的key
+        - volatile-lru 内存不足时,淘汰最近最少使用的key
+        - volatile-ttl 内存不足时,淘汰ttl最先过期的key  
+
 ### 读写分离
 
 - 原理:从库在将主库 binlog copy 到自己的 relayLog 中,再执行copy 过来的日志;
