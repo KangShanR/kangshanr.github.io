@@ -121,3 +121,15 @@ Spring Boot 源码
 - dependenciesForBeanMap `Map between depending bean names: bean name to Set of bean names for the bean's dependencies.` 表示 bean 与 此 bean 依赖的 bean 的映射关系集合。
     - 上述结论来自方法 org.springframework.beans.factory.support.DefaultSingletonBeanRegistry#registerDependentBean 及其注释说明。同时可以从自动装配方法 org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#autowireByType line:1511 推导：解析本bean 自动装配的依赖 autowiredBeanNames 出后，在注册处调用方法 line:1516 参数是本 bean 依赖 autowiredBeanName 为第一个参数，而本 beanName 是第二个参数（这时的依赖关系是： 本bean 依赖 autowiredBean）。再看此 registerDependentBean 方法，其执行是将第一个参数 beanName（此时就是本 bean 的依赖bean） 放入了 dependenciesForBeanMap 而 本 beanName 作为 了第二个参数 放入了 dependentBeanMap 。
 - CGLIB 策略生成子类创建 bean: org.springframework.beans.factory.support.CglibSubclassingInstantiationStrategy.CglibSubclassCreator#createEnhancedSubclass
+
+
+## SpringBoot 生产一个 Bean 的过程
+
+1. 注册所有包中 META-INFO/factories 的 initializers, listener 扫描注册出来
+2. 从主类 Application 开始扫描,使用 scanner 将其递归扫描出所有的 BeanDefinition,并注册在 DefaultListableBeanFactory 的 beanDefinitionMap 中
+3. AbstractApplicationContext.refresh 543行将所有非懒加载的 Bean 初始化.
+4. org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#initializeBean(java.lang.String, java.lang.Object, org.springframework.beans.factory.support.RootBeanDefinition) 方法执行了整个 Bean 生产的过程:
+   1. Aware 基本设施级别的依赖注入
+   2. 执行 BeanPostProcessor.postProcessBeforeInitialization() 方法
+   3. 执行 Bean 本身的 init() 方法 
+   4. 执行 BeanPostProcessor.PostProcessorsAfterInitialization() 方法
