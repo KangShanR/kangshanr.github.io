@@ -45,7 +45,7 @@ ioc 容器配置。传统配置方法是使用 xml 配置文件实现。
 
 #### 1.2.1.1. AnnotationConfigApplicationContext 初始化 IoC 容器
 
-使用 AnnotationConfigApplicationContext 初始化 IoC 容器。AnnotaionConfigApplicationContext 在 spring 3.0 中引进。
+使用 AnnotationConfigApplicationContext 初始化 IoC 容器。AnnotationConfigApplicationContext 在 spring 3.0 中引进。
 
 - 通过 `@Configuration` 配置类注册初始化
 

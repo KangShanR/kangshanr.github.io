@@ -36,7 +36,11 @@ date: 2021-03-23 14:43
         - allkey-lru 内存不够时使用最近最少使用淘汰
         - volatile-random 内存不足时,随机淘汰设置过过期时间的key
         - volatile-lru 内存不足时,淘汰最近最少使用的key
-        - volatile-ttl 内存不足时,淘汰ttl最先过期的key  
+        - volatile-ttl 内存不足时,淘汰ttl最先过期的key
+
+### 基于 token
+
+- 基于 token 解决多实例用户 session 数据
 
 ### 读写分离
 
