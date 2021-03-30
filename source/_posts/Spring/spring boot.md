@@ -123,9 +123,10 @@ Spring Boot 源码
 - CGLIB 策略生成子类创建 bean: org.springframework.beans.factory.support.CglibSubclassingInstantiationStrategy.CglibSubclassCreator#createEnhancedSubclass
 
 
-## SpringBoot 生产一个 Bean 的过程
+### SpringBoot 生产一个 Bean 的过程
 
-1. 注册所有包中 META-INFO/factories 的 initializers, listener 扫描注册出来
+1. 注册所有包中 META-INFO/factories 的 initializers, listener 扫描注册出来.其中包括 ConfigurationWarningsApplicationContextInitializer ,其 initialize(context) 方法会添加 BeanFactoryPostProcessor.
+2. 在 org.springframework.context.support.AbstractApplicationContext#refresh 方法中,其调用 invokeBeanFactoryPostProcessors 所有的工厂处理器.其调用顺序会先选择实现 PriorityOrder 接口的Processor,其中解析 configuration 组件的 Processor 叫 ConfigurationClassPostProcessor.
 2. 从主类 Application 开始扫描,使用 scanner 将其递归扫描出所有的 BeanDefinition,并注册在 DefaultListableBeanFactory 的 beanDefinitionMap 中
 3. AbstractApplicationContext.refresh 543行将所有非懒加载的 Bean 初始化.
 4. org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#initializeBean(java.lang.String, java.lang.Object, org.springframework.beans.factory.support.RootBeanDefinition) 方法执行了整个 Bean 生产的过程:
