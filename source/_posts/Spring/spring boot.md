@@ -126,7 +126,7 @@ Spring Boot 源码
 ### SpringBoot 生产一个 Bean 的过程
 
 1. 注册所有包中 META-INFO/factories 的 initializers, listener 扫描注册出来.其中包括 ConfigurationWarningsApplicationContextInitializer ,其 initialize(context) 方法会添加 BeanFactoryPostProcessor.
-2. 在 org.springframework.context.support.AbstractApplicationContext#refresh 方法中,其调用 invokeBeanFactoryPostProcessors 所有的工厂处理器.其调用顺序会先选择实现 PriorityOrder 接口的Processor,其中解析 configuration 组件的 Processor 叫 ConfigurationClassPostProcessor.
+2. 在 org.springframework.context.support.AbstractApplicationContext#refresh 方法中,其调用 invokeBeanFactoryPostProcessors 所有的工厂处理器.其调用顺序会先选择实现 PriorityOrder 接口的 Processor,其中解析 configuration 组件的 Processor 叫 ConfigurationClassPostProcessor.
 2. 从主类 Application 开始扫描,使用 scanner 将其递归扫描出所有的 BeanDefinition,并注册在 DefaultListableBeanFactory 的 beanDefinitionMap 中
 3. AbstractApplicationContext.refresh 543行将所有非懒加载的 Bean 初始化.
 4. org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#initializeBean(java.lang.String, java.lang.Object, org.springframework.beans.factory.support.RootBeanDefinition) 方法执行了整个 Bean 生产的过程:
@@ -134,3 +134,20 @@ Spring Boot 源码
    2. 执行 BeanPostProcessor.postProcessBeforeInitialization() 方法
    3. 执行 Bean 本身的 init() 方法 
    4. 执行 BeanPostProcessor.PostProcessorsAfterInitialization() 方法
+
+### tips
+
+- org.springframework.context.annotation.AnnotatedBeanDefinitionReader#AnnotatedBeanDefinitionReader(org.springframework.beans.factory.support.BeanDefinitionRegistry) 注解bean读取器
+- org.springframework.boot.SpringApplication#deduceMainApplicationClass 从当前线程栈中追溯到 main 方法所在的类,并返回主类.以完成 spring boot 主类初始化.
+    - 除 mainApplicationClass 外, SpringApplication 还有 source 字段用来存放主类数据.
+- org.springframework.boot.SpringApplication#prepareEnvironment 准备应用环境变量
+- org.springframework.boot.BeanDefinitionLoader#BeanDefinitionLoader 用来对整个工程主类进行扫描
+- org.springframework.context.support.ApplicationContextAwareProcessor#invokeAwareInterfaces 此 processor 将基础设备数据接口方法调用,其参数设置为当前上下文 ApplicationContext .
+- org.springframework.context.support.AbstractApplicationContext#prepareBeanFactory applicationContext 上下文准备,其中包括了最原始的前置处理器 基础设施依赖注入 beanPostProcessor 处理(直接调用 context 的内容去注入)与相关的依赖忽略(比如:EnvironmentAware 接口的依赖忽略掉,让专门的处理器对其注入), 环境变量 bean
+- org.springframework.context.annotation.ConfigurationClassParser#doProcessConfigurationClass 配置类组件解析 @Configuration
+- org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader#loadBeanDefinitionsForConfigurationClass 从 configuration 类中抽取 bean
+- org.springframework.context.annotation.ConfigurationClassParser#configurationClasses 存放 configuration 类
+- 此处 org.springframework.context.annotation.ConfigurationClassParser#processConfigurationClass 添加configuration 类
+- org.springframework.boot.SpringApplication#run(java.lang.String...) line 301 prepareContext() 执行时将原始 application 主类添加到 beanDefinition 中.
+    - org.springframework.boot.BeanDefinitionLoader#load(java.lang.Class<?>) 加载到其中.
+    - org.springframework.context.annotation.AnnotatedBeanDefinitionReader#registerBean(java.lang.Class<?>, java.lang.String, java.lang.Class<? extends java.lang.annotation.Annotation>...)注册其 beanDefinition
