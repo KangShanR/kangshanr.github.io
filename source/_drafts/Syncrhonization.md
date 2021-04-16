@@ -47,7 +47,7 @@ tags: [Java, Synchronization, CAS, Concurrent]
    1. 在 JMM 中如果一个操作要对另一个操作可见,那么这两个操作必须要存在 happens-before 关系:
       1. 程序顺序:一个线程中每个操作,happens-before 任意后续操作
       2. 监听锁:对于一个锁的解锁 happens-before 随后对这个锁的加锁
-      3. volatile: 对于一个 volatile 域的写,happens-before 于任意后续
+      3. volatile: 对于一个 volatile 域的写,happens-before 于任意后续读
       4. 传递性: a happens-before b, b -> c, a -> c
 3. 原子性:JMM 保证上面6个指令都是原子性
    1. 大致可认为 基本数据类型变量/引用类型变量/声明为 volatile 任何类型变量的访问读写是具备原子性(64位数据long double JMM 允许jvm 划分为再次32 bit 操作进行,即允许jvm不保证64bit数据的 load store read write 四个操作的原子性.但目前各平台下商用jvm都将64bit数值读写操作作为原子操作来对待,所以也不用专门对 long double 变量 添加  volatile 修辞).这些类型变量读写天然具有原子性,但 `volatile++` `基本变量++` 非原子性.

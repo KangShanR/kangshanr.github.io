@@ -35,7 +35,7 @@ stateDiagram-v2
 
 Program counter register
 
-线程所私有
+线程所私有,存放下一个指令所在单元地址.
 
 ### 虚拟机栈
 
