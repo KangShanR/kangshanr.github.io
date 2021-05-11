@@ -1,7 +1,7 @@
 ---
 title: Java Date Time
 tags: [Date, LocalDateTime, Instant]
-date: 2021-05-07 10:36
+date: 2021-05-11 21:59:00
 ---
 
 - Java 1.8 不再使用 TimeZone/Calander/Date 等日期时间类，转而使用 LocalDateTime/ZoneId（ZoneOffset/ZoneRegion）/ZonedDateTime 来替代。
