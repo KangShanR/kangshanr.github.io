@@ -11,3 +11,7 @@ date: 2021-04-29 14:34:00
     - 打开任务管理器: windows task manager --> performance --> resource monitor --> network --> listening ports.
 - [Windows 上运行 shell 脚本](https://www.thewindowsclub.com/how-to-run-sh-or-shell-script-file-in-windows-10)
 - 在 powershell 查看环境变量： `gi Env:\ROCKETMQ_HOME` gi= get-item。gv = get-variable
+
+## Chocolatey
+
+> [reference](https://docs.chocolatey.org/en-us/choco/commands/info)
