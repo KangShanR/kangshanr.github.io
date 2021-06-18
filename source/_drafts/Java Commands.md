@@ -1,6 +1,6 @@
 ---
-title: 线上问题排查
-tags: [Linux, top]
+title: Java Commands
+tags: [Linux, top, Java]
 date: 2021-04-23 14:09:00
 ---
 
@@ -31,3 +31,15 @@ date: 2021-04-23 14:09:00
 - option
     - `-m` 查看 main 方法参数
     - `-v` 查看 jvm 参数,可以用此查看 jvm 配置参数
+
+## Other Tools
+
+### nativa2ascii
+
+> 将字符文件编码为 unicode .
+
+- 对于 ASCII 字符集外的字符将使用 Unicode escape notation 转义符号（如：\uxxxx，u for unicode）
+- 使用 `-reverse` option 反向编码（将 ASCII 码编码为指定字符)
+- `-encoding encoding_name` 指定字符集
+- `-Joptin` 指定 jvm 参数
+
