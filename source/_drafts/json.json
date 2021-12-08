@@ -1,0 +1,27 @@
+[
+    {
+        "bizNo": "PO1004021081799880000",
+        "costItems": [
+            {
+                "currency": "USD",
+                "goodsCode": "163743",
+                "goodsName": "MONDAHMIN MOUTHWASH",
+                "shopCode": "9988",
+                "supplierCode": "ZKTL11600002",
+                "supplierName": "可口可乐",
+                "withoutTaxPrice2": 0.000000,
+                "withoutTaxPrice3": 0.00
+            },
+            {
+                "currency": "USD",
+                "goodsCode": "163743",
+                "goodsName": "MONDAHMIN MOUTHWASH",
+                "shopCode": "9988",
+                "supplierCode": "ZKTL11600002",
+                "supplierName": "可口可乐",
+                "withoutTaxPrice2": 1000.000000,
+                "withoutTaxPrice3": 1000.00
+            }
+        ]
+    }
+]
